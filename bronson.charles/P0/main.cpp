@@ -1,6 +1,6 @@
 #include <iostream>
 
-
-int main(){
-    std::cout << "bronson.charles" << std::endl;
+int main()
+{
+  std::cout << "bronson.charles\n";
 }
