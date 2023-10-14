@@ -1,5 +1,5 @@
 #include <iostream>
 int main()
 {
-    std::cout << "khoroshkin.maksim\n";
+  std::cout << "khoroshkin.maksim\n";
 }
