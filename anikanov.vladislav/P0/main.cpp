@@ -2,6 +2,6 @@
 
 using namespace std;
 
-int main(){
-    cout << "anikanov.vladislav\n";
+int main() {
+  cout << "anikanov.vladislav\n";
 }
