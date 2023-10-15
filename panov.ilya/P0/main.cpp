@@ -2,6 +2,6 @@
 
   int main()
   {
-    std::cout << "panov.ilya\n";
+    std::cout << "panov.ilya";
     return 0;
   }
