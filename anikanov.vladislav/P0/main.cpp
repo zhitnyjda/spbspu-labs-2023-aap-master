@@ -3,5 +3,5 @@
 using namespace std;
 
 int main(){
-    cout << "anikanov.vladislav" << endl;
+    cout << "anikanov.vladislav\n";
 }
