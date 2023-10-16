@@ -2,7 +2,8 @@
 
 int main()
 {
-   std::cout<<"seryj.alexey";
+   std::cout << "seryj.alexey";
+   return 0;
 }
 
 
