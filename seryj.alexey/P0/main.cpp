@@ -2,8 +2,6 @@
 
 int main()
 {
-   std::cout << "seryj.alexey/P0";
+   std::cout << "seryj.alexey";
    return 0;
 }
-
-
