@@ -2,7 +2,7 @@
 
 int main()
 {
-   std::cout << "seryj.alexey";
+   std::cout << "seryj.alexey/P0";
    return 0;
 }
 
