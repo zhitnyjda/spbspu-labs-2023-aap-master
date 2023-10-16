@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 int main() {
-  cout << "anikanov.vladislav\n";
+  std::cout << "anikanov.vladislav\n";
 }
