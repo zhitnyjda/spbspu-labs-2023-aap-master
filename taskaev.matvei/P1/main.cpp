@@ -30,6 +30,6 @@ int main()
     std::cout << "Error, short sequence.\n";
     return 2;
   }
-  std::cout << "Maximum repeating numbers: " << max << "\n";
+  std::cout << "Maximum repeating numbers: " << max_count << "\n";
   return 0;
 }
