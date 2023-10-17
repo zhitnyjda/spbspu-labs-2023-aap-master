@@ -27,7 +27,7 @@ int main()
             std::cout << "Слишком много минимальных элементов\n";
             exit(2);
         }
-        if (number < min_member){
+        if (number < min_member) {
             min_member = number;
             count = 1;
         }
@@ -35,4 +35,3 @@ int main()
     }
     std::cout << count << "\n";
 }
-
