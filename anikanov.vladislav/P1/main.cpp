@@ -1,11 +1,11 @@
 #include <iostream>
-#include "solve.hpp"
+#include "findCountMinimalMembers.hpp"
 
 int main()
 {
-  long long answer;
+  long long answer = 0;
   try {
-    solving(answer);
+    findCountMinimalMembers(answer);
   } catch (std::logic_error const &error) {
     std::cout << error.what() << "\n";
     return 2;
