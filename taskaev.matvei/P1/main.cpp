@@ -6,11 +6,11 @@ int main()
   int count = 1;
   int previousNum = 0;
   int max_count = 0;
-  int count_num=0;
+  int countNum = 0;
   do
   {
     std::cin >> num;
-    count_num += std::cin ? (num ? 1 : 0) : 0;
+    countNum += std::cin ? (num ? 1 : 0) : 0;
     if (previousNum == num) {
       count++;
     } else {
@@ -26,7 +26,7 @@ int main()
     std::cout << "Error occured.\n";
     return 1;
   }
-  if (count_num < 2) {
+  if (countNum < 2) {
     std::cout << "Error, short sequence.\n";
     return 2;
   }
