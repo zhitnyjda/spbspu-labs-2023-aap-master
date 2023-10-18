@@ -1,39 +1,45 @@
 #include <iostream>
+#include <exception>
+#include <limits>
+#include "funcs.cpp"
 
 int main()
-{ double a0 = 0;
-  double a1 = 0;
-  double a2 = 0;
-  double a3 = 0;
-  int c = 0;
-
-  while (1)
+{
+  int first_elem = 0;
+  int second_elem = 0;
+  int third_elem = 0;
+  int forth_elem = 0;
+  int cou = 0;
+  try
   {
-    std::cin >> a3;
-    if (!std::cin)
+    forth_elem = read(first_elem);
+    while (forth_elem != 0)
     {
-      std::cerr << "Ne posledovatel`nost`";
-      return 1;
-    }
-    if (a3 == 0)
-    {
-      if (a0 == 0)
+      if ((forth_elem == sum(second_elem, third_elem)) && (second_elem != 0))
       {
-        std::cerr << "Malo";
-        return 2;
+        cou += 1;
       }
-      else
-      {
-        std::cout << c;
-        return 0;
-      }
+      first_elem = second_elem;
+      second_elem = third_elem;
+      third_elem = forth_elem;
+      forth_elem = read(first_elem);
     }
-    if ((a3 == a1 + a2) && (a1 != 0))
-    {
-      c += 1;
-    }
-    a0 = a1;
-    a1 = a2;
-    a2 = a3;
+    std::cout << cou << "\n";
+    return 0;
+  }
+  catch (const std::logic_error & e)
+  {
+    std::cerr << e.what();
+    return 2;
+  }
+  catch (const std::istream::failure & e)
+  {
+    std::cerr << "Not a sequence";
+    return 1;
+  }
+  catch (const std::overflow_error & e)
+  {
+    std::cerr << e.what();
+    return 1;
   }
 }
