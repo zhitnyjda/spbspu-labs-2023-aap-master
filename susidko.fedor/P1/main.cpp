@@ -74,23 +74,19 @@ int sum(int a, int b)
 {
   const int max_int = std::numeric_limits< int >::max();
   const int min_int = std::numeric_limits< int >::min();
-  if ((a == 0) || (b == 0))
-  {
-    return a + b;
-  }
   if (isSameSign(a, b) && (a > 0))
   {
-    if (max_int - a >= b)
+    if (max_int - a <= b)
     {
-      return a + b;
+      throw std::overflow_error("Signed overflow");
     }
   }
   if (isSameSign(a, b) && (a < 0))
   {
-    if (min_int - a <= b)
+    if (min_int - a >= b)
     {
-      return a + b;
+      throw std::overflow_error("Signed overflow");
     }
   }
-  throw std::overflow_error("Signed overflow");
+  return a + b;
 }
