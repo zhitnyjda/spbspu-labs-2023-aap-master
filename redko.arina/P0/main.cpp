@@ -2,6 +2,6 @@
 
 int main()
 {
-    std::cout << "redko.arina\n";
-    return 0;
+  std::cout << "redko.arina\n";
+  return 0;
 }
