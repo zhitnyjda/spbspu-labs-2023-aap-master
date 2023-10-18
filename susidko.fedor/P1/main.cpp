@@ -1,7 +1,6 @@
 #include <iostream>
 #include <exception>
 #include <limits>
-#include "funcs.cpp"
 
 int main()
 {
