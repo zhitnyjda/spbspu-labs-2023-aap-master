@@ -7,7 +7,7 @@ int main()
   int count = 1;
   int max_count = 0;
   int last_value = 0;
-  int current_value = 0;   
+  int current_value = 0;
   std::cin >> last_value;
   while (last_value && std::cin)
   {
