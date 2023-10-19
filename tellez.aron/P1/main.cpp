@@ -1,6 +1,7 @@
 #include <iostream>
+#include <stdexcept>
 
-int main()
+void processSequence()
 {
   int value = 0;
   int count = 0;
@@ -26,19 +27,38 @@ int main()
     actual = value;
   }
   while (value != 0);
-
   if (!std::cin)
   {
-    std::cerr << "Error: Invalid entry, last uncounted value.\n";
-    return 1;
+    throw std::logic_error("Error: Invalid entry, last uncounted value.\n");
   }
   if (count < 0)
   {
-    std::cerr << "Error: Too short sequence.\n";
-    return 2;
+    throw std::overflow_error("Error: Too short sequence.\n");
   }
-
   std::cout << "Count of elements entered: " << count << "\n";
   std::cout << "Longest decreasing length: " << max_seq_count << "\n";
+}
+
+int main()
+{
+  try
+  {
+    processSequence();
+  }
+  catch (const std::logic_error & e)
+  {
+    std::cerr << e.what();
+    return 2;
+  }
+  catch (const std::istream::failure & e)
+  {
+    std::cerr << "Not a sequence";
+    return 1;
+  }
+  catch (const std::overflow_error & e)
+  {
+    std::cerr << e.what();
+    return 1;
+  }
   return 0;
 }
