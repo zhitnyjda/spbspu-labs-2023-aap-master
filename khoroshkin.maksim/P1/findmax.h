@@ -1,6 +1,6 @@
-#ifndef FINDMAX_HPP
-#define FINDMAX_HPP
+#ifndef FINDMAX_H
+#define FINDMAX_H
 
-int findMax(int &counter, int &maxValue, int &Value);
+void findMax(int &counter, int &maxValue, int &Value);
 
 #endif
