@@ -1,5 +1,5 @@
 #include "isEqual.hpp"
 bool isEqual(int x1, int x2)
 {
-    return (x1 == x2);
+  return (x1 == x2);
 }
