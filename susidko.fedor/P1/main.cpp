@@ -1,3 +1,4 @@
+#include "funcs.h"
 #include <iostream>
 #include <exception>
 #include <limits>
