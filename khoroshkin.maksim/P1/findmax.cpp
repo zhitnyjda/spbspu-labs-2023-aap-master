@@ -1,4 +1,4 @@
-#include "findmax.hpp"
+#include "findmax.h"
 
 int findMax(int &counter, int &maxValue, int &Value)
 {
