@@ -1,6 +1,6 @@
 #include "findmax.h"
 
-int findMax(int &counter, int &maxValue, int &Value)
+void findMax(int &counter, int &maxValue, int &Value)
 {
   if (maxValue < Value)
   {
@@ -12,5 +12,4 @@ int findMax(int &counter, int &maxValue, int &Value)
   {
     counter++;
   }
-  return counter, maxValue, Value;
 }
