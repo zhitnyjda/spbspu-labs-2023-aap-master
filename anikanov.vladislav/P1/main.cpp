@@ -1,5 +1,5 @@
 #include <iostream>
-#include "findCountMinimalMembers.cpp"
+#include "findCountMinimalMembers.hpp"
 
 int main()
 {
