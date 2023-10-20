@@ -1,6 +1,6 @@
 #ifndef findCountMinimalMembers_HPP
 #define findCountMinimalMembers_HPP
-#include <iostream>
+#include <iosfwd>
 
 long long findCountMinimalMembers(std::istream &);
 
