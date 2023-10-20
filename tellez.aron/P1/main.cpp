@@ -11,7 +11,7 @@ int main()
     {
       throw std::overflow_error("Error: Too short sequence.\n");
     }
-      std::cout << "Longest decreasing length: " << count << "\n";
+      std::cout << "Longest decreasing length: " << result << "\n";
     }
     catch (const std::overflow_error& e)
     {
