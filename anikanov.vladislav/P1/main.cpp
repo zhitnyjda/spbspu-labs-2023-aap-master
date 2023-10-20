@@ -1,11 +1,11 @@
 #include <iostream>
-#include "findCountMinimalMembers.hpp"
+#include "findCountMinimalMembers.cpp"
 
 int main()
 {
   long long answer = 0;
   try {
-    findCountMinimalMembers(answer);
+    answer = findCountMinimalMembers(std::cin, answer);
   } catch (std::logic_error const &error) {
     std::cout << error.what() << "\n";
     return 2;

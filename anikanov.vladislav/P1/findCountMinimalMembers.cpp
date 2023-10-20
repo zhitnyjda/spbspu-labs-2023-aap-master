@@ -2,12 +2,12 @@
 #include <iostream>
 #include <limits>
 
-void findCountMinimalMembers(long long &count)
+long long findCountMinimalMembers(std::istream &cin, long long count)
 {
   const long long max_count = std::numeric_limits< long long >::max();
   long long min_member = max_count;
   long long number;
-  if (!(std::cin >> number)) {
+  if (!(cin >> number)) {
     throw std::invalid_argument("Wrong input");
   }
   while (number != 0) {
@@ -18,6 +18,7 @@ void findCountMinimalMembers(long long &count)
     if (count < 0) {
       throw std::overflow_error("To much minimal numbers");
     }
-    if (!(std::cin >> number)) throw std::invalid_argument("Wrong input");
+    if (!(cin >> number)) throw std::invalid_argument("Wrong input");
   }
+  return count;
 }
