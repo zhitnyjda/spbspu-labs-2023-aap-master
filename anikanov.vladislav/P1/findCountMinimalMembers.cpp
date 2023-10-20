@@ -5,6 +5,7 @@
 long long findCountMinimalMembers(std::istream &cin)
 {
   const long long max_count = std::numeric_limits< long long >::max();
+  long long count = 0;
   long long min_member = max_count;
   long long number;
   if (!(cin >> number)) {
