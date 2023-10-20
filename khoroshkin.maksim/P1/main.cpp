@@ -1,27 +1,24 @@
 #include <iostream>
 #include <limits>
-#include "findmax.h"
+#include "findmax.hpp"
 
 int main()
 {
-  int counter = 0;
-  int maxValue = std::numeric_limits< int >::min();
-  int Value = 0;
   int length = 0;
+  int counter = 0;
   try
   {
-    do
+    int maxValue = std::numeric_limits< int >::min();
+    int Value = 0;
+    std::cin.exceptions(std::istream::failbit);
+    std::cin >> Value;
+    while (Value != 0)
     {
-      std::cin >> Value;
-      std::cin.exceptions(std::istream::failbit);
-      if (Value != 0)
-      {
-        findMax(counter, maxValue, Value);
-      }
+      findMax(counter, maxValue, Value);
       length++;
+      std::cin >> Value;
     }
-    while (Value != 0);
-    if (length == 1 && Value == 0)
+    if (length == 0 && Value == 0)
     {
       throw std::logic_error("Error: not enough values");
     }
@@ -36,6 +33,13 @@ int main()
     std::cerr << e.what();
     return 2;
   }
-  length > 2 ? std::cout << counter : std::cout << 0;
+  if (length > 2)
+  {
+    std::cout << counter;
+  }
+  else
+  {
+    std::cout << 0;
+  }
   return 0;
 }
