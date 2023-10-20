@@ -5,7 +5,7 @@ int main()
 {
   long long answer = 0;
   try {
-    answer = findCountMinimalMembers(std::cin, answer);
+    answer = findCountMinimalMembers(std::cin);
   } catch (std::logic_error const &error) {
     std::cout << error.what() << "\n";
     return 2;

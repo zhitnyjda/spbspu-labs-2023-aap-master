@@ -2,7 +2,7 @@
 #include <iostream>
 #include <limits>
 
-long long findCountMinimalMembers(std::istream &cin, long long count)
+long long findCountMinimalMembers(std::istream &cin)
 {
   const long long max_count = std::numeric_limits< long long >::max();
   long long min_member = max_count;
