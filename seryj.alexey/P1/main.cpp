@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <exception>
-#include "EQL-SEQ.hpp"
+#include "EQL_SEQ.hpp"
 #include "Read.hpp"
 
 int main()

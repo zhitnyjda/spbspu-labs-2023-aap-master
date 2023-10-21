@@ -1,4 +1,4 @@
-#include "EQL-SEQ.hpp"
+#include "EQL_SEQ.hpp"
 #include <iostream>
 #include <cmath>
 
