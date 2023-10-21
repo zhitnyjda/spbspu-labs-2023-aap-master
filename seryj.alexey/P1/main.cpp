@@ -1,6 +1,6 @@
 #include <iostream>
-#include "isEqual.hpp"
-#include "maxint.hpp"
+#include <cmath>
+#include "EQL-SEQ.hpp"
 
 int main()
 {
@@ -12,9 +12,7 @@ int main()
   while (last_value && std::cin)
   {
     std::cin >> current_value;
-    count = isEqual(last_value, current_value) ? count + 1 : 1;
-    max_count = maxInt(max_count, count);
-    last_value = current_value;
+    eqlSeq(last_value, current_value,count,max_count);
   }
   if (!std::cin)
   {
