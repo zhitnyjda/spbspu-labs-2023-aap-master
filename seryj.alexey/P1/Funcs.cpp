@@ -15,6 +15,8 @@ int Read()
   const int min_limit = max_limit * -1;
   auto val = 0.0;
   std::cin >> val;
+  if (val != static_cast<int>(val))
+    throw std::logic_error("No float, please");
   if (val > max_limit || val < min_limit)
     throw std::overflow_error("Owerflow");
   std::cin.exceptions(std::istream::failbit);

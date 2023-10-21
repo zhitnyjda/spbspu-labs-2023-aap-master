@@ -31,4 +31,9 @@ int main()
     std::cerr << "Input error";
     return 1;
   }
+  catch (const std::logic_error& e)
+  {
+    std::cerr << e.what();
+    return 1;
+  }
 }
