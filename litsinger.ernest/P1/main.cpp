@@ -1,62 +1,57 @@
 #include <iostream>
+#include "maxelement.hpp"
 
 int main()
 {
-    setlocale(0, "ru");
-    int k = 0, mx = 0;
-    double n;
-    std::cin >> n;
-    if (-32768 > n || n > 32767)
-    {
-        std::cout << "Ёлемент не подходит\n";
-        return 1;
-    }
-    if (n != int(n))
-    {
-        std::cout << "Ёлементы должны задаватьс€ целыми числами\n";
-        return 1;
-    }
-    if (std::cin.fail())
-    {
-        std::cout << "Ёлементы должны задаватьс€ числами\n";
-        return 1;
-    }
-    if (n == 0)
-    {
-        std::cout << "ѕоследовательность слишком коротка€\n";
-        return 2;
-    }
-    k = 1;
-    mx = n;
-    while (n != 0)
-    {
-        std::cin >> n;
-        if (n > mx)
-        {
-            mx = n;
-            k = 1;
-        }
-        if (n == mx)
-        {
-            k += 1;
-        }
-        if (n != int(n))
-        {
-            std::cout << "Ёлементы должны задаватьс€ целыми числами\n";
-            return 1;
-        }
-        if (std::cin.fail())
-        {
-            std::cout << "Ёлементы должны задаватьс€ числами\n";
-            return 1;
-        }
-        if (-32768 > n || n > 32767)
-        {
-            std::cout << "Ёлемент не подходит\n";
-            return 1;
-        }
-    }
-    std::cout << k;
-    return 0;
+  int k;
+  int kk = 1;
+  int n;
+  const int maxlim = std::numeric_limits<int>::max();
+  const int minlim = maxlim * -1;
+  std::cin << n;
+  if (n == 0)
+  {
+	std::cout << "Short sequence\n";
+	return 2;
+  }
+  if (std::cin.fail())
+  {
+	std::cout << "The elements must be specified by numbers\n";
+	return 1;
+  }
+  if (n != static_cast<int>(n))
+  {
+    std::cout("Only int");
+	return 1;
+  }
+  if (n > maxlim || n < minlim)
+  {
+	std::cout << "Overflow";
+	return 1;
+  }
+  int mx;
+  mx = n;
+  while (n != 0)
+  {
+	std::cin << n;
+	if (std::cin.fail())
+	{
+	  std::cout << "The elements must be specified by numbers\n";
+	  return 1;
+	}
+	if (n != static_cast<int>(n))
+	{
+	  std::cout("Only int");
+	  return 1;
+	}
+	if (n > maxlim || n < minlim)
+	{
+	  std::cout << "Overflow";
+	  return 1;
+	}
+	kk = maxelement(int n, int k, int mx)
+  }
+  std::cout << kk;
+  return 0;
 }
 
