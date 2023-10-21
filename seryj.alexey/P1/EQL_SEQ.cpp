@@ -2,9 +2,8 @@
 #include <iostream>
 #include <cmath>
 
-void eqlSeq(int &lastValue, int currentValue, int &count, int &max_count)
+void eqlSeq(bool condition, int &count, int &max_count)
 {
-  count = (lastValue == currentValue) ? count + 1 : 1;
+  count = condition ? count + 1 : 1;
   max_count = fmax(max_count, count);
-  lastValue = currentValue;
 }

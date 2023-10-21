@@ -16,7 +16,8 @@ int main()
     while (last_value && std::cin)
     {
       current_value = Read();
-      eqlSeq(last_value, current_value, count, max_count);
+      eqlSeq((last_value == current_value), count, max_count);
+      last_value = current_value;
     }
     std::cout << "Result: " << max_count << "\n";
     return 0;
