@@ -14,8 +14,8 @@ int main()
     compareCurrentAndPrevious(counter, element, previousElement);
     while (element != 0)
     {
-        std::cin >> element;
-        compareCurrentAndPrevious(counter, element, previousElement);
+      std::cin >> element;
+      compareCurrentAndPrevious(counter, element, previousElement);
     }
   }
   catch (const std::istream::failure & e)
