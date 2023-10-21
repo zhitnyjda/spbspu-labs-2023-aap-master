@@ -1,4 +1,5 @@
 #include "EQL-SEQ.hpp"
+#include <iostream>
 #include <cmath>
 
 void eqlSeq(int &lastValue, int currentValue, int &count, int &max_count)
