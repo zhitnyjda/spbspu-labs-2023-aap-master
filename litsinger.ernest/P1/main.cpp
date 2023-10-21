@@ -1,10 +1,10 @@
 #include <iostream>
-#include "maxelement.hpp"
+#include "maxel.h"
 
 int main()
 {
-  int k;
-  int kk = 1;
+  int k = 0;
+  int kk = 0;
   int n;
   const int maxlim = std::numeric_limits<int>::max();
   const int minlim = maxlim * -1;
@@ -21,16 +21,16 @@ int main()
   }
   if (n != static_cast<int>(n))
   {
-    std::cout("Only int");
+    std::cout << ("Only int\n");
     return 1;
   }
   if (n > maxlim || n < minlim)
   {
-    std::cout << "Overflow";
+    std::cout << "Overflow\n";
     return 1;
   }
   int mx;
-  mx = n;
+  mx = 0;
   while (n != 0)
   {
     std::cin << n;
@@ -39,19 +39,18 @@ int main()
       std::cout << "The elements must be specified by numbers\n";
       return 1;
     }
-      if (n != static_cast<int>(n))
+    if (n != static_cast<int>(n))
     {
-      std::cout("Only int");
+      std::cout << ("Only int\n");
       return 1;
     }
     if (n > maxlim || n < minlim)
     {
-      std::cout << "Overflow";
+      std::cout << "Overflow\n";
       return 1;
     }
-    kk = maxelement(int n, int k, int mx)
+    kk = maxel(int n, int k, int mx);
   }
   std::cout << kk;
   return 0;
 }
-
