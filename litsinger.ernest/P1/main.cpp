@@ -39,7 +39,7 @@ int main()
       std::cout << "The elements must be specified by numbers\n";
       return 1;
     }
-      if (n != static_cast<int>(n))
+    if (n != static_cast<int>(n))
     {
       std::cout("Only int\n");
       return 1;
