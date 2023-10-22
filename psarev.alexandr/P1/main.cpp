@@ -1,18 +1,17 @@
 #include <iostream>
-using namespace std;
 
 int main() 
 {
-	int value, prev_value, seq_len, max_len;
+	int value;
 	
-	if (!(cin >> value)) {
-		cout << "Incorrect input!";
+	if (!(std::cin >> value)) {
+		std::cout << "Incorrect input!";
 		return 1;
 	}
 
-	prev_value = value;
-	seq_len = 0;
-	max_len = 0;
+	int prev_value = value;
+	int seq_len = 0;
+	int max_len = 0;
 
 	while (value != 0) {
 
@@ -26,12 +25,12 @@ int main()
 		}
 
 		prev_value = value;
-		if (!(cin >> value)) {
-			cout << "Incorrect input!";
+		if (!(std::cin >> value)) {
+			std::cout << "Incorrect input!";
 			return 1;
 		}
 	}
 
-	cout << max_len;
+	std::cout << max_len << std::endl;
 	return 0;
 }
