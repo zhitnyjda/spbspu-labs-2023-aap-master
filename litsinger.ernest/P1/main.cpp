@@ -1,5 +1,8 @@
 #include <iostream>
-#include "maxel.h"
+#include <limits>
+#include <cmath>
+#include <exception>
+#include "maxel.hpp"
 
 int main()
 {
@@ -8,7 +11,7 @@ int main()
   int n;
   const int maxlim = std::numeric_limits<int>::max();
   const int minlim = maxlim * -1;
-  std::cin << n;
+  std::cin >> n;
   if (n == 0)
   {
     std::cout << "Short sequence\n";
@@ -21,7 +24,7 @@ int main()
   }
   if (n != static_cast<int>(n))
   {
-    std::cout("Only int\n");
+    std::cout << ("Only int\n");
     return 1;
   }
   if (n > maxlim || n < minlim)
@@ -33,7 +36,7 @@ int main()
   mx = 0;
   while (n != 0)
   {
-    std::cin << n;
+    std::cin >> n;
     if (std::cin.fail())
     {
       std::cout << "The elements must be specified by numbers\n";
@@ -41,7 +44,7 @@ int main()
     }
     if (n != static_cast<int>(n))
     {
-      std::cout("Only int\n");
+      std::cout << ("Only int\n");
       return 1;
     }
     if (n > maxlim || n < minlim)
@@ -49,7 +52,7 @@ int main()
       std::cout << "Overflow\n";
       return 1;
     }
-    kk = maxel(int n, int k, int mx);
+    kk = maxel(n, k, mx);
   }
   std::cout << kk;
   return 0;
