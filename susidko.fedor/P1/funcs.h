@@ -3,4 +3,5 @@
 int getSign(int value);
 int sum(int a, int b);
 int read(int second_elem);
-#endif // FUNCS_H
+bool isSameSign(int a, int b);
+#endif

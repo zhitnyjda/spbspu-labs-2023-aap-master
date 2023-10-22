@@ -1,7 +1,7 @@
-#include "funcs.h"
 #include <iostream>
 #include <exception>
 #include <limits>
+#include "funcs.h"
 
 int read(int second_elem);
 int getSign(int value);
