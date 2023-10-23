@@ -1,7 +1,7 @@
+#include "Funcs.hpp"
 #include <iostream>
 #include <cmath>
 #include <exception>
-#include "Funcs.hpp"
 
 int main()
 {
@@ -11,11 +11,11 @@ int main()
   int current_value = 0;
   try
   {
-    last_value = Read();
+    last_value = seryj::read();
     while (last_value && std::cin)
     {
-      current_value = Read();
-      eqlSeq((last_value == current_value), count, max_count);
+      current_value = seryj::read();
+      seryj::findMaxCount(last_value == current_value, count, max_count);
       last_value = current_value;
     }
     std::cout << "Result: " << max_count << "\n";
