@@ -3,14 +3,15 @@
 
 int func(std::istream&)
 {
-    int num;
+  int num;
 
 	if (!(std::cin >> num)) {
 		throw std::invalid_argument("Wrong input");
 	}
-
-	int beforenum = num; int count = 0; int flag = 0; int length = 0;
-
+	int beforenum = num; 
+  int count = 0; 
+  int flag = 0; 
+  int length = 0;
 	while (num != 0)
 	{
 		if (num < beforenum) {
@@ -22,7 +23,6 @@ int func(std::istream&)
 		}
 		length++;
 		beforenum = num;
-
 		if (!(std::cin >> num)) {
 			throw std::invalid_argument("Wrong input");
 		}
