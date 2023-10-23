@@ -4,11 +4,11 @@
 int main()
 {
   int count = 0;
-  try 
+  try
   {
     count = findingCount();
   }
-  catch (std::invalid_argument const& e1) 
+  catch (std::invalid_argument const& e1)
   {
     std::cout << e1.what() << "\n";
     return 1;
