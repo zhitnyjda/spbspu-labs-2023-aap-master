@@ -7,9 +7,9 @@ int func(std::istream&)
   if (!(std::cin >> num)) {
     throw std::invalid_argument("Wrong input");
   }
-  int beforenum = num; 
-  int count = 0; 
-  int flag = 0; 
+  int beforenum = num;
+  int count = 0;
+  int flag = 0;
   int length = 0;
   while (num != 0)
   {
