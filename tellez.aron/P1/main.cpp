@@ -1,27 +1,18 @@
 #include <iostream>
 #include <stdexcept>
-#include "getSequence.hpp"
+#include "functions.hpp"
 
 int main()
 {
   try
   {
     int result = getSequence();
-    if (result < 0)
-    {
-      throw std::overflow_error("Error: Too short sequence.\n");
-    }
-      std::cout << "Longest decreasing length: " << result << "\n";
-    }
-    catch (const std::overflow_error& e)
-    {
-      std::cerr << e.what() << std::endl;
-      return 1;
-    }
-    catch (const std::exception& e)
-    {
-      std::cerr << e.what() << std::endl;
-      return 2;
-    }
-    return 0;
+    std::cout << result << "\n";
+  }
+  catch (std::istream::failure& e)
+  {
+    std::cerr << "Error: " << e.what() << "\n";
+    return 1;
+  }
+  return 0;
 }
