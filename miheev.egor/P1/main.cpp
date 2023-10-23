@@ -15,7 +15,7 @@ int main()
   {
     int current_number = 0;
     int previous_number = 0;
-    int count = -1; 
+    int count = -1;
 
     put_number_from_cin_to(current_number);
 
