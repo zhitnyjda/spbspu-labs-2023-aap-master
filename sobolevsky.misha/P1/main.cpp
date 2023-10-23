@@ -8,7 +8,7 @@ int main()
   try
   {
     int counter = 0;
-    int number;
+    int number = 1;
     std::cin.exceptions(std::istream::failbit);
     while (number != 0)
     {
