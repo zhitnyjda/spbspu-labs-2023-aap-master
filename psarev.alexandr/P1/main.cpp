@@ -1,14 +1,20 @@
 #include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+
 int main()
 {
 	int value;
-	if (!(std::cin >> value)) {
-		std::cout << "Incorrect input!";
+	if (!(cin >> value)) {
+		cout << "Incorrect input!\n";
 		return 1;
 	}
+
 	int prev_value = value;
 	int seq_len = 0;
 	int max_len = 0;
+
 	while (value != 0) {
 		if (value >= prev_value) {
 			seq_len++;
@@ -19,11 +25,11 @@ int main()
 			seq_len = 1;
 		}
 		prev_value = value;
-		if (!(std::cin >> value)) {
-			std::cout << "Incorrect input!";
+		if (!(cin >> value)) {
+			cout << "Incorrect input!\n";
 			return 1;
 		}
 	}
-	std::cout << max_len << std::endl;
+	cout << max_len << endl;
 	return 0;
 }
