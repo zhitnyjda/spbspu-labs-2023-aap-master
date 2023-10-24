@@ -2,5 +2,6 @@
 
 int main()
 {
-    std::cout << "shapar.arseniy\n";
+  std::cout << "shapar.arseniy\n";
+  return 0;
 }
