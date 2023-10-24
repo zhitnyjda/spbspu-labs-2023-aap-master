@@ -1,6 +1,6 @@
+#include "findmax.hpp"
 #include <iostream>
 #include <limits>
-#include "findmax.hpp"
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
     std::cin >> Value;
     while (Value != 0)
     {
-      findMax(counter, maxValue, Value);
+      khoroshkin::findMax(counter, maxValue, Value);
       length++;
       std::cin >> Value;
     }

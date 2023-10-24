@@ -1,15 +1,18 @@
 #include "findmax.hpp"
 
-void findMax(int &counter, int &maxValue, int &Value)
+namespace khoroshkin
 {
-  if (maxValue < Value)
+  void findMax(int &counter, int &maxValue, int &Value)
   {
-    maxValue = Value;
-    counter = 0;
-    counter++;
-  }
-  else if (maxValue == Value)
-  {
-    counter++;
+    if (maxValue < Value)
+    {
+      maxValue = Value;
+      counter = 0;
+      counter++;
+    }
+    else if (maxValue == Value)
+    {
+      counter++;
+    }
   }
 }
