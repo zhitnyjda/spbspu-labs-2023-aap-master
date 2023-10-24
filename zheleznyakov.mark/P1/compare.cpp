@@ -1,8 +1,10 @@
-void compareCurrentAndPrevious(int &counter, int &currentValue, int &previousValue)
-{
-  if (previousValue != 0 && currentValue != 0 && currentValue > previousValue)
+namespace zheleznyakov {
+  void compareCurrentAndPrevious(int &counter, int &currentValue, int &previousValue)
   {
-    counter++;
+    if (previousValue != 0 && currentValue != 0 && currentValue > previousValue)
+    {
+      counter++;
+    }
+    previousValue = currentValue;
   }
-  previousValue = currentValue;
 }

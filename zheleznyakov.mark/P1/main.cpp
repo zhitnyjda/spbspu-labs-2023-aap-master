@@ -11,11 +11,11 @@ int main()
     int previousElement = 0;
     std::cin.exceptions(std::istream::failbit);
     std::cin >> element;
-    compareCurrentAndPrevious(counter, element, previousElement);
+    zheleznyakov::compareCurrentAndPrevious(counter, element, previousElement);
     while (element != 0)
     {
       std::cin >> element;
-      compareCurrentAndPrevious(counter, element, previousElement);
+      zheleznyakov::compareCurrentAndPrevious(counter, element, previousElement);
     }
   }
   catch (const std::istream::failure & e)
