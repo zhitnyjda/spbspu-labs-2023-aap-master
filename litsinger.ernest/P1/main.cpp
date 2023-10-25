@@ -11,7 +11,7 @@ int main()
   std::cin >> n;
   if (n != static_cast<int>(n))
   {
-    std::cout << ("Input error\n");
+    std::cout << "Input error\n";
     return 1;
   }
   if (std::cin.fail())
