@@ -3,13 +3,16 @@
 
 int main()
 {
-    int ya_krutoi = 0;
-    try {
-        ya_krutoi = numberOfSequenceCharacterChanges(std::cin);
+    int value = 0;
+    try 
+    {
+        value = numberOfSequenceCharacterChanges(std::cin);
     }
-    catch (std::logic_error const& error) {
+    catch (std::logic_error const& error) 
+    {
         std::cout << error.what() << "\n";
-        return 2;
+        return 0;
     }
-    std::cout << ya_krutoi << "\n";
+    std::cout << value << "\n";
+    return 0;
 }

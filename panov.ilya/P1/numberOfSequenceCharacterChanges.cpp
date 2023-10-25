@@ -9,7 +9,7 @@ long long numberOfSequenceCharacterChanges(std::istream& cin)
   if (std::cin.fail())
   {
     std::cout << "You Can't Write In Letters";
-    exit(-1);
+    return 0;
   }
     while (true)
     {
@@ -17,7 +17,7 @@ long long numberOfSequenceCharacterChanges(std::istream& cin)
       if (std::cin.fail())
       {
         std::cout << "You Can't Write In Letters";
-        exit(-1);
+        return 0;
       }
         if (c == 0)
         {
@@ -28,6 +28,6 @@ long long numberOfSequenceCharacterChanges(std::istream& cin)
       count++;
       a = c;
       } 
-  }
+    }
     return count;
 }
