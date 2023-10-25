@@ -36,7 +36,7 @@ int main()
     }
     if (n == mx)
     {
-            k += 1;
+      k += 1;
     }
     if (n != static_cast<int>(n))
     {
