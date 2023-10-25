@@ -48,7 +48,7 @@ int main()
       std::cout << "Input error\n";
       return 1;
     }
-    }
+  }
   std::cout << k;
   return 0;
 }   
