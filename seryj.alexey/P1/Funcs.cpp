@@ -10,6 +10,7 @@ namespace seryj
     count = condition ? count + 1 : 1;
     max_count = fmax(max_count, count);
   }
+
   int read()
   {
     const int max_limit = std::numeric_limits<int>::max();
