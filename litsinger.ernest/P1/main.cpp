@@ -19,7 +19,7 @@ int main()
     }
     if (length == 0)
     {
-      std::cout << "Short sequence\n";
+      std::cout << "Short sequence" << "\n";
       return 2;
     }
     std::cout << counter << "\n";
@@ -27,7 +27,7 @@ int main()
   }
   catch (const std::istream::failure & e)
   {
-    std::cerr << "Input error\n0.";
+    std::cerr << "Input error" << "\n";
     return 1;
   }
 }
