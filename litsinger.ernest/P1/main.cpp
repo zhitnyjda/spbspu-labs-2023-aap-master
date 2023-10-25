@@ -1,33 +1,54 @@
-#include "maxcount.hpp"
-#include <iostream>
+﻿#include <iostream>
+#include <limits>
+#include <cmath>
 #include <exception>
 
 int main()
 {
-  int main = 0;
-  try
+  int k = 0;
+  int mx = 0;
+  int n;
+  std::cin >> n;
+  if (n != static_cast<int>(n))
   {
-    int counter = 0;
-    int length = -1;
-    int value = 1;
-    std::cin.exceptions(std::istream::failbit);
-    while (value != 0)
-    {
-      std::cin >> value;
-      maxCount(counter, max, value);
-      length++;
-    }
-    if (length == 0)
-    {
-      std::cout << "Short sequence" << "\n";
-      return 1;
-    }
-    std::cout << counter << "\n";
-    return 0;
-  }
-  catch (const std::istream::failure & e)
-  {
-    std::cer << "Input error" << "\n";
+    std::cout << ("Input error\n");
     return 1;
   }
-}
+  if (std::cin.fail())
+  {
+    std::cout << "Input error\n";
+    return 1;
+  }
+  if (n == 0)
+  {
+    std::cout << "Short sequence\n";
+    return 2;
+  }
+  k = 1;
+  mx = n;
+  while (n != 0)
+  {
+    std::cin >> n;
+    if (n > mx)
+    {
+      mx = n;
+      k = 1;
+    }
+    if (n == mx)
+    {
+            k += 1;
+    }
+    if (n != static_cast<int>(n))
+    {
+      std::cout << "Input error\n";
+      return 1;
+    }
+    if (std::cin.fail())
+    {
+      std::cout << "Input error\n";
+      return 1;
+    }
+    }
+  std::cout << k;
+  return 0;
+}   
