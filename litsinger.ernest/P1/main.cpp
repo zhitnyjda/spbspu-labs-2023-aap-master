@@ -4,7 +4,7 @@
 
 int main()
 {
-  int main = 0;
+  int max = 0;
   try
   {
     int counter = 0;
@@ -27,7 +27,7 @@ int main()
   }
   catch (const std::istream::failure & e)
   {
-    std::cer << "Input error" << "\n";
+    std::cerr << "Input error" << "\n";
     return 1;
   }
 }
