@@ -1,59 +1,33 @@
+#include "maxcount.hpp"
 #include <iostream>
-#include <limits>
-#include <cmath>
 #include <exception>
-#include "maxel.hpp"
 
 int main()
 {
-  int k = 0;
-  int kk = 0;
-  int n;
-  const int maxlim = std::numeric_limits<int>::max();
-  const int minlim = maxlim * -1;
-  std::cin >> n;
-  if (n == 0)
+  int max = 0;
+  try
   {
-    std::cout << "Short sequence\n";
-    return 2;
+    int counter = 0;
+    int length = -1;
+    int value = 1;
+    std::cin.exceptions(std::istream::failbit);
+    while (value != 0)
+    {
+      std::cin >> value;
+      maxCount(counter, max, value);
+      length++;
+    }
+    if (length == 0)
+    {
+      std::cout << "Short sequence";
+      return 2;
+    }
+    std::cout << counter << "\n";
+    return 0;
   }
-  if (std::cin.fail())
+  catch (const std::istream::failure & e)
   {
-    std::cout << "The elements must be specified by numbers\n";
+    std::cerr << "Input error";
     return 1;
   }
-  if (n != static_cast<int>(n))
-  {
-    std::cout << ("Only int\n");
-    return 1;
-  }
-  if (n > maxlim || n < minlim)
-  {
-    std::cout << "Overflow\n";
-    return 1;
-  }
-  int mx;
-  mx = 0;
-  while (n != 0)
-  {
-    std::cin >> n;
-    if (std::cin.fail())
-    {
-      std::cout << "The elements must be specified by numbers\n";
-      return 1;
-    }
-    if (n != static_cast<int>(n))
-    {
-      std::cout << ("Only int\n");
-      return 1;
-    }
-    if (n > maxlim || n < minlim)
-    {
-      std::cout << "Overflow\n";
-      return 1;
-    }
-    kk = maxel(n, k, mx);
-  }
-  std::cout << kk;
-  return 0;
 }
