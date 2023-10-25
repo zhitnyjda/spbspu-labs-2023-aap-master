@@ -13,8 +13,8 @@ namespace seryj
 
   int read()
   {
-    const int max_limit = std::numeric_limits<int>::max();
-    const int min_limit = std::numeric_limits<int>::min();
+    const int max_limit = std::numeric_limits< int >::max();
+    const int min_limit = std::numeric_limits< int >::min();
     auto val = 0.0;
     std::cin >> val;
     if (val != static_cast<int>(val))
