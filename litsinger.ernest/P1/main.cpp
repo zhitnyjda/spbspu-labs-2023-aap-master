@@ -20,7 +20,7 @@ int main()
     if (length == 0)
     {
       std::cout << "Short sequence" << "\n";
-      return 2;
+      return 1;
     }
     std::cout << counter << "\n";
     return 0;
