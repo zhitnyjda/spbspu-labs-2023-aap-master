@@ -1,5 +1,4 @@
 #include <iostream>
-
 int main()
 {
   int count = 0;
@@ -7,13 +6,13 @@ int main()
   std::cin >> previous;
   if (previous == 0)
   {
-    std::cout << "eror " << count << "\n";
+    std::cout << "eror\n";
     return 2;
   }
   std::cin >> current;
   if (current == 0)
   {
-    std::cout << "eror " << count << "\n";
+    std::cout << "eror\n";
     return 2;
   }
   while (true)
@@ -30,6 +29,6 @@ int main()
     previous = current;
     current = next;
   }
-  std::cout << "Количество элементов: " << count << "\n";
+  std::cout << count << std::endl;
   return 1;
 }
