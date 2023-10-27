@@ -14,13 +14,13 @@ int main()
     while (value != 0)
     {
       std::cin >> value;
-      maxCount(counter, max, value);
+      maxChetn(counter, max, value);
       length++;
     }
     if (length == 0)
     {
       std::cout << "Short sequence" << "\n";
-      return 1;
+      return 2;
     }
     std::cout << counter << "\n";
     return 0;
