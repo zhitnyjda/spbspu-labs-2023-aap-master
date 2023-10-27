@@ -1,32 +1,37 @@
 #include <iostream>
-#include "count_quantity_even_num.hpp"
+#include "count_count.hpp"
+#include <limits>
+using namespace::kovshikov;
 int main()
 {
-  int num = 0;
-  int quantity = 0;
-  int max_quantity = 0;
-  std::cin >> num;
-  while (true)
+  size_t num = 0;
+  size_t count = 0;
+  size_t max_count = 0;
+  try
   {
-    if (!std::cin)
+    do
     {
-      std::cout << "error\n";
-      return 1;
-    }
-    else if (num == 0)
-    {
-      std::cout << max_quantity << "\n";
-      return 0;
-    }
-    else
-    {
-      quantity = count_quantity_even_num(num, quantity);
-      if (quantity >= max_quantity)
-      {
-        max_quantity = quantity;
-      }
       std::cin >> num;
+      if (!std::cin)
+      {
+        throw std::invalid_argument("Incorrect input\n");
+      }
+      else
+      {
+        if (num != 0)
+        {
+          count = count_count(num, count);
+          max_count = (max_count > count ? max_count : count);
+        }
+      }
     }
+    while (num && std::cin);
   }
+  catch (std::invalid_argument const& e)
+  {
+    std::cout << e.what() << "\n";
+    return 1;
+  }
+  std::cout << max_count << "\n";
   return 0;
 }
