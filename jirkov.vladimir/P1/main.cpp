@@ -6,13 +6,13 @@ int main()
   std::cin >> previous;
   if (previous == 0)
   {
-    std::cout << "eror\n";
+    std::cout << "Последовательность короткая  " << count << "\n";
     return 2;
   }
   std::cin >> current;
   if (current == 0)
   {
-    std::cout << "eror\n";
+    std::cout << "Последовательность короткая  " << count << "\n";
     return 2;
   }
   while (true)
@@ -28,7 +28,7 @@ int main()
     }
     previous = current;
     current = next;
-  }
-  std::cout << count << std::endl;
+    }
+  std::cout << "Количество элементов: " << count << "\n";
   return 1;
 }
