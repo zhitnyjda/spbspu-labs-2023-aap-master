@@ -7,13 +7,13 @@ int main()
   if (previous == 0)
   {
     std::cout << "Последовательность короткая  " << count << "\n";
-    return 2;
+    return 0;
   }
   std::cin >> current;
   if (current == 0)
   {
     std::cout << "Последовательность короткая  " << count << "\n";
-    return 2;
+    return 0;
   }
   while (true)
   {
@@ -29,6 +29,6 @@ int main()
     previous = current;
     current = next;
   }
-  std::cout << count << "\n";
-  return 1;
+  std::cout << count << std::endl;
+  return 0;
 }
