@@ -1,5 +1,6 @@
 #include  <iostream>
+
 int main()
 {
-  std::cout << "ankhbayar.battsolmon/n";
+  std::cout << "ankhbayar.battsolmon\n";
 }
