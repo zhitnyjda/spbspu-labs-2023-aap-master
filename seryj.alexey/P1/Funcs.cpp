@@ -17,7 +17,7 @@ namespace seryj
     const int min_limit = std::numeric_limits< int >::min();
     auto val = 0.0;
     std::cin >> val;
-    if (val != static_cast<int>(val))
+    if (val != static_cast< int >(val))
       throw std::logic_error("No float, please");
     if (val > max_limit || val < min_limit)
       throw std::overflow_error("Owerflow");
