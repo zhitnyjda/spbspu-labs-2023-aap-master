@@ -29,6 +29,6 @@ int main()
     previous = current;
     current = next;
   }
-  std::cout << "Количество элементов: " << count << "\n";
+  std::cout << count << "\n";
   return 1;
 }
