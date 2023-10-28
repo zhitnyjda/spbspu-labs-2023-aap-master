@@ -6,7 +6,6 @@ struct SomeFunctor
 {
 public:
   SomeFunctor() : count(0), min_value(std::numeric_limits< long long > ::max()), max_count(std::numeric_limits< long long > ::max()) {}
-
   void operator()(long long value)
   {
     if (count <= max_count)
@@ -27,9 +26,9 @@ public:
     return count;
   }
 private:
-	long long count;
-	long long min_value;
-	long long max_count;
+  long long count;
+  long long min_value;
+  long long max_count;
 };
 
 #endif
