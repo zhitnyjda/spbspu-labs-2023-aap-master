@@ -17,14 +17,14 @@ int main()
     else if (value != 0)
     {
       try
-        {
-          COUNT(value);;
-	}
+      {
+        COUNT(value);;
+      }
       catch (const std::exception& e)
-	{
-          std::cerr << "Error: " << e.what() << "\n";
-          return 1;
-	}
+      {
+        std::cerr << "Error: " << e.what() << "\n";
+        return 1;
+      }
     }
   }
   while (value != 0);
