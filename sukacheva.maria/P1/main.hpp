@@ -1,6 +1,8 @@
 #ifndef main_HPP
 #define main_HPP
 #include <iostream>
+#include <limits>
+#include <stdexcept>
 
 struct SomeFunctor
 {
