@@ -36,7 +36,7 @@ int main()
 
     numbers[2] = numbers[1];
     numbers[1] = numbers[0];
-    
+
     if (!tryInputArrayElement(numbers))
     {
       return 1;
@@ -61,7 +61,7 @@ bool testSet(int values[])
   {
     squares[i] = values[i] * values[i];
   }
-  
+
   bool conditions[3];
   conditions[0] = (squares[0] == squares[1] + squares[2]);
   conditions[1] = (squares[1] == squares[0] + squares[2]);
