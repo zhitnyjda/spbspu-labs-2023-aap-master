@@ -24,7 +24,7 @@ int dilitel(std::istream &cin)
     }
     firstnum = secondnum;
     if (count > max_count) {
-      throw std::overflow_error("Too many elements");
+      throw std::overflow_error("Too many numbers");
     }
     if (!(cin >> secondnum)) {
       throw std::logic_error("Wrong input");

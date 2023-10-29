@@ -2,6 +2,6 @@
 #define dilitel_HPP
 #include <iosfwd>
 
-int dilitel(std::istream &);
+int delitel(std::istream &);
 
 #endif

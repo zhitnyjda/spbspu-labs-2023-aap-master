@@ -6,7 +6,7 @@ int main()
 {
   try {
     int ans = 0;
-    ans = dilitel(std::cin);
+    ans = delitel(std::cin);
     std::cout << ans << "\n";
     return 0;
   }
