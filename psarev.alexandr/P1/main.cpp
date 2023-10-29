@@ -1,35 +1,37 @@
+#include "myFunc.hpp"
 #include <iostream>
-using std::cin;
-using std::cout;
-using std::endl;
 
 int main()
 {
-  int value;
-  if (!(cin >> value)) {
-    cout << "Incorrect input!\n";
-    return 1;
-  }
-
-  int prev_value = value;
   int seq_len = 0;
   int max_len = 0;
+  try 
+  {
+    int value = 0;
+    std::cin.exceptions(std::istream::failbit);
+    std::cin >> value;
+    int prev_value = value;
 
-  while (value != 0) {
-    if (value >= prev_value) {
-      seq_len++;
-      if (seq_len > max_len) {
-        max_len = seq_len;
-      }
-    } else {
-      seq_len = 1;
+    while (value != 0) {
+      psarev::maxLen(value, prev_value, seq_len, max_len);
+      prev_value = value;
+      std::cin >> value;
     }
-    prev_value = value;
-    if (!(cin >> value)) {
-      cout << "Incorrect input!\n";
-      return 1;
+    if (seq_len == 0 && value == 0)
+    {
+      throw std::logic_error("Error: Not a sequence!\n");
     }
   }
-  cout << max_len << endl;
+  catch(const std::logic_error & e)
+  {
+    std::cerr << e.what();
+    return 2;
+  }
+  catch(const std::istream::failure & e)
+  {
+    std::cerr << "Error: Wrong input!\n";
+    return 1;
+  }
+  std::cout << max_len << "\n";
   return 0;
 }
