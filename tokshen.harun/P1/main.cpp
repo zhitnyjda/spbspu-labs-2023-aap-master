@@ -4,11 +4,11 @@
 int main()
 {
   int answer = 0;
-  try 
+  try
   {
     answer = findSecondMax(std::cin);
   }
-  catch (const std::exception & err) 
+  catch (const std::exception & err)
   {
     std::cout << err.what() << std::endl;
     return 2;

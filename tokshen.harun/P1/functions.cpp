@@ -9,17 +9,17 @@ int findSecondMax(std::istream & cin)
   int maxInput = INT_MIN;
   int secondMaxInput = INT_MIN;
   int input;
-  if (!(cin >> input)) 
+  if (!(cin >> input))
   {
     throw std::invalid_argument("Input is not correct");
   }
-  else 
+  else
   {
     maxInput = input;
   }
   while (true) {
     std::cin >> input;
-    if (input == 0) 
+    if (input == 0)
     {
       break;
     }
@@ -37,11 +37,11 @@ int findSecondMax(std::istream & cin)
       secondMaxInput = input;
     }
   }
-  if (secondMaxInput == INT_MIN) 
+  if (secondMaxInput == INT_MIN)
   {
     throw std::invalid_argument("You should write min 2 numbers");
   }
-  else 
+  else
   {
     std::cout << "Second Max Input: ";
     return secondMaxInput;
