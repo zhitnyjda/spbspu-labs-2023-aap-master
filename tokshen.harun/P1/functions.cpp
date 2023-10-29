@@ -17,7 +17,8 @@ int findSecondMax(std::istream & cin)
   {
     maxInput = input;
   }
-  while (true) {
+  while (true)
+  {
     std::cin >> input;
     if (input == 0)
     {
