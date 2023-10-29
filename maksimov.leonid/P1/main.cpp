@@ -8,17 +8,17 @@ int main()
   std::cin.exceptions(std::cin.failbit);
   while (c != 0)
   {
-	try 
-	{
-   	  std::cin >> c;
-	  sequaence_counter(a, b, c, count, counter);
-	  a = b;
-	  b = c;
-	}
-	catch (const std::exception &)
-	{
-	  return 1;
-	}
+    try
+    {
+      std::cin >> c;
+      sequaence_counter(a, b, c, count, counter);
+      a = b;
+      b = c;
+    }
+    catch (const std::exception &)
+    {
+      return 1;
+    }
   }
   std::cout << counter;
   return 0;
