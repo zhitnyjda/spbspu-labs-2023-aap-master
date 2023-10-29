@@ -2,12 +2,13 @@
 
 int kolvo(int& number, int& lastnumber, int& count, int& result)
 {
-    if (count != 0) {
-        if (number % lastnumber == 0)
-        {
-            result++;
-        }
+  if (count != 0) 
+  {
+    if (number % lastnumber == 0)
+    {
+      result++;
     }
-    lastnumber = number;
-    return 0;
+  }
+  lastnumber = number;
+  return 0;
 }
