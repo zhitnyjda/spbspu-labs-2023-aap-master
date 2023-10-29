@@ -2,7 +2,7 @@
 
 int kolvo(int& number, int& lastnumber, int& count, int& result)
 {
-  if (count != 0) 
+  if (count != 0)
   {
     if (number % lastnumber == 0)
     {

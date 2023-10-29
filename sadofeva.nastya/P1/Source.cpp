@@ -8,35 +8,34 @@ int main()
   int lastnumber = 0;
   int result = 0;
 
-  while (true) 
+  while (true)
   {
-    try 
+    try
     {
       std::cin >> number;
-      if (std::cin.fail()) 
+      if (std::cin.fail())
       {
         return 2;
       }
-      else if (number == 0) 
+      else if (number == 0)
       {
         break;
       }
-      else 
+      else
       {
-        kolvo(number, lastnumber, count, result);        
+        kolvo(number, lastnumber, count, result);
         count++;
       }
-    }
     catch (std::exception & ex)
     {
       std::cout << ex.what() << "\n";
     }
   }
-  if (count > 1) 
+  if (count > 1)
   {
     std::cout << '\n' << result;
   }
-  else 
+  else
   {
     std::cout << "The sequence is too small" << "\n";
     return 2;
