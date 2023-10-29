@@ -3,10 +3,10 @@
 
 int main()
 {
-    int count = 0;
-    int number = 0;
-    int lastnumber = 0;
-    int result = 0;
+  int count = 0;
+  int number = 0;
+  int lastnumber = 0;
+  int result = 0;
 
   while (true) 
   {
