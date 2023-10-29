@@ -5,7 +5,7 @@ int main()
 {
   int seq_len = 0;
   int max_len = 0;
-  try 
+  try
   {
     int value = 0;
     std::cin.exceptions(std::istream::failbit);
