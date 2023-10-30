@@ -27,3 +27,4 @@ void miheev::DevidingCounter::operator() (int current)
   }
   this->previous = current;
 }
+
