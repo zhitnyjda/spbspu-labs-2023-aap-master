@@ -2,6 +2,7 @@
 
 int main()
 {
-  std::cout << "sadofeva.nastya\n";
+  std::cout << "shagieva.dinara\n";
   return 0;
 }
+
