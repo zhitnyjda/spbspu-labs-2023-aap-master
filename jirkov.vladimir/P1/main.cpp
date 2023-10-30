@@ -19,7 +19,7 @@ int main()
     }
   } catch (std::exception& e) {
     std::cout << "Произошла ошибка при вводе данных: " << e.what() << std::endl;
-    return 2;
+    return 1;
   }
   std::cout << "Количество элементов: " << count << std::endl;
   return 0;
