@@ -4,7 +4,11 @@
 
 int main()
 {
-  int a = 0, b = 0, c = 1, count = 0, counter = 0;
+  int a = 0;
+  int b = 0;
+  int c = 1;
+  int count = 0;
+  int counter = 0;
   std::cin.exceptions(std::cin.failbit);
   while (c != 0)
   {
