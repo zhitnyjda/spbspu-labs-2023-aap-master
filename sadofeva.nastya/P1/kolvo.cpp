@@ -1,6 +1,6 @@
 #include "kolvo.h"
 
-int kolvo(int& number, int& lastnumber, int& count, int& result)
+int kolvo(int & number, int & lastnumber, int & count, int & result)
 {
   if (count != 0)
   {
