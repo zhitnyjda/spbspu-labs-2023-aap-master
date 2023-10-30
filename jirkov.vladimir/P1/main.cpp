@@ -1,5 +1,5 @@
 #include <iostream>
-#include "bool_foo.cpp"
+#include "bool_foo.hpp"
 
 int main()
 {
@@ -21,4 +21,5 @@ int main()
     std::cout << "Произошла ошибка при вводе данных: " << e.what() << std::endl;
   }
   std::cout << "Количество элементов: " << count << std::endl;
+  return 0;
 }
