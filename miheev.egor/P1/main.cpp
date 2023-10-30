@@ -6,7 +6,6 @@ int main()
 {
   try
   {
-    int current = 0;
     miheev::DevidingCounter deviding_counter(miheev::get_number_from_cin());
     while(deviding_counter.previous != 0)
     {
