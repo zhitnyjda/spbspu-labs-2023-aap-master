@@ -9,7 +9,7 @@ namespace miheev
     std::cin >> variable;
     if (!std::cin)
     {
-      throw std::invalid_argument("Your input can't be interpret as a sequence of numbers\n");
+      throw std::invalid_argument("Your input can't be interpret as a sequence of numbers");
     }
     return variable;
   }
