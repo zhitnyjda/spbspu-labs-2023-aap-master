@@ -4,7 +4,9 @@ int main()
 {
   int a, b, c;
   int count = 0;
+  int pos = 0;
   std::cin >> a >> b >> c;
+  pos += 3;
   while ((a != 0) && (b != 0) && (c != 0))
   {
     if (a + b == c)
@@ -13,17 +15,27 @@ int main()
       a = b;
       b = c;
       std::cin >> c;
+      pos += 1;
     }
     else
     {
       a = b;
       b = c;
       std::cin >> c;
+      pos += 1;
     }
   }
-  if ((a == 0) || (b == 0) || (c == 0))
+  if (pos > 3)
   {
-    std::cout << count << "\n";
+    if ((a == 0) || (b == 0) || (c == 0))
+    {
+      std::cout << count << "\n";
+      return 0;
+    }
   }
-  return 0;
+  else
+  {
+    std::cout << "Expects error output" << "\n";
+    return 2;
+  }
 }
