@@ -22,5 +22,5 @@ int main()
     return 1;
   }
   std::cout << "Количество элементов: " << count << std::endl;
-  return 0;
+  return 1;
 }
