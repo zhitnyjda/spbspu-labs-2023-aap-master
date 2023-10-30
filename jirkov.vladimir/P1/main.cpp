@@ -1,34 +1,26 @@
 #include <iostream>
+#include "bool_foo.cpp"
+
 int main()
 {
+  int prev, current, next;
   int count = 0;
-  int previous, current, next;
-  std::cin >> previous;
-  if (previous == 0)
+  std::cin >> prev;
+  try
   {
-    std::cout << "Последовательность короткая  " << count << "\n";
-    return 0;
-  }
-  std::cin >> current;
-  if (current == 0)
-  {
-    std::cout << "Последовательность короткая  " << count << "\n";
-    return 0;
-  }
-  while (true)
-  {
-    std::cin >> next;
-    if (next == 0)
+    while (std::cin >> current && current != 0)
     {
-      break;
+      std::cin >> next;
+      if (bool_foo(prev, current, next))
+      {
+        count++;
+      }
+      prev = current;
     }
-    if (current < previous && current > next)
-    {
-      count++;
-    }
-    previous = current;
-    current = next;
+  } catch (std::exception& e) {
+    std::cout << "Произошла ошибка при вводе данных: " << e.what() << std::endl;
+    return 2;
   }
-  std::cout << count << std::endl;
+  std::cout << "Количество элементов: " << count << std::endl;
   return 0;
 }
