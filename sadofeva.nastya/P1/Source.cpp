@@ -33,7 +33,7 @@ int main()
   }
   if (count > 1)
   {
-    std::cout << '\n' << result;
+    std::cout << result << "\n";
   }
   else
   {
