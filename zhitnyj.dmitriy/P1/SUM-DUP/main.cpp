@@ -9,6 +9,7 @@ int main()
 
 		return 1;
 	}
+	
 	helperFunc * helperFunc_ = new helperFunc(&std::cin);
 
 	helperFunc_->findCount();
