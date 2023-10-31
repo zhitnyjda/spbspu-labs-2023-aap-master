@@ -26,10 +26,10 @@ int main()
         kolvo(number, lastnumber, count, result);
         count++;
       }
-      catch (std::exception & ex)
-      {
-        std::cout << ex.what() << "\n";
-      }
+    }
+    catch (std::exception & ex)
+    {
+      std::cout << ex.what() << "\n";
     }
   if (count > 1)
   {
