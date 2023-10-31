@@ -6,16 +6,16 @@ int main()
 {
   try
   {
-    miheev::DevidingCounter deviding_counter(miheev::get_number_from_cin());
-    while(deviding_counter.previous != 0)
+    miheev::DevidingCounter dividing_counter(miheev::getNumberFromCin());
+    while(dividing_counter.getPrevious() != 0)
     {
-      deviding_counter(miheev::get_number_from_cin());
+      dividing_counter(miheev::getNumberFromCin());
     }
-    if (!deviding_counter.seq_is_long_enough)
+    if (!dividing_counter.getIfSeqLongEnough())
     {
       throw std::logic_error("Sequence is too short");
     }
-    std::cout << deviding_counter.counter << '\n';
+    std::cout << dividing_counter.getCounter()<< '\n';
     return 0;
   }
   catch (const std::invalid_argument& error)

@@ -3,7 +3,7 @@
 
 namespace miheev
 {
-  int get_number_from_cin()
+  int getNumberFromCin()
   {
     int variable = 0;
     std::cin >> variable;
@@ -14,3 +14,4 @@ namespace miheev
     return variable;
   }
 }
+
