@@ -31,6 +31,7 @@ int main()
     {
       std::cout << ex.what() << "\n";
     }
+  }
   if (count > 1)
   {
     std::cout << result << "\n";
