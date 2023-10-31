@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 
-long long numberOfSequenceCharacterChanges(std::istream& cin)
+long long numberOfSequenceCharacterChanges(std::istream&)
 {
   int c, a, count = 0;
   std::cout << "enter a number \n";
