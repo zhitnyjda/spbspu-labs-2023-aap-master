@@ -3,6 +3,6 @@
 #define MAXCHETN_HPP
 namespace sobolevsky
 {
-    size_t maxChetn(size_t &counter, size_t &number);
+    size_t maxChetn(size_t counter, size_t number);
 }
 #endif
