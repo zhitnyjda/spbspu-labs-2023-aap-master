@@ -1,15 +1,17 @@
 #include "maxchetn.hpp"
-#include <algorithm>
-
-void maxChetn(int &counter, int &countMax, int &number)
+namespace sobolevsky
 {
-  if (number % 2 == 0 && number != 0)
+  size_t maxChetn(size_t &counter, size_t &number)
   {
-    counter++;
-  }
-  else
-  {
-    countMax = std::max(counter, countMax);
-    counter = 0;
+    if (number % 2 == 0 && number != 0)
+    {
+      counter++;
+    }
+    else
+    {
+      counter = 0;
+    }
+    return counter;
   }
 }
+

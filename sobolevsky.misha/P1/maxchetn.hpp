@@ -1,6 +1,8 @@
+#include <cstddef>
 #ifndef MAXCHETN_HPP
 #define MAXCHETN_HPP
-
-void maxChetn(int &counter, int &countMax, int &number);
-
+namespace sobolevsky
+{
+    size_t maxChetn(size_t &counter, size_t &number);
+}
 #endif

@@ -4,27 +4,32 @@
 
 int main()
 {
-  int countMax = 0;
-  try
-  {
-    int counter = 0;
-    int number = 1;
-    std::cin.exceptions(std::istream::failbit);
-    while (number != 0)
+  size_t countMax = 0;
+  size_t counter = 0;
+  size_t number;
+  int quantity = 0;
+  std::cin >> number;
+  if (!std::cin)
     {
-      std::cin >> number;
-      maxChetn(counter, countMax, number);
+      std::cerr << "Enter only int\n";
+      return 1;
+    }
+  while (number != 0)
+  {
+    counter = sobolevsky::maxChetn(counter, number);
+    countMax = std::max(countMax, counter);
+    quantity++;
+    std::cin >> number;
+    if (!std::cin)
+    {
+      std::cerr << "Enter only int\n";
+      return 1;
     }
   }
-  catch (const std::istream::failure & e)
+  if (number == 0 && quantity == 0)
   {
-    std::cerr << "Enter only int\n";
-    return 1;
-  }
-  catch (const std::logic_error & e)
-  {
-    std::cerr << e.what() << "\n";
-    return 1;
+    std::cerr << "Not enough values\n";
+    return 2;
   }
   std::cout << countMax << "\n";
   return 0;
