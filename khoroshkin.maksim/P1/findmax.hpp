@@ -4,7 +4,7 @@
 #include <limits>
 
 namespace khoroshkin
-{  
+{
   struct findMax
   {
   public:
