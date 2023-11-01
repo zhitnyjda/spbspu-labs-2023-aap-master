@@ -1,21 +1,20 @@
 #include <iostream>
 #include <exception>
-#include "functions.hpp"
+#include "seqCounter.hpp"
 
 int main()
 {
-  int counter = 0;
+  zheleznyakov::SequenceCounter sequenceCounter;
   try
   {
-    int element = 0;
-    int previousElement = 0;
     std::cin.exceptions(std::istream::failbit);
+    int element = 0;
     std::cin >> element;
-    zheleznyakov::compareCurrentAndPrevious(counter, element, previousElement);
+    sequenceCounter(element);
     while (element != 0)
     {
       std::cin >> element;
-      zheleznyakov::compareCurrentAndPrevious(counter, element, previousElement);
+      sequenceCounter(element);
     }
   }
   catch (const std::istream::failure & e)
@@ -28,6 +27,6 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  std::cout << counter << '\n';
+  std::cout << sequenceCounter() << '\n';
   return 0;
 }
