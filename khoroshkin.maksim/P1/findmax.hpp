@@ -19,4 +19,5 @@ namespace khoroshkin
     int maxValue;
   };
 }
+
 #endif

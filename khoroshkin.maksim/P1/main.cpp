@@ -1,6 +1,6 @@
 #include <iostream>
 #include <limits>
-#include "findmax.hpp"
+#include "findMax.hpp"
 
 int main()
 {

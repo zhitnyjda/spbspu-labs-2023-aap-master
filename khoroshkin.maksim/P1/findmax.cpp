@@ -23,3 +23,4 @@ int khoroshkin::findMax::operator()()
 {
   return counter;
 }
+
