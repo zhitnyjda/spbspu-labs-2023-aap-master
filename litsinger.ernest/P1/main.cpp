@@ -19,7 +19,7 @@ int main()
     }
     if (length == 0)
     {
-      std::cout << "Short sequence" << "\n";
+      std::cerr<< "Short sequence" << "\n";
       return 2;
     }
     std::cout << counter << "\n";
