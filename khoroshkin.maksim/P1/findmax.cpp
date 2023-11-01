@@ -1,4 +1,4 @@
-#include "findMax.hpp"
+#include "findmax.hpp"
 
 khoroshkin::findMax::findMax():
     counter(0), maxValue(std::numeric_limits< int >::min())
