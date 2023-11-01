@@ -9,13 +9,12 @@ int main()
   {
     std::cin.exceptions(std::istream::failbit);
     int element = 0;
-    std::cin >> element;
-    sequenceCounter(element);
-    while (element != 0)
+    do
     {
       std::cin >> element;
       sequenceCounter(element);
     }
+    while (element != 0);
   }
   catch (const std::istream::failure & e)
   {
