@@ -22,7 +22,7 @@ int main()
       throw std::logic_error("Error: not enough values");
     }
   }
-  catch (const std::istream::failure)
+  catch (const std::istream::failure & e)
   {
     std::cerr << "Error: only integer values";
     return 1;
