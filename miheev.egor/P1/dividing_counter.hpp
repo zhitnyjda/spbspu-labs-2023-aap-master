@@ -13,7 +13,7 @@ namespace miheev
 
   public:
     DevidingCounter(int previous);
-    void initPrevious(int previous);
+    void checkFirstPrevious();
     void operator() (int current);
     size_t getCounter();
     bool getIfSeqLongEnough();

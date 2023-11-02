@@ -7,6 +7,7 @@ int main()
   try
   {
     miheev::DevidingCounter dividing_counter(miheev::getNumberFromCin());
+    dividing_counter.checkFirstPrevious();
     while(dividing_counter.getPrevious() != 0)
     {
       dividing_counter(miheev::getNumberFromCin());
