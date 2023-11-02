@@ -1,5 +1,5 @@
-#ifndef DIVIDING_COUNTER_H
-#define DIVIDING_COUNTER_H
+#ifndef DIVIDING_COUNTER_HPP
+#define DIVIDING_COUNTER_HPP
 #include <cstddef>
 
 namespace miheev
