@@ -8,11 +8,11 @@ namespace miheev
   {
   public:
     DevidingCounter(int previous);
-    void checkFirstPrevious();
+    void checkFirstPrevious() const;
     void operator() (int current);
-    size_t getCounter();
-    bool getIfSeqLongEnough();
-    int getPrevious();
+    size_t getCounter() const;
+    bool getIfSeqLongEnough() const;
+    int getPrevious() const;
 
   private:
     size_t counter_;

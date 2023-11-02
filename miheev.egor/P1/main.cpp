@@ -24,11 +24,6 @@ int main()
     std::cout << error.what() << '\n';
     return 1;
   }
-  catch (const std::domain_error& error)
-  {
-    std::cout << error.what() << '\n';
-    return 2;
-  }
   catch (const std::logic_error& error)
   {
     std::cout << error.what() << '\n';

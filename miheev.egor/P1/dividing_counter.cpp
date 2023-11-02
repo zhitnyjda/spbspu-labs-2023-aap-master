@@ -7,7 +7,7 @@ miheev::DevidingCounter::DevidingCounter(int previous):
   seqIsLongEnough_(false),
   previous_(previous)
 {}
-void miheev::DevidingCounter::checkFirstPrevious()
+void miheev::DevidingCounter::checkFirstPrevious() const
 {
   if (previous_ == 0)
   {
@@ -29,15 +29,15 @@ void miheev::DevidingCounter::operator() (int current)
   }
   previous_ = current;
 }
-size_t miheev::DevidingCounter::getCounter()
+size_t miheev::DevidingCounter::getCounter() const
 {
   return counter_;
 }
-bool miheev::DevidingCounter::getIfSeqLongEnough()
+bool miheev::DevidingCounter::getIfSeqLongEnough() const
 {
   return seqIsLongEnough_;
 }
-int miheev::DevidingCounter::getPrevious()
+int miheev::DevidingCounter::getPrevious() const
 {
   return previous_;
 }
