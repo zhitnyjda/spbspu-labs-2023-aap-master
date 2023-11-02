@@ -1,10 +1,12 @@
 #include "findmaxima.hpp"
-#include <iostream>
+#include <limits>
 
 namespace redko
 {
-  void findMaxima(int& value, int& firstMaxValue, int& secondMaxValue)
-  {
+  FindMaxima::FindMaxima() :
+    firstMaxValue(std::numeric_limits< int > ::min()), secondMaxValue(std::numeric_limits< int > ::min())
+  {}
+  void FindMaxima::operator()(int value) {
     if (value > firstMaxValue)
     {
       secondMaxValue = firstMaxValue;
@@ -14,5 +16,9 @@ namespace redko
     {
       secondMaxValue = value;
     }
+  }
+  int FindMaxima::operator()() const
+  {
+    return secondMaxValue;
   }
 }
