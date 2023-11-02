@@ -1,6 +1,5 @@
-#include <cstddef>
-#include <stdexcept>
 #include "dividing_counter.hpp"
+#include <stdexcept>
 
 miheev::DevidingCounter::DevidingCounter(int previous):
   counter_(0),

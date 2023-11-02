@@ -6,11 +6,12 @@ int main()
 {
   try
   {
-    miheev::DevidingCounter dividing_counter(miheev::getNumberFromCin());
+    using namespace miheev;
+    DevidingCounter dividing_counter(getNumberFromCin());
     dividing_counter.checkFirstPrevious();
     while(dividing_counter.getPrevious() != 0)
     {
-      dividing_counter(miheev::getNumberFromCin());
+      dividing_counter(getNumberFromCin());
     }
     if (!dividing_counter.getIfSeqLongEnough())
     {
