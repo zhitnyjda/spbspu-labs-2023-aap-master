@@ -6,11 +6,6 @@ namespace miheev
 {
   struct DevidingCounter
   {
-  private:
-    int previous_;
-    size_t counter_;
-    bool seqIsLongEnough_;
-
   public:
     DevidingCounter(int previous);
     void checkFirstPrevious();
@@ -18,6 +13,11 @@ namespace miheev
     size_t getCounter();
     bool getIfSeqLongEnough();
     int getPrevious();
+
+  private:
+    int previous_;
+    size_t counter_;
+    bool seqIsLongEnough_;
   };
 }
 #endif
