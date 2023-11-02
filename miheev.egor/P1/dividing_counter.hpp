@@ -15,9 +15,9 @@ namespace miheev
     int getPrevious();
 
   private:
-    int previous_;
     size_t counter_;
     bool seqIsLongEnough_;
+    int previous_;
   };
 }
 #endif
