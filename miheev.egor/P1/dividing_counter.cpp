@@ -6,7 +6,7 @@ miheev::DevidingCounter::DevidingCounter(int previous):
   counter_(0),
   seqIsLongEnough_(false)
 {
-  (this->initPrevious)(previous);
+  initPrevious(previous);
 }
 void miheev::DevidingCounter::initPrevious(int previous)
 {
@@ -14,33 +14,33 @@ void miheev::DevidingCounter::initPrevious(int previous)
   {
     throw std::domain_error("Sequence starts with zero, hence it's too short");
   }
-  this->previous_ = previous;
+  previous_ = previous;
 }
 void miheev::DevidingCounter::operator() (int current)
 {
   if (current != 0)
   {
-    if (!this->seqIsLongEnough_)
+    if (!seqIsLongEnough_)
     {
-      this->seqIsLongEnough_ = true;
+      seqIsLongEnough_ = true;
     }
-    if (current%(this->previous_) == 0)
+    if (current%(previous_) == 0)
     {
-      (this->counter_)++;
+      counter_++;
     }
   }
-  this->previous_ = current;
+  previous_ = current;
 }
 size_t miheev::DevidingCounter::getCounter()
 {
-  return this->counter_;
+  return counter_;
 }
 bool miheev::DevidingCounter::getIfSeqLongEnough()
 {
-  return this->seqIsLongEnough_;
+  return seqIsLongEnough_;
 }
 int miheev::DevidingCounter::getPrevious()
 {
-  return this->previous_;
+  return previous_;
 }
 
