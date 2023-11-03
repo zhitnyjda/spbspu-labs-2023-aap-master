@@ -1,6 +1,6 @@
-#include <iostream>
 #include "functions.hpp"
 #include "dividing_counter.hpp"
+#include <iostream>
 
 int main()
 {
