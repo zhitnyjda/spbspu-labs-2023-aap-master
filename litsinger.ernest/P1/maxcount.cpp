@@ -1,14 +1,17 @@
 #include "maxcount.hpp"
-
-void maxChetn(int & counter, int & max, int & value)
+#include <iostream>
+namespace litsinger
 {
-  if (value > max)
+  void maxChetn(int& counter, int& max, int& value)
   {
-    max = value;
-    counter = 1;
-  }
-  else if (value == max)
-  {
-    counter++;
+    if (value > max)
+    {
+      max = value;
+      counter = 1;
+    }
+    else if (value == max)
+    {
+      counter++;
+    }
   }
 }

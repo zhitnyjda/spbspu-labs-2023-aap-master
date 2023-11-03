@@ -7,6 +7,7 @@ int main()
   int max = 0;
   try
   {
+    using namespace litsinger;
     int counter = 0;
     int length = -1;
     int value = 1;
