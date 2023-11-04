@@ -1,9 +1,11 @@
 #include <iostream>
-#include "main.hpp"
+#include <limits>
+#include "minCount.hpp"
+using namespace sukacheva;
 
 int main()
 {
-  SomeFunctor COUNT;
+  minCount number_of_minimum;
   long long value = 0;
   do
   {
@@ -17,7 +19,7 @@ int main()
     {
       try
       {
-        COUNT(value);;
+        number_of_minimum(value);
       }
       catch (const std::exception& e)
       {
@@ -25,8 +27,7 @@ int main()
         return 1;
       }
     }
-  }
-  while (value != 0);
-  std::cout << COUNT.functor() << "\n";
+  } while (value != 0);
+  std::cout << number_of_minimum() << "\n";
   return 0;
 }
