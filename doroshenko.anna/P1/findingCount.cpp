@@ -1,37 +1,32 @@
 #include "findingCount.hpp"
 #include <iostream>
+#include <stdexcept>
 
-int findingCount()
+doroshenko::FindingCount::FindingCount()
 {
-  int countNums = 0;
-  int countSum = 0;
-  int number1 = 0;
-  int number2 = 0;
-  int value = 0;
+  countNums_ = 0;
+  countSum_ = 0;
+  firstNum_ = 0;
+  secondNum_ = 0;
+}
 
-  do
-  {
-    std::cin >> value;
-    if (!std::cin)
-    {
-      throw std::invalid_argument("Wrong input\n");
-    }
-    else
-    {
-      countNums += (value != 0 ? 1 : 0);
-      countSum += (value == number1 + number2 ? 1 : 0);
-      number1 = number2;
-      number2 = value;
-    }
-  }
-  while (value && std::cin);
+void doroshenko::FindingCount::operator()(int value)
+{
+  countNums_ += (value != 0 ? 1 : 0);
+  countSum_ += (value == firstNum_ + secondNum_ ? 1 : 0);
+  firstNum_ = secondNum_;
+  secondNum_ = value;
+}
 
-  if (countNums < 3)
+size_t doroshenko::FindingCount::operator()() const
+{
+  if (countNums_ < 3)
   {
-    throw std::logic_error("Too short sequence");
+    throw std::logic_error("Too short sequence\n");
+    return 2;
   }
   else
   {
-    return countSum;
+    return countSum_;
   }
 }

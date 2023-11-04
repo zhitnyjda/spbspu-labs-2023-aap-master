@@ -1,6 +1,21 @@
-#ifndef findingCount_HPP
-#define findingCount_HPP
+#ifndef FINDINGCOUNT_HPP
+#define FINDINGCOUNT_HPP
+#include <cstddef>
 
-int findingCount();
+namespace doroshenko
+{
+  struct FindingCount
+  {
+  public:
+    FindingCount();
+    void operator()(int value);
+    size_t operator()() const;
+  private:
+    size_t countNums_;
+    size_t countSum_;
+    size_t firstNum_;
+    size_t secondNum_;
+  };
+}
 
 #endif

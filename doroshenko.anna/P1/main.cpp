@@ -3,20 +3,30 @@
 
 int main()
 {
-  int count = 0;
+  int value = 0;
+  using namespace doroshenko;
+  FindingCount findingCount;
+  do
+  {
+    std::cin >> value;
+    if (!std::cin)
+    {
+      std::cerr << "Wrong input\n";
+      return 1;
+    }
+    else if (value != 0)
+    {
+      findingCount(value);
+    }
+  }
+  while (value != 0);
   try
   {
-    count = findingCount();
+    std::cout << findingCount() << "\n";
   }
-  catch (std::invalid_argument const& e1)
+  catch (const std::exception& e)
   {
-    std::cout << e1.what() << "\n";
-    return 1;
-  }
-  catch (std::logic_error const& e2)
-  {
-    std::cout << e2.what() << "\n";
+    std::cerr << e.what() << "\n";
     return 2;
   }
-  std::cout << count << "\n";
 }
