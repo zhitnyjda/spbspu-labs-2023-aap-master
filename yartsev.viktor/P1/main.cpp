@@ -1,15 +1,19 @@
 #include <iostream>
 
 struct Counter {
-  int amount = 0; 
-  void addNumber(const int num)
-  {
-    amount += (num % 2 == 0);
-  }
-  int getAmount()
-  {
-    return amount;
-  }
+  public: 
+    void addNumber(const int num)
+    {
+      num % 2 == 0 ? currentSequence++ : currentSequence = 0;
+      maxSequence = std::max(maxSequence, currentSequence);
+    }
+    int getMaxSequence()
+    {
+      return maxSequence;
+    }
+  private:
+    int maxSequence = -1;
+    int currentSequence = 0;
 };
 
 int main ()
@@ -25,6 +29,6 @@ int main ()
       counter.addNumber(num);
     }
   } while (num != 0);
-  std::cout << counter.getAmount() << "\n";
+  std::cout << counter.getMaxSequence() << "\n";
   return 0;
 }
