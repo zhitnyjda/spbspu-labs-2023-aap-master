@@ -1,31 +1,35 @@
-#include <iostream>
 #include "function.hpp"
-int maxCountNumbers(int num)
+#include <limits>
+#include <stdexcept>
+using namespace taskaev;
+findmaxCountNumbers::findmaxCountNumbers() :
+  count_(0),
+  previousNum_(0),
+  maxCount_(0),
+  countNum_(0)
+{}
+
+void findmaxCountNumbers::operator()(int number)
 {
-  int count = 0;
-  int previousNum = 0;
-  int maxCount = 0;
-  int countNum = 1;
-  while (num !=0 )
+  if (maxCount_ == std::numeric_limits< size_t >::max())
   {
-    previousNum = num;
-    std::cin >> num;
-    if (num == previousNum) {
-      count++;
+    throw std::logic_error("sequence is too long.");
+  }
+  else {
+    if (number == previousNum_) {
+      count_++;
     }
     else {
-      count = 1;
+      count_ = 1;
     }
-    if (count > maxCount) {
-      maxCount = count;
+    if (count_ > maxCount_) {
+      maxCount_ = count_;
     }
-    countNum=countNum +1;
+    countNum_ = countNum_ + 1;
+    previousNum_ = number;
   }
-  if (!std::cin) {
-    throw std::invalid_argument("Error occured.");
-  }
-  if (countNum < 3) {
-    throw std::overflow_error("Error, short sequence.");
-  }
-  return maxCount;
+}
+size_t findmaxCountNumbers::operator()() const
+{
+  return maxCount_;
 }

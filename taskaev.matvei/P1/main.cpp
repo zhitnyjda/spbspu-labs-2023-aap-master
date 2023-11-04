@@ -1,25 +1,31 @@
-#include <iostream>
+#include <stdexcept>
 #include "function.hpp"
+using namespace taskaev;
 
 int main()
 {
-  int num = 0;
-  int countmaximum = 0;
-  try
+  int number = 0;
+  findmaxCountNumbers findmaxcountnumbers;
+  do
   {
-    std::cin >> num;
-    countmaximum = maxCountNumbers(num);
-  }
-  catch (const std::invalid_argument & e)
-  {
-    std::cout << e.what() << "\n";
-    return 1;
-  }
-  catch (const std::overflow_error & e)
-  {
-    std::cout << e.what() << "\n";
-    return 2;
-  }
-  std::cout << countmaximum << "\n";
-  return 0;
+    std::cin >> number;
+    if (!std::cin)
+    {
+      std::cerr << "Not a sequence.\n";
+      return 1;
+    }
+    else if (number != 0)
+    {
+      try
+      {
+        findmaxcountnumbers(number);
+      }
+      catch (const std::logic_error & e)
+      {
+        std::cerr << "Error: " << e.what() << "\n";
+        return 2;
+      }
+    }
+  } while (number && std::cin);
+  std::cout << findmaxcountnumbers() << "\n"
 }

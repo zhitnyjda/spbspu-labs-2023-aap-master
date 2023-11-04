@@ -1,5 +1,20 @@
-#ifndef FUNCTION_H
-#define FUNCTION_H
+#ifndef FUNCTION_HPP
+#define FUNCTION_HPP
+#include <cstddef>
 
-int maxCountNumbers(int num);
+namespace taskaev
+{
+  class findmaxCountNumbers
+  {
+  public:
+    findmaxCountNumbers();
+    void operator()(int number);
+    size_t operator()() const;
+  private:
+    size_t maxCount_;
+    size_t count_;
+    size_t previousNum_;
+    size_t countNum_;
+  };
+}
 #endif
