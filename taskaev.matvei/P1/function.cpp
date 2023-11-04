@@ -2,9 +2,9 @@
 #include <limits>
 #include <stdexcept>
 taskaev::findmaxCountNumbers::findmaxCountNumbers() :
+  maxCount_(0),
   count_(0),
   previousNum_(0),
-  maxCount_(0),
   countNum_(0)
 {}
 
