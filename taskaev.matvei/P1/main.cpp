@@ -1,12 +1,11 @@
 #include <iostream>
 #include <stdexcept>
 #include "function.hpp"
-using namespace taskaev;
 
 int main()
 {
   int number = 0;
-  findmaxCountNumbers findmaxcountnumbers;
+  taskaev::findmaxCountNumbers findmaxcountnumbers;
   do
   {
     std::cin >> number;

@@ -1,15 +1,14 @@
 #include "function.hpp"
 #include <limits>
 #include <stdexcept>
-using namespace taskaev;
-findmaxCountNumbers::findmaxCountNumbers() :
+taskaev::findmaxCountNumbers::findmaxCountNumbers() :
   count_(0),
   previousNum_(0),
   maxCount_(0),
   countNum_(0)
 {}
 
-void findmaxCountNumbers::operator()(int number)
+void taskaev::findmaxCountNumbers::operator()(int number)
 {
   if (maxCount_ == std::numeric_limits< size_t >::max())
   {
@@ -29,7 +28,7 @@ void findmaxCountNumbers::operator()(int number)
     previousNum_ = number;
   }
 }
-size_t findmaxCountNumbers::operator()() const
+size_t taskaev::findmaxCountNumbers::operator()() const
 {
   return maxCount_;
 }
