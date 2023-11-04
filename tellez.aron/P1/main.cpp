@@ -1,18 +1,39 @@
 #include <iostream>
 #include <stdexcept>
-#include "functions.hpp"
+#include "seqCounter.hpp"
 
 int main()
 {
-  try
+  using namespace tellez;
+
+  SequenceCounter sequenceCounter;
+
+  while (true)
   {
-    int result = getSequence();
-    std::cout << result << "\n";
+    int value = 0;
+    std::cin >> value;
+    if (!std::cin)
+    {
+      std::cerr << "Not a valid input. Exiting...\n";
+      return 1;
+    }
+    else if (value != 0)
+    {
+      try
+      {
+        sequenceCounter(value);
+      }
+      catch (const std::exception &e)
+      {
+        std::cerr << "Error: " << e.what() << "\n";
+        return 2;
+      }
+    }
+    else
+    {
+      break;
+    }
   }
-  catch (std::istream::failure& e)
-  {
-    std::cerr << "Error: " << e.what() << "\n";
-    return 1;
-  }
+  std::cout << "Sequence count: " << sequenceCounter() << "\n";
   return 0;
 }
