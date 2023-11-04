@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdexcept>
 #include "function.hpp"
 using namespace taskaev;
