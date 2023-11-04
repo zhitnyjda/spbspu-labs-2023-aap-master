@@ -8,7 +8,7 @@ namespace doroshenko
   {
   public:
     FindingCount();
-    void operator()(int value);
+    void operator()(size_t value);
     size_t operator()() const;
   private:
     size_t countNums_;

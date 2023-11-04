@@ -3,7 +3,7 @@
 
 int main()
 {
-  int value = 0;
+  size_t value = 0;
   using namespace doroshenko;
   FindingCount findingCount;
   do

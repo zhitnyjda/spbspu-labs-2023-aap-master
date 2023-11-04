@@ -10,7 +10,7 @@ doroshenko::FindingCount::FindingCount()
   secondNum_ = 0;
 }
 
-void doroshenko::FindingCount::operator()(int value)
+void doroshenko::FindingCount::operator()(size_t value)
 {
   countNums_ += (value != 0 ? 1 : 0);
   countSum_ += (value == firstNum_ + secondNum_ ? 1 : 0);
