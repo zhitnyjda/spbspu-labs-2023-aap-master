@@ -10,7 +10,6 @@ namespace tellez {
     int current_seq_count;
     int max_seq_count;
     int actual;
-    size_t seqLength_;
 
   public:
     SequenceCounter();
