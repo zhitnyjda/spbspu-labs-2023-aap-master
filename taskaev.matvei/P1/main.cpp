@@ -28,5 +28,5 @@ int main()
       }
     }
   } while (number && std::cin);
-  std::cout << findmaxcountnumbers() << "\n"
+  std::cout << findmaxcountnumbers() << "\n";
 }

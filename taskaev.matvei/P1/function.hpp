@@ -13,7 +13,7 @@ namespace taskaev
   private:
     size_t maxCount_;
     size_t count_;
-    size_t previousNum_;
+    int previousNum_;
     size_t countNum_;
   };
 }
