@@ -11,7 +11,7 @@ namespace sukacheva
     void operator()(long long value);
     size_t operator()() const;
   private:
-    size_t count;
+    long long count;
     long long min_value;
     long long max_count;
   };

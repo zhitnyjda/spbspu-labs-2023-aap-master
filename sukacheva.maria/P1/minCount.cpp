@@ -1,5 +1,4 @@
 #include "minCount.hpp"
-#include <iostream>
 #include <limits>
 #include <stdexcept>
 
