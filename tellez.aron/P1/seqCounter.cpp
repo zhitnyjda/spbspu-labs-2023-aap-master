@@ -23,7 +23,7 @@ void tellez::SequenceCounter::operator()(int value)
     current_seq_count = 0;
   }
   actual = value;
-  const size_t max_size = std::numeric_limits< size_t >::max();
+  const int max_size = std::numeric_limits< int >::max();
   if (max_seq_count == max_size)
   {
     throw std::logic_error("Sequence is too long.");
