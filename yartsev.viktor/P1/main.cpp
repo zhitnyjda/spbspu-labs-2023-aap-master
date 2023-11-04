@@ -2,7 +2,7 @@
 
 struct Counter {
   public: 
-    void addNumber(const int num)
+    void operator()(const int num)
     {
       num % 2 == 0 ? currentSequence++ : currentSequence = 0;
       maxSequence = std::max(maxSequence, currentSequence);
@@ -12,7 +12,7 @@ struct Counter {
       return maxSequence;
     }
   private:
-    int maxSequence = -1;
+    int maxSequence = 0;
     int currentSequence = 0;
 };
 
@@ -26,7 +26,7 @@ int main ()
       std::cerr << "Not a sequence\n";
       return 1;
     } else if (num != 0) {
-      counter.addNumber(num);
+      counter(num);
     }
   } while (num != 0);
   std::cout << counter.getMaxSequence() << "\n";
