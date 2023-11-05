@@ -1,7 +1,7 @@
 #include "counterRr.hpp"
 
 Panov::CounterRr::CounterRr() :
-    count(0), first(0)
+  count(0), first(0)
 {}
 
 void Panov::CounterRr::operator()(int subsequent)
@@ -17,3 +17,4 @@ int Panov::CounterRr::operator()() const
 {
   return count;
 }
+
