@@ -4,7 +4,7 @@
 
 int main()
 {
-  Panov::CounterRr counterRr
+  Panov::CounterRr counterRr;
   try
   {
     std::cin.exceptions(std::istream::failbit);
@@ -16,9 +16,9 @@ int main()
     }
     while (value != 0);
   }
-  catch (const std::istream::failtrue& e)
+  catch (const std::istream::failure& e)
   {
-    std::cerr << "OnlyNumbersPls" << "\n";
+    std::cerr << "OnlyNumberPls" << "\n";
     return 1;
   }
   catch (const std::logic_error& e)

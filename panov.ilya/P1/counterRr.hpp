@@ -7,10 +7,10 @@ namespace Panov
     public:
       CounterRr();
       void operator()(int number);
-      int operator()()const;
+      int operator()() const;
     private:
       int count;
-      int first:
+      int first;
   };
 }
 #endif
