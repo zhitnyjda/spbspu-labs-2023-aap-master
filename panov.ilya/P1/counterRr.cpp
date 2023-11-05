@@ -1,4 +1,5 @@
 #include "counterRr.hpp"
+
 Panov::CounterRr::CounterRr():
   count(0), first(0)
 {}

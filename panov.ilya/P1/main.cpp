@@ -1,6 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "counterRr.hpp"
+
 int main()
 {
   Panov::CounterRr counterRr
