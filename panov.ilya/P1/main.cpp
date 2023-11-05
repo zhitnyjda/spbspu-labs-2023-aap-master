@@ -23,9 +23,9 @@ int main()
   }
   catch (const std::logic_error & e)
   {
-    std::cerr << e.what() << '\n';
-    return 1;
+    std::cerr << e.what();
+    return 2;
   }
-  std::cout << counterRr() << '\n';
+  std::cout << counterRr();
   return 0;
 }
