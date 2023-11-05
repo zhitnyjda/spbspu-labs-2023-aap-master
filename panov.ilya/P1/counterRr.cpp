@@ -12,6 +12,7 @@ void Panov::CounterRr::operator()(int subsequent)
   }
   first = subsequent;
 }
+
 int Panov::CounterRr::operator()() const
 {
   return count;
