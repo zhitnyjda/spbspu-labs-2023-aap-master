@@ -1,5 +1,6 @@
 #include "maxchetn.hpp"
-#include <iostream>
+#include <limits>
+#include <stdexcept>
 
 void litsinger::count_max::operator()(int value)
 {
