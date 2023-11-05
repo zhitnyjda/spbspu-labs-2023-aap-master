@@ -1,18 +1,31 @@
 #include <iostream>
-#include "numberOfSequenceCharacterChanges.hpp"
+#include <exception>
+#include "counterRr.hpp"
 
 int main()
 {
-  int value = 0;
+  std::cout << "enter score \n";
+  Panov::CounterRr counterRr;
   try
   {
-    value = numberOfSequenceCharacterChanges(std::cin);
+    std::cin.exceptions(std::istream::failbit);
+    int value = 0;
+    do
+    {
+      std::cin >> value;
+      counterRr(value);
+    } while (value != 0);
   }
-  catch (std::logic_error const& error)
-  {
-    std::cout << error.what() << "\n";
-    return 0;
-  }
-std::cout << value << "\n";
+    catch (const std::istream::failure& e)
+    {
+      std::cerr << "Only number pls\n";
+      return 1;
+    }
+    catch (const std::logic_error& e)
+    {
+      std::cerr << e.what() << '\n';
+      return 1;
+    }
+std::cout << counterRr() << '\n';
+return 0;
 }
-
