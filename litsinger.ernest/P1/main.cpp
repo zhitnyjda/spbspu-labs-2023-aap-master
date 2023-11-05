@@ -1,34 +1,33 @@
-#include "maxcount.hpp"
+#include "maxchetn.hpp"
 #include <iostream>
 #include <exception>
 
 int main()
 {
-  int max = 0;
-  try
+  using namespace litsinger;
+  count_max maxChetn;
+  int value;
+  int length = -1;
+  do
   {
-    using namespace litsinger;
-    int counter = 0;
-    int length = -1;
-    int value = 1;
-    std::cin.exceptions(std::istream::failbit);
-    while (value != 0)
+    std::cin >> value;
+    if (std::cin.fail())
     {
-      std::cin >> value;
-      maxChetn(counter, max, value);
+      std::cerr << "Input error" << "\n";
+      return 1;
+    }
+    if (value != 0)
+    { 
+      maxChetn(value);
       length++;
     }
-    if (length == 0)
+    else if (length == -1)
     {
-      std::cerr<< "Short sequence" << "\n";
+      std::cerr << "Short sequence" << "\n";
       return 2;
     }
-    std::cout << counter << "\n";
-    return 0;
   }
-  catch (const std::istream::failure & e)
-  {
-    std::cerr << "Input error" << "\n";
-    return 1;
-  }
+  while (value != 0);
+  std::cout << maxChetn() << "\n";
+  return 0;
 }
