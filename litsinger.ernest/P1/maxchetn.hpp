@@ -5,12 +5,12 @@ namespace litsinger
 {
   struct count_max
   {
-	void maxChetn();
-	void operator()(int value);
-	size_t operator()();
+    void maxChetn();
+    void operator()(int value);
+    size_t operator()();
   private:
-	size_t counter = 0;
-	int max = 0;
+    size_t counter = 0;
+    int max = 0;
   };
 }
 #endif
