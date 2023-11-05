@@ -6,7 +6,7 @@
 int main ()
 {
   int num;
-  Counter counter; 
+  yartsev::Counter counter;
   do {
     std::cin >> num;
     if (!std::cin) {
