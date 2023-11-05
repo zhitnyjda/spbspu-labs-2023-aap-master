@@ -24,7 +24,7 @@ int main()
     else if (length == -1)
     {
       std::cerr << "Short sequence" << "\n";
-      return 2;
+      return 1;
     }
   }
   while (value != 0);
