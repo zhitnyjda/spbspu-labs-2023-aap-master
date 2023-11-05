@@ -15,4 +15,3 @@ namespace panov
   };
 }
 #endif
-
