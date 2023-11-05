@@ -29,4 +29,3 @@ int main()
   std::cout << counterRr() << "\n";
   return 0;
 }
-
