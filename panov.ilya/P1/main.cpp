@@ -3,7 +3,6 @@
 #include "counterRr.hpp"
 int main()
 {
-  std::cout << "enter score \n";
   Panov::CounterRr counterRr;
   try
   {
