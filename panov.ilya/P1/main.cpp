@@ -18,14 +18,14 @@ int main()
   }
   catch (const std::istream::failure & e)
   {
-    std::cerr << "OnlyNumberPls\n";
+    std::cerr << "OnlyNumberPls" << "\n";
     return 1;
   }
   catch (const std::logic_error & e)
   {
-    std::cerr << e.what();
+    std::cerr << e.what() << "\n";
     return 2;
   }
-  std::cout << counterRr();
+  std::cout << counterRr() << "\n";
   return 0;
 }
