@@ -1,8 +1,8 @@
 #include "counterRr.hpp"
 
 panov::CounterRr::CounterRr():
-    count(0), first(0)
-  {}
+  count(0), first(0)
+{}
 
 void panov::CounterRr::operator()(int subsequent)
 {
