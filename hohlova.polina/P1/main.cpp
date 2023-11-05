@@ -1,29 +1,38 @@
 #include <iostream>
-#include <execution>
+#include <stdexcept>
+#include <limits>
 #include "Lessmore.hpp"
 
 int main()
 {
   int prev = 0;
   int curr = 0;
-  int next = 9999;
-  int countnum = 0;
-  int countres = 0;
-  std::cin.exceptions(std::cin.failbit);
-  while (next != 0)
+  int next = 0;
+  size_t countres = 0;
+  hohlova::LessMore LessMore;
+  do
   {
-    try
+    std::cin >> next;
+    if (!std::cin)
     {
-      std::cin >> next;
-      lessmore(prev,curr, next, &countnum, &countres);
+      std::cerr << "Not a sequence\n";
+      return 1;
+    }
+    else if (next != 0)
+    {
+      try
+      {
+        LessMore(prev, curr, next);
+      }
+      catch (const std::exception & e)
+      {
+	std::cerr << "Error: " << e.what() << "\n";
+      }
       prev = curr;
       curr = next;
     }
-    catch (const std::exception &ex)
-    {
-      return 1;
-    }
   }
-  std::cout << countres;
-  return 0;
+  while (next != 0);
+  std::cout << LessMore() << "\n";
 }
+

@@ -1,11 +1,20 @@
 #include <iostream>
+#include <stdexcept>
 #include "Lessmore.hpp"
 
-void lessmore(const int &prev, const int &curr, const int &next, int &countnum, int &countres)
+void hohlova::operator()(int prev, int curr, int next)
 {
-  countnum++;
-  if (countnum > 2 && curr < prev && curr > next && next != 0)
+  const size_t maxSize = std::numeric_limits< size_t >::max();
+  if (countres_ == maxSize)
   {
-    countres++;
+    throw std::logic_error("Sequence is too long\n");
   }
+  if (curr < prev && curr > next && next != 0 && curr != 0 and prev != 0)
+  {
+    ++countres_;
+  }
+}
+size_t hohlova::operator()() const
+{
+  return countres_;
 }
