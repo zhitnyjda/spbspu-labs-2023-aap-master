@@ -4,14 +4,13 @@ namespace Panov
 {
   struct CounterRr
   {
-  public:
-    CounterRr();
-    void operator()(int number);
-    int operator()() const;
-  private:
-    int count;
-    int first;
+    public:
+      CounterRr();
+      void operator()(int number);
+      int operator()() const;
+    private:
+      int count;
+      int first;
   };
 }
 #endif
-
