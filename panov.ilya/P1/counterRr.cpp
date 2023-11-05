@@ -17,3 +17,4 @@ int panov::CounterRr::operator()() const
 {
   return count;
 }
+
