@@ -5,8 +5,9 @@
 #include <limits>
 #include <stdexcept>
 
+namespace yartsev {
 struct Counter {
-  public: 
+  public:
     void operator()(const int num)
     {
       const int maxSize = std::numeric_limits< int >::max();
@@ -29,5 +30,6 @@ struct Counter {
     int maxSequence = 0;
     int currentSequence = 0;
 };
+}
 
 #endif
