@@ -3,8 +3,15 @@
 #include <cstddef>
 namespace kovshikov
 {
-  size_t count_count(size_t num, size_t count);
+  struct Counter
+  {
+    public:
+      Counter();
+      void operator()(size_t num);
+      size_t operator()();
+    private:
+      size_t count_;
+      size_t max_count_;
+  };
 }
 #endif
-
-

@@ -5,10 +5,10 @@ using namespace::kovshikov;
 int main()
 {
   size_t num = 0;
-  size_t count = 0;
-  size_t max_count = 0;
+  size_t max = 0;
   try
   {
+    Counter sequenceCounter;
     do
     {
       std::cin >> num;
@@ -20,18 +20,23 @@ int main()
       {
         if (num != 0)
         {
-          count = count_count(num, count);
-          max_count = (max_count > count ? max_count : count);
+          sequenceCounter(num);
+          max = sequenceCounter();
         }
       }
     }
-    while (num && std::cin);
+    while (num);
   }
-  catch (std::invalid_argument const& e)
+  catch (std::invalid_argument const& e1)
   {
-    std::cout << e.what() << "\n";
+    std::cout << e1.what() << "\n";
     return 1;
   }
-  std::cout << max_count << "\n";
+  catch (std::logic_error const& e2)
+  {
+    std::cout << e2.what() << "\n";
+    return 1;
+  }
+  std::cout << max << "\n";
   return 0;
 }

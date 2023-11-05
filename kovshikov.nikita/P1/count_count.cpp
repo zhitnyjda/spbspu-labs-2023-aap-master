@@ -1,17 +1,25 @@
 #include "count_count.hpp"
 #include <iostream>
+#include <limits>
 namespace kovshikov
 {
-  size_t count_count(size_t num, size_t count)
+  Counter::Counter()
   {
-    if (num % 2 == 0)
+    count_ = 0;
+    max_count_ = 0;
+  }
+  void Counter::operator()(size_t num)
+  {
+    const size_t maxSize = std::numeric_limits< size_t >::max();
+    if (count_ == maxSize)
     {
-      count += 1;
+      throw std::logic_error("Sequence is very long");
     }
-    else
-    {
-      count = 0;
-    }
-    return count;
+    num % 2 == 0 ? count_ += 1 : count_ = 0;
+  }
+  size_t Counter::operator()()
+  {
+    max_count_ = (max_count_ > count_ ? max_count_ : count_);
+    return max_count_;
   }
 }
