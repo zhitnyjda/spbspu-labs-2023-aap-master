@@ -8,9 +8,9 @@ namespace Panov
     CounterRr();
     void operator()(int number);
     int operator()() const;
-    private:
-     int count;
-     int first;
+  private:
+    int count;
+    int first;
   };
 }
 #endif
