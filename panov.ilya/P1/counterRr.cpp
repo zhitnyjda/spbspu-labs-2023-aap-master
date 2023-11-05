@@ -8,9 +8,10 @@ void Panov::CounterRr::operator()(int subsequent)
   {
     count += 1;
   }
-  first = subsequent;
+  first == subsequent;
 }
 int Panov::CounterRr::operator()() const
 {
   return count;
 }
+

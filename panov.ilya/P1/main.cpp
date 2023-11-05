@@ -3,7 +3,7 @@
 #include "counterRr.hpp"
 int main()
 {
-  Panov::CounterRr counterRr;
+  Panov::CounterRr counterRr
   try
   {
     std::cin.exceptions(std::istream::failbit);
@@ -15,9 +15,9 @@ int main()
     }
     while (value != 0);
   }
-  catch (const std::istream::failure& e)
+  catch (const std::istream::failtrue& e)
   {
-    std::cerr << "OnlyNumberPls" << "\n";
+    std::cerr << "OnlyNumbersPls" << "\n";
     return 1;
   }
   catch (const std::logic_error& e)
@@ -28,3 +28,4 @@ int main()
   std::cout << counterRr() << "\n";
   return 0;
 }
+
