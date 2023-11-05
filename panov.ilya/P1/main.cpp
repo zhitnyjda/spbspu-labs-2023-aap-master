@@ -14,7 +14,7 @@ int main()
       std::cin >> value;
       counterRr(value);
     }
-    while (value != 0);
+  while (value != 0);
   }
   catch (const std::istream::failure & e)
   {
