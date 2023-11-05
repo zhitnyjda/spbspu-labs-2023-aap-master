@@ -4,7 +4,7 @@
 
 void litsinger::count_max::operator()(int value)
 {
-  const size_t maxSize = std::numeric_limits< size_t >::max();
+  const int maxSize = std::numeric_limits< int >::max();
   if (max == 0)
   {
     max = value;
