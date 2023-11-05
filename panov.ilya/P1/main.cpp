@@ -4,7 +4,7 @@
 
 int main()
 {
-  Panov::CounterRr counterRr;
+  panov::CounterRr counterRr;
   try
   {
     std::cin.exceptions(std::istream::failbit);
