@@ -17,7 +17,7 @@ int main()
       return 1;
     }
     if (value != 0)
-    { 
+    {
       maxChetn(value);
       length++;
     }
