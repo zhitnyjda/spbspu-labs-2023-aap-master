@@ -16,16 +16,16 @@ int main()
     }
     while (value != 0);
   }
-  catch (const std::istream::failure& e)
+  catch (const std::istream::failure & e)
   {
-    std::cerr << "OnlyNumberPls" << "\n";
+    std::cerr << "OnlyNumberPls\n";
     return 1;
   }
-  catch (const std::logic_error& e)
+  catch (const std::logic_error & e)
   {
-    std::cerr << e.what() << "\n";
+    std::cerr << e.what() << '\n';
     return 1;
   }
-  std::cout << counterRr() << "\n";
+  std::cout << counterRr() << '\n';
   return 0;
 }

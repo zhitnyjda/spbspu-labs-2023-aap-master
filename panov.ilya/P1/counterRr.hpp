@@ -1,5 +1,5 @@
-#ifndef counterRr_HPP
-#define counterRr_HPP
+#ifndef COUNTERRR_HPP
+#define COUNTERRR_HPP
 namespace Panov
 {
   struct CounterRr
