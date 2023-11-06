@@ -5,7 +5,7 @@
 int main()
 {
   int number = -1;
-  
+  int seqCounter = 0;
   using namespace mihalchenko;
 
   CounterAfterMax counterAfterMax;
@@ -19,9 +19,10 @@ int main()
     }
     else if (number != 0)
     {
+      seqCounter++;
       try
       {
-        counterAfterMax(number);
+        counterAfterMax(number, seqCounter);
       }
       catch (const std::exception& e)
       {
@@ -30,6 +31,6 @@ int main()
       }
     }
   }
-  std::cout << counterAfterMax() << "\n";
+  std::cout << counterAfterMax(seqCounter) << "\n";
   return 0;
 }

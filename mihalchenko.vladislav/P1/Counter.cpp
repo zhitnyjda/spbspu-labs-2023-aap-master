@@ -11,24 +11,29 @@ mihalchenko::CounterAfterMax::CounterAfterMax()
   fMaxNum = 0;
 }
 
-void mihalchenko::CounterAfterMax::operator()(int number)
+void mihalchenko::CounterAfterMax::operator()(int number, int seqCounter)
 {
   const unsigned int maxSize = std::numeric_limits< unsigned int >::max();
   if (countNumAfterMax == maxSize)
   {
-    throw std::logic_error("Sequence is too long.");
+    throw std::logic_error("Sequence is too long");
   }
   (number > fMaxNum) ? (fMaxNum = number, countNumAfterMax = 0) : (countNumAfterMax += 1);
   (number < 0) ? (fMinus += 1) : (fPlus += 1);
-  //++countNumAfterMax;
 }
 
-unsigned int mihalchenko::CounterAfterMax::operator()() const
+unsigned int mihalchenko::CounterAfterMax::operator()(int seqCounter) const
 {
-  if ((fMinus == 0) || (fPlus == 0))
+  if (((fMinus == 0) || (fPlus == 0)) && (seqCounter > 1))
   {
-    std::cerr << "The sequence includes numbers of the same sign";
+    std::cerr << "The sequence includes numbers of the same sign\n";
     return 1;
   }
-  return countNumAfterMax;
+  if (seqCounter > 1)
+    return countNumAfterMax;
+  else
+  {
+    std::cerr << "The sequence is empty\n";
+    return 2;
+  }
 }
