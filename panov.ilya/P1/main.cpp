@@ -1,10 +1,10 @@
 #include <iostream>
 #include <exception>
-#include "counterRr.hpp"
+#include "numOfchar.hpp"
 
 int main()
 {
-  panov::CounterRr counterRr;
+  panov::NumOfchar numOfchar;
   try
   {
     std::cin.exceptions(std::istream::failbit);
@@ -12,21 +12,20 @@ int main()
     do
     {
       std::cin >> value;
-      counterRr(value);
+      numOfchar(value);
     }
     while (value != 0);
   }
   catch (const std::istream::failure & e)
   {
-    std::cerr << "OnlyNumberPls\n";
+    std::cerr << "OnlyNumberPLS" << "\n";
     return 1;
   }
-  catch (const std::logic_error & e)
+  catch (const std::logic_error& e)
   {
     std::cerr << e.what() << "\n";
     return 1;
   }
-  std::cout << counterRr() << "\n";
+  std::cout << numOfchar() << "\n";
   return 0;
 }
-
