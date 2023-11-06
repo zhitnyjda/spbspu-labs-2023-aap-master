@@ -1,5 +1,6 @@
 #ifndef COUNTERRR_HPP
 #define COUNTERRR_HPP
+
 namespace panov
 {
   struct CounterRr
@@ -14,3 +15,4 @@ namespace panov
   };
 }
 #endif
+
