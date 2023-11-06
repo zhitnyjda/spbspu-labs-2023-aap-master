@@ -11,7 +11,6 @@ int main()
   {
     std::cin.exceptions(std::istream::failbit);
     int value = 0;
-    int score = 0;
     do
     {
       std::cin >> value;
@@ -31,7 +30,8 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
-  std::cout << nchar() << "\n";
+  std::cout << "first\n";
   std::cout << numOfchar() << "\n";
-  return 0;
+  std::cout << "first\n";
+  std::cout << nchar() << "\n";
 }
