@@ -9,7 +9,8 @@ int main()
   int curr = 0;
   int next = 0;
   size_t countres = 0;
-  hohlova::LessMore LessMore;
+  using namespace hohlova;
+  LessMore LessMore;
   do
   {
     std::cin >> next;
