@@ -1,35 +1,35 @@
 #include <iostream>
-#include <exception>
-#include <limits>
 #include <typeinfo>
 #include "Counter.hpp"
 
 int main()
 {
-  const int min_int = std::numeric_limits< int >::min();
-  int num = 1, counter = 0;
-  int minus = 0, plus = 0, rez = 0;
-  int max_num = min_int;
-  long global_counter = -1;
-  try
+  int number = -1;
+  
+  using namespace mihalchenko;
+
+  CounterAfterMax counterAfterMax;
+  while (number != 0)
   {
-    rez = CounterAfterMaximum(num, max_num, counter, global_counter, minus, plus);
+    std::cin >> number;
+    if (!std::cin)
+    {
+      std::cerr << "Not a sequence.\n";
+      return 1;
+    }
+    else if (number != 0)
+    {
+      try
+      {
+        counterAfterMax(number);
+      }
+      catch (const std::exception& e)
+      {
+        std::cerr << "Error: " << e.what() << "\n";
+        return 2;
+      }
+    }
   }
-  catch (std::invalid_argument& e)
-  {
-    std::cerr << e.what() << "\n";
-    return 1;
-  }
-  catch (std::overflow_error& e)
-  {
-    std::cerr << e.what() << "\n";
-    return 1;
-  }
-  catch (std::logic_error const& e)
-  {
-    std::cerr << e.what() << "\n";
-    return 2;
-  }
-  std::cout << rez - 1;
+  std::cout << counterAfterMax() << "\n";
   return 0;
 }

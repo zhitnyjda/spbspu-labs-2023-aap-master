@@ -1,35 +1,34 @@
 #include <iostream>
-#include <exception>
-#include <typeinfo>
 #include <limits>
+#include <stdexcept>
+#include "Counter.hpp"
 
-int CounterAfterMaximum(int &f_num, int &f_max_num, int &f_counter, long &f_global_counter, int &f_minus, int &f_plus)
+mihalchenko::CounterAfterMax::CounterAfterMax()
 {
-  const int f_max_int = std::numeric_limits< int >::max();
-  int temp = f_num;
-  while (temp != 0)
+  countNumAfterMax = 0;
+  fMinus = 0;
+  fPlus = 0;
+  fMaxNum = 0;
+}
+
+void mihalchenko::CounterAfterMax::operator()(int number)
+{
+  const unsigned int maxSize = std::numeric_limits< unsigned int >::max();
+  if (countNumAfterMax == maxSize)
   {
-    std::cin >> temp;
-    if (std::cin.fail())
-    {
-      if ((temp % 10 != 0) && (typeid(temp % 10) == typeid(int)))
-        throw std::overflow_error("Integer overflow");
-      else
-        throw std::invalid_argument("Wrong data type");
-      std::cin.clear();
-    }
-    else
-    {
-      if (f_global_counter > f_max_int)
-        throw std::overflow_error("Exceeded the maximum number of sequence elements");
-      (temp > f_max_num) ? (f_max_num = temp, f_counter = 0) : (f_counter += 1);
-      (temp < 0) ? (f_minus += 1) : (f_plus += 1);
-      f_global_counter += 1;
-    }
+    throw std::logic_error("Sequence is too long.");
   }
-  if (f_global_counter == 0)
-    throw std::logic_error("Sequence elements are missing");
-  if (((f_minus == 0) || (f_plus == 0)) && (f_global_counter > 1))
-    throw std::overflow_error("The sequence includes numbers of the same sign");
-  return f_counter;
+  (number > fMaxNum) ? (fMaxNum = number, countNumAfterMax = 0) : (countNumAfterMax += 1);
+  (number < 0) ? (fMinus += 1) : (fPlus += 1);
+  //++countNumAfterMax;
+}
+
+unsigned int mihalchenko::CounterAfterMax::operator()() const
+{
+  if ((fMinus == 0) || (fPlus == 0))
+  {
+    std::cerr << "The sequence includes numbers of the same sign";
+    return 1;
+  }
+  return countNumAfterMax;
 }

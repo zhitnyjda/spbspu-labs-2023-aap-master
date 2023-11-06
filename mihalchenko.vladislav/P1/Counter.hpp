@@ -1,4 +1,19 @@
 #ifndef COUNTER_HPP
 #define COUNTER_HPP
-int CounterAfterMaximum(int &f_num, int &f_max_num, int &f_counter, long &f_global_counter, int &f_minus, int &f_plus);
+
+namespace mihalchenko
+{
+  struct CounterAfterMax
+  {
+  public:
+    CounterAfterMax();
+    void operator()(int number);
+    unsigned int operator()() const;
+  private:
+    int fMinus = 0;
+    int fPlus = 0;
+    int fMaxNum = 0;
+    unsigned int countNumAfterMax;
+  };
+}
 #endif // !COUNTER_HPP
