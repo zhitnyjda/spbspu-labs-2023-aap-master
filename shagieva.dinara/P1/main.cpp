@@ -1,11 +1,14 @@
 #include <iostream>
 #include "changeCounter.hpp"
+#include "divCounter.hpp"
 
 int main()
 {
   int number;
+  int seq_length = 0;
   using namespace shagieva;
   ChangeCounter changeCounter;
+  DivCounter divCounter;
 
   do
   {
@@ -17,9 +20,11 @@ int main()
     }
     else if (number != 0)
     {
+      ++seq_length;
       try
       {
         changeCounter(number);
+        divCounter(number);
       }
       catch (const std::exception & e)
       {
@@ -30,6 +35,12 @@ int main()
   }
   while (number != 0);
 
-  std::cout << changeCounter() << "\n";
+  if (seq_length < 2)
+  {
+    std::cout << changeCounter() << " " << "The sequence is too short.\n";
+    return 2;
+  }
+
+  std::cout << changeCounter() << " " << divCounter() << "\n";
   return 0;
 }
