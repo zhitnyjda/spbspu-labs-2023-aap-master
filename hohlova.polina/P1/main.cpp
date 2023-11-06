@@ -26,7 +26,7 @@ int main()
       }
       catch (const std::exception & e)
       {
-	std::cerr << "Error: " << e.what() << "\n";
+        std::cerr << "Error: " << e.what() << "\n";
       }
       prev = curr;
       curr = next;
