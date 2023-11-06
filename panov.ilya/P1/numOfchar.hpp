@@ -2,15 +2,15 @@
 #define NUMOFCHAR_HPP
 namespace panov
 {
-	struct NumOfchar
-	{
-      public:
-	    NumOfchar();
-		void operator()(int number);
-		int operator()() const;
-	  private:
-		int count;
-		int first;
-	};
+  struct NumOfchar
+  {
+    public:
+      NumOfchar();
+      void operator()(int number);
+      int operator()() const;
+    private:
+      int count;
+      int first;
+  };
 }
 #endif
