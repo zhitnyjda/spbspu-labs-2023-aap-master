@@ -1,25 +1,55 @@
 #include <iostream>
-#include "bool_foo.hpp"
-
+#include "findingCount.hpp"
+using namespace jirkov;
 int main()
 {
-  int prev, current, next;
-  int count = 0;
-  std::cin >> prev;
+  size_t prev = 0;
+  size_t current = 0;
+  size_t next = 0;
+  size_t count = 0;
   try
   {
-    while (std::cin >> current && current != 0)
+    FindingCount findingCount;
+    std::cin >> prev;
+    if (prev == 0 && std::cin)
+    {
+      throw std::logic_error("Sequence very short\n");
+    }
+    std::cin >> current;
+    if (current == 0 && std::cin)
+    {
+      throw std::logic_error("Sequence very short\n");
+    }
+    do
     {
       std::cin >> next;
-      if (bool_foo(prev, current, next))
+      if (!std::cin)
       {
-        count++;
+        throw std::invalid_argument("Incorrect Input\n");
       }
-      prev = current;
-    }
-  } catch (std::exception& e) {
-    std::cout << "Произошла ошибка при вводе данных: " << e.what() << std::endl;
+      if (next == 0 && findingCount.lenghts < 3)
+      {
+        throw std::logic_error("Sequence very short\n");
+      }
+      if (next != 0)
+      {
+        findingCount(prev, current, next);
+        count = findingCount();
+        prev = current;
+        current = next;
+      }
+    } while (next != 0);
   }
-  std::cout << "Количество элементов: " << count << std::endl;
+  catch (std::invalid_argument const& e1)
+  {
+    std::cout << e1.what() << '\n';
+    return 1;
+  }
+  catch (std::logic_error const& e2)
+  {
+    std::cout << e2.what() << '\n';
+    return 2;
+  }
+  std::cout << count << '\n';
   return 0;
 }
