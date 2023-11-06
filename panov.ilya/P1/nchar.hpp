@@ -1,16 +1,19 @@
-#ifndef NCHAR_HPP
-#define NCHAR_HPP
-namespace panov
+#include "nchar.hpp"
+
+panov::Nchar::Nchar():
+  count(0), first(0)
+{}
+
+void panov::Nchar::operator()(int subsequent)
 {
-  struct Nchar
+  if (first != 0 && subsequent != 0 && subsequent > first)
   {
-    public:
-      Nchar();
-      void operator()(int number);
-      int operator()() const;
-    private:
-      int count;
-      int first;
-  };
+    count += 1;
+  }
+  first = subsequent;
 }
-#endif
+
+int panov::Nchar::operator()() const
+{
+  return count;
+}
