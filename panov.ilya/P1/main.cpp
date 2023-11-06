@@ -8,7 +8,6 @@ int main()
   panov::Nchar nchar;
   try
   {
-    std::cout << "first var" << "\n";
     std::cin.exceptions(std::istream::failbit);
     int value = 0;
     do
@@ -33,7 +32,6 @@ int main()
   ranov::NumOfchar numOfchar;
   try
   {
-    std::cout << "second var" << "\n";
     std::cin.exceptions(std::istream::failbit);
     int score = 0;
     do
