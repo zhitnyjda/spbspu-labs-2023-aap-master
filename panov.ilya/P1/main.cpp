@@ -1,6 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "nchar.hpp"
+#include "numOfchar.hpp"
 
 int main()
 {
@@ -29,18 +30,18 @@ int main()
   }
   std::cout << nchar() << "\n";
 
-  panov::Nchar numOfchar;
+  ranov::NumOfchar numOfchar;
   try
   {
     std::cout << "second var" << "\n";
     std::cin.exceptions(std::istream::failbit);
-    int value = 0;
+    int score = 0;
     do
     {
-      std::cin >> value;
-      numOfchar(value);
+      std::cin >> score;
+      numOfchar(score);
     }
-    while (value != 0);
+    while (score != 0);
   }
   catch (const std::istream::failure& i)
   {

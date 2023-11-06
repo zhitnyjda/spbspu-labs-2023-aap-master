@@ -1,16 +1,16 @@
 #ifndef NUMOFCHAR_HPP
 #define NUMOFCHAR_HPP
-namespace panov
+namespace ranov
 {
-  struct NumOfchar
-  {
+    struct NumOfchar
+    {
     public:
-      NumOfchar();
-      void operator()(int number);
-      int operator()() const;
+        NumOfchar();
+        void operator()(int number);
+        int operator()() const;
     private:
-      int count;
-      int first;
-  };
+        int count;
+        int first;
+    };
 }
 #endif
