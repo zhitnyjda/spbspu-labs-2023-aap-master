@@ -1,0 +1,16 @@
+#ifndef NCHAR_HPP
+#define NCHAR_HPP
+namespace panov
+{
+  struct Nchar
+  {
+    public:
+      Nchar();
+      void operator()(int number);
+      int operator()() const;
+    private:
+      int count;
+      int first;
+  };
+}
+#endif
