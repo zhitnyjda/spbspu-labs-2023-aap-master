@@ -19,7 +19,7 @@ int main()
   }
   catch (const std::istream::failure & e)
   {
-    std::cerr << "OnlyNumberPLS" << "\n";
+    std::cerr << "OnlyNumberPLS\n";
     return 1;
   }
   catch (const std::logic_error& e)
@@ -43,7 +43,7 @@ int main()
   }
   catch (const std::istream::failure& i)
   {
-    std::cerr << "OnlyNumberPLS" << "\n";
+    std::cerr << "OnlyNumberPLS\n";
     return 1;
   }
   catch (const std::logic_error& i)
