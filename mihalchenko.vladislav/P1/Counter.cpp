@@ -11,10 +11,10 @@ mihalchenko::CounterAfterMax::CounterAfterMax()
   fMaxNum = 0;
 }
 
-void mihalchenko::CounterAfterMax::operator()(int number, int)
+void mihalchenko::CounterAfterMax::operator()(int number, int seqCounter)
 {
   const unsigned int maxSize = std::numeric_limits< unsigned int >::max();
-  if (countNumAfterMax == maxSize)
+  if ((countNumAfterMax == maxSize) || (maxSize == seqCounter))
   {
     throw std::logic_error("Sequence is too long");
   }
