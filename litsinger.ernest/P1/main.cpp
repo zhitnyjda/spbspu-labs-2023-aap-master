@@ -5,7 +5,7 @@
 int main()
 {
   using namespace litsinger;
-  count_max maxChetn;
+  countMax maxChetn;
   int value;
   int length = -1;
   do

@@ -1,6 +1,6 @@
 #include "maxchetn.hpp"
 
-void litsinger::count_max::operator()(int value)
+void litsinger::countMax::operator()(int value)
 {
   if (max == 0)
   {
@@ -16,7 +16,7 @@ void litsinger::count_max::operator()(int value)
     max = value;
   }
 }
-size_t litsinger::count_max::operator()()
+size_t litsinger::countMax::operator()()
 {
   return counter;
 }

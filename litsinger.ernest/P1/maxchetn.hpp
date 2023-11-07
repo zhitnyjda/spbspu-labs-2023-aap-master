@@ -3,14 +3,13 @@
 #include <cstddef>
 namespace litsinger
 {
-  struct count_max
+  struct countMax
   {
-    void maxChetn();
     void operator()(int value);
     size_t operator()();
   private:
-    size_t counter = 0;
-    int max = 0;
+    size_t counter{ 0 };
+    int max{ 0 };
   };
 }
 #endif
