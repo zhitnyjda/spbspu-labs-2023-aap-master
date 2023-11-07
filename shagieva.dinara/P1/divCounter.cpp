@@ -2,12 +2,8 @@
 #include <limits>
 #include <stdexcept>
 
-shagieva::DivCounter::DivCounter()
-  {
-    last_number = 0;
-    serial_number = 0;
-    count = 0;
-  }
+shagieva::DivCounter::DivCounter() : last_number(0), serial_number(0), count(0)
+  {}
 
 void shagieva::DivCounter::operator()(int number)
 {
@@ -19,12 +15,9 @@ void shagieva::DivCounter::operator()(int number)
 
   ++serial_number;
 
-  if (serial_number != 1)
+  if ((serial_number != 1) && (number % last_number == 0))
   {
-    if (number % last_number == 0)
-    {
-      ++count;
-    }
+    ++count;
   }
 
   last_number = number;

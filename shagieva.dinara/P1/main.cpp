@@ -4,7 +4,7 @@
 
 int main()
 {
-  int number;
+  int number = 0;
   int seq_length = 0;
   using namespace shagieva;
   ChangeCounter changeCounter;
@@ -37,10 +37,12 @@ int main()
 
   if (seq_length < 2)
   {
-    std::cout << changeCounter() << " " << "The sequence is too short.\n";
+    std::cout << changeCounter() << "\n";
+    std::cerr << "The sequence is too short.\n";
     return 2;
   }
 
-  std::cout << changeCounter() << " " << divCounter() << "\n";
+  std::cout << changeCounter() << "\n";
+  std::cout << divCounter() << "\n";
   return 0;
 }

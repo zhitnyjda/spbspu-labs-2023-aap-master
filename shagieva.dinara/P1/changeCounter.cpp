@@ -2,11 +2,8 @@
 #include <limits>
 #include <stdexcept>
 
-shagieva::ChangeCounter::ChangeCounter()
-  {
-    last_number = 0;
-    signChange = 0;
-  }
+shagieva::ChangeCounter::ChangeCounter() : last_number(0), signChange(0)
+  {}
 
 void shagieva::ChangeCounter::operator()(int number)
 {
