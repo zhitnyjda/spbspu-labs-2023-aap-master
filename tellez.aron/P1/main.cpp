@@ -4,13 +4,11 @@
 
 int main()
 {
+  int value = 0;
   using namespace tellez;
-
-  SequenceCounter sequenceCounter;
-
-  while (true)
+  LongestDecreasingCounter counter;
+  do
   {
-    int value = 0;
     std::cin >> value;
     if (!std::cin)
     {
@@ -21,7 +19,7 @@ int main()
     {
       try
       {
-        sequenceCounter(value);
+        counter.processValue(value);
       }
       catch (const std::exception &e)
       {
@@ -29,11 +27,8 @@ int main()
         return 2;
       }
     }
-    else
-    {
-      break;
-    }
   }
-  std::cout << "Sequence count: " << sequenceCounter() << "\n";
+  while (value != 0);
+  std::cout << "Longest decreasing found: " << counter.getLongestSequenceLength() << "\n";
   return 0;
 }

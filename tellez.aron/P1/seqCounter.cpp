@@ -2,13 +2,13 @@
 #include <limits>
 #include <stdexcept>
 
-tellez::SequenceCounter::SequenceCounter() :
+tellez::LongestDecreasingCounter::LongestDecreasingCounter() :
   current_seq_count(0),
   max_seq_count(0),
   actual(0)
 {}
 
-void tellez::SequenceCounter::operator()(int value)
+void tellez::LongestDecreasingCounter::processValue(int value)
 {
   if (value <= actual)
   {
@@ -30,7 +30,7 @@ void tellez::SequenceCounter::operator()(int value)
   }
 }
 
-size_t tellez::SequenceCounter::operator()() const
+size_t tellez::LongestDecreasingCounter::getLongestSequenceLength() const
 {
   return max_seq_count;
 }
