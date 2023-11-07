@@ -2,7 +2,7 @@
 #include <limits>
 #include <stdexcept>
 
-void popov::count_min_st::operator()(int a)
+void popov::countMinSt::operator()(int a)
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
   if (min == 0)
@@ -23,7 +23,7 @@ void popov::count_min_st::operator()(int a)
     min = a;
   }
 }
-size_t popov::count_min_st::operator()()
+size_t popov::countMinSt::operator()()
 {
   return count_;
 }

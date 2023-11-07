@@ -5,7 +5,7 @@
 int main()
 {
   using namespace popov;
-  count_min_st count_min;
+  countMinSt count_min;
   int a;
   do
   {

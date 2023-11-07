@@ -4,14 +4,14 @@
 
 namespace popov
 {
-  struct count_min_st
+  struct countMinSt
   {
     void count_min();
     void operator()(int a);
     size_t operator()();
   private:
-    size_t count_ = 0;
-    int min = 0;
+    size_t count_{0};
+    int min{0};
   };
 }
 
