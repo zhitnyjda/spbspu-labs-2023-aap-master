@@ -2,13 +2,12 @@
 #include <iostream>
 #include <stdexcept>
 
-doroshenko::FindingCount::FindingCount()
-{
-  countNums_ = 0;
-  countSum_ = 0;
-  firstNum_ = 0;
-  secondNum_ = 0;
-}
+doroshenko::FindingCount::FindingCount():
+  countNums_(0),
+  countSum_(0),
+  firstNum_(0),
+  secondNum_(0)
+{}
 
 void doroshenko::FindingCount::operator()(size_t value)
 {
@@ -23,7 +22,6 @@ size_t doroshenko::FindingCount::operator()() const
   if (countNums_ < 3)
   {
     throw std::logic_error("Too short sequence\n");
-    return 2;
   }
   else
   {
