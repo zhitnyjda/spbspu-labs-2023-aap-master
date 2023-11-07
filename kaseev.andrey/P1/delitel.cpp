@@ -1,9 +1,9 @@
-#include "delitel.h"
+#include "delitel.hpp"
 #include <iostream>
 #include <stdexcept>
 #include <limits>
 
-int dilitel(std::istream &cin)
+int delitel(std::istream &cin)
 {
   const int max_count = std::numeric_limits<int>::max();
   int count = 0;
