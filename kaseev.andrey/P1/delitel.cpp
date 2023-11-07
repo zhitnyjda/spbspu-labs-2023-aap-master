@@ -3,12 +3,15 @@
 #include <stdexcept>
 #include <limits>
 
-int delitel(std::istream &cin)
+kaseev::delitel::delitel():
+    max_count(std::numeric_limits<int>::max()),
+    count(0),
+    firstnum(),
+    secondnum()
+{}
+
+int kaseev::delitel::operator()(std::istream &cin)
 {
-  const int max_count = std::numeric_limits<int>::max();
-  int count = 0;
-  int firstnum;
-  int secondnum;
   if (!(std::cin >> firstnum) || firstnum == 0) {
     throw std::logic_error("Wrong input");
   }
@@ -26,7 +29,7 @@ int delitel(std::istream &cin)
     if (count > max_count) {
       throw std::overflow_error("Too many numbers");
     }
-    if (!(cin >> secondnum)) {
+    if (!(std::cin >> secondnum)) {
       throw std::logic_error("Wrong input");
     }
   }

@@ -1,11 +1,12 @@
 #include <iostream>
-#include "delitel.hpp"
+#include "delitel.cpp"
 #include <stdexcept>
 
 int main()
 {
+  kaseev::delitel delitel;
   try {
-    int ans = 0;
+    int ans;
     ans = delitel(std::cin);
     std::cout << ans << "\n";
     return 0;
