@@ -10,7 +10,7 @@ kaseev::delitel::delitel():
     secondnum()
 {}
 
-int kaseev::delitel::operator()(std::istream &cin)
+int kaseev::delitel::operator()(std::istream &)
 {
   if (!(std::cin >> firstnum) || firstnum == 0) {
     throw std::logic_error("Wrong input");
