@@ -4,6 +4,7 @@
 int main()
 {
   psarev::maxLen myMaxLen;
+  int undep_counter = 0;
   try
   {
     int value = 0;
@@ -13,8 +14,9 @@ int main()
     while (value != 0) {
       myMaxLen(value);
       std::cin >> value;
+      undep_counter++;
     }
-    if (myMaxLen.seq_len == 0 && value == 0)
+    if (undep_counter == 0 && value == 0)
     {
       throw std::logic_error("Error: Not a sequence!\n");
     }
