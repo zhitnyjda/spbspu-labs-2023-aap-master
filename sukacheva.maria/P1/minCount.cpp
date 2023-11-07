@@ -3,7 +3,10 @@
 #include <stdexcept>
 
 sukacheva::minCount::minCount():
-  count(0), min_value(std::numeric_limits< long long > ::max()), max_count(std::numeric_limits< long long > ::max()){}
+  count(0),
+  min_value(std::numeric_limits< long long > ::max()),
+  max_count(std::numeric_limits< long long > ::max())
+{}
 
 void sukacheva::minCount::operator()(long long value)
 {

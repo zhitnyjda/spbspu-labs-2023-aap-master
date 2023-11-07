@@ -1,11 +1,10 @@
 #include <iostream>
-#include <limits>
 #include "minCount.hpp"
 using namespace sukacheva;
 
 int main()
 {
-  minCount number_of_minimum;
+  minCount numberOfMinimum;
   long long value = 0;
   do
   {
@@ -19,7 +18,7 @@ int main()
     {
       try
       {
-        number_of_minimum(value);
+        numberOfMinimum(value);
       }
       catch (const std::exception& e)
       {
@@ -28,6 +27,6 @@ int main()
       }
     }
   } while (value != 0);
-  std::cout << number_of_minimum() << "\n";
+  std::cout << numberOfMinimum() << "\n";
   return 0;
 }
