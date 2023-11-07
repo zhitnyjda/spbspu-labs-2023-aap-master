@@ -9,10 +9,11 @@ namespace psarev
     void operator()(int value);
     int operator()();
 
-  private:
-    int prev_value;
     int seq_len;
+
+  private:
     int max_len;
+    int prev_value;
   };
 }
 #endif
