@@ -1,5 +1,6 @@
 #ifndef dilitel_HPP
 #define dilitel_HPP
+#include <iostream>
 #include <cstddef>
 
 namespace kaseev
