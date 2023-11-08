@@ -6,7 +6,7 @@ int main()
 {
   using namespace popov;
   countMinSt count_min;
-  int a;
+  int a = 0;
   do
   {
     std::cin >> a;
