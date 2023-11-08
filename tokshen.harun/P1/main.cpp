@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include "functions.hpp"
 
 int main()
