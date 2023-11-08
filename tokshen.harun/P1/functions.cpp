@@ -6,8 +6,8 @@ int findSecondMax(std::istream &cin)
 {
   const int max_inp = std::numeric_limits< int >::max();
   const int min_inp = std::numeric_limits< int >::min();
-  int maxInput = INT_MIN;
-  int secondMaxInput = INT_MIN;
+  int maxInput = min_inp;
+  int secondMaxInput = min_inp;
   int input;
   if (!(cin >> input)) {
     throw std::invalid_argument("Input is not correct\n");
@@ -31,7 +31,7 @@ int findSecondMax(std::istream &cin)
       secondMaxInput = input;
     }
   }
-  if (secondMaxInput == INT_MIN) {
+  if (secondMaxInput == min_inp) {
     throw std::invalid_argument("You should write min 2 numbers\n");
   }
   else {
