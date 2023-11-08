@@ -4,4 +4,3 @@
 int kolvo(int & number, int & lastnumber, int & cout, int & relust);
 
 #endif
-

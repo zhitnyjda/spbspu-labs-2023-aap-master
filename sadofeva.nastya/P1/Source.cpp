@@ -23,7 +23,7 @@ int main()
       }
       else
       {
-        kolvo(number,lastnumber,cout,result);
+        kolvo(number,lastnumber,count,result);
         count++;
       }
     }
