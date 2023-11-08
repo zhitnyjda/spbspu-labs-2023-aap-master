@@ -1,4 +1,4 @@
 #ifndef Functions_HPP
 #define Functions_HPP
-int findSecondMax(std::istream &cin);
+int findSecondMax(std::istream &);
 #endif
