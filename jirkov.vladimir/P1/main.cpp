@@ -6,7 +6,6 @@ int main()
   size_t prev = 0;
   size_t current = 0;
   size_t next = 0;
-  size_t count = 0;
   FindingCount findingCount;
   std::cin >> prev;
   std::cin >> current;
