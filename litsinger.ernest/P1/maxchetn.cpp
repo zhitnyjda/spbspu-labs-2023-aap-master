@@ -1,5 +1,10 @@
 #include "maxchetn.hpp"
 
+litsinger::countMax::countMax():
+  counter(0),
+  max(0)
+{}
+
 void litsinger::countMax::operator()(int value)
 {
   if (max == 0)

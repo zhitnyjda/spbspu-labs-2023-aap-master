@@ -5,6 +5,7 @@ namespace litsinger
 {
   struct countMax
   {
+    countMax();
     void operator()(int value);
     size_t operator()();
   private:
