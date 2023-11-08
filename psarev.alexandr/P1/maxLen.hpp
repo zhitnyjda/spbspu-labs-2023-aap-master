@@ -1,5 +1,7 @@
 #ifndef MAXLEN_H
 #define MAXLEN_H
+#include <cstddef>
+
 namespace psarev
 {
   class maxLen
