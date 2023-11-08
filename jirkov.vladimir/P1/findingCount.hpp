@@ -8,9 +8,9 @@ namespace jirkov
     public:
       FindingCount();
       void operator()(size_t prev, size_t current, size_t next);
-      size_t operator()();
-      size_t lenghts;
+      size_t operator()() const;
     private:
+      size_t lenghts_;
       size_t count_;
   };
 }
