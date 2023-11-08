@@ -1,5 +1,5 @@
 #include <iostream>
-#include <climits>
+#include <limits>
 #include "functions.hpp"
 
 int findSecondMax(std::istream &cin)
