@@ -1,17 +1,12 @@
 #include <iostream>
-#include "Header.hpp"
 
 int main()
 {
-  int countmax = 0;
-  try
+  int number = 0;
+  std::cin >> number;
+  if (!std::cin)
   {
-    countmax = count_loc_max(std::cin);
-    std::cout << countmax;
-  }
-  catch (const std::exception& e)
-  {
-    std::cout << e.what();
+    std::cerr << "Not a sequence.\n";
     return 1;
   }
 }
