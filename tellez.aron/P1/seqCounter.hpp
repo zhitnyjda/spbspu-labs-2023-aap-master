@@ -10,8 +10,8 @@ namespace tellez
     void processValue(int value);
     size_t getLongestSequenceLength() const;
   private:
-    int current_seq_count;
-    int max_seq_count;
+    size_t current_seq_count;
+    size_t max_seq_count;
     int actual;
   };
 }
