@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "function.hpp"
+#include "findmaxCountNumbers.hpp"
 
 int main()
 {
