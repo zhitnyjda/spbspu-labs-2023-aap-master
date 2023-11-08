@@ -1,5 +1,5 @@
-#ifndef MYFUNC_H
-#define MYFUNC_H
+#ifndef MAXLEN_H
+#define MAXLEN_H
 namespace psarev
 {
   class maxLen
@@ -9,10 +9,9 @@ namespace psarev
     void operator()(int value);
     int operator()();
 
-    int seq_len;
-
   private:
-    int max_len;
+    size_t seq_len;
+    size_t max_len;
     int prev_value;
   };
 }

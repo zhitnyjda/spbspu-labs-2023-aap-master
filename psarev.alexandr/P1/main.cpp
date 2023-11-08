@@ -1,5 +1,5 @@
 #include <iostream>
-#include "myFunc.hpp"
+#include "maxLen.hpp"
 
 int main()
 {
@@ -7,17 +7,11 @@ int main()
   try
   {
     int value = 0;
-    std::cin.exceptions(std::istream::failbit);
-    std::cin >> value;
 
-    while (value != 0) {
-      myMaxLen(value);
+    do {
       std::cin >> value;
-    }
-    if (myMaxLen.seq_len == 0 && value == 0)
-    {
-      throw std::logic_error("Error: Not a sequence!\n");
-    }
+      myMaxLen(value);
+    } while (value != 0);
   }
   catch(const std::logic_error & e)
   {
