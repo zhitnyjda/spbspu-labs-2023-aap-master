@@ -33,6 +33,8 @@ int main()
    }
   }
   while (number != 0);
-  std::cout << "максимальное число подряд идущих равных элементов: " << maxEqualSequense() << "\n";
-  std::cout << "наибольшая длина монотонно-убывающего фрагмента последовательности: " << maxDecreasingSequence() << "\n";
+  std::cout << "максимальное число подряд идущих равных элементов: ";
+  std::cout << maxEqualSequense() << "\n";
+  std::cout << "наибольшая длина монотонно-убывающего фрагмента последовательности: ";
+  std::cout << maxDecreasingSequence() << "\n";
 }
