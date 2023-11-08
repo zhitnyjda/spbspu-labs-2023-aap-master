@@ -4,8 +4,8 @@
 
 int findSecondMax(std::istream &cin)
 {
-  const constexpr int max_inp = std::numeric_limits< int >::max();
-  const constexpr int min_inp = std::numeric_limits< int >::min();
+  const int max_inp = std::numeric_limits< int >::max();
+  const int min_inp = std::numeric_limits< int >::min();
   int maxInput = INT_MIN;
   int secondMaxInput = INT_MIN;
   int input;
