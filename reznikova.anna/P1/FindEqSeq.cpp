@@ -1,5 +1,4 @@
 #include "FindEqSeq.hpp"
-#include <iostream>
 #include <limits>
 #include <stdexcept>
 

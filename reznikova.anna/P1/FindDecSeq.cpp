@@ -1,12 +1,11 @@
 #include "FindDecSeq.hpp"
-#include <iostream>
 #include <limits>
 #include <stdexcept>
 
 reznikova::MaxDecreasingSequence::MaxDecreasingSequence():
-  count(1),
-  max_count(0),
-  previous_number(0)
+count(1),
+max_count(0),
+previous_number(0)
 {}
 
 void reznikova::MaxDecreasingSequence::operator()(long long number)
