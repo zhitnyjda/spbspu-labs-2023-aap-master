@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "lessmore.hpp"
+#include "Lessmore.hpp"
 
 hohlova::LessMore::LessMore():
   countres_(0)
