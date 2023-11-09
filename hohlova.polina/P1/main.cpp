@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <limits>
-#include "lessmore.hpp"
+#include "Lessmore.hpp"
 #include "findlocalmin.hpp"
 
 int main()
