@@ -1,17 +1,25 @@
 #include <iostream>
 int main()
 {
-  int number =0;
-  size_t seqLenght = 0;
-  do{
-    std::cin>> number;
-    if (!std::cin)
-    {
-      std::cerr<< "not a sequence\n";
-      return 1;
-    } else if (number != 0) {
-      ++seqLenght;
-    }
-  } while (number!=0);
-  std::cout<< seqLenght<< "\n";
-}
+  int num = 0;
+  int subMax = 0;
+  int max = 0;
+  std::cin>>num;
+  while ((std::cin) and (num !=0)) {
+    if (num>max){
+      subMax = max;
+      max = num;
+    } else if (num > subMax) {
+      subMax=num;
+    };
+    std::cin >> num;
+  };
+  if (!std::cin) {
+    std::cerr<< "not a sequence\n";
+    return 1;
+  }else if (subMax == 0) {
+    std::cerr<<"too short sequence\n";
+  } else {
+    std::cout<< subMax << "\n";
+  };
+};
