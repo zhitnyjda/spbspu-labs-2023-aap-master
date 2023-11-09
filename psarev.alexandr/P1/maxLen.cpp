@@ -9,8 +9,6 @@ psarev::maxLen::maxLen():
 
 void psarev::maxLen::operator()(int value)
 {
-  std::cin.exceptions(std::istream::failbit);
-
   if (seq_len == 0 && value == 0)
   {
     throw std::logic_error("Error: Not a sequence!\n");

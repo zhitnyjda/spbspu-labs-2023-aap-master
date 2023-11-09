@@ -4,25 +4,26 @@
 int main()
 {
   psarev::maxLen myMaxLen;
-  try
-  {
-    int value = 0;
-
-    do {
+  std::cin.exceptions(std::istream::failbit);
+  int value = 0;
+  
+  do {
+    try {
       std::cin >> value;
       myMaxLen(value);
-    } while (value != 0);
-  }
-  catch(const std::logic_error & e)
-  {
-    std::cerr << e.what();
-    return 2;
-  }
-  catch(const std::istream::failure & e)
-  {
-    std::cerr << "Error: Wrong input!\n";
-    return 1;
-  }
+    }
+    catch (const std::logic_error& e)
+    {
+      std::cerr << e.what();
+      return 2;
+    }
+    catch (const std::istream::failure& e)
+    {
+      std::cerr << "Error: Wrong input!\n";
+      return 1;
+    }
+  } while (value != 0);
+  
   std::cout << myMaxLen() << "\n";
   return 0;
 }
