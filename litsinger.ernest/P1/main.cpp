@@ -1,6 +1,6 @@
-#include "maxchetn.hpp"
 #include <iostream>
 #include <exception>
+#include "maxchetn.hpp"
 
 int main()
 {

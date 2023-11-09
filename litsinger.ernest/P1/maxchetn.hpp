@@ -1,6 +1,7 @@
 #ifndef MAXCHETN_HPP
 #define MAXCHETN_HPP
 #include <cstddef>
+
 namespace litsinger
 {
   struct countMax
