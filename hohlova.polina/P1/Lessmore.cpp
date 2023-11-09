@@ -1,8 +1,12 @@
 #include <iostream>
 #include <stdexcept>
-#include "Lessmore.hpp"
+#include "lessmore.hpp"
 
-void hohlova::operator()(int prev, int curr, int next)
+hohlova::LessMore::LessMore():
+  countres_(0)
+{}
+
+void hohlova::LessMore::operator()(int prev, int curr, int next)
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
   if (countres_ == maxSize)
@@ -14,7 +18,7 @@ void hohlova::operator()(int prev, int curr, int next)
     ++countres_;
   }
 }
-size_t hohlova::operator()() const
+size_t hohlova::LessMore::operator()() const
 {
   return countres_;
 }
