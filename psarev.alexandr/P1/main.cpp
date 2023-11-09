@@ -6,7 +6,7 @@ int main()
   psarev::maxLen myMaxLen;
   std::cin.exceptions(std::istream::failbit);
   int value = 0;
-  
+
   do {
     try {
       std::cin >> value;
