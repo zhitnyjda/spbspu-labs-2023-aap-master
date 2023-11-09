@@ -23,7 +23,7 @@ int main()
       return 1;
     }
   } while (value != 0);
-  
+
   std::cout << myMaxLen() << "\n";
   return 0;
 }
