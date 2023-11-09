@@ -4,9 +4,9 @@
 
 namespace popov
 {
-  struct countMinSt
+  struct CountMinSt
   {
-    countMinSt();
+    CountMinSt();
     void operator()(int a);
     size_t operator()();
   private:

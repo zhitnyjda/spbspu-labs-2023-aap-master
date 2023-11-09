@@ -2,11 +2,11 @@
 #include <limits>
 #include <stdexcept>
 
-popov::countMinSt::countMinSt():
+popov::CountMinSt::CountMinSt():
   count_(0),
   min(0)
 {}
-void popov::countMinSt::operator()(int a)
+void popov::CountMinSt::operator()(int a)
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
   if (min == 0)
@@ -27,7 +27,7 @@ void popov::countMinSt::operator()(int a)
     min = a;
   }
 }
-size_t popov::countMinSt::operator()()
+size_t popov::CountMinSt::operator()()
 {
   return count_;
 }

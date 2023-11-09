@@ -5,21 +5,21 @@
 int main()
 {
   using namespace popov;
-  countMinSt count_min;
-  int a = 0;
+  CountMinSt CountMin;
+  int number = 0;
   do
   {
-    std::cin >> a;
+    std::cin >> number;
     if (!std::cin)
     {
       std::cerr << "not a number\n";
       return 1;
     }
-    if (a != 0)
+    if (number != 0)
     {
       try
       {
-        count_min(a);
+        CountMin(number);
       }
       catch (const std::exception & e)
       {
@@ -28,7 +28,7 @@ int main()
       }
     }
   }
-  while (a != 0);
-  std::cout << count_min() << "\n";
+  while (number != 0);
+  std::cout << CountMin() << "\n";
   return 0;
 }
