@@ -1,4 +1,5 @@
 // #include "functions.hpp"
+#include "structs.hpp"
 #include <iostream>
 #include <cstddef>
 #include <fstream>
@@ -9,6 +10,7 @@ int main(int argc, char* argv[])
   try
   {
     // checking params
+    using namespace miheev;
     if (argc != 4)
     {
       throw std::invalid_argument("wrong arguments. Programm takes 3 positional");
@@ -23,15 +25,22 @@ int main(int argc, char* argv[])
       std::cerr << "can't interpret first argument as integer\n";
     }
 
-    std::size_t cols = 0, rows = 0;
+    size_t cols = 0, rows = 0;
 
     // reading matrix from file
     std::ifstream inputFile(argv[2]);
-    inputFile >> rows, cols;
-
+    inputFile >> rows >> cols;
+    if (!inputFile)
+    {
+      std::cerr << "Can't read input\n";
+      return 2;
+    }
+    Matrix matrix(rows, cols);
+    matrix.initWithIfstream(inputFile);
     inputFile.close();
 
-    // parsing matrix
+    matrix.printSelf();
+
     return 0;
   }
   catch(const std::logic_error& logic_e)
