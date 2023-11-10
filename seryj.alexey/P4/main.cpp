@@ -1,17 +1,17 @@
 #include "Funcs.hpp"
 #include <iostream>
 using namespace seryj;
-	int main(int args, const char** argv)
-	{
+int main(int args, const char* argv[])
+{
 		try
 		{
 			int task = seryj::fillArguments(args, argv);
-		  Matrix matrix;
+	  Matrix matrix;
 			matrix.line = read();
 			matrix.column = read();
 			if (task == 1)
 			{
-				int static_array[10000] = { 0 };
+ 			int static_array[10001] = { 0 };
 				matrix.values = static_array;
 				matrix.fillArray();
 				matrix.printAvgOfNeigbours();
@@ -36,7 +36,7 @@ using namespace seryj;
 		}
 		catch (std::invalid_argument& e)
 		{
-			std::cerr << e.what();
+  	std::cerr << e.what();
 			return 1;
 		}
 		catch (std::logic_error& e)

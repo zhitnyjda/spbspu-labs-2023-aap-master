@@ -1,12 +1,12 @@
 #include "Funcs.hpp"
 #include <iostream>
 #include <fstream>
-#include <cmath>
+
 namespace seryj
 {
 	std::ifstream input;
 	std::ofstream output;
-	int fillArguments(int args, const char** argv)
+	int fillArguments(int args, const char* argv[])
 	{
 		if (args > 4)
 			throw (std::invalid_argument("Too much arguments"));
@@ -74,7 +74,7 @@ namespace seryj
 		count--;
 		sum -= *(values + curr_line * max_line + curr_column);
 		if (count > 0)
-			return round(sum / count * 10) / 10;
+			return std::round(sum / count * 10) / 10;
 		else return 0;
 	}
 }
