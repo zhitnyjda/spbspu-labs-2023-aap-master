@@ -2,32 +2,32 @@
 #include <iostream>
 
 psarev::maxLen::maxLen():
-  seq_len(0),
-  max_len(0),
-  prev_value(0)
+  seqLen(0),
+  maxSeqLen(0),
+  preValue(0)
 {}
 
 void psarev::maxLen::operator()(int value)
 {
-  if (seq_len == 0 && value == 0)
+  if (seqLen == 0 && value == 0)
   {
     throw std::logic_error("Error: Not a sequence!\n");
   }
 
-  if (value >= prev_value) {
-    seq_len++;
-    if (seq_len > max_len) {
-      max_len = seq_len;
+  if (value >= preValue) {
+    seqLen++;
+    if (seqLen > maxSeqLen) {
+      maxSeqLen = seqLen;
     }
   }
   else {
-    seq_len = 1;
+    seqLen = 1;
   }
 
-  prev_value = value;
+  preValue = value;
 }
 
 int psarev::maxLen::operator()()
 {
-  return max_len;
+  return maxSeqLen;
 }

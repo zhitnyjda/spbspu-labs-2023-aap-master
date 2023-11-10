@@ -12,9 +12,9 @@ namespace psarev
     int operator()();
 
   private:
-    size_t seq_len;
-    size_t max_len;
-    int prev_value;
+    size_t seqLen;
+    size_t maxSeqLen;
+    int preValue;
   };
 }
 #endif
