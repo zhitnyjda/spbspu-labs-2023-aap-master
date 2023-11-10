@@ -7,14 +7,13 @@ namespace seryj
   class Matrix
   {
   public:
-  int line;
-  int column;
-  int* values;
-  void fillArray();
-  void printAvgOfNeigbours()const;
+    int line;
+    int column;
+    int* values;
+    void fillArray();
+    void printAvgOfNeigbours()const;
   private:
-  double findAverageOfNeighbours(int,int)const;
+    double findAverageOfNeighbours(int, int)const;
   };
 }
 #endif
-
