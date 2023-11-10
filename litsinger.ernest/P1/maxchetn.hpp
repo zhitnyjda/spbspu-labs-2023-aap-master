@@ -10,8 +10,8 @@ namespace litsinger
     void operator()(int value);
     size_t operator()();
   private:
-    size_t counter{ 0 };
-    int max{ 0 };
+    size_t counter;
+    int max;
   };
 }
 #endif
