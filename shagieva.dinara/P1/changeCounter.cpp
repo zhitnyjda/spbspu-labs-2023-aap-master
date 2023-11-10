@@ -5,7 +5,7 @@
 shagieva::ChangeCounter::ChangeCounter() :
   lastNumber(0),
   signChange(0)
-  {}
+{}
 
 void shagieva::ChangeCounter::operator()(int number)
 {

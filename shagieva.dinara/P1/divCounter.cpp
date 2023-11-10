@@ -6,7 +6,7 @@ shagieva::DivCounter::DivCounter() :
   lastNumber(0),
   serialNumber(0),
   count(0)
-  {}
+{}
 
 void shagieva::DivCounter::operator()(int number)
 {
