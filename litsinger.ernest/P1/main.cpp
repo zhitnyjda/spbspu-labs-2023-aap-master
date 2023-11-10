@@ -7,7 +7,7 @@ int main()
   using namespace litsinger;
   countMax maxChetn;
   int value;
-  int size_t = 0;
+  size_t length = 0;
   do
   {
     std::cin >> value;
@@ -19,9 +19,9 @@ int main()
     if (value != 0)
     {
       maxChetn(value);
-      size_t++;
+      length++;
     }
-    else if (size_t == 0)
+    else if (length == 0)
     {
       std::cerr << "Short sequence" << "\n";
       return 2;
