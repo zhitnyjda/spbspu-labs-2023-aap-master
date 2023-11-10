@@ -8,7 +8,7 @@ namespace yartsev {
     public:
       void operator()(const int num);
       int getMaxSequence();
-      int getMinElement();
+      int getMinCounter();
     private:
       int maxSequence = 0;
       int currentSequence = 0;

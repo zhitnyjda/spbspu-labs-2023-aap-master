@@ -27,7 +27,7 @@ int yartsev::Counter::getMaxSequence()
 {
   return maxSequence;
 }
-int yartsev::Counter::getMinElement()
+int yartsev::Counter::getMinCounter()
 {
-  return minElement;
+  return minCounter;
 }
