@@ -23,6 +23,7 @@ int main(int argc, char* argv[])
     catch(const std::invalid_argument& e)
     {
       std::cerr << "can't interpret first argument as integer\n";
+      return 1;
     }
 
     size_t cols = 0, rows = 0;
@@ -53,6 +54,11 @@ int main(int argc, char* argv[])
   {
     std::cerr << logic_e.what();
     return 1;
+  }
+  catch(const std::runtime_error& e)
+  {
+    std::cout << e.what();
+    return 2;
   }
   catch(...)
   {

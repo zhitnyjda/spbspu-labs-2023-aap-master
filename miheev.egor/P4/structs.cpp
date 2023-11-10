@@ -51,7 +51,6 @@ void miheev::Matrix::increaseRectBorder(size_t xStart, size_t yStart, size_t wid
       matrix_[i * nCols_ + xStart + width - 1] += increment;
     }
   }
- printSelf();
 }
 
 void miheev::Matrix::increasePeriphery()
