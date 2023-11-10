@@ -41,6 +41,12 @@ int main(int argc, char* argv[])
 
     matrix.increasePeriphery();
 
+    std::ofstream outFile(argv[3]);
+    if (outFile.is_open())
+    {
+      outFile << std::to_string(matrix.getNRows()) + ' ' + std::to_string(matrix.getNCols()) + ' ' + matrix.getMatrixInline();
+    }
+
     return 0;
   }
   catch(const std::logic_error& logic_e)

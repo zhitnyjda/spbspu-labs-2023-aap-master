@@ -72,3 +72,23 @@ void miheev::Matrix::increasePeriphery()
     increment += 1;
   }
 }
+
+std::string miheev::Matrix::getMatrixInline() const
+{
+  std::string line = "";
+  for (size_t i = 0; i < nRows_ * nCols_; ++i)
+  {
+    line += std::to_string(matrix_[i]) + ' ';
+  }
+  return line;
+}
+
+size_t miheev::Matrix::getNRows() const
+{
+  return nRows_;
+}
+
+size_t miheev::Matrix::getNCols() const
+{
+  return nCols_;
+}

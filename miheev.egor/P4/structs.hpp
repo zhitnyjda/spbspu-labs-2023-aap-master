@@ -18,6 +18,9 @@ namespace miheev
     void printSelf() const;
     void increaseRectBorder(size_t xStart, size_t yStart, size_t width, size_t height, int increment);
     void increasePeriphery();
+    std::string getMatrixInline() const;
+    size_t getNRows() const;
+    size_t getNCols() const;
   };
 }
 #endif
