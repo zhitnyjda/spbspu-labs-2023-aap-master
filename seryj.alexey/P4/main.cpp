@@ -11,7 +11,7 @@ using namespace seryj;
 			matrix.column = read();
 			if (task == 1)
 			{
-				int static_array[10001] = { 0 };
+				int static_array[10000] = { 0 };
 				matrix.values = static_array;
 				matrix.fillArray();
 				matrix.printAvgOfNeigbours();
