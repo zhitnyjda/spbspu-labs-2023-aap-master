@@ -3,9 +3,9 @@
 #include <stdexcept>
 
 shagieva::DivCounter::DivCounter() :
-	last_Number(0),
-	serialNumber(0),
-	count(0)
+  lastNumber(0),
+  serialNumber(0),
+  count(0)
   {}
 
 void shagieva::DivCounter::operator()(int number)
@@ -18,12 +18,12 @@ void shagieva::DivCounter::operator()(int number)
 
   ++serialNumber;
 
-  if ((serialNumber != 1) && (number % last_Number == 0))
+  if ((serialNumber != 1) && (number % lastNumber == 0))
   {
     ++count;
   }
 
-  last_Number = number;
+  lastNumber = number;
 }
 
 unsigned int shagieva::DivCounter::operator()() const
