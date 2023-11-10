@@ -2,7 +2,10 @@
 #include <limits>
 #include <stdexcept>
 
-shagieva::DivCounter::DivCounter() : last_number(0), serial_number(0), count(0)
+shagieva::DivCounter::DivCounter() :
+	lastNumber(0),
+	serialNumber(0),
+	count(0)
   {}
 
 void shagieva::DivCounter::operator()(int number)
@@ -13,14 +16,14 @@ void shagieva::DivCounter::operator()(int number)
     throw std::logic_error("The result is too big.\n");
   }
 
-  ++serial_number;
+  ++serialNumber;
 
-  if ((serial_number != 1) && (number % last_number == 0))
+  if ((serialNumber != 1) && (number % lastNumber == 0))
   {
     ++count;
   }
 
-  last_number = number;
+  lastNumber = number;
 }
 
 unsigned int shagieva::DivCounter::operator()() const

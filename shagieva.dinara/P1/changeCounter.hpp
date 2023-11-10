@@ -11,7 +11,7 @@ namespace shagieva
     unsigned int operator()() const;
 
   private:
-    int last_number;
+    int lastNumber;
     unsigned int signChange;
   };
 }

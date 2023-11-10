@@ -2,7 +2,9 @@
 #include <limits>
 #include <stdexcept>
 
-shagieva::ChangeCounter::ChangeCounter() : last_number(0), signChange(0)
+shagieva::ChangeCounter::ChangeCounter() :
+	lastNumber(0),
+	signChange(0)
   {}
 
 void shagieva::ChangeCounter::operator()(int number)
@@ -13,12 +15,12 @@ void shagieva::ChangeCounter::operator()(int number)
     throw std::logic_error("The number of sign changes is too big.\n");
   }
 
-  if (number * last_number < 0)
+  if (number * lastNumber < 0)
   {
     ++signChange;
   }
 
-   last_number = number;
+   lastNumber = number;
 }
 
 unsigned int shagieva::ChangeCounter::operator()() const
