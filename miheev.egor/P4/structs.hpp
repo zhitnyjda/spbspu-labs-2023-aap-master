@@ -15,7 +15,9 @@ namespace miheev
   public:
     Matrix (size_t rows, size_t cols);
     void initWithIfstream(std::ifstream& in);
-    void printSelf();
+    void printSelf() const;
+    void increaseRectBorder(size_t xStart, size_t yStart, size_t width, size_t height, int increment);
+    void increasePeriphery();
   };
 }
 #endif

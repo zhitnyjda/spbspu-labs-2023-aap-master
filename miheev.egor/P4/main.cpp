@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     matrix.initWithIfstream(inputFile);
     inputFile.close();
 
-    matrix.printSelf();
+    matrix.increasePeriphery();
 
     return 0;
   }
