@@ -3,11 +3,11 @@
 using namespace seryj;
 int main(int args, const char* argv[])
 {
-		try
+  try
 		{
 			int task = seryj::fillArguments(args, argv);
-	  Matrix matrix;
-			matrix.line = read();
+	    Matrix matrix;
+		  matrix.line = read();
 			matrix.column = read();
 			if (task == 1)
 			{
