@@ -7,7 +7,7 @@ namespace popov
   struct CountMinSt
   {
     CountMinSt();
-    void operator()(int a);
+    void operator()(int number);
     size_t operator()();
   private:
     size_t count_;

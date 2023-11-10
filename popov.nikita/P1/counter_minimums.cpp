@@ -6,14 +6,14 @@ popov::CountMinSt::CountMinSt():
   count_(0),
   min(0)
 {}
-void popov::CountMinSt::operator()(int a)
+void popov::CountMinSt::operator()(int number)
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
   if (min == 0)
   {
-    min = a;
+    min = number;
   }
-  if (a == min)
+  if (number == min)
   {
     if (count_ == maxSize)
     {
@@ -21,10 +21,10 @@ void popov::CountMinSt::operator()(int a)
     }
     ++count_;
   }
-  else if (min > a)
+  else if (min > number)
   {
     count_ = 1;
-    min = a;
+    min = number;
   }
 }
 size_t popov::CountMinSt::operator()()
