@@ -42,7 +42,7 @@ int main()
     return 2;
   }
 
-  std::cout << "Result 1:" << changeCounter() << "\n";
-  std::cout << "Result 2:" << divCounter() << "\n";
+  std::cout << changeCounter() << "\n";
+  std::cout << divCounter() << "\n";
   return 0;
 }

@@ -11,7 +11,7 @@ namespace shagieva
     unsigned int operator()() const;
 
   private:
-    int lastNumber;
+    int last_Number;
     unsigned int serialNumber;
     unsigned int count;
   };
