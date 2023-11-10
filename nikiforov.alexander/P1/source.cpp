@@ -3,7 +3,8 @@
 
 int func(std::istream&)
 {
-  int num;
+  int n = 0;
+  int num = 0;
   if (!(std::cin >> num)) {
     throw std::invalid_argument("Wrong input");
   }
