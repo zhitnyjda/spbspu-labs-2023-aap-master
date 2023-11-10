@@ -15,8 +15,19 @@ void yartsev::Counter::operator()(const int num)
     currentSequence = 0;
   }
   maxSequence = std::max(maxSequence, currentSequence);
+  if (num < minElement) {
+    minElement = num;
+    minCounter = 0;
+  }
+  if (minElement == num) {
+    minCounter++;
+  }
 }
 int yartsev::Counter::getMaxSequence()
 {
   return maxSequence;
+}
+int yartsev::Counter::getMinElement()
+{
+  return minElement;
 }

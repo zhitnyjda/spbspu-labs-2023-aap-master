@@ -22,6 +22,6 @@ int main ()
       }
     }
   } while (num != 0);
-  std::cout << counter.getMaxSequence() << "\n";
+  std::cout << counter.getMaxSequence() << " " << counter.getMinElement() << "\n";
   return 0;
 }
