@@ -6,7 +6,7 @@ namespace seryj
 {
 	std::ifstream input;
 	std::ofstream output;
-	int fillArguments(int args, const char* argv[])
+	int fillArguments(int args, const char** argv)
 	{
 		if (args > 4)
 			throw (std::invalid_argument("Too much arguments"));

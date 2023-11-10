@@ -2,7 +2,7 @@
 #define FUNCS_HPP
 namespace seryj
 {
-	int fillArguments(int, const char* []);
+	int fillArguments(int, const char**);
 	int read();
 	class Matrix
 	{
