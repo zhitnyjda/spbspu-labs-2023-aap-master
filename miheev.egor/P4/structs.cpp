@@ -1,7 +1,7 @@
 #include "structs.hpp"
 #include <iostream>
 
-miheev::Matrix::Matrix(size_t rows, size_t cols, int mode):
+miheev::Matrix::Matrix(size_t rows, size_t cols, long long mode):
   nRows_(rows),
   nCols_(cols)
 {
@@ -19,10 +19,8 @@ miheev::Matrix::Matrix(size_t rows, size_t cols, int mode):
 void miheev::Matrix::initWithIfstream(std::ifstream& in)
 {
   int current = 0;
-  std::cout << nRows_ * nCols_ << '\n';
   for (size_t i = 0; i < nRows_ * nCols_; i++)
   {
-    std::cout << "let's count";
     in >> current;
     if (!in)
     {
@@ -35,7 +33,6 @@ void miheev::Matrix::initWithIfstream(std::ifstream& in)
 
 void miheev::Matrix::printSelf() const
 {
-  std::cout << "rows = " << nRows_ << "\ncols = " << nCols_ << '\n';
   for (size_t i = 0; i < nRows_; i++)
   {
     for (size_t j = 0; j < nCols_; j++)
