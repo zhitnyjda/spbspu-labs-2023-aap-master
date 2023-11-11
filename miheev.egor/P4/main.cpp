@@ -37,17 +37,19 @@ int main(int argc, char* argv[])
       std::cerr << "Can't read input\n";
       return 2;
     }
-    Matrix matrix(rows, cols, num);
-    matrix.initWithIfstream(inputFile);
+    Matrix* matrix = new Matrix(rows, cols, num);
+    (*matrix).initWithIfstream(inputFile);
     inputFile.close();
 
-    matrix.increasePeriphery();
+    (*matrix).increasePeriphery();
 
     std::ofstream outFile(argv[3]);
     if (outFile.is_open())
     {
-      outFile << std::to_string(matrix.getNRows()) + ' ' + std::to_string(matrix.getNCols()) + ' ' + matrix.getMatrixInline();
+      outFile << std::to_string((*matrix).getNRows()) + ' ' + std::to_string((*matrix).getNCols()) + ' ' + (*matrix).getMatrixInline();
     }
+
+    delete matrix;
 
     return 0;
   }

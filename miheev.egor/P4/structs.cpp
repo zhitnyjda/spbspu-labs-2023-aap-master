@@ -3,7 +3,8 @@
 
 miheev::Matrix::Matrix(size_t rows, size_t cols, long long mode):
   nRows_(rows),
-  nCols_(cols)
+  nCols_(cols),
+  mode_(mode)
 {
   if (mode == 1)
   {
@@ -13,6 +14,14 @@ miheev::Matrix::Matrix(size_t rows, size_t cols, long long mode):
   else if (mode == 2)
   {
     matrix_ = new int [rows*cols];
+  }
+}
+
+miheev::Matrix::~Matrix()
+{
+  if (mode_ == 2)
+  {
+    delete[] matrix_;
   }
 }
 
