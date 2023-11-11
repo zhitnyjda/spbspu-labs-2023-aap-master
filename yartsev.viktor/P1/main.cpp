@@ -13,7 +13,8 @@ int main ()
       return 1;
     } else if (num != 0) {
       try {
-        seqCounter(num);
+        seqCounter.updateMaxSequence(num);
+        seqCounter.updateMinCounter(num);
       } catch (const std::exception & e) {
         std::cerr << "Error: " << e.what() << "\n";
         seqCounter();

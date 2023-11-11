@@ -7,7 +7,17 @@ void yartsev::SequenceCounter::operator()()
 {
   std::cout << maxSequence << "\n" << minCounter << "\n";
 }
-void yartsev::SequenceCounter::operator()(const int num)
+void yartsev::SequenceCounter::updateMinCounter(int num)
+{
+  if (num < minElement) {
+    minElement = num;
+    minCounter = 0;
+  }
+  if (minElement == num) {
+    minCounter++;
+  }
+}
+void yartsev::SequenceCounter::updateMaxSequence(int num)
 {
   const int maxSize = std::numeric_limits< int >::max();
   if (num % 2 == 0) {
@@ -20,11 +30,4 @@ void yartsev::SequenceCounter::operator()(const int num)
     currentSequence = 0;
   }
   maxSequence = std::max(maxSequence, currentSequence);
-  if (num < minElement) {
-    minElement = num;
-    minCounter = 0;
-  }
-  if (minElement == num) {
-    minCounter++;
-  }
 }

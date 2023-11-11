@@ -7,7 +7,8 @@ namespace yartsev {
   struct SequenceCounter {
     public:
       void operator()();
-      void operator()(const int num);
+      void updateMinCounter(int);
+      void updateMaxSequence(int);
     private:
       int maxSequence = 0;
       int currentSequence = 0;
