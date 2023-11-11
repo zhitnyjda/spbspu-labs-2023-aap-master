@@ -1,7 +1,7 @@
 #include "Funcs.hpp"
 #include <iostream>
 #include <fstream>
-
+#include <cmath>
 namespace seryj
 {
   std::ifstream input;
@@ -74,7 +74,7 @@ namespace seryj
     count--;
     sum -= *(values + curr_line * max_line + curr_column);
     if (count > 0)
-      return std::round(sum / count * 10) / 10;
+      return round(sum / count * 10) / 10;
     else return 0;
   }
 }
