@@ -20,7 +20,6 @@ int main()
         if (num != 0)
         {
           sequenceEven(num);
-          max = sequenceEven();
         }
       }
     }
