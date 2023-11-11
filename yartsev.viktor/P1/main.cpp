@@ -1,11 +1,10 @@
 #include <iostream>
-#include <limits>
 #include <stdexcept>
 #include "seqCounter.hpp"
 
 int main ()
 {
-  int num;
+  int num = 0;
   yartsev::Counter counter;
   do {
     std::cin >> num;
@@ -22,6 +21,6 @@ int main ()
       }
     }
   } while (num != 0);
-  std::cout << counter.getMaxSequence() << " " << counter.getMinCounter() << "\n";
+  std::cout << counter.getMaxSequence() << "\n" << counter.getMinCounter() << "\n";
   return 0;
 }
