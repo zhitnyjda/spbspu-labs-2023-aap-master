@@ -4,7 +4,6 @@
 int main()
 {
   size_t num = 0;
-  size_t max = 0;
   using namespace::kovshikov;
   EvenCount sequenceEven;
   try
