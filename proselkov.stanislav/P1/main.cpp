@@ -28,7 +28,7 @@ int main()
         return 2;
       }
     }
-  } 
+  }
   while (number != 0);
   std::cout << aftMax() << "\n";
 }
