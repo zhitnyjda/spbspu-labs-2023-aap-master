@@ -13,7 +13,7 @@ namespace miheev
     int* matrix_;
 
   public:
-    Matrix (size_t rows, size_t cols);
+    Matrix (size_t rows, size_t cols, int mode);
     void initWithIfstream(std::ifstream& in);
     void printSelf() const;
     void increaseRectBorder(size_t xStart, size_t yStart, size_t width, size_t height, int increment);

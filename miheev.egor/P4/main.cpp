@@ -16,9 +16,10 @@ int main(int argc, char* argv[])
       throw std::invalid_argument("wrong arguments. Programm takes 3 positional");
     }
     //initing params
+    int num = 0;
     try
     {
-      int num = std::stoll(argv[1]);
+      num = std::stoll(argv[1]);
     }
     catch(const std::invalid_argument& e)
     {
@@ -36,7 +37,8 @@ int main(int argc, char* argv[])
       std::cerr << "Can't read input\n";
       return 2;
     }
-    Matrix matrix(rows, cols);
+    Matrix matrix(rows, cols, num);
+    std::cout << "no seg fault\n";
     matrix.initWithIfstream(inputFile);
     inputFile.close();
 
