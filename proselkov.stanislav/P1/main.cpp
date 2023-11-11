@@ -1,36 +1,34 @@
-#include <iostream> 
+#include <iostream>
+#include "AftMax.hpp"
+#include <stdexcept>
 
 int main()
 {
-  int max = -1;
-  int value = -1;
-  int count = 0;
-  while (value != 0)
+  int number = 0;
+  int max_number = 0;
+  using namespace proselkov;
+  AftMax aftMax;
+  do
   {
-    std::cin >> value;
-    if (value > max)
+    std::cin >> number;
+    if (!std::cin)
     {
-      max = value;
-      count = 0;
+      std::cerr << "Not a sequence.\n";
+      return 1;
     }
-    else if (value != 0)
+    else if (number != 0)
     {
-      count++;
+      try
+      {
+        aftMax(number);
+      }
+      catch (const std::exception & e)
+      {
+        std::cerr << "Error: " << e.what() << "\n";
+        return 2;
+      }
     }
-    else
-    {
-      std::cout << count << "\n";
-      return 0;
-    }
-  }
-  if (!std::cin)
-  {
-    std::cout << "anomaly\n";
-    return 1;
-  }
-  if (value == 0)
-  {
-    std::cout << "short\n";
-    return 2;
-  }
+  } 
+  while (number != 0);
+  std::cout << aftMax() << "\n";
 }
