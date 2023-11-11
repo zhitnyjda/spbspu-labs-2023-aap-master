@@ -4,11 +4,10 @@
 #include<limits>
 
 namespace yartsev {
-  struct Counter {
+  struct SequenceCounter {
     public:
+      void operator()();
       void operator()(const int num);
-      int getMaxSequence();
-      int getMinCounter();
     private:
       int maxSequence = 0;
       int currentSequence = 0;

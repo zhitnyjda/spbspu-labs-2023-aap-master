@@ -5,7 +5,7 @@
 int main ()
 {
   int num = 0;
-  yartsev::Counter counter;
+  yartsev::SequenceCounter seqCounter;
   do {
     std::cin >> num;
     if (!std::cin) {
@@ -13,14 +13,14 @@ int main ()
       return 1;
     } else if (num != 0) {
       try {
-        counter(num);
+        seqCounter(num);
       } catch (const std::exception & e) {
         std::cerr << "Error: " << e.what() << "\n";
-        std::cout << counter.getMaxSequence() << "\n";
+        seqCounter();
         return 2;
       }
     }
   } while (num != 0);
-  std::cout << counter.getMaxSequence() << "\n" << counter.getMinCounter() << "\n";
+  seqCounter();
   return 0;
 }

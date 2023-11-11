@@ -1,8 +1,13 @@
 #include "seqCounter.hpp"
 #include <limits>
 #include <stdexcept>
+#include <iostream>
 
-void yartsev::Counter::operator()(const int num)
+void yartsev::SequenceCounter::operator()()
+{
+  std::cout << maxSequence << "\n" << minCounter << "\n";
+}
+void yartsev::SequenceCounter::operator()(const int num)
 {
   const int maxSize = std::numeric_limits< int >::max();
   if (num % 2 == 0) {
@@ -22,12 +27,4 @@ void yartsev::Counter::operator()(const int num)
   if (minElement == num) {
     minCounter++;
   }
-}
-int yartsev::Counter::getMaxSequence()
-{
-  return maxSequence;
-}
-int yartsev::Counter::getMinCounter()
-{
-  return minCounter;
 }
