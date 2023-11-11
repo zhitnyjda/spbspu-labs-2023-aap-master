@@ -3,10 +3,18 @@
 #include <stdexcept>
 #include <iostream>
 
+yartsev::SequenceCounter::SequenceCounter():
+  maxSequence(0),
+  currentSequence(0),
+  minElement(std::numeric_limits< int >::max()),
+  minCounter(0)
+{}
+
 void yartsev::SequenceCounter::operator()()
 {
   std::cout << maxSequence << "\n" << minCounter << "\n";
 }
+
 void yartsev::SequenceCounter::updateMinCounter(int num)
 {
   if (num < minElement) {
@@ -17,6 +25,7 @@ void yartsev::SequenceCounter::updateMinCounter(int num)
     minCounter++;
   }
 }
+
 void yartsev::SequenceCounter::updateMaxSequence(int num)
 {
   const int maxSize = std::numeric_limits< int >::max();
