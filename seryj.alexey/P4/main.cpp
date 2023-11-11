@@ -1,5 +1,5 @@
 #include "Funcs.hpp"
-#include <iostream> 
+#include <iostream>
 using namespace seryj;
 int main(int args, const char* argv[])
 {
@@ -45,3 +45,4 @@ int main(int args, const char* argv[])
     return 2;
   }
 }
+
