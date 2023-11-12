@@ -15,7 +15,8 @@ int main()
       std::cin >> value;
       if (findSecondMaxValue() == minimum && value == 0)
       {
-        throw std::logic_error("Error: not enough values\n");
+        std::cerr << "Error: not enough values\n";
+        return 2;
       }
       findSecondMaxValue(value);
     }
@@ -27,10 +28,5 @@ int main()
   {
     std::cerr << "Error: not a sequence\n";
     return 1;
-  }
-  catch (const std::logic_error & e)
-  {
-    std::cerr << e.what();
-    return 2;
   }
 }
