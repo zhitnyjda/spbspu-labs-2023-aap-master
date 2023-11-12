@@ -10,7 +10,7 @@ public:
     seqCount_(0)
   {}
 
-  void finding (int num)
+  void operator()(int num)
   {
   ++seqCount_;
   if (num > max_)
@@ -23,7 +23,7 @@ public:
     subMax_ = num;
   }
   }
-  int getResult () const
+  int operator()() const
   {
     if (seqCount_ <2)
     {
@@ -47,7 +47,7 @@ int main()
   std::cin>>num;
   while ((std::cin) and (num !=0))
   {
-    FindingSubMax.finding(num);
+    FindingSubMax(num);
     std::cin >> num;
   };
   if (!std::cin) {
@@ -58,7 +58,7 @@ int main()
   {
     try
     {
-      std::cout<< FindingSubMax.getResult() << "\n";
+      std::cout<< FindingSubMax() << "\n";
       return 0;
     }
     catch (const std:: exception&e)
