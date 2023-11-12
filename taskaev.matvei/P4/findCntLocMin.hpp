@@ -4,7 +4,8 @@
 
 namespace matrixStuff
 {
-  int locmin(int a, int b, int c, int d);
+  int funclinemin(int firstN, int secondN, int threeN);
+  int locmin(int firstN, int secondN, int threeN, int fourN);
   int findCntLocMin(int matrix[], int rows, int cols);
 }
 #endif
