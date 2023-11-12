@@ -5,6 +5,8 @@
 using namespace litsinger;
 int main(int args, const char* argv[])
 {
+  std::ifstream input;
+  std::ofstream output;
   try
   {
     int maximum = 0;
@@ -21,8 +23,11 @@ int main(int args, const char* argv[])
         {
           static_array[i][j] = readArray();
         }
-      matrix.fillArray();
-      maximum = MaximalSum(static_array, matrix.line, matrix.column);
+      output << MaximalSum(static_array, matrix.line, matrix.column);
+      if (!output.is_open())
+      {
+        std::cerr << "Can not open output file";
+      }
     }
     else if (task == 2)
     {
@@ -38,8 +43,7 @@ int main(int args, const char* argv[])
         }
       try
       {
-        matrix.fillArray();
-        maximum = MaximalSumma(** dynamic_array, matrix.line, matrix.column);
+        maximum = MaximalSum(** dynamic_array, matrix.line, matrix.column);
         delete[] dynamic_array;
       }
       catch (std::logic_error const& e)
