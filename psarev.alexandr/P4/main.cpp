@@ -42,7 +42,7 @@ int main(int argc, char ** argv)
     if (taskNum == 2) {
       int* dynMatrix = new int[rows * cols];
       if (myMatrix.inputMatrix(input, dynMatrix, rows * cols, counter) != (rows*cols)){
-        std::cerr << "Error: Dismatch of dimension and values!\n";
+        std::cerr << "Error: Mismatch of dimension and values!\n";
         delete[] dynMatrix;
         return 2;
       }
@@ -52,7 +52,7 @@ int main(int argc, char ** argv)
     } else {
       int stMatrix[10000] = {};
       if (myMatrix.inputMatrix(input, stMatrix, rows * cols, counter) != (rows*cols)){
-        std::cerr << "Error: Dismatch of dimension and values!\n";
+        std::cerr << "Error: Mismatch of dimension and values!\n";
         return 2;
       }
       int verdict = myMatrix.isTriMatrix(stMatrix, rows, cols);
