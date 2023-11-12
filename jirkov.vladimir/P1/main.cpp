@@ -1,36 +1,31 @@
 #include <iostream>
 #include "findingCount.hpp"
-using namespace jirkov;
 int main()
 {
-  size_t prev = 0;
-  size_t current = 0;
-  size_t next = 0;
+  size_t value = 0;
+  using namespace jirkov;
   FindingCount findingCount;
-  std::cin >> prev;
-  std::cin >> current;
   do
   {
-    std::cin >> next;
+    std::cin >> value;
     if (!std::cin)
     {
       std::cerr << "Wrong input\n";
       return 1;
     }
-    if (next != 0)
+    else if (value != 0)
     {
-    findingCount(prev, current, next);
-    prev = current;
-    current = next;
+      findingCount(value);
     }
-  } while (next != 0);
+  }
+  while (value != 0);
   try
   {
     std::cout << findingCount() << "\n";
   }
-  catch(const std::exception& e)
+  catch (const std::exception& e)
   {
-    std::cerr << e.what() << '\n';
+    std::cerr << e.what() << "\n";
     return 2;
   }
 }

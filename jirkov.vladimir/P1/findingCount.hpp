@@ -5,13 +5,15 @@ namespace jirkov
 {
   struct FindingCount
   {
-    public:
-      FindingCount();
-      void operator()(size_t prev, size_t current, size_t next);
-      size_t operator()() const;
-    private:
-      size_t lenghts_;
-      size_t count_;
+  public:
+    FindingCount();
+    void operator()(size_t value);
+    size_t operator()() const;
+  private:
+    size_t lenghts_;
+    size_t count_;
+    size_t firstNum_;
+    size_t secondNum_;
   };
 }
 #endif
