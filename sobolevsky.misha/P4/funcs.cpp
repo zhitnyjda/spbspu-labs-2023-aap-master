@@ -16,8 +16,18 @@ namespace sobolevsky
   }
   
 
-  bool isTrianglMatrix(int * matrix, int rows, int cols)
+  bool matrix::isTrianglMatrix(int * matrix, size_t rows, size_t cols)
   {
-
+    for (int i = 1; i < rows; i++) 
+    {
+      for (int k = cols; k > i; k--) 
+      {
+        if (matrix[i*cols + k] != 0) 
+        {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }
