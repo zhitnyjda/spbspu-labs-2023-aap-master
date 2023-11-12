@@ -4,8 +4,6 @@
 #include "arrayModifications.h"
 #include "validationAndConversationToInt.h"
 
-
-
 int main(int argc, char **argv)
 {
   try {
