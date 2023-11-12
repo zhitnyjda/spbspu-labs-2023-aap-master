@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstddef>
 #include <cstring>
-#include "duplicateRows.hpp"
+#include "getMinSum.hpp"
 int main(int argc, char *argv[])
 {
   if (argc != 4)

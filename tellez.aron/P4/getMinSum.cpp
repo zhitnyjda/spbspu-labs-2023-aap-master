@@ -1,4 +1,4 @@
-#include "duplicateRows.hpp"
+#include "getMinSum.hpp"
 #include <stdexcept>
 #include <limits>
 
