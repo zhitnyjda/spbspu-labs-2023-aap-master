@@ -51,11 +51,13 @@ int main(int argc, char** argv)
     int rows = 0, cols = 0;
     input >> rows >> cols;
     int * matrix = new int [rows * cols];
-    size_t result = 0;
-    result = readArray::inputArray(input, matrix, rows * cols, rows * cols);
-    if (!input)
+    try
     {
-      std::cerr << " Error matrix.\n";
+      readArray::inputArray(input, matrix, rows * cols, rows * cols);
+    }
+    catch(const  std::length_error & e)
+    {
+      std::cerr << e.what()<<"\n";
       delete [] matrix;
       return 2;
     }

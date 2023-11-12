@@ -6,8 +6,7 @@ size_t readArray::inputArray(std::istream & in, int * m, size_t s, size_t toRead
   {
     if (!(in >> m[i]))
     {
-      return i;
+      throw std::length_error("Error matrix.");
     }
   }
-  return std::min(toRead, s);
 }
