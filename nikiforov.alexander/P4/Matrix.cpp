@@ -6,14 +6,17 @@ namespace nikiforov
   void inputMatrix(std::ifstream& in, int* ArrMatrix, size_t cap)
   {
     for (size_t i = 0; i < cap; i++) {
-      in >> ArrMatrix[i];
+      if (!(in >> ArrMatrix[i]))
+      {
+        throw std::invalid_argument("Invalid argument");
+      }
     }
   }
 
   void spiralMatrix(int* ArrMatrix,size_t rows, size_t cols) {
     if (rows != cols) {
-    std::cerr << "Error: Matrix is not square.";
-    exit(0);
+      std::cerr << "Error: Matrix is not square.";
+      exit(0);
     }
     int count = 1;
     int p = rows / 2;
