@@ -55,9 +55,9 @@ int main(int argc, char** argv)
     {
       readArray::inputArray(input, matrix, rows * cols, rows * cols);
     }
-    catch(const  std::length_error & e)
+    catch(...)
     {
-      std::cerr << e.what()<<"\n";
+      std::cerr <<"Error matrix.\n";
       delete [] matrix;
       return 2;
     }
