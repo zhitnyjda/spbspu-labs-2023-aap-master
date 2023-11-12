@@ -7,7 +7,7 @@ namespace ranov
     public:
         NumOfchar();
         void operator()(int number);
-        int operator()() const;
+        size_t operator()() const;
     private:
         int count;
         int first;

@@ -11,14 +11,13 @@ int main()
   {
     std::cin.exceptions(std::istream::failbit);
     int value = 0;
+    int c = 0;
     do
     {
       std::cin >> value;
       numOfchar(value);
-      std::cin >> value;
-      nchar(value);
     }
-    while (value != 0);
+    while ((value != 0) || (c != 0));
   }
   catch (const std::istream::failure & e)
   {
@@ -34,4 +33,5 @@ int main()
   std::cout << numOfchar() << "\n";
   std::cout << "first\n";
   std::cout << nchar() << "\n";
+  return 0;
 }

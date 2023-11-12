@@ -1,5 +1,4 @@
 #include "numOfchar.hpp"
-
 ranov::NumOfchar::NumOfchar() :
     count(0), first(0)
 {}
@@ -13,7 +12,7 @@ void ranov::NumOfchar::operator()(int subsequent)
     first = subsequent;
 }
 
-int ranov::NumOfchar::operator()() const
+size_t ranov::NumOfchar::operator()() const
 {
     return count;
 }

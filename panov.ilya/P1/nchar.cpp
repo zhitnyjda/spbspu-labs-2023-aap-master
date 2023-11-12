@@ -13,7 +13,7 @@ void panov::Nchar::operator()(int subsequent)
   first = subsequent;
 }
 
-int panov::Nchar::operator()() const
+size_t panov::Nchar::operator()() const
 {
   return count;
 }
