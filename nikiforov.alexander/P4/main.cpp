@@ -34,7 +34,6 @@ int main(int argc, const char* argv[])
     std::cerr << "Cannot read an input.\n";
     return 2;
   }
-
   int* ArrMatrix = new int[rows * cols];
   try
   {
