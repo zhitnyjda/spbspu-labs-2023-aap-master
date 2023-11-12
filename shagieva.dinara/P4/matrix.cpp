@@ -6,9 +6,10 @@ void shagieva::Matrix::read(std::ifstream & input)
   for (int i = 0; i < numberOfLines * numberOfColumns; i++)
   {
     input >> values[i];
+
     if (!input)
     {
-      throw std::invalid_argument("Something is wrong with the matrix.\n");
+      throw std::invalid_argument("Something is wrong with values of matrix.\n");
     }
   }
 }

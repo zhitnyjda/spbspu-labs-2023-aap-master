@@ -46,33 +46,48 @@ int main(int argc, char ** argv)
     return 2;
   }
 
+  if (!output.is_open())
+  {
+    std::cerr << "Cannot open an output file.\n";
+    return 2;
+  }
+
   int result = 0;
 
-  try
+  if (task == 1)
   {
-    if (task == 1)
+    int staticArray[10000] = {0};
+    matrix.values = staticArray;
+    try
     {
-      int staticArray[10000] = {0};
-      matrix.values = staticArray;
       matrix.read(input);
-      result = matrix.findMaxColumn();
     }
-
-    if (task == 2)
+    catch (const std::invalid_argument & e)
     {
-      int * dynamicArray = new int[matrix.numberOfLines * matrix.numberOfColumns];
-      matrix.values = dynamicArray;
-      matrix.read(input);
-      result = matrix.findMaxColumn();
-      delete[] dynamicArray;
+      std::cerr << e.what() << "\n";
+      return 2;
     }
+    result = matrix.findMaxColumn();
     output << result;
   }
-  catch (const std::invalid_argument & e)
+
+  if (task == 2)
   {
-    std::cerr << e.what() << "\n";
-    return 2;
+    int * dynamicArray = new int[matrix.numberOfLines * matrix.numberOfColumns];
+    matrix.values = dynamicArray;
+    try
+    {
+      matrix.read(input);
+    }
+    catch (const std::invalid_argument & e)
+    {
+      std::cerr << e.what() << "\n";
+      delete[] dynamicArray;
+      return 2;
+    }
+    result = matrix.findMaxColumn();
+    output << result;
+    delete[] dynamicArray;
   }
   return 0;
 }
-
