@@ -4,7 +4,7 @@
 
 using namespace litsinger;
 int main(int args, const char* argv[])
-{ 
+{
   try
   {
     int maximum = 0;
