@@ -54,7 +54,7 @@ int main(int argc, char ** argv)
         std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
         return 2;
       }
-      (sobolevsky::matrix::isTrianglMatrix(statMatrix, rows, cols)) == true ? std::cout << "true\n" : std::cout << "false\n";
+      (sobolevsky::matrix::isTrianglMatrix(statMatrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
       return 0;
     }
     else
@@ -66,7 +66,7 @@ int main(int argc, char ** argv)
         delete[] dynMatrix;
         return 2;
       }
-      (sobolevsky::matrix::isTrianglMatrix(dynMatrix, rows, cols)) == true ? std::cout << "true\n" : std::cout << "false\n";
+      (sobolevsky::matrix::isTrianglMatrix(dynMatrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
       return 0;
     }
   }
@@ -75,4 +75,5 @@ int main(int argc, char ** argv)
     std::cerr << "Первый аргумент задан неправильно\n";
     return 1;
   }
+  return 0;
 }
