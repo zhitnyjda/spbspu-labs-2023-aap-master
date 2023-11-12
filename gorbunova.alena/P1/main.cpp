@@ -11,8 +11,8 @@ int main()
     std::cin >> value;
     if (!std::cin)
     {
-      std::cerr << "Wrong input\n";
-      return 1;
+        std::cerr << "Wrong input\n";
+        return 1;
     }
     else if (value != 0)
     {
