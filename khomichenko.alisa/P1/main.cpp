@@ -10,7 +10,7 @@ public:
     seqCount_(0)
   {}
 
-  void finding (int num)
+  void finding (size_t num)
   {
   ++seqCount_;
   if (num > max_)
