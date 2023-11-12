@@ -1,8 +1,13 @@
 #include <iostream>
 #include <fstream>
+//#include "inputArray.hpp"
+//#include "matrix.hpp"
+#include "findNumRowLsr.hpp"
 
 int main(int argc, char ** argv)
 {
+//  using namespace readArray;
+  using namespace matrixStuff;
   
   // читаем параметры командной строки (проверка на колличество)
   if (argc != 4)
@@ -59,13 +64,8 @@ int main(int argc, char ** argv)
     }
     {
       std::ofstream output(argv[3]);
-      for (int i = 0; i < cols * rows; i++)
-      {
-        output << smatrix[i] << "\n";
-      }
+      output << matrixStuff::findNumRowLsr(smatrix, rows, cols) << "\n";
     }
   }
-  
-  return 0;
+return 0;
 }
-  
