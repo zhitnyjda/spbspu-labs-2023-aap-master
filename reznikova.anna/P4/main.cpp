@@ -43,27 +43,29 @@ int main(int argc, char ** argv)
   }
   else if (num == 1)   // для num 1 (статический массив)
   {
-      int smatrix[10000];
-      
+    int smatrix[10000];
+    {
+      std::ifstream input(argv[2]);
+      input.seekg(3);
+      for (int i = 0; i < rows * cols; i++)
       {
-        std::ifstream input(argv[2]);
-        input.seekg(3);
-        for (int i = 0; i < rows * cols; i++)
+        input >> smatrix[i];
+        if (!input)
         {
-          input >> smatrix[i];
-          if (!input)
-          {
-            std::cerr << "Cannot read an input.\n";
-            return 2;
-          }
+          std::cerr << "Cannot read an input.\n";
+          return 2;
         }
       }
-      
+    }
+    {
+      std::ofstream output(argv[3]);
+      for (int i = 0; i < cols * rows; i++)
+      {
+        output << smatrix[i] << "\n";
+      }
+    }
   }
-    
-  // для num 2 динамический массив
-  // ??????
   
   return 0;
 }
-
+  
