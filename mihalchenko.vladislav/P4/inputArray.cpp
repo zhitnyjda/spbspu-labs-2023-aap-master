@@ -8,7 +8,7 @@ size_t readArray::inputArray(std::istream & in, int * matrix, size_t s, size_t t
   {
     if (!(in >> matrix[i]))
     {
-      return i; //
+      return i;
     }
     std::cout << matrix[i] << "\t";
   }

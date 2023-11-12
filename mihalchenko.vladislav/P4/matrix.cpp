@@ -17,10 +17,10 @@ int ** matrixLife::createMatrix(size_t rows, size_t cols)
     }
     return rowsPtrs;
   }
-  catch (const std::bad_alloc & e)
+  catch (const std::bad_alloc & ba)
   {
     freeMatrix(rowsPtrs, rows, cols);
-    throw;
+    throw ba;
   }
 }
 
@@ -28,7 +28,7 @@ void matrixLife::freeMatrix(int ** matrix, size_t rows)
 {
   if (!matrix)
   {
-    std::cerr << "Alas\n";
+    std::cerr << "Alas.\n";
   }
   for (size_t i = 0; i < rows; ++i)
   {

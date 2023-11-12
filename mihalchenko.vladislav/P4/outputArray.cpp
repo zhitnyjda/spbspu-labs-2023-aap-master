@@ -26,7 +26,7 @@ size_t writeArray::outputArray(char * argv3, int * matrix, size_t rows, size_t c
 						{
 							if ((ii == i) and (jj == j))
 							{
-								int c = 7;
+								int c = 7; //
 							}
 							else
 							{
