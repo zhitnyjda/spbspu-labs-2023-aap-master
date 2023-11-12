@@ -39,7 +39,15 @@ int main(int argc, char ** argv)
       std::cerr << "Cannot read an input.\n";
       return 2;
     }
-    Matrix.inputArray(inputFile,statMatrix,Rows*Cols);
+    try
+    {
+      Matrix.inputArray(inputFile, statMatrix, Rows * Cols);
+    }
+    catch(const std::runtime_error & e)
+    {
+      std::cerr << e.what() << '\n';
+      return 2;
+    }
     inputFile.close();
     std::ofstream outputFile(argv[3]);
     if (!outputFile.is_open())
@@ -62,15 +70,27 @@ int main(int argc, char ** argv)
       return 2;
     }
     int * dynamicMatrix = new int[Rows * Cols];
-    Matrix.inputArray(inputFile, dynamicMatrix, Rows * Cols);
+    try
+    {
+      Matrix.inputArray(inputFile, dynamicMatrix, Rows * Cols);
+    }
+    catch(const std::runtime_error & e)
+    {
+      delete[] dynamicMatrix;
+      std::cerr << e.what() << '\n';
+      return 2;
+    }
+    
     inputFile.close();
     std::ofstream outputFile(argv[3]);
     if (!outputFile.is_open())
     {
+      delete[] dynamicMatrix;
       std::cerr << "Cannot open an output.\n";
       return 2;
     }
     outputFile << Matrix.minSumOfParallelArray(dynamicMatrix, Rows, Cols);
+    delete[] dynamicMatrix;
     return 0;
   }
 }
