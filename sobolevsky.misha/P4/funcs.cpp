@@ -3,7 +3,7 @@
 
 namespace sobolevsky
 {
-  size_t matrix::countMatrix(std::istream & in, int * matrix, size_t s, size_t counter)
+  bool matrix::countMatrix(std::istream & in, int * matrix, size_t s, size_t counter)
   {
     for (size_t i = 0; i < s; ++i)
     {
