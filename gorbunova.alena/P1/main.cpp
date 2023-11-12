@@ -1,29 +1,32 @@
 #include <iostream>
+#include "findCount.hpp"
 
 int main()
 {
-  int a, b, c;
-  int count = 0;
-  std::cin >> a >> b >> c;
-  while ((a != 0) && (b != 0) && (c != 0))
+  size_t value = 0;
+  using namespace gorbunova;
+  FindCount findCount;
+  do
   {
-    if (a + b == c)
+    std::cin >> value;
+    if (!std::cin)
     {
-      count += 1;
-      a = b;
-      b = c;
-      std::cin >> c;
+      std::cerr << "Wrong input\n";
+      return 1;
     }
-    else
+    else if (value != 0)
     {
-      a = b;
-      b = c;
-      std::cin >> c;
+      findCount(value);
     }
   }
-  if ((a == 0) || (b == 0) || (c == 0))
+  while (value != 0);
+  try
   {
-    std::cout << count << "\n";
+    std::cout << findCount() << "\n";
   }
-  return 0;
+  catch (const std::exception& e)
+  {
+    std::cerr << e.what() << "\n";
+    return 2;
+  }
 }
