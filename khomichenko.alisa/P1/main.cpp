@@ -4,21 +4,24 @@
 struct FindingSubMax
 {
 public:
+  FindingSubMax():
+    subMax_(0),
+    max_(0),
+    seqCount_(0)
+  {}
+
   void finding (int num)
   {
   ++seqCount_;
-  std:: cout<< num<<" "<< max_<<" " << subMax_<<"\n";
   if (num > max_)
   {
     subMax_ = max_;
     max_ = num;
-    std::cout<< num<<max_<<subMax_<< "\n";
   }
   else if (num > subMax_)
   {
     subMax_ = num;
   }
-  std:: cout<< num<<" "<< max_<<" "<<  subMax_<< "\n";
   }
   size_t getResult () const
   {
@@ -32,9 +35,9 @@ public:
     }
   }
 private:
-  size_t subMax_ = 0;
-  size_t max_ = 0;
-  size_t seqCount_ = 0;
+  size_t subMax_;
+  size_t max_;
+  size_t seqCount_;
 };
 
 int main()
