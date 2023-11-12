@@ -5,14 +5,14 @@
 int main(int argc, char ** argv)
 {
   using namespace matrixStuff;
-  
+
   // читаем параметры командной строки (проверка на колличество)
   if (argc != 4)
   {
     std::cerr << "Wrong number of arguments.\n";
     return 1;
   }
-  
+
   // читаем параметры командной строки (чтение параметра num и проверка на адекватность)
   try
   {
@@ -24,7 +24,7 @@ int main(int argc, char ** argv)
     return 1;
   }
   long long num = std::stoll(argv[1]);
-  
+
   // читаем input (колличество строк и столбцов)
   size_t rows = 0, cols = 0;
   {
@@ -37,7 +37,7 @@ int main(int argc, char ** argv)
       return 2;
     }
   }
-  
+
   if (num > 2)
   {
     std::cerr << "Argument num must be either 1 or 2\n";
@@ -54,6 +54,8 @@ int main(int argc, char ** argv)
         input >> smatrix[i];
         if (!input)
         {
+          std::cerr << "Cannot read an input.\n";
+          return 2;
           std::cerr << "Cannot read an input.\n";
           return 2;
         }

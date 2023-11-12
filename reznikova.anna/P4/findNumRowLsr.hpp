@@ -4,9 +4,7 @@
 
 namespace matrixStuff
 {
-   
   int findNumRowLsr(int matrix[], size_t rows, size_t cols);
-
 }
 
 #endif
