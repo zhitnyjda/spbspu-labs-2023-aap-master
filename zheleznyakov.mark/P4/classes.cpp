@@ -7,7 +7,7 @@ void zheleznyakov::Matrix::read(std::ifstream & input)
     input >> values[i];
     if (!input)
     {
-      throw std::runtime_error("Error: The Matrix is broken: The provided dimensions of the matrix and its actual size do not correspond to each other.\n");
+      throw std::runtime_error("Error: The Matrix is broken.\n");
     }
   }
 }

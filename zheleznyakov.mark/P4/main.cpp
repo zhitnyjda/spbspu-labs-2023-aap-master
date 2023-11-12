@@ -9,7 +9,8 @@ int main(int argc, char* argv[])
     return 1;
   }
   if (argc > 4) {
-    std::cerr << "Warning: Too many args. All arguments except the first three (task, input file and output file) will be ignored.\n";
+    std::cerr << "Error: Too many args.\n";
+    return 1;
   }
   int task = 0;
   try
