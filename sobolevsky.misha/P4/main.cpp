@@ -54,6 +54,18 @@ int main(int argc, char ** argv)
         std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
         return 2;
       }
+
+    }
+    else
+    {
+      int * dynMatrix = new int[rows * cols];
+      if (!(sobolevsky::matrix::countMatrix(input, dynMatrix, (cols * rows), counter)))
+      {
+        std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
+        delete[] dynMatrix;
+        return 2;
+      }
+
     }
   }
   else
