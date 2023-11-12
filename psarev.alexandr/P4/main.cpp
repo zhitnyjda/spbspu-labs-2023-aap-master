@@ -30,19 +30,19 @@ int main(int argc, char ** argv)
     std::ofstream output(argv[3]);
     if (!(input >> rows >> cols))
     {
-      std::cerr << "Can't read input file!\n";
+      std::cerr << "Error: Can't read input file!\n";
       return 2;
     }
     if (!output.is_open())
     {
-      std::cerr << "Can't open an output file!\n";
+      std::cerr << "Error: Can't open an output file!\n";
       return 2;
     }
 
     if (taskNum == 2) {
       int* dynMatrix = new int[rows * cols];
       if (myMatrix.inputMatrix(input, dynMatrix, rows * cols, counter) != (rows*cols)){
-        std::cerr << "Dismatch of dimension and values!\n";
+        std::cerr << "Error: Dismatch of dimension and values!\n";
         delete[] dynMatrix;
         return 2;
       }
@@ -52,7 +52,7 @@ int main(int argc, char ** argv)
     } else {
       int stMatrix[10000] = {};
       if (myMatrix.inputMatrix(input, stMatrix, rows * cols, counter) != (rows*cols)){
-        std::cerr << "Dismatch of dimension and values!\n";
+        std::cerr << "Error: Dismatch of dimension and values!\n";
         return 2;
       }
       int verdict = myMatrix.isTriMatrix(stMatrix, rows, cols);
