@@ -6,14 +6,12 @@ int main(int argc, char ** argv)
 {
   using namespace matrixStuff;
 
-  // читаем параметры командной строки (проверка на колличество)
   if (argc != 4)
   {
     std::cerr << "Wrong number of arguments.\n";
     return 1;
   }
 
-  // читаем параметры командной строки (чтение параметра num и проверка на адекватность)
   try
   {
     long long num = std::stoll(argv[1]);
@@ -25,7 +23,6 @@ int main(int argc, char ** argv)
   }
   long long num = std::stoll(argv[1]);
 
-  // читаем input (колличество строк и столбцов)
   size_t rows = 0, cols = 0;
   {
     std::ifstream input(argv[2]);
@@ -43,7 +40,7 @@ int main(int argc, char ** argv)
     std::cerr << "Argument num must be either 1 or 2\n";
     return 2;
   }
-  else if (num == 1)   // для num 1 (статический массив)
+  else if (num == 1)
   {
     int smatrix[10000];
     {
