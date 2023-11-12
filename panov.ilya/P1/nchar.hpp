@@ -7,7 +7,7 @@ namespace panov
     public:
       Nchar();
       void operator()(int number);
-      size_t operator()() const;
+      long long operator()() const;
     private:
       int count;
       int first;

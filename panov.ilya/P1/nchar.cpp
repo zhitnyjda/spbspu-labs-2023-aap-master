@@ -1,5 +1,4 @@
 #include "nchar.hpp"
-
 panov::Nchar::Nchar():
   count(0), first(0)
 {}
@@ -13,7 +12,7 @@ void panov::Nchar::operator()(int subsequent)
   first = subsequent;
 }
 
-size_t panov::Nchar::operator()() const
+long long panov::Nchar::operator()() const
 {
   return count;
 }
