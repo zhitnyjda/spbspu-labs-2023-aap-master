@@ -10,7 +10,7 @@ size_t readArray::inputArray(std::istream & in, int * matrix, size_t s, size_t t
     {
       return i;
     }
-    std::cout << matrix[i] << "\t";
+    //std::cout << matrix[i] << "\t";
   }
   return std::min(toRead, s);
 }

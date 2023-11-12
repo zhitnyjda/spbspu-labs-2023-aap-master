@@ -3,12 +3,14 @@
 #include "matrix.hpp"
 #include "inputArray.hpp"
 #include "outputArray.hpp"
+#include <string>
+#include <cmath>
 
 int main(int argc, char ** argv)
 {
   if (argc != 4)
   {
-    std::cerr << "Something wrong, I can feel it.\n";
+    std::cerr << "Something wrong...\n";
     return 1;
   }
 
@@ -38,6 +40,11 @@ int main(int argc, char ** argv)
 
   if (num == 1)
   {
+    if (num * cols > 10000)
+    {
+      std::cerr << "The number of matrix elements exceeds 10000";
+    }
+
     int * matrix = new int[rows * cols];
     size_t result = readArray::inputArray(input, matrix, rows * cols, rows * cols);
     if (!input)
@@ -51,14 +58,14 @@ int main(int argc, char ** argv)
   }
   if (num == 2)
   {
+    int countNew = 0;
+    int sum = 0;
     int ** m1 = nullptr;
     int ** m2 = nullptr;
     try
     {
       m1 = matrixLife::createMatrix(rows, cols);
       m2 = matrixLife::createMatrix(rows, cols);
-      matrixLife::freeMatrix(m1, rows, cols);
-      matrixLife::freeMatrix(m2, rows, cols);
     }
     catch(...)
     {
@@ -67,16 +74,57 @@ int main(int argc, char ** argv)
       matrixLife::freeMatrix(m2, rows, cols);
       return 3;
     }
-    //delete [] matrix;
+    for (int i = 0; i < rows; ++i)
+    {
+      for (size_t j = 0; j < cols; ++j)
+      {
+        if (!(input >> m1[i][j]))
+        {
+          return i;
+        }
+      }
+    }
     std::ofstream output(argv[3]);
-    output << rows << " " << cols << "\n";
+    output << rows << " " << cols << " ";
+    for (int ii = 0; ii < rows; ++ii)
+    {
+      for(int jj {0}; jj < cols; jj++)
+      {
+        countNew = 0;
+        sum = 0;
+        for (int i = ii - 1; i <= ii + 1; i++)
+        {
+          if ((i >= 0) and (i < rows))
+          {
+            for(int j = jj - 1; j <= jj +1; j++)
+            {
+              if ((j >= 0) and (j < cols))
+              {
+                if ((ii == i) and (jj == j))
+                {
+                  //std::cout << std::endl;
+                }
+                else
+                {
+                  countNew ++;
+                  sum += m1[i][j];
+                }
+              }
+            }
+          }
+        }
+        if (countNew != 0)
+        {
+          float rezult = float(sum) / countNew;
+          m2[ii][jj] = rezult;
+          output << (float) round(rezult * 10) / 10 << " ";
+        }
+      }
+    }
+    matrixLife::freeMatrix(m1, rows, cols);
+    matrixLife::freeMatrix(m2, rows, cols);
     return 0;
   }
   else
     return 2;
-  {
-    //std::ofstream output(argv[3]);
-    //output << rows << " " << cols << "\n";
-  }
-  return 0;
 }
