@@ -80,8 +80,6 @@ int main(int argc, char ** argv)
       delete[] dynamicMatrix;
       return 2;
     }
-    
-    
     inputFile.close();
     std::ofstream outputFile(argv[3]);
     if (!outputFile.is_open())
