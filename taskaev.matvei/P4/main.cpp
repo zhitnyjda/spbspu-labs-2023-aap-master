@@ -11,7 +11,6 @@ int main(int argc, char** argv)
     std::cerr << "Something wrong, I can feel it.\n";
     return 1;
   }
-
   int num = 0;
   try
   {
@@ -53,7 +52,7 @@ int main(int argc, char** argv)
     if (!input)
     {
       std::cerr <<"Cannot read a matrix file.\n";
-      return 1;
+      return 2;
     }
     int * matrix = new int [rows * cols];
     try
@@ -66,11 +65,8 @@ int main(int argc, char** argv)
       delete [] matrix;
       return 2;
     }
-
     resultNum = matrixStuff::findCntLocMin(matrix, rows, cols);
-
     delete [] matrix;
-
     {
       std::ofstream output(argv[3]);
       output << resultNum;
