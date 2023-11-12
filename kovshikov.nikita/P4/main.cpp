@@ -72,6 +72,7 @@ int main(int argc, char ** argv)
     }
     std::ofstream output(argv[3]);
     output << count_saddle(rows, cols, matrix);
+    delete[] matrix;
     return 0;
   }
 }
