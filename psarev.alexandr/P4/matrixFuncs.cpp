@@ -12,11 +12,12 @@ namespace psarev
       }
       counter++;
     }
+    return counter;
   }
   bool matrix::isTriMatrix(int* matrix, int rows, int cols)
   {
-    for (size_t i = 1; i < rows; i++) {
-      for (size_t k = 0; k < i; k++) {
+    for (int i = 1; i < rows; i++) {
+      for (int k = 0; k < i; k++) {
         if (matrix[i*cols + k] != 0) {
           return false;
         }
