@@ -59,11 +59,12 @@ int main()
     try
     {
       std::cout<< FindingSubMax.getResult() << "\n";
-      return 2;
+      return 0;
     }
     catch (const std:: exception&e)
     {
       std::cerr<<e.what() << "\n";
+      return 2;
     }
    }
 };
