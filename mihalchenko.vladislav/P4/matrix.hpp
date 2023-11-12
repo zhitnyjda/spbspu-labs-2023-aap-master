@@ -8,4 +8,4 @@ namespace matrixLife
   void freeMatrix(int ** matrix, size_t rows);
   void freeMatrix(int ** matrix, size_t rows, size_t);
 }
-#endif //!MATRIX_HPP
+#endif // !MATRIX_HPP

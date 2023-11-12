@@ -6,4 +6,4 @@ namespace readArray
 {
   size_t inputArray(std::istream & in, int * matrix, size_t s, size_t toRead);
 }
-#endif //!INPUT_ARRAY_HPP
+#endif // !INPUT_ARRAY_HPP
