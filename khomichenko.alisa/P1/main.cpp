@@ -10,7 +10,7 @@ public:
     seqCount_(0)
   {}
 
-  void finding (size_t num)
+  void finding (int num)
   {
   ++seqCount_;
   if (num > max_)
@@ -18,12 +18,12 @@ public:
     subMax_ = max_;
     max_ = num;
   }
-  else if (num > subMax_)
+  else if (num > subMax_ and num != max_)
   {
     subMax_ = num;
   }
   }
-  size_t getResult () const
+  int getResult () const
   {
     if (seqCount_ <2)
     {
@@ -35,9 +35,9 @@ public:
     }
   }
 private:
-  size_t subMax_;
-  size_t max_;
-  size_t seqCount_;
+  int subMax_=0;
+  int max_=0;
+  int seqCount_=0;
 };
 
 int main()
