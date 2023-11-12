@@ -8,12 +8,8 @@ int main(int argc, char ** argv)
     std::cerr << "Not enough arguments\n";
     return 1;
   }
-
-  //argv[1]
   char * endOfParcing = nullptr;
   int num = std::strtoll(argv[1], &endOfParcing, 10);
-
-  //argv[2]
   int rows = 0;
   int cols = 0;
   int max = 0;
@@ -82,10 +78,4 @@ int main(int argc, char ** argv)
       }
     }
   }
-
-
-  //argv[3]
-//  std::ofstream output(argv[3]);
-  //output << i << "\n";
-
 }
