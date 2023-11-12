@@ -5,7 +5,7 @@
 
 int main()
 {
-  ranov::NumOfchar numOfchar;
+  panov::NumOfchar numOfchar;
   panov::Nchar nchar;
   try
   {
