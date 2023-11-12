@@ -42,7 +42,7 @@ int main(int argc, char ** argv)
     size_t result = readArray::inputArray(input, matrix, rows * cols, rows * cols);
     if (!input)
     {
-      std::cerr << "Read " << result << " elements...\n";
+      std::cerr << "Read " << result << " elements...\n"; //
       delete [] matrix;
       return 3;
     }

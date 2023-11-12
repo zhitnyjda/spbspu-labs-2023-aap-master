@@ -6,4 +6,4 @@ namespace writeArray
 {
   size_t outputArray(char * arvg3, int * matrix, size_t s, size_t toRead);
 }
-#endif // !OUTPUT_ARRAY_HPP
+#endif //!OUTPUT_ARRAY_HPP
