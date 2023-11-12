@@ -43,6 +43,7 @@ int main(int argc, char ** argv)
       int* dynMatrix = new int[rows * cols];
       if (myMatrix.inputMatrix(input, dynMatrix, rows * cols, counter) != (rows*cols)){
         std::cerr << "Dismatch of dimension and values!\n";
+        delete[] dynMatrix;
         return 2;
       }
       int verdict = myMatrix.isTriMatrix(dynMatrix, rows, cols);
