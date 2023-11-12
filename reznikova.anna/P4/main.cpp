@@ -1,12 +1,9 @@
 #include <iostream>
 #include <fstream>
-//#include "inputArray.hpp"
-//#include "matrix.hpp"
 #include "findNumRowLsr.hpp"
 
 int main(int argc, char ** argv)
 {
-//  using namespace readArray;
   using namespace matrixStuff;
   
   // читаем параметры командной строки (проверка на колличество)

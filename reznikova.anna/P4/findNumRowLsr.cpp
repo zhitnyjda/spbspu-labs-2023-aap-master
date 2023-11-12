@@ -27,5 +27,7 @@ int matrixStuff::findNumRowLsr(int matrix[], size_t rows, size_t cols)
       }
     }
   }
+
   return (num_row_lsr);
+
 }
