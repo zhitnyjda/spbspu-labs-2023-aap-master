@@ -3,24 +3,21 @@
 
 namespace sobolevsky
 {
-  size_t matrix::countMatrix(std::ifstream& in, size_t counter)
+  size_t matrix::countMatrix(std::istream & in, int * matrix, size_t s, size_t counter)
   {
-    char i;
-    while (!in.eof()) 
+    for (size_t i = 0; i < s; ++i)
     {
-        in.get(i);
-        if (isdigit(i))
-        {
-          counter++;
-        }
-        else
-        {
-          std::cerr << ("в матрице могут быть только числа\n");
-          return 2;
-        }
+      if (!(in >> matrix[i]))
+      {
+        return false;
+      }
     }
-    return counter;
+    return true;
   }
+  
 
+  bool isTrianglMatrix(int * matrix, int rows, int cols)
+  {
 
+  }
 }

@@ -29,15 +29,15 @@ int main(int argc, char ** argv)
   if (number == 1 || number == 2)
   {
     size_t rows = 0, cols = 0;
+    
+    std::ifstream input(argv[2]);
+    input >> rows >> cols;
+    if (!input)
     {
-      std::ifstream input(argv[2]);
-      input >> rows >> cols;
-      if (!input)
-      {
-        std::cerr << "Cannot read an input.\n";
-        return 2;
-      }
+      std::cerr << "Cannot read an input.\n";
+      return 2;
     }
+
     std::ofstream output(argv[3]);
     if (!output.is_open())
     {
@@ -49,9 +49,9 @@ int main(int argc, char ** argv)
     if (number == 1)
     {
       int statMatrix[10000] = {};
-      if (sobolevsky::matrix::countMatrix(input, counter) != (cols * rows))
+      if (!(sobolevsky::matrix::countMatrix(input, statMatrix, (cols * rows), counter)))
       {
-        std::cerr << ("Размер матрицы и кол-во чисел отличаются\n");
+        std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
         return 2;
       }
     }
