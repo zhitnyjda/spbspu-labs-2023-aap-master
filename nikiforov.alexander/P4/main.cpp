@@ -36,6 +36,7 @@ int main(int argc, const char* argv[])
   }
 
   int* ArrMatrix = new int[rows * cols];
+  
   try
   {
     inputMatrix(input, ArrMatrix, rows * cols);
