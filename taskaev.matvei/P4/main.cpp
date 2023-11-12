@@ -50,6 +50,11 @@ int main(int argc, char** argv)
     std::ifstream input(argv[2]);
     int rows = 0, cols = 0;
     input >> rows >> cols;
+    if (!input)
+    {
+      std::cerr <<"Cannot read a matrix file.\n";
+      return 1;
+    }
     int * matrix = new int [rows * cols];
     try
     {
