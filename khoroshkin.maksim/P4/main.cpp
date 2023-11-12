@@ -76,17 +76,18 @@ int main(int argc, char ** argv)
     }
     catch(const std::runtime_error & e)
     {
-      delete[] dynamicMatrix;
       std::cerr << e.what() << '\n';
+      delete[] dynamicMatrix;
       return 2;
     }
+    
     
     inputFile.close();
     std::ofstream outputFile(argv[3]);
     if (!outputFile.is_open())
     {
-      delete[] dynamicMatrix;
       std::cerr << "Cannot open an output.\n";
+      delete[] dynamicMatrix;
       return 2;
     }
     outputFile << Matrix.minSumOfParallelArray(dynamicMatrix, Rows, Cols);
