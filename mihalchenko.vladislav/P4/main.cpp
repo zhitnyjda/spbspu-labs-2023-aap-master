@@ -36,7 +36,6 @@ int main(int argc, char ** argv)
     }
   }
 
- //argv[2] - имя файла с матрицей
   if (num == 1)
   {
     int * matrix = new int[rows * cols];
