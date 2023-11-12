@@ -3,7 +3,7 @@ panov::NumOfchar::NumOfchar() :
     count(0), first(0)
 {}
 
-void ranov::NumOfchar::operator()(int subsequent)
+void panov::NumOfchar::operator()(int subsequent)
 {
     if ((first < 0 && subsequent > 0) || (first > 0 && subsequent < 0))
     {
