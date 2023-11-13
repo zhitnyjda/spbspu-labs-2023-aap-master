@@ -43,7 +43,7 @@ int main(int argc, char ** argv)
     return 2;
     }
     verdict == 1 ? output << "true\n" : output << "false\n";
-    
+
   } else if (taskNum == 2) {
     psarev::matrix Matrix;
     std::ifstream input(argv[2]);
