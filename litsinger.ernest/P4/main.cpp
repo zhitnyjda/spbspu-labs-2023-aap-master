@@ -12,7 +12,7 @@ int main(int args, const char* argv[])
     int task = litsinger::fillArguments(args, argv);
     if (task == 1)
     {
-      size_t line = 0;
+      size_t line= 0;
       size_t column = 0;
       std::ifstream input(argv[2]);
       if (!input.is_open())

@@ -25,10 +25,10 @@ namespace litsinger
     }
     return n;
   }
-  int MaximalSum(const int * arr, size_t lines, size_t column)
+  int MaximalSum(const int * arr, size_t line, size_t column)
   {
     int maxSum = 0;
-    for (size_t i = 1; i < lines; i++)
+    for (size_t i = 1; i < line; i++)
     {
       int sum = 0;
       for (size_t j = 0; j <= i; j++)
@@ -43,7 +43,7 @@ namespace litsinger
     for (size_t j = 1; j < column; j++)
     {
       int sum = 0;
-      for (size_t i = 0; i < lines && i + j < column; i++)
+      for (size_t i = 0; i < line && i + j < column; i++)
       {
         sum += arr[i * column + i + j] + arr[(i + j) * column + i];
       }
