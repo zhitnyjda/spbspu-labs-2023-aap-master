@@ -6,10 +6,11 @@ int main()
   using namespace khomichenko;
   FindingSubMax FindingSubMax;
   size_t seqCount = 0;
-  int num = 0;
+  size_t num = 0;
   std::cin >> num;
   while (std::cin)
   {
+    ++seqCount;
     if (num == 0 and seqCount < 2)
     {
       std::cerr<< "too short sequence\n";
@@ -20,7 +21,6 @@ int main()
     {
       break;
     }
-    ++seqCount;
     std::cin >> num;
   };
   if (!std::cin)

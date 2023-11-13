@@ -8,7 +8,7 @@ namespace khomichenko
   {
   public:
     FindingSubMax();
-    void operator()(int num);
+    void operator()(size_t num);
     size_t operator()() const;
   private:
     size_t subMax_;

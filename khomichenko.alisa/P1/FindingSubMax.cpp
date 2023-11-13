@@ -6,7 +6,7 @@ khomichenko::FindingSubMax::FindingSubMax():
   max_(0)
 {}
 
-void khomichenko::FindingSubMax::operator()(int num)
+void khomichenko::FindingSubMax::operator()(size_t num)
 {
   if (num != 0)
   {
