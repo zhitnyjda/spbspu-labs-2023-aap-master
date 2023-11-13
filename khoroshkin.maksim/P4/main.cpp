@@ -19,8 +19,8 @@ int main(int argc, char ** argv)
     {
       int statMatrix[1000] = { 0 };
       khoroshkin::matrix Matrix;
-      int Rows, Cols;
       std::ifstream inputFile(argv[2]);
+      int Rows, Cols;
       inputFile >> Rows >> Cols;
       if (!inputFile)
       {
@@ -47,8 +47,8 @@ int main(int argc, char ** argv)
     else
     {
       khoroshkin::matrix Matrix;
-      int Rows, Cols;
       std::ifstream inputFile(argv[2]);
+      int Rows, Cols;
       inputFile >> Rows >> Cols;
       if (!inputFile)
       {
