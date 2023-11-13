@@ -1,16 +1,16 @@
 #include "rchar.hpp"
 panov::Rchar::Rchar() :
-  count(-1), first(0), max_number(-99999)
+  count(-1), first(0), maxNumber(-32767)
 {}
 
 void panov::Rchar::operator()(int subsequent)
 {
-  if ((first > max_number))
+  if ((first > maxNumber))
   {
-    max_number = first;
+    maxNumber = first;
   }
   first = subsequent;
-  if ((max_number >= first))
+  if ((maxNumber >= first))
   {
     count++;
   }
