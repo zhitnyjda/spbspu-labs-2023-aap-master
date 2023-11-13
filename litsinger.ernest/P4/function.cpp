@@ -25,53 +25,33 @@ namespace litsinger
     }
     return n;
   }
-  int readArray()
+  int MaximalSum(const int * arr, size_t lines, size_t column)
   {
-    int val = 0;
-    if (input.is_open() && input)
+    int maxSum = 0;
+    for (size_t i = 1; i < lines; i++)
     {
-      input >> val;
-    }
-    else if (!input.is_open())
-    {
-      throw std::invalid_argument("Can not open input.txt");
-    }
-    if (!input)
-    {
-      throw std::logic_error("Input error");
-    }
-    return val;
-  }
-  int MaximalSum(int inputArr[100][100], int line, int column)
-  {
-    const int ssize = 100;
-    int max1 = 0;
-    int max2 = 0;
-    int sum1[ssize] = { 0 };
-    int sum2[ssize] = { 0 };
-    for (int i = 0; i < line; i++)
-      for (int j = 0; j < column; j++)
+      int sum = 0;
+      for (size_t j = 0; j <= i; j++)
       {
-        if (i > j)
-        {
-          sum1[i - j] += inputArr[i][j];
-        }
-        if (i < j)
-        {
-          sum2[j - i] += inputArr[i][j];
-        }
+        sum += arr[i * column + j] + arr[j * column + i];
       }
-    for (int i = 0; i < line; i++)
-    {
-      if (max1 < sum1[i])
+      if (sum > maxSum)
       {
-        max1 = sum1[i];
-      }
-      if (max2 < sum2[i])
-      {
-        max2 = sum2[i];
+          maxSum = sum;
       }
     }
-    return std::max(max1, max2);
+    for (size_t j = 1; j < column; j++)
+    {
+      int sum = 0;
+      for (size_t i = 0; i < lines && i + j < column; i++)
+      {
+        sum += arr[i * column + i + j] + arr[(i + j) * column + i];
+      }
+      if (sum > maxSum)
+      {
+          maxSum = sum;
+      }
+    }
+    return maxSum;
   }
 }

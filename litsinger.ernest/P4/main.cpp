@@ -5,67 +5,55 @@
 using namespace litsinger;
 int main(int args, const char* argv[])
 {
-  std::ifstream input;
-  std::ofstream output;
+  std::ifstream input(argv[2]);
+  std::ofstream output(argv[3]);
   try
   {
-    int maximum = 0;
     int task = litsinger::fillArguments(args, argv);
-    Matrix matrix;
-    matrix.line = readArray();
-    matrix.column = readArray();
     if (task == 1)
     {
-      int static_array[100][100] = {0};
-      for (int i = 0; i < matrix.line; i++)
-        for (int j = 0; j < matrix.column; j++)
-        {
-          static_array[i][j] = readArray();
-        }
-      output << MaximalSum(static_array, matrix.line, matrix.column);
+      size_t line = 0;
+      size_t column = 0;
+      std::ifstream input(argv[2]);
+      if (!input.is_open())
+      {
+        std::cerr << "Error\n";
+        return 1;
+      }
+      input >> line >> column;
+      int static_array[10000] = {0};
+      for (size_t i = 0; i < (line * column); i++)
+      {
+        input >> static_array[i];
+      }
+      if (!output.is_open())
+      {
+        std::cerr << "Can not open output file";
+        return 1;
+      }
+      output << MaximalSum(static_array, line, column);
+    }
+    else if (task == 2)
+    {
+      size_t line = 0;
+      size_t column = 0;
+      input >> line >> column;
+      int * dynamic_array = new int[line * column];
+      for (size_t i = 0; i < (line * column); i++)
+      {
+        input >> dynamic_array[i];
+      }
+      output << MaximalSum(dynamic_array, line, column);
       if (!output.is_open())
       {
         std::cerr << "Can not open output file";
       }
-    }
-    else if (task == 2)
-    {
-      int **dynamic_array = new int* [matrix.line];
-      for (int i = 0; i < matrix.line; i++)
-      {
-        dynamic_array[i] = new int[matrix.column];
-      }
-      for (int i = 0; i < matrix.line; i++)
-        for (int j = 0; j < matrix.column; j++)
-        {
-          dynamic_array[i][j] = readArray();
-        }
-      try
-      {
-        maximum = MaximalSum(dynamic_array, matrix.line, matrix.column);
-        output << maximum;
-        if (!output.is_open())
-        {
-          std::cerr << "Can not open output file";
-        }
-        delete[] dynamic_array;
-      }
-      catch (std::logic_error const& e)
-      {
-        std::cerr << e.what();
-        delete[] dynamic_array;
-        return 2;
-      }
+      delete[] dynamic_array;
     }
   }
   catch (std::invalid_argument& e)
   {
     std::cerr << e.what();
     return 1;
-  }
-  catch (std::logic_error& e)
-  {
-    std::cerr << e.what();
-    return 2;
   }
 }

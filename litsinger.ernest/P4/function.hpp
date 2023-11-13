@@ -3,13 +3,6 @@
 namespace litsinger
 {
   int fillArguments(int, const char* []);
-  int readArray();
-  int MaximalSum(int inputArr[100][100], int line, int column);
-  class Matrix
-  {
-  public:
-    int line;
-    int column;
-  };
+  int MaximalSum(const int * arr, size_t lines, size_t column);
 }
 #endif
