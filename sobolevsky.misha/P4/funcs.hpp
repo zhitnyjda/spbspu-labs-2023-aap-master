@@ -7,8 +7,8 @@ namespace sobolevsky
   class matrix
   {
   public:
-    int rows;
-    int cols;
+    size_t rows;
+    size_t cols;
     size_t s;
     int * matrix;
     bool countMatrix(std::istream & in, int * matrix, size_t s);
