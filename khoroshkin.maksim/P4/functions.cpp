@@ -1,5 +1,5 @@
-#include "functions.hpp"
 #include <algorithm>
+#include "functions.hpp"
 
 void khoroshkin::matrix::inputArray(std::ifstream & in, int * matrix, size_t sizeMatrix)
 {
@@ -21,9 +21,9 @@ long long khoroshkin::matrix::minSumOfParallelArray(int * matrix, int Rows, int 
     int currentSum = 0;
     for (int j = 0; j < Cols; j++)
     {
-      if  ((i+j)>=0 && (i+j) < Rows)
+      if  ((i + j) >= 0 && (i + j) < Rows)
       {
-        currentSum += matrix[(i+j)*Rows+j];
+        currentSum += matrix[(i + j) * Rows + j];
       }
     }
     minSum = std::min(currentSum, minSum);
