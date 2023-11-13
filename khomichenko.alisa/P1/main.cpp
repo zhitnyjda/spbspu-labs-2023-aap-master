@@ -5,29 +5,32 @@ int main()
 {
   using namespace khomichenko;
   FindingSubMax FindingSubMax;
+  size_t seqCount = 0;
   int num = 0;
-  std::cin>>num;
-  while ((std::cin) and (num !=0))
+  std::cin >> num;
+  while (std::cin)
   {
+    if (num == 0 and seqCount < 2)
+    {
+      std::cerr<< "too short sequence\n";
+      return 2;
+    }
     FindingSubMax(num);
+    if (num == 0)
+    {
+      break;
+    }
+    ++seqCount;
     std::cin >> num;
   };
-  if (!std::cin) {
-    std::cerr<< "not a sequence\n";
-    return 1;
+  if (!std::cin)
+  {
+  std::cerr << "not a sequence\n";
+  return 1;
   }
   else
   {
-    try
-    {
-      std::cout<< FindingSubMax() << "\n";
-      return 0;
-    }
-    catch (const std:: exception&e)
-    {
-      std::cerr<<e.what() << "\n";
-      return 2;
-    }
-   }
+    std::cout << FindingSubMax() << "\n";
+    return 0;
+  }
 };
-

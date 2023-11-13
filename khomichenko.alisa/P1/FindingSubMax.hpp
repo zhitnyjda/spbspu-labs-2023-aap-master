@@ -9,11 +9,10 @@ namespace khomichenko
   public:
     FindingSubMax();
     void operator()(int num);
-    int operator()() const;
+    size_t operator()() const;
   private:
-    int subMax_=0;
-    int max_=0;
-    int seqCount_=0;
+    size_t subMax_;
+    size_t max_;
   };
 }
 #endif
