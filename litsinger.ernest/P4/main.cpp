@@ -14,7 +14,6 @@ int main(int args, const char* argv[])
     Matrix matrix;
     matrix.line = readArray();
     matrix.column = readArray();
-    const int coll = matrix.column;
     if (task == 1)
     {
       int static_array[100][100] = {0};
@@ -43,7 +42,12 @@ int main(int args, const char* argv[])
         }
       try
       {
-        maximum = MaximalSum(** dynamic_array, matrix.line, matrix.column);
+        maximum = MaximalSum(dynamic_array, matrix.line, matrix.column);
+        output << maximum;
+        if (!output.is_open())
+        {
+          std::cerr << "Can not open output file";
+        }
         delete[] dynamic_array;
       }
       catch (std::logic_error const& e)
