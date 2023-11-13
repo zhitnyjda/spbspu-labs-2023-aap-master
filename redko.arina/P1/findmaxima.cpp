@@ -2,7 +2,8 @@
 #include <limits>
 
 redko::FindMaxima::FindMaxima() :
-  firstMaxValue(std::numeric_limits< int > ::min()), secondMaxValue(std::numeric_limits< int > ::min())
+  firstMaxValue(std::numeric_limits< int > ::min()),
+  secondMaxValue(std::numeric_limits< int > ::min())
 {}
 void redko::FindMaxima::operator()(int value) {
   if (value > firstMaxValue)
