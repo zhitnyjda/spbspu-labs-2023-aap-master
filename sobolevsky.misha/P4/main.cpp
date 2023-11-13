@@ -14,7 +14,7 @@ int main(int argc, char ** argv)
     std::cerr << "Передано много аргументов\n";
     return 1;
   }
-  
+
   int number;
   try
   {
@@ -25,12 +25,12 @@ int main(int argc, char ** argv)
     std::cerr << "Первый аргумент должен быть интом\n";
     return 1;
   }
-  
+
   sobolevsky::matrix currMatrix;
   if (number == 1 || number == 2)
   {
     size_t rows = 0, cols = 0;
-    
+
     std::ifstream input(argv[2]);
     input >> rows >> cols;
     if (!input)
