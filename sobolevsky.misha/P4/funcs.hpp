@@ -7,8 +7,12 @@ namespace sobolevsky
   class matrix
   {
   public:
-    bool matrix::countMatrix(std::istream & in, int * matrix, size_t s, size_t counter);
-    bool isTrianglMatrix(int* matrix, size_t rows, size_t cols);
+    int rows;
+    int cols;
+    size_t s;
+    int * matrix;
+    bool countMatrix(std::istream & in, int * matrix, size_t s, size_t counter);
+    bool isTrianglMatrix(int * matrix, size_t rows, size_t cols);
   };
 }
 #endif
