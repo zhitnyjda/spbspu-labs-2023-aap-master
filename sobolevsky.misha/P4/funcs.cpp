@@ -18,11 +18,11 @@ namespace sobolevsky
 
   bool matrix::isTrianglMatrix(int * matrix, size_t rows, size_t cols)
   {
-    for (int i = 1; i < rows; i++) 
+    for (int i = 0; i < rows; i++) 
     {
-      for (int k = cols; k > i; k--) 
+      for (int k = 0; k < cols; k++) 
       {
-        if (matrix[i*cols + k] != 0) 
+        if ((matrix[k*cols + i] != 0) && (i > k))
         {
           return false;
         }

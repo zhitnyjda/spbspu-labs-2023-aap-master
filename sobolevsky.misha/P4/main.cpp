@@ -22,7 +22,7 @@ int main(int argc, char ** argv)
   }
   catch (const std::invalid_argument & e)
   {
-    std::cerr << "Первый аргумент задан неправильно\n";
+    std::cerr << "Первый аргумент должен быть интом\n";
     return 1;
   }
   
@@ -35,14 +35,14 @@ int main(int argc, char ** argv)
     input >> rows >> cols;
     if (!input)
     {
-      std::cerr << "Cannot read an input.\n";
+      std::cerr << "Невозможно открыть input файл\n";
       return 2;
     }
 
     std::ofstream output(argv[3]);
     if (!output.is_open())
     {
-      std::cerr << "Can't open an output file!\n";
+      std::cerr << "Невозможно открыть output файл\n";
       return 2;
     }
 
@@ -74,7 +74,7 @@ int main(int argc, char ** argv)
   }
   else
   {
-    std::cerr << "Первый аргумент задан неправильно\n";
+    std::cerr << "Первый аргумент должен быть либо 1 либо 2\n";
     return 1;
   }
 }
