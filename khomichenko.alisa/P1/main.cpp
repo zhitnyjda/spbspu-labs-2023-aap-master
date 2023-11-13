@@ -8,25 +8,21 @@ int main()
   size_t seqCount = 0;
   size_t num = 0;
   std::cin >> num;
-  while (std::cin)
+  while (std::cin && num != 0)
   {
     ++seqCount;
-    if (num == 0 and seqCount < 2)
-    {
-      std::cerr<< "too short sequence\n";
-      return 2;
-    }
     FindingSubMax(num);
-    if (num == 0)
-    {
-      break;
-    }
     std::cin >> num;
   };
   if (!std::cin)
   {
-  std::cerr << "not a sequence\n";
-  return 1;
+    std::cerr << "not a sequence\n";
+    return 1;
+  }
+  else if (seqCount < 2)
+  {
+    std::cerr<< "too short sequence\n";
+    return 2;
   }
   else
   {
