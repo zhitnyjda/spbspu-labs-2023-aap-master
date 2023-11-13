@@ -1,4 +1,5 @@
 #include "nchar.hpp"
+
 panov::Nchar::Nchar():
   count(0), first(0)
 {}
