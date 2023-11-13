@@ -46,11 +46,10 @@ int main(int argc, char ** argv)
       return 2;
     }
 
-    size_t counter = 0;
     if (number == 1)
     {
       int statMatrix[10000] = {};
-      if (!(currMatrix.countMatrix(input, statMatrix, (cols * rows), counter)))
+      if (!(currMatrix.countMatrix(input, statMatrix, (cols * rows))))
       {
         std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
         return 2;
@@ -61,7 +60,7 @@ int main(int argc, char ** argv)
     else
     {
       int * dynMatrix = new int[rows * cols];
-      if (!(currMatrix.countMatrix(input, dynMatrix, (cols * rows), counter)))
+      if (!(currMatrix.countMatrix(input, dynMatrix, (cols * rows))))
       {
         std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
         delete[] dynMatrix;
