@@ -11,7 +11,7 @@ namespace panov
   private:
     int count;
     int first;
-    int max_number;
+    int maxNumber;
   };
 }
 #endif
