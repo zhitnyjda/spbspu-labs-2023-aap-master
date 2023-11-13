@@ -1,47 +1,9 @@
 #include <iostream>
-#include <stdexcept>
-
-struct FindingSubMax
-{
-public:
-  FindingSubMax():
-    subMax_(0),
-    max_(0),
-    seqCount_(0)
-  {}
-
-  void operator()(int num)
-  {
-  ++seqCount_;
-  if (num > max_)
-  {
-    subMax_ = max_;
-    max_ = num;
-  }
-  else if (num > subMax_ and num != max_)
-  {
-    subMax_ = num;
-  }
-  }
-  int operator()() const
-  {
-    if (seqCount_ <2)
-    {
-      throw std::logic_error("too short sequence");
-    }
-    else
-    {
-    return subMax_;
-    }
-  }
-private:
-  int subMax_=0;
-  int max_=0;
-  int seqCount_=0;
-};
+#include "FindingSubMax.hpp"
 
 int main()
 {
+  using namespace khomichenko;
   FindingSubMax FindingSubMax;
   int num = 0;
   std::cin>>num;
