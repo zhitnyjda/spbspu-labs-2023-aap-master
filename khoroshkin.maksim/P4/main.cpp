@@ -12,6 +12,7 @@ int main(int argc, char ** argv)
     }
 
     int num = std::stoll(argv[1]);
+    khoroshkin::matrix Matrix;
 
     if (num > 2 || num < 1)
     {
@@ -20,11 +21,9 @@ int main(int argc, char ** argv)
     else if (num == 1)
     {
       int statMatrix[1000] = { 0 };
-      khoroshkin::matrix Matrix;
       std::ifstream inputFile(argv[2]);
       int Rows, Cols;
-      inputFile >> Rows >> Cols;
-      if (!inputFile)
+      if (!(inputFile >> Rows >> Cols))
       {
         throw std::logic_error("Cannot read an input.\n");
       }
@@ -48,11 +47,9 @@ int main(int argc, char ** argv)
     }
     else
     {
-      khoroshkin::matrix Matrix;
       std::ifstream inputFile(argv[2]);
       int Rows, Cols;
-      inputFile >> Rows >> Cols;
-      if (!inputFile)
+      if (!(inputFile >> Rows >> Cols))
       {
         throw std::logic_error("Cannot read an input.\n");
       }
