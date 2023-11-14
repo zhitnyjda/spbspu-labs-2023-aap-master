@@ -89,7 +89,7 @@ size_t count_saddle(size_t rows, size_t cols, size_t * matrix)
       if(matrix[i * cols + j] <= minrows)
       {
         minrows = matrix[i * cols + j];
-        coordinateMinRowsi = i;
+        coordinateMinRowsj = j;
       }
     }
     for (size_t q = 0; q < rows; ++q)
