@@ -2,6 +2,7 @@
 #include <fstream>
 #include <limits>
 
+
 size_t count_saddle(size_t rows, size_t cols, size_t * matrix);
 int main(int argc, char ** argv)
 {
