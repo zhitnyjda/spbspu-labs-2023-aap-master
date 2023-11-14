@@ -81,7 +81,6 @@ size_t count_saddle(size_t rows, size_t cols, size_t * matrix)
   size_t count = 0;
   size_t minrows = std::numeric_limits< size_t >::max();
   size_t maxcols = std::numeric_limits< size_t >::min();
-  size_t coordinateMinRowsi = 0;
   size_t coordinateMinRowsj = 0;
   for (size_t i = 0; i < rows; ++i)
   {
