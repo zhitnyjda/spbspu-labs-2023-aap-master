@@ -1,16 +1,16 @@
-#include "delitel.hpp"
+#include "divisibility.hpp"
 #include <iostream>
 #include <stdexcept>
 #include <limits>
 
-kaseev::delitel::delitel():
-  max_count(std::numeric_limits<int>::max()),
-  count(0),
-  firstnum(),
-  secondnum()
+kaseev::divisibility::divisibility():
+    max_count(std::numeric_limits<int>::max()),
+    count(0),
+    firstnum(),
+    secondnum()
 {}
 
-int kaseev::delitel::operator()(std::istream &cin)
+int kaseev::divisibility::operator()(std::istream &)
 {
   if (!(std::cin >> firstnum) || firstnum == 0) {
     throw std::logic_error("Wrong input");

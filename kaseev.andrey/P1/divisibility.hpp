@@ -1,13 +1,14 @@
-#ifndef dilitel_HPP
-#define dilitel_HPP
+#ifndef DIVISIBILITY_HPP
+#define DIVISIBILITY_HPP
+#include <iostream>
 #include <cstddef>
 
 namespace kaseev
 {
-  class delitel
+  class divisibility
   {
   public:
-    delitel();
+    long long int divisibility(long long int, long long int);
     int operator()(std::istream &cin);
     size_t operator()();
   private:

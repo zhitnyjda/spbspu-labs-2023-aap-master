@@ -1,18 +1,14 @@
 #include <iostream>
-#include "delitel.cpp"
+#include "divisibility.hpp"
 #include <stdexcept>
 
 int main()
 {
-  kaseev::delitel delitel;
-  try {
-    int ans;
-    ans = delitel(std::cin);
-    std::cout << ans << "\n";
-    return 0;
-  }
-  catch (const std::logic_error &error) {
-    std::cerr << error.what() << "\n";
-    return 2;
+  int firstmun, secondnum, count;
+  std::cin >> firstmun >> secondnum;
+  while (firstmun != 0 && secondnum != 0)
+  {
+    count += kaseev::divisibility();
+    secondnum = firstmun;
   }
 }
