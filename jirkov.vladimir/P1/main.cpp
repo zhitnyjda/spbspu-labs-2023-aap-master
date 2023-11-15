@@ -5,27 +5,27 @@ int main()
   size_t value = 0;
   using namespace jirkov;
   FindingCount findingCount;
-  do
+  size_t SeqCount = 0;
+  std::cin >> value;
+  while (value != 0)
   {
+    ++SeqCount;
+    findingCount(value);
     std::cin >> value;
-    if (!std::cin)
-    {
-      std::cerr << "Wrong input\n";
-      return 1;
-    }
-    else if (value != 0)
-    {
-      findingCount(value);
-    }
-  }
-  while (value != 0);
-  try
+  };
+  if (!std::cin)
   {
-    std::cout << findingCount() << "\n";
+    std::cerr << "Wrong input\n";
+    return 1;
   }
-  catch (const std::exception& e)
+  else if (SeqCount < 2)
   {
-    std::cerr << e.what() << "\n";
+    std::cerr << "Too short sequence\n";
     return 2;
+  }
+  else
+  {
+    std::cout << findingCount() << '\n';
+    return 0;
   }
 }
