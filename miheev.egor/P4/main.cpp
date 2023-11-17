@@ -44,13 +44,15 @@ int main(int argc, char* argv[])
     }
     catch(const std::runtime_error& e)
     {
-      delete matrix;
       std::cerr << e.what();
+      delete matrix;
+      inputFile.close();
       return 2;
     }
     catch(...)
     {
       std::cerr << "unexpected error occured\n";
+      inputFile.close();
       delete matrix;
       return 2;
     }

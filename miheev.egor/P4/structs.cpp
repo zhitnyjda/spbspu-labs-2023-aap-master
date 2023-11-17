@@ -19,6 +19,7 @@ miheev::Matrix::Matrix(size_t rows, size_t cols, long long mode):
 
 miheev::Matrix::~Matrix()
 {
+  std::cout << "deconstructro\n";
   if (mode_ == 2)
   {
     delete[] matrix_;
@@ -30,7 +31,10 @@ void miheev::Matrix::initWithIfstream(std::ifstream& in)
   int current = 0;
   for (size_t i = 0; i < nRows_ * nCols_; i++)
   {
-    in >> current;
+    if (in)
+    {
+      in >> current;
+    }
     if (!in)
     {
       std::cerr << "Matrix is only partly initialized. Problems with ifstream\n";
