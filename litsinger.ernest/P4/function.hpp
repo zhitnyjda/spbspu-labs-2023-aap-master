@@ -4,6 +4,6 @@
 namespace litsinger
 {
   int fillArguments(int, const char* []);
-  int MaximalSum(int arr, size_t rows, size_t cols);
+  int MaximalSum(const int * arr, size_t rows, size_t cols);
 }
 #endif

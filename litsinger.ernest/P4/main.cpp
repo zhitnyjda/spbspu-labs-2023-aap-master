@@ -30,10 +30,10 @@ int main(int args, const char* argv[])
       }
       if (!output.is_open())
       {
-        std::cerr << "Can not open output file";
+        std::cerr << "Can not open output file\n";
         return 1;
       }
-      output << MaximalSum(* static_array, rows, cols);
+      output << MaximalSum(static_array, rows, cols) << "\n";
     }
     else if (task == 2)
     {
@@ -48,9 +48,9 @@ int main(int args, const char* argv[])
       }
       if (!output.is_open())
       {
-        std::cerr << "Can not open output file";
+        std::cerr << "Can not open output file\n";
       }
-      output << MaximalSum(* dynamic_array, rows, cols);
+      output << MaximalSum(dynamic_array, rows, cols) << "\n";
       delete[] dynamic_array;
     }
   }
