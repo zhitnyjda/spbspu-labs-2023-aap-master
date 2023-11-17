@@ -28,37 +28,31 @@ namespace litsinger
   }
   int MaximalSum(int * arr, size_t rows, size_t cols)
   {
-    int maxSum = std::numeric_limits< int >::max();
-    int max1 = 0;
-    int max2 = 0;
-    int Sum1[100] = { 0 };
-    int Sum2[100] = { 0 };
-    for (size_t i = 0; i < rows; i++)
+    int maxSum = std::numeric_limits<int>::min();
+    for (int i = 0; i < cols; i++)
     {
-      for (size_t j = 0; j < cols; j++)
+      int sum = 0;
+      for (int row = 0, column = i; row < rows && column < cols; row++, column++)
       {
-        if ((i < j))
-        {
-          Sum1[j - i] += arr[(i * cols) + j];
-        }
-        if ((i > j))
-        {
-          Sum2[i - j] += arr[(i * cols) + j];
-        }
+	    if (row != column)
+	    {
+	      sum += arr[row * cols + column];
+	    }
       }
+      maxSum = std::max(maxSum, sum);
     }
-    for (size_t i = 0; i < (rows * cols); i++)
+    for (int i = 1; i < rows; i++)
     {
-      if (max1 < Sum1[i])
+      int sum = 0;
+      for (int row = i, column = 0; row < rows && column < cols; row++, column++)
       {
-        max1 = Sum1[i];
+	    if (row != column)
+	    {
+          sum += arr[row * cols + column];
+	    }
       }
-      else if (max2 < Sum2[i])
-      {
-        max2 = Sum2[i];
-      }
+      maxSum = std::max(maxSum, sum);
     }
-    maxSum = std::max(max1, max2);
-    return maxSum;
+    return maxSum;    
   }
 }
