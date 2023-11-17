@@ -13,7 +13,7 @@ miheev::Matrix::Matrix(size_t rows, size_t cols, long long mode):
   }
   else if (mode == 2)
   {
-    matrix_ = new int [rows*cols];
+    matrix_ = new int[rows*cols];
   }
 }
 

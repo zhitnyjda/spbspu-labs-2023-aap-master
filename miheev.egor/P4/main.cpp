@@ -38,7 +38,22 @@ int main(int argc, char* argv[])
       return 2;
     }
     Matrix* matrix = new Matrix(rows, cols, num);
-    (*matrix).initWithIfstream(inputFile);
+    try
+    {
+      (*matrix).initWithIfstream(inputFile);
+    }
+    catch(const std::runtime_error& e)
+    {
+      delete matrix;
+      std::cerr << e.what();
+      return 2;
+    }
+    catch(...)
+    {
+      std::cerr << "unexpected error occured\n";
+      delete matrix;
+      return 2;
+    }
     inputFile.close();
 
     (*matrix).increasePeriphery();
@@ -62,9 +77,5 @@ int main(int argc, char* argv[])
   {
     std::cout << e.what();
     return 2;
-  }
-  catch(...)
-  {
-    std::cerr << "Some error occured\n";
   }
 }
