@@ -53,6 +53,6 @@ namespace litsinger
       }
       maxSum = std::max(maxSum, sum);
     }
-    return maxSum;    
+    return maxSum;
   }
 }
