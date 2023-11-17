@@ -29,7 +29,8 @@ int main(int args, const char* argv[])
         input >> static_array[i];
         if (!input)
         {
-          std::cerr("Wrong argument\n")
+          std::cerr("Wrong argument\n");
+          return 2;
         }
       }
       if (!output.is_open())
