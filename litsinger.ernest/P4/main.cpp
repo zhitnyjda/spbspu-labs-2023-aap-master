@@ -27,6 +27,10 @@ int main(int args, const char* argv[])
       for (size_t i = 0; i < (rows * cols); i++)
       {
         input >> static_array[i];
+        if (!input)
+        {
+          std::cerr("Wrong argument\n")
+        }
       }
       if (!output.is_open())
       {
@@ -45,6 +49,10 @@ int main(int args, const char* argv[])
       for (size_t i = 0; i < (rows * cols); i++)
       {
         input >> dynamic_array[i];
+        if (!input)
+        {
+          std::cerr("Wrong argument\n")
+        }
       }
       if (!output.is_open())
       {
