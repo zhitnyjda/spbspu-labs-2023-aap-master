@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <limits>
 namespace litsinger
 {
   std::ifstream input;
@@ -58,5 +59,6 @@ namespace litsinger
       }
     }
     maxSum = std::max(max1, max2);
+    return maxSum;
   }
 }
