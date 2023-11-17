@@ -52,6 +52,7 @@ int main(int args, const char* argv[])
         if (!input)
         {
           std::cerr("Wrong argument\n");
+          return 2;
         }
       }
       if (!output.is_open())
