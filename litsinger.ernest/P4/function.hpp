@@ -1,10 +1,9 @@
 #ifndef FUNCTION_HPP
 #define FUNCTION_HPP
+#include <cstddef>
 namespace litsinger
 {
   int fillArguments(int, const char* []);
-  int MaximalSum(const int * arr, size_t line, size_t column);
-  size_t line;
-  size_t column;
+  int MaximalSum(int arr, size_t rows, size_t cols);
 }
 #endif
