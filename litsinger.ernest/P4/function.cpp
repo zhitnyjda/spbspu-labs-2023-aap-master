@@ -26,33 +26,4 @@ namespace litsinger
     }
     return n;
   }
-  int MaximalSum(int * arr, size_t rows, size_t cols)
-  {
-    int maxSum = std::numeric_limits<int>::min();
-    for (int i = 0; i < cols; i++)
-    {
-      int sum = 0;
-      for (int row = 0, column = i; row < rows && column < cols; row++, column++)
-      {
-	    if (row != column)
-	    {
-	      sum += arr[row * cols + column];
-	    }
-      }
-      maxSum = std::max(maxSum, sum);
-    }
-    for (int i = 1; i < rows; i++)
-    {
-      int sum = 0;
-      for (int row = i, column = 0; row < rows && column < cols; row++, column++)
-      {
-	    if (row != column)
-	    {
-          sum += arr[row * cols + column];
-	    }
-      }
-      maxSum = std::max(maxSum, sum);
-    }
-    return maxSum;
-  }
 }
