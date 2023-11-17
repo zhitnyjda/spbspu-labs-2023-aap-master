@@ -7,13 +7,13 @@ int main(int argc, char ** argv)
 {
   using namespace matrixStuff;
   using namespace readArray;
-  
+
   if (argc != 4)
   {
     std::cerr << "Wrong number of arguments.\n";
     return 1;
   }
-  
+
   try
   {
     long long num = std::stoll(argv[1]);
@@ -24,7 +24,7 @@ int main(int argc, char ** argv)
     return 1;
   }
   long long num = std::stoll(argv[1]);
-  
+
   size_t rows = 0, cols = 0;
   {
     std::ifstream input(argv[2]);
@@ -36,7 +36,7 @@ int main(int argc, char ** argv)
       return 2;
     }
   }
-  
+
   if (num == 1)
   {
     int smatrix[10000];
@@ -58,7 +58,7 @@ int main(int argc, char ** argv)
       output << matrixStuff::findNumRowLsr(smatrix, rows, cols) << "\n";
     }
   }
-  
+
   else if (num == 2)
   {
     int * dmatrix = new int[rows * cols];
@@ -82,12 +82,12 @@ int main(int argc, char ** argv)
     }
     delete [] dmatrix;
   }
-  
+
   else
   {
     std::cerr << "Argument num must be either 1 or 2. \n";
     return 2;
   }
-  
+
   return 0;
 }
