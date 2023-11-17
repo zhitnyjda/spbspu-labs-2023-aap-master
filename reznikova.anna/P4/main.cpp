@@ -14,16 +14,16 @@ int main(int argc, char ** argv)
     return 1;
   }
 
+  long long num = 0;
   try
   {
-    long long num = std::stoll(argv[1]);
+    num = std::stoll(argv[1]);
   }
   catch (const std::invalid_argument & e)
   {
-    std::cerr << "Can't parse a value. \n";
+    std::cerr << "Can't parse a value.\n";
     return 1;
   }
-  long long num = std::stoll(argv[1]);
 
   size_t rows = 0, cols = 0;
   {
@@ -32,7 +32,7 @@ int main(int argc, char ** argv)
     input >> cols;
     if (!input)
     {
-      std::cerr << "Can't read an input. \n";
+      std::cerr << "Can't read an input.\n";
       return 2;
     }
   }
@@ -43,7 +43,7 @@ int main(int argc, char ** argv)
     {
       std::ifstream input(argv[2]);
       input.seekg(3);
-      for (int i = 0; i < rows * cols; i++)
+      for (size_t i = 0; i < rows * cols; i++)
       {
         input >> smatrix[i];
         if (!input)

@@ -8,7 +8,7 @@ void readArray::inputArray(std::istream & in, int * m, size_t s, size_t toRead)
   {
     if (!(in >> m[i]))
     {
-      throw std::length_error("Can't read an input. \n");
+      throw std::length_error("Can't read an input.\n");
     }
   }
 }

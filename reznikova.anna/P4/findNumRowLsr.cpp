@@ -1,14 +1,14 @@
 #include "findNumRowLsr.hpp"
 
-int matrixStuff::findNumRowLsr(int matrix[], size_t rows, size_t cols)
+size_t matrixStuff::findNumRowLsr(int matrix[], size_t rows, size_t cols)
 {
-  int num_row_lsr = 0;
+  size_t num_row_lsr = 0;
   int max_count = 0;
-  for (int i = 0; i < rows; i++)
+  for (size_t i = 0; i < rows; i++)
   {
     int previous_number = 0;
     int count = 0;
-    for (int j = 0; j < cols; j++)
+    for (size_t j = 0; j < cols; j++)
     {
       int number = matrix[i*cols + j];
       if (number != previous_number)
