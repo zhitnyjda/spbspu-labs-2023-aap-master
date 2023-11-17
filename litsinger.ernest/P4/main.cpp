@@ -51,7 +51,7 @@ int main(int args, const char* argv[])
         input >> dynamic_array[i];
         if (!input)
         {
-          std::cerr("Wrong argument\n")
+          std::cerr("Wrong argument\n");
         }
       }
       if (!output.is_open())
