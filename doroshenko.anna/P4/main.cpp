@@ -8,14 +8,15 @@ int main(int argc, char** argv)
   using namespace doroshenko;
   try
   {
-    int num = readingArguments(argc, argv);
+    long long num = readingArguments(argc, argv);
     Matrix Matrix;
     size_t rows_;
     size_t cols_;
     size_t result;
     std::ifstream input;
     input.open(argv[2]);
-    if (!input) {
+    if (!input)
+    {
       std::cerr << "File not open\n";
       return 2;
     }
@@ -25,10 +26,14 @@ int main(int argc, char** argv)
       std::cerr << "It is not number\n";
       return 2;
     }
+    if (rows_ < 3 && cols_ < 3)
+    {
+      std::cerr << "Not enough elements\n";
+      return 2;
+    }
     if (num == 1)
     {
       int* staticMatrix = { 0 };
-      std::ifstream input;
       Matrix.inputArray(input, staticMatrix, rows_ * cols_);
       result = Matrix.findingLocMax(staticMatrix, rows_, cols_);
     }

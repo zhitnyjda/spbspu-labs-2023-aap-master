@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-long long doroshenko::readingArguments(int argc, char** argv)
+long long doroshenko::readingArguments(int argc, char** argv) 
 {
   if (argc < 4)
   {
@@ -28,11 +28,11 @@ long long doroshenko::readingArguments(int argc, char** argv)
   }
 }
 
-void doroshenko::Matrix::inputArray(std::ifstream& input, int* matrix, size_t sizeMatrix)
+void doroshenko::Matrix::inputArray(std::ifstream& input, int* Matrix, size_t sizeMatrix)
 {
-  for (size_t i = 0; i < sizeMatrix; ++i)
+  for (size_t k = 0; k < sizeMatrix; k++)
   {
-    input >> matrix[i];
+    input >> Matrix[k];
     if (!input)
     {
       throw std::invalid_argument("Wrong input");
