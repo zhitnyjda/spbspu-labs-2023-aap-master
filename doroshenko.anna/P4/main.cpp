@@ -33,15 +33,17 @@ int main(int argc, char** argv)
     }
     if (num == 1)
     {
-      int* staticMatrix = { 0 };
+      int* staticMatrix[] = { 0 };
       Matrix.inputArray(input, staticMatrix, rows_ * cols_);
       result = Matrix.findingLocMax(staticMatrix, rows_, cols_);
+      input.close();
     }
     else
     {
       int* dynMatrix = new int[rows_ * cols_];
       Matrix.inputArray(input, dynMatrix, rows_ * cols_);
       result = Matrix.findingLocMax(dynMatrix, rows_, cols_);
+      input.close();
       delete[] dynMatrix;
     }
     std::ofstream output;
@@ -51,6 +53,7 @@ int main(int argc, char** argv)
       return 2;
     }
     output << result;
+    return 0;
   }
   catch (const std::invalid_argument& firstError)
   {

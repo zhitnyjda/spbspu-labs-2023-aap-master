@@ -8,7 +8,7 @@ namespace doroshenko
   struct Matrix
   {
   public:
-    void inputArray(std::ifstream&, int*, size_t);
+    void inputArray(std::istream&, int*, size_t);
     size_t findingLocMax(int*, size_t, size_t);
   private:
     size_t rows_;
