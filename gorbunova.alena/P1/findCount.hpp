@@ -1,6 +1,7 @@
 #ifndef FINDCOUNT_HPP
 #define FINDCOUNT_HPP
 #include <cstddef>
+#include <stdexcept>
 
 namespace gorbunova
 {
@@ -17,4 +18,5 @@ namespace gorbunova
     size_t secondNumber_;
   };
 }
+
 #endif

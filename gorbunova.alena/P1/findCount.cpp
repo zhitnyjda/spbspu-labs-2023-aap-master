@@ -1,6 +1,4 @@
 #include "findCount.hpp"
-#include <iostream>
-#include <stdexcept>
 
 gorbunova::FindCount::FindCount():
   countNumbers_(0),

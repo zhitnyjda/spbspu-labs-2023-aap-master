@@ -1,32 +1,37 @@
 #include <iostream>
 #include "findCount.hpp"
+#include "evenNumber.hpp"
 
 int main()
 {
   size_t value = 0;
   using namespace gorbunova;
   FindCount findCount;
+  EvenNumber evenNumber;
   do
   {
     std::cin >> value;
     if (!std::cin)
     {
-        std::cerr << "Wrong input\n";
+        std::cerr << "Not a sequence\n";
         return 1;
     }
     else if (value != 0)
     {
-      findCount(value);
+      try
+      {
+        findCount(value);
+        evenNumber(value);
+      }
+      catch (const std::logic_error & e)
+      {
+       std::cerr << "Error: " << e.what() << "\n";
+       return 2;
+      }
     }
   }
   while (value != 0);
-  try
-  {
-    std::cout << findCount() << "\n";
-  }
-  catch (const std::exception& e)
-  {
-    std::cerr << e.what() << "\n";
-    return 2;
-  }
+  std::cout << findCount() << "\n";
+  std::cout << evenNumber() << "\n";
+  return 0;
 }
