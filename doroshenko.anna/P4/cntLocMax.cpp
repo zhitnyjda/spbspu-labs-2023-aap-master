@@ -1,9 +1,8 @@
 #include "cntLocMax.hpp"
 #include <iostream>
 #include <fstream>
-#include <memory>
 
-int doroshenko::readingArguments(int argc, char** argv)
+long long doroshenko::readingArguments(int argc, char** argv)
 {
   if (argc < 4)
   {
@@ -14,16 +13,12 @@ int doroshenko::readingArguments(int argc, char** argv)
     throw std::logic_error("Too many arguments\n");
   }
   char* endOfParcing = nullptr;
-  try
-  {
-    int num = std::strtoll(argv[1], &endOfParcing, 10);
-  }
-  catch (const std::invalid_argument)
+  long long num = std::strtoll(argv[1], &endOfParcing, 10);
+  if (!num)
   {
     throw std::logic_error("First parameter is not a number\n");
   }
-  int num = std::strtoll(argv[1], &endOfParcing, 10);
-  if (num > 2 || num < 1)
+  else if (num > 2 || num < 1)
   {
     throw std::logic_error("First parameter is out of range\n");
   }
@@ -50,9 +45,9 @@ size_t doroshenko::Matrix::findingLocMax(int* Matrix, size_t rows_, size_t cols_
   size_t cntLocMax = 0;
   size_t i = 1;
   size_t j = 1;
-  for (i = 1; i < rows_ - 1; i++);
+  for (i; i < rows_ - 1; i++)
   {
-    for (j = 1; j < cols_ - 1; j++);
+    for (j; j < cols_ - 1; j++)
     {
       if (Matrix[i * j] < Matrix[(i - 1) * j] &&
           Matrix[i * j] < Matrix[i * (j - 1)] &&
@@ -65,4 +60,3 @@ size_t doroshenko::Matrix::findingLocMax(int* Matrix, size_t rows_, size_t cols_
   }
   return cntLocMax;
 }
-

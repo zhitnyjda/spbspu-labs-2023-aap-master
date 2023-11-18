@@ -4,7 +4,7 @@
 
 namespace doroshenko
 {
-  int readingArguments(int, char**);
+  long long readingArguments(int, char**);
   struct Matrix
   {
   public:
