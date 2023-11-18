@@ -17,7 +17,7 @@ int main(int argc, char ** argv)
     std::cerr << "It is not a number!\n";
     return 1;
   }
-  else if(num != 1 || num != 2)
+  else if(num != 1 && num != 2)
   {
     std::cerr << "Need 1 or 2!\n";
     return 1;
