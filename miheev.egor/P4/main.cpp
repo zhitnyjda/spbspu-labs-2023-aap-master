@@ -37,15 +37,14 @@ int main(int argc, char* argv[])
       std::cerr << "Can't read input\n";
       return 2;
     }
-    Matrix* matrix = new Matrix(rows, cols, num);
+    Matrix matrix(rows, cols, num);
     try
     {
-      (*matrix).initWithIfstream(inputFile);
+      matrix.initWithIfstream(inputFile);
     }
     catch(const std::runtime_error& e)
     {
       std::cerr << e.what();
-      delete matrix;
       inputFile.close();
       return 2;
     }
@@ -53,20 +52,17 @@ int main(int argc, char* argv[])
     {
       std::cerr << "unexpected error occured\n";
       inputFile.close();
-      delete matrix;
       return 2;
     }
     inputFile.close();
 
-    (*matrix).increasePeriphery();
+    matrix.increasePeriphery();
 
     std::ofstream outFile(argv[3]);
     if (outFile.is_open())
     {
-      outFile << std::to_string((*matrix).getNRows()) + ' ' + std::to_string((*matrix).getNCols()) + ' ' + (*matrix).getMatrixInline();
+      outFile << std::to_string(matrix.getNRows()) + ' ' + std::to_string(matrix.getNCols()) + ' ' + matrix.getMatrixInline();
     }
-
-    delete matrix;
 
     return 0;
   }

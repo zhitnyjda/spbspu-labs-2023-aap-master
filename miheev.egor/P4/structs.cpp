@@ -19,7 +19,6 @@ miheev::Matrix::Matrix(size_t rows, size_t cols, long long mode):
 
 miheev::Matrix::~Matrix()
 {
-  std::cout << "deconstructro\n";
   if (mode_ == 2)
   {
     delete[] matrix_;
