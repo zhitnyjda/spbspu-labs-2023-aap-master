@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-long long doroshenko::readingArguments(int argc, char** argv) 
+long long doroshenko::readingArguments(int argc, char** argv)
 {
   if (argc < 4)
   {
