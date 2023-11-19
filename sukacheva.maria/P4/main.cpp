@@ -26,16 +26,6 @@ int main(int argc, char** argv)
   }
 
   size_t rows = 0, cols = 0;
-  {
-    std::ifstream input(argv[2]);
-    input >> rows;
-    input >> cols;
-    if (!input)
-    {
-      std::cerr << "Can't read an input.\n";
-      return 2;
-    }
-  }
 
   if (num == 1)
   {
@@ -52,11 +42,6 @@ int main(int argc, char** argv)
       for (size_t i = 0; i < rows * cols; i++)
       {
         input >> staticMatrix[i];
-        if (!input)
-        {
-          std::cerr << "Cannot read a file.\n";
-          return 2;
-        }
       }
       size_t MaxDiagonal = MaxSideDiagonal(staticMatrix, cols, rows);
       {
