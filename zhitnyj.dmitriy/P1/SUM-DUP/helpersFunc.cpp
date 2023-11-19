@@ -34,7 +34,7 @@ int helperFunc::operator()(std::istream *str)
     l_++;
   }while(n_);
 
-  if (l_ < 3)
+  if ((l_ - 1) < 3)
   {
     std::cout << "Too short sequence!" << std::endl;
 
