@@ -3,7 +3,7 @@ panov::NumberOfSignChanges::NumberOfSignChanges() :
   count(0), first(0)
 {}
 
-void panov::NumberOfSignChanges::operator()(int subsequent)
+void panov::NumberOfSignChanges::operator()(size_t subsequent)
 {
   if ((first < 0 && subsequent > 0) || (first > 0 && subsequent < 0))
   {
