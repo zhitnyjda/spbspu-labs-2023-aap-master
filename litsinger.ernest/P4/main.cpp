@@ -32,6 +32,11 @@ int main(int args, const char* argv[])
           std::cerr << "Input error\n";
           return 2;
         }
+        if (input.eof())
+        {
+          std::cerr "Error\n";
+          return 2;
+        }
       }
       if (!output.is_open())
       {
