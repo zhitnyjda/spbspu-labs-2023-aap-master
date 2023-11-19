@@ -5,10 +5,6 @@
 
 size_t sukacheva::MaxSideDiagonal(int matrix[], size_t cols, size_t rows)
 {
-  if ((cols != rows) || (cols < 1))
-  {
-    throw std::logic_error("There is no solution for this matrix.\n");
-  }
   size_t maxDiagonal = 0;
   size_t diagonal = 0;
   size_t index = 0;

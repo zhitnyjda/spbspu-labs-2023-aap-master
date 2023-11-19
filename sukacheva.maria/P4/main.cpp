@@ -43,16 +43,7 @@ int main(int argc, char** argv)
           return 2;
         }
       }
-      size_t MaxDiagonal = 0;
-      try
-      {
-        MaxDiagonal = MaxSideDiagonal(staticMatrix, cols, rows);
-      }
-      catch(const std::exception & e)
-      {
-        std::cerr << e.what();
-        return 2;
-      }
+      size_t MaxDiagonal = MaxSideDiagonal(staticMatrix, cols, rows);
       {
         std::ofstream output(argv[3]);
         output << MaxDiagonal;
