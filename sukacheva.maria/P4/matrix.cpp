@@ -12,8 +12,8 @@ size_t sukacheva::MaxSideDiagonal(int matrix[], size_t cols, size_t rows)
   }
   size_t maxDiagonal = 0;
   size_t diagonal = 0;
-  int index = 0;
-  for (int i = 1; i <= (cols + rows) - 1; i++)
+  size_t index = 0;
+  for (size_t i = 1; i <= (cols + rows) - 1; i++)
   {
     diagonal = 0;
     (i > cols) ? (index = 2 * i - cols) : ( (i == 0) ? (index = 0) : (index = i));
