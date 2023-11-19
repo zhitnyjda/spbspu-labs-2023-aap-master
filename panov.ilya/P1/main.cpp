@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "moreThanPrevious.hpp"
-#include "NumberOfSignChanges.hpp"
+#include "numberOfSignChanges.hpp"
 #include "afterMaximum.hpp"
 
 int main()
