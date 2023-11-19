@@ -51,9 +51,15 @@ int helperFunc::operator()(int n_)
 	helperFunc::n = n_;
 
 	if (((n_ + s) == helperFunc::n) && !(l_ % 3) && (l_ != 0))
-		helperFunc::count++, helperFunc::s = 0;
+	{
+		helperFunc::count++;
+
+		helperFunc::s = 0;
+	}
 	else
+	{
 		helperFunc::n = n_;
+	}
 
 	return 0;
 }
