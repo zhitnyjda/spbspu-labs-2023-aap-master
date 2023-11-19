@@ -34,14 +34,14 @@ int main(int argc, char** argv)
       std::ifstream input(argv[2]);
       input >> rows;
       input >> cols;
-      if (!input)
-      {
-        std::cerr << "Cannot read an input.\n";
-        return 2;
-      }
       for (size_t i = 0; i < rows * cols; i++)
       {
         input >> staticMatrix[i];
+        if (!input)
+        {
+          std::cerr << "Cannot read an input.\n";
+          return 2;
+        }
       }
       size_t MaxDiagonal = MaxSideDiagonal(staticMatrix, cols, rows);
       {

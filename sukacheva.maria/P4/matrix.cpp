@@ -8,7 +8,7 @@ size_t sukacheva::MaxSideDiagonal(int matrix[], size_t cols, size_t rows)
   if ((cols != rows) || (cols < 1))
   {
     std::cerr << "There is no solution for this matrix.\n";
-    return 2;
+    return 0;
   }
   size_t maxDiagonal = 0;
   size_t diagonal = 0;
