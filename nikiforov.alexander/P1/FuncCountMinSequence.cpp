@@ -1,5 +1,6 @@
 #include <iostream>
 #include "CountMinSequence.hpp"
+#include <limits>
 
 void nikiforov::Sequence::operator()(std::istream& in, int& beforvalue, int& lastvalue)
 {
