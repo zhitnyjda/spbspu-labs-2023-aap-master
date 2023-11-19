@@ -50,7 +50,7 @@ int main(int argc, char** argv)
       std::ifstream input(argv[2]);
       input >> rows;
       input >> cols;
-      for (int i = 0; i < rows * cols; i++)
+      for (size_t i = 0; i < rows * cols; i++)
       {
         input >> staticMatrix[i];
         if (!input)
