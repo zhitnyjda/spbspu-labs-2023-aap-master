@@ -72,6 +72,11 @@ int main(int args, const char* argv[])
           delete[] dynamic_array;
         }
       }
+      if (dynamic_array[2] == nullptr)
+      {
+        std::cerr << "Empty array";
+        return 0;
+      }
       if (!output.is_open())
       {
         std::cerr << "Can not open output file\n";
