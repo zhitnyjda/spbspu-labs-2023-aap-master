@@ -23,6 +23,11 @@ int main(int args, const char* argv[])
       }
       input >> rows;
       input >> cols;
+      if (rows < 1)
+      {
+        std::cerr << "Error\n";
+        return 2;
+      }
       int static_array[10000] = {0};
       for (size_t i = 0; i < (rows * cols); i++)
       {
@@ -32,11 +37,6 @@ int main(int args, const char* argv[])
           std::cerr << "Input error\n";
           return 2;
         }
-      }
-      if (static_array == nullptr)
-      {
-        std::cerr << "Error\n";
-        return 2;
       }
       if (!output.is_open())
       {
@@ -70,7 +70,7 @@ int main(int args, const char* argv[])
       {
         std::cerr << "Can not open output file\n";
       }
-      output << MaximalSum(dynamic_array, rows, cols) << "\n";
+      output << MaximalSum(reinterpret_cast<const int*>(dynamic_array), rows, cols);
       delete[] dynamic_array;
     }
     return 0;
