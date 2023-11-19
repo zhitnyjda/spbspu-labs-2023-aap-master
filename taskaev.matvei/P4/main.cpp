@@ -22,7 +22,8 @@ int main(int argc, char** argv)
   }
   int resultNum = 0;
   std::ifstream input(argv[2]);
-  int rows, cols;
+  int rows;
+  int cols;
   input >> rows >> cols;
   if (!input)
   {
@@ -47,7 +48,7 @@ int main(int argc, char** argv)
     }
     catch(...)
     {
-      std::cerr <<"Error matrix.\n";
+      std::cerr <<"Error matrix cannot read.\n";
       delete [] matrix;
       return 2;
     }
