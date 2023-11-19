@@ -1,14 +1,24 @@
 #ifndef ARRAYMODIFICATIONS_H
 #define ARRAYMODIFICATIONS_H
+
 #include <iosfwd>
 
-template<typename arrayType>
-void spiralIncrease(arrayType *array, int n, int m);
+void spiralIncrease(int *array, int n, int m);
 
-template<typename arrayType>
-void inputArray(std::istream &, arrayType *array, int n, int m);
+void inputArray(std::istream &, int *array, int n, int m);
 
-template<typename arrayType>
-void printArray(std::ostream &, arrayType array, int n, int m);
+void printArray(std::ostream &, int *array, int n, int m);
+
+void setRight(int &dx, int &dy, int &x, int &y, int &move);
+
+void setTop(int &dx, int &dy, int &x, int &y, int &move);
+
+void setLeft(int &dx, int &dy, int &x, int &y, int &move);
+
+void setBottom(int &dx, int &dy, int &x, int &y, int &move);
+
+bool checkPosition(const bool *map, int x, int y, int m);
+
+void generateMap(bool *map, int n, int m);
 
 #endif //ARRAYMODIFICATIONS_H
