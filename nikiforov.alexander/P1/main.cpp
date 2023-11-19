@@ -1,33 +1,35 @@
 #include <iostream>
 #include "CountMinSequence.hpp"
+#include <limits>
 
 using namespace nikiforov;
 
 int main() 
 {
-  const int max_count = std::numeric_limits< int >::max();
-  const int min_count = std::numeric_limits< int >::min();
-  int num = 0;
-  int beforenum = min_count;
-  Sequence arrMin;
-  do
+  try 
   {
-    if (!(std::cin >> num)) 
+    const int min_count = std::numeric_limits< int >::min();
+    int num = 0;
+    int beforenum = min_count;
+    Sequence arrMin;
+    do
     {
-      throw std::invalid_argument("Wrong input");
-      return 1;
-    }
-    else if (num < min_count || num > max_count) 
-    {
-      throw std::overflow_error("Too many number or too few number");
-      return 2;
-    }
+      std::cin >> num;
+      arrMin(std::cin, beforenum, num);
+    } while (num != 0);
 
-    arrMin(beforenum, num);
-  } while (num != 0);
-  
-  int result = arrMin.printSequence();
-  std::cout << result;
+    size_t result = arrMin.printSequence();
 
+    std::cout << result;
+  }
+  catch (const std::logic_error& e) {
+    std::cout << e.what() << "\n";
+    return 1;
+  }
+  catch (const std::overflow_error& e)
+  {
+    std::cout << e.what();
+    return 2;
+  }
 	return 0;
 }

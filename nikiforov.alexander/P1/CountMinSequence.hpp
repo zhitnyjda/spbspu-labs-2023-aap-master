@@ -5,12 +5,12 @@ namespace nikiforov {
   class Sequence
   {
   public:
-    void operator()(int& beforvalue, int& lastvalue);
-    int printSequence();
+    void operator()(std::istream& in, int& beforvalue, int& lastvalue);
+    size_t printSequence();
   private:
     size_t count = 0;
-    size_t length = 0;
     int flag = 0;
+    const size_t max_count = std::numeric_limits< size_t >::max();
   };
 }
 #endif

@@ -1,8 +1,16 @@
 #include <iostream>
 #include "CountMinSequence.hpp"
 
-void nikiforov::Sequence::operator()(int& beforvalue, int& lastvalue)
+void nikiforov::Sequence::operator()(std::istream& in, int& beforvalue, int& lastvalue)
 {
+  if (!in)
+  {
+    throw std::invalid_argument("Wrong input");
+  }
+  if (count > max_count)
+  {
+    throw std::overflow_error("Too many sequence elements");
+  }
   if (lastvalue < beforvalue) {
     flag = 1;
   }
@@ -10,10 +18,9 @@ void nikiforov::Sequence::operator()(int& beforvalue, int& lastvalue)
     flag = 0;
     count++;
   }
-  length++;
   beforvalue = lastvalue;
 }
 
-int nikiforov::Sequence::printSequence() {
+size_t nikiforov::Sequence::printSequence() {
   return count;
 }
