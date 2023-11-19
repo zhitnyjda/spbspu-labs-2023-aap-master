@@ -1,8 +1,8 @@
+#include "count_saddle.hpp"
 #include <iostream>
 #include <fstream>
-#include <limits>
+using namespace kovshikov;
 
-size_t count_saddle(size_t rows, size_t cols, size_t * matrix);
 int main(int argc, char ** argv)
 {
   if(argc != 4)
@@ -45,6 +45,7 @@ int main(int argc, char ** argv)
       return 2;
     }
   }
+  Saddle saddle;
   if(num == 1)
   {
     std::ifstream input(argv[2]);
@@ -57,7 +58,7 @@ int main(int argc, char ** argv)
       }
     }
     std::ofstream output(argv[3]);
-    output << count_saddle(rows, cols, matrix);
+    output << saddle(rows, cols, matrix);
     return 0;
   }
   {
@@ -71,38 +72,9 @@ int main(int argc, char ** argv)
       }
     }
     std::ofstream output(argv[3]);
-    output << count_saddle(rows, cols, matrix);
+    output << saddle(rows, cols, matrix);
     delete[] matrix;
     return 0;
   }
 }
-size_t count_saddle(size_t rows, size_t cols, size_t * matrix)
-{
-  size_t count = 0;
-  size_t minrows = std::numeric_limits< size_t >::max();
-  size_t maxcols = std::numeric_limits< size_t >::min();
-  size_t coordinateMinRowsj = 0;
-  for (size_t i = 0; i < rows; ++i)
-  {
-    for (size_t j = 0; j < cols; ++j)
-    {
-      if(matrix[i * cols + j] <= minrows)
-      {
-        minrows = matrix[i * cols + j];
-        coordinateMinRowsj = j;
-      }
-    }
-    for (size_t q = 0; q < rows; ++q)
-    {
-      if(matrix[q * cols + coordinateMinRowsj] >= maxcols)
-      {
-        maxcols = matrix[i * cols + coordinateMinRowsj];
-      }
-    }
-    if (minrows == maxcols)
-    {
-      count += 1;
-    }
-  }
-  return count;
-}
+
