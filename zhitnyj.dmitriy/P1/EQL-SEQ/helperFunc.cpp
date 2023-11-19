@@ -34,7 +34,19 @@ int helperFunc::operator()(std::istream *str)
 
 int helperFunc::operator()(int n_)
 {
-	n_ == helperFunc::n ? (helperFunc::count++, (helperFunc::count > helperFunc::mCount ? helperFunc::mCount = helperFunc::count : helperFunc::count)) : (helperFunc::n = n_, helperFunc::count = 0);
+	if (n_ == helperFunc::n)
+	{
+		helperFunc::count++;
+
+		if(helperFunc::count > helperFunc::mCount)
+			helperFunc::mCount = helperFunc::count;
+	}
+	else
+	{
+		helperFunc::n = n_;
+		
+		helperFunc::count = 0;
+	}
 
 	return 0;
 }
