@@ -57,7 +57,7 @@ int main(int argc, char** argv)
   else
   {
     std::cerr << "Error num != 1 or num != 2.\n";
-    return 1;
+    return 2;
   }
   std::ofstream output(argv[3]);
   output << resultNum;
