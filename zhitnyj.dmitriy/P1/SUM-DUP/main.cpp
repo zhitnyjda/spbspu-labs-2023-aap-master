@@ -3,9 +3,9 @@
 
 int main()
 {
-	helperFunc helperFunc_;
+  helperFunc helperFunc_;
 
-	helperFunc_(&std::cin);
+  helperFunc_(&std::cin);
 
-	return 0;
+  return 0;
 }
