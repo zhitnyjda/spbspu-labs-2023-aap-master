@@ -1,6 +1,7 @@
 #include <iostream>
 #include "CountMinSequence.hpp"
 #include <limits>
+#include <cstddef>
 
 using namespace nikiforov;
 

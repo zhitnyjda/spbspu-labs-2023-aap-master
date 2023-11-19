@@ -1,6 +1,7 @@
 #ifndef COUNTMINSEQUENCE_HPP
 #define COUNTMINSEQUENCE_HPP
 #include <limits>
+#include <cstddef>
 
 namespace nikiforov {
   class Sequence
