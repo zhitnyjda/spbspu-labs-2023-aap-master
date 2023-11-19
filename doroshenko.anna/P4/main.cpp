@@ -35,8 +35,7 @@ int main(int argc, char** argv)
     }
     if (rows_ < 3 || cols_ < 3)
     {
-      std::cerr << "Not enough elements\n";
-      return 2;
+      return 0;
     }
     int staticMatrix[] = { 0 };
     try
@@ -74,8 +73,7 @@ int main(int argc, char** argv)
     }
     if (rows_ < 3 || cols_ < 3)
     {
-      std::cerr << "Not enough elements\n";
-      return 2;
+      return 0;
     }
     int* dynMatrix = new int[rows_ * cols_];
     try
