@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "helpersFunc.h"
+#include "helpersFunc_EQL-SEQ.h"
 
 int helperFunc::operator()(std::istream *str)
 {
