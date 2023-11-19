@@ -8,7 +8,7 @@ int main(int argc, char** argv)
   using namespace doroshenko;
   try
   {
-    long long num = readingArguments(argc, argv);
+    readingArguments(argc, argv);
   }
   catch(std::logic_error& firstError)
   {
