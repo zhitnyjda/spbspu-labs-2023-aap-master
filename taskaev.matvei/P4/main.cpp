@@ -35,6 +35,11 @@ int main(int argc, char** argv)
     for (int i = 0; i < rows * cols; i++)
     {
       input >> matrix[i];
+      if (!input)
+      {
+        std::cerr << "Error read an input./n";
+        return 2;
+      }
     }
     resultNum = matrixStuff::findCntLocMin(matrix, rows, cols);
   }
