@@ -26,16 +26,6 @@ int main(int argc, char** argv)
   }
 
   size_t rows = 0, cols = 0;
-  {
-    std::ifstream input(argv[2]);
-    input >> rows;
-    input >> cols;
-    if (!input)
-    {
-      std::cerr << "Cannot read an input.\n";
-      return 2;
-    }
-  }
 
   if (num > 2)
   {
@@ -50,6 +40,11 @@ int main(int argc, char** argv)
       std::ifstream input(argv[2]);
       input >> rows;
       input >> cols;
+      if (!input)
+      {
+        std::cerr << "Cannot read an input.\n";
+        return 2;
+      }
       for (size_t i = 0; i < rows * cols; i++)
       {
         input >> staticMatrix[i];
@@ -72,6 +67,11 @@ int main(int argc, char** argv)
     std::ifstream input(argv[2]);
     input >> rows;
     input >> cols;
+    if (!input)
+    {
+      std::cerr << "Cannot read an input.\n";
+      return 2;
+    }
     int* dinamicMatrix = new int[rows * cols];
     {
       try
