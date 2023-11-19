@@ -104,7 +104,7 @@ int main(int argc, char** argv)
   else
   {
     std::cerr << "Argument is out of range. \n";
-    return 2;
+    return 1;
   }
   return 0;
 }
