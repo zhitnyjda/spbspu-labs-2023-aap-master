@@ -10,8 +10,8 @@ namespace panov
       void operator()(int number);
       size_t operator()() const;
     private:
-      int count;
-      size_t first;
+      size_t count;
+      int first;
   };
 }
 #endif
