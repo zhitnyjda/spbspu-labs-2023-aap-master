@@ -37,6 +37,11 @@ int main(int args, const char* argv[])
           std::cerr << "Input error\n";
           return 1;
         }
+        if (static_array[0] == 0)
+        {
+          std::cerr << "No arguments\n";
+          return 1;
+        }
       }
       output << MaximalSum(static_array, rows, cols);
       if (!output.is_open())
@@ -71,11 +76,6 @@ int main(int args, const char* argv[])
           return 1;
           delete[] dynamic_array;
         }
-      }
-      if (dynamic_array[2] == nullptr)
-      {
-        std::cerr << "Empty array";
-        return 0;
       }
       if (!output.is_open())
       {
