@@ -1,9 +1,6 @@
 #ifndef INPUTARRAY_HPP
 #define INPUTARRAY_HPP
 #include <iosfwd>
-#include <fstream>
-#include <iostream>
-#include <algorithm>
 
 namespace readArray
 {

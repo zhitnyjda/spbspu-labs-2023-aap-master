@@ -2,13 +2,13 @@
 #include <iostream>
 #include <stdexcept>
 
-int matrixStuff::funclinemin(int firstN, int secondN, int threeN)
+int matrixStuff::funcLineMin(int firstN, int secondN, int threeN)
 {
   return ((((firstN < secondN) ? firstN : secondN) < threeN) ? ((firstN < secondN) ? firstN : secondN) : threeN);
 }
-int matrixStuff::locmin(int firstN, int secondN, int threeN, int fourN)
+int matrixStuff::locMin(int firstN, int secondN, int threeN, int fourN)
 {
-  return ((funclinemin(firstN, secondN, threeN) < fourN) ? (funclinemin(firstN, secondN, threeN)) : fourN);
+  return ((funcLineMin(firstN, secondN, threeN) < fourN) ? (funcLineMin(firstN, secondN, threeN)) : fourN);
 }
 int matrixStuff::findCntLocMin(int matrix[], int rows, int cols)
 {
@@ -22,9 +22,9 @@ int matrixStuff::findCntLocMin(int matrix[], int rows, int cols)
   {
     if ((i % cols != 0) && ((i + 1) % cols != 0))
     {
-      int lineupmin = funclinemin(matrix[i - cols - 1], matrix[i - cols], matrix[i - cols + 1]);
-      int linedownmin = funclinemin(matrix[i + cols - 1], matrix[i + cols], matrix[i + cols + 1]);
-      if (matrix[i] < locmin(lineupmin,linedownmin,matrix[i - 1], matrix[i +  1]))
+      int lineUpMin = funcLineMin(matrix[i - cols - 1], matrix[i - cols], matrix[i - cols + 1]);
+      int lineDownMin = funcLineMin(matrix[i + cols - 1], matrix[i + cols], matrix[i + cols + 1]);
+      if (matrix[i] < locMin(lineUpMin,lineDownMin,matrix[i - 1], matrix[i +  1]))
       {
         CntLocMin = CntLocMin + 1;
       }

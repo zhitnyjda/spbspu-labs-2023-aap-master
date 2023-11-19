@@ -1,4 +1,7 @@
 #include "inputArray.hpp"
+#include <iostream>
+#include <algorithm>
+#include <fstream>
 
 void readArray::inputArray(std::istream & in, int * m, size_t s, size_t toRead)
 {
