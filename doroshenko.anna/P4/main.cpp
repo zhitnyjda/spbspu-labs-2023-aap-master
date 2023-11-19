@@ -45,7 +45,7 @@ int main(int argc, char** argv)
     catch (std::runtime_error& secondError)
     {
       std::cerr << secondError.what();
-      return 2;
+      return 0;
     }
     Matrix.inputArray(input, staticMatrix, rows_ * cols_);
     std::ofstream output(argv[3]);
@@ -84,7 +84,7 @@ int main(int argc, char** argv)
     {
       std::cerr << secondError.what();
       delete[] dynMatrix;
-      return 2;
+      return 0;
     }
     Matrix.inputArray(input, dynMatrix, rows_ * cols_);
     std::ofstream output(argv[3]);
