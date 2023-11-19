@@ -1,6 +1,6 @@
 #include <iostream>
-//#include "/EQL-SEQ/helpersFunc.h"
-#include "/SUM-DUP/helpersFunc.h"
+//#include "helpersFun_EQL-SEQc.h"
+#include "helpersFunc_SUM-DUP.h"
 
 int main()
 {
