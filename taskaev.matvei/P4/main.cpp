@@ -10,7 +10,7 @@ int main(int argc, char** argv)
     std::cerr << "Something wrong, I can feel it.\n";
     return 1;
   }
-  int num;
+  int num = 0;
   try
   {
     num = std::stoll(argv[1]);
@@ -22,8 +22,7 @@ int main(int argc, char** argv)
   }
   int resultNum = 0;
   std::ifstream input(argv[2]);
-  int rows;
-  int cols;
+  int rows, cols;
   input >> rows >> cols;
   if (!input)
   {
@@ -62,5 +61,5 @@ int main(int argc, char** argv)
   }
   std::ofstream output(argv[3]);
   output << resultNum;
-  return 1;
+  return 0;
 }
