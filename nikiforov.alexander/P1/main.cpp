@@ -4,9 +4,9 @@
 
 using namespace nikiforov;
 
-int main() 
+int main()
 {
-  try 
+  try
   {
     const int min_count = std::numeric_limits< int >::min();
     int num = 0;
@@ -19,7 +19,6 @@ int main()
     } while (num != 0);
 
     size_t result = arrMin.printSequence();
-
     std::cout << result;
   }
   catch (const std::logic_error& e) {
