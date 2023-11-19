@@ -34,7 +34,7 @@ int main(int args, const char* argv[])
         }
         if (input.eof())
         {
-          std::cerr "Error\n";
+          std::cerr << "Error\n";
           return 2;
         }
       }
