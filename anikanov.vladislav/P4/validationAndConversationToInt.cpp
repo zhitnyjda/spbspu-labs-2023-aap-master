@@ -16,7 +16,7 @@ void check(int argc, char **argv)
 int getInt(std::string number)
 {
   int num = 0;
-  for (int i = 0; i < number.size(); ++i) {
+  for (unsigned long int i = 0; i < number.size(); ++i) {
     if (!isdigit(number[i])) {
       throw std::logic_error(FIRST_ARG_ERR);
     }
