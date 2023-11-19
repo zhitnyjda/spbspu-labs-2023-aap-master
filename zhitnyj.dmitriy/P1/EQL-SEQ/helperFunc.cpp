@@ -10,6 +10,13 @@ int helperFunc::operator()(std::istream *str)
 	{
 		try
 		{
+			if(str->peek() != 10 && helperFunc::n == n_)
+			{
+				std::cout << "Sequence should end with 0!" << std::endl;
+
+				return 1;
+			}
+			
 			*str >> n_;
 
 			if (str->fail())
