@@ -35,7 +35,7 @@ void doroshenko::Matrix::inputArray(std::istream& input, int* Matrix, size_t siz
     input >> Matrix[k];
     if (!input)
     {
-      throw std::invalid_argument("Wrong input");
+      throw std::runtime_error("Wrong input");
     }
   }
 }

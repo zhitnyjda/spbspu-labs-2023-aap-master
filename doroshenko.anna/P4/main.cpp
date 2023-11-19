@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     {
       Matrix.inputArray(input, staticMatrix, rows_ * cols_);
     }
-    catch (std::invalid_argument& secondError)
+    catch (std::runtime_error& secondError)
     {
       std::cerr << secondError.what();
       return 2;
