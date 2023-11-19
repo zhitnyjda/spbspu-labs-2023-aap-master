@@ -100,5 +100,10 @@ int main(int argc, char** argv)
     }
     delete[] dinamicMatrix;
   }
+  else
+  {
+    std::cerr << "Argument is out of range. \n";
+    return 2;
+  }
   return 0;
 }
