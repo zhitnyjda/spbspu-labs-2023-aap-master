@@ -10,7 +10,7 @@ public:
     helperFunc::count = count;
     helperFunc::n = n;
     helperFunc::l_ = l_;
-    helperFunc::s = s_; 
+    helperFunc::s = s_;
   }
   int operator()(std::istream *str);
   int operator()(int n);
