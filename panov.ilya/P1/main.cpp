@@ -1,24 +1,28 @@
 #include <iostream>
 #include <exception>
-#include "nchar.hpp"
-#include "numOfchar.hpp"
-#include "rchar.hpp"
+#include "moreThanPrevious.hpp"
+#include "NumberOfSignChanges.hpp"
+#include "afterMaximum.hpp"
 
 int main()
 {
-  panov::NumOfchar numOfchar;
-  panov::Nchar nchar;
-  panov::Rchar rchar;
+  panov::NumberOfSignChanges numberOfSignChanges;
+  panov::MoreThanPrevious moreThanPrevious;
+  panov::AfterMaximum afterMaximum;
   try
   {
-    std::cerr.exceptions(std::istream::failbit);
-    int value = 0;
+    if (!std::cin)
+    {
+      std::cerr << "Not a sequence.\n";
+      return 1;
+    }
+    size_t value = 0;
     do
     {
       std::cin >> value;
-      numOfchar(value);
-      nchar(value);
-      rchar(value);
+      numberOfSignChanges(value);
+      moreThanPrevious(value);
+      afterMaximum(value);
     }
     while (value != 0);
   }
@@ -33,10 +37,10 @@ int main()
     return 1;
   }
   std::cout << "first\n";
-  std::cout << numOfchar() << "\n";
+  std::cout << numberOfSignChanges() << "\n";
   std::cout << "second\n";
-  std::cout << nchar() << "\n";
+  std::cout << moreThanPrevious() << "\n";
   std::cout << "third\n";
-  std::cout << rchar() << "\n";
+  std::cout << (afterMaximum()) << "\n";
   return 0;
 }
