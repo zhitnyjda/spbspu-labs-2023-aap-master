@@ -85,6 +85,7 @@ int main(int argc, char** argv)
     catch (std::invalid_argument& secondError)
     {
       std::cerr << secondError.what();
+      delete[] dynMatrix;
       return 2;
     }
     Matrix.inputArray(input, dynMatrix, rows_ * cols_);
@@ -92,6 +93,7 @@ int main(int argc, char** argv)
     if (!output)
     {
       std::cerr << "File not open\n";
+      delete[] dynMatrix;
       return 2;
     }
     output << Matrix.findingLocMax(dynMatrix, rows_, cols_);
