@@ -28,6 +28,11 @@ int main(int args, const char* argv[])
         std::cerr << "Error\n";
         return 2;
       }
+      if (rows != cols)
+      {
+        std::cerr << "Matrix is not a square\n";
+        return 1;
+      }
       int static_array[10000] = {0};
       for (size_t i = 0; i < (rows * cols); i++)
       {
@@ -43,7 +48,7 @@ int main(int args, const char* argv[])
         std::cerr << "Can not open output file\n";
         return 1;
       }
-      output << MaximalSum(static_array, rows, cols) << "\n";
+      output << MaximalSum(static_array, rows, cols);
     }
     else if (task == 2)
     {
@@ -56,6 +61,11 @@ int main(int args, const char* argv[])
       }
       input >> rows;
       input >> cols;
+      if (rows < 1)
+      {
+        std::cerr << "Error\n";
+        return 2;
+      }
       int * dynamic_array = new int[rows * cols];
       for (size_t i = 0; i < (rows * cols); i++)
       {
