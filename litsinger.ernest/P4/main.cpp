@@ -19,7 +19,7 @@ int main(int args, const char* argv[])
       if (!input.is_open())
       {
         std::cerr << "Error\n";
-        return 1;
+        return 2;
       }
       input >> rows;
       input >> cols;
@@ -44,6 +44,11 @@ int main(int args, const char* argv[])
     {
       size_t rows = 0;
       size_t cols = 0;
+      if (!input.is_open())
+      {
+        std::cerr << "Error\n";
+        return 2;
+      }
       input >> rows;
       input >> cols;
       int * dynamic_array = new int[rows * cols];
@@ -63,6 +68,7 @@ int main(int args, const char* argv[])
       output << MaximalSum(dynamic_array, rows, cols) << "\n";
       delete[] dynamic_array;
     }
+    return 0;
   }
   catch (std::invalid_argument& e)
   {
