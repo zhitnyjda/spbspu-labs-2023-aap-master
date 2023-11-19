@@ -36,7 +36,7 @@ int main(int argc, char** argv)
       return 2;
     }
   }
-  
+
   if (num > 2)
   {
     std::cout << "Number is out of range\n";
