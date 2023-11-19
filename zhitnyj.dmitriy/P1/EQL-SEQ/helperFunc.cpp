@@ -44,7 +44,7 @@ int helperFunc::operator()(int n_)
 	else
 	{
 		helperFunc::n = n_;
-		
+
 		helperFunc::count = 0;
 	}
 
