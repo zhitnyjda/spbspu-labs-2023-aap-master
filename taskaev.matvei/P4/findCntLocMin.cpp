@@ -32,4 +32,3 @@ int matrixStuff::findCntLocMin(int matrix[], int rows, int cols)
   }
   return CntLocMin;
 }
-
