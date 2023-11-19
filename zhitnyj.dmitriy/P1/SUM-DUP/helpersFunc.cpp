@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "helperFunc.h"
+#include "helpersFunc.h"
 
 int helperFunc::operator()(std::istream *str)
 {
@@ -48,17 +48,17 @@ int helperFunc::operator()(std::istream *str)
 
 int helperFunc::operator()(int n_)
 {
-  helperFunc::n = n_;
-
-  if (((n_ + s) == helperFunc::n) && !(l_ % 3) && (l_ != 0))
+  if (!((l_ + 1) % 3) && (l_ != 0))
   {
-    helperFunc::count++;
+	  if((s ==  n_))
+		  helperFunc::count++;
 
     helperFunc::s = 0;
   }
   else
   {
-    helperFunc::n = n_;
+	  helperFunc::s += n_;
+	  helperFunc::n = n_;
   }
 
   return 0;
