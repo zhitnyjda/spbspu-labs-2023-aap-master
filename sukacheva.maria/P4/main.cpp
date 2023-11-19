@@ -37,13 +37,7 @@ int main(int argc, char** argv)
     }
   }
 
-  if (num > 2)
-  {
-    std::cout << "Number is out of range\n";
-    return 2;
-  }
-
-  else if (num == 1)
+  if (num == 1)
   {
     {
       int staticMatrix[10000];
@@ -104,7 +98,7 @@ int main(int argc, char** argv)
   else
   {
     std::cerr << "Argument is out of range. \n";
-    return 1;
+    return 2;
   }
   return 0;
 }
