@@ -81,7 +81,7 @@ int main(int args, const char* argv[])
     }
     else if (task != 1 && task != 2)
     {
-      std::cerr "Error";
+      std::cerr << "Error\n";
       return 1;
     }
     return 0;
