@@ -26,6 +26,16 @@ int main(int argc, char** argv)
   }
 
   size_t rows = 0, cols = 0;
+  {
+    std::ifstream input(argv[2]);
+    input >> rows;
+    input >> cols;
+    if (!input)
+    {
+      std::cerr << "Can't read an input.\n";
+      return 2;
+    }
+  }
 
   if (num > 2)
   {
