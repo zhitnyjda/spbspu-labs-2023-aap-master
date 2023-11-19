@@ -1,5 +1,6 @@
 #ifndef AFTERMAXIMUM_HPP
 #define AFTERMAXIMUM_HPP
+#include <cstddef>
 namespace panov
 {
   struct AfterMaximum

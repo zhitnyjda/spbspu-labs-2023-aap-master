@@ -1,5 +1,6 @@
 #ifndef MORETHENPREVIOUS_HPP
 #define MORETHENPREVIOUS_HPP
+#include <cstddef>
 namespace panov
 {
   struct MoreThanPrevious

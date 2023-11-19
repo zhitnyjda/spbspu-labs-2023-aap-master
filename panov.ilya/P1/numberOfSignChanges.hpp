@@ -1,5 +1,6 @@
 #ifndef NUMBEROFSIGNCHANGES_HPP
 #define NUMBEROFSIGNCHANGES_HPP
+#include <cstddef>
 namespace panov
 {
   struct NumberOfSignChanges
