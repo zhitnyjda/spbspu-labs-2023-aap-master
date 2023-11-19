@@ -1,5 +1,5 @@
 #include <iostream>
-//#include "helpersFun_EQL-SEQc.h"
+//#include "helpersFun_EQL-SEQ.h"
 #include "helpersFunc_SUM-DUP.h"
 
 int main()
