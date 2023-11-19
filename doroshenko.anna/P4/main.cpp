@@ -37,12 +37,12 @@ int main(int argc, char** argv)
     {
       return 0;
     }
-    int staticMatrix[] = { 0 };
+    int staticMatrix[10000] = { 0 };
     try
     {
       Matrix.inputArray(input, staticMatrix, rows_ * cols_);
     }
-    catch (std::runtime_error& secondError)
+    catch (std::invalid_argument& secondError)
     {
       std::cerr << secondError.what();
       return 2;
@@ -79,7 +79,7 @@ int main(int argc, char** argv)
     {
       Matrix.inputArray(input, dynMatrix, rows_ * cols_);
     }
-    catch (std::runtime_error& secondError)
+    catch (std::invalid_argument& secondError)
     {
       std::cerr << secondError.what();
       delete[] dynMatrix;
