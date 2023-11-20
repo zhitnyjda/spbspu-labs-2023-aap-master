@@ -1,4 +1,4 @@
-#include "Divisibility.cpp"
+#include "Divisibility.hpp"
 #include <iostream>
 #include <stdexcept>
 #include <limits>
