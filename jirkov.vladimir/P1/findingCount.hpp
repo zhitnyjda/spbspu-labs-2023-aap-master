@@ -1,6 +1,7 @@
 #ifndef FINDINGCOUNT_HPP
 #define FINDINGCOUNT_HPP
 #include <cstddef>
+#include <limits>
 namespace jirkov
 {
   struct FindingCount

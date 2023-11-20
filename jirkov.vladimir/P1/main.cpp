@@ -2,30 +2,30 @@
 #include "findingCount.hpp"
 int main()
 {
+  size_t value = 0;
   using namespace jirkov;
   FindingCount findingCount;
-  size_t seqCount = 0;
-  size_t value = 0;
-  std::cin >> value;
-  while (value != 0)
+  do
   {
-    ++seqCount;
-    findingCount(value);
     std::cin >> value;
-  };
-  if (!std::cin)
-  {
-    std::cerr << "Wrong Input\n";
-    return 1;
+    if (!std::cin)
+    {
+      std::cerr << "Wrong input\n";
+      return 1;
+    }
+    else if (value != 0)
+    {
+      findingCount(value);
+    }
   }
-  else if (seqCount < 2)
+  while (value != 0);
+  try
   {
-    std::cerr<< "too short sequence\n";
+    std::cout << findingCount() << "\n";
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr << e.what() << "\n";
     return 2;
-  }
-  else
-  {
-    std::cout << findingCount() << '\n';
-    return 0;
   }
 }
