@@ -37,7 +37,7 @@ bool sukacheva::upperTriangularMatrix(int matrix[], size_t cols, size_t rows)
     for (size_t j = 0; j < i; j++)
     {
       upperRight = matrix[cols * i + j];
-      upperLeft = matrix[cols * (i + 1) - j];
+      upperLeft = matrix[cols * (i + 1) - j - 1];
     }
   }
   return ((upperRight == 0) || (upperLeft == 0));
