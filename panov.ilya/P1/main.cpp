@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits.h>
+#include <limits>
 #include <exception>
 #include "moreThanPrevious.hpp"
 #include "numberOfSignChanges.hpp"
@@ -16,23 +17,28 @@ int main()
     return 1;
   }
   size_t value = 0;
-  size_t max_size = ((size_t)-1);
+  size_t leight = 0;
   do
   {
     std::cin >> value;
     numberOfSignChanges(value);
     moreThanPrevious(value);
     afterMaximum(value);
+    if (value != 0)
+    {
+      const size_t maxSize = std::numeric_limits< size_t >::max();
+      if (leight == maxSize)
+      {
+        std::cerr << "Sequence is too long" << "\n";
+        return 2;
+      }
+      ++leight
+    }
   }
   while (value != 0);
   if (std::cin.fail())
   {
     std::cerr << "Input error" << "\n";
-    return 1;
-  }
-  if (value > max_size)
-  {
-    std::cerr << "too many numbers" << "\n";
     return 1;
   }
   std::cout << "first\n";
