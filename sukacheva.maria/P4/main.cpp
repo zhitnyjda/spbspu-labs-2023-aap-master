@@ -27,10 +27,13 @@ int main(int argc, char** argv)
 
   size_t rows = 0, cols = 0;
   {
-    std::ifstream input(argv[2]);
-    input >> rows;
-    input >> cols;
-    if (!input)
+    try
+    {
+      std::ifstream input(argv[2]);
+      input >> rows;
+      input >> cols;
+    }
+    catch (const std::invalid_argument& e)
     {
       std::cerr << "Cannot read an input.\n";
       return 2;
@@ -44,12 +47,16 @@ int main(int argc, char** argv)
       std::ifstream input(argv[2]);
       input >> rows;
       input >> cols;
+      if (cols == 0)
+      {
+        return 0;
+      }
       for (size_t i = 0; i < rows * cols; i++)
       {
         input >> staticMatrix[i];
         if (!input)
         {
-          std::cerr << "Cannot read an input.\n";
+          std::cerr << "Cannot read an array.\n";
           return 2;
         }
       }
@@ -68,10 +75,10 @@ int main(int argc, char** argv)
       std::ifstream input(argv[2]);
       input >> rows;
       input >> cols;
-      if (!input)
+      if (cols == 0)
       {
-        std::cerr << "Cannot read an input.\n";
-        return 2;
+        delete [] dinamicMatrix;
+        return 0;
       }
       try
       {
