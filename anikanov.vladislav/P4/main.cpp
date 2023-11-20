@@ -21,11 +21,12 @@ int main(int argc, char **argv)
     std::cerr << INVALID_INPUT << "\n";
     return 1;
   }
+  if (n == 0 || m == 0){
+    std::cout << INVALID_INPUT << "\n";
+    return 0;
+  }
   int *array_p;
   try {
-    if (n == 0 || m == 0){
-      throw std::logic_error(INVALID_INPUT);
-    }
     if (num == 1) {
       int array[n * m];
       inputArray(cin, array, n, m);
@@ -41,7 +42,7 @@ int main(int argc, char **argv)
     }
   } catch (std::logic_error &err){
     std::cout << err.what() << "\n";
-    if (num == 2){
+    if (array_p){
       delete[] array_p;
       array_p = nullptr;
     }
