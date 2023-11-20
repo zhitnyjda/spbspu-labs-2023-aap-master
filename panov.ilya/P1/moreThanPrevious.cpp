@@ -1,5 +1,4 @@
 #include "moreThanPrevious.hpp"
-
 panov::MoreThanPrevious::MoreThanPrevious():
   count(0), first(0)
 {}
