@@ -21,7 +21,11 @@ int main(int argc, char **argv)
     std::cerr << INVALID_INPUT << "\n";
     return 1;
   }
+  int *array_p;
   try {
+    if (n == 0 || m == 0){
+      throw std::logic_error(INVALID_INPUT);
+    }
     if (num == 1) {
       int array[n * m];
       inputArray(cin, array, n, m);
@@ -29,6 +33,7 @@ int main(int argc, char **argv)
       printArray(cout, array, n, m);
     } else {
       int *array = new int[n * m];
+      array_p = array;
       inputArray(cin, array, n, m);
       spiralIncrease(array, n, m);
       printArray(cout, array, n, m);
@@ -36,6 +41,9 @@ int main(int argc, char **argv)
     }
   } catch (std::logic_error &err){
     std::cout << err.what() << "\n";
+    if (num == 2){
+      delete[] array_p;
+    }
     return 1;
   }
 }
