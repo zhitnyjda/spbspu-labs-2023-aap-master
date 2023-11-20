@@ -17,7 +17,7 @@ size_t sukacheva::MaxSideDiagonal(int matrix[], size_t cols, size_t rows)
     {
       for (size_t j = 0; j < i; j++)
       {
-        if ((diagonal + matrix[index]) >= maximum)
+        if ((diagonal + matrix[index]) > maximum)
         {
           return (diagonal > maxDiagonal) ? diagonal : maxDiagonal;
         }

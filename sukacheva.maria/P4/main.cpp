@@ -91,10 +91,8 @@ int main(int argc, char** argv)
         return 2;
       }
     }
-    {
-      std::ofstream output(argv[3]);
-      output << MaxSideDiagonal(dinamicMatrix, rows, cols);
-    }
+    std::ofstream output(argv[3]);
+    output << MaxSideDiagonal(dinamicMatrix, rows, cols);
     delete[] dinamicMatrix;
   }
   else

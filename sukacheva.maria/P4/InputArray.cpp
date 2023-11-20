@@ -8,7 +8,7 @@ void readMatrix::inputMatrix(std::istream& in, int* matrix, size_t s, size_t toR
   {
     if (!(in >> matrix[i]))
     {
-      throw std::runtime_error("Can't read an input.\n");
+      throw std::runtime_error("Can't read an matrix.\n");
     }
   }
 }
