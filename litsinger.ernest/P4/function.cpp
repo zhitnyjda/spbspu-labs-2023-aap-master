@@ -11,7 +11,7 @@ namespace litsinger
   {
     if (args > 4)
     {
-      throw (std::invalid_argument("Too many arguments/n"));
+      throw (std::invalid_argument("Too many arguments\n"));
     }
     if (args < 4)
     {

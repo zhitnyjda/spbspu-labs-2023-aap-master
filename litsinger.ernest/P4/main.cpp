@@ -37,18 +37,13 @@ int main(int args, const char* argv[])
           std::cerr << "Input error\n";
           return 1;
         }
-        if (static_array[0] == 0)
-        {
-          std::cerr << "No arguments\n";
-          return 1;
-        }
       }
-      output << MaximalSum(static_array, rows, cols);
       if (!output.is_open())
       {
         std::cerr << "Can not open output file\n";
         return 1;
       }
+      output << MaximalSum(static_array, rows, cols);
     }
     else if (task == 2)
     {
@@ -80,6 +75,7 @@ int main(int args, const char* argv[])
       if (!output.is_open())
       {
         std::cerr << "Can not open output file\n";
+        delete[] dynamic_array;
       }
       output << MaximalSum(reinterpret_cast<const int*>(dynamic_array), rows, cols);
       delete[] dynamic_array;
