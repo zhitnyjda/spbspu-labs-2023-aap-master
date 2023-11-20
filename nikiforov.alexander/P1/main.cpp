@@ -1,5 +1,5 @@
-#include <iostream>
 #include "CountMinSequence.hpp"
+#include <iostream>
 
 using namespace nikiforov;
 
