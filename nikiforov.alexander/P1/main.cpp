@@ -23,7 +23,7 @@ int main()
       throw std::overflow_error("Too short sequence");
     }
 
-    size_t result = arrMin.printSequence();
+    size_t result = arrMin();
     std::cout << result;
   }
   catch (const std::logic_error& e) {

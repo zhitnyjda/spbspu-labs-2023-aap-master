@@ -21,6 +21,6 @@ void nikiforov::Sequence::operator()(std::istream& in, int& beforvalue, int& las
   beforvalue = lastvalue;
 }
 
-size_t nikiforov::Sequence::printSequence() {
+size_t nikiforov::Sequence::operator()() {
   return count;
 }

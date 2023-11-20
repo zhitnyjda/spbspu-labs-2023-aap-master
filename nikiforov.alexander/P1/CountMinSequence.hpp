@@ -9,7 +9,7 @@ namespace nikiforov {
   {
   public:
     void operator()(std::istream& in, int& beforvalue, int& lastvalue);
-    size_t printSequence();
+    size_t operator()();
   private:
     size_t count = 0;
     int flag = 0;
