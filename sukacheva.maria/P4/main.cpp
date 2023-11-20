@@ -67,7 +67,6 @@ int main(int argc, char** argv)
       }
     }
   }
-
   else if (num == 2)
   {
     int* dinamicMatrix = new int[rows * cols];
@@ -77,7 +76,7 @@ int main(int argc, char** argv)
       input >> cols;
       if (cols == 0)
       {
-        delete [] dinamicMatrix;
+        delete[] dinamicMatrix;
         return 0;
       }
       try
@@ -91,8 +90,10 @@ int main(int argc, char** argv)
         return 2;
       }
     }
-    std::ofstream output(argv[3]);
-    output << MaxSideDiagonal(dinamicMatrix, rows, cols);
+    {
+      std::ofstream output(argv[3]);
+      output << MaxSideDiagonal(dinamicMatrix, rows, cols);
+    }
     delete[] dinamicMatrix;
   }
   else
