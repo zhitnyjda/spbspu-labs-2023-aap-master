@@ -18,20 +18,6 @@ miheev::Matrix::~Matrix()
   }
 }
 
-void miheev::Matrix::initWithIfstream(std::ifstream& in)
-{
-  int current = 0;
-  for (size_t i = 0; i < nRows_ * nCols_; i++)
-  {
-    in >> matrix_[i];
-    std::cout << matrix_[i] <<'\n';
-    if (!in)
-    {
-      throw std::runtime_error("Some error occured while initing matrix\n");
-    }
-  }
-}
-
 void miheev::Matrix::initArr(int* arr)
 {
   matrix_ = arr;
