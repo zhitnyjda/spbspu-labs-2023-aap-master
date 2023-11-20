@@ -5,42 +5,36 @@ miheev::Matrix::Matrix(size_t rows, size_t cols, long long mode):
   nRows_(rows),
   nCols_(cols),
   mode_(mode)
-{
-  if (mode == 1)
-  {
-    int temp[10000] = {0};
-    matrix_ = temp;
-  }
-  else if (mode == 2)
-  {
-    matrix_ = new int[rows*cols];
-  }
-}
+{}
 
 miheev::Matrix::~Matrix()
 {
+  std::cout << "deconstructo\n";
   if (mode_ == 2)
   {
     delete[] matrix_;
+    std::cout << "dynamic\n";
   }
 }
 
 void miheev::Matrix::initWithIfstream(std::ifstream& in)
 {
+  std::cout << matrix_[0] << '\n';
   int current = 0;
   for (size_t i = 0; i < nRows_ * nCols_; i++)
   {
-    if (in)
-    {
-      in >> current;
-    }
+    in >> matrix_[i];
+    std::cout << matrix_[i] <<'\n';
     if (!in)
     {
-      std::cerr << "Matrix is only partly initialized. Problems with ifstream\n";
-      throw std::runtime_error("Some error occured while initing\n");
+      throw std::runtime_error("Some error occured while initing matrix\n");
     }
-    matrix_[i] = current;
   }
+}
+
+void miheev::Matrix::initArr(int* arr)
+{
+  matrix_ = arr;
 }
 
 void miheev::Matrix::printSelf() const

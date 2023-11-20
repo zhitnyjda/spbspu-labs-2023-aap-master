@@ -1,5 +1,5 @@
-// #include "functions.hpp"
 #include "structs.hpp"
+#include "functions.hpp"
 #include <iostream>
 #include <cstddef>
 #include <fstream>
@@ -37,25 +37,25 @@ int main(int argc, char* argv[])
       std::cerr << "Can't read input\n";
       return 2;
     }
+
     Matrix matrix(rows, cols, num);
-    try
+    size_t size = rows*cols;
+    if(num == 1)
     {
-      matrix.initWithIfstream(inputFile);
+      int arr[10000] = {0};
+      inputToArr(inputFile, arr, size);
+      matrix.initArr(arr);
     }
-    catch(const std::runtime_error& e)
+    else if(num == 2)
     {
-      std::cerr << e.what();
-      inputFile.close();
-      return 2;
+      int* arr = new int[rows*cols]{};
+      inputToArr(inputFile, arr, size);
+      matrix.initArr(arr);
     }
-    catch(...)
-    {
-      std::cerr << "unexpected error occured\n";
-      inputFile.close();
-      return 2;
-    }
+
     inputFile.close();
 
+    std::cout << matrix.getMatrixInline() << '\n';
     matrix.increasePeriphery();
 
     std::ofstream outFile(argv[3]);
