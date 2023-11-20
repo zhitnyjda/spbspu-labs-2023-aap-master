@@ -3,6 +3,7 @@
 #include <string>
 #include "arrayModifications.h"
 #include "validationAndConversationToInt.h"
+#include "consts.h"
 
 int main(int argc, char **argv)
 {
