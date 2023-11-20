@@ -1,10 +1,14 @@
 #include <fstream>
 #include "arrayModifications.h"
 
+const std::string INVALID_INPUT = "Invalid input";
+
 void inputArray(std::istream &cin, int *array, int n, int m)
 {
   for (int i = 0; i < n * m; ++i) {
-    cin >> array[i];
+    if(!(cin >> array[i])){
+      throw std::logic_error(INVALID_INPUT);
+    }
   }
 }
 
