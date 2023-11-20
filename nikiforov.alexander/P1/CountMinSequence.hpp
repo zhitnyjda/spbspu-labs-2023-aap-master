@@ -12,13 +12,15 @@ namespace nikiforov {
       count = 0;
       flag = 0;
       max_count = std::numeric_limits< size_t >::max();
+      beforvalue = std::numeric_limits< int >::min();
     }
-    void operator()(std::istream& in, int& beforvalue, int& lastvalue);
+    void operator()(int& value);
     size_t operator()();
   private:
     size_t count;
-    int flag;
+    char flag;
     size_t max_count;
+    int beforvalue;
   };
 }
 #endif

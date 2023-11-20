@@ -1,23 +1,20 @@
 #include "CountMinSequence.hpp"
+#include <limits>
 
-void nikiforov::Sequence::operator()(std::istream& in, int& beforvalue, int& lastvalue)
+void nikiforov::Sequence::operator()(int& value)
 {
-  if (!in)
-  {
-    throw std::invalid_argument("Wrong input");
-  }
   if (count > max_count)
   {
-    throw std::overflow_error("Too many sequence elements");
+    throw std::overflow_error("Too many sequence elements\n");
   }
-  if (lastvalue < beforvalue) {
+  if (value < beforvalue) {
     flag = 1;
   }
-  else if (lastvalue > beforvalue && flag == 1) {
+  else if (value > beforvalue && flag == 1 && value != 0) {
     flag = 0;
     count++;
   }
-  beforvalue = lastvalue;
+  beforvalue = value;
 }
 
 size_t nikiforov::Sequence::operator()() {
