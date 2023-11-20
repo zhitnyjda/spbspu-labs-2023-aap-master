@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <limits.h>
 #include <limits>
@@ -32,7 +33,7 @@ int main()
         std::cerr << "Sequence is too long" << "\n";
         return 2;
       }
-      ++leight
+      ++leight;
     }
   }
   while (value != 0);
