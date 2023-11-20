@@ -55,13 +55,14 @@ int main(int argc, char* argv[])
 
     inputFile.close();
 
-    std::cout << matrix.getMatrixInline() << '\n';
     matrix.increasePeriphery();
+    std::cout << matrix.getMatrixInline() << '\n';
 
     std::ofstream outFile(argv[3]);
+    std::cout << matrix.getMatrixInline();
     if (outFile.is_open())
     {
-      outFile << std::to_string(matrix.getNRows()) + ' ' + std::to_string(matrix.getNCols()) + ' ' + matrix.getMatrixInline();
+      outFile << matrix.getNRows() << ' ' << matrix.getNCols() << ' ' << matrix.getMatrixInline();
     }
 
     return 0;

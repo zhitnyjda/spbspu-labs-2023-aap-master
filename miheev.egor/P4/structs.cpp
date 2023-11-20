@@ -1,4 +1,5 @@
 #include "structs.hpp"
+#include "functions.hpp"
 #include <iostream>
 
 miheev::Matrix::Matrix(size_t rows, size_t cols, long long mode):
@@ -19,7 +20,6 @@ miheev::Matrix::~Matrix()
 
 void miheev::Matrix::initWithIfstream(std::ifstream& in)
 {
-  std::cout << matrix_[0] << '\n';
   int current = 0;
   for (size_t i = 0; i < nRows_ * nCols_; i++)
   {
@@ -72,6 +72,7 @@ void miheev::Matrix::increaseRectBorder(size_t xStart, size_t yStart, size_t wid
 
 void miheev::Matrix::increasePeriphery()
 {
+  std::cout << "matrix at the begining - " <<  getMatrixInline() << '\n';
   int increment = 1;
   size_t xs = 0;
   size_t ys = 0;
@@ -87,6 +88,7 @@ void miheev::Matrix::increasePeriphery()
     h = h > 2 ? h - 2 : 0;
     increment += 1;
   }
+  std::cout << "matrix at the end - " <<  getMatrixInline() << '\n';
 }
 
 std::string miheev::Matrix::getMatrixInline() const
