@@ -60,10 +60,11 @@ int main(int argc, char** argv)
           return 2;
         }
       }
-      size_t MaxDiagonal = MaxSideDiagonal(staticMatrix, cols, rows);
+      size_t MaxDiagonal = MaxSideDiagonal(staticMatrix, cols);
       {
         std::ofstream output(argv[3]);
-        output << MaxDiagonal;
+        output << MaxDiagonal << "\n";
+        output << upperTriangularMatrix(staticMatrix, cols, rows);
       }
     }
   }
@@ -92,7 +93,8 @@ int main(int argc, char** argv)
     }
     {
       std::ofstream output(argv[3]);
-      output << MaxSideDiagonal(dinamicMatrix, rows, cols);
+      output << MaxSideDiagonal(dinamicMatrix, rows) << "\n";
+      output << upperTriangularMatrix(dinamicMatrix, cols, rows);
     }
     delete[] dinamicMatrix;
   }
