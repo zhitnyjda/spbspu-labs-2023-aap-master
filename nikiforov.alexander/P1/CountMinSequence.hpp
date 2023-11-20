@@ -8,12 +8,17 @@ namespace nikiforov {
   class Sequence
   {
   public:
+    Sequence() {
+      count = 0;
+      flag = 0;
+      max_count = std::numeric_limits< size_t >::max();
+    }
     void operator()(std::istream& in, int& beforvalue, int& lastvalue);
     size_t operator()();
   private:
-    size_t count = 0;
-    int flag = 0;
-    const size_t max_count = std::numeric_limits< size_t >::max();
+    size_t count;
+    int flag;
+    size_t max_count;
   };
 }
 #endif
