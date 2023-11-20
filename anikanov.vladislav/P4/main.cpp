@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "arrayModifications.cpp"
-#include "validationAndConversationToInt.cpp"
+#include "arrayModifications.h"
+#include "validationAndConversationToInt.h"
 
 int main(int argc, char **argv)
 {
