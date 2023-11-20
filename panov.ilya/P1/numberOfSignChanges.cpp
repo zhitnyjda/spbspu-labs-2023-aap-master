@@ -1,5 +1,5 @@
 #include "numberOfSignChanges.hpp"
-panov::NumberOfSignChanges::NumberOfSignChanges() :
+panov::NumberOfSignChanges::NumberOfSignChanges():
   count(0), first(0)
 {}
 

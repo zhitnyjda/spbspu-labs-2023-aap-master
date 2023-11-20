@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits.h>
 #include <exception>
 #include "moreThanPrevious.hpp"
 #include "numberOfSignChanges.hpp"
@@ -15,6 +16,7 @@ int main()
     return 1;
   }
   size_t value = 0;
+  size_t max_size = (_CRT_SIZE_MAX);
   do
   {
     std::cin >> value;
@@ -26,6 +28,11 @@ int main()
   if (std::cin.fail())
   {
     std::cerr << "Input error" << "\n";
+    return 1;
+  }
+  if (value > max_size)
+  {
+    std::cerr << "too many numbers" << "\n";
     return 1;
   }
   std::cout << "first\n";
