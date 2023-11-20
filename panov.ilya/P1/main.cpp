@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "moreThanPrevious.hpp"
-#include "numberOfSignChanges.hpp"
+#include "NumberOfSignChanges.hpp"
 #include "afterMaximum.hpp"
 
 int main()
@@ -9,31 +9,23 @@ int main()
   panov::NumberOfSignChanges numberOfSignChanges;
   panov::MoreThanPrevious moreThanPrevious;
   panov::AfterMaximum afterMaximum;
-  try
+  if (!std::cin)
   {
-    if (!std::cin)
-    {
-      std::cerr << "Not a sequence.\n";
-      return 1;
-    }
-    size_t value = 0;
-    do
-    {
-      std::cin >> value;
-      numberOfSignChanges(value);
-      moreThanPrevious(value);
-      afterMaximum(value);
-    }
-    while (value != 0);
-  }
-  catch (const std::istream::failure & e)
-  {
-    std::cerr << "OnlyNumberPLS" << "\n";
+    std::cerr << "Not a sequence.\n";
     return 1;
   }
-  catch (const std::logic_error& e)
+  size_t value = 0;
+  do
   {
-    std::cerr << e.what() << "\n";
+    std::cin >> value;
+    numberOfSignChanges(value);
+    moreThanPrevious(value);
+    afterMaximum(value);
+  }
+  while (value != 0);
+  if (std::cin.fail())
+  {
+    std::cerr << "Input error" << "\n";
     return 1;
   }
   std::cout << "first\n";

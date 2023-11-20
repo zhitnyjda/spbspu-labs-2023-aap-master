@@ -1,6 +1,6 @@
 #include "afterMaximum.hpp"
 #include <limits.h>
-panov::AfterMaximum::AfterMaximum() :
+panov::AfterMaximum::AfterMaximum():
   count(0), first(0), max_number(INT_MIN)
 {}
 
