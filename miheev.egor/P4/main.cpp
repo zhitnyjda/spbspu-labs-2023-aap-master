@@ -57,7 +57,8 @@ int main(int argc, char* argv[])
 
     matrix.increasePeriphery();
     std::cout << matrix.getMatrixInline() << '\n';
-    // в связи с описанной проблемой, приделываю костыль, чтобы программа работала
+    // в связи с описанной проблемой, приделываю костыль,
+    // чтобы программа работала
     std::string matrixInline = matrix.getMatrixInline();
     std::ofstream outFile(argv[3]);
     std::cout << matrix.getMatrixInline() << '\n';
