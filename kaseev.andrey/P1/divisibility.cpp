@@ -1,30 +1,30 @@
-#include "divisibility.hpp"
+#include "Divisibility.hpp"
 #include <iostream>
 #include <stdexcept>
 
-kaseev::divisibility::divisibility():
+kaseev::Divisibility::Divisibility():
     count(0),
-    firstNum(),
-    secondNum()
+    OldNum(),
+    NewNum()
 {}
 
-int kaseev::divisibility::operator()(int firstNum, int secondNum)
+int kaseev::Divisibility::operator()(int OldNum, int NewNum)
 {
-  while (secondNum != 0 && firstNum != 0)
+  while (NewNum != 0 && OldNum != 0)
   {
-    if (secondNum % firstNum == 0)
+    if (NewNum % OldNum == 0)
     {
       count += 1;
     }
-    firstNum = secondNum;
-    if (!(std::cin >> secondNum))
+    OldNum = NewNum;
+    if (!(std::cin >> NewNum))
     {
       throw std::logic_error("Wrong input");
     }
   }
   return count;
 }
-void kaseev::divisibility::operator()(int count)
+void kaseev::Divisibility::operator()(int count)
 {
   std::cout << count << "\n";
 }

@@ -4,16 +4,16 @@
 
 namespace kaseev
 {
-  class divisibility
+  class Divisibility
   {
   public:
-    divisibility();
-    int operator()(int firstNum, int secondNum);
+    Divisibility();
+    int operator()(int OldNum, int NewNum);
     void operator()(int count);
   private:
     int count;
-    int firstNum;
-    int secondNum;
+    int OldNum;
+    int NewNum;
   };
 }
 
