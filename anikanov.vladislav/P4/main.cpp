@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     std::cout << INVALID_INPUT << "\n";
     return 0;
   }
-  int *array_p;
+  int *array_p = nullptr;
   try {
     if (num == 1) {
       int array[n * m];
