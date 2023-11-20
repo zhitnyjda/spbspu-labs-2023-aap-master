@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "arrayModifications.h"
-#include "validationAndConversationToInt.h"
+#include "arrayModifications.cpp"
+#include "validationAndConversationToInt.cpp"
 
 int main(int argc, char **argv)
 {
@@ -20,17 +20,21 @@ int main(int argc, char **argv)
     std::cerr << INVALID_INPUT << "\n";
     return 1;
   }
-  if (num == 1) {
-    int array[n * m];
-    inputArray(cin, array, n, m);
-    spiralIncrease(array, n, m);
-    printArray(cout, array, n, m);
-  } else {
-    int *array = new int[n * m];
-    inputArray(cin, array, n, m);
-    spiralIncrease(array, n, m);
-    printArray(cout, array, n, m);
-    delete[] array;
+  try {
+    if (num == 1) {
+      int array[n * m];
+      inputArray(cin, array, n, m);
+      spiralIncrease(array, n, m);
+      printArray(cout, array, n, m);
+    } else {
+      int *array = new int[n * m];
+      inputArray(cin, array, n, m);
+      spiralIncrease(array, n, m);
+      printArray(cout, array, n, m);
+      delete[] array;
+    }
+  } catch (std::logic_error &err){
+    std::cout << err.what() << "\n";
+    return 1;
   }
 }
-

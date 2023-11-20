@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "validationAndConversationToInt.h"
+#include "consts.h"
 
 void check(int argc, char **argv)
 {

@@ -1,7 +1,7 @@
 #include <fstream>
 #include "arrayModifications.h"
+#include "consts.h"
 
-const std::string INVALID_INPUT = "Invalid input";
 
 void inputArray(std::istream &cin, int *array, int n, int m)
 {
