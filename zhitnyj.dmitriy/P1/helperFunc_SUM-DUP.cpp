@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "SUM-DUP/helpersFunc.h"
+#include "helpersFunc_SUM-DUP.h"
 
 int helperFunc::operator()(std::istream* str)
 {
