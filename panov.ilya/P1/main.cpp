@@ -16,7 +16,7 @@ int main()
     return 1;
   }
   size_t value = 0;
-  size_t max_size = (_CRT_SIZE_MAX);
+  size_t max_size = ((size_t)-1);
   do
   {
     std::cin >> value;
