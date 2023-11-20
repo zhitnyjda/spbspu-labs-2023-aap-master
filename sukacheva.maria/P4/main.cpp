@@ -25,7 +25,7 @@ int main(int argc, char** argv)
     return 3;
   }
 
-  size_t rows = 0, cols = 0;
+  size_t rows = 1, cols = 1;
   {
     try
     {
