@@ -43,7 +43,9 @@ int main(int argc, char **argv)
     std::cout << err.what() << "\n";
     if (num == 2){
       delete[] array_p;
+      array_p = nullptr;
     }
     return 1;
   }
+  array_p = nullptr;
 }
