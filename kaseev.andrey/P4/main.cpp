@@ -32,11 +32,11 @@ int main(int argc, char **argv)
   if (num == 1)
   {
     int * matrix = nullptr;
-    readMatrix(cin, matrix, n, m);
+    MatrixStuff::readMatrix(cin, matrix, n, m);
     size_t count = MatrixStuff::NumberOfDiagonals(matrix);
     if (cout.is_open())
     {
-      writeResult(cout, count);
+      MatrixStuff::writeResult(cout, count);
       cout.close();
     }
     else
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     size_t count = MatrixStuff::NumberOfDiagonals(matrix);
     if (cout.is_open())
     {
-      writeResult(cout, count);
+      MatrixStuff::writeResult(cout, count);
       cout.close();
     }
     else
