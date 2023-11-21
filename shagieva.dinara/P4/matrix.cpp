@@ -3,7 +3,7 @@
 
 void shagieva::Matrix::read(std::ifstream & input)
 {
-  for (int i = 0; i < numberOfLines * numberOfColumns; i++)
+  for (int i = 0; i < numberOfRows * numberOfColumns; i++)
   {
     input >> values[i];
 
@@ -24,19 +24,22 @@ int shagieva::Matrix::findMaxColumn()
   {
     int currentSeq = 0;
 
-    for (int line = 1; line < numberOfLines; line++)
+    for (int row = 1; row < numberOfRows; row++)
     {
-      int currentNumber = values[line * numberOfColumns + column];
-      int previousNumber = values[(line - 1) * numberOfColumns + column];
+      int currentNumber = values[row * numberOfColumns + column];
+      int previousNumber = values[(row - 1) * numberOfColumns + column];
+
       if (currentNumber == previousNumber)
       {
         currentSeq++;
       }
+
       if (currentSeq > maxCurrentSeq)
       {
         maxCurrentSeq = currentSeq;
       }
     }
+
     if (maxCurrentSeq > maxSeq)
     {
       maxSeq = maxCurrentSeq;
@@ -45,5 +48,3 @@ int shagieva::Matrix::findMaxColumn()
   }
   return maxColumn;
 }
-
-

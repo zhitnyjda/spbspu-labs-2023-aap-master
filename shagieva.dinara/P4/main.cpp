@@ -37,7 +37,7 @@ int main(int argc, char ** argv)
   using namespace shagieva;
   Matrix matrix;
 
-  input >> matrix.numberOfLines;
+  input >> matrix.numberOfRows;
   input >> matrix.numberOfColumns;
 
   if (!input)
@@ -56,8 +56,9 @@ int main(int argc, char ** argv)
 
   if (task == 1)
   {
-    int staticArray[10000] = {0};
+    int staticArray[10000] = { 0 };
     matrix.values = staticArray;
+
     try
     {
       matrix.read(input);
@@ -67,14 +68,16 @@ int main(int argc, char ** argv)
       std::cerr << e.what() << "\n";
       return 2;
     }
+
     result = matrix.findMaxColumn();
     output << result;
   }
 
   if (task == 2)
   {
-    int * dynamicArray = new int[matrix.numberOfLines * matrix.numberOfColumns];
+    int * dynamicArray = new int[matrix.numberOfRows * matrix.numberOfColumns];
     matrix.values = dynamicArray;
+
     try
     {
       matrix.read(input);
@@ -85,6 +88,7 @@ int main(int argc, char ** argv)
       delete[] dynamicArray;
       return 2;
     }
+
     result = matrix.findMaxColumn();
     output << result;
     delete[] dynamicArray;
