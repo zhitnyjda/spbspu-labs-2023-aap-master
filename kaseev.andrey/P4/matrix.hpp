@@ -4,7 +4,7 @@
 #include <ostream>
 
 
-namespace matrixStuff
+namespace MatrixStuff
 {
   size_t NumberOfDiagonals(int * matrix);
   void writeResult(std::ostream& output, int result);

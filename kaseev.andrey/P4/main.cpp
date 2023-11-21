@@ -33,7 +33,7 @@ int main(int argc, char **argv)
   {
     int * matrix = nullptr;
     readMatrix(cin, matrix, n, m);
-    size_t count = matrixStuff::NumberOfDiagonals(matrix);
+    size_t count = MatrixStuff::NumberOfDiagonals(matrix);
     if (cout.is_open())
     {
       writeResult(cout, count);
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     try
     {
     int * matrix = new int[n * m];
-    size_t count = matrixStuff::NumberOfDiagonals(matrix);
+    size_t count = MatrixStuff::NumberOfDiagonals(matrix);
     if (cout.is_open())
     {
       writeResult(cout, count);
