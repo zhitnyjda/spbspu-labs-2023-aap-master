@@ -17,60 +17,53 @@ int main(int argc, char **argv)
   {
     throw(std::invalid_argument("Invalid argument!"));
   }
-  //argv[2] - имя файла с матрицей
-  size_t rows = 0, cols = 0;
-  {
-    std::ifstream file(argv[2]);
-    file >> rows >> cols;
-    std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols));
-    for (int i = 0; i < rows; ++i)
-    {
-      for (int j = 0; j < cols; ++j)
-      {
-        file >> matrix[i][j];
-      }
-    }
-    if (!file.is_open())
-    {
-      std::cerr << "Cannot read an input.\n";
-      return 2;
-    }
+  std::ifstream cin(argv[2]);
+  int m = 0, n = 0;
+  if (!(cin >> n >> m)) {
+    std::cerr << "invalid input" << "\n";
+    return 1;
   }
-  if (rows <= 0 || cols <= 0)
+  if (m <= 0 || n <= 0)
   {
-    std::cerr << "Invalid matrix dimensions." << std::endl;
-    return {};
+    std::cerr << "Invalid matrix dimensions." << "\n";
+    return 1;
   }
-  std::ofstream output(argv[3]);
+  std::ofstream cout(argv[3]);
   if (num == 1)
   {
-    int matrix[10000] = {};
+    int * matrix = nullptr;
+    readMatrix(cin, matrix, n, m);
     size_t count = matrixStuff::NumberOfDiagonals(matrix);
-    std::ofstream outputFile(argv[3]);
-    if (outputFile.is_open())
+    if (cout.is_open())
     {
-      writeResult(outputFile, count);
-      outputFile.close();
+      writeResult(cout, count);
+      cout.close();
     }
     else
     {
-      std::cerr << "Unable to open the output file." << std::endl;
+      std::cerr << "Unable to open the output file." << "\n";
     }
   }
   else
   {
-    int *matrix = new int[rows * cols];
-    size_t count = matrixStuff::NumberOfDiagonals(matrix);
-    std::ofstream outputFile(argv[3]);
-    if (outputFile.is_open())
+    try
     {
-      writeResult(outputFile, count);
-      outputFile.close();
+    int * matrix = new int[n * m];
+    size_t count = matrixStuff::NumberOfDiagonals(matrix);
+    if (cout.is_open())
+    {
+      writeResult(cout, count);
+      cout.close();
     }
     else
     {
       std::cerr << "Unable to open the output file." << std::endl;
     }
     delete[] matrix;
+    }
+    catch (std::exception &err)
+    {
+        std::cerr << err.what() << "\n";
+    }
   }
 }

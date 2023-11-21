@@ -1,21 +1,34 @@
 #include "matrix.hpp"
-#include <vector>
 
-size_t NumberOfDiagonals(const std::vector<std::vector<int>>& matrix)
+size_t NumberOfDiagonals(int* matrix, int size)
 {
   int count = 0;
-  for (int i = 0; i < matrix.size(); ++i) {
-    if (matrix[i][i] != 0) {
-      int j = i + 1;
-      while (j < matrix.size() && matrix[j][j] != 0 && matrix[j][j] != matrix[i][i]) {
+  for (int n = 0; n < size; ++n)
+  {
+    if (matrix[n * size + n] != 0)
+    {
+      int m = n + 1;
+      while (m < size && matrix[m * size + m] != 0 && matrix[m * size + m] != matrix[n * size + n])
+      {
         ++count;
-        ++j;
+        ++m;
       }
     }
   }
   return count;
 }
 
-void writeResult(std::ostream& output, int result) {
+void writeResult(std::ostream& output, size_t result) {
   output << result;
+}
+
+void readMatrix(std::istream& cin, int * matrix, int n, int m)
+{
+  for (int i = 0; i < n * m; ++i)
+  {
+    if(!(cin >> matrix[i]))
+    {
+      throw std::logic_error("invalid input");
+    }
+  }
 }
