@@ -8,17 +8,12 @@ namespace nikiforov {
   class Sequence
   {
   public:
-    Sequence() {
-      count = 0;
-      flag = 0;
-      max_count = std::numeric_limits< size_t >::max();
-      beforvalue = std::numeric_limits< int >::min();
-    }
+    Sequence();
     void operator()(int& value);
     size_t operator()();
   private:
     size_t count;
-    char flag;
+    bool direction;
     size_t max_count;
     int beforvalue;
   };

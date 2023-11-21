@@ -34,5 +34,5 @@ int main()
     std::cout << e.what() << "\n";
     return 2;
   }
-return 0;
+  return 0;
 }

@@ -1,6 +1,13 @@
 #include "CountMinSequence.hpp"
 #include <limits>
 
+nikiforov::Sequence::Sequence() {
+  count = 0;
+  direction = false;
+  max_count = std::numeric_limits< size_t >::max();
+  beforvalue = std::numeric_limits< int >::min();
+}
+
 void nikiforov::Sequence::operator()(int& value)
 {
   if (count > max_count)
@@ -8,10 +15,10 @@ void nikiforov::Sequence::operator()(int& value)
     throw std::overflow_error("Too many sequence elements\n");
   }
   if (value < beforvalue) {
-    flag = 1;
+    direction = true;
   }
-  else if (value > beforvalue && flag == 1 && value != 0) {
-    flag = 0;
+  else if (value > beforvalue && direction == 1 && value != 0) {
+    direction = false;
     count++;
   }
   beforvalue = value;
