@@ -1,21 +1,16 @@
 #include <iostream>
+#include "inputString.hpp"
 
 int main() {
 
-  char chr = 0;
-  size_t read = 0;
-
-  char * input = new char[10];
-
-  std::cin >> std::noskipws;
-
-  while ((std::cin >> chr) && (chr != '\n'))
-  {
-    input[read++] = chr;
-  }
-  std::cin >> std::skipws;
-
-  std::cout << input << "\n";
-  delete [] input;
+  size_t size = 20;
+  size_t add_size = 20;
+  char * string = nullptr;
+  
+  string = inputString(std::cin, size, add_size);
+  
+  std::cout << string << "\n";
+  delete [] string;
+  
   return 0;
 }

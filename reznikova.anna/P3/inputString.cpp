@@ -1,0 +1,29 @@
+#include <iostream>
+#include "inputString.hpp"
+
+char * inputString(std::istream & in, size_t & size, size_t & add_size)
+{
+  char * string = new char[size];
+  char chr = 0;
+  size_t read = 0;
+  in >> std::noskipws;
+  
+  while ((in >> chr) && (chr != '\n'))
+  {
+    if (read < size)
+    {
+      string[read++] = chr;
+    }
+    char * newstring = new char[size + add_size];
+    for (size_t i = 0; i < size; i++)
+    {
+      newstring[i] = string[i];
+    }
+    delete [] string;
+    string = newstring;
+    size += add_size;
+  }
+  
+  in >> std::skipws;
+  return string;
+}
