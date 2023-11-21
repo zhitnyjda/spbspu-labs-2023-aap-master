@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include "decreaseSpiralElements.hpp"
-
 int main(int argc, char ** argv)
 {
   if (argc != 4)
