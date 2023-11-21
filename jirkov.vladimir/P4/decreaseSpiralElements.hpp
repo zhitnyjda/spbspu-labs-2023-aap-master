@@ -1,4 +1,4 @@
-#ifndef DECREASESPIRALELEMENTS_HPP   //decreaseSpiralElements
+#ifndef DECREASESPIRALELEMENTS_HPP
 #define DECREASESPIRALELEMENTS_HPP
 #include <cstddef>
 #include <fstream>
