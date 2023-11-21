@@ -16,7 +16,7 @@ int main(int argc, char ** argv)
   }
   catch (const std::invalid_argument & e)
   {
-    std::cerr << "Incorrect First argument!\n";
+    std::cerr << "Incorrect First argument\n";
     return 1;
   }
   if ((Num != 1) && (Num != 2))
