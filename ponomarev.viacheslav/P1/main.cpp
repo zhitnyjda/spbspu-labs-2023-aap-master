@@ -3,10 +3,21 @@
 int main()
 {
   int number = 0;
-  std::cin >> number;
-  if (!std::cin)
+  size_t seqLength = 0;
+  do
   {
-    std::cerr << "Not a sequence.\n";
-    return 1;
+  
+    std::cin >> number;
+    if (!std::cin)
+    {
+      std::cerr << "Not a sequence.\n";
+      return 1;
+    }
+    else if (number != 0)
+    {
+      ++seqLength;
+    }
   }
+  while (number != 0);
+  std::cout << seqLength << "\n";
 }
