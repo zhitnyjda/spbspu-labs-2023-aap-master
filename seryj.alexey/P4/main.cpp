@@ -8,15 +8,13 @@ int main(int args, const char* argv[])
     if (args > 4)
       throw (std::invalid_argument("Too much arguments"));
     if (args < 4)
-      throw (std::invalid_argument("Not enough elements"));
+      throw (std::invalid_argument("Not enough arguments"));
      int n = std::strtoll(argv[1], nullptr, 10);
     if (n < 1 || n>2)
       throw(std::invalid_argument("Invalid argument"));
-    int task = 1;/*seryj::fillArguments(args, argv);*/
     Matrix matrix;
-    matrix.initMatrix(argv[2], argv[3]);
-    int to_read = matrix.line * matrix.column;
-    if (task == 1)
+    int to_read = matrix.initMatrix(argv[2], argv[3]);
+    if (n == 1)
     {
       const size_t max_size = 10000;
       int static_array[max_size] = { 0 };
@@ -29,9 +27,9 @@ int main(int args, const char* argv[])
       }
       matrix.printAvgOfNeigbours();
     }
-    else if (task == 2)
+    else
     {
-      int* dynamic_array = new int[matrix.line * matrix.column];
+      int* dynamic_array = new int[to_read];
       matrix.initArray(dynamic_array);
       try
       {

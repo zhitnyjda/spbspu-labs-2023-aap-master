@@ -3,22 +3,17 @@
 #include "Funcs.hpp"
 namespace seryj
 {
-  size_t readSizeT(std::ifstream input)
-  {
-    size_t val = 0;
-    if (!input.is_open())
-      throw std::invalid_argument("Cant open input.txt");
-    if (!input)
-      throw std::logic_error("Input error");
-    input >> val;
-    return val;
-  }
-  void Matrix::initMatrix(const char* inp_file, const char* out_file)
+  size_t Matrix::initMatrix(const char* inp_file, const char* out_file)
   {
     input.open(inp_file);
     output.open(out_file);
-    input >> line;
-    input >> column;
+    if(!input.is_open())
+      throw std::invalid_argument("Cant open input file");
+    if(!output.is_open())
+      throw std::invalid_argument("Cant open output file");
+    if(!(input >> line) || !(input >> column) || !line || !column)
+      throw std::logic_error("Wrong sizes");
+    return line*column;
   }
   void Matrix::initArray(int* arr)
   {
@@ -28,9 +23,8 @@ namespace seryj
   {
     for (size_t i = 0; i < std::min(to_read, max_size); ++i)
     {
-      if (!input)
+      if (!(input >> *(values + i)))
         return i;
-      input >> *(values+i);
     }
     return std::min(to_read, max_size);
   }
