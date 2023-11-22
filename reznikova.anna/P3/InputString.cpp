@@ -24,6 +24,11 @@ char * inputString(std::istream & in, size_t & size, size_t & add_size)
     }
   }
   
+  if (!string[0])
+  {
+    throw std::logic_error("empty input");
+  }
+  
   in >> std::skipws;
   return string;
 }
