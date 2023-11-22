@@ -1,17 +1,14 @@
 #include <iostream>
-#include "Matrix.hpp"
 #include <iomanip>
 #include <string>
+#include "CreateMatrix.hpp"
+
 using namespace nikiforov;
 
 int main(int argc, const char* argv[])
 {
-  if (argc < 4) {
+  if (argc < 4 || argc > 4) {
     std::cerr << "Error: Not enough args.\n";
-    return 1;
-  }
-  if (argc > 4) {
-    std::cerr << "Error: Too many args.\n";
     return 1;
   }
 
@@ -27,25 +24,29 @@ int main(int argc, const char* argv[])
   size_t rows = 0, cols = 0;
 
   std::ofstream output(argv[3]);
+  //std::ofstream output("out.txt");
+
   std::ifstream input(argv[2]);
+  //std::ifstream input("in.txt");
   input >> rows >> cols;
   if (!input)
   {
     std::cerr << "Cannot read an input.\n";
     return 2;
   }
+  Matrix matrix;
   int* ArrMatrix = new int[rows * cols];
   try
   {
-    inputMatrix(input, ArrMatrix, rows * cols);
-    spiralMatrix(ArrMatrix, rows, cols);
+    matrix.inputMatrix(input, ArrMatrix, rows * cols);
+    matrix.spiralMatrix(ArrMatrix, rows, cols);
   }
   catch (const std::invalid_argument& e)
   {
     std::cerr << "One or more values are not elements of a two-dimensional array";
     return 2;
   }
- 
+
   for (size_t i = 0; i < rows; i++)
   {
     for (size_t j = 0; j < cols; j++)
