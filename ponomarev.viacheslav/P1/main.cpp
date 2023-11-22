@@ -1,36 +1,10 @@
 #include <iostream>
-#include <limits>
-#include <stdexcept>
-
-struct SequenceCounter
-{
-public:
-  SequenceCounter():
-    seqLength_(0)
-  {}
-
-  void operator()(int number)
-  {
-    const size_t maxSize = std::numeric_limits< size_t >::max();
-    if (seqLength_ == maxSize)
-    {
-      throw std::logic_error("Sequence is too long.");
-    }
-    ++seqLength_;
-  }
-
-  size_t operator()() const
-  {
-    return seqLength_;
-  }
-
-private:
-  size_t seqLength_;
-};
+#include "seqCounter.hpp"
 
 int main()
 {
   int number = 0;
+  using namespace ponomarev;
   SequenceCounter sequenceCounter;
   do
   {
@@ -49,6 +23,7 @@ int main()
       catch (const std::exception & e)
       {
         std::cerr << "Error: " << e.what() << "\n";
+        return 2;
       }
     }
   }
