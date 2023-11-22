@@ -1,6 +1,6 @@
-#include "Funcs.hpp"
 #include <fstream>
 #include <cmath>
+#include "Funcs.hpp"
 namespace seryj
 {
   size_t readSizeT(std::ifstream input)
@@ -47,7 +47,6 @@ namespace seryj
         }
     }
     else throw (std::invalid_argument("Cant open output file"));
-    output.close();
   }
   double Matrix::findAverageOfNeighbours(int curr_line, int curr_column) const
   {

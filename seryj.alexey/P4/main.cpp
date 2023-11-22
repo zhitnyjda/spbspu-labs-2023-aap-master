@@ -1,15 +1,15 @@
-#include "Funcs.hpp"
 #include <iostream>
-using namespace seryj;
+#include "Funcs.hpp"
 int main(int args, const char* argv[])
 {
   try
   {
+    using namespace seryj;
     if (args > 4)
       throw (std::invalid_argument("Too much arguments"));
     if (args < 4)
       throw (std::invalid_argument("Not enough elements"));
-    int n = std::strtoll(argv[1], nullptr, 10);
+     int n = std::strtoll(argv[1], nullptr, 10);
     if (n < 1 || n>2)
       throw(std::invalid_argument("Invalid argument"));
     int task = 1;/*seryj::fillArguments(args, argv);*/
