@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include <cstddef>
+#include <cstring>
 #include "function.hpp"
 
 using namespace litsinger;
