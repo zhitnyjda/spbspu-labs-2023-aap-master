@@ -57,9 +57,9 @@ namespace seryj
     for (size_t i = curr_line; i <= curr_line + 2; i++)
       for (size_t j = curr_column; j <= curr_column + 2; j++)
       {
-        if (j - 1 >= 0 && j - 1 < max_column && i - 1 >= 0 && i - 1 < max_line)
+        if (j > 0 && j <= max_column && i > 0 && i <= max_line)
         {
-          sum += *(values + (i-1) * max_line + j-1);
+          sum += *(values + (i-1) * max_line + j - 1);
           count++;
         }
       }
