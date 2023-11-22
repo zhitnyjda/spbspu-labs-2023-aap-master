@@ -17,4 +17,4 @@ namespace ponomarev
     size_t countLocmax_;
   };
 }
-#endif 
+#endif
