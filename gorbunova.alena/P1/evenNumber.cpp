@@ -19,6 +19,6 @@ void gorbunova::EvenNumber::operator()(size_t value)
 
 size_t gorbunova::EvenNumber::operator()()
 {
-  maxCount = (maxCount_ < count_ ? count_ : maxCount_);
+  maxCount_ = (maxCount_ < count_ ? count_ : maxCount_);
   return maxCount_;
 }
