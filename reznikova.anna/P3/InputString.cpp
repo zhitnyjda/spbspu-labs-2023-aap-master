@@ -13,7 +13,17 @@ char * inputString(std::istream & in, size_t & size, size_t & add_size)
     string[read++] = chr;
     if (read == size)
     {
-      char * newstring = new char[size + add_size];
+      char * newstring = nullptr;
+      try
+      {
+        newstring = new char[size + add_size];
+      }
+      catch (const std::exception )
+      {
+        delete [] newstring;
+        throw std::runtime_error("bad_alloc error");
+      }
+      
       for (size_t i = 0; i < size; i++)
       {
         newstring[i] = string[i];
@@ -26,7 +36,7 @@ char * inputString(std::istream & in, size_t & size, size_t & add_size)
   
   if (!string[0])
   {
-    throw std::logic_error("empty input");
+    throw std::runtime_error("empty input");
   }
   
   in >> std::skipws;
