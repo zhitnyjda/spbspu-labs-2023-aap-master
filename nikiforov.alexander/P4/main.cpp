@@ -47,15 +47,6 @@ int main(int argc, const char* argv[])
     return 2;
   }
 
-  for (size_t i = 0; i < rows; i++)
-  {
-    for (size_t j = 0; j < cols; j++)
-    {
-      std::cout << std::setw(4) << ArrMatrix[i * rows + j];
-    }
-    std::cout << "\n";
-  }
-
   if (output.is_open())
   {
     output << rows << " ";
