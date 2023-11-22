@@ -1,4 +1,5 @@
 #include "findCount.hpp"
+#include <stdexcept>
 
 gorbunova::FindCount::FindCount():
   countNumbers_(0),
@@ -9,14 +10,8 @@ gorbunova::FindCount::FindCount():
 
 void gorbunova::FindCount::operator()(size_t value)
 {
-  if (value != 0)
-  {
-    countNumbers_++;
-  }
-  if (value == firstNumber_ + secondNumber_)
-  {
-    countSum_++;
-  }
+  countNumbers_ += (value != 0 ? 1 : 0);
+  countSum_ += (value == firstNumber_ + secondNumber_ ? 1 : 0);
   firstNumber_ = secondNumber_;
   secondNumber_ = value;
 }

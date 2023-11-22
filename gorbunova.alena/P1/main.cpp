@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include "findCount.hpp"
 #include "evenNumber.hpp"
 
@@ -13,8 +14,8 @@ int main()
     std::cin >> value;
     if (!std::cin)
     {
-        std::cerr << "Not a sequence\n";
-        return 1;
+      std::cerr << "Not a sequence\n";
+      return 1;
     }
     else if (value != 0)
     {

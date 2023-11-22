@@ -1,8 +1,6 @@
 #ifndef EVENNUMBER_HPP
 #define EVENNUMBER_HPP
 #include <cstddef>
-#include <stdexcept>
-#include <limits>
 
 namespace gorbunova
 {

@@ -1,4 +1,6 @@
 #include "evenNumber.hpp"
+#include <stdexcept>
+#include <limits>
 
 gorbunova::EvenNumber::EvenNumber():
   count_(0),
@@ -12,21 +14,11 @@ void gorbunova::EvenNumber::operator()(size_t value)
   {
     throw std::logic_error("Too long sequence\n");
   }
-  if (value % 2 == 0)
-  {
-    count_++;
-  }
-  else
-  {
-    count_ = 0;
-  }
+  value % 2 == 0 ? count_++ : count_ = 0;
 }
 
 size_t gorbunova::EvenNumber::operator()()
 {
-  if (maxCount_ < count_)
-  {
-    maxCount_ = count_;
-  }
+  maxCount = (maxCount_ < count_ ? count_ : maxCount_);
   return maxCount_;
 }
