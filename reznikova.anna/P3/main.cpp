@@ -1,5 +1,5 @@
 #include <iostream>
-#include "inputString.hpp"
+#include "InputString.hpp"
 
 int main() {
 
