@@ -4,13 +4,13 @@
 #include <limits>
 
 kaseev::delitel::delitel():
-    max_count(std::numeric_limits<int>::max()),
-    count(0),
-    firstnum(),
-    secondnum()
+  max_count(std::numeric_limits<int>::max()),
+  count(0),
+  firstnum(),
+  secondnum()
 {}
 
-int kaseev::delitel::operator()(std::istream &)
+int kaseev::delitel::operator()(std::istream &cin)
 {
   if (!(std::cin >> firstnum) || firstnum == 0) {
     throw std::logic_error("Wrong input");

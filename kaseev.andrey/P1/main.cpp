@@ -1,5 +1,5 @@
 #include <iostream>
-#include "delitel.hpp"
+#include "delitel.cpp"
 #include <stdexcept>
 
 int main()
