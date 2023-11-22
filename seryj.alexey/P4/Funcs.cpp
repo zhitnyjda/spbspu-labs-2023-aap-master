@@ -40,26 +40,26 @@ namespace seryj
     {
       output << line << " ";
       output << column << " ";
-      for (int i = 0; i < line; i++)
-        for (int j = 0; j < column; j++)
+      for (size_t i = 0; i < line; i++)
+        for (size_t j = 0; j < column; j++)
         {
           output << findAverageOfNeighbours(i, j) << " ";
         }
     }
     else throw (std::invalid_argument("Cant open output file"));
   }
-  double Matrix::findAverageOfNeighbours(int curr_line, int curr_column) const
+  double Matrix::findAverageOfNeighbours(size_t curr_line, size_t curr_column) const
   {
     int count = 0;
     double sum = 0;
     size_t max_line = line;
     size_t max_column = column;
-    for (int i = curr_line - 1; i <= curr_line + 1; i++)
-      for (int j = curr_column - 1; j <= curr_column + 1; j++)
+    for (size_t i = curr_line; i <= curr_line + 2; i++)
+      for (size_t j = curr_column; j <= curr_column + 2; j++)
       {
-        if (j >= 0 && j < max_column && i >= 0 && i < max_line)
+        if (j - 1 >= 0 && j - 1 < max_column && i - 1 >= 0 && i - 1 < max_line)
         {
-          sum += *(values + i * max_line + j);
+          sum += *(values + (i-1) * max_line + j-1);
           count++;
         }
       }

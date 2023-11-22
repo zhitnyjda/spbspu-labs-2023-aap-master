@@ -13,7 +13,7 @@ namespace seryj
     size_t line = 0;
     size_t column = 0;
   private:
-    double findAverageOfNeighbours(int, int)const;
+    double findAverageOfNeighbours(size_t, size_t)const;
     int* values = nullptr;
     std::ofstream output;
     std::ifstream input;
