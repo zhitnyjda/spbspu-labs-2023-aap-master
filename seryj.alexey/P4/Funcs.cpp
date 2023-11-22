@@ -54,8 +54,8 @@ namespace seryj
     double sum = 0;
     size_t max_line = line;
     size_t max_column = column;
-    for (size_t i = curr_line - 1; i <= curr_line + 1; i++)
-      for (size_t j = curr_column - 1; j <= curr_column + 1; j++)
+    for (int i = curr_line - 1; i <= curr_line + 1; i++)
+      for (int j = curr_column - 1; j <= curr_column + 1; j++)
       {
         if (j >= 0 && j < max_column && i >= 0 && i < max_line)
         {
