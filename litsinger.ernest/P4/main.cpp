@@ -79,8 +79,9 @@ int main(int args,char * argv[])
     {
       delete[] dynamic_array;
       std::cerr << e.what();
-      return 0
+      return 0;
     }
+    delete[] dynamic_array;
   }
   else
   {
