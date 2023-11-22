@@ -1,6 +1,6 @@
+#include "Funcs.hpp"
 #include <fstream>
 #include <cmath>
-#include "Funcs.hpp"
 namespace seryj
 {
   size_t Matrix::initMatrix(const char* inp_file, const char* out_file)
