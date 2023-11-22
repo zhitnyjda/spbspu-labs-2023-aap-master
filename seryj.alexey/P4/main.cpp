@@ -5,24 +5,42 @@ int main(int args, const char* argv[])
 {
   try
   {
-    int task = seryj::fillArguments(args, argv);
+    if (args > 4)
+      throw (std::invalid_argument("Too much arguments"));
+    if (args < 4)
+      throw (std::invalid_argument("Not enough elements"));
+    int n = std::strtoll(argv[1], nullptr, 10);
+    if (n < 1 || n>2)
+      throw(std::invalid_argument("Invalid argument"));
+    int task = 1;/*seryj::fillArguments(args, argv);*/
     Matrix matrix;
-    matrix.line = read();
-    matrix.column = read();
+    matrix.initMatrix(argv[2], argv[3]);
+    int to_read = matrix.line * matrix.column;
     if (task == 1)
     {
-      int static_array[10001] = { 0 };
-      matrix.values = static_array;
-      matrix.fillArray();
+      const size_t max_size = 10000;
+      int static_array[max_size] = { 0 };
+      matrix.initArray(static_array);
+      int result = matrix.fillArray(max_size, to_read );
+      if (result != to_read)
+      {
+        std::cerr << "Could only read " << result << " numbers. I needed " << to_read;
+        return 1;
+      }
       matrix.printAvgOfNeigbours();
     }
     else if (task == 2)
     {
       int* dynamic_array = new int[matrix.line * matrix.column];
-      matrix.values = dynamic_array;
+      matrix.initArray(dynamic_array);
       try
       {
-        matrix.fillArray();
+        int result = matrix.fillArray(to_read, to_read);
+        if (result != to_read)
+        {
+          std::cerr << "Could only read " << result << " numbers. I needed "<<to_read;
+          return 1;
+        }
         matrix.printAvgOfNeigbours();
         delete[] dynamic_array;
       }
@@ -45,4 +63,3 @@ int main(int args, const char* argv[])
     return 2;
   }
 }
-

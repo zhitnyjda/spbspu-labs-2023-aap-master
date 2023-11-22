@@ -1,47 +1,40 @@
 #include "Funcs.hpp"
-#include <iostream>
 #include <fstream>
 #include <cmath>
 namespace seryj
 {
-  std::ifstream input;
-  std::ofstream output;
-  int fillArguments(int args, const char* argv[])
+  size_t readSizeT(std::ifstream input)
   {
-    if (args > 4)
-      throw (std::invalid_argument("Too much arguments"));
-    if (args < 4)
-      throw (std::invalid_argument("Not enough elements"));
-    input.open(argv[2]);
-    output.open(argv[3]);
-    int n = std::strtoll(argv[1], nullptr, 10);
-    if (n < 1 || n>2)
-      throw(std::invalid_argument("Invalid argument"));
-    return n;
-  }
-  int read()
-  {
-    int val = 0;
-    if (input.is_open() && input)
-      input >> val;
-    else if (!input.is_open())
+    size_t val = 0;
+    if (!input.is_open())
       throw std::invalid_argument("Cant open input.txt");
     if (!input)
       throw std::logic_error("Input error");
+    input >> val;
     return val;
   }
-  void Matrix::fillArray()
+  void Matrix::initMatrix(const char* inp_file, const char* out_file)
   {
-    int count = 0;
-    while (input.good())
-    {
-      *(values + count) = read();
-      count++;
-    }
-    if (count < line * column)
-      throw std::logic_error("Not enough elements");
+    input.open(inp_file);
+    output.open(out_file);
+    input >> line;
+    input >> column;
   }
-  void Matrix::printAvgOfNeigbours()const
+  void Matrix::initArray(int* arr)
+  {
+    values = arr;
+  }
+  int Matrix::fillArray(size_t max_size, size_t to_read)
+  {
+    for (size_t i = 0; i < std::min(to_read, max_size); ++i)
+    {
+      if (!input)
+        return i;
+      input >> *(values+i);
+    }
+    return std::min(to_read, max_size);
+  }
+  void Matrix::printAvgOfNeigbours()
   {
     if (output.is_open())
     {
@@ -60,10 +53,10 @@ namespace seryj
   {
     int count = 0;
     double sum = 0;
-    int max_line = line;
-    int max_column = column;
-    for (int i = curr_line - 1; i <= curr_line + 1; i++)
-      for (int j = curr_column - 1; j <= curr_column + 1; j++)
+    size_t max_line = line;
+    size_t max_column = column;
+    for (size_t i = curr_line - 1; i <= curr_line + 1; i++)
+      for (size_t j = curr_column - 1; j <= curr_column + 1; j++)
       {
         if (j >= 0 && j < max_column && i >= 0 && i < max_line)
         {
@@ -73,8 +66,6 @@ namespace seryj
       }
     count--;
     sum -= *(values + curr_line * max_line + curr_column);
-    if (count > 0)
-      return round(sum / count * 10) / 10;
-    else return 0;
+    return round(sum / count * 10) / 10;
   }
 }
