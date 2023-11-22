@@ -42,7 +42,7 @@ int main(int args,char * argv[])
       if (!input)
       {
         std::cerr << "Input error\n";
-        return 1;
+        return 2;
       }
     }
     std::ofstream output(argv[3]);
@@ -52,7 +52,7 @@ int main(int args,char * argv[])
   {
     if (rows != cols)
     {
-      std::cerr << "Matrix is not a square\n";
+      std::cerr << "Rows and cols are different\n";
       return 0;
     }
     int * dynamic_array = new int[rows * cols];
@@ -63,7 +63,7 @@ int main(int args,char * argv[])
       {
         std::cerr << "Input error\n";
         delete[] dynamic_array;
-        return 1;
+        return 2;
       }
     }
     std::ofstream output(argv[3]);
