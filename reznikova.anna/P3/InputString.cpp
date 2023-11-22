@@ -8,8 +8,6 @@ char * inputString(std::istream & in, size_t & size, size_t & add_size)
   size_t read = 0;
   in >> std::noskipws;
   
-  
-  
   while ((in >> chr) && (chr != '\n'))
   {
     string[read++] = chr;
