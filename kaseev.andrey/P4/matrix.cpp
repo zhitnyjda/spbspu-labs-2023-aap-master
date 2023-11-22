@@ -18,7 +18,8 @@ size_t NumberOfDiagonals(int* matrix, int size)
   return count;
 }
 
-void writeResult(std::ostream& output, size_t result) {
+void writeResult(std::ostream& output, size_t result)
+{
   output << result;
 }
 
