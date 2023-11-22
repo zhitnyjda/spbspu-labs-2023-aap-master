@@ -30,7 +30,7 @@ int main(int args,char * argv[])
   }
   if (!std::strcmp(argv[1], "1"))
   {
-    if (rows != cols)
+    if ((rows != cols) || (rows = 0 || cols == 0))
     {
       std::cerr << "Matrix is not a square\n";
       return 0;
@@ -69,14 +69,17 @@ int main(int args,char * argv[])
     std::ofstream output(argv[3]);
     try
     {
-      if (rows != cols)
+      if ((rows != cols) || (rows = 0 || cols == 0))
       {
-        std::cerr << "Matrix is not a square\n";
-        delete[] dynamic_array;
-        return 0;
+        throw std::invalid_argument("Rows and cols are different\n");
       }
       output << MaximalSum(reinterpret_cast<const int*>(dynamic_array), rows, cols);
+    }
+    catch (const std::invalid_argument& e)
+    {
       delete[] dynamic_array;
+      std::cerr << e.what();
+      return 0
     }
   }
   else
