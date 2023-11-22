@@ -76,10 +76,10 @@ int main(int args,char * argv[])
         return 0;
       }
       output << MaximalSum(reinterpret_cast<const int*>(dynamic_array), rows, cols);
+      delete[] dynamic_array;
     }
-    delete[] dynamic_array;
   }
-  else if (task != 1 && task != 2)
+  else
   {
     std::cerr << "Error\n";
     return 1;
