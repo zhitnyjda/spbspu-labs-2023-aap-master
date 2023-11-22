@@ -13,13 +13,13 @@ int main(int args, const char* argv[])
     if (n < 1 || n > 2)
       throw(std::invalid_argument("Invalid argument\n"));
     Matrix matrix;
-    int to_read = matrix.initMatrix(argv[2], argv[3]);
+    size_t to_read = matrix.initMatrix(argv[2], argv[3]);
     if (n == 1)
     {
       const size_t max_size = 10000;
       int static_array[max_size] = { 0 };
       matrix.initArray(static_array);
-      int result = matrix.fillArray(max_size, to_read );
+      size_t result = matrix.fillArray(max_size, to_read );
       if (result != to_read)
       {
         std::cerr << "Could only read " << result << " numbers. I needed " << to_read << "\n";
@@ -33,7 +33,7 @@ int main(int args, const char* argv[])
       matrix.initArray(dynamic_array);
       try
       {
-        int result = matrix.fillArray(to_read, to_read);
+        size_t result = matrix.fillArray(to_read, to_read);
         if (result != to_read)
         {
           std::cerr << "Could only read " << result << " numbers. I needed " << to_read << "\n";

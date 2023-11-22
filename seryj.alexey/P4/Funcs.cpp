@@ -19,7 +19,7 @@ namespace seryj
   {
     values = arr;
   }
-  int Matrix::fillArray(size_t max_size, size_t to_read)
+  size_t Matrix::fillArray(size_t max_size, size_t to_read)
   {
     for (size_t i = 0; i < std::min(to_read, max_size); ++i)
     {
@@ -51,7 +51,7 @@ namespace seryj
         {
           sum += *(values + (i-1) * max_line + j - 1);
           count++;
-        }
+         }
       }
     count--;
     sum -= *(values + curr_line * max_line + curr_column);

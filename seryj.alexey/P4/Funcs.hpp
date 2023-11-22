@@ -8,7 +8,7 @@ namespace seryj
   public:
     size_t initMatrix(const char * inp_file, const char * out_file);
     void initArray(int *);
-    int fillArray( size_t max_size, size_t to_read);
+    size_t fillArray( size_t max_size, size_t to_read);
     void printAvgOfNeigbours();
   private:
     double findAverageOfNeighbours(size_t, size_t)const;
