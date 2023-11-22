@@ -17,8 +17,4 @@ namespace kaseev
   };
 }
 
-<<<<<<< HEAD
 #endif
-=======
-#endif
->>>>>>> kaseev.andrey/P1
