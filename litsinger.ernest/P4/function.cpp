@@ -1,7 +1,4 @@
 #include "function.hpp"
-#include <iostream>
-#include <fstream>
-#include <cmath>
 #include <limits>
 namespace litsinger
 {
