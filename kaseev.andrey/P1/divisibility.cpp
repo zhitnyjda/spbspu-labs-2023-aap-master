@@ -27,4 +27,9 @@ int kaseev::Divisibility::operator()(int OldNum, int NewNum)
 void kaseev::Divisibility::operator()(int count)
 {
   std::cout << count << "\n";
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> kaseev.andrey/P1
