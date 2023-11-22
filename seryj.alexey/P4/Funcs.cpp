@@ -8,11 +8,11 @@ namespace seryj
     input.open(inp_file);
     output.open(out_file);
     if(!input.is_open())
-      throw std::invalid_argument("Cant open input file");
+      throw std::invalid_argument("Cant open input file\n");
     if(!output.is_open())
-      throw std::invalid_argument("Cant open output file");
-    if(!(input >> line) || !(input >> column) || !line || !column)
-      throw std::logic_error("Wrong sizes");
+      throw std::invalid_argument("Cant open output file\n");
+    if(!(input >> line) || !(input >> column))
+      throw std::logic_error("Wrong sizes\n");
     return line*column;
   }
   void Matrix::initArray(int* arr)
@@ -30,17 +30,13 @@ namespace seryj
   }
   void Matrix::printAvgOfNeigbours()
   {
-    if (output.is_open())
-    {
-      output << line << " ";
-      output << column << " ";
-      for (size_t i = 0; i < line; i++)
-        for (size_t j = 0; j < column; j++)
-        {
-          output << findAverageOfNeighbours(i, j) << " ";
-        }
-    }
-    else throw (std::invalid_argument("Cant open output file"));
+    output << line << " ";
+    output << column << " ";
+    for (size_t i = 0; i < line; i++)
+      for (size_t j = 0; j < column; j++)
+      {
+        output << findAverageOfNeighbours(i, j) << " ";
+      }
   }
   double Matrix::findAverageOfNeighbours(size_t curr_line, size_t curr_column) const
   {
