@@ -44,7 +44,7 @@ int main(int args, const char* argv[])
         matrix.printAvgOfNeigbours();
         delete[] dynamic_array;
       }
-      catch (std::logic_error const& e)
+      catch (std::logic_error const & e)
       {
         std::cerr << e.what();
         delete[] dynamic_array;
@@ -52,12 +52,12 @@ int main(int args, const char* argv[])
       }
     }
   }
-  catch (std::invalid_argument& e)
+  catch (std::invalid_argument const & e)
   {
     std::cerr << e.what();
     return 1;
   }
-  catch (std::logic_error& e)
+  catch (std::logic_error const & e)
   {
     std::cerr << e.what();
     return 2;
