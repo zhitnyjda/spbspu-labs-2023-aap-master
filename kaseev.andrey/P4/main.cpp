@@ -30,13 +30,14 @@ int main(int argc, char **argv)
     return 1;
   }
   std::ofstream output(argv[3]);
+  int size = n * m;
   try
   {
     if (num == 1)
     {
       int *matrix = new int[n * m];
       MatrixStuff::readMatrix(input, matrix, n, m);
-      size_t count = MatrixStuff::NumberOfDiagonals(matrix, n * m);
+      size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
       if (output.is_open())
       {
         MatrixStuff::writeResult(output, count);
@@ -50,7 +51,7 @@ int main(int argc, char **argv)
     else
     {
       int *matrix = new int[n * m];
-      size_t count = MatrixStuff::NumberOfDiagonals(matrix, n * m);
+      size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
       if (output.is_open())
       {
         MatrixStuff::writeResult(output, count);

@@ -5,7 +5,7 @@
 #include <iostream>
 
 namespace MatrixStuff{
-  size_t NumberOfDiagonals(int *matrix);
+  size_t NumberOfDiagonals(int *matrix, int size);
   void writeResult(std::ostream &output, int result);
   void readMatrix(std::istream &input, int *matrix, int n, int m);
 }
