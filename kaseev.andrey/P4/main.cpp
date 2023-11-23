@@ -9,7 +9,6 @@ int main(int argc, char **argv)
     if (argc != 4)
     {
       throw (std::invalid_argument("There are more arguments than should be!"));
-      return 1;
     }
     int num = std::strtoll(argv[1], nullptr, 10);
     if (num != 1 && num != 2)
@@ -21,50 +20,55 @@ int main(int argc, char **argv)
     if (!(input >> n >> m))
     {
       std::cerr << "invalid input" << "\n";
-      return 1;
     }
     if (m <= 0 || n <= 0)
     {
       std::cerr << "Invalid matrix dimensions." << "\n";
-      return 1;
     }
-
-  std::ofstream output(argv[3]);
-  int size = n * m;
-    if (num == 1)
+    try
     {
-      int *matrix = new int[n * m];
-      MatrixStuff::readMatrix(input, matrix, n, m);
-      size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
-      delete[] matrix;
-      if (output.is_open())
+      std::ofstream output(argv[3]);
+      int size = n * m;
+      if (num == 1)
       {
-        MatrixStuff::writeResult(output, count);
-        output.close();
+        int *matrix = new int[n * m];
+        MatrixStuff::readMatrix(input, matrix, n, m);
+        size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
+        delete[] matrix;
+        if (output.is_open())
+        {
+          MatrixStuff::writeResult(output, count);
+          output.close();
+        } else
+        {
+          std::cerr << "Unable to open the output file." << "\n";
+        }
       } else
       {
-        std::cerr << "Unable to open the output file." << "\n";
+        int *matrix = new int[n * m];
+        MatrixStuff::readMatrix(input, matrix, n, m);
+        size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
+        delete[] matrix;
+        if (output.is_open())
+        {
+          MatrixStuff::writeResult(output, count);
+          output.close();
+        } else
+        {
+          std::cerr << "Unable to open the output file." << std::endl;
+        }
       }
     }
-    else
-    {
-      int *matrix = new int[n * m];
-      MatrixStuff::readMatrix(input, matrix, n, m);
-      size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
-      delete[] matrix;
-      if (output.is_open())
-      {
-        MatrixStuff::writeResult(output, count);
-        output.close();
-      } else
-      {
-        std::cerr << "Unable to open the output file." << std::endl;
-      }
-    }
-  }
     catch (std::exception &err)
     {
       std::cerr << err.what() << "\n";
       return 2;
     }
   }
+  catch (std::exception &err)
+  {
+    std::cerr << err.what() << "\n";
+    return 1;
+  }
+}
+
