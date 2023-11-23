@@ -6,13 +6,12 @@
 namespace kaseev
 {
   class divisibility
-  {
+      {
   public:
-    long long int divisibility(long long int, long long int);
-    int operator()(std::istream &cin);
+    divisibility();
+    int operator()(int firstnum, int secondnum);
     size_t operator()();
   private:
-    const int max_count;
     int count;
     int firstnum;
     int secondnum;
