@@ -3,7 +3,7 @@
 
 namespace sobolevsky
 {
-  bool matrix::countMatrix(std::istream & in, int * matrix, size_t s)
+  bool sizeMatrix(std::istream & in, int * matrix, size_t s)
   {
     for (size_t i = 0; i < s; ++i)
     {
@@ -15,7 +15,7 @@ namespace sobolevsky
     return true;
   }
 
-  bool matrix::isTrianglMatrix(int * matrix, size_t rows, size_t cols)
+  bool isTrianglMatrix(int * matrix, size_t rows, size_t cols)
   {
     for (size_t i = 0; i < rows; i++)
     {

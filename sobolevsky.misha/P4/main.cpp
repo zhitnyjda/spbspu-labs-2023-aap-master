@@ -21,7 +21,6 @@ int main(int argc, char ** argv)
     return 1;
   }
 
-  sobolevsky::matrix currMatrix;
   if (number == 1 || number == 2)
   {
     size_t rows = 0, cols = 0;
@@ -44,24 +43,24 @@ int main(int argc, char ** argv)
     if (number == 1)
     {
       int statMatrix[10000] = {};
-      if (!(currMatrix.countMatrix(input, statMatrix, (cols * rows))))
+      if (!(sobolevsky::sizeMatrix(input, statMatrix, (cols * rows))))
       {
         std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
         return 2;
       }
-      (currMatrix.isTrianglMatrix(statMatrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
+      (sobolevsky::isTrianglMatrix(statMatrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
       return 0;
     }
     else
     {
       int * dynMatrix = new int[rows * cols];
-      if (!(currMatrix.countMatrix(input, dynMatrix, (cols * rows))))
+      if (!(sobolevsky::sizeMatrix(input, dynMatrix, (cols * rows))))
       {
         std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
         delete[] dynMatrix;
         return 2;
       }
-      (currMatrix.isTrianglMatrix(dynMatrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
+      (sobolevsky::isTrianglMatrix(dynMatrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
       delete[] dynMatrix;
       return 0;
     }
