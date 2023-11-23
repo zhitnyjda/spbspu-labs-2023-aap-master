@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include "funcs.hpp"
 
 int main(int argc, char ** argv)
@@ -13,6 +14,14 @@ int main(int argc, char ** argv)
   int number;
   try
   {
+    for (size_t i=0; i < strlen(argv[1]); i++)
+    {
+      if (!(isdigit(argv[1][i])))
+      {
+        std::cerr << "Первый аргумент должен быть интом\n";
+        return 1;
+      }
+    }
     number = std::stoll(argv[1]);
   }
   catch (const std::invalid_argument & e)
