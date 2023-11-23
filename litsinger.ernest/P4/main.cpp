@@ -28,7 +28,7 @@ int main(int args,char * argv[])
     std::cerr << "Matrix is not a square\n";
     return 1;
   }
-  if (rows = 0 || cols == 0)
+  if (rows == 0 || cols == 0)
   {
     std::cerr << "Error\n";
     return 0;
