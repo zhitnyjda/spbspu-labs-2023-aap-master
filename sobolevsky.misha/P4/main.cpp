@@ -51,7 +51,7 @@ int main(int argc, char ** argv)
 
     if (number == 1)
     {
-      matrix[10000] = {};
+      int matrix[10000] = {};
       size_t counter = sobolevsky::sizeMatrix(input, matrix, (cols * rows));
       if (counter != (cols*rows))
       {
