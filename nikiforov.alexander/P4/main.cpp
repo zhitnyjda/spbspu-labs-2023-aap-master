@@ -45,7 +45,6 @@ int main(int argc, const char* argv[])
       return 2;
     }
     Matrix matrix;
-    int* ArrMatrix = 0;
     size_t elementsCount = 0;
     if (num == 1)
     {
@@ -56,7 +55,7 @@ int main(int argc, const char* argv[])
     }
     else if (num == 2)
     {
-      ArrMatrix = new int[rows * cols];
+      int* ArrMatrix = new int[rows * cols];
       elementsCount = matrix.inputMatrix(input, ArrMatrix, rows * cols);
       std::ofstream output(argv[3]);
       matrix.spiralMatrix(output, ArrMatrix, rows, cols);
