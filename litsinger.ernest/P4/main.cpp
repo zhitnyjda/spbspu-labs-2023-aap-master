@@ -23,16 +23,6 @@ int main(int args,char * argv[])
   std::ifstream input(argv[2]);
   input >> rows;
   input >> cols;
-  if (rows != cols)
-  {
-    std::cerr << "Matrix is not a square\n";
-    return 1;
-  }
-  if (rows == 0 || cols == 0)
-  {
-    std::cerr << "Error\n";
-    return 0;
-  }
   if (!(input))
   {
     std::cerr << "Error\n";
@@ -40,6 +30,16 @@ int main(int args,char * argv[])
   }
   if (!std::strcmp(argv[1], "1"))
   {
+    if (rows != cols)
+    {
+      std::cerr << "Matrix is not a square\n";
+      return 1;
+    }
+    if (rows == 0 || cols == 0)
+    {
+      std::cerr << "Error\n";
+      return 0;
+    }
     int static_array[10000] = {0};
     for (size_t i = 0; i < (rows * cols); i++)
     {
@@ -47,7 +47,7 @@ int main(int args,char * argv[])
       if (!input)
       {
         std::cerr << "Input error\n";
-        return 1;
+        return 2;
       }
     }
     std::ofstream output(argv[3]);
@@ -55,6 +55,16 @@ int main(int args,char * argv[])
   }
   else if (!std::strcmp(argv[1], "2"))
   {
+    if (rows != cols)
+    {
+      std::cerr << "Rows and cols are different\n";
+      return 1;
+    }
+    if (rows == 0 || cols == 0)
+    {
+      std::cerr << "Error\n";
+      return 0;
+    }
     int * dynamic_array = new int[rows * cols];
     for (size_t i = 0; i < (rows * cols); i++)
     {
@@ -63,13 +73,13 @@ int main(int args,char * argv[])
       {
         std::cerr << "Input error\n";
         delete[] dynamic_array;
-        return 1;
+        return 2;
       }
     }
     std::ofstream output(argv[3]);
     try
     {
-      if (rows != cols)
+      if ((rows != cols) || (rows = 0 || cols == 0))
       {
         throw std::invalid_argument("Rows and cols are different\n");
       }
