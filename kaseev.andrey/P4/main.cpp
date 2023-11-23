@@ -30,22 +30,22 @@ int main(int argc, char **argv)
     return 1;
   }
   std::ofstream cout(argv[3]);
-  if (num == 1)
+  try
   {
-    int *matrix = nullptr;
-    MatrixStuff::readMatrix(cin, matrix, n, m);
-    size_t count = MatrixStuff::NumberOfDiagonals(matrix);
-    if (cout.is_open())
+    if (num == 1)
     {
-      MatrixStuff::writeResult(cout, count);
-      cout.close();
+      int *matrix = nullptr;
+      MatrixStuff::readMatrix(cin, matrix, n, m);
+      size_t count = MatrixStuff::NumberOfDiagonals(matrix);
+      if (cout.is_open())
+      {
+        MatrixStuff::writeResult(cout, count);
+        cout.close();
+      } else
+      {
+        std::cerr << "Unable to open the output file." << "\n";
+      }
     } else
-    {
-      std::cerr << "Unable to open the output file." << "\n";
-    }
-  } else
-  {
-    try
     {
       int *matrix = new int[n * m];
       size_t count = MatrixStuff::NumberOfDiagonals(matrix);
@@ -59,9 +59,10 @@ int main(int argc, char **argv)
       }
       delete[] matrix;
     }
+  }
     catch (std::exception &err)
     {
       std::cerr << err.what() << "\n";
+      return 2;
     }
   }
-}
