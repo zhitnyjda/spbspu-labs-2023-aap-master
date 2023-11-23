@@ -19,7 +19,7 @@ namespace MatrixStuff {
     return count;
   }
 
-  void writeResult(std::ostream &output, size_t result)
+  void writeResult(std::ostream &output, int result)
   {
     output << result;
   }
