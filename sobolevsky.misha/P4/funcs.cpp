@@ -3,16 +3,17 @@
 
 namespace sobolevsky
 {
-  bool sizeMatrix(std::istream & in, int * matrix, size_t s)
+  size_t sizeMatrix(std::istream & in, int * matrix, size_t s)
   {
+    size_t counter = 0;
     for (size_t i = 0; i < s; ++i)
     {
-      if (!(in >> matrix[i]))
+      if (in >> matrix[i])
       {
-        return false;
+        counter++;
       }
     }
-    return true;
+    return counter;
   }
 
   bool isTrianglMatrix(int * matrix, size_t rows, size_t cols)
