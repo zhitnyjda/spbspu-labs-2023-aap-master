@@ -101,6 +101,7 @@ int main(int args,char * argv[])
   {
     std::cerr << "Error\n";
     return 1;
+    delete[] dynamic_array;
   }
   return 0;
 }
