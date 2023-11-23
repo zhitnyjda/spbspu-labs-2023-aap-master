@@ -30,7 +30,7 @@ int main(int argc, const char* argv[])
   }
 
   size_t rows = 0, cols = 0;
-  
+
   std::ofstream output(argv[3]);
 
   std::ifstream input(argv[2]);
