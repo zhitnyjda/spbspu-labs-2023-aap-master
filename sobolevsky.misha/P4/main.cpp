@@ -4,14 +4,9 @@
 
 int main(int argc, char ** argv)
 {
-  if (argc < 4)
+  if (argc != 4)
   {
-    std::cerr << "Передано мало аргументов\n";
-    return 1;
-  }
-  else if (argc > 4)
-  {
-    std::cerr << "Передано много аргументов\n";
+    std::cerr << "Передано не 4 аргумента\n";
     return 1;
   }
 
