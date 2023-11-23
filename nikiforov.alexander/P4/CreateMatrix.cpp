@@ -1,21 +1,25 @@
 #include <iostream>
+#include <iomanip>
 #include "CreateMatrix.hpp"
 
 nikiforov::Matrix::Matrix() {
   count = 1;
+  elemetscount = 0;
 }
 
-void nikiforov::Matrix::inputMatrix(std::ifstream& in, int* ArrMatrix, size_t lenth)
+size_t nikiforov::Matrix::inputMatrix(std::ifstream& in, int* ArrMatrix, size_t lenth)
 {
   for (size_t i = 0; i < lenth; i++) {
     if (!(in >> ArrMatrix[i]))
     {
       throw std::invalid_argument("Invalid argument");
     }
+    elemetscount++;
   }
+  return elemetscount;
 }
 
-void nikiforov::Matrix::spiralMatrix(int* ArrMatrix, size_t rows, size_t cols) {
+void nikiforov::Matrix::spiralMatrix(std::ofstream& out, int* ArrMatrix, size_t rows, size_t cols) {
   if (rows != cols) {
     std::cerr << "Error: Matrix is not square.";
     exit(0);
@@ -49,5 +53,14 @@ void nikiforov::Matrix::spiralMatrix(int* ArrMatrix, size_t rows, size_t cols) {
       ArrMatrix[p * rows + p] = rows * cols;
     }
     c -= 1;
+  }
+  out << rows << " ";
+  out << cols << " ";
+  for (size_t i = 0; i < rows; i++)
+  {
+    for (size_t j = 0; j < cols; j++)
+    {
+      out << std::setw(4) << ArrMatrix[i * rows + j];
+    }
   }
 }

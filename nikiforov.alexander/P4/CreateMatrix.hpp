@@ -8,10 +8,11 @@ namespace nikiforov {
   {
   public:
     Matrix();
-    void inputMatrix(std::ifstream& in, int* ArrMatrix, size_t cap);
-    void spiralMatrix(int* ArrMatrix, size_t rows, size_t cols);
+    size_t inputMatrix(std::ifstream& in, int* ArrMatrix, size_t cap);
+    void spiralMatrix(std::ofstream& out, int* ArrMatrix, size_t rows, size_t cols);
   private:
     int count;
+    size_t elemetscount;
   };
 }
 #endif
