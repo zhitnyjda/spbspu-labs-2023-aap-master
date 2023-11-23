@@ -38,7 +38,7 @@ int main(int argc, char **argv)
       int *matrix = new int[n * m];
       MatrixStuff::readMatrix(input, matrix, n, m);
       size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
-      delete[] matrix;
+      delete matrix;
       if (output.is_open())
       {
         MatrixStuff::writeResult(output, count);
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
       int *matrix = new int[n * m];
       MatrixStuff::readMatrix(input, matrix, n, m);
       size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
-      delete[] matrix;
+      delete matrix;
       if (output.is_open())
       {
         MatrixStuff::writeResult(output, count);
