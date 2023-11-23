@@ -23,7 +23,7 @@ int main(int args,char * argv[])
   std::ifstream input(argv[2]);
   input >> rows;
   input >> cols;
-  if (!(input >> rows) && !(input >> cols))
+  if (!(input))
   {
     std::cerr << "Error\n";
     return 1;
@@ -39,7 +39,7 @@ int main(int args,char * argv[])
     for (size_t i = 0; i < (rows * cols); i++)
     {
       input >> static_array[i];
-      if (!(input >> static_array[i]))
+      if (!input)
       {
         std::cerr << "Input error\n";
         return 2;
@@ -59,7 +59,7 @@ int main(int args,char * argv[])
     for (size_t i = 0; i < (rows * cols); i++)
     {
       input >> dynamic_array[i];
-      if (!(input >> dynamic_array[i]))
+      if (!input)
       {
         std::cerr << "Input error\n";
         delete[] dynamic_array;
@@ -73,7 +73,7 @@ int main(int args,char * argv[])
       {
         throw std::invalid_argument("Rows and cols are different\n");
       }
-      output << MaximalSum(reinterpret_cast<const int*>(dynamic_array), rows, cols);
+      output << MaximalSum(dynamic_array, rows, cols);
     }
     catch (const std::invalid_argument& e)
     {
