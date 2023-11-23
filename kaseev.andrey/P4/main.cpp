@@ -6,13 +6,10 @@ int main(int argc, char **argv)
 {
   try
   {
-    if (argc > 4)
+    if (argc != 4)
     {
       throw (std::invalid_argument("There are more arguments than should be!"));
-    }
-    if (argc < 4)
-    {
-      throw (std::invalid_argument("There are not enough arguments!"));
+      return 1;
     }
     int num = std::strtoll(argv[1], nullptr, 10);
     if (num != 1 && num != 2)
@@ -39,7 +36,7 @@ int main(int argc, char **argv)
       int *matrix = new int[n * m];
       MatrixStuff::readMatrix(input, matrix, n, m);
       size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
-      delete matrix;
+      delete[] matrix;
       if (output.is_open())
       {
         MatrixStuff::writeResult(output, count);
@@ -54,7 +51,7 @@ int main(int argc, char **argv)
       int *matrix = new int[n * m];
       MatrixStuff::readMatrix(input, matrix, n, m);
       size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
-      delete matrix;
+      delete[] matrix;
       if (output.is_open())
       {
         MatrixStuff::writeResult(output, count);
