@@ -1,4 +1,5 @@
 #include "matrix.hpp"
+
 namespace MatrixStuff {
   size_t NumberOfDiagonals(int *matrix, int size)
   {

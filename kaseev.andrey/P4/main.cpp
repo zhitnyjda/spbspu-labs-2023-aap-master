@@ -17,9 +17,9 @@ int main(int argc, char **argv)
   {
     throw (std::invalid_argument("Invalid argument!"));
   }
-  std::ifstream cin(argv[2]);
+  std::ifstream input(argv[2]);
   int m = 0, n = 0;
-  if (!(cin >> n >> m))
+  if (!(input >> n >> m))
   {
     std::cerr << "invalid input" << "\n";
     return 1;
@@ -29,18 +29,18 @@ int main(int argc, char **argv)
     std::cerr << "Invalid matrix dimensions." << "\n";
     return 1;
   }
-  std::ofstream cout(argv[3]);
+  std::ofstream output(argv[3]);
   try
   {
     if (num == 1)
     {
       int *matrix = new int[n * m];
-      MatrixStuff::readMatrix(cin, matrix, n, m);
-      size_t count = MatrixStuff::NumberOfDiagonals(matrix);
-      if (cout.is_open())
+      MatrixStuff::readMatrix(input, matrix, n, m);
+      size_t count = MatrixStuff::NumberOfDiagonals(matrix, n * m);
+      if (output.is_open())
       {
-        MatrixStuff::writeResult(cout, count);
-        cout.close();
+        MatrixStuff::writeResult(output, count);
+        output.close();
       } else
       {
         std::cerr << "Unable to open the output file." << "\n";
@@ -50,11 +50,11 @@ int main(int argc, char **argv)
     else
     {
       int *matrix = new int[n * m];
-      size_t count = MatrixStuff::NumberOfDiagonals(matrix);
-      if (cout.is_open())
+      size_t count = MatrixStuff::NumberOfDiagonals(matrix, n * m);
+      if (output.is_open())
       {
-        MatrixStuff::writeResult(cout, count);
-        cout.close();
+        MatrixStuff::writeResult(output, count);
+        output.close();
       } else
       {
         std::cerr << "Unable to open the output file." << std::endl;
