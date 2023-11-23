@@ -70,10 +70,7 @@ int main(int argc, const char* argv[])
       }
       return 2;
     }
-
-    if (num == 2) {
-      delete[] ArrMatrix;
-    }
+    delete[] ArrMatrix;
   }
   catch (const std::invalid_argument& e)
   {
