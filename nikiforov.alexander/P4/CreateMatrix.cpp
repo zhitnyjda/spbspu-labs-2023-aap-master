@@ -9,7 +9,7 @@ nikiforov::Matrix::Matrix() {
 
 size_t nikiforov::Matrix::inputMatrix(std::ifstream& in, int* ArrMatrix, size_t lenth)
 {
-  for (size_t i = 0; i < lenth; i++) 
+  for (size_t i = 0; i < lenth; i++)
   {
     if (!(in >> ArrMatrix[i]))
     {
