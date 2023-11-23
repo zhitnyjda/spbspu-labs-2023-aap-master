@@ -38,6 +38,7 @@ int main(int argc, char **argv)
       int *matrix = new int[n * m];
       MatrixStuff::readMatrix(input, matrix, n, m);
       size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
+      delete[] matrix;
       if (output.is_open())
       {
         MatrixStuff::writeResult(output, count);
@@ -46,12 +47,13 @@ int main(int argc, char **argv)
       {
         std::cerr << "Unable to open the output file." << "\n";
       }
-      delete[] matrix;
     }
     else
     {
       int *matrix = new int[n * m];
+      MatrixStuff::readMatrix(input, matrix, n, m);
       size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
+      delete[] matrix;
       if (output.is_open())
       {
         MatrixStuff::writeResult(output, count);
@@ -60,7 +62,6 @@ int main(int argc, char **argv)
       {
         std::cerr << "Unable to open the output file." << std::endl;
       }
-      delete[] matrix;
     }
   }
     catch (std::exception &err)
