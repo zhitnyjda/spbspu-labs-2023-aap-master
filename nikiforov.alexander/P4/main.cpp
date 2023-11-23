@@ -75,7 +75,7 @@ int main(int argc, const char* argv[])
   catch (const std::invalid_argument& e)
   {
     std::cerr << "One or more values are not elements of a two-dimensional array\n";
-    return 2;
+    return 1;
   }
   return 0;
 }
