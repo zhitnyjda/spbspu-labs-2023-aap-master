@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include "matrix.cpp"
 #include "matrix.hpp"
 
 int main(int argc, char **argv)
