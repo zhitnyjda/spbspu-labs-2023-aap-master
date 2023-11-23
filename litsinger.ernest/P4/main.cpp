@@ -86,6 +86,7 @@ int main(int args,char * argv[])
       {
         std::cerr << "Error\n";
         return 2;
+        delete[] dynamic_array;
       }
       output << MaximalSum(dynamic_array, rows, cols);
     }
@@ -101,7 +102,6 @@ int main(int args,char * argv[])
   {
     std::cerr << "Error\n";
     return 1;
-    delete[] dynamic_array;
   }
   return 0;
 }
