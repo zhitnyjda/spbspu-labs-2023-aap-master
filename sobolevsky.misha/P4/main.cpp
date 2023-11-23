@@ -60,14 +60,14 @@ int main(int argc, char ** argv)
 
     size_t counter = sobolevsky::sizeMatrix(input, matrix, (cols * rows));
     if (counter != (cols*rows))
+    {
+      std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
+      if (number == 2)
       {
-        std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
-        if (number == 2)
-        {
-          delete[] matrix;
-        }
-        return 2;
+        delete[] matrix;
       }
+      return 2;
+    }
     (sobolevsky::isTrianglMatrix(matrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
     if (number == 2)
     {
