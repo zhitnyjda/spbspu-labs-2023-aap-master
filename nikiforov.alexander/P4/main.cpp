@@ -61,21 +61,18 @@ int main(int argc, const char* argv[])
       elementsCount = matrix.inputMatrix(input, ArrMatrix, rows * cols);
       std::ofstream output(argv[3]);
       matrix.spiralMatrix(output, ArrMatrix, rows, cols);
+      delete[] ArrMatrix;
     }
 
     if (elementsCount != rows * cols) {
       std::cerr << "Error: Mismatch of dimension and values!\n";
-      if (num == 2) {
-        delete[] ArrMatrix;
-      }
       return 2;
     }
-    delete[] ArrMatrix;
   }
   catch (const std::invalid_argument& e)
   {
     std::cerr << "One or more values are not elements of a two-dimensional array\n";
-    return 1;
+    return 2;
   }
   return 0;
 }
