@@ -30,6 +30,7 @@ int main(int args,char * argv[])
   }
   if (!std::strcmp(argv[1], "1"))
   {
+    size_t counter = 0;
     if ((rows != cols) || (rows = 0 || cols == 0))
     {
       std::cerr << "Matrix is not a square\n";
@@ -39,17 +40,24 @@ int main(int args,char * argv[])
     for (size_t i = 0; i < (rows * cols); i++)
     {
       input >> static_array[i];
+      counter++;
       if (!input)
       {
         std::cerr << "Input error\n";
         return 2;
       }
     }
+    if (counter != (rows * cols))
+    {
+        std::cerr << "Error\n";
+        return 2;
+    }
     std::ofstream output(argv[3]);
     output << MaximalSum(static_array, rows, cols) << "\n";
   }
   else if (!std::strcmp(argv[1], "2"))
-  {
+  {  
+    size_t counter = 0;
     if (rows != cols)
     {
       std::cerr << "Rows and cols are different\n";
@@ -59,6 +67,7 @@ int main(int args,char * argv[])
     for (size_t i = 0; i < (rows * cols); i++)
     {
       input >> dynamic_array[i];
+      counter++;
       if (!input)
       {
         std::cerr << "Input error\n";
@@ -72,6 +81,11 @@ int main(int args,char * argv[])
       if ((rows != cols) || (rows = 0 || cols == 0))
       {
         throw std::invalid_argument("Rows and cols are different\n");
+      }
+      if (counter != (rows * cols))
+      {
+        std::cerr << "Error\n";
+        return 2;
       }
       output << MaximalSum(dynamic_array, rows, cols);
     }
