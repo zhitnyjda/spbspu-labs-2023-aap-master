@@ -5,9 +5,9 @@ nikiforov::Matrix::Matrix() {
   count = 1;
 }
 
-void nikiforov::Matrix::inputMatrix(std::ifstream& in, int* ArrMatrix, size_t cap)
+void nikiforov::Matrix::inputMatrix(std::ifstream& in, int* ArrMatrix, size_t lenth)
 {
-  for (size_t i = 0; i < cap; i++) {
+  for (size_t i = 0; i < lenth; i++) {
     if (!(in >> ArrMatrix[i]))
     {
       throw std::invalid_argument("Invalid argument");
@@ -20,7 +20,7 @@ void nikiforov::Matrix::spiralMatrix(int* ArrMatrix, size_t rows, size_t cols) {
     std::cerr << "Error: Matrix is not square.";
     exit(0);
   }
-  int p = rows / 2;
+  size_t p = rows / 2;
   size_t c = cols;
   size_t r = rows;
   for (size_t k = 1; k <= p; k++)
