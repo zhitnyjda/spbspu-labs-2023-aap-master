@@ -10,7 +10,8 @@ int main(int argc, char **argv)
     {
       std::cerr << "There are more arguments than should be!";
     }
-    int num = std::strtoll(argv[1], nullptr, 10);
+    char *endptr = nullptr;
+    long num = std::strtol(argv[1], &endptr, 10);
     if (num != 1 && num != 2)
     {
       std::cerr << "Invalid argument!";
