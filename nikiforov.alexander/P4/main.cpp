@@ -47,7 +47,8 @@ int main(int argc, const char* argv[])
     Matrix matrix;
     int* ArrMatrix;
     size_t elementsCount = 0;
-
+    std::cout << rows;
+    std::cout << cols;
     if (num == 1)
     {
       int ArrMatrix[10000] = {};
@@ -59,15 +60,16 @@ int main(int argc, const char* argv[])
     {
       ArrMatrix = new int[rows * cols];
       elementsCount = matrix.inputMatrix(input, ArrMatrix, rows * cols);
+      std::cout << elementsCount;
       std::ofstream output(argv[3]);
       matrix.spiralMatrix(output, ArrMatrix, rows, cols);
       delete[] ArrMatrix;
     }
-
     if (elementsCount != rows * cols) {
-      std::cerr << "Error: Mismatch of dimension and values!\n";
+      std::cerr << "Mismatch of dimension and values!\n";
       return 2;
     }
+    
   }
   catch (const std::invalid_argument& e)
   {
