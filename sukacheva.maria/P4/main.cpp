@@ -70,33 +70,33 @@ int main(int argc, char** argv)
   }
   else if (num == 2)
   {
-    int* dinamicMatrix = new int[rows * cols];
+    int* dynamicMatrix = new int[rows * cols];
     {
       std::ifstream input(argv[2]);
       input >> rows;
       input >> cols;
       if (cols == 0)
       {
-        delete[] dinamicMatrix;
+        delete[] dynamicMatrix;
         return 0;
       }
       try
       {
-        readMatrix::inputMatrix(input, dinamicMatrix, rows * cols, rows * cols);
+        readMatrix::inputMatrix(input, dynamicMatrix, rows * cols, rows * cols);
       }
       catch (const std::exception& e)
       {
         std::cerr << e.what();
-        delete[] dinamicMatrix;
+        delete[] dynamicMatrix;
         return 2;
       }
     }
     {
       std::ofstream output(argv[3]);
-      output << MaxSideDiagonal(dinamicMatrix, rows) << "\n";
-      output << upperTriangularMatrix(dinamicMatrix, cols, rows);
+      output << MaxSideDiagonal(dynamicMatrix, rows) << "\n";
+      output << upperTriangularMatrix(dynamicMatrix, cols, rows);
     }
-    delete[] dinamicMatrix;
+    delete[] dynamicMatrix;
   }
   else
   {
