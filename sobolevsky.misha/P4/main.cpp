@@ -51,29 +51,30 @@ int main(int argc, char ** argv)
 
     if (number == 1)
     {
-      int matrix[10000] = {};
+      matrix[10000] = {};
+      size_t counter = sobolevsky::sizeMatrix(input, matrix, (cols * rows));
+      if (counter != (cols*rows))
+      {
+        std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
+        return 2;
+      }
+      (sobolevsky::isTrianglMatrix(matrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
+      return 0;
     }
     else
     {
       int * matrix = new int[rows * cols];
-    }
-
-    size_t counter = sobolevsky::sizeMatrix(input, matrix, (cols * rows));
-    if (counter != (cols*rows))
-    {
-      std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
-      if (number == 2)
+      size_t counter = sobolevsky::sizeMatrix(input, matrix, (cols * rows));
+      if (counter != (cols*rows))
       {
+        std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
         delete[] matrix;
+        return 2;
       }
-      return 2;
-    }
-    (sobolevsky::isTrianglMatrix(matrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
-    if (number == 2)
-    {
+      (sobolevsky::isTrianglMatrix(matrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
       delete[] matrix;
+      return 0;
     }
-    return 0;
   }
   else
   {
