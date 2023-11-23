@@ -23,12 +23,9 @@ namespace MatrixStuff {
     output << result;
   }
 
-  void readMatrix(std::istream &cin, int *matrix, int n, int m)
-  {
-    for (int i = 0; i < n * m; ++i)
-    {
-      if (!(cin >> matrix[i]))
-      {
+  void readMatrix(std::istream &input, int *matrix, int n, int m) {
+    for (int i = 0; i < n * m; ++i) {
+      if (!(input >> matrix[i])) {
         throw std::logic_error("invalid input");
       }
     }
