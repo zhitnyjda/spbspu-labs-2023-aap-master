@@ -8,12 +8,12 @@ int main(int argc, char **argv)
   {
     if (argc != 4)
     {
-      throw (std::invalid_argument("There are more arguments than should be!"));
+      std::cerr << "There are more arguments than should be!";
     }
     int num = std::strtoll(argv[1], nullptr, 10);
     if (num != 1 && num != 2)
     {
-      throw (std::invalid_argument("Invalid argument!"));
+      std::cerr << "Invalid argument!";
     }
     std::ifstream input(argv[2]);
     int m = 0, n = 0;
