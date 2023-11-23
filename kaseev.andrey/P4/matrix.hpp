@@ -2,7 +2,7 @@
 #define MATRIX_HPP
 #include <cstddef>
 #include <ostream>
-
+#include <iostream>
 
 namespace MatrixStuff{
   size_t NumberOfDiagonals(int * matrix);
