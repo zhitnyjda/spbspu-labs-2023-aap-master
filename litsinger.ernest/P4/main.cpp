@@ -56,7 +56,7 @@ int main(int args,char * argv[])
     output << MaximalSum(static_array, rows, cols) << "\n";
   }
   else if (!std::strcmp(argv[1], "2"))
-  {  
+  {
     size_t counter = 0;
     if (rows != cols)
     {
