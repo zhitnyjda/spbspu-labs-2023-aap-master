@@ -14,5 +14,4 @@ namespace nikiforov {
 		int count;
 	};
 }
-
 #endif
