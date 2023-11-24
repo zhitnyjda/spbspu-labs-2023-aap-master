@@ -39,9 +39,4 @@ int main(int args, const char* argv[])
       delete[] pointer;
     return 2;
   }
-  catch (std::invalid_argument const& e)
-  {
-    std::cerr << "Coudlnt convert interpret first argument as integer\n";
-    return 1;
-  }
 }
