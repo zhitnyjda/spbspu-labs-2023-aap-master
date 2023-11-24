@@ -26,75 +26,56 @@ int main(int argc, char** argv)
   }
 
   size_t rows = 1, cols = 1;
+  std::ifstream input(argv[2]);
+  try
   {
-    try
-    {
-      std::ifstream input(argv[2]);
-      input >> rows;
-      input >> cols;
-    }
-    catch (const std::invalid_argument& e)
-    {
-      std::cerr << "Cannot read an input.\n";
-      return 2;
-    }
+    input >> rows;
+    input >> cols;
+  }
+  catch (const std::invalid_argument& e)
+  {
+    std::cerr << "Cannot read an input.\n";
+    return 2;
+  }
+  if (cols == 0 || rows == 0)
+  {
+    return 0;
   }
 
   if (num == 1)
   {
     int staticMatrix[10000];
+    for (size_t i = 0; i < rows * cols; i++)
     {
-      std::ifstream input(argv[2]);
-      input >> rows;
-      input >> cols;
-      if (cols == 0)
+      input >> staticMatrix[i];
+      if (!input)
       {
-        return 0;
+        std::cerr << "Cannot read an array.\n";
+        return 2;
       }
-      for (size_t i = 0; i < rows * cols; i++)
-      {
-        input >> staticMatrix[i];
-        if (!input)
-        {
-          std::cerr << "Cannot read an array.\n";
-          return 2;
-        }
-      }
-      size_t MaxDiagonal = MaxSideDiagonal(staticMatrix, cols);
-      {
-        std::ofstream output(argv[3]);
-        output << MaxDiagonal << "\n";
-        output << upperTriangularMatrix(staticMatrix, cols, rows);
-      }
+    }
+    size_t MaxDiagonal = MaxSideDiagonal(staticMatrix, cols);
+    {
+      std::ofstream output(argv[3]);
+      output << MaxDiagonal << "\n" << upperTriangularMatrix(staticMatrix, cols, rows);
     }
   }
   else if (num == 2)
   {
     int* dynamicMatrix = new int[rows * cols];
+    try
     {
-      std::ifstream input(argv[2]);
-      input >> rows;
-      input >> cols;
-      if (cols == 0)
-      {
-        delete[] dynamicMatrix;
-        return 0;
-      }
-      try
-      {
-        readMatrix::inputMatrix(input, dynamicMatrix, rows * cols, rows * cols);
-      }
-      catch (const std::exception& e)
-      {
-        std::cerr << e.what();
-        delete[] dynamicMatrix;
-        return 2;
-      }
+      inputMatrix(input, dynamicMatrix, rows * cols, rows * cols);
+    }
+    catch (const std::exception& e)
+    {
+      std::cerr << e.what();
+      delete[] dynamicMatrix;
+      return 2;
     }
     {
       std::ofstream output(argv[3]);
-      output << MaxSideDiagonal(dynamicMatrix, rows) << "\n";
-      output << upperTriangularMatrix(dynamicMatrix, cols, rows);
+      output << MaxSideDiagonal(dynamicMatrix, rows) << "\n"  << upperTriangularMatrix(dynamicMatrix, cols, rows);
     }
     delete[] dynamicMatrix;
   }

@@ -2,7 +2,7 @@
 #define INPUTARRAY_HPP
 #include <iosfwd>
 
-namespace readMatrix
+namespace sukacheva
 {
   void inputMatrix(std::istream& in, int* matrix, size_t s, size_t toRead);
 }
