@@ -54,6 +54,7 @@ int main(int args,char * argv[])
         std::cerr << "Input error\n";
         return 1;
       }
+    }
     std::ofstream output(argv[3]);
     output << MaximalSum(static_array, rows, cols) << "\n";
   }
