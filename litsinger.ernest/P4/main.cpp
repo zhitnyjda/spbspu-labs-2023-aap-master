@@ -23,6 +23,11 @@ int main(int args,char * argv[])
   std::ifstream input(argv[2]);
   input >> rows;
   input >> cols;
+  if (input.eof())
+  {
+    std::cerr << "Error\n";
+    return 2;
+  }
   if (!(input))
   {
     std::cerr << "Error\n";
@@ -30,7 +35,6 @@ int main(int args,char * argv[])
   }
   if (!std::strcmp(argv[1], "1"))
   {
-    size_t counter = 0;
     if (rows != cols)
     {
       std::cerr << "Matrix is not a square\n";
@@ -50,13 +54,6 @@ int main(int args,char * argv[])
         std::cerr << "Input error\n";
         return 1;
       }
-      counter++;
-    }
-    if (counter != (rows * cols))
-    {
-      std::cerr << "Error\n";
-      return 2;
-    }
     std::ofstream output(argv[3]);
     output << MaximalSum(static_array, rows, cols) << "\n";
   }
