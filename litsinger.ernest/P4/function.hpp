@@ -4,7 +4,7 @@
 #include <fstream>
 namespace litsinger
 {
-  int inputArray(std::ifstream& input, int* matrix, size_t sizeMatrix);
+  void inputArray(std::ifstream & input, int * matrix, size_t sizeMatrix);
   int MaximalSum(const int * arr, size_t rows, size_t cols);
 }
 #endif
