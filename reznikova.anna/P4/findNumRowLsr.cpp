@@ -1,6 +1,6 @@
 #include "findNumRowLsr.hpp"
 
-size_t reznikova::findNumRowLsr(int matrix[], size_t rows, size_t cols)
+size_t reznikova::findNumRowLsr(int * matrix, size_t rows, size_t cols)
 {
   size_t num_row_lsr = 0;
   int max_count = 0;
