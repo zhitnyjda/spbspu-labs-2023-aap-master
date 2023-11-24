@@ -6,11 +6,14 @@ int main(int args, const char* argv[])
   int n = 0;
   try
   {
-    n = std::stoi(argv[1], nullptr, 10);
+    char * task_pointer;
+    n = std::stoi(argv[1], task_pointer, 10);
+    if(*(task_pointer))
+      throw std::logic_error("");
   }
   catch (std::logic_error const& e)
   {
-    std::cerr << "First argument is empty\n";
+    std::cerr << "First argument is wrong\n";
     return 1;
   }
   if (args != 4 || !(n == 2 || n == 1))
