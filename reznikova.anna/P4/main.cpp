@@ -6,13 +6,13 @@
 int main(int argc, char ** argv)
 {
   using namespace reznikova;
-  
+
   if (argc != 4)
   {
     std::cerr << "Wrong number of arguments.\n";
     return 1;
   }
-  
+
   long long num = 0;
   try
   {
@@ -23,7 +23,7 @@ int main(int argc, char ** argv)
     std::cerr << "Can't parse a value.\n";
     return 1;
   }
-  
+
   size_t rows = 0, cols = 0;
   {
     std::ifstream input(argv[2]);
@@ -34,7 +34,7 @@ int main(int argc, char ** argv)
       std::cerr << "Can't read an input.\n";
       return 2;
     }
-    
+
     size_t result = 0;
     if (num == 1)
     {
@@ -50,7 +50,7 @@ int main(int argc, char ** argv)
       }
       result = reznikova::findNumRowLsr(smatrix, rows, cols);
     }
-    
+
     else if (num == 2)
     {
       int * dmatrix = new int[rows * cols];
@@ -65,16 +65,16 @@ int main(int argc, char ** argv)
       result = reznikova::findNumRowLsr(dmatrix, rows, cols);
       delete [] dmatrix;
     }
-    
+
     else
     {
       std::cerr << "Argument num must be either 1 or 2. \n";
       return 2;
     }
-    
+
     std::ofstream output(argv[3]);
     output << result << "\n";
   }
-  
+
   return 0;
 }
