@@ -20,7 +20,6 @@ int main(int args,char * argv[])
   }
   size_t rows = 0;
   size_t cols = 0;
-  size_t length = 0;
   std::ifstream input(argv[2]);
   input >> rows;
   input >> cols;
@@ -41,7 +40,6 @@ int main(int args,char * argv[])
     {
       std::cerr << "Error\n";
       return 0;
-      length = 2;
     }
     int static_array[10000] = {0};
     for (size_t i = 0; i < (rows * cols); i++)
