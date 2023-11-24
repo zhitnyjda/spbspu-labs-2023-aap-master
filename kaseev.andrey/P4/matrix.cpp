@@ -1,23 +1,36 @@
 #include "matrix.hpp"
 
 namespace MatrixStuff {
-  size_t NumberOfDiagonals(int *matrix, int size)
-  {
-    int count = 0;
-    for (int n = 0; n < size; ++n)
-    {
-      if (matrix[n * size + n] != 0)
-      {
-        int m = n + 1;
-        while (m < size && matrix[m * size + m] != 0 && matrix[m * size + m] != matrix[n * size + n])
-        {
-          ++count;
-          ++m;
+  size_t NumberOfDiagonals(int *matrix, int n, int m) {
+    size_t count = 0;
+
+    for (int i = 0; i < n; ++i) {
+      bool containsZero = false;
+
+      for (int j = 0; j < m; ++j) {
+        int index = i * m + j;
+
+        if (i == j && matrix[index] == 0) {
+          containsZero = true;
+          break;
+        } else if (i != j && matrix[index] == 0) {
+          containsZero = true;
+          break;
         }
       }
+
+      if (!containsZero) {
+        count++;
+      }
+    }
+    if (matrix[m - 1] == 0)
+    {
+      count++;
     }
     return count;
   }
+
+
 
   void writeResult(std::ostream &output, int result)
   {

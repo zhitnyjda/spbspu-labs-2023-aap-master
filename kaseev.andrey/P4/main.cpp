@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "matrix.hpp"
+#include "matrix.cpp"
 
 int main(int argc, char **argv)
 {
@@ -29,13 +29,11 @@ int main(int argc, char **argv)
     try
     {
       std::ofstream output(argv[3]);
-      int size = n * m;
       if (num == 1)
       {
-        int *matrix = new int[n * m];
+        int matrix[n * m];
         MatrixStuff::readMatrix(input, matrix, n, m);
-        size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
-        delete[] matrix;
+        size_t count = MatrixStuff::NumberOfDiagonals(matrix, n, m);
         if (output.is_open())
         {
           MatrixStuff::writeResult(output, count);
@@ -48,7 +46,7 @@ int main(int argc, char **argv)
       {
         int *matrix = new int[n * m];
         MatrixStuff::readMatrix(input, matrix, n, m);
-        size_t count = MatrixStuff::NumberOfDiagonals(matrix, size);
+        size_t count = MatrixStuff::NumberOfDiagonals(matrix, n, m);
         delete[] matrix;
         if (output.is_open())
         {
