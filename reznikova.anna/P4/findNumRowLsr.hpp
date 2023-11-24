@@ -2,7 +2,7 @@
 #define FINDNUMROWLSR_hpp
 #include <iosfwd>
 
-namespace matrixStuff
+namespace reznikova
 {
   size_t findNumRowLsr(int matrix[], size_t rows, size_t cols);
 }

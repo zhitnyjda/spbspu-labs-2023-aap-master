@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <fstream>
 
-void readArray::inputArray(std::istream & in, int * m, size_t s, size_t toRead)
+void reznikova::inputArray(std::istream & in, int * m, size_t s, size_t toRead)
 {
   for (size_t i = 0; i < std::min(toRead, s); ++i)
   {

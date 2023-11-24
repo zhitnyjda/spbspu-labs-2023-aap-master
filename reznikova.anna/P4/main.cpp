@@ -5,8 +5,7 @@
 
 int main(int argc, char ** argv)
 {
-  using namespace matrixStuff;
-  using namespace readArray;
+  using namespace reznikova;
 
   if (argc != 4)
   {
@@ -55,7 +54,7 @@ int main(int argc, char ** argv)
     }
     {
       std::ofstream output(argv[3]);
-      output << matrixStuff::findNumRowLsr(smatrix, rows, cols) << "\n";
+      output << reznikova::findNumRowLsr(smatrix, rows, cols) << "\n";
     }
   }
 
@@ -67,7 +66,7 @@ int main(int argc, char ** argv)
       input.seekg(3);
       try
       {
-        readArray::inputArray(input, dmatrix, rows * cols, rows * cols);
+        reznikova::inputArray(input, dmatrix, rows * cols, rows * cols);
       }
       catch(const std::exception & e)
       {
@@ -78,7 +77,7 @@ int main(int argc, char ** argv)
     }
     {
       std::ofstream output(argv[3]);
-      output << matrixStuff::findNumRowLsr(dmatrix, rows, cols) << "\n";
+      output << reznikova::findNumRowLsr(dmatrix, rows, cols) << "\n";
     }
     delete [] dmatrix;
   }
