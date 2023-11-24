@@ -22,7 +22,7 @@ namespace seryj
         output << findAverageOfNeighbours(i, j, line, column, values) << " ";
       }
   }
-  double findAverageOfNeighbours(size_t curr_line, size_t curr_column, size_t max_line, size_t max_column, int * values) const
+  double findAverageOfNeighbours(size_t curr_line, size_t curr_column, size_t max_line, size_t max_column, int * values)
   {
     int count = 0;
     double sum = 0;
