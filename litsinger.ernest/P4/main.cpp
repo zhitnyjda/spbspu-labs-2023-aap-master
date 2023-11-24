@@ -28,10 +28,10 @@ int main(int args,char * argv[])
     std::cerr << "Error\n";
     return 2;
   }
-  if (!(input))
+  if (!input)
   {
     std::cerr << "Error\n";
-    return 2;
+    return 1;
   }
   if (!std::strcmp(argv[1], "1"))
   {
