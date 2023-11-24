@@ -1,8 +1,7 @@
 #include "matrix.hpp"
-#include <iostream>
 #include <memory>
 
-size_t sukacheva::MaxSideDiagonal(int matrix[], size_t cols)
+size_t sukacheva::MaxSideDiagonal(int* matrix, size_t cols)
 {
   size_t maxDiagonal = 0;
   size_t diagonal = 0;
@@ -28,7 +27,7 @@ size_t sukacheva::MaxSideDiagonal(int matrix[], size_t cols)
   return maxDiagonal;
 }
 
-bool sukacheva::upperTriangularMatrix(int matrix[], size_t cols, size_t rows)
+bool sukacheva::upperTriangularMatrix(int* matrix, size_t cols, size_t rows)
 {
   size_t upperRight = 0;
   size_t upperLeft = 0;

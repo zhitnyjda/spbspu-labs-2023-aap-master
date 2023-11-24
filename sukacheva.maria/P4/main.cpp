@@ -41,7 +41,7 @@ int main(int argc, char** argv)
   {
     return 0;
   }
-
+  
   if (num == 1)
   {
     int staticMatrix[10000];
@@ -54,10 +54,10 @@ int main(int argc, char** argv)
         return 2;
       }
     }
-    size_t MaxDiagonal = MaxSideDiagonal(staticMatrix, cols);
     {
       std::ofstream output(argv[3]);
-      output << MaxDiagonal << "\n" << upperTriangularMatrix(staticMatrix, cols, rows);
+      output << MaxSideDiagonal(staticMatrix, cols) << "\n"
+             << upperTriangularMatrix(staticMatrix, cols, rows);
     }
   }
   else if (num == 2)
@@ -75,7 +75,8 @@ int main(int argc, char** argv)
     }
     {
       std::ofstream output(argv[3]);
-      output << MaxSideDiagonal(dynamicMatrix, rows) << "\n"  << upperTriangularMatrix(dynamicMatrix, cols, rows);
+      output << MaxSideDiagonal(dynamicMatrix, rows) << "\n"
+             << upperTriangularMatrix(dynamicMatrix, cols, rows);
     }
     delete[] dynamicMatrix;
   }
