@@ -21,6 +21,11 @@ int main(int args,char * argv[])
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
+  if (is_empty(input))
+  {
+    std::cerr << "Empty file\n";
+    return 2;
+  }
   input >> rows;
   input >> cols;
   if (!(input))
