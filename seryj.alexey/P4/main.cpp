@@ -8,11 +8,14 @@ int main(int args, const char* argv[])
   {
     n = std::stoi(argv[1], nullptr, 10);
     if (args != 4 || !(n == 2 || n == 1))
-     throw std::invalid_argument;
+     {
+      std::cerr << "Invalid arguments";
+      return 1;
+     }
   }
   catch (std::invalid_argument const & e)
   {
-    std::cerr << "Invalid arguments\n";
+    std::cerr << "First argument is not an integer\n";
     return 1;
   }
   int line = 0;
