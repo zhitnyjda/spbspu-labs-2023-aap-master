@@ -34,14 +34,12 @@ int main(int argc, char ** argv)
       std::cerr << "Can't read an input.\n";
       return 2;
     }
-  }
 
-  if (num == 1)
-  {
-    int smatrix[10000];
+    size_t result = 0;
+    if (num == 1)
     {
+      int smatrix[10000];
       std::ifstream input(argv[2]);
-      input.seekg(3);
       for (size_t i = 0; i < rows * cols; i++)
       {
         input >> smatrix[i];
@@ -51,19 +49,13 @@ int main(int argc, char ** argv)
           return 2;
         }
       }
+      result = reznikova::findNumRowLsr(smatrix, rows, cols);
     }
-    {
-      std::ofstream output(argv[3]);
-      output << reznikova::findNumRowLsr(smatrix, rows, cols) << "\n";
-    }
-  }
 
-  else if (num == 2)
-  {
-    int * dmatrix = new int[rows * cols];
+    else if (num == 2)
     {
+      int * dmatrix = new int[rows * cols];
       std::ifstream input(argv[2]);
-      input.seekg(3);
       try
       {
         reznikova::inputArray(input, dmatrix, rows * cols, rows * cols);
@@ -74,18 +66,18 @@ int main(int argc, char ** argv)
         delete [] dmatrix;
         return 2;
       }
+      result = reznikova::findNumRowLsr(dmatrix, rows, cols);
+      delete [] dmatrix;
     }
-    {
-      std::ofstream output(argv[3]);
-      output << reznikova::findNumRowLsr(dmatrix, rows, cols) << "\n";
-    }
-    delete [] dmatrix;
-  }
 
-  else
-  {
-    std::cerr << "Argument num must be either 1 or 2. \n";
-    return 2;
+    else
+    {
+      std::cerr << "Argument num must be either 1 or 2. \n";
+      return 2;
+    }
+
+    std::ofstream output(argv[3]);
+    output << result << "\n";
   }
 
   return 0;
