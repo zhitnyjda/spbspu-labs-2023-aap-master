@@ -55,7 +55,7 @@ int main(int argc, const char* argv[])
       if (elementsCount != rows * cols) {
       std::cerr << "Mismatch of dimension and values!\n";
       return 2;
-    }
+      }
     }
     else if (num == 2)
     {
@@ -68,9 +68,8 @@ int main(int argc, const char* argv[])
       std::cerr << "Mismatch of dimension and values!\n";
       delete[] dynamicArr;
       return 2;
+      }
     }
-    }
-    
   }
   catch (const std::invalid_argument& e)
   {
