@@ -13,9 +13,9 @@ int main(int args, const char* argv[])
       return 1;
      }
   }
-  catch (std::invalid_argument const & e)
+  catch (std::logic_error const & e)
   {
-    std::cerr << "First argument is not an integer\n";
+    std::cerr << "First argument is empty\n";
     return 1;
   }
   int line = 0;
