@@ -30,12 +30,10 @@ int main(int args, const char* argv[])
   if (result != to_read)
   {
     std::cerr << "Could only read " << result << " numbers. I needed " << to_read << "\n";
-    if(n == 2)
-      delete[] dynamic_array;
+    delete[] dynamic_array;
     return 1;
   }
   seryj::printAvgOfNeigbours(line, column, output, pointer);
-  if(n == 2)
-    delete[] dynamic_array
+  delete[] dynamic_array
   return 0;  
 }
