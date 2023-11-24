@@ -60,6 +60,7 @@ int main(int argc, char* argv[])
       matrix.values = dynamicArray;
       matrix.read(inputStream);
       result = matrix.findMaxRow();
+      delete[] dynamicArray;
     }
     outputStream << result;
   }
