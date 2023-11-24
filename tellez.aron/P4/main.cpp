@@ -3,6 +3,21 @@
 #include <cstddef>
 #include <cstring>
 #include "getMinSum.hpp"
+
+bool readMatrix(std::ifstream& file, size_t* matrix, size_t rows, size_t columns)
+{
+  for (size_t i = 0; i < rows * columns; i++)
+  {
+    file >> matrix[i];
+    if (!file)
+    {
+      std::cerr << "Error reading matrix element at position " << i << '\n';
+      return false;
+    }
+  }
+  return true;
+}
+
 int main(int argc, char *argv[])
 {
   if (argc != 4)
@@ -21,15 +36,11 @@ int main(int argc, char *argv[])
   }
   if (!std::strcmp(argv[1], "1"))
   {
-    size_t  static_matrix[10000];
-    for (size_t i = 0; i < rows * columns; i++)
+    size_t static_matrix[10000];
+    if (!readMatrix(file, static_matrix, rows, columns))
     {
-      file >> static_matrix[i];
-      if (!file)
-      {
-        std::cout << "Error..";
-        return 1;
-      }
+      //delete[] static_matrix;
+      return 1;
     }
     std::ofstream out(argv[3]);
     out << getMinSum(static_matrix, rows, columns) << "\n";
@@ -42,20 +53,15 @@ int main(int argc, char *argv[])
       return 1;
     }
     size_t * dynamic_matrix = new size_t[rows * columns];
-    for (size_t i = 0; i < rows * columns; i++)
+    if (!readMatrix(file, dynamic_matrix, rows, columns))
     {
-      file >> dynamic_matrix[i];
-      if (!file)
-      {
-        std::cout << "Error...";
-        delete[] dynamic_matrix;
-        return 1;
-      }
+      delete[] dynamic_matrix;
+      return 1;
     }
     std::ofstream out(argv[3]);
     try
     {
-      size_t minSum = getMinSum(reinterpret_cast<const size_t*>(dynamic_matrix), rows, columns);
+      size_t minSum = getMinSum(dynamic_matrix, rows, columns);
       out << minSum << "\n";
     }
     catch (const std::invalid_argument &e)
