@@ -6,9 +6,9 @@ int main(int args, const char* argv[])
   int n = 0;
   try
   {
-    char * task_pointer;
+    size_t * task_pointer;
     n = std::stoi(argv[1], task_pointer, 10);
-    if(*(task_pointer))
+    if(*task_pointer)
       throw std::logic_error("");
   }
   catch (std::logic_error const& e)
