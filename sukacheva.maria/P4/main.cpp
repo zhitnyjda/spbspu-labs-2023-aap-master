@@ -63,15 +63,12 @@ int main(int argc, char** argv)
   else if (num == 2)
   {
     int* dynamicMatrix = new int[rows * cols];
-    try
+    size_t result = inputMatrix(input, dynamicMatrix, rows * cols, rows * cols);
+    if (!(result == rows * cols))
     {
-      inputMatrix(input, dynamicMatrix, rows * cols, rows * cols);
-    }
-    catch (const std::exception& e)
-    {
-      std::cerr << e.what();
-      delete[] dynamicMatrix;
-      return 2;
+      std::cerr << "Read " << result << " elements.\n";
+      delete [] dynamicMatrix;
+      return 3;
     }
     {
       std::ofstream output(argv[3]);
