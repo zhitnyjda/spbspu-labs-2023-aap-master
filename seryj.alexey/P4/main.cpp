@@ -35,5 +35,5 @@ int main(int args, const char* argv[])
   }
   seryj::printAvgOfNeigbours(line, column, output, pointer);
   delete[] dynamic_array
-  return 0;  
+  return 0;
 }
