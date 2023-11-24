@@ -41,7 +41,7 @@ int main(int argc, char** argv)
   {
     return 0;
   }
-  
+
   if (num == 1)
   {
     int staticMatrix[10000];
