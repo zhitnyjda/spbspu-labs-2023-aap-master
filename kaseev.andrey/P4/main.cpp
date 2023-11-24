@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "matrix.hpp"
+#include "matrix.cpp"
 
 int main(int argc, char **argv)
 {
@@ -8,7 +8,8 @@ int main(int argc, char **argv)
   {
     if (argc != 4)
     {
-      std::cerr << "There are more arguments than should be!";
+      std::cerr << "There are more arguments than should be!\n";
+      return 1;
     }
     char *endptr;
     long long int num = std::strtol(argv[1], &endptr, 10);
