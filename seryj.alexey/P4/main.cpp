@@ -8,6 +8,7 @@ int main(int args, const char* argv[])
     std::cerr << "Invalid arguments\n";
     return 1;
   }
+  int * pointer = nullptr;
   try
   {
     using namespace seryj;
