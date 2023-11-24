@@ -7,16 +7,16 @@ int main(int args, const char* argv[])
   try
   {
     n = std::stoi(argv[1], nullptr, 10);
-    if (args != 4 || !(n == 2 || n == 1))
-     {
-      std::cerr << "Invalid arguments";
-      return 1;
-     }
   }
-  catch (std::logic_error const & e)
+  catch (std::logic_error const& e)
   {
     std::cerr << "First argument is empty\n";
     return 1;
+  }
+  if (args != 4 || !(n == 2 || n == 1))
+  {
+   std::cerr << "Invalid arguments";
+   return 1;
   }
   int line = 0;
   int column = 0;
