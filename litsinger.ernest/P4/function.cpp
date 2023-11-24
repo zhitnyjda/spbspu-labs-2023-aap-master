@@ -2,7 +2,7 @@
 #include <limits>
 namespace litsinger
 {
-  int inputArray(std::ifstream & input, int * matrix, size_t sizeMatrix)
+  void inputArray(std::ifstream & input, int * matrix, size_t sizeMatrix)
   {
     for (size_t i = 0; i < sizeMatrix; ++i)
     {
