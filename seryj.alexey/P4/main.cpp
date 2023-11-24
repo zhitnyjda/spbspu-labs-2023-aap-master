@@ -2,14 +2,12 @@
 #include "Funcs.hpp"
 int main(int args, const char* argv[])
 {
-  if (args > 4)
-    throw (std::invalid_argument("Too much arguments\n"));
-  if (args < 4)
-    throw (std::invalid_argument("Not enough arguments\n"));
-  int n = std::strtoll(argv[1], nullptr, 10);
-  if (n < 1 || n > 2)
-    throw(std::invalid_argument("Invalid argument\n"));
-  int pointer = nullptr;
+  int n = std::stoi(argv[1], nullptr, 10);
+  if (args != 4 || !(n == 2 || n == 1))
+  {
+    std::cerr << "Invalid arguments\n";
+    return 1;
+  }
   try
   {
     using namespace seryj;
@@ -31,6 +29,7 @@ int main(int args, const char* argv[])
     matrix.printAvgOfNeigbours();
     if(n == 2)
       delete[] pointer;
+    return 0;
   }
   catch (std::logic_error const & e)
   {
@@ -38,5 +37,10 @@ int main(int args, const char* argv[])
     if(n == 2)
       delete[] pointer;
     return 2;
+  }
+  catch (std::invalid_argument const& e)
+  {
+    std::cerr << "Coudlnt convert interpret first argument as integer\n";
+    return 1;
   }
 }
