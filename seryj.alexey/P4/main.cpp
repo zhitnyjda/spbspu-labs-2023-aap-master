@@ -6,9 +6,8 @@ int main(int args, const char* argv[])
   int n = 0;
   try
   {
-    size_t * task_pointer;
-    n = std::stoi(argv[1], task_pointer, 10);
-    if(*task_pointer)
+    n = std::stoi(argv[1], nullptr, 10);
+    if(argv[1][1])
       throw std::logic_error("");
   }
   catch (std::logic_error const& e)
@@ -18,7 +17,7 @@ int main(int args, const char* argv[])
   }
   if (args != 4 || !(n == 2 || n == 1))
   {
-   std::cerr << "Invalid arguments";
+   std::cerr << "Invalid arguments\n";
    return 1;
   }
   int line = 0;
