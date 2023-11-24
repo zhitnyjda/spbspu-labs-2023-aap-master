@@ -20,25 +20,28 @@ int main(int args,char * argv[])
   }
   size_t rows = 0;
   size_t cols = 0;
+  size_t length = 0;
   std::ifstream input(argv[2]);
   input >> rows;
   input >> cols;
   if (!(input))
   {
     std::cerr << "Error\n";
-    return 1;
+    return 2;
   }
   if (!std::strcmp(argv[1], "1"))
   {
+    size_t counter = 0;
     if (rows != cols)
     {
       std::cerr << "Matrix is not a square\n";
-      return 1;
+      return 0;
     }
     if (rows == 0 || cols == 0)
     {
       std::cerr << "Error\n";
       return 0;
+      length = 2;
     }
     int static_array[10000] = {0};
     for (size_t i = 0; i < (rows * cols); i++)
@@ -47,13 +50,14 @@ int main(int args,char * argv[])
       if (!input)
       {
         std::cerr << "Input error\n";
-        return 2;
+        return 1;
       }
-      if (!(input >> static_array[i]))
-      {
-        std::cerr << "Error\n";
-        return 2;
-      }
+      counter++;
+    }
+    if (counter != (rows * cols))
+    {
+      std::cerr << "Error\n";
+      return 2;
     }
     std::ofstream output(argv[3]);
     output << MaximalSum(static_array, rows, cols) << "\n";
@@ -63,7 +67,7 @@ int main(int args,char * argv[])
     if (rows != cols)
     {
       std::cerr << "Rows and cols are different\n";
-      return 1;
+      return 0;
     }
     if (rows == 0 || cols == 0)
     {
