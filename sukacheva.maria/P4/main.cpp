@@ -1,8 +1,8 @@
-#include "matrix.hpp"
-#include "InputArray.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "matrix.hpp"
+#include "InputArray.hpp"
 
 int main(int argc, char** argv)
 {
