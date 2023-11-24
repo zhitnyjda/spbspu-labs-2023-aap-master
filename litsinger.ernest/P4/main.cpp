@@ -21,11 +21,6 @@ int main(int args,char * argv[])
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
-  if (input.peek() == std::ifstream::traits_type::eof())
-  {
-    std::cerr << "Empty file\n";
-    return 2;
-  }
   input >> rows;
   input >> cols;
   if (!(input))
@@ -54,6 +49,11 @@ int main(int args,char * argv[])
         std::cerr << "Input error\n";
         return 2;
       }
+      if (!(input >> static_array[i]))
+      {
+        std::cerr << "Error\n";
+        return 2;
+      }
     }
     std::ofstream output(argv[3]);
     output << MaximalSum(static_array, rows, cols) << "\n";
@@ -78,7 +78,7 @@ int main(int args,char * argv[])
       {
         std::cerr << "Input error\n";
         delete[] dynamic_array;
-        return 2;
+        return 1;
       }
     }
     std::ofstream output(argv[3]);
