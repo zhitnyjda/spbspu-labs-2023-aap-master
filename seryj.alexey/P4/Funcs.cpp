@@ -3,7 +3,7 @@
 #include <cmath>
 namespace seryj
 {
-  size_t fillArray(size_t max_size, size_t to_read, std::ifstream input, int * values)
+  size_t fillArray(size_t max_size, size_t to_read, std::ifstream & input, int * values)
   {
     for (size_t i = 0; i < std::min(to_read, max_size); ++i)
     {
@@ -12,7 +12,7 @@ namespace seryj
     }
     return std::min(to_read, max_size);
   }
-  void printAvgOfNeigbours(size_t line , size_t column, std::ofstream output, int * values)
+  void printAvgOfNeigbours(size_t line , size_t column, std::ofstream & output, int * values)
   {
     output << line << " ";
     output << column << " ";
