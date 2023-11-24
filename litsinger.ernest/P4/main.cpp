@@ -23,15 +23,10 @@ int main(int args,char * argv[])
   std::ifstream input(argv[2]);
   input >> rows;
   input >> cols;
-  if (input.eof())
-  {
-    std::cerr << "Error\n";
-    return 2;
-  }
   if (!input)
   {
     std::cerr << "Error\n";
-    return 1;
+    return 2;
   }
   if (!std::strcmp(argv[1], "1"))
   {
@@ -46,14 +41,14 @@ int main(int args,char * argv[])
       return 0;
     }
     int static_array[10000] = {0};
-    for (size_t i = 0; i < (rows * cols); i++)
+    try
     {
-      input >> static_array[i];
-      if (!input)
-      {
-        std::cerr << "Input error\n";
-        return 1;
-      }
+      inputArray(input, static_array, rows * cols);
+    }
+    catch (const std::logic_error& e)
+    {
+      std::cerr << e.what() << "\n";
+      return 2;
     }
     std::ofstream output(argv[3]);
     output << MaximalSum(static_array, rows, cols) << "\n";
@@ -71,15 +66,15 @@ int main(int args,char * argv[])
       return 0;
     }
     int * dynamic_array = new int[rows * cols];
-    for (size_t i = 0; i < (rows * cols); i++)
+    try
     {
-      input >> dynamic_array[i];
-      if (!input)
-      {
-        std::cerr << "Input error\n";
-        delete[] dynamic_array;
-        return 1;
-      }
+      inputArray(input, dynamic_array, rows * cols);
+    }
+    catch (const std::logic_error& e)
+    {
+      std::cerr << e.what() << "\n";
+      delete[] dynamic_array;
+      return 2;
     }
     std::ofstream output(argv[3]);
     try

@@ -2,6 +2,17 @@
 #include <limits>
 namespace litsinger
 {
+  int inputArray(std::ifstream & input, int * matrix, size_t sizeMatrix)
+  {
+    for (size_t i = 0; i < sizeMatrix; ++i)
+    {
+      input >> matrix[i];
+      if (!input)
+      {
+        throw std::logic_error("Error\n");
+      }
+    }
+  }
   int MaximalSum(const int * arr, size_t rows, size_t cols)
   {
     int maxSum = arr[0];
