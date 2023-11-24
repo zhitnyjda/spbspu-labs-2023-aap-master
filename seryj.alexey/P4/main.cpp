@@ -3,9 +3,10 @@
 #include "Funcs.hpp"
 int main(int args, const char* argv[])
 {
+  int n = 0;
   try
   {
-    int n = std::stoi(argv[1], nullptr, 10);
+    n = std::stoi(argv[1], nullptr, 10);
     if (args != 4 || !(n == 2 || n == 1))
      throw std::invalid_argument;
   }
