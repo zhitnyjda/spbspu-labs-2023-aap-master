@@ -20,18 +20,24 @@ int main(int argc, char** argv)
     std::cerr << "wrong first argument\n";
     return 1;
   }
-  if (num == 1)
+  redko::Matrix Matrix;
+  int result;
+  int rows;
+  int cols;
+  std::ifstream input(argv[2]);
+  input >> rows >> cols;
+  if (!input)
   {
-    redko::matrix Matrix;
-    int rows = 0;
-    int cols = 0;
-    std::ifstream input(argv[2]);
-    input >> rows >> cols;
-    if (!input)
-    {
-      std::cerr << "can't read input\n";
-      return 2;
-    }
+    std::cerr << "can't read input\n";
+    return 2;
+  }
+  if (num != 1 && num != 2)
+  {
+    std::cerr << "the first argument must be 1 or 2\n";
+    return 1;
+  }
+  else if (num == 1)
+  {
     int staticMatrix[10000] = {};
     try
     {
@@ -42,27 +48,10 @@ int main(int argc, char** argv)
       std::cerr << e.what();
       return 2;
     }
-    std::ofstream output(argv[3]);
-    if (!output)
-    {
-      std::cerr << "can't output\n";
-      return 2;
-    }
-    output << Matrix.countCols(staticMatrix, rows, cols) << '\n';
-    return 0;
+    result = Matrix.countCols(staticMatrix, rows, cols);
   }
-  else if (num == 2)
+  else
   {
-    redko::matrix Matrix;
-    int rows = 0;
-    int cols = 0;
-    std::ifstream input(argv[2]);
-    input >> rows >> cols;
-    if (!input)
-    {
-      std::cerr << "can't read input\n";
-      return 2;
-    }
     int * dynamicMatrix = new int[rows * cols];
     try
     {
@@ -74,16 +63,17 @@ int main(int argc, char** argv)
       delete[] dynamicMatrix;
       return 2;
     }
-    std::ofstream output(argv[3]);
-    if (!output)
-    {
-      std::cerr << "can't output\n";
-      return 2;
-    }
-    output << Matrix.countCols(dynamicMatrix, rows, cols) << '\n';
+    result = Matrix.countCols(dynamicMatrix, rows, cols);
     delete[] dynamicMatrix;
-    return 0;
   }
-  std::cerr << "wrong first argument\n";
-  return 1;
+  input.close();
+  std::ofstream output(argv[3]);
+  if (!output)
+  {
+    std::cerr << "can't output\n";
+    return 2;
+  }
+  output << result;
+  output.close();
+  return 0;
 }

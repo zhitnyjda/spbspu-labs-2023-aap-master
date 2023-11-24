@@ -1,7 +1,7 @@
 #include "functions.hpp"
 #include <iostream>
 
-void redko::matrix::inputArray(std::ifstream & in, int * matrix, size_t matrixSize)
+void redko::Matrix::inputArray(std::ifstream & in, int * matrix, size_t matrixSize)
 {
   for (size_t i = 0; i < matrixSize; ++i)
   {
@@ -13,10 +13,9 @@ void redko::matrix::inputArray(std::ifstream & in, int * matrix, size_t matrixSi
   }
 }
 
-int redko::matrix::countCols(int * matrix, int rows, int cols)
+int redko::Matrix::countCols(int * matrix, int rows, int cols)
 {
   int colsWithRep = 0;
-  int colsWithoutRep = 0;
   for (int i = 0; i < cols; ++i)
   {
     for (int j = 1; j < rows; ++j)
@@ -28,6 +27,6 @@ int redko::matrix::countCols(int * matrix, int rows, int cols)
       }
     }
   }
-  colsWithoutRep = cols - colsWithRep;
+  int colsWithoutRep = cols - colsWithRep;
   return colsWithoutRep;
 }

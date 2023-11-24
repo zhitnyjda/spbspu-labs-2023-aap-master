@@ -3,7 +3,7 @@
 #include <fstream>
 namespace redko
 {
-  class matrix
+  class Matrix
   {
   public:
     void inputArray(std::ifstream & in, int * matrix, size_t matrixSize);
