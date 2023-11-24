@@ -39,11 +39,6 @@ int main(int argc, const char* argv[])
       std::cerr << "Cannot read an input.\n";
       return 2;
     }
-    std::ofstream output(argv[3]);
-    if (!output.is_open()) {
-      std::cerr << "Error: Can't open an output file!\n";
-      return 2;
-    }
     Matrix matrix;
     size_t elementsCount = 0;
     if (num == 1)
