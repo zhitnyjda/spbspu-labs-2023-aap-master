@@ -2,13 +2,15 @@
 #include <fstream>
 #include "classes.hpp"
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-  if (argc < 4) {
+  if (argc < 4)
+  {
     std::cerr << "Error: Not enough args.\n";
     return 1;
   }
-  if (argc > 4) {
+  if (argc > 4)
+  {
     std::cerr << "Error: Too many args.\n";
     return 1;
   }
@@ -17,12 +19,12 @@ int main(int argc, char* argv[])
   {
     task = std::stoll(argv[1]);
   }
-  catch (const std::invalid_argument & e)
+  catch (const std::invalid_argument &e)
   {
     std::cerr << "Error: Cannot read task ID: invalid argument.\n";
     return 1;
   }
-  catch (const std::istream::failure & e)
+  catch (const std::istream::failure &e)
   {
     std::cerr << "Error: Cannot read task ID: input error.\n";
     return 1;
@@ -45,29 +47,37 @@ int main(int argc, char* argv[])
     return 2;
   }
   int result = 0;
-  try
+  if (task == 1)
   {
-    if (task == 1)
+    try
     {
-      int staticArray[10001] = { 0 };
+      int staticArray[10001] = {0};
       matrix.values = staticArray;
       matrix.read(inputStream);
       result = matrix.findMaxRow();
     }
-    if (task == 2)
+    catch (const std::runtime_error &e)
     {
-      int* dynamicArray = new int[matrix.columns * matrix.rows];
+      std::cerr << e.what();
+      return 2;
+    }
+  }
+  if (task == 2)
+  {
+    int *dynamicArray = new int[matrix.columns * matrix.rows];
+    try
+    {
       matrix.values = dynamicArray;
       matrix.read(inputStream);
       result = matrix.findMaxRow();
-      delete[] dynamicArray;
     }
-    outputStream << result;
+    catch (const std::runtime_error &e)
+    {
+      delete[] dynamicArray;
+      std::cerr << e.what();
+      return 2;
+    }
   }
-  catch (const std::runtime_error & e)
-  {
-    std::cerr << e.what();
-    return 2;
-  }
+  outputStream << result;
   return 0;
 }
