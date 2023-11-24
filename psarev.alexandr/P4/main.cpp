@@ -47,6 +47,7 @@ int main(int argc, char * argv[])
       return 2;
     }
     verdict = psarev::isTriMatrix(arr, rows, cols);
+    delete[] arr;
   }
 
   std::ofstream output(argv[3]);
