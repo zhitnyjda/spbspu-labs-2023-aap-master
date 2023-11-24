@@ -2,63 +2,41 @@
 #include "Funcs.hpp"
 int main(int args, const char* argv[])
 {
+  if (args > 4)
+    throw (std::invalid_argument("Too much arguments\n"));
+  if (args < 4)
+    throw (std::invalid_argument("Not enough arguments\n"));
+  int n = std::strtoll(argv[1], nullptr, 10);
+  if (n < 1 || n > 2)
+    throw(std::invalid_argument("Invalid argument\n"));
+  int pointer = nullptr;
   try
   {
     using namespace seryj;
-   if (args > 4)
-      throw (std::invalid_argument("Too much arguments\n"));
-    if (args < 4)
-      throw (std::invalid_argument("Not enough arguments\n"));
-    int n = std::strtoll(argv[1], nullptr, 10);
-    if (n < 1 || n > 2)
-      throw(std::invalid_argument("Invalid argument\n"));
     Matrix matrix;
     size_t to_read = matrix.initMatrix(argv[2], argv[3]);
-    if (n == 1)
+    const size_t max_size = 10000;
+    int static_array[max_size] = { 0 };
+    int* dynamic_array = new int[to_read];
+    pointer = (n == 1) ? static_array : dynamic_array;
+    matrix.initArray(pointer);
+    size_t result = matrix.fillArray((n==1) ? max_size : to_read, to_read);
+    if (result != to_read)
     {
-      const size_t max_size = 10000;
-      int static_array[max_size] = { 0 };
-      matrix.initArray(static_array);
-      size_t result = matrix.fillArray(max_size, to_read );
-      if (result != to_read)
-      {
-        std::cerr << "Could only read " << result << " numbers. I needed " << to_read << "\n";
-        return 1;
-      }
-      matrix.printAvgOfNeigbours();
+      std::cerr << "Could only read " << result << " numbers. I needed " << to_read << "\n";
+      if(n == 2)
+        delete[] pointer;
+      return 1;
     }
-    else
-    {
-      int* dynamic_array = new int[to_read];
-      matrix.initArray(dynamic_array);
-      try
-      {
-        size_t result = matrix.fillArray(to_read, to_read);
-        if (result != to_read)
-        {
-          std::cerr << "Could only read " << result << " numbers. I needed " << to_read << "\n";
-          delete[] dynamic_array;
-          return 1;
-        }
-        matrix.printAvgOfNeigbours();
-        delete[] dynamic_array;
-      }
-      catch (std::logic_error const & e)
-      {
-        std::cerr << e.what();
-        delete[] dynamic_array;
-        return 2;
-      }
-    }
-  }
-  catch (std::invalid_argument const & e)
-  {
-    std::cerr << e.what();
-    return 1;
+    matrix.printAvgOfNeigbours();
+    if(n == 2)
+      delete[] pointer;
   }
   catch (std::logic_error const & e)
   {
     std::cerr << e.what();
+    if(n == 2)
+      delete[] pointer;
     return 2;
   }
 }
