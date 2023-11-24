@@ -3,23 +3,7 @@
 #include <cmath>
 namespace seryj
 {
-  size_t Matrix::initMatrix(const char* inp_file, const char* out_file)
-  {
-    input.open(inp_file);
-    output.open(out_file);
-    if(!input.is_open())
-      throw std::invalid_argument("Cant open input file\n");
-    if(!output.is_open())
-      throw std::invalid_argument("Cant open output file\n");
-    if(!(input >> line) || !(input >> column))
-      throw std::logic_error("Wrong sizes\n");
-    return line*column;
-  }
-  void Matrix::initArray(int* arr)
-  {
-    values = arr;
-  }
-  size_t Matrix::fillArray(size_t max_size, size_t to_read)
+  size_t fillArray(size_t max_size, size_t to_read, std::ifstream input, int * values)
   {
     for (size_t i = 0; i < std::min(to_read, max_size); ++i)
     {
@@ -28,22 +12,20 @@ namespace seryj
     }
     return std::min(to_read, max_size);
   }
-  void Matrix::printAvgOfNeigbours()
+  void printAvgOfNeigbours(size_t line , size_t column, std::ofstream output, int * values)
   {
     output << line << " ";
     output << column << " ";
     for (size_t i = 0; i < line; i++)
       for (size_t j = 0; j < column; j++)
       {
-        output << findAverageOfNeighbours(i, j) << " ";
+        output << findAverageOfNeighbours(i, j, line, column, values) << " ";
       }
   }
-  double Matrix::findAverageOfNeighbours(size_t curr_line, size_t curr_column) const
+  double findAverageOfNeighbours(size_t curr_line, size_t curr_column, size_t max_line, size_t max_column, int * values) const
   {
     int count = 0;
     double sum = 0;
-    size_t max_line = line;
-    size_t max_column = column;
     for (size_t i = curr_line; i <= curr_line + 2; i++)
       for (size_t j = curr_column; j <= curr_column + 2; j++)
       {

@@ -3,20 +3,8 @@
 #include <fstream>
 namespace seryj
 {
-  class Matrix
-  {
-  public:
-    size_t initMatrix(const char * inp_file, const char * out_file);
-    void initArray(int *);
-    size_t fillArray( size_t max_size, size_t to_read);
-    void printAvgOfNeigbours();
-  private:
-    double findAverageOfNeighbours(size_t, size_t)const;
-    int* values = nullptr;
-    size_t line = 0;
-    size_t column = 0;
-    std::ofstream output;
-    std::ifstream input;
-  };
+  size_t fillArray( size_t max_size, size_t to_read, std::ifstream, int *);
+  void printAvgOfNeigbours(size_t line, size_t column, std::ofstream output, int* values);
+  double findAverageOfNeighbours(size_t curr_line, size_t curr_column, size_t max_line, size_t max_column, int* values) const;
 }
 #endif
