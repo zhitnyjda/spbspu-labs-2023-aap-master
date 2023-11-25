@@ -50,24 +50,29 @@ int main(int argc, const char* argv[])
     {
       int staticArr[10000] = {};
       elementsCount = matrix.inputMatrix(input, staticArr, rows * cols);
-      std::ofstream output(argv[3]);
-      matrix.spiralMatrix(output, staticArr, rows, cols);
       if (elementsCount != rows * cols) {
-      std::cerr << "Mismatch of dimension and values!\n";
-      return 2;
+        std::cerr << "Mismatch of dimension and values!\n";
+        return 2;
+      }
+      else
+      { 
+        std::ofstream output(argv[3]);
+        matrix.spiralMatrix(output, staticArr, rows, cols);
       }
     }
     else if (num == 2)
     {
       int* dynamicArr = new int[rows * cols];
-      elementsCount = matrix.inputMatrix(input, dynamicArr, rows * cols);
-      std::ofstream output(argv[3]);
-      matrix.spiralMatrix(output, dynamicArr, rows, cols);
-      delete[] dynamicArr;
-      if (elementsCount != rows * cols) {
-      std::cerr << "Mismatch of dimension and values!\n";
-      delete[] dynamicArr;
-      return 2;
+      if (matrix.inputMatrix(input, dynamicArr, rows * cols) != rows * cols) {
+        std::cerr << "Mismatch of dimension and values!\n";
+        delete[] dynamicArr;
+        return 2;
+      }
+      else
+      {
+        std::ofstream output(argv[3]);
+        matrix.spiralMatrix(output, dynamicArr, rows, cols);
+        delete[] dynamicArr;
       }
     }
   }
