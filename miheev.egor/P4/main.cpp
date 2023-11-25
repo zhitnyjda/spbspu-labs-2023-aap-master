@@ -13,7 +13,8 @@ int main(int argc, char* argv[])
     using namespace miheev;
     if (argc != 4)
     {
-      throw std::invalid_argument("wrong arguments. Programm takes 3 positional");
+      std::cerr << "Wrong amount of arguments\n";
+      return 1;
     }
     //initing params
     long long num = 0;
@@ -38,35 +39,37 @@ int main(int argc, char* argv[])
       return 2;
     }
 
-    Matrix matrix(rows, cols, num);
-    size_t size = rows*cols;
-    if(num == 1)
+    std::string outputString = std::to_string(rows) + " " + std::to_string(cols);
+
+    if (num == 1)
     {
-      int arr[10000] = {0};
-      inputToArr(inputFile, arr, size);
-      matrix.initArr(arr);
+      int sarr[10000] = {0};
+      inputToArr(inputFile, sarr, rows*cols);
+      outputString += getIncreasedMatrixInline(sarr, rows, cols);
     }
-    else if(num == 2)
+    else if (num == 2)
     {
-      int* arr = new int[rows*cols]{};
-      inputToArr(inputFile, arr, size);
-      matrix.initArr(arr);
+      int* darr = new int[rows*cols]{};
+      try
+      {
+        inputToArr(inputFile, darr, rows*cols);
+        outputString += getIncreasedMatrixInline(darr, rows, cols);
+      }
+      catch(const std::runtime_error& e)
+      {
+        delete[] darr;
+        std::cerr << e.what();
+      }
+      catch(...)
+      {
+        delete[] darr;
+        std::cerr << "unexpected error\n";
+      }
     }
 
     inputFile.close();
-
-    matrix.increasePeriphery();
-    std::cout << matrix.getMatrixInline() << '\n';
-    // в связи с описанной проблемой, приделываю костыль,
-    // чтобы программа работала
-    std::string matrixInline = matrix.getMatrixInline();
     std::ofstream outFile(argv[3]);
-    std::cout << matrix.getMatrixInline() << '\n';
-    if (outFile.is_open())
-    {
-      std::cout << matrixInline << '\n';
-      outFile << matrix.getNRows() << ' ' << matrix.getNCols() << ' ' << matrixInline;
-    }
+    outFile << outputString;
 
     return 0;
   }
