@@ -1,70 +1,72 @@
-#include <iostream>
+#include "class.hpp"
+#include "file.hpp"
 #include <fstream>
-#include <string>
-#include <exception>
-#include "func.cpp"
 
-int main(int argc, char ** argv)
+int main(int argc, char** argv)
 {
-  if (argc != 4)
-  {
-    std::cout << "argc != 4";
-	return 1;
-  }
-  try
-  {
-    int num = std::stoi(argv[1]);
-	if (num == 1)
+	if (argc != 4)
 	{
-	  size_t cols;
-	  size_t rows;
-	  std::string textFile;
-	  if (matrix::readFile(argv[2], cols, rows, textFile))
-	  {
+		std::cerr << "argc != 4";
 		return 1;
-	  }
-	  int * matrix = matrix::creatStaticMatrix(textFile, cols, rows);
-	  if (matrix::matrixConditionCheck(matrix, cols, rows))
-	  {
-		if (matrix::printToFile(argv[3], "true"))
-		{
-		  return 1;
-		}
-	  }
-	  else
-	  {
-		if (matrix::printToFile(argv[3], "false"))
-		{
-		  return 1;
-		}
-	  }
-	  delete[] matrix;
 	}
-	else if (num == 2)
+	try
 	{
-	  std::ifstream file(argv[2]);
-	  if (!file.is_open())
-	  {
-		std::cout << "fail file";
-		return 1;
-	  }
-	  int size = 0;
-	  int * matrix = new int[size];
-	  while (!file.eof())
-	  {
-		int temp;
-		file >> temp;
-		matrix::push_back(matrix, size, temp);
-	  }
-	  for (int i = 0; i < size; i++)
-	  {
-		std::cout << matrix[i] << "\n";
-	  }
+		int num = std::stoi(argv[1]);
+		std::ifstream infile(argv[2]);
+		std::ofstream outfile(argv[3]);
+		if (!infile.is_open() || !outfile.is_open())
+		{
+			std::cerr << "error file";
+			return 1;
+		}
+		std::string intext = file::readFile(infile);
+		if (intext.empty())
+		{
+			std::cerr << "fail text";
+			return 2;
+		}
+		infile.close();
+		if (num == 1)
+		{
+			matrix::Matrix mtrx;
+			mtrx(intext);
+			mtrx.creatStaticMatrix(intext);
+			if (mtrx.isSquareMatrix() && mtrx.matrixConditionCheck(1))
+			{
+				file::printToFile(outfile, "true");
+			}
+			else
+			{
+				file::printToFile(outfile, "falase");
+			}
+			outfile.close();
+		}
+		else if (num == 2)
+		{
+			matrix::Matrix mtrx;
+			mtrx(intext);
+			mtrx.creatDynamicMatrix(intext);
+			if (mtrx.isSquareMatrix() && mtrx.matrixConditionCheck(2))
+			{
+				file::printToFile(outfile, "true");
+			}
+			else
+			{
+				file::printToFile(outfile, "false");
+			}
+			outfile.close();
+			mtrx.delMatrix();
+		}
 	}
-  }
-  catch (const std::invalid_argument &)
-  {
-    std::cout << "argv[0] not int";
-	return 1;
-  }
-} 
+	catch (const std::invalid_argument &)
+	{
+		std::cerr << "invalid argument";
+	}
+	catch (const std::string & ex)
+	{
+		std::cerr << ex;
+		return 2;
+	}
+
+
+}
