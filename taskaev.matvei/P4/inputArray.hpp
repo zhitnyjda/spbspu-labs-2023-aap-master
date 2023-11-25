@@ -2,7 +2,7 @@
 #define INPUTARRAY_HPP
 #include <iosfwd>
 
-namespace readArray
+namespace taskaev
 {
   void inputArray(std::istream & in, int * m, size_t s, size_t toRead);
 }

@@ -39,14 +39,14 @@ int main(int argc, char** argv)
         return 2;
       }
     }
-    resultNum = matrixStuff::findCntLocMin(matrix, rows, cols);
+    resultNum = taskaev::findCntLocMin(matrix, rows, cols);
   }
   else if (num == 2)
   {
     int * matrix = new int [rows * cols];
     try
     {
-      readArray::inputArray(input, matrix, rows * cols, rows * cols);
+      taskaev::inputArray(input, matrix, rows * cols, rows * cols);
     }
     catch(...)
     {
@@ -54,7 +54,7 @@ int main(int argc, char** argv)
       delete [] matrix;
       return 2;
     }
-    resultNum = matrixStuff::findCntLocMin(matrix, rows, cols);
+    resultNum = taskaev::findCntLocMin(matrix, rows, cols);
     delete [] matrix;
   }
   else

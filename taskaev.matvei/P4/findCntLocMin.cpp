@@ -2,15 +2,15 @@
 #include <iostream>
 #include <stdexcept>
 
-int matrixStuff::funcLineMin(int firstN, int secondN, int threeN)
+int taskaev::funcLineMin(int firstN, int secondN, int threeN)
 {
   return ((((firstN < secondN) ? firstN : secondN) < threeN) ? ((firstN < secondN) ? firstN : secondN) : threeN);
 }
-int matrixStuff::locMin(int firstN, int secondN, int threeN, int fourN)
+int taskaev::locMin(int firstN, int secondN, int threeN, int fourN)
 {
   return ((funcLineMin(firstN, secondN, threeN) < fourN) ? (funcLineMin(firstN, secondN, threeN)) : fourN);
 }
-int matrixStuff::findCntLocMin(int matrix[], int rows, int cols)
+int taskaev::findCntLocMin(int matrix[], int rows, int cols)
 {
   if ((rows <= 2) || (cols <= 2))
   {
