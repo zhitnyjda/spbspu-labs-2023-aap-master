@@ -26,3 +26,4 @@ void lisitsyna::FindLocalMax::operator()(int value)
 size_t lisitsyna::FindLocalMax::operator()() const
 {
     return countmaxs_;
+}
