@@ -5,7 +5,6 @@
 int main()
 {
   int number = 0;
-  int max_number = 0;
   using namespace proselkov;
   AftMax aftMax;
   do

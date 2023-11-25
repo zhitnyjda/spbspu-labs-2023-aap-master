@@ -3,7 +3,7 @@
 #include "AftMax.hpp"
 
 proselkov::AftMax::AftMax():
-  aftMax_(0)
+  aftMax_(0), max_number(0)
 {}
 
 void proselkov::AftMax::operator()(int number)
