@@ -54,7 +54,6 @@ int main(int argc, const char* argv[])
         std::cerr << "Mismatch of dimension and values!\n";
         return 2;
       }
-      std::ofstream output(argv[3]);
       matrix.spiralMatrix(output, staticArr, rows, cols);
     }
     else if (num == 2)
@@ -66,7 +65,6 @@ int main(int argc, const char* argv[])
         delete[] dynamicArr;
         return 2;
       }
-      std::ofstream output(argv[3]);
       matrix.spiralMatrix(output, dynamicArr, rows, cols);
       delete[] dynamicArr;
     }
