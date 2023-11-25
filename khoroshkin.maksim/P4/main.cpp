@@ -52,16 +52,8 @@ int main(int argc, char ** argv)
   else
   {
     int Rows, Cols;
-    try
-    {
-      std::ifstream inputFile(argv[2]);
-      khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
-    }
-    catch(const std::logic_error & e)
-    {
-      std::cerr << e.what() << '\n';
-      return 2;
-    }
+    std::ifstream inputFile(argv[2]);
+    khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
     int * dynamicMatrix = new int[Rows * Cols];
     try
     {
