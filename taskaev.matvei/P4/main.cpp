@@ -30,7 +30,7 @@ int main(int argc, char** argv)
   if (num == 1)
   {
     int matrix[rows * cols];
-    for (int i = 0; i < rows * cols; i++)
+    for (size_t i = 0; i < rows * cols; i++)
     {
       input >> matrix[i];
       if (!input)
