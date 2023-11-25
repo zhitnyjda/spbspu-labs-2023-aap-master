@@ -7,28 +7,29 @@ namespace MatrixStuff {
       return 0;
     }
     size_t count = 0;
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i)
+    {
       bool containsZero = false;
 
-      for (int j = 0; j < m; ++j) {
+      for (int j = 0; j < m; ++j)
+      {
         int index = i * m + j;
 
-        if (i == j && matrix[index] == 0) {
+        if ((i == j && matrix[index] == 0) || matrix[m - 1] == 0)
+        {
           containsZero = true;
           break;
-        } else if (i != j && matrix[index] == 0) {
+        } else if (i != j && matrix[index] == 0)
+        {
           containsZero = true;
           break;
         }
       }
 
-      if (!containsZero) {
+      if (!containsZero)
+      {
         count++;
       }
-    }
-    if (matrix[m - 1] == 0)
-    {
-      count++;
     }
     return count;
   }
