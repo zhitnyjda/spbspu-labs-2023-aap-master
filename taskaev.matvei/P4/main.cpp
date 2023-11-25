@@ -44,7 +44,7 @@ int main(int argc, char** argv)
   else if (num == 2)
   {
     int * matrix = new int [rows * cols];
-    if((taskaev::inputArray(input, matrix, rows * cols, rows * cols)) == (rows*cols))
+    if((taskaev::inputArray(input, matrix, rows * cols, rows * cols)) == (rows * cols))
     {
       resultNum = taskaev::findCntLocMin(matrix, rows, cols);
       delete [] matrix;
