@@ -38,12 +38,13 @@ namespace MatrixStuff {
     output << result;
   }
 
-  void readMatrix(std::istream &input, int *matrix, int n, int m) {
+  bool readMatrix(std::istream &input, int *matrix, int n, int m) {
+    bool marker = true;
     for (int i = 0; i < n * m; ++i) {
       if (!(input >> matrix[i])) {
-        delete[] matrix;
-        throw std::logic_error("invalid input");
+        return false;
       }
     }
+    return marker;
   }
 }

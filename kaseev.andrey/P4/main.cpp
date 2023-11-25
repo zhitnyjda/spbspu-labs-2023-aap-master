@@ -40,7 +40,12 @@ int main(int argc, char **argv)
       if (num == 1)
       {
         int matrix[n * m];
-        MatrixStuff::readMatrix(input, matrix, n, m);
+        bool matrixCheck = false;
+        matrixCheck = MatrixStuff::readMatrix(input, matrix, n, m);
+        if (!matrixCheck)
+        {
+          throw std::logic_error("invalid input");
+        }
         size_t count = MatrixStuff::NumberOfDiagonals(matrix, n, m);
         if (output.is_open())
         {
@@ -50,7 +55,13 @@ int main(int argc, char **argv)
       } else
       {
         int *matrix = new int[n * m];
-        MatrixStuff::readMatrix(input, matrix, n, m);
+        bool matrixCheck = false;
+        matrixCheck = MatrixStuff::readMatrix(input, matrix, n, m);
+        if (!matrixCheck)
+        {
+          delete[] matrix;
+          throw std::logic_error("invalid input");
+        }
         size_t count = MatrixStuff::NumberOfDiagonals(matrix, n, m);
         delete[] matrix;
         if (output.is_open())
