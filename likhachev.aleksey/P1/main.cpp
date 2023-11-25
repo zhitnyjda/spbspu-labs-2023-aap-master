@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <exception>
-#include <windows.h>
 #include "sequence.hpp"
 
 int main()
