@@ -17,18 +17,29 @@ int main(int argc, char **argv)
       std::cerr << "Invalid argument!";
     }
     std::ifstream input(argv[2]);
+    std::ofstream output(argv[3]);
     int m = 0, n = 0;
     if (!(input >> n >> m))
     {
       std::cerr << "invalid input" << "\n";
     }
-    if (m <= 0 || n <= 0)
+    if (m < 0 || n < 0)
     {
       std::cerr << "Invalid matrix dimensions." << "\n";
     }
+    else if (m == 0 && n == 0)
+    {
+      if (output.is_open())
+      {
+        MatrixStuff::writeResult(output, 0);
+        output.close();
+      } else
+      {
+        std::cerr << "Unable to open the output file." << std::endl;
+      }
+    }
     try
     {
-      std::ofstream output(argv[3]);
       if (num == 1)
       {
         int matrix[n * m];
