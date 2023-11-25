@@ -20,32 +20,51 @@ size_t copyBufferToString(char* buffer, size_t buffSize, size_t startIndex, char
     str[indexOfLastFree] = buffer[indexOfLastFree - startIndex];
     indexOfLastFree++;
   }
-
-  printArr(str, strSize);
   return indexOfLastFree;
 }
 
-
-int main(int argc, char* argv[])
+void extendString(char* str, size_t strSize, size_t buffSize)
 {
-  const size_t BUFF_SIZE = 5;
-  char buffer[BUFF_SIZE];
-  char* str = new char[BUFF_SIZE]{};
-  char c = 0;
-  size_t buffIndex = 0;
+  size_t sizeExtended = strSize + buffSize;
+  char* temp = new char[sizeExtended];
+  copyBufferToString(str, strSize, 0, temp, sizeExtended);
+  str = temp;
+  temp = nullptr;
+}
 
+bool cinToBuffer(char* buffer, size_t buffSize)
+{
   std::cin >> std::noskipws;
-  while ((std::cin >> c) && (buffIndex < BUFF_SIZE))
+  size_t buffIndex = 0;
+  char c = 0;
+  while (std::cin >> c)
   {
+    std::cout << "buffIndex = " << buffIndex << '\n';
     buffer[buffIndex++] = c;
     if (c == '\n')
     {
       buffer[buffIndex - 1] = 0;
       break;
     }
+    if(buffIndex >= buffSize)
+    {
+      return false;
+    }
   }
   std::cin >> std::skipws;
-  // std::cout << buffer << '\n';
-  copyBufferToString(buffer, BUFF_SIZE, 0, str, BUFF_SIZE);
+  std::cout << buffIndex << " ?= " << buffSize << '\n';
+  return true;
+}
+
+int main(int argc, char* argv[])
+{
+  const size_t BUFF_SIZE = 5;
+  char buffer[BUFF_SIZE] = {0};
+  char* str = new char[BUFF_SIZE]{};
+  size_t strIndex = 0;
+
+  std::cout << cinToBuffer(buffer, BUFF_SIZE) << '\n';
+  printArr(buffer, BUFF_SIZE);
+
   return 1;
 }
