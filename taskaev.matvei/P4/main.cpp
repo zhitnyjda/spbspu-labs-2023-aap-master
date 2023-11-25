@@ -20,7 +20,7 @@ int main(int argc, char** argv)
   }
   int resultNum = 0;
   std::ifstream input(argv[2]);
-  int rows, cols;
+  size_t rows, cols;
   input >> rows >> cols;
   if (!input)
   {
