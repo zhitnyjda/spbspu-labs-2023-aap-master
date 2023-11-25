@@ -3,10 +3,7 @@
 
 int main() {
     int value = 0;
-    int maxValue = 0;
     int count = 0;
-    int lastvalue = 0;
-    int maxcount = 0;
     using namespace lisitsyna;
     FindLocalMax findLocalMax;
 
@@ -20,14 +17,12 @@ int main() {
     catch (int ex) {
         std::cerr << "Invalid input!";
         return 1;
-
-        maxValue = value;
     }
 
     while (value != 0)
     {
-        count++;
-        try {
+       count++;
+       try {
             std::cin >> value;
             if (std::cin.fail())
             {
@@ -39,7 +34,7 @@ int main() {
             std::cerr << "Invalid input!";
             return 1;
         }
-        lastvalue = value;
+
         if (count == 0)
         {
             std::cerr << "Error output (return code 2)" << std::endl;
