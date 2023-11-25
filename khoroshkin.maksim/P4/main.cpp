@@ -51,12 +51,13 @@ int main(int argc, char ** argv)
   }
   else
   {
-    int Rows, Cols;
-    std::ifstream inputFile(argv[2]);
-    khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
-    int * dynamicMatrix = new int[Rows * Cols];
+    int * dynamicMatrix = nullptr;
     try
     {
+      int Rows, Cols;
+      std::ifstream inputFile(argv[2]);
+      khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
+      int * dynamicMatrix = new int[Rows * Cols];
       int successOrNO = khoroshkin::inputArray(inputFile, dynamicMatrix, Rows * Cols);
       if (successOrNO != Rows*Cols)
       {
@@ -66,14 +67,17 @@ int main(int argc, char ** argv)
       }
       std::ofstream outputFile(argv[3]);
       khoroshkin::fillingOutputFile(outputFile, dynamicMatrix, Rows, Cols);
+      delete[] dynamicMatrix;
     }
     catch (const std::logic_error & e)
     {
       std::cerr << e.what();
-      delete[] dynamicMatrix;
+      if (dynamicMatrix != nullptr)
+      {
+        delete[] dynamicMatrix;
+      }
       return 2;
     }
-    delete[] dynamicMatrix;
   }
   return 0;
 }
