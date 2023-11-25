@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "matrix.hpp"
+#include "matrix.cpp"
 
 int main(int argc, char **argv)
 {
@@ -33,9 +33,6 @@ int main(int argc, char **argv)
       {
         MatrixStuff::writeResult(output, 0);
         output.close();
-      } else
-      {
-        throw std::logic_error("Unable to open the output file.");
       }
     }
     try
