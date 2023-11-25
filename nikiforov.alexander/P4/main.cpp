@@ -46,16 +46,18 @@ int main(int argc, const char* argv[])
     }
     Matrix matrix;
     size_t elementsCount = 0;
+
     if (num == 1)
     {
       int staticArr[10000] = {};
       elementsCount = matrix.inputMatrix(input, staticArr, rows * cols);
-      if (elementsCount != rows * cols) {
+      if (elementsCount != rows * cols)
+      {
         std::cerr << "Mismatch of dimension and values!\n";
         return 2;
       }
       else
-      { 
+      {
         std::ofstream output(argv[3]);
         matrix.spiralMatrix(output, staticArr, rows, cols);
       }
@@ -63,7 +65,8 @@ int main(int argc, const char* argv[])
     else if (num == 2)
     {
       int* dynamicArr = new int[rows * cols];
-      if (matrix.inputMatrix(input, dynamicArr, rows * cols) != rows * cols) {
+      if (matrix.inputMatrix(input, dynamicArr, rows * cols) != rows * cols)
+      {
         std::cerr << "Mismatch of dimension and values!\n";
         delete[] dynamicArr;
         return 2;
