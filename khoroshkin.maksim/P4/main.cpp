@@ -67,7 +67,6 @@ int main(int argc, char ** argv)
       }
       std::ofstream outputFile(argv[3]);
       khoroshkin::fillingOutputFile(outputFile, dynamicMatrix, Rows, Cols);
-      delete[] dynamicMatrix;
     }
     catch (const std::logic_error & e)
     {
@@ -75,6 +74,7 @@ int main(int argc, char ** argv)
       delete[] dynamicMatrix;
       return 2;
     }
+    delete[] dynamicMatrix;
   }
   return 0;
 }
