@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "findCntLocMin.hpp"
 #include "inputArray.hpp"
 
@@ -10,12 +11,9 @@ int main(int argc, char** argv)
     std::cerr << "Something wrong, I can feel it.\n";
     return 1;
   }
-  int num = 0;
-  try
-  {
-    num = std::stoll(argv[1]);
-  }
-  catch (...)
+  char* endNum;
+  int num = std::strtoll(argv[1], &endNum, 10);
+  if (*endNum != '\0')
   {
     std::cerr << "Cannot parse values\n";
     return 3;
