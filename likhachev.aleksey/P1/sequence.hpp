@@ -3,23 +3,22 @@
 namespace likhachev
 {
   struct Sequence {
-    public:
-        Sequence();
-        int read();
-        bool samge_sing();
+  public:
+    Sequence();
+    int read();
+    bool have_samge_sing() const;
 
-        int lmax();
-        int lmin();
-        int cvalue();
-        int pvalue();
-        int scount();
-    private:
-        int prev_value;
-        int curr_value;
-
-        int count;
-        int local_max;  
-        int local_min;
-    };
+    int getLmax() const;
+    int getLmin() const;
+    int getCvalue() const;
+    int getPvalue() const;
+    int getCount() const;
+  private:
+    int prevValue;
+    int currValue;
+    int count;
+    int localMax;  
+    int localMin;
+  };
 };
 #endif
