@@ -7,7 +7,6 @@ namespace likhachev
     Sequence();
     int read();
     bool have_samge_sing() const;
-
     int getLmax() const;
     int getLmin() const;
     int getCvalue() const;
@@ -17,7 +16,7 @@ namespace likhachev
     int prevValue;
     int currValue;
     int count;
-    int localMax;  
+    int localMax;
     int localMin;
   };
 };

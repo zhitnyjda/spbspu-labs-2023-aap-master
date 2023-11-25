@@ -9,7 +9,6 @@ int main()
   int prevMax = sequence.getLmax();
   int singChangeCount = 0;
   int localMaxCount = 0;
-
   try {
     std::cin.exceptions(std::istream::failbit);
     while (sequence.read() != 0) {
@@ -22,9 +21,7 @@ int main()
       if (sequence.getCvalue() == sequence.getLmax()){
         localMaxCount++;
       }
-
       prevMax = sequence.getLmax();
-
     }
   } catch (const std::istream::failure & e) {
     std::cerr << "Input error\n";
@@ -33,15 +30,11 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-
   if (sequence.getCount() == 0) {
     std::cerr << "The sequence is too small" << "\n";
     return 2;
   }
-  
   std::cout << "[SGN-CHG] count of sign changes: " <<   singChangeCount << "\n";
   std::cout << "[LOC-MAX] count of local maxima: " << localMaxCount << "\n";
-
   return 0;
-
 }

@@ -12,14 +12,12 @@ int likhachev::Sequence::read()
 {
   prevValue = currValue;
   std::cin >> currValue;
-
   if (currValue > localMax) {
     localMax = currValue;
   }
   if (currValue < localMin) {
     localMin = currValue;
   }
-  
   count++;
   return currValue;
 }
