@@ -1,6 +1,6 @@
+#include "matrix.hpp"
 #include <iostream>
 #include <fstream>
-#include "matrix.hpp"
 
 int main(int argc, char **argv)
 {
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
     {
       if (output.is_open())
       {
-        MatrixStuff::writeResult(output, 0);
+        MatrixStuff::writeResult(output, 0, 0);
         output.close();
       }
     }
@@ -46,13 +46,15 @@ int main(int argc, char **argv)
         {
           throw std::logic_error("invalid input");
         }
+        bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrix, n, m);
         size_t count = MatrixStuff::NumberOfDiagonals(matrix, n, m);
         if (output.is_open())
         {
-          MatrixStuff::writeResult(output, count);
+          MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
           output.close();
         }
-      } else
+      }
+      else
       {
         int *matrix = new int[n * m];
         bool matrixCheck = false;
@@ -63,10 +65,11 @@ int main(int argc, char **argv)
           throw std::logic_error("invalid input");
         }
         size_t count = MatrixStuff::NumberOfDiagonals(matrix, n, m);
+        bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrix, n, m);
         delete[] matrix;
         if (output.is_open())
         {
-          MatrixStuff::writeResult(output, count);
+          MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
           output.close();
         }
       }
@@ -83,4 +86,3 @@ int main(int argc, char **argv)
     return 1;
   }
 }
-
