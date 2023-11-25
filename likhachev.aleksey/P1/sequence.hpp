@@ -12,6 +12,7 @@ namespace likhachev
         int lmin();
         int cvalue();
         int pvalue();
+        int scount();
     private:
         int prev_value;
         int curr_value;
