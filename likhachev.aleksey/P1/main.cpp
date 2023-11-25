@@ -8,52 +8,93 @@ using std::string;
 bool samge_sing(int num1, int num2);
 void errorMessagedExit(string error_message);
 
+struct sequence {
+    public:
+        sequence() {
+            prev_value = 0;
+            curr_value = 0;
+
+            local_max = -100; // INT_MIN;
+            local_min = 100; // INT_MAX;
+        }
+
+        int read() {
+            prev_value = curr_value;
+            std::cin >> curr_value;
+            
+            if (!std::cin)
+                errorMessagedExit("Ошибка ввода");
+            
+            if(curr_value > local_max)
+                local_max = curr_value;
+            
+            if(curr_value < local_min)
+                local_min = curr_value;
+            
+            return curr_value;
+        }
+
+        bool samge_sing()
+        {
+            if (prev_value * curr_value >= 0)
+                return 1;
+            else
+                return 0;
+        } 
+
+        int lmax() {
+            return local_max;
+        }
+
+        int lmin() {
+            return local_min;
+        }
+
+        int cvalue() {
+            return curr_value;
+        }
+
+        int pvalue() {
+            return prev_value;
+        }
+    private:
+        int prev_value;
+        int curr_value;
+
+        int count;
+
+        int local_max;  
+        int local_min;
+};
+
 int main()
 {
 
-    int first_value = 0;
-    std::cin >> first_value;
+    sequence _sequence = sequence();
 
-    int prev_value = first_value;
-    int new_value = first_value;
-    int local_max = first_value;
-
+    int prev_max = _sequence.lmax();
     int sing_change_count = 0;
     int local_max_count = 0;
 
 
-    while (new_value != 0) {
+    while (_sequence.read() != 0) {
 
-        if (!samge_sing(prev_value, new_value))
+        if (!_sequence.samge_sing())
             sing_change_count++;
         
-        if(local_max <= new_value) {
-            if(local_max < new_value) {
-                local_max = new_value;
-                local_max_count = 1;
-            } else {
-                local_max_count++;
-            }   
-        }
-
-        if (!std::cin)
-            errorMessagedExit("Ошибка ввода");
+        if(prev_max != _sequence.lmax())
+            local_max_count = 0;
         
-        prev_value = new_value;
-        std::cin >> new_value;
+        if(_sequence.cvalue() == _sequence.lmax())
+            local_max_count++;
+
+        prev_max = _sequence.lmax();
+
     }
 
     std::cout << "kolichestvo izmeneniy znaka: " << sing_change_count << "\n";
     std::cout << "kolichestvo lokalnih maximumov: " << local_max_count << "\n";
 
-}
-
-bool samge_sing(int num1, int num2)
-{
-    if (num1 * num2 > 0)
-        return 1;
-    else
-        return 0;
 }
 
 void errorMessagedExit(string error_message)
