@@ -46,9 +46,6 @@ int main(int argc, char **argv)
         {
           MatrixStuff::writeResult(output, count);
           output.close();
-        } else
-        {
-          throw std::logic_error("Unable to open the output file.");
         }
       } else
       {
@@ -60,9 +57,6 @@ int main(int argc, char **argv)
         {
           MatrixStuff::writeResult(output, count);
           output.close();
-        } else
-        {
-          throw std::logic_error("Unable to open the output file.");
         }
       }
     }
