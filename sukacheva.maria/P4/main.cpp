@@ -14,14 +14,11 @@ int main(int argc, char** argv)
     return 1;
   }
 
-  int num = 0;
-  try
+  char* end;
+  long long num = std::strtoll(argv[1], &end, 10);
+  if (*end != '\0')
   {
-    num = std::stoll(argv[1]);
-  }
-  catch (const std::invalid_argument& e)
-  {
-    std::cerr << "Cannot parse a value.\n";
+    std::cout << "Input error: argument is not a number.\n";
     return 3;
   }
 
