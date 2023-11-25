@@ -64,4 +64,5 @@ void nikiforov::Matrix::spiralMatrix(std::ofstream& out, int* ArrMatrix, size_t 
       out << std::setw(4) << ArrMatrix[i * rows + j];
     }
   }
+  delete[] ArrMatrix;
 }
