@@ -14,18 +14,18 @@ int main(int argc, char **argv)
     long long int num = std::strtol(argv[1], &endptr, 10);
     if (num != 1 && num != 2)
     {
-      std::cerr << "Invalid argument!";
+      throw std::logic_error("Invalid argument!");
     }
     std::ifstream input(argv[2]);
     std::ofstream output(argv[3]);
     int m = 0, n = 0;
     if (!(input >> n >> m))
     {
-      std::cerr << "invalid input" << "\n";
+      throw std::logic_error("Invalid argument!");
     }
     if (m < 0 || n < 0)
     {
-      std::cerr << "Invalid matrix dimensions." << "\n";
+      throw std::logic_error("Invalid argument!");
     }
     else if (m == 0 && n == 0)
     {
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         output.close();
       } else
       {
-        std::cerr << "Unable to open the output file." << std::endl;
+        throw std::logic_error("Unable to open the output file.");
       }
     }
     try
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
           output.close();
         } else
         {
-          std::cerr << "Unable to open the output file." << "\n";
+          throw std::logic_error("Unable to open the output file.");
         }
       } else
       {
@@ -65,7 +65,7 @@ int main(int argc, char **argv)
           output.close();
         } else
         {
-          std::cerr << "Unable to open the output file." << std::endl;
+          throw std::logic_error("Unable to open the output file.");
         }
       }
     }
