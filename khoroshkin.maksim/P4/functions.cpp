@@ -1,19 +1,43 @@
 #include <algorithm>
 #include "functions.hpp"
 
-void khoroshkin::matrix::inputArray(std::ifstream & in, int * matrix, size_t sizeMatrix)
+int khoroshkin::isNumber(const std::string & str)
 {
-  for (size_t i = 0; i < sizeMatrix; ++i)
+  for (char c : str)
   {
-    in >> matrix[i];
-    if (!in)
+    if (!(std::isdigit(c)))
     {
-      throw std::runtime_error("Something wrong with filling array");
+      return 0;
     }
+  }
+  return 1;
+}
+
+void khoroshkin::fillingRowsAndCols(std::ifstream & in, int & Rows, int & Cols)
+{
+  if (!in.is_open())
+  {
+    throw std::logic_error("Cannot open an output.\n");
+  }
+  if (!(in >> Rows >> Cols))
+  {
+    throw std::logic_error("Cannot read an input.\n");
   }
 }
 
-long long khoroshkin::matrix::minSumOfParallelArray(int * matrix, int Rows, int Cols)
+int khoroshkin::inputArray(std::ifstream & in, int * matrix, size_t sizeMatrix)
+{
+  for (int i = 0; i < sizeMatrix; ++i)
+  {
+    if (!(in >> matrix[i]))
+    {
+      return i;
+    }
+  }
+  return sizeMatrix;
+}
+
+long long khoroshkin::minSumOfParallelArray(int * matrix, int Rows, int Cols)
 {
   int minSum = std::numeric_limits< int >::max();
   for (int i = 1 - Rows; i < Rows; i++)
@@ -28,5 +52,21 @@ long long khoroshkin::matrix::minSumOfParallelArray(int * matrix, int Rows, int 
     }
     minSum = std::min(currentSum, minSum);
   }
-  return minSum;
+  if (Rows * Cols == 0)
+  {
+    return 0;
+  }
+  else
+  {
+    return minSum;
+  }
+}
+
+void khoroshkin::fillingOutputFile(std::ofstream & out, int * matrix, int Rows, int Cols)
+{
+  if (!out.is_open())
+  {
+    throw std::logic_error("Cannot open an output.\n");
+  }
+  out << khoroshkin::minSumOfParallelArray(matrix, Rows, Cols);
 }

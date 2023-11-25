@@ -8,78 +8,76 @@ int main(int argc, char ** argv)
   {
     if (argc != 4)
     {
-      throw std::invalid_argument( "Error: should contain 4 parameters\n");
+      std::cerr << "Error: should contain 4 parameters\n";
+      return 1;
     }
-
-    int num = std::stoll(argv[1]);
-    khoroshkin::matrix Matrix;
-
+    int num;
+    if (!(khoroshkin::isNumber(argv[1])))
+    {
+      std::cerr << "Error: first parameter can accept only 1 or 2\n";
+      return 1;
+    }
+    else
+    {
+      num = std::stoll(argv[1]);
+    }
     if (num > 2 || num < 1)
     {
-      throw std::invalid_argument("Error: I can accept only 1 or 2\n");
+      std::cerr << "Error: I can accept only 1 or 2\n";
+      return 1;
     }
     else if (num == 1)
     {
       int statMatrix[1000] = { 0 };
-      std::ifstream inputFile(argv[2]);
       int Rows, Cols;
-      if (!(inputFile >> Rows >> Cols))
       {
-        throw std::logic_error("Cannot read an input.\n");
+        std::ifstream inputFile(argv[2]);
+        khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
+        int successOrNO = khoroshkin::inputArray(inputFile, statMatrix, Rows * Cols);
+        if (successOrNO != Rows*Cols)
+        {
+          std::cerr << "Error: was filled only " << successOrNO+1 << " elements";
+          return 2;
+        }
       }
-      try
       {
-        Matrix.inputArray(inputFile, statMatrix, Rows * Cols);
+        std::ofstream outputFile(argv[3]);
+        khoroshkin::fillingOutputFile(outputFile, statMatrix, Rows, Cols);
       }
-      catch(const std::runtime_error & e)
-      {
-        std::cerr << e.what() << '\n';
-        return 2;
-      }
-      inputFile.close();
-      std::ofstream outputFile(argv[3]);
-      if (!outputFile.is_open())
-      {
-        throw std::logic_error("Cannot open an output.\n");
-      }
-      outputFile << Matrix.minSumOfParallelArray(statMatrix, Rows, Cols);
       return 0;
     }
     else
     {
-      std::ifstream inputFile(argv[2]);
+      int * dynamicMatrix;
       int Rows, Cols;
-      if (!(inputFile >> Rows >> Cols))
-      {
-        throw std::logic_error("Cannot read an input.\n");
-      }
-      int * dynamicMatrix = new int[Rows * Cols];
       try
       {
-        Matrix.inputArray(inputFile, dynamicMatrix, Rows * Cols);
+        {
+          std::ifstream inputFile(argv[2]);
+          khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
+          dynamicMatrix = new int[Rows * Cols];
+          int successOrNO = khoroshkin::inputArray(inputFile, dynamicMatrix, Rows * Cols);
+          if (successOrNO != Rows*Cols)
+          {
+            std::cerr << "Error: was filled only " << successOrNO+1 << " elements";
+            delete[] dynamicMatrix;
+            return 2;
+          }
+        }
+        {
+          std::ofstream outputFile(argv[3]);
+          khoroshkin::fillingOutputFile(outputFile, dynamicMatrix, Rows, Cols);
+        }
+        delete[] dynamicMatrix;
+        return 0;
       }
-      catch(const std::runtime_error & e)
+      catch (const std::logic_error & e)
       {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what();
         delete[] dynamicMatrix;
         return 2;
       }
-      inputFile.close();
-      std::ofstream outputFile(argv[3]);
-      if (!outputFile.is_open())
-      {
-        delete[] dynamicMatrix;
-        throw std::logic_error("Cannot open an output.\n");
-      }
-      outputFile << Matrix.minSumOfParallelArray(dynamicMatrix, Rows, Cols);
-      delete[] dynamicMatrix;
-      return 0;
     }
-  }
-  catch (const std::invalid_argument & e)
-  {
-    std::cerr << e.what();
-    return 1;
   }
   catch (const std::logic_error & e)
   {

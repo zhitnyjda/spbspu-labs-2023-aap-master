@@ -4,17 +4,11 @@
 
 namespace khoroshkin
 {
-  class matrix
-  {
-  public:
-    void inputArray(std::ifstream & in, int * matrix, size_t sizeMatrix);
-    long long minSumOfParallelArray(int * matrix, int Rows, int Cols);
-  private:
-    int Rows;
-    int Cols;
-    int * matrix;
-    size_t sizeMatrix;
-  };
+  int isNumber(const std::string & str);
+  void fillingRowsAndCols(std::ifstream & in, int & Rows, int & Cols);
+  void fillingOutputFile(std::ofstream & out, int * matrix, int Rows, int Cols);
+  int inputArray(std::ifstream & in, int * matrix, size_t sizeMatrix);
+  long long minSumOfParallelArray(int * matrix, int Rows, int Cols);
 }
 
 #endif
