@@ -1,15 +1,15 @@
 #include "inputArray.hpp"
-#include <iostream>
 #include <algorithm>
 #include <fstream>
 
-void taskaev::inputArray(std::istream & in, int * m, size_t s, size_t toRead)
+size_t taskaev::inputArray(std::istream & in, int * m, size_t s, size_t toRead)
 {
   for (size_t i = 0; i < std::min(toRead, s); ++i)
   {
     if (!(in >> m[i]))
     {
-      throw std::length_error("Error matrix.");
+      return i;
     }
   }
+  return std::min(toRead,s);
 }

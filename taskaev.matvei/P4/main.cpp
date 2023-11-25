@@ -44,18 +44,17 @@ int main(int argc, char** argv)
   else if (num == 2)
   {
     int * matrix = new int [rows * cols];
-    try
+    if((taskaev::inputArray(input, matrix, rows * cols, rows * cols)) == (rows*cols))
     {
-      taskaev::inputArray(input, matrix, rows * cols, rows * cols);
+      resultNum = taskaev::findCntLocMin(matrix, rows, cols);
+      delete [] matrix;
     }
-    catch(...)
+    else
     {
       std::cerr <<"Error matrix cannot read.\n";
       delete [] matrix;
       return 2;
     }
-    resultNum = taskaev::findCntLocMin(matrix, rows, cols);
-    delete [] matrix;
   }
   else
   {

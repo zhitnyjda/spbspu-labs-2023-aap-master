@@ -4,6 +4,6 @@
 
 namespace taskaev
 {
-  void inputArray(std::istream & in, int * m, size_t s, size_t toRead);
+  size_t inputArray(std::istream & in, int * m, size_t s, size_t toRead);
 }
 #endif
