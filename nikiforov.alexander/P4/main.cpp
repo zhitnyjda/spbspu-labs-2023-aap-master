@@ -45,7 +45,6 @@ int main(int argc, const char* argv[])
       return 2;
     }
     Matrix matrix;
-    size_t elementsCount = 0;
 
     if (num == 1)
     {
