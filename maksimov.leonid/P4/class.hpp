@@ -8,22 +8,22 @@ namespace matrix
   class Matrix
   {
   public:
-	void creatStaticMatrix(const std::string &);
-	bool isSquareMatrix();
-	bool matrixConditionCheck(int);
-	void delMatrix();
-	void creatDynamicMatrix(const std::string&);
+    void creatStaticMatrix(const std::string &);
+    bool isSquareMatrix();
+    bool matrixConditionCheck(int);
+    void delMatrix();
+    void creatDynamicMatrix(const std::string&);
 
-	Matrix operator()(const std::string &);
+    Matrix operator()(const std::string &);
 
   private:
-	size_t rows;
-	size_t cols;
+    size_t rows;
+    size_t cols;
 
-	int* matrix;
-	int staticMatrix[10000] = {0};
+    int * matrix;
+    int staticMatrix[10000] = {0};
 
-	std::string fileText;
+    std::string fileText;
   };
 }
 
