@@ -10,27 +10,41 @@ void errorMessagedExit(string error_message);
 
 int main()
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
 
-    int prev_value = 1;
-    int new_value = prev_value;
+    int first_value = 0;
+    std::cin >> first_value;
+
+    int prev_value = first_value;
+    int new_value = first_value;
+    int local_max = first_value;
 
     int sing_change_count = 0;
+    int local_max_count = 0;
 
 
     while (new_value != 0) {
-        if (samge_sing(prev_value, new_value))
-            sing_change_count++;
 
-        prev_value = new_value;
-        std::cin >> new_value;
+        if (!samge_sing(prev_value, new_value))
+            sing_change_count++;
+        
+        if(local_max <= new_value) {
+            if(local_max < new_value) {
+                local_max = new_value;
+                local_max_count = 1;
+            } else {
+                local_max_count++;
+            }   
+        }
 
         if (!std::cin)
             errorMessagedExit("Ошибка ввода");
+        
+        prev_value = new_value;
+        std::cin >> new_value;
     }
 
-    std::cout << "Количество изменений знака: " << sing_change_count;
+    std::cout << "kolichestvo izmeneniy znaka: " << sing_change_count << "\n";
+    std::cout << "kolichestvo lokalnih maximumov: " << local_max_count << "\n";
 
 }
 
