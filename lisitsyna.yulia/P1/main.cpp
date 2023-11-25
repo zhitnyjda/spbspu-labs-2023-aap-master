@@ -2,8 +2,11 @@
 #include "findlocalmax.hpp"
 
 int main() {
-    int value = 0, maxValue = 0;
-    int count = 0, lastvalue = 0, maxcount = 0;
+    int value = 0;
+    int maxValue = 0;
+    int count = 0;
+    int lastvalue = 0;
+    int maxcount = 0;
     using namespace lisitsyna;
     FindLocalMax findLocalMax;
 
