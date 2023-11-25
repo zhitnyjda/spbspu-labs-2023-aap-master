@@ -13,12 +13,10 @@ int main(int argc, char ** argv)
     return 1;
   }
 
+  char * end = nullptr;
   long long num = 0;
-  try
-  {
-    num = std::stoll(argv[1]);
-  }
-  catch (const std::invalid_argument & e)
+  num = std::strtoll(argv[1], &end, 10);
+  if (*end != '\0')
   {
     std::cerr << "Can't parse a value.\n";
     return 1;
