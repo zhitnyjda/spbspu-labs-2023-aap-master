@@ -51,7 +51,7 @@ int main(int argc, char ** argv)
   }
   else
   {
-    int * dynamicMatrix = new int;
+    int * dynamicMatrix = new int[0];
     int Rows, Cols;
     try
     {
