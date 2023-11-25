@@ -27,7 +27,7 @@ void khoroshkin::fillingRowsAndCols(std::ifstream & in, int & Rows, int & Cols)
 
 int khoroshkin::inputArray(std::ifstream & in, int * matrix, int sizeMatrix)
 {
-  for (int i = 0; i < sizeMatrix; ++i)
+  for (int i = 0; i < sizeMatrix; i++)
   {
     if (!(in >> matrix[i]))
     {

@@ -57,11 +57,15 @@ int main(int argc, char ** argv)
     {
       std::ifstream inputFile(argv[2]);
       khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
+      if (Rows != 0 && Cols != 0)
+      {
+        delete[] dynamicMatrix;
+      }
       dynamicMatrix = new int[Rows * Cols];
       int successOrNO = khoroshkin::inputArray(inputFile, dynamicMatrix, Rows * Cols);
       if (successOrNO != Rows*Cols)
       {
-        std::cerr << "Error: was filled only " << successOrNO+1 << " elements";
+        std::cerr << "Error: was filled only " << successOrNO << " elements";
         delete[] dynamicMatrix;
         return 2;
       }
