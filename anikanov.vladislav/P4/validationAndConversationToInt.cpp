@@ -1,27 +1,20 @@
 #include <iostream>
 #include <cmath>
 #include "validationAndConversationToInt.h"
-#include "consts.h"
 
 void check(int argc, char **argv)
 {
   if (argc != 4) {
-    throw std::logic_error(ARG_ERR);
+    throw std::logic_error("1");
   }
-  int num = getInt(std::string(argv[1]));
+  int num;
+  try {
+    num = std::stoi(argv[1]);
+  } catch (std::exception const &ex) {
+    throw std::logic_error("3");
+  }
   if (num != 1 && num != 2) {
-    throw std::logic_error(INVALID_INPUT);
+    throw std::logic_error("2");
   }
-}
 
-int getInt(std::string number)
-{
-  int num = 0;
-  for (unsigned long int i = 0; i < number.size(); ++i) {
-    if (!isdigit(number[i])) {
-      throw std::logic_error(FIRST_ARG_ERR);
-    }
-    num += pow(10, (number.size() - i - 1)) * (number[i] - '0');
-  }
-  return num;
 }

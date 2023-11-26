@@ -5,10 +5,6 @@
 
 void spiralIncrease(int *array, int n, int m);
 
-void inputArray(std::istream &, int *array, int n, int m);
-
-void printArray(std::ostream &, int *array, int n, int m);
-
 void setRight(int &dx, int &dy, int &x, int &y, int &move);
 
 void setTop(int &dx, int &dy, int &x, int &y, int &move);
