@@ -52,7 +52,7 @@ int main(int argc, char ** argv)
     int * arr = nullptr;
     if (number == 1)
     {
-      sobolevsky::Arrays matrix();
+      sobolevsky::Arrays matrix(10000);
       arr = matrix.statArray;
       size_t counter = sobolevsky::sizeMatrix(input, arr, (cols * rows));
       if (counter != (cols*rows))
