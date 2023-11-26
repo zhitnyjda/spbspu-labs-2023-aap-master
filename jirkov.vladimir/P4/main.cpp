@@ -15,12 +15,22 @@ int main(int argc, char ** argv)
   char * end = nullptr;
   size_t num = 0;
   num = std::strtoll(argv[1], &end, 10);
+  int len = strlen(argv[1]);
   if (*end != '\0')
   {
     std::cerr << "Can't parse a value.\n";
     return 1;
   }
-
+  if (end != argv[1] + len)
+  {
+    std::cerr << "It is not a number\n";
+    return 1;
+  }
+  else if (num != 1 && num != 2)
+  {
+    std::cerr << "incorrect number\n";
+    return 1;
+  }
   size_t m = 0, n = 0;
   {
     std::ifstream cin(argv[2]);
@@ -68,6 +78,5 @@ int main(int argc, char ** argv)
       return 2;
     }
   }
-
   return 0;
 }
