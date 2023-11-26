@@ -13,7 +13,7 @@ namespace sobolevsky
     int statArray[10000];
     int * dynArray;
 
-    Arrays();
+    Arrays(size_t size);
     Arrays(size_t rows, size_t cols);
   };
 }
