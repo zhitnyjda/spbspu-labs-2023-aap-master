@@ -8,6 +8,7 @@ int main()
   int add = 25;
   size_t size = 25;
   std::cin >> std::noskipws;
+  char * newarray = nullptr;
   char * array = new char[size]{};
   while ((std::cin >> symbol) && (symbol != '\n'))
   {
@@ -16,14 +17,13 @@ int main()
     {
       try
       {
-        char * newarray = new char[size + add]{};
+        newarray = new char[size + add]{};
         for(size_t i = 0; i < size; i++)
         {
           newarray[i] = array[i];
         }
         delete[] array;
         char * array = newarray;
-        delete[] newarray;
         size += add;
       }
       catch(const std::bad_alloc &e)
