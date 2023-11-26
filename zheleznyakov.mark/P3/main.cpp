@@ -4,18 +4,26 @@
 
 int main()
 {
-  char *str1 = new char[10]{};
-  size_t len1 = zheleznyakov::readLine(str1);
-  char *str2 = new char[10]{};
-  size_t len2 = zheleznyakov::readLine(str2);
-  char *dest = new char[10]{};
-  size_t destSize = zheleznyakov::findNonDuplicateChars(dest, str1, str2, len1, len2);
-  for (size_t i = 0; i < destSize; i++)
+  try
   {
-    std::cout << dest[i];
+    char *str1 = new char[10]{};
+    size_t len1 = zheleznyakov::readLine(str1);
+    char *str2 = new char[10]{};
+    size_t len2 = zheleznyakov::readLine(str2);
+    char *dest = new char[10]{};
+    size_t destSize = zheleznyakov::findNonDuplicateChars(dest, str1, str2, len1, len2);
+    for (size_t i = 0; i < destSize; i++)
+    {
+      std::cout << dest[i];
+    }
+    std::cout << '\n';
+    delete[] str1;
+    delete[] str2;
+    return 0;
   }
-  std::cout << '\n';
-  delete[] str1;
-  delete[] str2;
-  return 0;
+  catch (const std::bad_alloc &e)
+  {
+    std::cerr << e.what() << '\n';
+    return 1;
+  }
 }
