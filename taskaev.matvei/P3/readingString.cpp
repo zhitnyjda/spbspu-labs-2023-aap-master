@@ -12,14 +12,14 @@ char* taskaev::readingString(std::istream& input)
     {
       try
       {
-        char* newString =  formingString(....);
+        char* newString = taskaev::formingString(string, size, newSize);
         delete[] string;
         string = newString;
       }
       catch (const std::exception& e)
       {
         delete[] string;
-        throw;
+        throw std::error_bad("Error forming string.");
       }
     }
   }

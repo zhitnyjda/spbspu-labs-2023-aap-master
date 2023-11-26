@@ -1,11 +1,14 @@
 #include <iostream>
+#include "formingString.hpp"
+#include "readingString.hpp"
+#include "formingString.hpp"
 
 int main()
 {
   char* string = nullptr;
   try
   {
-    string = functionInput(std::cin);
+    string = taskaev::readingString(std::cin);
     if (string[0] == '\0')
     {
       delete[] string;
@@ -17,6 +20,6 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
-  // Тут написать функцию которая обрабатывает строку 
+  std::cout << taskaev::findRplSym(string) << "\n"; 
   delete[] string;
   return 0;
