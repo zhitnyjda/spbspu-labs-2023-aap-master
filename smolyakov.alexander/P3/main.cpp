@@ -4,9 +4,10 @@
 int main()
 {
   const int SIZE_INCREMENT = 10;
-  char * inputString = new char[SIZE_INCREMENT]{};
+  const char * BAD_INPUT_ALLOC = "Could not allocate memory for an input string.\n";
   char currentCharacter = 0;
   size_t read = 0;
+  char * inputString = new char[SIZE_INCREMENT]{};
 
   do
   {
@@ -14,10 +15,19 @@ int main()
     inputString[read++] = currentCharacter;
     if (read % SIZE_INCREMENT == 0)
     {
-      char * tmpInputString = new char[read + SIZE_INCREMENT];
+      try
+      {
+        char * tmpInputString = new char[read + SIZE_INCREMENT];
+      }
+      catch (const strd::bad_alloc & e)
+      {
+	std::cerr << BAD_INPUT_ALLOC;
+	return 1;
+      }
+
       for (size_t i = 0; i < read; i++)
       {
-	tmpInputString[i] = inputString[i];
+     	  tmpInputString[i] = inputString[i];
       }
       delete[] inputString;
       inputString = tmpInputString;
