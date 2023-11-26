@@ -1,4 +1,5 @@
 //DIF-LAT
+#include <cctype>
 #include <iostream>
 #include <iomanip>
 
@@ -72,6 +73,8 @@ bool cinToBuffer(char* buffer, size_t buffSize)
   std::cin >> std::skipws;
   return true;
 }
+
+// Знал бы как использовать хэш-талбицу - было бы проще, ну а пока реализуем за n^2
 
 int main(int argc, char* argv[])
 {
