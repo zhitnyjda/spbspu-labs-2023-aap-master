@@ -1,6 +1,7 @@
 #include "count_saddle.hpp"
 #include <iostream>
 #include <fstream>
+#include <cstring>
 using namespace kovshikov;
 
 int main(int argc, char ** argv)
@@ -12,7 +13,8 @@ int main(int argc, char ** argv)
   }
   char * endOfParcing = nullptr;
   int num = std::strtoll(argv[1], &endOfParcing, 10);
-  if(num == 0 && endOfParcing == argv[1])
+  int lenght = strlen(argv[1]);
+  if(endOfParcing != argv[1] + lenght)
   {
     std::cerr << "It is not a number!\n";
     return 1;
