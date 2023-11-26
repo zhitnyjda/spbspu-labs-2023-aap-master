@@ -5,7 +5,7 @@
 int main(int argc, char ** argv)
 {
   using namespace jirkov;
-
+  using namespace Array;
   if (argc != 4)
   {
     std::cerr << "Wrong input. Enter 4 arguments.\n";
@@ -51,7 +51,7 @@ int main(int argc, char ** argv)
     {
       int * dinamicMatrix = new int[m * n];
       size_t inputElements = 0;
-      inputElements = jirkov::inputArray(cin, dinamicMatrix, m * n, m * n);
+      inputElements = inputArray(cin, dinamicMatrix, m * n, m * n);
       if (inputElements != (m * n))
       {
         std::cerr << "Wrong input. Readed only " << inputElements << " out of " << (m * n) << "\n";
