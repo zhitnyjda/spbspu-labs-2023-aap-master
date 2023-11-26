@@ -2,11 +2,11 @@
 #include <iostream>
 #include <iomanip>
 
-char * sukacheva::inputString(std::istream& in)
+char * sukacheva::inputString(std::istream& in, size_t& read)
 {
   size_t len = 10;
   char* input = new char[len] {};
-  size_t read = 0;
+  read = 0;
   char c = 0;
   in >> std::noskipws;
   while (in.get(c))

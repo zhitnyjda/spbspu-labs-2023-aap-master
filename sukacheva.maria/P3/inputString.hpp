@@ -4,7 +4,7 @@
 
 namespace sukacheva
 {
-  char* inputString(std::istream& in) {};
+  char* inputString(std::istream& in, size_t& read);
 }
 
 #endif
