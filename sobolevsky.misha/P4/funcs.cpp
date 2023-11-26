@@ -30,4 +30,16 @@ namespace sobolevsky
     }
     return true;
   }
+
+  Arrays::Arrays()
+  {
+    n = 0;
+    for (int i=0; i<10000; i++)
+      statArray[i] = 0;
+  }
+
+  Arrays::Arrays(size_t rows, size_ cols)
+  {
+    dynArray = new int[cols * rows];
+  }
 }

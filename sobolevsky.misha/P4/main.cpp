@@ -52,8 +52,8 @@ int main(int argc, char ** argv)
     int * arr = nullptr;
     if (number == 1)
     {
-      int matrix[10000] = {};
-      arr = matrix;
+      sobolevsky::Arrays matrix();
+      arr = matrix.statArray;
       size_t counter = sobolevsky::sizeMatrix(input, arr, (cols * rows));
       if (counter != (cols*rows))
       {
@@ -65,8 +65,8 @@ int main(int argc, char ** argv)
     }
     else
     {
-      int * matrix = new int[cols * rows];
-      arr = matrix;
+      sobolevsky::Arrays matrix(rows, cols);
+      arr = matrix.dynArray;
       size_t counter = sobolevsky::sizeMatrix(input, arr, (cols * rows));
       if (counter != (cols*rows))
       {
