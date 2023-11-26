@@ -23,37 +23,35 @@ int main(int argc, char ** argv)
 
   size_t m = 0, n = 0;
   {
-    std::ifstream input(argv[2]);
-    input >> m;
-    input >> n;
-    if (!input)
+    std::ifstream cin(argv[2]);
+    std::ofstream cout(argv[3]);
+    cin >> m;
+    if (!cin)
     {
       std::cerr << "Incorrect input.\n";
       return 2;
     }
-    std::ofstream output(argv[3]);
     if (num == 1)
     {
       int staticMatrix[10000];
       for (size_t i = 0; i < m * n; i++)
       {
-        input >> staticMatrix[i];
-        if (!input)
+        cin >> staticMatrix[i];
+        if (!cin)
         {
           std::cerr << "Wrong input. Readed only " << i << " out of " << (m * n) << "\n";
           return 2;
         }
       }
       decreaseSpiralElements(staticMatrix, m, n);
-      std::ofstream output(argv[3]);
-      printArray(output, staticMatrix, m, n);
+      printArray(cout, staticMatrix, m, n);
     }
 
     else if (num == 2)
     {
       int * dinamicMatrix = new int[m * n];
       size_t inputElements = 0;
-      inputElements = jirkov::inputArray(input, dinamicMatrix, m * n, m * n);
+      inputElements = jirkov::inputArray(cin, dinamicMatrix, m * n, m * n);
       if (inputElements != (m * n))
       {
         std::cerr << "Wrong input. Readed only " << inputElements << " out of " << (m * n) << "\n";
@@ -61,8 +59,7 @@ int main(int argc, char ** argv)
         return 2;
       }
       decreaseSpiralElements(dinamicMatrix, m, n);
-      std::ofstream output(argv[3]);
-      printArray(output, dinamicMatrix, m,  n);
+      printArray(cout, dinamicMatrix, m,  n);
       delete [] dinamicMatrix;
     }
     else
