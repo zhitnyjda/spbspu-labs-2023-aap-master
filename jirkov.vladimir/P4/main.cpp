@@ -1,7 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include "decreaseSpiralElements.hpp"
 #include "inputArray.hpp"
+
 int main(int argc, char ** argv)
 {
   using namespace jirkov;
