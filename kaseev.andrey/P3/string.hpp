@@ -7,4 +7,5 @@ namespace kaseev
   char* readLine();
   char* interleaveStrings(char* str1, char* str2);
 }
+
 #endif
