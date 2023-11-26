@@ -3,8 +3,8 @@
 
 namespace sadofeva
 {
-	size_t Str::Str_read(char* input) 
-	{
+    size_t Str::Str_read(char* input) 
+    {
         std::cin >> std::noskipws;
         while (std::cin >> c)
         {
@@ -71,4 +71,5 @@ namespace sadofeva
        letters += lenstr_str[mx1];
        return letters;
        delete{] lenstr_arr;
+       }
 }
