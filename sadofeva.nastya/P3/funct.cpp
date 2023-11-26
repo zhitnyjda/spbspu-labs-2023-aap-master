@@ -42,4 +42,33 @@ namespace sadofeva
                     lenstr_str[isThereChar] == str[i];
                 }
 	    }
+       int mx1 = 0;
+       int mx1_2 = -1;
+       int mx2 = 0;
+       int mx2_2 = -1;
+       int mx3 = 0;
+       int mx3_2 = -1;
+       for (int = 0; i < str.size(); i++)
+       {
+           if (lenstr_arr[i] > mx1_2)
+           {
+              mx1_2 = lenstr_arr[i];
+              mx1 = i;
+              if (mx1_2 > mx2_2)
+              {
+                 mx2 = mx1;
+                 mx2_2 = mx1_2;
+                 if (mx2_2 > mx3_2)
+                 {
+                     mx3 = mx2;
+                     mx3_2 = mx2_2;
+                 }
+              }
+           }
+       }
+       letters += lenstr_str[mx3];
+       letters += lenstr_str[mx2];
+       letters += lenstr_str[mx1];
+       return letters;
+       delete{] lenstr_arr;
 }
