@@ -1,8 +1,8 @@
-#include "functions.hpp"
 #include <iostream>
 #include <string>
 #include <iomanip>
 #include <algorithm>
+#include "functions.hpp"
 
 int khoroshkin::inputLine(char * line)
 {
