@@ -16,5 +16,4 @@ void check(int argc, char **argv)
   if (num != 1 && num != 2) {
     throw std::logic_error("2");
   }
-
 }
