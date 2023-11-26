@@ -1,0 +1,37 @@
+#include "lineFuncs.hpp"
+#include <iostream>
+#include <cstddef>
+#include <cstring>
+
+size_t psarev::readLine(char* line)
+{
+  char elem = 0;
+  size_t elemNum = 0;
+  std::cin >> std::noskipws;
+  while (std::cin >> elem) {
+    line[elemNum++] = elem;
+    if (elem == '\n') {
+      line[elemNum - 1] = 0;
+      break;
+    }
+  }
+  std::cin >> std::skipws;
+  return elemNum;
+}
+
+size_t psarev::makeMutUnLine(char* line1, char* line2, size_t len1, size_t len2, char* lineRes)
+{
+  size_t elemNum = 0;
+  for (size_t i = 0; i < len2; i++) {
+    if (std::strchr(line1, line2[i]) == NULL) {
+      lineRes[elemNum++] = line2[i];
+    }
+  }
+
+  for (size_t i = 0; i < len1; i++) {
+    if (std::strchr(line2, line1[i]) == NULL) {
+      lineRes[elemNum++] = line1[i];
+    }
+  }
+  return elemNum;
+}
