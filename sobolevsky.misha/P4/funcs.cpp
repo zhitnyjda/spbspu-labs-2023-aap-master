@@ -38,7 +38,7 @@ namespace sobolevsky
       statArray[i] = 0;
   }
 
-  Arrays::Arrays(size_t rows, size_ cols)
+  Arrays::Arrays(size_t rows, size_t cols)
   {
     dynArray = new int[cols * rows];
   }
