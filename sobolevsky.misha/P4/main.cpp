@@ -54,30 +54,28 @@ int main(int argc, char ** argv)
     {
       sobolevsky::Arrays matrix(10000);
       arr = matrix.statArray;
-      size_t counter = sobolevsky::sizeMatrix(input, arr, (cols * rows));
-      if (counter != (cols*rows))
-      {
-        std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
-        return 2;
-      }
-      (sobolevsky::isTrianglMatrix(arr, rows, cols)) == true ? output << "true\n" : output << "false\n";
-      return 0;
     }
     else
     {
       sobolevsky::Arrays matrix(rows, cols);
       arr = matrix.dynArray;
-      size_t counter = sobolevsky::sizeMatrix(input, arr, (cols * rows));
-      if (counter != (cols*rows))
-      {
-        std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
-        delete[] arr;
-        return 2;
-      }
-      (sobolevsky::isTrianglMatrix(arr, rows, cols)) == true ? output << "true\n" : output << "false\n";
-      delete[] arr;
-      return 0;
     }
+    size_t counter = sobolevsky::sizeMatrix(input, arr, (cols * rows));
+    if (counter != (cols*rows))
+    {
+      std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
+      if (number == 2)
+      {
+        delete[] arr;
+      }
+      return 2;
+    }
+    (sobolevsky::isTrianglMatrix(arr, rows, cols)) == true ? output << "true\n" : output << "false\n";
+    if (number == 2)
+    {
+      delete[] arr;
+    }
+    return 0;
   }
   else
   {
