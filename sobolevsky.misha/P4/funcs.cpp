@@ -33,7 +33,7 @@ namespace sobolevsky
 
   Arrays::Arrays(size_t size)
   {
-    for (int i=0; i<size; i++)
+    for (size_t i=0; i<size; i++)
       statArray[i] = 0;
   }
 
