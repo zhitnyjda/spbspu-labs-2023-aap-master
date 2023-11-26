@@ -1,4 +1,5 @@
 #include "count_saddle.hpp"
+#include "create_matrix.hpp"
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -50,33 +51,20 @@ int main(int argc, char ** argv)
   Saddle saddle;
   if(num == 1)
   {
-    std::ifstream input(argv[2]);
     size_t matrix[rows * cols] = {};
-    for (size_t i = 0; i < rows; ++i)
-    {
-      for (size_t j = 0; j < cols; ++j)
-      {
-        input >> matrix[i * cols + j];
-      }
-    }
+    createMatrix(matrix, argv[2]);
     std::ofstream output(argv[3]);
     output << saddle(rows, cols, matrix);
     return 0;
   }
   {
-    std::ifstream input(argv[2]);
     size_t * matrix = new size_t[rows * cols];
-    for (size_t i = 0; i < rows; ++i)
-    {
-      for (size_t j = 0; j < cols; ++j)
-      {
-        input >> matrix[i * cols + j];
-      }
-    }
+    createMatrix(matrix, argv[2]);
     std::ofstream output(argv[3]);
     output << saddle(rows, cols, matrix);
     delete[] matrix;
     return 0;
   }
 }
+
 

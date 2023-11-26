@@ -1,5 +1,8 @@
+#ifndef COUNTSADDLE_HPP
+#define COUNTSADDLE_HPP
 #include <cstddef>
 #include <limits>
+
 namespace kovshikov
 {
   struct Saddle
@@ -12,3 +15,5 @@ namespace kovshikov
     size_t coordinateMinRowsj;
   };
 }
+
+#endif

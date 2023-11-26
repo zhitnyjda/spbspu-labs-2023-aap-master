@@ -1,4 +1,5 @@
 #include "count_saddle.hpp"
+
 kovshikov::Saddle::Saddle():
   count(0),
   minrows(std::numeric_limits< size_t >::max()),
