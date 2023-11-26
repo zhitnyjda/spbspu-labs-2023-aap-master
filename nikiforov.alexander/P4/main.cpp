@@ -63,10 +63,12 @@ int main(int argc, const char* argv[])
       {
         std::cerr << "Mismatch of dimension and values!\n";
         delete[] dynamicArr;
+        dynamicArr = nullptr;
         return 2;
       }
       matrix.spiralMatrix(output, dynamicArr, rows, cols);
       delete[] dynamicArr;
+      dynamicArr = nullptr;
     }
   }
   catch (const std::invalid_argument& e)
