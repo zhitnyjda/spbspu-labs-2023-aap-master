@@ -1,15 +1,23 @@
+#ifndef BUFFER_HPP
+#define BUFFER_HPP
+
+#include <cstddef>
 namespace miheev
 {
   class Buffer
   {
   public:
-    Buffer(size_t size);
+    Buffer(const size_t size);
     void clean();
     size_t getSize();
     char operator[](size_t index);
+    bool fillFromCin();
+    void print();
 
   private:
     char* buff_;
     size_t size_;
-  }
+  };
 }
+
+#endif

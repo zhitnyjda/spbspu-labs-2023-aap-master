@@ -1,21 +1,32 @@
 #include "str.hpp"
+#include <iostream>
 
 miheev::String::String()
 {
   size_ = 0;
-  string_ = new char*[0];
+  string_ = new char[0];
+  indexOfFirstFree_ = 0;
 }
 
-void miheev::String::expand(size_t size);
+void miheev::String::expand(size_t size)
 {
-  size_t sizeExpanded = size_ + size;  
-  char* temp = new char[sizeExpanded];
+  char* temp = new char[size_ + size]{};
   for (size_t i = 0; i < size_; i++)
   {
     temp[i] = string_[i];
   }
   string_ = temp;
+  size_ += size;
   temp = nullptr;
+}
+
+void miheev::String::print()
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    std::cout << string_[i];
+  }
+  std::cout << '\n';
 }
 
 void miheev::String::fillFromBuff(miheev::Buffer buff)

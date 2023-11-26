@@ -1,4 +1,6 @@
 //DIF-LAT
+#include "str.hpp"
+#include "buffer.hpp"
 #include <cctype>
 #include <iostream>
 #include <iomanip>
@@ -78,25 +80,19 @@ bool cinToBuffer(char* buffer, size_t buffSize)
 
 int main(int argc, char* argv[])
 {
+  using namespace miheev;
   const size_t BUFF_SIZE = 5;
-  char buffer[BUFF_SIZE] = {0};
-  size_t strSize = BUFF_SIZE;
-  char* str = new char[strSize]{};
-  size_t strIndex = 0;
+  Buffer buffer(BUFF_SIZE);
+  String str;
 
   bool isEnd = false;
   while(!isEnd)
   {
-    cleanBuffer(buffer, BUFF_SIZE);
-    isEnd = cinToBuffer(buffer, BUFF_SIZE);
-    std::cout << "buffer is ";
-    printArr(buffer, BUFF_SIZE);
-    strIndex = copyBufferToString(buffer, BUFF_SIZE, strIndex, str, strSize);
-    std::cout << "strIndex = " << strIndex << '\n';
-    std::cout << "string is ";
-    printArr(str, strSize);
+    buffer.clean();
+    isEnd = buffer.fillFromCin();
+    str.fillFromBuff(buffer);
   }
-  
+  str.print();
 
   return 0;
 }
