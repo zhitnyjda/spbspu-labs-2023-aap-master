@@ -2,11 +2,18 @@
 #include <fstream>
 #include <iostream>
 
-likhachev::Matrix::Matrix(int mCols, int mRows)
+likhachev::Matrix::Matrix(char type, int mCols, int mRows)
 {
   cols = mCols;
   rows = mRows;
-  values = new int[cols * rows];
+
+  if (type == '1') {
+    int array[10000] = { 0 };
+    values = array;
+  } else  if (type == '2') {
+    int * array = new int[cols * rows];
+    values = array;
+  }
 }
 
 void likhachev::Matrix::read(std::string fileName)
@@ -44,9 +51,9 @@ int likhachev::countNonRepeatColumns(Matrix matrix)
   int * values = matrix.getValues();
   int totalCount = cols;
 
-  for(int i = 0; i < rows; i++) {
-    for(int j = 0; j < cols - 1; j++) {
-      if(values[cols * j + i] == values[cols * (j + 1) + i]) {
+  for( int i = 0; i < rows; i++) {
+    for (int j = 0; j < cols - 1; j++) {
+      if (values[cols * j + i] == values[cols * (j + 1) + i]) {
         totalCount--;
         break;
       }

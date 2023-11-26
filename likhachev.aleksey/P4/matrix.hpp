@@ -5,7 +5,7 @@ namespace likhachev
 {
   struct Matrix {
   public:
-    Matrix(int mCols, int mRows);
+    Matrix(char type, int mCols, int mRows);
     void read(std::string);
     int getCols() const;
     int getRows() const;
