@@ -17,20 +17,19 @@ int main()
     {
       try
       {
-        char * tmpInputString = new char[read + SIZE_INCREMENT];
+	char * tmpInputString = new char[read + SIZE_INCREMENT]{};
+        for (size_t i = 0; i < read; i++)
+        {
+     	  tmpInputString[i] = inputString[i];
+        }
+        delete[] inputString;
+        inputString = tmpInputString;
       }
-      catch (const strd::bad_alloc & e)
+      catch (const std::bad_alloc & e)
       {
 	std::cerr << BAD_INPUT_ALLOC;
 	return 1;
       }
-
-      for (size_t i = 0; i < read; i++)
-      {
-     	  tmpInputString[i] = inputString[i];
-      }
-      delete[] inputString;
-      inputString = tmpInputString;
     }
   }
   while (currentCharacter != '\n');
