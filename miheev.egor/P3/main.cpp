@@ -11,17 +11,15 @@ void printArr(char* arr, size_t size)
   std::cout << '\n';
 }
 
-size_t copyBufferToString(char* buffer, size_t buffSize, size_t startIndex, char* str, size_t strSize)
+void cleanBuffer(char* buffer, size_t buffSize)
 {
-  // returns index of the first free cell
-  size_t indexOfLastFree = startIndex;
-  while (indexOfLastFree < startIndex + buffSize)
+  for (size_t i = 0; i < buffSize; i++)
   {
-    str[indexOfLastFree] = buffer[indexOfLastFree - startIndex];
-    indexOfLastFree++;
+    buffer[i] = 0;
   }
-  return indexOfLastFree;
 }
+
+size_t copyBufferToString(char* buffer, size_t buffSize, size_t startIndex, char* str, size_t strSize);
 
 void extendString(char* str, size_t strSize, size_t buffSize)
 {
@@ -32,14 +30,31 @@ void extendString(char* str, size_t strSize, size_t buffSize)
   temp = nullptr;
 }
 
+size_t copyBufferToString(char* buffer, size_t buffSize, size_t startIndex, char* str, size_t strSize)
+{
+  // returns index of the first free cell
+  if (startIndex + buffSize > strSize)
+  {
+    extendString(str, strSize, buffSize);
+  }
+  size_t indexOfLastFree = startIndex;
+  while (indexOfLastFree < startIndex + buffSize)
+  {
+    str[indexOfLastFree] = buffer[indexOfLastFree - startIndex];
+    indexOfLastFree++;
+  }
+  return indexOfLastFree;
+}
+
 bool cinToBuffer(char* buffer, size_t buffSize)
 {
+  printArr(buffer, buffSize);
   std::cin >> std::noskipws;
   size_t buffIndex = 0;
   char c = 0;
   while (std::cin >> c)
   {
-    std::cout << "buffIndex = " << buffIndex << '\n';
+    std::cout << "c = " << c << '\n';
     buffer[buffIndex++] = c;
     if (c == '\n')
     {
@@ -48,11 +63,11 @@ bool cinToBuffer(char* buffer, size_t buffSize)
     }
     if(buffIndex >= buffSize)
     {
+      printArr(buffer, buffSize);
       return false;
     }
   }
   std::cin >> std::skipws;
-  std::cout << buffIndex << " ?= " << buffSize << '\n';
   return true;
 }
 
@@ -60,11 +75,24 @@ int main(int argc, char* argv[])
 {
   const size_t BUFF_SIZE = 5;
   char buffer[BUFF_SIZE] = {0};
-  char* str = new char[BUFF_SIZE]{};
+  size_t strSize = BUFF_SIZE;
+  char* str = new char[strSize]{};
   size_t strIndex = 0;
 
-  std::cout << cinToBuffer(buffer, BUFF_SIZE) << '\n';
-  printArr(buffer, BUFF_SIZE);
+  bool isEnd = false;
+  while(!isEnd)
+  {
+    cleanBuffer(buffer, BUFF_SIZE);
+    std::cout << "works fine\n";
+    isEnd = cinToBuffer(buffer, BUFF_SIZE);
+    std::cout << "buffer is ";
+    printArr(buffer, BUFF_SIZE);
+    strIndex = copyBufferToString(buffer, BUFF_SIZE, strIndex, str, strSize);
+    std::cout << "string is ";
+    printArr(str, strSize);
+  }
+  
 
-  return 1;
+  return 0;
 }
+
