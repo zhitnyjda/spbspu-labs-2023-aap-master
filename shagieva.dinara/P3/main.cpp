@@ -5,22 +5,30 @@
 int main()
 {
   char * input = new char[10]{};
+  size_t add = 10;
   char cur = 0;
   size_t read = 0;
 
   std::cin >> std::noskipws;
-  while ((std::cin >> cur) && (read < 9))
+  do
   {
+    std::cin >> cur;
     input[read++] = cur;
-    if (cur == '\n')
+    if (read % add == 0)
     {
-      input[read - 1] = 0;
-      break;
+      char * newInput = new char[read + add];
+      for (size_t i = 0; i < read; i++)
+      {
+        newInput[i] = input[i];
+      }
+      delete [] input;
+      input = newInput;
     }
   }
+  while (cur != '\n');
   std::cin >> std::skipws;
 
-  char * changedStr = new char[10]{};
+  char * changedStr = new char[read]{};
   shagieva::uppLow(input, changedStr, read);
 
   for (size_t i = 0; i < read; i++)

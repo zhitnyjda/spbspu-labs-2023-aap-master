@@ -3,7 +3,7 @@
 #include <cctype>
 #include <iostream>
 
-void shagieva::uppLow(char * input, char * changedStr, size_t read)
+void shagieva::uppLow(const char * input, char * changedStr, const size_t read)
 {
   char cur = 0;
   for (size_t i = 0; i < read; i++)
