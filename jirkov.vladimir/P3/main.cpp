@@ -1,15 +1,15 @@
 #include <iostream>
 #include <iomanip>
+#include "checkChars.hpp"
 int main()
 {
-  size_t read = 0;
-  char sym = 0;
-  size_t size
   std::cin >> std::noskipws;
+  size_t read = 0, size = 0;
+  char Char = 0;
   char * array = new char[size]{};
-  while ((std::cin >> sym) && (sym != '\n'))
+  while ((std::cin >> Char) && (Char != '\n'))
   {
-    array[read++] = sym;
+    array[read++] = Char;
     if (read == size)
     {
       try
