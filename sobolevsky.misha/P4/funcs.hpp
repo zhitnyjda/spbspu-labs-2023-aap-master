@@ -14,7 +14,7 @@ namespace sobolevsky
     int * dynArray;
 
     Arrays();
-    Arrays(size_t rows, size_ cols);
+    Arrays(size_t rows, size_t cols);
   };
 }
 
