@@ -11,7 +11,6 @@ public:
   size_t size2;
   char *dinstr;
   size_t counterCurrent;
-/* конструктор выделение массива в памяти и его инициализация*/
   DinString(size_t n, char c)
   {
     this->dinstr = new char[n + 1];
@@ -25,10 +24,9 @@ public:
   }  
   ~DinString()
   {
-    //std::cout << "Destrudtor!!!";
     delete[] dinstr;
   }
-  /*Выделение массива вдвое большего*/
+
   void dinResize()
   {
     char* tmp = new char[size + addArr];
@@ -41,7 +39,7 @@ public:
     delete [] dinstr;
     dinstr = newInput;
   }
-  /*дополнение массива*/
+
   void dinAppend(char elem)
   {
     dinstr[counterCurrent++] = elem;
@@ -55,7 +53,6 @@ public:
     std::cout << std::endl;  
   }
 };
-//========================================================
  
 int main()
 {
@@ -69,32 +66,25 @@ int main()
   {
     if (s1.counterCurrent < s1.size)
     {
-        //std::cout <<  "element=" << element << std::endl;
         s1.dinAppend(element);
     }
     else
     {
-        //std::cout <<  "Дополнение массива" << std::endl;
         s1.dinResize();
-        //std::cout <<  "Заполнение массива" << std::endl;
         s1.dinAppend(element);
     }
   }
   s1.dinOutput();
  
-  std::cout <<  "Считываем 2-ю строку" << std::endl;
   while ((std::cin >> element) && (element != '\n'))
   {
     if (s2.counterCurrent < s2.size)
     {
-        //std::cout <<  "element=" << element << std::endl;
         s2.dinAppend(element);
     }
     else
     {
-        //std::cout <<  "Дополнение массива" << std::endl;
         s2.dinResize();
-        //std::cout <<  "Заполнение массива" << std::endl;
         s2.dinAppend(element);
     }
   }  
