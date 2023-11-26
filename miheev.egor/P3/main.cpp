@@ -19,28 +19,30 @@ void cleanBuffer(char* buffer, size_t buffSize)
   }
 }
 
-size_t copyBufferToString(char* buffer, size_t buffSize, size_t startIndex, char* str, size_t strSize);
+size_t copyBufferToString(char* buffer, size_t buffSize, size_t startIndex, char* str, size_t& strSize);
 
-void extendString(char* str, size_t strSize, size_t buffSize)
+size_t extendString(char* str, size_t strSize, size_t buffSize)
 {
   size_t sizeExtended = strSize + buffSize;
   char* temp = new char[sizeExtended];
   copyBufferToString(str, strSize, 0, temp, sizeExtended);
   str = temp;
   temp = nullptr;
+  return sizeExtended;
 }
 
-size_t copyBufferToString(char* buffer, size_t buffSize, size_t startIndex, char* str, size_t strSize)
+size_t copyBufferToString(char* buffer, size_t buffSize, size_t startIndex, char* str, size_t& strSize)
 {
   // returns index of the first free cell
   if (startIndex + buffSize > strSize)
   {
-    extendString(str, strSize, buffSize);
+    strSize = extendString(str, strSize, buffSize);
   }
   size_t indexOfLastFree = startIndex;
-  while (indexOfLastFree < startIndex + buffSize)
+  while (indexOfLastFree < startIndex + buffSize && buffer[indexOfLastFree - startIndex])
   {
-    str[indexOfLastFree] = buffer[indexOfLastFree - startIndex];
+    std::cout << buffer[indexOfLastFree - startIndex] << '\n';
+    str[indexOfLastFree] = buffer[indexOfLastFree - startIndex];;
     indexOfLastFree++;
   }
   return indexOfLastFree;
@@ -83,11 +85,11 @@ int main(int argc, char* argv[])
   while(!isEnd)
   {
     cleanBuffer(buffer, BUFF_SIZE);
-    std::cout << "works fine\n";
     isEnd = cinToBuffer(buffer, BUFF_SIZE);
     std::cout << "buffer is ";
     printArr(buffer, BUFF_SIZE);
     strIndex = copyBufferToString(buffer, BUFF_SIZE, strIndex, str, strSize);
+    std::cout << "strIndex = " << strIndex << '\n';
     std::cout << "string is ";
     printArr(str, strSize);
   }
