@@ -6,7 +6,6 @@ int main() {
     int count = 0;
     using namespace lisitsyna;
     FindLocalMax findLocalMax;
-
     try {
         std::cin >> value;
         if (std::cin.fail())
@@ -18,23 +17,20 @@ int main() {
         std::cerr << "Invalid input!";
         return 1;
     }
-
     while (value != 0)
     {
-       count++;
-       try {
+        count++;
+        try {
             std::cin >> value;
             if (std::cin.fail())
             {
                 throw 1;
             }
-
         }
         catch (int ex) {
             std::cerr << "Invalid input!";
             return 1;
         }
-
         if (count == 0)
         {
             std::cerr << "Error output (return code 2)" << std::endl;
