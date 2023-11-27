@@ -1,6 +1,6 @@
+#include "findlocalmax.hpp"
 #include <limits>
 #include <stdexcept>
-#include "findlocalmax.hpp"
 
 lisitsyna::FindLocalMax::FindLocalMax() :
     countmaxs_(0) ,
