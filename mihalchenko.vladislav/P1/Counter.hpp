@@ -10,10 +10,10 @@ namespace mihalchenko
     void operator()(int number, int seqCounter);
     unsigned int operator()(int seqCounter) const;
   private:
-    int fMinus = 0;
-    int fPlus = 0;
-    int fMaxNum = 0;
-    unsigned int countNumAfterMax;
+    int fMinus_;
+    int fPlus_;
+    int fMaxNum_;
+    unsigned int countNumAfterMax_;
   };
 }
 #endif // !COUNTER_HPP
