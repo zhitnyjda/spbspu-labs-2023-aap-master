@@ -1,7 +1,7 @@
-#include "cntLocMax.hpp"
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include "cntLocMax.hpp"
 
 int main(int argc, char** argv)
 {
