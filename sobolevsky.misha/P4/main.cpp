@@ -60,7 +60,8 @@ int main(int argc, char ** argv)
       sobolevsky::Arrays matrix(rows, cols);
       arr = matrix.dynArray;
     }
-    size_t counter = sobolevsky::sizeMatrix(input, arr, (cols * rows));
+    size_t counter = 0;
+    counter = sobolevsky::sizeMatrix(input, arr, (cols * rows), counter);
     if (counter != (cols*rows))
     {
       std::cerr << "Размер матрицы и кол-во чисел отличаются\n";

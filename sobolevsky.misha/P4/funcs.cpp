@@ -3,9 +3,8 @@
 
 namespace sobolevsky
 {
-  size_t sizeMatrix(std::istream & in, int * matrix, size_t s)
+  size_t sizeMatrix(std::istream & in, int * matrix, size_t s, size_t counter)
   {
-    size_t counter = 0;
     for (size_t i = 0; i < s; ++i)
     {
       if (in >> matrix[i])
@@ -29,16 +28,5 @@ namespace sobolevsky
       }
     }
     return true;
-  }
-
-  Arrays::Arrays(size_t size)
-  {
-    for (size_t i=0; i<size; i++)
-      statArray[i] = 0;
-  }
-
-  Arrays::Arrays(size_t rows, size_t cols)
-  {
-    dynArray = new int[cols * rows];
   }
 }
