@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <cstring>
 
-size_t psarev::readLine(char*& line)
+size_t psarev::makeLine(char*& line)
 {
   char elem = 0;
   size_t elemNum = 0;
@@ -38,9 +38,9 @@ size_t psarev::makeMutUnLine(char* line1, char* line2, size_t len1, size_t len2,
     }
   }
 
-  for (size_t i = 0; i < len1; i++) {
-    if (std::strchr(line2, line1[i]) == NULL) {
-      lineRes[elemNum++] = line1[i];
+  for (size_t j = 0; j < len1; j++) {
+    if (std::strchr(line2, line1[j]) == NULL) {
+      lineRes[elemNum++] = line1[j];
     }
   }
   return elemNum;
