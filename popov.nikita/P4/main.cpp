@@ -41,12 +41,12 @@ int main(int argc, char ** argv)
     int value = 0;
     for (int i = 1; i <= rows * cols; ++i)
     {
-      input >> value;
       if (input.peek() == EOF)
       {
         std::cerr << "not enough data\n";
         return 2;
       }
+      input >> value;
       a[i] = value;
     }
     maxsSumStat(a, &rows, &cols, &sum, &max);
