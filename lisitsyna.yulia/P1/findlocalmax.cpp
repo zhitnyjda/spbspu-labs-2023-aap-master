@@ -3,7 +3,8 @@
 #include "findlocalmax.hpp"
 
 lisitsyna::FindLocalMax::FindLocalMax() :
-    countmaxs_(0) ,maxValue(0)
+    countmaxs_(0) ,
+    maxValue(0)
 {}
 void lisitsyna::FindLocalMax::operator()(int value)
 {
