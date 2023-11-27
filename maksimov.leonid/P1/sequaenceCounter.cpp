@@ -4,7 +4,7 @@
 void number::Sequaence::counterSeq()
 {
   count++;
-  if (count > 2 && secondN < thirdN && secondN > thirdN)
+  if (count > 2 && secondN < firstN && secondN > thirdN)
   {
     counter++;
   }
