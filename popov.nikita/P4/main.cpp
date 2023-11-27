@@ -22,16 +22,16 @@ int main(int argc, char ** argv)
   int sum = 0;
   std::ifstream input(argv[2]);
   input >> rows >> cols;
+  if (input.peek() == EOF)
+  {
+    std::cerr << "not enough information\n";
+    return 2;
+  }
   if ((rows == 0) and (cols == 0))
   {
     std::ofstream out(argv[3]);
     out << max;
     return 0;
-  }
-  if (input.peek() == EOF)
-  {
-    std::cerr << "not enough information\n";
-    return 2;
   }
   if (num == 1)
   {
