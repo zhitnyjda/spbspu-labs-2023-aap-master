@@ -10,10 +10,10 @@ int main() {
         std::cin >> value;
         if (std::cin.fail())
         {
-            throw 1;
+            throw std::invalid_argument("Invalid Input");
         }
     }
-    catch (int ex) {
+    catch (const std::exception&ex) {
         std::cerr << "Invalid input!";
         return 1;
     }
@@ -24,10 +24,10 @@ int main() {
             std::cin >> value;
             if (std::cin.fail())
             {
-                throw 1;
+                throw std::invalid_argument("Invalid Input");
             }
         }
-        catch (int ex) {
+        catch (const std::exception&ex) {
             std::cerr << "Invalid input!";
             return 1;
         }
