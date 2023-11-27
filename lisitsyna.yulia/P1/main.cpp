@@ -6,29 +6,34 @@ int main() {
     size_t count = 0;
     using namespace lisitsyna;
     FindLocalMax findLocalMax;
-    try {
+    try
+    {
         std::cin >> value;
         if (std::cin.fail())
         {
             throw std::invalid_argument("Invalid Input");
         }
     }
-    catch (const std::exception&ex) {
+    catch (const std::exception& ex) 
+    {
         std::cerr << "Invalid input!";
         return 1;
     }
 }
     bool verify = false;
-    while(value != 0) {
-        try {
+    while (value != 0) 
+    {
+        try 
+        {
             std::cin >> value;
             if (std::cin.fail())
             {
-                throw std::invalid_argument("Invalid Input");
+            throw std::invalid_argument("Invalid Input");
             }
-	verify = true;
+            verify = true;
         }
-        catch (const std::exception&ex) {
+        catch (const std::exception& ex)
+        {
             std::cerr << "Invalid input!";
             return 1;
         }
@@ -44,4 +49,3 @@ int main() {
             return 0;
         }
     }
-}
