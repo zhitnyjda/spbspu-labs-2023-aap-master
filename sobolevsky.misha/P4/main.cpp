@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include "funcs.hpp"
+#include "class.hpp"
 
 int main(int argc, char ** argv)
 {
