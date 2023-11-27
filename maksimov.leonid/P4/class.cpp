@@ -47,7 +47,7 @@ void matrix::Matrix::delMatrix()
   delete[] matrix;
 }
 
-matrix::Matrix matrix::Matrix::operator()(const std::string & text)
+matrix::Matrix matrix::Matrix::operator()(const std::string& text)
 {
   matrix::Matrix matrix;
   fileText = text;
@@ -72,7 +72,7 @@ void matrix::Matrix::creatDynamicMatrix(const std::string&)
   }
 }
 
-void matrix::Matrix::creatStaticMatrix(const std::string &)
+void matrix::Matrix::creatStaticMatrix(const std::string&)
 {
   try
   {
