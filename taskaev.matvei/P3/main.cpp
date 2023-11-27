@@ -15,7 +15,7 @@ int main()
       throw std::logic_error("Not string");
     }
   }
-  catch( const std::exception& e)
+  catch(const std::exception& e)
   {
     std::cerr << e.what() << "\n";
     return 1;

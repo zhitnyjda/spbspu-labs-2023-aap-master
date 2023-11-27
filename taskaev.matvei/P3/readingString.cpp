@@ -5,7 +5,7 @@ char* taskaev::readingString(std::istream& input)
 {
   int size = 10;
   int newSize = 0;
-  char* string = new char[size];
+  char* string = new char[size]{};
   char c = 0;
   input >> std::noskipws;
   do
@@ -27,10 +27,9 @@ char* taskaev::readingString(std::istream& input)
     string[newSize++] = c;
   }
   while ((input >> c) && (c != '\n')
-  if (newSize == 0)
+  if (!string[0])
   {
-    string[0] = '\0';
-    return string;
+    throw std::logic_error("The string is remowed, no string.");
   }
   input >> std::skipws;
   return string;

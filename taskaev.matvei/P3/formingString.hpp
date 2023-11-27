@@ -4,7 +4,7 @@
 
 namespace taskaev
 {
-  char* formingString(const char* string, size_t& size, size_t newSize);
+  char* formingString(const char* string, int& size, int newSize);
 }
 #endif
 
