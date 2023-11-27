@@ -2,17 +2,23 @@
 #define SEQCOUNTER_HPP
 
 namespace yartsev {
-  struct SequenceCounter {
+  struct MinInSequenceCounter {
     public:
-      SequenceCounter();
-      void operator()();
-      void updateMinCounter(int);
-      void updateMaxSequence(int);
+      MinInSequenceCounter();
+      int operator()();
+      void operator()(const int);
+    private:
+      int minElement;
+      int minCounter;
+  };
+  struct MaxSequenceCounter {
+    public:
+      MaxSequenceCounter();
+      int operator()();
+      void operator()(const int);
     private:
       int maxSequence;
       int currentSequence;
-      int minElement;
-      int minCounter;
   };
 }
 
