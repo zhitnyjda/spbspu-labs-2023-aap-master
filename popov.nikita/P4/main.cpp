@@ -11,15 +11,27 @@ int main(int argc, char ** argv)
   }
   char * endOfParcing = nullptr;
   int num = std::strtoll(argv[1], &endOfParcing, 10);
+  if (num != 1 and num != 2)
+  {
+    std::cerr << "First parameter is out of range\n";
+    return 1;
+  }
   int rows = 0;
   int cols = 0;
   int max = 0;
   int sum = 0;
   std::ifstream input(argv[2]);
   input >> rows >> cols;
-  if (rows == 0 and cols == 0)
+  if ((rows == 0) and (cols == 0))
   {
+    std::ofstream out(argv[3]);
+    out << max;
     return 0;
+  }
+  if (input.peek() == EOF)
+  {
+    std::cerr << "not enough information\n";
+    return 2;
   }
   if (num == 1)
   {
@@ -52,4 +64,5 @@ int main(int argc, char ** argv)
     out << max;
     delete [] dynarr;
   }
+  return 0;
 }
