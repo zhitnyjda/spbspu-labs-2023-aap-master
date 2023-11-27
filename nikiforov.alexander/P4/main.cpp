@@ -30,9 +30,10 @@ int main(int argc, const char* argv[])
       std::cerr << "Incorrect value of the first argument\n";
       return 1;
     }
+
+    std::ifstream input(argv[2]);
     size_t rows = 0;
     size_t cols = 0;
-    std::ifstream input(argv[2]);
 
     if (!(input >> rows >> cols))
     {
@@ -70,6 +71,11 @@ int main(int argc, const char* argv[])
       delete[] dynamicArr;
       dynamicArr = nullptr;
     }
+  }
+  catch (const std::bad_alloc& e)
+  {
+    std::cerr << "Error: Can not allocate memory!\n";
+    return 1;
   }
   catch (const std::invalid_argument& e)
   {
