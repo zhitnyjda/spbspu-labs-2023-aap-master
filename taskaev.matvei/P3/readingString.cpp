@@ -10,7 +10,7 @@ char * taskaev::readingString(std::istream& input)
   input >> std::noskipws;
   do
   {
-    if ( size == newSize)
+    if (size == newSize)
     {
       try
       {
@@ -21,15 +21,16 @@ char * taskaev::readingString(std::istream& input)
       catch (const std::exception& e)
       {
         delete[] string;
-        throw std::error_bad("Error forming string.");
+        throw std::logic_error("Error forming string.");
       }
     }
     string[newSize++] = c;
   }
-  while ((input >> c) && (c != '\n')
+  while ((input >> c) && (c != '\n'));
   if (!string[0])
   {
     throw std::logic_error("The string is remowed, no string.");
+    delete[] string;
   }
   input >> std::skipws;
   return string;
