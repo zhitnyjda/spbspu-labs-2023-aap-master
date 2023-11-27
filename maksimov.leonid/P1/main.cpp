@@ -9,7 +9,7 @@ int main()
   std::cin.exceptions(std::cin.failbit);
   number::Sequaence seq;
   try
-  { 
+  {
     while ((std::cin >> tempN) && tempN != 0)
     {
       seq(tempN);
