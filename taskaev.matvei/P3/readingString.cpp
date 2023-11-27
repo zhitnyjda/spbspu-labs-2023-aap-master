@@ -1,10 +1,12 @@
 #include "readingString.hpp"
+#include "formingString.hpp"
 
 char* taskaev::readingString(std::istream& input)
 {
-  size_t size = 10;
-  size_t newSize = 0;
+  int size = 10;
+  int newSize = 0;
   char* string = new char[size];
+  char c = 0;
   input >> std::noskipws;
   do
   {
@@ -22,13 +24,14 @@ char* taskaev::readingString(std::istream& input)
         throw std::error_bad("Error forming string.");
       }
     }
+    string[newSize++] = c;
   }
-  while ((input >> string[newSize]) && (string[newSize++] != '\n')
+  while ((input >> c) && (c != '\n')
   if (newSize == 0)
   {
     string[0] = '\0';
     return string;
   }
-  string[newSize - 1] = '\0';
+  input >> std::skipws;
   return string;
 }
