@@ -1,7 +1,7 @@
 #include "readingString.hpp"
 #include "formingString.hpp"
 
-char* taskaev::readingString(std::istream& input)
+char * taskaev::readingString(std::istream& input)
 {
   int size = 10;
   int newSize = 0;

@@ -1,6 +1,6 @@
 #include "findRplSym.hpp"
 
-char* taskaev::findRplSym(char* string)
+char * taskaev::findRplSym(char * string)
 {
   for (size_t i = 0; string[i] != '\0' ; i++)
   {

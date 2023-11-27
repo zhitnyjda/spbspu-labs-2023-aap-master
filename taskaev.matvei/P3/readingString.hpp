@@ -4,5 +4,6 @@
 
 namespace taskaev
 {
-  char* readingString(std::istream& input);
+  char * readingString(std::istream& input);
 }
+#endif

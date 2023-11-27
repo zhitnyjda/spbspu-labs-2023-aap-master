@@ -4,6 +4,6 @@
 
 namespace taskaev
 {
-  char* findRplSym(char* string);
+  char * findRplSym(char * string);
 }
 #endif

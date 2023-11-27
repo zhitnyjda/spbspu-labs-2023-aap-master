@@ -1,11 +1,11 @@
 #include <iostream>
 #include "formingString.hpp"
 #include "readingString.hpp"
-#include "formingString.hpp"
+#include "findRplSym.hpp"
 
 int main()
 {
-  char* string = nullptr;
+  char * string = nullptr;
   try
   {
     string = taskaev::readingString(std::cin);
@@ -16,6 +16,10 @@ int main()
     delete [] string;
     return 1;
   }
-  std::cout << taskaev::findRplSym(string) << "\n"; 
+  char * answerString = nullptr;
+  answerString = taskaev::findRplSym(string);
+  std::cout << answerString << "\n";
   delete[] string;
+  delete[] answerString;
   return 0;
+}
