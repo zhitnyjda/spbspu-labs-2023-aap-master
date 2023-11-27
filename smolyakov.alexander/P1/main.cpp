@@ -1,8 +1,6 @@
 #include <iostream>
-
-bool testSet(const int * const values);
-bool anyValue(const bool * const values);
-void clearArray(int * const values);
+#include <limits>
+#include <stdexcept>
 
 struct SequenceCounter
 {
@@ -19,6 +17,17 @@ public:
 
   void operator()(int v)
   {
+    const size_t maxCount = std::numeric_limits< size_t >::max();
+    if (elementsCount_ == maxCount)
+    {
+      throw new std::logic_error("The sequence is too long.");
+    }
+
+    if (v == 0)
+    {
+      return;
+    }
+
     elementsCount_++;
     n3_ = n2_;
     n2_ = n1_;
@@ -70,9 +79,13 @@ int main()
       std::cerr << "Could not read a number.\n";
       return 1;
     }
-    if (number != 0)
+    try
     {
       sequenceCounter(number);
+    }
+    catch (const std::logic_error & e)
+    {
+      std::cerr << "Could not read a number. Details:\n" << e.what();
     }
   }
   while (number != 0);
@@ -85,40 +98,4 @@ int main()
 
   std::cout << sequenceCounter.getPythagoreanTriplesCount() << '\n';
   return 0;
-}
-
-bool testSet(const int * const values)
-{
-  int squares[3];
-  for (int i = 0; i < 3; i++)
-  {
-    squares[i] = values[i] * values[i];
-  }
-
-  bool conditions[3];
-  conditions[0] = (squares[0] == squares[1] + squares[2]);
-  conditions[1] = (squares[1] == squares[0] + squares[2]);
-  conditions[2] = (squares[2] == squares[0] + squares[1]);
-  return anyValue(conditions);
-}
-
-bool anyValue(const bool * const values)
-{
-  bool flag = false;
-  const int arrayLength = 3;
-  for (int i = 0; i < arrayLength; i++)
-  {
-    flag = (values[i] || flag);
-  }
-  return flag;
-}
-
-void clearArray(int * const values)
-{
-  const int arrayLength = 3;
-  for (int i = 0; i < arrayLength; i++)
-  {
-    values[i] = 0;
-  }
-  return;
 }
