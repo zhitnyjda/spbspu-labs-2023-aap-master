@@ -11,7 +11,7 @@ void proselkov::AftMax::operator()(int number)
   const size_t maxSize = std::numeric_limits< size_t >::max();
   if (aftMax_ == maxSize)
   {
-    throw std::logic_error("Sequence is too long.");
+    throw std::logic_error("Sequence is too long.\n");
   }
   if (number > max_number)
   {
