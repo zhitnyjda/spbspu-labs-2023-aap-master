@@ -33,11 +33,6 @@ int main(int argc, char ** argv)
     out << max;
     return 0;
   }
-  if (rows != 0 and cols == 0)
-  {
-    std::cerr << "not enough data";
-    return 2;
-  }
   if (num == 1)
   {
     using namespace popov;
