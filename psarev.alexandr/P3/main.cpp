@@ -14,6 +14,7 @@ int main()
 
     char* lineRes = new char[10] {};
     size_t resMarker = psarev::makeMutUnLine(line1, line2, len1, len2, lineRes);
+
     delete[] line1;
     delete[] line2;
 
@@ -27,7 +28,7 @@ int main()
   }
   catch (const std::bad_alloc& e)
   {
-    std::cerr << "Error: Can not allocate memory!\n";
+    std::cerr << "Error: Cannot allocate memory!\n";
     return 1;
   }
 }
