@@ -9,15 +9,11 @@ int main()
   try
   {
     string = taskaev::readingString(std::cin);
-    if (string[0] == '\0')
-    {
-      delete[] string;
-      throw std::logic_error("Not string");
-    }
   }
   catch(const std::exception& e)
   {
     std::cerr << e.what() << "\n";
+    delete [] string;
     return 1;
   }
   std::cout << taskaev::findRplSym(string) << "\n"; 
