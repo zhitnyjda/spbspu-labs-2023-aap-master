@@ -1,5 +1,6 @@
 #include "cntLocMax.hpp"
 #include <iostream>
+#include <cstring>
 
 long long doroshenko::readingArguments(char** argv)
 {
