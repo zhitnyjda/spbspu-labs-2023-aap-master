@@ -13,7 +13,7 @@ size_t nikiforov::Matrix::inputMatrix(std::ifstream& in, int* ArrMatrix, size_t 
   {
     if (!(in >> ArrMatrix[i]))
     {
-      throw std::invalid_argument("Invalid argument");
+      return elemetscount;
     }
     elemetscount++;
   }
