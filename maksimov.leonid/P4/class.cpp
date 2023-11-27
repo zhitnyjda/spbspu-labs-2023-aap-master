@@ -20,7 +20,7 @@ bool matrix::Matrix::matrixConditionCheck(const int flag)
         if (staticMatrix[(i * rows) + j] == 0)
         {
           count++;
-	}
+        }
         count_zero++;
       }
     }
