@@ -43,10 +43,15 @@ int main(int argc, char ** argv)
     using namespace popov;
     maxSumStat maxsSumStat;
     int a[10000] = {0};
+    int value = 0;
     for (int i = 1; i <= rows * cols; ++i)
     {
-      int value = 0;
       input >> value;
+      if (input.peek() == EOF)
+      {
+        std::cerr << "not enough data\n";
+        return 2;
+      }
       a[i] = value;
     }
     maxsSumStat(a, &rows, &cols, &sum, &max);
