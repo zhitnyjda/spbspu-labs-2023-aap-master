@@ -1,7 +1,6 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
 #include "CreateMatrix.hpp"
+#include <iostream>
+#include <string>
 
 using namespace nikiforov;
 

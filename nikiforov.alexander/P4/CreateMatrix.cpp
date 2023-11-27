@@ -1,6 +1,5 @@
-#include <iostream>
-#include <iomanip>
 #include "CreateMatrix.hpp"
+#include <iostream>
 
 nikiforov::Matrix::Matrix() {
   count = 1;
@@ -61,7 +60,7 @@ void nikiforov::Matrix::spiralMatrix(std::ofstream& out, int* ArrMatrix, size_t 
   {
     for (size_t j = 0; j < cols; j++)
     {
-      out << std::setw(4) << ArrMatrix[i * rows + j];
+      out << ArrMatrix[i * rows + j];
     }
   }
 }
