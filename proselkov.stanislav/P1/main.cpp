@@ -1,6 +1,5 @@
 #include <iostream>
 #include "AftMax.hpp"
-#include <stdexcept>
 
 int main()
 {
