@@ -18,10 +18,10 @@ bool matrix::Matrix::matrixConditionCheck(const int flag)
       for (int j = 0; j < i; j++)
       {
         if (staticMatrix[(i * rows) + j] == 0)
-	{
-	  count++;
+        {
+          count++;
 	}
-	count_zero++;
+        count_zero++;
       }
     }
   }
@@ -31,10 +31,10 @@ bool matrix::Matrix::matrixConditionCheck(const int flag)
     {
       for (int j = 0; j < i; j++)
       {
-	if (matrix[(i * rows) + j] == 0)
-	{
-	  count++;
-	}
+        if (matrix[(i * rows) + j] == 0)
+        {
+          count++;
+        }
         count_zero++;
       }
     }
