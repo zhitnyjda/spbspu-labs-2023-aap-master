@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdexcept>
-#include "seqCounter.hpp"
+#include "minInSequence.hpp"
+#include "sequenceCounter.hpp"
 
 int main ()
 {
