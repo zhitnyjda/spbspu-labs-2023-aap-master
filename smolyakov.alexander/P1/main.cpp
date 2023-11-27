@@ -4,56 +4,86 @@ bool testSet(const int * const values);
 bool anyValue(const bool * const values);
 void clearArray(int * const values);
 
-bool tryInputArrayElement(int * const values)
+struct SequenceCounter
 {
-  std::cin >> values[0];
-  if (!std::cin)
+public:
+  int getPythagoreanTriplesCount() const
   {
-    std::cerr << "Wrong input format.\n";
-    return false;
+    return triples_;
   }
-  return true;
-}
+
+  size_t getLength() const
+  {
+    return elementsCount_;
+  }
+
+  void operator()(int v)
+  {
+    elementsCount_++;
+    n3_ = n2_;
+    n2_ = n1_;
+    n1_ = v;
+    if (validate() && elementsCount_ > 2)
+    {
+      clear();
+      triples_++;
+    }
+  }
+
+private:
+  size_t elementsCount_;
+  int triples_;
+  int n1_;
+  int n2_;
+  int n3_;
+
+  void clear()
+  {
+    n1_ = 0;
+    n2_ = 0;
+    n3_ = 0;
+  }
+
+  bool validate() const
+  {
+    int squares[3];
+    squares[0] = n1_ * n1_;
+    squares[1] = n2_ * n2_;
+    squares[2] = n3_ * n3_;
+    bool c1 = (squares[0] == squares[1] + squares[2]);
+    bool c2 = (squares[1] == squares[0] + squares[2]);
+    bool c3 = (squares[2] == squares[0] + squares[1]);
+    return c1 || c2 || c3;
+  }
+};
 
 int main()
 {
-  int numbers[3];
-  int combinations = 0;
-  int elements = 1;
+  SequenceCounter sequenceCounter{};
+  int number;
 
-  if (!tryInputArrayElement(numbers))
+  do
   {
-    return 1;
-  }
-
-  while (numbers[0] != 0)
-  {
-    if (elements >= 3)
+    std::cin >> number;
+    if (!std::cin)
     {
-      if (testSet(numbers))
-      {
-        combinations++;
-        clearArray(numbers);
-      }
-    }
-
-    numbers[2] = numbers[1];
-    numbers[1] = numbers[0];
-
-    if (!tryInputArrayElement(numbers))
-    {
+      std::cerr << "Could not read a number.\n";
       return 1;
     }
-    elements++;
+    if (number != 0)
+    {
+      sequenceCounter(number);
+    }
   }
+  while (number != 0);
 
-  if (elements < 1)
+  if (sequenceCounter.getLength() < 1)
   {
-    std::cerr << "The sequence is too short (has to be at least 3 numbers long).\n";
+    std::cerr << "The sequence is too short.\n";
     return 2;
   }
 
-  std::cout << combinations << '\n';
+  std::cout << sequenceCounter.getPythagoreanTriplesCount() << '\n';
   return 0;
 }
 
