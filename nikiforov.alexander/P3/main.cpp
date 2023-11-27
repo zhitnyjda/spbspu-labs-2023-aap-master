@@ -2,7 +2,7 @@
 #include <cstring>
 #include <iomanip>
 #include "Func.hpp"
-
+  
 using namespace nikiforov;
 int main()
 {
@@ -17,17 +17,16 @@ int main()
 
   while ((std::cin >> c) && (c != '\n'))
   {
-    if (c != '\n') {
       string.AddElem(str1, size, read);
       str1[read++] = c;
-    }
   }
 
   size_t len1 = read;
   size = 0;
   read = 0;
 
-  while ((std::cin >> c) && (c != '\n')) {
+  while ((std::cin >> c) && (c != '\n')) 
+  {
     string.AddElem(str2, size, read);
     str2[read++] = c;
   }
