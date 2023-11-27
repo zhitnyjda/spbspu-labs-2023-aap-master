@@ -28,10 +28,13 @@ int main()
 
   while (numbers[0] != 0)
   {
-    if (testSet(numbers))
+    if (elements >= 3)
     {
-      combinations++;
-      clearArray(numbers);
+      if (testSet(numbers))
+      {
+        combinations++;
+        clearArray(numbers);
+      }
     }
 
     numbers[2] = numbers[1];
