@@ -1,29 +1,31 @@
 #include <iostream>
 #include <execution>
-#include "sequaence_counter.cpp"
+#include <string>
+#include "sequaenceCounter.hpp"
 
 int main()
 {
-  int a = 0;
-  int b = 0;
-  int c = 1;
-  int count = 0;
-  int counter = 0;
+  int tempN;
   std::cin.exceptions(std::cin.failbit);
-  while (c != 0)
-  {
-    try
+  number::Sequaence seq;
+  try
+  { 
+    while ((std::cin >> tempN) && tempN != 0)
     {
-      std::cin >> c;
-      sequaence_counter(a, b, c, count, counter);
-      a = b;
-      b = c;
+      seq(tempN);
+      seq.counterSeq();
     }
-    catch (const std::exception &)
-    {
-      return 1;
-    }
+    std::cout << seq.answer();
+    return 0;
   }
-  std::cout << counter;
-  return 0;
+  catch (const std::exception&)
+  {
+    std::cerr << "it's not sequaence\n";
+    return 1;
+  }
+  catch (const std::string ex)
+  {
+    std::cerr << ex;
+    return 2;
+  }
 }
