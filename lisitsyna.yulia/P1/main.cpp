@@ -2,8 +2,8 @@
 #include "findlocalmax.hpp"
 
 int main() {
-    int value = 0;
-    int count = 0;
+    size_t value = 0;
+    size_t count = 0;
     using namespace lisitsyna;
     FindLocalMax findLocalMax;
     try {
