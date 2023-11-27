@@ -5,8 +5,8 @@
 
 namespace file
 {
-  std::string readFile(std::ifstream &);
-  void printToFile(std::ofstream &, const std::string&);
+  std::string readFile(std::ifstream&);
+  void printToFile(std::ofstream&, const std::string&);
 }
 
 #endif
