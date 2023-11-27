@@ -44,7 +44,7 @@ int main()
     elements++;
   }
 
-  if (elements < 3)
+  if (elements < 1)
   {
     std::cerr << "The sequence is too short (has to be at least 3 numbers long).\n";
     return 2;
