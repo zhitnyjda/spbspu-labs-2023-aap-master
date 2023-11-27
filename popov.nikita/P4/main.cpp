@@ -36,4 +36,20 @@ int main(int argc, char ** argv)
     std::ofstream out(argv[3]);
     out << max;
   }
+  if (num == 2)
+  {
+    int * dynarr = new int[rows * cols];
+    for (int i = 1; i <= rows * cols; ++i)
+    {
+      int value = 0;
+      input >> value;
+      dynarr[i] = value;
+    }
+    using namespace popov;
+    maxSumStat maxsSumStat;
+    maxsSumStat(dynarr, &rows, &cols, &sum, &max);
+    std::ofstream out(argv[3]);
+    out << max;
+    delete [] dynarr;
+  }
 }
