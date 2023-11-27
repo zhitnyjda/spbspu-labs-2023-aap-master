@@ -10,7 +10,7 @@ void processFixedArray(std::ifstream& inputFile, std::ofstream& outputFile) {
     throw std::runtime_error("Error reading input file.");
   }
 
-  if (rows <= 0 || columns <= 0) {
+  if (rows < 0 || columns < 0) {
     throw std::runtime_error("Invalid dimensions in input file.");
   }
 
