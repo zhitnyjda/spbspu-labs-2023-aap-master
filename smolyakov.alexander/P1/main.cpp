@@ -1,10 +1,10 @@
 #include <iostream>
 
-bool testSet(int values[]);
-bool anyValue(bool values[]);
-void clearArray(int values[]);
+bool testSet(const int * const values);
+bool anyValue(const bool * const values);
+void clearArray(int * const values);
 
-bool tryInputArrayElement(int values[])
+bool tryInputArrayElement(int * const values)
 {
   std::cin >> values[0];
   if (!std::cin)
@@ -54,7 +54,7 @@ int main()
   return 0;
 }
 
-bool testSet(int values[])
+bool testSet(const int * const values)
 {
   int squares[3];
   for (int i = 0; i < 3; i++)
@@ -69,7 +69,7 @@ bool testSet(int values[])
   return anyValue(conditions);
 }
 
-bool anyValue(bool values[])
+bool anyValue(const bool * const values)
 {
   bool flag = false;
   const int arrayLength = 3;
@@ -80,7 +80,7 @@ bool anyValue(bool values[])
   return flag;
 }
 
-void clearArray(int values[])
+void clearArray(int * const values)
 {
   const int arrayLength = 3;
   for (int i = 0; i < arrayLength; i++)
