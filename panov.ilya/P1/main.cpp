@@ -1,37 +1,52 @@
+
 #include <iostream>
+#include <limits.h>
+#include <limits>
 #include <exception>
-#include "nchar.hpp"
-#include "numOfchar.hpp"
+#include "moreThanPrevious.hpp"
+#include "numberOfSignChanges.hpp"
+#include "afterMaximum.hpp"
 
 int main()
 {
-  ranov::NumOfchar numOfchar;
-  panov::Nchar nchar;
-  try
+  panov::NumberOfSignChanges numberOfSignChanges;
+  panov::MoreThanPrevious moreThanPrevious;
+  panov::AfterMaximum afterMaximum;
+  if (!std::cin)
   {
-    std::cin.exceptions(std::istream::failbit);
-    int value = 0;
-    do
+    std::cerr << "Not a sequence.\n";
+    return 1;
+  }
+  size_t value = 0;
+  size_t leight = 0;
+  do
+  {
+    std::cin >> value;
+    numberOfSignChanges(value);
+    moreThanPrevious(value);
+    afterMaximum(value);
+    if (value != 0)
     {
-      std::cin >> value;
-      numOfchar(value);
-      std::cin >> value;
-      nchar(value);
+      const size_t maxSize = std::numeric_limits< size_t >::max();
+      if (leight == maxSize)
+      {
+        std::cerr << "Sequence is too long" << "\n";
+        return 2;
+      }
+      ++leight;
     }
-    while (value != 0);
   }
-  catch (const std::istream::failure & e)
+  while (value != 0);
+  if (std::cin.fail())
   {
-    std::cerr << "OnlyNumberPLS" << "\n";
-    return 1;
-  }
-  catch (const std::logic_error& e)
-  {
-    std::cerr << e.what() << "\n";
+    std::cerr << "Input error" << "\n";
     return 1;
   }
   std::cout << "first\n";
-  std::cout << numOfchar() << "\n";
-  std::cout << "first\n";
-  std::cout << nchar() << "\n";
+  std::cout << numberOfSignChanges() << "\n";
+  std::cout << "second\n";
+  std::cout << moreThanPrevious() << "\n";
+  std::cout << "third\n";
+  std::cout << (afterMaximum()) << "\n";
+  return 0;
 }
