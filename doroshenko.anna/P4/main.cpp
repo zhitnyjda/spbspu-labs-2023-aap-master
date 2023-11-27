@@ -6,19 +6,23 @@
 int main(int argc, char** argv)
 {
   using namespace doroshenko;
+  if (argc != 4)
+  {
+    std::cerr << "Wrong number of arguments\n";
+    return 1;
+  }
   try
   {
-    readingArguments(argc, argv);
+    readingArguments(argv);
   }
-  catch(std::logic_error& firstError)
+  catch (const std::logic_error& firstError)
   {
     std::cerr << firstError.what();
     return 1;
   }
-  Matrix Matrix;
   size_t rows_;
   size_t cols_;
-  long long num = readingArguments(argc, argv);
+  long long num = readingArguments(argv);
   if (num == 1)
   {
     std::ifstream input(argv[2]);
@@ -38,13 +42,10 @@ int main(int argc, char** argv)
       return 0;
     }
     int staticMatrix[10000] = { 0 };
-    try
+    size_t readEl = inputArray(input, staticMatrix, rows_ * cols_);
+    if (readEl != rows_ * cols_)
     {
-      Matrix.inputArray(input, staticMatrix, rows_ * cols_);
-    }
-    catch (std::invalid_argument& secondError)
-    {
-      std::cerr << secondError.what();
+      std::cerr << "Not all elements were read";
       return 2;
     }
     std::ofstream output(argv[3]);
@@ -53,7 +54,7 @@ int main(int argc, char** argv)
       std::cerr << "File not open\n";
       return 2;
     }
-    output << Matrix.findingLocMax(staticMatrix, rows_, cols_);
+    output << findingLocMax(staticMatrix, rows_, cols_);
     return 0;
   }
   else
@@ -75,13 +76,10 @@ int main(int argc, char** argv)
       return 0;
     }
     int* dynMatrix = new int[rows_ * cols_];
-    try
+    size_t readEl = inputArray(input, dynMatrix, rows_ * cols_);
+    if (readEl != rows_ * cols_)
     {
-      Matrix.inputArray(input, dynMatrix, rows_ * cols_);
-    }
-    catch (std::invalid_argument& secondError)
-    {
-      std::cerr << secondError.what();
+      std::cerr << "Not all elements were read";
       delete[] dynMatrix;
       return 2;
     }
@@ -92,7 +90,7 @@ int main(int argc, char** argv)
       delete[] dynMatrix;
       return 2;
     }
-    output << Matrix.findingLocMax(dynMatrix, rows_, cols_);
+    output << findingLocMax(dynMatrix, rows_, cols_);
     delete[] dynMatrix;
     return 0;
   }

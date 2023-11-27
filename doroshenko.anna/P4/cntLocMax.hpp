@@ -4,17 +4,9 @@
 
 namespace doroshenko
 {
-  long long readingArguments(int, char**);
-  struct Matrix
-  {
-  public:
-    void inputArray(std::istream&, int*, size_t);
-    size_t findingLocMax(int*, size_t, size_t);
-  private:
-    size_t rows_;
-    size_t cols_;
-    int* Matrix;
-  };
+  long long readingArguments(char**);
+  size_t inputArray(std::istream&, int*, size_t);
+  size_t findingLocMax(const int*, size_t, size_t);
 }
 
 #endif
