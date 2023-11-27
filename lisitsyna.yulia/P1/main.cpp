@@ -1,7 +1,8 @@
 #include <iostream>
 #include "findlocalmax.hpp"
 
-int main() {
+int main()
+{
     size_t value = 0;
     size_t count = 0;
     using namespace lisitsyna;
@@ -14,16 +15,16 @@ int main() {
             throw std::invalid_argument("Invalid Input");
         }
     }
-    catch (const std::exception& ex) 
+    catch (const std::exception& ex)
     {
         std::cerr << "Invalid input!";
         return 1;
     }
 }
     bool verify = false;
-    while (value != 0) 
+    while (value != 0)
     {
-        try 
+        try
         {
             std::cin >> value;
             if (std::cin.fail())
