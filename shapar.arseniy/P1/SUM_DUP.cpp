@@ -1,6 +1,6 @@
+#include "SUM_DUP.hpp"
 #include <limits>
 #include <stdexcept>
-#include "SUM_DUP.hpp"
 
 shapar::SumdupCounter::SumdupCounter():
   seqLens(0),

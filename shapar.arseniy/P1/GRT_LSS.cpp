@@ -1,7 +1,7 @@
+#include "GRT_LSS.hpp"
 #include <limits>
 #include <iostream>
 #include <stdexcept>
-#include "GRT_LSS.hpp"
 
 shapar::GrtlssCounter::GrtlssCounter():
   seqLens(0),
