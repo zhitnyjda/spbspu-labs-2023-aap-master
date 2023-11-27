@@ -17,21 +17,22 @@ int main() {
         std::cerr << "Invalid input!";
         return 1;
     }
-    while (value != 0)
-    {
-        count++;
+}
+    bool verify = false;
+    while(value != 0) {
         try {
             std::cin >> value;
             if (std::cin.fail())
             {
                 throw std::invalid_argument("Invalid Input");
             }
+	verify = true;
         }
         catch (const std::exception&ex) {
             std::cerr << "Invalid input!";
             return 1;
         }
-        if (count == 0)
+        if (!verify)
         {
             std::cerr << "Error output (return code 2)" << "\n";
             return 2;
