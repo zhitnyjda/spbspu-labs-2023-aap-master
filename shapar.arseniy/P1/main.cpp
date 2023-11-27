@@ -1,15 +1,15 @@
 #include <iostream>
 #include <exception>
 #include <cstddef>
-#include "var2.hpp"
-#include "var1.hpp"
+#include "GRT_LSS.hpp"
+#include "SUM_DUP.hpp"
 
 int main()
 {
   size_t thirdNum = 0;
   using namespace shapar;
-  SequenceCounter sequenceCounter;
-  SequenceCounter_ sequenceCounter_;
+  SumdupCounter sumdupCounter;
+  GrtlssCounter grtlssCounter;
   do
   {
     std::cin >> thirdNum;
@@ -22,8 +22,8 @@ int main()
     {
       try
       {
-        sequenceCounter(thirdNum);
-        sequenceCounter_(thirdNum);
+        sumdupCounter(thirdNum);
+        grtlssCounter(thirdNum);
       }
       catch (const std::logic_error & e)
       {
@@ -49,7 +49,7 @@ int main()
   }
   while (thirdNum != 0);
   std::cout << "SUM_DUM: ";
-  std::cout << sequenceCounter() << "\n";
+  std::cout << sumdupCounter() << "\n";
   std::cout << "GRT_LSS: ";
-  std::cout << sequenceCounter_() << "\n";
+  std::cout << grtlssCounter() << "\n";
 }
