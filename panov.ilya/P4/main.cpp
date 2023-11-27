@@ -1,47 +1,57 @@
-#include "defoult.hpp"
 #include <iostream>
-using namespace panov;
-int main(int args, const char* argv[])
-{
-  try
-  {
-    int task = panov::fillsArguments(args, argv);
-    Matrix matrix;
-    matrix.line = read();
-    matrix.column = read();
-    if (task == 1)
-    {
-      int static_array[10001] = { 0 };
-      matrix.values = static_array;
-      matrix.ArrayThatFills();
-      matrix.printAvgOfNeigbours();
-    }
-    else if (task == 2)
-    {
-      int* dynamic_array = new int[matrix.line * matrix.column];
-      matrix.values = dynamic_array;
-      try
-      {
-        matrix.ArrayThatFills();
-        matrix.printAvgOfNeigbours();
-        delete[] dynamic_array;
-      }
-      catch (std::logic_error const& e)
-      {
-        std::cerr << e.what();
-        delete[] dynamic_array;
-        return 2;
-      }
-    }
-  }
-  catch (std::invalid_argument& e)
-  {
-    std::cerr << e.what();
+#include <fstream>
+#include <string>
+#include "function.hpp"
+
+int main(int argc, char* argv[]) {
+  if (argc != 4) {
+    std::cerr << "Incorrect number of arguments." << std::endl;
     return 1;
   }
-  catch (std::logic_error& e)
-  {
-    std::cerr << e.what();
+
+  int num;
+  try {
+    num = std::stoi(argv[1]);
+  }
+  catch (std::exception&) {
+    std::cerr << "First argument is not a number." << std::endl;
+    return 1;
+  }
+
+  if (num != 1 && num != 2) {
+    std::cerr << "First argument is out of range." << std::endl;
+    return 1;
+  }
+
+  std::ifstream inputFile(argv[2]);
+  if (!inputFile) {
+    std::cerr << "Failed to open input file." << std::endl;
     return 2;
   }
+
+  std::ofstream outputFile(argv[3]);
+  if (!outputFile) {
+    std::cerr << "Failed to open output file." << std::endl;
+    inputFile.close();
+    return 2;
+  }
+
+  try {
+    if (num == 1) {
+      processFixedArray(inputFile, outputFile);
+    }
+    else {
+      processDynamicArray(inputFile, outputFile);
+    }
+  }
+  catch (std::exception& e) {
+    std::cerr << "Error: " << e.what() << std::endl;
+    inputFile.close();
+    outputFile.close();
+    return 2;
+  }
+
+  inputFile.close();
+  outputFile.close();
+  return 0;
 }
