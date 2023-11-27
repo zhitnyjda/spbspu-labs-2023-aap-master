@@ -33,13 +33,13 @@ int main() {
         }
         if (count == 0)
         {
-            std::cerr << "Error output (return code 2)" << std::endl;
+            std::cerr << "Error output (return code 2)" << "\n";
             return 2;
         }
         else
         {
             findLocalMax(value);
-            std::cout << findLocalMax() << std::endl;
+            std::cout << findLocalMax() << "\n";
             return 0;
         }
     }
