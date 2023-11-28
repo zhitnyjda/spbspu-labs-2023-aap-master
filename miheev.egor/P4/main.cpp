@@ -67,6 +67,7 @@ int main(int argc, char* argv[])
       {
         inputToArr(inputFile, darr, rows*cols);
         outputString += getIncreasedMatrixInline(darr, rows, cols);
+        delete[] darr;
       }
       catch(const std::runtime_error& e)
       {
