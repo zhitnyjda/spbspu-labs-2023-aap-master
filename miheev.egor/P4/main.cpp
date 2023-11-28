@@ -50,7 +50,19 @@ int main(int argc, char* argv[])
     {
       arr = new int[rows*cols];
     }
-    inputToArr(inputFile, arr, rows*cols);
+    try
+    {
+      inputToArr(inputFile, arr, rows*cols);
+    }
+    catch (const std::runtime_error& e)
+    {
+      std::cerr << e.what();
+      if (num == 2)
+      {
+        delete[] arr;
+      }
+      return 3;
+    }
     outputString += getIncreasedMatrixInline(arr, rows, cols);
     if (num == 2)
     {
