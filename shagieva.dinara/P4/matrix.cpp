@@ -1,7 +1,7 @@
 #include "matrix.hpp"
 #include <stdexcept>
 
-void shagieva::Matrix::read(std::ifstream & input)
+void shagieva::read(std::ifstream & input)
 {
   for (int i = 0; i < numberOfRows * numberOfColumns; i++)
   {
@@ -14,7 +14,7 @@ void shagieva::Matrix::read(std::ifstream & input)
   }
 }
 
-int shagieva::Matrix::findMaxColumn()
+int shagieva::findMaxColumn()
 {
   int maxColumn = 0;
   int maxSeq = 0;

@@ -31,20 +31,51 @@ int main(int argc, char ** argv)
   std::ifstream input;
   input.open(argv[2]);
 
-  std::ofstream output;
-  output.open(argv[3]);
-
-  using namespace shagieva;
-  Matrix matrix;
-
-  input >> matrix.numberOfRows;
-  input >> matrix.numberOfColumns;
-
   if (!input)
   {
     std::cerr << "Cannot read matrix data";
     return 2;
   }
+
+  int numberOfRows = 0;
+  input >> numberOfRows;
+
+  int numberOfColumns = 0;
+  input >> numberOfColumns;
+
+  int * values = 0;
+  int result = 0;
+
+  if (task == 1)
+  {
+    int staticArray[10000] = { 0 };
+    values = staticArray;
+  }
+
+  if (task == 2)
+  {
+    int * dynamicArray = new int[numberOfRows * numberOfColumns];
+    values = dynamicArray;
+  }
+
+  try
+  {
+    read(input);
+  }
+  catch (const std::invalid_argument & e)
+  {
+    std::cerr << e.what() << "\n";
+    if (task == 2)
+    {
+      delete[] dynamicArray
+    }
+    return 2;
+  }
+
+  result = findMaxColumn();
+
+  std::ofstream output;
+  output.open(argv[3]);
 
   if (!output.is_open())
   {
@@ -52,46 +83,12 @@ int main(int argc, char ** argv)
     return 2;
   }
 
-  int result = 0;
-
-  if (task == 1)
-  {
-    int staticArray[10000] = { 0 };
-    matrix.values = staticArray;
-
-    try
-    {
-      matrix.read(input);
-    }
-    catch (const std::invalid_argument & e)
-    {
-      std::cerr << e.what() << "\n";
-      return 2;
-    }
-
-    result = matrix.findMaxColumn();
-    output << result;
-  }
+  output << result;
 
   if (task == 2)
   {
-    int * dynamicArray = new int[matrix.numberOfRows * matrix.numberOfColumns];
-    matrix.values = dynamicArray;
-
-    try
-    {
-      matrix.read(input);
-    }
-    catch (const std::invalid_argument & e)
-    {
-      std::cerr << e.what() << "\n";
-      delete[] dynamicArray;
-      return 2;
-    }
-
-    result = matrix.findMaxColumn();
-    output << result;
     delete[] dynamicArray;
   }
+
   return 0;
 }

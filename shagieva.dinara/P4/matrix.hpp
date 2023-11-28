@@ -4,13 +4,8 @@
 
 namespace shagieva
 {
-  struct Matrix
-  {
-    int numberOfRows;
-    int numberOfColumns;
-    void read(std::ifstream & input);
-    int findMaxColumn();
-    int * values;
-  };
-}
+  void read(std::ifstream & input);
+  int findMaxColumn();
+};
+
 #endif
