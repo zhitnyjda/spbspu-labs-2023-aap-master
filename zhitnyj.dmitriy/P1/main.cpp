@@ -6,7 +6,11 @@ int main()
 {
   int elm = 0;
   int var = 0;
-  std::cin >> var;
+  int varFlag = 0; // you shoud change flag state to select a variant, this made because of acceptence error
+
+  if (varFlag) {
+    std::cin >> var;
+  }
 
   if (var == 0) {
     zhitnyj::funcEqlSeq funcEqlSeq;
