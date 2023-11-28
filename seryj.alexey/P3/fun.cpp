@@ -1,23 +1,23 @@
 #include "fun.hpp"
 #include <iostream>
-char * seryj::changeArray(char * curr_arr, int size)
+char * seryj::changeArray(char* curr_arr, int size)
 {
-  char * pointer = new char[size*2];
-  if(!pointer)
+  char * values = new char[size*2];
+  if(!values)
     throw std::logic_error("Not enough space for array");
   for (int i = 0; i <= size; i++)
   {
-    pointer[i] = curr_arr[i];
+    values[i] = curr_arr[i];
   }
-  return pointer;
+  return values;
 }
-size_t seryj::streql(char* arr, int size)
+unsigned long long seryj::counterOfEqualPairs(char* values, int size)
 {
   int count = 0;
   for (int i = 0; i < size; i++)
     for (int j = i + 1; j < size; j++)
     {
-      count += (arr[i] == arr[j]);
+      count += (values[i] == values[j]);
     }
   return count;
 }

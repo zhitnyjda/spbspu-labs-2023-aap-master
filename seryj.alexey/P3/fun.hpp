@@ -3,6 +3,6 @@
 namespace seryj
 {
   char* changeArray(char*, int);
-  size_t streql(char* arr, int size);
+  unsigned long long counterOfEqualPairs(char* values, int size);
 }
 #endif

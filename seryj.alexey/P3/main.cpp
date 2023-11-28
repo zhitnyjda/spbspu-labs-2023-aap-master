@@ -4,7 +4,7 @@ int main()
 {
   size_t size = 10;
   size_t counter = 0;
-  char * pointer = new char[size];
+  char * values = new char[size];
   char current_char = '0';
   std::cin >> std::noskipws;
   while (std::cin >> current_char && current_char != '\n')
@@ -13,22 +13,22 @@ int main()
     {
       try
       {
-        pointer = seryj::changeArray(pointer, size);
+        values = seryj::changeArray(values, size);
       }
       catch (std::logic_error const& e)
       {
-        delete[] pointer;
+        delete[] values;
         std::cerr << e.what();
         return 1;
       }
       size *= 2;
     }
-    pointer[counter] = current_char;
+    values[counter] = current_char;
     counter++;
   }
-  size_t answer = seryj::streql(pointer, counter);
+  size_t answer = seryj::counterOfEqualPairs(values, counter);
   std::cout << "Found " << answer << " pair" << (answer != 1 ? "s" : "") << " of equal symbols\n";
-  delete[] pointer;
+  delete[] values;
   std::cin >> std::skipws;
   return 0;
 }
