@@ -38,6 +38,7 @@ int main(int argc, char ** argv)
     std::ifstream cin(argv[2]);
     std::ofstream cout(argv[3]);
     cin >> m;
+    cin >> n;
     if (!cin)
     {
       std::cerr << "Incorrect input.\n";
@@ -63,7 +64,7 @@ int main(int argc, char ** argv)
     {
       int * dinamicMatrix = new int[m * n];
       size_t inputElements = 0;
-      inputElements = inputArray(cin, dinamicMatrix, m * n, m * n);
+      inputElements = Array::inputArray(cin, dinamicMatrix, m * n, m * n);
       if (inputElements != (m * n))
       {
         std::cerr << "Wrong input. Readed only " << inputElements << " out of " << (m * n) << "\n";
