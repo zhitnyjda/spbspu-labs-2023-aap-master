@@ -4,14 +4,14 @@ int main()
 { 
   size_t size = 10;
   size_t counter = 0;
-  char * pointer = new char[size];  
+  char * pointer = new char[size];
   char current_char = '0';
   std::cin >> std::noskipws;
   while (std::cin >> current_char && current_char != '\n')
   {
     if(counter >= size)
     {
-      try 
+      try
       {
         pointer = seryj::changeArray(pointer, size);
       }
