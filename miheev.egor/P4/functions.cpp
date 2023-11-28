@@ -1,7 +1,6 @@
-#include "matrix_methods.hpp"
 #include "functions.hpp"
 #include <iostream>
-#include <string>
+#include "matrix_methods.hpp"
 
 void miheev::inputToArr(std::ifstream& in, int* arr, size_t size)
 {

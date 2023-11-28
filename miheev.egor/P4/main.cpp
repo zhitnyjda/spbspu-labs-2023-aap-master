@@ -1,9 +1,8 @@
-#include "matrix_methods.hpp"
-#include "functions.hpp"
 #include <iostream>
-#include <cstddef>
 #include <fstream>
 #include <string>
+#include "matrix_methods.hpp"
+#include "functions.hpp"
 
 int main(int argc, char* argv[])
 {
