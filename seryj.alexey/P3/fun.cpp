@@ -11,7 +11,7 @@ char * seryj::changeArray(char * curr_arr, int size)
   }
   return pointer;
 }
-int seryj::streql(char* arr, int size)
+size_t seryj::streql(char* arr, int size)
 {
   int count = 0;
   for (int i = 0; i < size; i++)

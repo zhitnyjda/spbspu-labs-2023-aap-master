@@ -26,7 +26,7 @@ int main()
     pointer[counter] = current_char;
     counter++;
   }
-  int answer = seryj::streql(pointer, counter);
+  size_t answer = seryj::streql(pointer, counter);
   std::cout << "Found " << answer << " pair" << (answer != 1 ? "s" : "") << " of equal symbols\n";
   delete[] pointer;
   std::cin >> std::skipws;

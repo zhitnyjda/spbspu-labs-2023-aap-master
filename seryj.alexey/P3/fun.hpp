@@ -3,6 +3,6 @@
 namespace seryj
 {
   char* changeArray(char*, int);
-  int streql(char* arr, int size);
+  size_t streql(char* arr, int size);
 }
 #endif
