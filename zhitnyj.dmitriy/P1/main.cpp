@@ -21,12 +21,13 @@ int main()
         }
       }
       std::cout << funcEqlSeq() << "\n";
-    } catch (const std::logic_error &exc) {
-      std::cerr << exc.what() << "\n";
-      return 1;
     } catch (const std::length_error &exc) {
       std::cerr << exc.what() << "\n";
       return 2;
+    }
+    catch (const std::logic_error &exc) {
+      std::cerr << exc.what() << "\n";
+      return 1;
     }
   } else if (var == 1) {
     zhitnyj::funcSumDup funcSumDup;
@@ -42,12 +43,13 @@ int main()
         }
       }
       std::cout << funcSumDup() << "\n";
-    } catch (const std::logic_error &exc) {
-      std::cerr << exc.what() << "\n";
-      return 1;
     } catch (const std::length_error &exc) {
       std::cerr << exc.what() << "\n";
       return 2;
+    }
+    catch (const std::logic_error &exc) {
+      std::cerr << exc.what() << "\n";
+      return 1;
     }
   } else {
     std::cerr << "Invalid var\n";
