@@ -13,10 +13,10 @@ zhitnyj::funcSumDup::funcSumDup()
 void zhitnyj::funcSumDup::operator()(int elm)
 {
   len++;
-  if (len == 1){
+  if (len == 1) {
     elm2 = elm;
   }
-  if (len == 2){
+  if (len == 2) {
     elm1 = elm;
   }
   if (len >= 3) {
@@ -30,7 +30,7 @@ void zhitnyj::funcSumDup::operator()(int elm)
 
 size_t zhitnyj::funcSumDup::operator()()
 {
-  if(len < 4){
+  if (len < 4) {
     throw std::length_error("Sequence must be longer!");
   }
   return count;
