@@ -43,42 +43,32 @@ int main(int argc, char** argv)
   {
     return 0;
   }
-  if (num == 1)
+  int staticMatrix[10000] = { 0 };
+  int* Matrix = (num == 2)? new int[rows_ * cols_] : staticMatrix;
+  size_t readEl = inputArray(input, Matrix, rows_ * cols_);
+  if (readEl != rows_ * cols_)
   {
-    int staticMatrix[10000] = { 0 };
-    size_t readEl = inputArray(input, staticMatrix, rows_ * cols_);
-    if (readEl != rows_ * cols_)
+    std::cerr << "Not all elements were read";
+    if (num == 2)
     {
-      std::cerr << "Not all elements were read";
-      return 2;
+      delete[] Matrix;
     }
-    std::ofstream output(argv[3]);
-    if (!output)
-    {
-      std::cerr << "File not open\n";
-      return 2;
-    }
-    output << findingLocMax(staticMatrix, rows_, cols_);
+    return 2;
   }
-  else
+  std::ofstream output(argv[3]);
+  if (!output)
   {
-    int* dynMatrix = new int[rows_ * cols_];
-    size_t readEl = inputArray(input, dynMatrix, rows_ * cols_);
-    if (readEl != rows_ * cols_)
+    std::cerr << "File not open\n";
+    if (num == 2)
     {
-      std::cerr << "Not all elements were read";
-      delete[] dynMatrix;
-      return 2;
+      delete[] Matrix;
     }
-    std::ofstream output(argv[3]);
-    if (!output)
-    {
-      std::cerr << "File not open\n";
-      delete[] dynMatrix;
-      return 2;
-    }
-    output << findingLocMax(dynMatrix, rows_, cols_);
-    delete[] dynMatrix;
+    return 2;
+  }
+  output << findingLocMax(Matrix, rows_, cols_);
+  if (num == 2)
+  {
+    delete[] Matrix;
   }
   return 0;
 }
