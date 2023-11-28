@@ -1,25 +1,5 @@
 #include "cntLocMax.hpp"
-#include <iostream>
-#include <cstring>
-
-long long doroshenko::readingArguments(char** argv)
-{
-  char* endOfParcing = nullptr;
-  long long num = std::strtoll(argv[1], &endOfParcing, 10);
-  long long lenOfArg = strlen(argv[1]);
-  if (endOfParcing != argv[1] + lenOfArg)
-  {
-    throw std::logic_error("First parameter is not a number\n");
-  }
-  else if (num > 2 || num < 1)
-  {
-    throw std::logic_error("First parameter is out of range\n");
-  }
-  else
-  {
-    return num;
-  }
-}
+#include <istream>
 
 size_t doroshenko::inputArray(std::istream& input, int* Matrix, size_t sizeMatrix)
 {
@@ -28,7 +8,7 @@ size_t doroshenko::inputArray(std::istream& input, int* Matrix, size_t sizeMatri
     input >> Matrix[k];
     if (!input)
     {
-        return k;
+      return k;
     }
   }
   return sizeMatrix;
@@ -41,18 +21,16 @@ size_t doroshenko::findingLocMax(const int* Matrix, size_t rows_, size_t cols_)
   {
     for (size_t j = 1; j < cols_ - 1; j++)
     {
-      if (Matrix[i * j] < Matrix[(i - 1) * j])
+      bool firstCond = (Matrix[i * j] < Matrix[(i - 1) * j]) ? 1 : 0;
+      bool secondCond = (Matrix[i * j] < Matrix[i * (j - 1)]) ? 1 : 0;
+      bool thirdCond = (Matrix[i * j] < Matrix[(i + 1) * j]) ? 1 : 0;
+      bool fourthCond = (Matrix[i * j] < Matrix[i * (j + 1)]) ? 1 : 0;
+      if (firstCond == 1 &&
+          secondCond == 1 &&
+          thirdCond == 1 &&
+          fourthCond == 1)
       {
-        if (Matrix[i * j] < Matrix[i * (j - 1)])
-        {
-          if (Matrix[i * j] < Matrix[(i + 1) * j])
-          {
-            if (Matrix[i * j] < Matrix[i * (j + 1)])
-            {
-              cntLocMax++;
-            }
-          }
-        }
+        cntLocMax++;
       }
     }
   }

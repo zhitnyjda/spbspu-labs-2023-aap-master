@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include <cstring>
 #include "cntLocMax.hpp"
 
 int main(int argc, char** argv)
@@ -11,18 +12,21 @@ int main(int argc, char** argv)
     std::cerr << "Wrong number of arguments\n";
     return 1;
   }
-  try
+  char* endOfParcing = nullptr;
+  long long num = std::strtoll(argv[1], std::addressof(endOfParcing), 10);
+  long long lenOfArg = strlen(argv[1]);
+  if (endOfParcing != argv[1] + lenOfArg)
   {
-    readingArguments(argv);
+    std::cerr << "First parameter is not a number\n";
+    return 1;
   }
-  catch (const std::logic_error& firstError)
+  else if (num > 2 || num < 1)
   {
-    std::cerr << firstError.what();
+    std::cerr << "First parameter is out of range\n";
     return 1;
   }
   size_t rows_;
   size_t cols_;
-  long long num = readingArguments(argv);
   std::ifstream input(argv[2]);
   if (!input)
   {

@@ -4,7 +4,6 @@
 
 namespace doroshenko
 {
-  long long readingArguments(char**);
   size_t inputArray(std::istream&, int*, size_t);
   size_t findingLocMax(const int*, size_t, size_t);
 }
