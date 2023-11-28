@@ -12,7 +12,7 @@ zhitnyj::funcEqlSeq::funcEqlSeq()
 void zhitnyj::funcEqlSeq::operator()(int elm)
 {
   len++;
-  if (len == 1){
+  if (len == 1) {
     prevElm = elm;
     count++;
   }
