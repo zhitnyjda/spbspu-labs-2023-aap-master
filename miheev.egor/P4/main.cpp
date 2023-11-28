@@ -44,8 +44,21 @@ int main(int argc, char* argv[])
     if (num == 1)
     {
       int sarr[10000] = {0};
+      try
+      {
       inputToArr(inputFile, sarr, rows*cols);
       outputString += getIncreasedMatrixInline(sarr, rows, cols);
+      }
+      catch(const std::runtime_error& e)
+      {
+        std::cout << e.what();
+        return 3; // temporary
+      }
+      catch(...)
+      {
+        std::cout << "Unexpected error while trying to init arr\n";
+        return 3; // temporary
+      }
     }
     else if (num == 2)
     {
@@ -59,11 +72,13 @@ int main(int argc, char* argv[])
       {
         delete[] darr;
         std::cerr << e.what();
+        return 3; // temporary
       }
       catch(...)
       {
         delete[] darr;
         std::cerr << "unexpected error\n";
+        return 3; // temporary
       }
     }
 
