@@ -1,4 +1,4 @@
-#include "structs.hpp"
+#include "matrix_methods.hpp"
 #include "functions.hpp"
 #include <iostream>
 #include <cstddef>
