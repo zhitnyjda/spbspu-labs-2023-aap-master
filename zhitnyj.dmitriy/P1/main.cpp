@@ -28,7 +28,7 @@ int main()
       std::cerr << exc.what() << "\n";
       return 2;
     }
-  } else if (var == 1){
+  } else if (var == 1) {
     zhitnyj::funcSumDup funcSumDup;
 
     try {
