@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 lisitsyna::FindLocalMax::FindLocalMax() :
-    countmaxs_(0) ,
+    countmaxs_(0),
     maxValue(0)
 {}
 void lisitsyna::FindLocalMax::operator()(int value)
@@ -13,7 +13,7 @@ void lisitsyna::FindLocalMax::operator()(int value)
     {
         throw std::logic_error("Sequence is too long\n");
     }
-    if (value > maxValue)
+    if (value > maxValue && maxValue != 0)
     {
         maxValue = value;
         countmaxs_ = 0;
@@ -22,6 +22,10 @@ void lisitsyna::FindLocalMax::operator()(int value)
     else if (maxValue == value)
     {
         countmaxs_++;
+    }
+    else if (maxValue == 0)
+    {
+        maxValue = value;
     }
 }
 size_t lisitsyna::FindLocalMax::operator()() const
