@@ -4,7 +4,6 @@
 int main()
 {
     size_t value = 0;
-    size_t count = 0;
     using namespace lisitsyna;
     FindLocalMax findLocalMax;
     try
@@ -20,7 +19,6 @@ int main()
         std::cerr << "Invalid input!";
         return 1;
     }
-}
     bool verify = false;
     while (value != 0)
     {
@@ -50,3 +48,4 @@ int main()
             return 0;
         }
     }
+}
