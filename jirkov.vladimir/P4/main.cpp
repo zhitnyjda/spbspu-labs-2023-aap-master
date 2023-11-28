@@ -39,6 +39,10 @@ int main(int argc, char ** argv)
     std::ofstream cout(argv[3]);
     cin >> m;
     cin >> n;
+    if (cin.fail())
+    {
+      throw std::runtime_error("Error reading file");
+    }
     if (!cin)
     {
       std::cerr << "Incorrect input.\n";
@@ -50,6 +54,10 @@ int main(int argc, char ** argv)
       for (size_t i = 0; i < m * n; i++)
       {
         cin >> staticMatrix[i];
+        if (cin.fail())
+        {
+          throw std::runtime_error("Error reading file");
+        }
         if (!cin)
         {
           std::cerr << "Wrong input. Readed only " << i << " out of " << (m * n) << "\n";

@@ -1,11 +1,6 @@
 #include "decreaseSpiralElements.hpp"
 #include <iostream>
 #include <stdexcept>
-
-namespace jirkov {
-  void decreaseSpiralElements(int* matrix, size_t m, size_t n);
-}
-
 void jirkov::decreaseSpiralElements(int *matrix, size_t m, size_t n)
 {
   size_t value = 1;
