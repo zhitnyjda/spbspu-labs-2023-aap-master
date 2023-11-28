@@ -40,46 +40,21 @@ int main(int argc, char* argv[])
 
     std::string outputString = std::to_string(rows) + " " + std::to_string(cols);
 
+    int stat[10000] = {0};
+    int* arr;
     if (num == 1)
     {
-      int sarr[10000] = {0};
-      try
-      {
-      inputToArr(inputFile, sarr, rows*cols);
-      outputString += getIncreasedMatrixInline(sarr, rows, cols);
-      }
-      catch(const std::runtime_error& e)
-      {
-        std::cout << e.what();
-        return 3; // temporary
-      }
-      catch(...)
-      {
-        std::cout << "Unexpected error while trying to init arr\n";
-        return 3; // temporary
-      }
+      arr = stat;
     }
     else if (num == 2)
     {
-      int* darr = new int[rows*cols]{};
-      try
-      {
-        inputToArr(inputFile, darr, rows*cols);
-        outputString += getIncreasedMatrixInline(darr, rows, cols);
-        delete[] darr;
-      }
-      catch(const std::runtime_error& e)
-      {
-        delete[] darr;
-        std::cerr << e.what();
-        return 3; // temporary
-      }
-      catch(...)
-      {
-        delete[] darr;
-        std::cerr << "unexpected error\n";
-        return 3; // temporary
-      }
+      arr = new int[rows*cols];
+    }
+    inputToArr(inputFile, arr, rows*cols);
+    outputString += getIncreasedMatrixInline(arr, rows, cols);
+    if (num == 2)
+    {
+      delete[] arr;
     }
 
     inputFile.close();
