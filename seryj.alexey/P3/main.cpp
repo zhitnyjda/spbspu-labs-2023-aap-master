@@ -1,7 +1,7 @@
 #include <iostream>
 #include "fun.hpp"
 int main()
-{ 
+{
   size_t size = 10;
   size_t counter = 0;
   char * pointer = new char[size];
