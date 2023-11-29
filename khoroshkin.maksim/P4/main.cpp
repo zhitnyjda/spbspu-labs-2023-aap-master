@@ -19,65 +19,55 @@ int main(int argc, char ** argv)
   {
     num = std::stoll(argv[1]);
   }
-  if (num > 2 || num < 1)
+  int Rows, Cols;
+  std::ifstream inputFile(argv[2]);
+  khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
+  std::ofstream outputFile(argv[3]);
+  int statMatrix[1000] = { 0 };
+  int * dynMatrix = nullptr;
+  int successOrNo;
+  try
   {
-    std::cerr << "Error: I can accept only 1 or 2\n";
-    return 1;
-  }
-  else if (num == 1)
-  {
-    try
+    if (num > 2 || num < 1)
     {
-     int statMatrix[1000] = { 0 };
-     int Rows, Cols;
-     {
-       std::ifstream inputFile(argv[2]);
-       khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
-       int successOrNO = khoroshkin::inputArray(inputFile, statMatrix, Rows * Cols);
-       if (successOrNO != Rows*Cols)
-       {
-         std::cerr << "Error: was filled only " << successOrNO+1 << " elements";
-         return 2;
-       }
-       std::ofstream outputFile(argv[3]);
-       khoroshkin::fillingOutputFile(outputFile, statMatrix, Rows, Cols);
-     }
+      std::cerr << "Error: I can accept only 1 or 2\n";
+      return 1;
     }
-    catch (const std::logic_error & e)
+    else if (num == 1)
     {
-      std::cerr << e.what();
-      return 2;
-    }
-  }
-  else
-  {
-    int * dynamicMatrix = nullptr;
-    try
-    {
-      int Rows, Cols;
-      std::ifstream inputFile(argv[2]);
-      khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
-      int * dynamicMatrix = new int[Rows * Cols];
-      int successOrNO = khoroshkin::inputArray(inputFile, dynamicMatrix, Rows * Cols);
-      if (successOrNO != Rows*Cols)
+      successOrNo = khoroshkin::inputArray(inputFile, statMatrix, Rows * Cols);
+      if (successOrNo != Rows*Cols)
       {
-        std::cerr << "Error: was filled only " << successOrNO << " elements";
-        delete[] dynamicMatrix;
-        return 2;
+        throw std::invalid_argument("Error: was filled only " + std::to_string(successOrNo+1) + " elements");
       }
-      std::ofstream outputFile(argv[3]);
-      khoroshkin::fillingOutputFile(outputFile, dynamicMatrix, Rows, Cols);
-      delete[] dynamicMatrix;
+      khoroshkin::fillingOutputFile(outputFile, statMatrix, Rows, Cols);
     }
-    catch (const std::logic_error & e)
+    else
     {
-      std::cerr << e.what();
-      if (dynamicMatrix != nullptr)
+      int * dynMatrix = new int[Rows * Cols];
+      int successOrNo = khoroshkin::inputArray(inputFile, dynMatrix, Rows * Cols);
+      if (successOrNo != Rows*Cols)
       {
-        delete[] dynamicMatrix;
+        delete[] dynMatrix;
+        throw std::invalid_argument("Error: was filled only " + std::to_string(successOrNo+1) + " elements");
       }
-      return 2;
+      khoroshkin::fillingOutputFile(outputFile, dynMatrix, Rows, Cols);
+      delete[] dynMatrix;
     }
+  }
+  catch (const std::logic_error & e)
+  {
+    std::cerr << e.what();
+    if (dynMatrix)
+    {
+      delete[] dynMatrix;
+    }
+    return 2;
+  }
+  catch (const std::invalid_argument & e)
+  {
+    std::cerr << e.what();
+    return 2;
   }
   return 0;
 }

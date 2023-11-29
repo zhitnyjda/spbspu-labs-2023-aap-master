@@ -1,11 +1,11 @@
 #include <algorithm>
 #include "functions.hpp"
 
-int khoroshkin::isNumber(const std::string & str)
+int khoroshkin::isNumber(char * str)
 {
-  for (char c : str)
+  for (int i = 0; i < std::strlen(str); i++)
   {
-    if (!(std::isdigit(c)))
+    if (!(std::isdigit(str[i])))
     {
       return 0;
     }
