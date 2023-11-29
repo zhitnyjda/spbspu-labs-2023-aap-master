@@ -8,20 +8,16 @@ int main()
   likhachev::SequenceSignChangeCount signChangeCountSequence;
   likhachev::SequenceLocalMaxCount localMaxCountSequence;
   try {
-    std::cin.exceptions(std::istream::failbit);
     int inputNumber = 0;
     do {
       std::cin >> inputNumber;
       if (!std::cin) {
-        std::cerr << "Not a sequence.\n";
+        std::cerr << "Input error\n";
         return 1;
       }
       signChangeCountSequence(inputNumber);
       localMaxCountSequence(inputNumber);
     } while (inputNumber != 0);
-  } catch (const std::istream::failure & e) {
-    std::cerr << "Input error\n";
-    return 1;
   } catch (const std::logic_error & e) {
     std::cerr << e.what() << '\n';
     return 1;

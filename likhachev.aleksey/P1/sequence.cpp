@@ -26,7 +26,6 @@ void likhachev::SequenceLocalMaxCount::checkLocalMax()
     localMax = currValue;
     localMaxCount = 0;
   }
-
   if (currValue == localMax) {
     localMaxCount++;
   }
