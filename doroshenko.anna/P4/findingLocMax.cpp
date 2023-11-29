@@ -1,18 +1,4 @@
 #include "cntLocMax.hpp"
-#include <istream>
-
-size_t doroshenko::inputArray(std::istream& input, int* Matrix, size_t sizeMatrix)
-{
-  for (size_t k = 0; k < sizeMatrix; k++)
-  {
-    input >> Matrix[k];
-    if (!input)
-    {
-      return k;
-    }
-  }
-  return sizeMatrix;
-}
 
 size_t doroshenko::findingLocMax(const int* Matrix, size_t rows_, size_t cols_)
 {
@@ -25,10 +11,7 @@ size_t doroshenko::findingLocMax(const int* Matrix, size_t rows_, size_t cols_)
       bool secondCond = (Matrix[i * j] < Matrix[i * (j - 1)]) ? 1 : 0;
       bool thirdCond = (Matrix[i * j] < Matrix[(i + 1) * j]) ? 1 : 0;
       bool fourthCond = (Matrix[i * j] < Matrix[i * (j + 1)]) ? 1 : 0;
-      if (firstCond == 1 &&
-          secondCond == 1 &&
-          thirdCond == 1 &&
-          fourthCond == 1)
+      if (firstCond == 1 && secondCond == 1 && thirdCond == 1 && fourthCond == 1)
       {
         cntLocMax++;
       }
