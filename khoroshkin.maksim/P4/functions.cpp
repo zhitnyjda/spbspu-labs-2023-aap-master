@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cstring>
 #include "functions.hpp"
 
 int khoroshkin::isNumber(char * str)

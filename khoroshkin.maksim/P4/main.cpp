@@ -55,6 +55,11 @@ int main(int argc, char ** argv)
       delete[] dynMatrix;
     }
   }
+  catch (const std::invalid_argument & e)
+  {
+    std::cerr << e.what();
+    return 2;
+  }
   catch (const std::logic_error & e)
   {
     std::cerr << e.what();
@@ -62,11 +67,6 @@ int main(int argc, char ** argv)
     {
       delete[] dynMatrix;
     }
-    return 2;
-  }
-  catch (const std::invalid_argument & e)
-  {
-    std::cerr << e.what();
     return 2;
   }
   return 0;
