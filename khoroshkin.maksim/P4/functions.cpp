@@ -4,7 +4,7 @@
 
 int khoroshkin::isNumber(char * str)
 {
-  for (int i = 0; i < std::strlen(str); i++)
+  for (size_t i = 0; i < std::strlen(str); i++)
   {
     if (!(std::isdigit(str[i])))
     {
