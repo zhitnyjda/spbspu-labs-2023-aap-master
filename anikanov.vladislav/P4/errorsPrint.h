@@ -3,6 +3,6 @@
 
 #include <iosfwd>
 
-void print_error_by_errcode(std::ostream &cout, const char* code);
+void printErrorByErrcode(std::ostream &cout, const char* code);
 
 #endif //ERRRSPRINT_H
