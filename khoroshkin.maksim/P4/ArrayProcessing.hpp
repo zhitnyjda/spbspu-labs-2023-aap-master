@@ -4,7 +4,7 @@
 
 namespace khoroshkin
 {
-  int isNumber(char * str);
+  bool isNumber(char * str);
   void fillingRowsAndCols(std::istream & in, int & Rows, int & Cols);
   void fillingOutputFile(std::ostream & out, int * matrix, int Rows, int Cols);
   int inputArray(std::istream & in, int * matrix, int sizeMatrix);

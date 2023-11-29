@@ -2,16 +2,16 @@
 #include "ArrayProcessing.hpp"
 #include "algorithm.hpp"
 
-int khoroshkin::isNumber(char * str)
+bool khoroshkin::isNumber(char * str)
 {
   for (size_t i = 0; i < std::strlen(str); i++)
   {
     if (!(std::isdigit(str[i])))
     {
-      return 0;
+      return false;
     }
   }
-  return 1;
+  return true;
 }
 
 void khoroshkin::fillingRowsAndCols(std::istream & in, int & Rows, int & Cols)
