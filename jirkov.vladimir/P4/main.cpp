@@ -13,7 +13,6 @@ int main(int argc, char ** argv)
     std::cerr << "Wrong input. Enter 4 arguments.\n";
     return 1;
   }
-
   char * end = nullptr;
   size_t num = 0;
   num = std::strtoll(argv[1], &end, 10);
@@ -36,58 +35,62 @@ int main(int argc, char ** argv)
   size_t m = 0, n = 0;
   {
     std::ifstream cin(argv[2]);
-    std::ofstream cout(argv[3]);
-    cin >> m;
-    cin >> n;
-    if (cin.fail())
-    {
-      throw std::runtime_error("Error reading file");
-    }
     if (!cin)
     {
       std::cerr << "Incorrect input.\n";
       return 2;
     }
-    if (num == 1)
+    std::ofstream cout(argv[3]);
+    if (!cout)
     {
-      int staticMatrix[10000];
-      for (size_t i = 0; i < m * n; i++)
+      std::cerr << "Incorrect output.\n";
+      cin.close();
+      return 2;
+    }
+    cin >> m;
+    cin >> n;
+    try
+    {
+      if (num == 1)
       {
-        cin >> staticMatrix[i];
-        if (cin.fail())
+        int staticMatrix[10000];
+        for (size_t i = 0; i < m * n; i++)
         {
-          throw std::runtime_error("Error reading file");
+          cin >> staticMatrix[i];
+          if (!cin)
+          {
+            std::cerr << "Wrong input. Readed only " << i << " out of " << (m * n) << "\n";
+            return 2;
+          }
         }
-        if (!cin)
+        decreaseSpiralElements(staticMatrix, m, n);
+        printArray(cout, staticMatrix, m, n);
+      }
+      else
+      {
+        int * dinamicMatrix = new int[m * n];
+        size_t inputElements = 0;
+        inputElements = Array::inputArray(cin, dinamicMatrix, m * n, m * n);
+        if (inputElements != (m * n))
         {
-          std::cerr << "Wrong input. Readed only " << i << " out of " << (m * n) << "\n";
+          std::cerr << "Wrong input. Readed only " << inputElements << " out of " << (m * n) << "\n";
+          delete [] dinamicMatrix;
           return 2;
         }
-      }
-      decreaseSpiralElements(staticMatrix, m, n);
-      printArray(cout, staticMatrix, m, n);
-    }
-
-    else if (num == 2)
-    {
-      int * dinamicMatrix = new int[m * n];
-      size_t inputElements = 0;
-      inputElements = Array::inputArray(cin, dinamicMatrix, m * n, m * n);
-      if (inputElements != (m * n))
-      {
-        std::cerr << "Wrong input. Readed only " << inputElements << " out of " << (m * n) << "\n";
+        decreaseSpiralElements(dinamicMatrix, m, n);
+        printArray(cout, dinamicMatrix, m,  n);
         delete [] dinamicMatrix;
-        return 2;
       }
-      decreaseSpiralElements(dinamicMatrix, m, n);
-      printArray(cout, dinamicMatrix, m,  n);
-      delete [] dinamicMatrix;
     }
-    else
+    catch (std::exception& e)
     {
-      std::cerr << "You may enter onty 1 and 2! \n";
+      std::cerr << e.what() << "\n";
+      cin.close();
+      cout.close();
       return 2;
     }
   }
+  cin.close();
+  cout.close();
   return 0;
 }
