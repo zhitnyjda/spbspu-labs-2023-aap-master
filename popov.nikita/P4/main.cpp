@@ -60,7 +60,7 @@ int main(int argc, char ** argv)
   }
   if (num == 2)
   {
-    int * dynarr = new int[rows * cols];
+    int * dynarr = new int[(rows * cols) + 1];
     for (int i = 1; i <= rows * cols; ++i)
     {
       int value = 0;
