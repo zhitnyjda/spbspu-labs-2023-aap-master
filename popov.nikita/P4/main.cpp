@@ -11,6 +11,11 @@ int main(int argc, char ** argv)
   }
   char * endOfParcing = nullptr;
   int num = std::strtoll(argv[1], &endOfParcing, 10);
+  if (*endOfParcing != '\0')
+  {
+    std::cerr << "First argument not int";
+    return 2;
+  }
   if (num != 1 and num != 2)
   {
     std::cerr << "First parameter is out of range\n";
