@@ -2,55 +2,69 @@
 #include <limits>
 #include <iostream>
 
-likhachev::Sequence::Sequence() :
-  prevValue(0), currValue(0), count(0),
-  localMax(std::numeric_limits< int >::min()),
-  localMin(std::numeric_limits< int >::max())
+likhachev::SequenceLocalMaxCount::SequenceLocalMaxCount():
+  currValue(0),
+  count(0),
+  localMaxCount(0),
+  localMax(std::numeric_limits< int >::min())
 {}
 
-void likhachev::Sequence::operator()(int newNumber)
+void likhachev::SequenceLocalMaxCount::operator()(int newNumber)
 {
-  prevValue = currValue;
   currValue = newNumber;
+  count++;
+  checkLocalMax();
+}
+
+void likhachev::SequenceLocalMaxCount::checkLocalMax()
+{
   if (currValue > localMax) {
     localMax = currValue;
+    localMaxCount = 0;
   }
-  if (currValue < localMin) {
-    localMin = currValue;
+
+  if (currValue == localMax) {
+    localMaxCount++;
   }
+}
+
+int likhachev::SequenceLocalMaxCount::getLomaxMaxCount() const
+{
+  return localMaxCount;
+}
+
+int likhachev::SequenceLocalMaxCount::getCount() const
+{
+  return count;
+}
+
+likhachev::SequenceSignChangeCount::SequenceSignChangeCount():
+  prevValue(0),
+  currValue(0),
+  count(0),
+  singChangeCount(0)
+{}
+
+void likhachev::SequenceSignChangeCount::operator()(int newNumber)
+{
+  checkSamgeSign(newNumber);
+  currValue = newNumber;
   count++;
 }
 
-bool likhachev::Sequence::have_samge_sing() const
+void likhachev::SequenceSignChangeCount::checkSamgeSign(int newNumber)
 {
-  if (prevValue * currValue >= 0) {
-    return 1;
-  } else {
-    return 0;
+  if (newNumber * currValue < 0) {
+    singChangeCount++;
   }
 }
 
-int likhachev::Sequence::getLmax() const
+int likhachev::SequenceSignChangeCount::getSignChangeCount() const
 {
-  return localMax;
+  return singChangeCount;
 }
 
-int likhachev::Sequence::getLmin() const
-{
-  return localMin;
-}
-
-int likhachev::Sequence::getCvalue() const
-{
-  return currValue;
-}
-
-int likhachev::Sequence::getPvalue() const
-{
-  return prevValue;
-}
-
-int likhachev::Sequence::getCount() const
+int likhachev::SequenceSignChangeCount::getCount() const
 {
   return count;
 }

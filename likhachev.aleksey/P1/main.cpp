@@ -5,10 +5,8 @@
 
 int main()
 {
-  likhachev::Sequence sequence;
-  int prevMax = sequence.getLmax();
-  int singChangeCount = 0;
-  int localMaxCount = 0;
+  likhachev::SequenceSignChangeCount signChangeCountSequence;
+  likhachev::SequenceLocalMaxCount localMaxCountSequence;
   try {
     std::cin.exceptions(std::istream::failbit);
     int inputNumber = 0;
@@ -18,17 +16,8 @@ int main()
         std::cerr << "Not a sequence.\n";
         return 1;
       }
-      sequence(inputNumber);
-      if (!sequence.have_samge_sing()) {
-          singChangeCount++;
-      }
-      if (prevMax != sequence.getLmax()){
-        localMaxCount = 0;
-      }
-      if (sequence.getCvalue() == sequence.getLmax()){
-        localMaxCount++;
-      }
-      prevMax = sequence.getLmax();
+      signChangeCountSequence(inputNumber);
+      localMaxCountSequence(inputNumber);
     } while (inputNumber != 0);
   } catch (const std::istream::failure & e) {
     std::cerr << "Input error\n";
@@ -37,11 +26,11 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  if (sequence.getCount() == 0) {
+  if (signChangeCountSequence.getCount() == 0 || localMaxCountSequence.getCount() == 0) {
     std::cerr << "The sequence is too small" << "\n";
     return 2;
   }
-  std::cout << "[SGN-CHG] count of sign changes: " <<   singChangeCount << "\n";
-  std::cout << "[LOC-MAX] count of local maxima: " << localMaxCount << "\n";
+  std::cout << "[SGN-CHG] count of sign changes: " <<   signChangeCountSequence.getSignChangeCount() << "\n";
+  std::cout << "[LOC-MAX] count of local maxima: " << localMaxCountSequence.getLomaxMaxCount() << "\n";
   return 0;
 }

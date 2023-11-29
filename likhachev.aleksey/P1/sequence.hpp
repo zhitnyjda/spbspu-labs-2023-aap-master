@@ -2,22 +2,34 @@
 #define SEQUENCE_HPP
 namespace likhachev
 {
-  struct Sequence {
-  public:
-    Sequence();
-    void operator()(int newNumber);
-    bool have_samge_sing() const;
-    int getLmax() const;
-    int getLmin() const;
-    int getCvalue() const;
-    int getPvalue() const;
-    int getCount() const;
-  private:
-    int prevValue;
-    int currValue;
-    size_t count;
-    int localMax;
-    int localMin;
+  struct SequenceLocalMaxCount
+  {
+    public:
+      SequenceLocalMaxCount();
+      void operator()(int newNumber);
+      void checkLocalMax();
+      int getLomaxMaxCount() const;
+      int getCount() const;
+    private:
+      int currValue;
+      size_t count;
+      int localMax;
+      int localMaxCount;
+  };
+
+  struct SequenceSignChangeCount
+  {
+    public:
+      SequenceSignChangeCount();
+      void operator()(int newNumber);
+      void checkSamgeSign(int newNumber);
+      int getSignChangeCount() const;
+      int getCount() const;
+    private:
+      int prevValue;
+      int currValue;
+      size_t count;
+      int singChangeCount;
   };
 };
 #endif
