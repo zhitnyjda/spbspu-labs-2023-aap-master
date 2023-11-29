@@ -19,15 +19,15 @@ int main(int argc, char ** argv)
   {
     num = std::stoll(argv[1]);
   }
-  int Rows, Cols;
-  std::ifstream inputFile(argv[2]);
-  khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
-  std::ofstream outputFile(argv[3]);
   int statMatrix[1000] = { 0 };
   int * dynMatrix = nullptr;
-  int successOrNo;
   try
   {
+    int Rows, Cols;
+    std::ifstream inputFile(argv[2]);
+    khoroshkin::fillingRowsAndCols(inputFile, Rows, Cols);
+    std::ofstream outputFile(argv[3]);
+    int successOrNo;
     if (num > 2 || num < 1)
     {
       std::cerr << "Error: I can accept only 1 or 2\n";
@@ -49,13 +49,13 @@ int main(int argc, char ** argv)
       if (successOrNo != Rows*Cols)
       {
         delete[] dynMatrix;
-        throw std::invalid_argument("Error: was filled only " + std::to_string(successOrNo+1) + " elements");
+        throw std::runtime_error("Error: was filled only " + std::to_string(successOrNo+1) + " elements");
       }
       khoroshkin::fillingOutputFile(outputFile, dynMatrix, Rows, Cols);
       delete[] dynMatrix;
     }
   }
-  catch (const std::invalid_argument & e)
+  catch (const std::runtime_error & e)
   {
     std::cerr << e.what();
     return 2;
