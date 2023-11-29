@@ -30,7 +30,7 @@ int main()
     std::cerr << "The sequence is too small" << "\n";
     return 2;
   }
-  std::cout << "[SGN-CHG] count of sign changes: " <<   signChangeCountSequence.getSignChangeCount() << "\n";
-  std::cout << "[LOC-MAX] count of local maxima: " << localMaxCountSequence.getLomaxMaxCount() << "\n";
+  std::cout << "[SGN-CHG] count of sign changes: " <<   signChangeCountSequence() << "\n";
+  std::cout << "[LOC-MAX] count of local maxima: " << localMaxCountSequence() << "\n";
   return 0;
 }

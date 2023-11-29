@@ -16,6 +16,11 @@ void likhachev::SequenceLocalMaxCount::operator()(int newNumber)
   checkLocalMax();
 }
 
+int likhachev::SequenceLocalMaxCount::operator()() const
+{
+  return localMaxCount;
+}
+
 void likhachev::SequenceLocalMaxCount::checkLocalMax()
 {
   if (currValue > localMax) {
@@ -26,11 +31,6 @@ void likhachev::SequenceLocalMaxCount::checkLocalMax()
   if (currValue == localMax) {
     localMaxCount++;
   }
-}
-
-int likhachev::SequenceLocalMaxCount::getLomaxMaxCount() const
-{
-  return localMaxCount;
 }
 
 int likhachev::SequenceLocalMaxCount::getCount() const
@@ -52,16 +52,16 @@ void likhachev::SequenceSignChangeCount::operator()(int newNumber)
   count++;
 }
 
+int likhachev::SequenceSignChangeCount::operator()() const
+{
+  return singChangeCount;
+}
+
 void likhachev::SequenceSignChangeCount::checkSamgeSign(int newNumber)
 {
   if (newNumber * currValue < 0) {
     singChangeCount++;
   }
-}
-
-int likhachev::SequenceSignChangeCount::getSignChangeCount() const
-{
-  return singChangeCount;
 }
 
 int likhachev::SequenceSignChangeCount::getCount() const
