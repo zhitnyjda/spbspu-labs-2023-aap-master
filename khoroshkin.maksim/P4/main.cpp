@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "functions.hpp"
+#include "ArrayProcessing.hpp"
 
 int main(int argc, char ** argv)
 {
