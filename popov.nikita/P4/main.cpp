@@ -21,8 +21,8 @@ int main(int argc, char ** argv)
     std::cerr << "First parameter is out of range\n";
     return 1;
   }
-  int rows = 0;
-  int cols = 0;
+  int rows = 1;
+  int cols = 1;
   int max = 0;
   int sum = 0;
   std::ifstream input(argv[2]);
