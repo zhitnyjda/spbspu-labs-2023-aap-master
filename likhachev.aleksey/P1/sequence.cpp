@@ -8,10 +8,10 @@ likhachev::Sequence::Sequence() :
   localMin(std::numeric_limits< int >::max())
 {}
 
-int likhachev::Sequence::read()
+void likhachev::Sequence::operator()(int newNumber)
 {
   prevValue = currValue;
-  std::cin >> currValue;
+  currValue = newNumber;
   if (currValue > localMax) {
     localMax = currValue;
   }
@@ -19,7 +19,6 @@ int likhachev::Sequence::read()
     localMin = currValue;
   }
   count++;
-  return currValue;
 }
 
 bool likhachev::Sequence::have_samge_sing() const

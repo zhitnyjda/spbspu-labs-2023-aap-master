@@ -5,7 +5,7 @@ namespace likhachev
   struct Sequence {
   public:
     Sequence();
-    int read();
+    void operator()(int newNumber);
     bool have_samge_sing() const;
     int getLmax() const;
     int getLmin() const;

@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <exception>
+#include "sequence.cpp"
 #include "sequence.hpp"
 
 int main()
@@ -10,7 +11,10 @@ int main()
   int localMaxCount = 0;
   try {
     std::cin.exceptions(std::istream::failbit);
-    while (sequence.read() != 0) {
+    int input = 0;
+    do {
+      std::cin >> input;
+      sequence(input);
       if (!sequence.have_samge_sing()) {
           singChangeCount++;
       }
@@ -21,7 +25,7 @@ int main()
         localMaxCount++;
       }
       prevMax = sequence.getLmax();
-    }
+    } while (input != 0);
   } catch (const std::istream::failure & e) {
     std::cerr << "Input error\n";
     return 1;
