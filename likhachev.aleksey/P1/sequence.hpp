@@ -8,9 +8,9 @@ namespace likhachev
       SequenceLocalMaxCount();
       void operator()(int newNumber);
       int operator()() const;
-      void checkLocalMax();
       int getCount() const;
     private:
+      void checkLocalMax();
       int currValue;
       size_t count;
       int localMax;
@@ -23,9 +23,9 @@ namespace likhachev
       SequenceSignChangeCount();
       void operator()(int newNumber);
       int operator()() const;
-      void checkSamgeSign(int newNumber);
       int getCount() const;
     private:
+      void checkSamgeSign(int newNumber);
       int currValue;
       size_t count;
       int singChangeCount;
