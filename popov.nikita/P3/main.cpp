@@ -9,13 +9,15 @@ int main()
   char * input = new char[add]{};
   char c;
   int len = 0;
+  int count = 1;
   std::cin >> std::noskipws;
   do
   {
     std::cin >> c;
     input[len++] = c;
-    if (len % add == 0)
+    if (len - (add * count) == 0)
     {
+      ++count;
       char * newinput = new char[add + len];
       for(int i = 0; i < len; i++)
       {
