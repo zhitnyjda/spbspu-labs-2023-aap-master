@@ -64,6 +64,11 @@ int main(int argc, char ** argv)
     for (int i = 1; i <= rows * cols; ++i)
     {
       int value = 0;
+      if (input.peek() == EOF)
+      {
+        std::cerr << "not enough data\n";
+        return 2;
+      }
       input >> value;
       dynarr[i] = value;
     }
