@@ -39,9 +39,10 @@ int main(int argc, char** argv)
   {
     return 0;
   }
-  int sizeOfMatrix = rows * cols;
-  (num == 1) ? (int resultMatrix[10000] = {0}) : (int* resultMatrix = new int[sizeOfMatrix]);
-  size_t result = inputMatrix(input, resultMatrix, sizeOfMatrix);
+  const int sizeOfMatrix = rows * cols;
+  int staticMatrix[10000];
+  int* resultMatrix = (num == 1) ? staticMatrix : new int[sizeOfMatrix];
+  size_t result = inputMatrix(input, resultMatrix, sizeOfMatrix, sizeOfMatrix);
   if (!(result == sizeOfMatrix))
   {
     std::cerr << "Cannot read an array. Read " << result << " elements.\n";
@@ -51,18 +52,17 @@ int main(int argc, char** argv)
     }
     return 2;
   }
-  {
-    std::ofstream output(argv[3]);
-    output << MaxSideDiagonal(resultMatrix, rows) << "\n" << upperTriangularMatrix(resultMatrix, cols, rows);
-  }
+
   if (num == 2)
   {
     delete[] resultMatrix;
   }
-  else if (num != 1)
+  else
   {
     std::cerr << "Argument is out of range. \n";
     return 1;
   }
+  std::ofstream output(argv[3]);
+  output << MaxSideDiagonal(resultMatrix, rows) << "\n" << upperTriangularMatrix(resultMatrix, cols, rows);
   return 0;
 }
