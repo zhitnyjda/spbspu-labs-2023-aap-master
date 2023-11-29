@@ -1,25 +1,23 @@
 #include <iostream>
 #include <fstream>
-#include "matrixFuncs.hpp"
+#include "inputMatrix.hpp"
+#include "checkMatrix.hpp"
 
-int main(int argc, char * argv[])
+int main(int argc, char* argv[])
 {
   if (argc != 4) {
     std::cerr << "Error: Wrong amount of parameters!\n";
     return 1;
   }
-  int taskNum = 0;
-  try
+  char* endOfParsing = nullptr;
+  int taskNum = std::strtoll(argv[1], std::addressof(endOfParsing), 10);
+  if (*endOfParsing != '\0')
   {
-    taskNum = std::stoll(argv[1]);
-    if ((*argv[1] != '1') && (*argv[1] != '2')) {
-      std::cerr << "Error: Wrong first argument value or type!\n";
-      return 1;
-    }
+    std::cerr << "Error: First argument must be integer!\n";
+    return 1;
   }
-  catch (const std::invalid_argument & e)
-  {
-    std::cerr << "Error: First argument must be an integer!\n";
+  if (taskNum != 1 && taskNum != 2) {
+    std::cerr << "Error: Wrong first argument value!\n";
     return 1;
   }
 
@@ -29,33 +27,26 @@ int main(int argc, char * argv[])
     std::cerr << "Error: Can't read input file!\n";
     return 2;
   }
+  int stMatrix[10000] = { 0 };
+  int* matrix = (taskNum == 2) ? new int[rows * cols] : stMatrix;
 
-  int verdict = 0;
-  size_t counter = 0;
-  if (taskNum == 1) {
-    int arr[10000] = { 0 };
-    if (psarev::inputMatrix(input, arr, rows*cols, counter) != (rows*cols)) {
-      std::cerr << "Error: Mismatch of dimension and values!\n";
-      return 2;
+  if (psarev::inputMatrix(input, matrix, rows * cols) != (rows * cols)) {
+    std::cerr << "Error: Mismatch of dimension and values!\n";
+    if (taskNum == 2) {
+      delete[] matrix;
     }
-    verdict = psarev::isTriMatrix(arr, rows, cols);
-  } else if (taskNum == 2) {
-    int* arr = new int[rows * cols];
-    if (psarev::inputMatrix(input, arr, rows*cols, counter) != (rows*cols)) {
-      std::cerr << "Error: Mismatch of dimension and values!\n";
-      delete[] arr;
-      return 2;
-    }
-    verdict = psarev::isTriMatrix(arr, rows, cols);
-    delete[] arr;
+    return 2;
   }
 
   std::ofstream output(argv[3]);
   if (!output.is_open()) {
     std::cerr << "Error: Can't open an output file!\n";
+    if (taskNum == 2) {
+      delete[] matrix;
+    }
     return 2;
   }
-  verdict == 1 ? output << "true\n": output << "false\n";
 
+  psarev::isTriMatrix(matrix, rows, cols) == 1 ? output << "true\n": output << "false\n";
   return 0;
 }
