@@ -10,11 +10,11 @@ namespace likhachev
       int operator()() const;
       int getCount() const;
     private:
-      void checkLocalMax();
       int currValue;
       size_t count;
       int localMax;
       int localMaxCount;
+      void checkLocalMax();
   };
 
   struct SequenceSignChangeCount
@@ -25,10 +25,10 @@ namespace likhachev
       int operator()() const;
       int getCount() const;
     private:
-      void checkSamgeSign(int newNumber);
       int currValue;
       size_t count;
       int singChangeCount;
+      void checkSamgeSign(int newNumber);
   };
 };
 #endif
