@@ -11,7 +11,7 @@ int inputArray(std::istream &cin, int *array, int n, int m)
   return n * m;
 }
 
-void const printArray(std::ostream &cout, int  *array, int n, int m) const
+void printArray(std::ostream &cout, int const *array, int n, int m)
 {
   cout << n << " " << m << " ";
   for (int i = 0; i < n * m; ++i) {
