@@ -1,5 +1,6 @@
 #ifndef SEQUENCE_HPP
 #define SEQUENCE_HPP
+#include <limits>
 namespace likhachev
 {
   struct SequenceLocalMaxCount

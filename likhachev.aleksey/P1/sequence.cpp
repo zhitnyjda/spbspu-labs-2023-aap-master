@@ -1,5 +1,5 @@
 #include "sequence.hpp"
-#include <limits>
+
 
 likhachev::SequenceLocalMaxCount::SequenceLocalMaxCount():
   currValue(0),

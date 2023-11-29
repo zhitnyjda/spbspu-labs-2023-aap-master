@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <exception>
-#include "sequence.cpp"
 #include "sequence.hpp"
 
 int main()
