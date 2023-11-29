@@ -38,11 +38,12 @@ void setBottom(int &dx, int &dy, int &x, int &y, int &move)
 
 bool checkPosition(const bool *map, int x, int y, int m)
 {
-  return !map[(y - 1) * (m + 2) + x] ||
-         !map[(y + 1) * (m + 2) + x] ||
-         !map[y * (m + 2) + x - 1] ||
-         !map[y * (m + 2) + x + 1] ||
-         !map[y * (m + 2) + x];
+  bool topCheck = !map[(y - 1) * (m + 2) + x];
+  bool bottomCheck = !map[(y + 1) * (m + 2) + x];
+  bool leftCheck = !map[y * (m + 2) + x - 1];
+  bool rightCheck = !map[y * (m + 2) + x + 1];
+  bool centerCheck = !map[y * (m + 2) + x];
+  return topCheck || bottomCheck || leftCheck || rightCheck || centerCheck;
 }
 
 void generateMap(bool *map, int n, int m)
