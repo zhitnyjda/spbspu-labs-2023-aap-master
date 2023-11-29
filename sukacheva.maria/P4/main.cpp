@@ -29,6 +29,7 @@ int main(int argc, char** argv)
   if (!input)
   {
     std::cerr << "Uable to read file.\n";
+    return 2;
   }
   if (cols == 0 || rows == 0)
   {
