@@ -1,19 +1,28 @@
 #include <iostream>
 #include <fstream>
-#include "arrayModifications.h"
-#include "validationAndConversationToInt.h"
-#include "inOutArray.h"
-#include "errorsPrint.h"
+#include "arrayModifications.cpp"
+#include "check.cpp"
+#include "errorsPrint.cpp"
+#include "inOutArray.cpp"
 
 int main(int argc, char **argv)
 {
+  int num = 0;
   try {
-    check(argc, argv);
+    if (argc != 4) {
+      throw std::logic_error("1");
+    }
+    if (!isNumber(argv[1])) {
+      throw std::logic_error("3");
+    }
+    num = std::stoi(argv[1]);
+    if (num != 1 && num != 2) {
+      throw std::logic_error("2");
+    }
   } catch (const std::exception &e) {
     printErrorByErrcode(std::cerr, e.what());
     return 1;
   }
-  int num = std::stoi(argv[1]);
   std::ifstream cin(argv[2]);
   std::ofstream cout(argv[3]);
   int n = 0, m = 0;
@@ -25,30 +34,25 @@ int main(int argc, char **argv)
     printErrorByErrcode(std::cout, "2");
     return 0;
   }
-  int *arrayP = nullptr;
+  int arrayStatic[n * m];
+  int *arrayP = arrayStatic;
   try {
-    if (num == 1) {
-      int array[n * m];
-      int countReaded = inputArray(cin, array, n, m);
-      if (countReaded != n * m){
-        throw std::logic_error("2");
-      }
-      spiralIncrease(array, n, m);
-      printArray(cout, array, n, m);
-    } else {
-      int *array = new int[n * m];
-      arrayP = array;
-      int countReaded = inputArray(cin, array, n, m);
-      if (countReaded != n * m){
-        throw std::logic_error("2");
-      }
-      spiralIncrease(array, n, m);
-      printArray(cout, array, n, m);
-      delete[] array;
+    if (num == 2) {
+      int *arrayDynamic = new int[n * m];
+      arrayP = arrayDynamic;
+    }
+    int countReaded = inputArray(cin, arrayP, n, m);
+    if (countReaded != n * m) {
+      throw std::logic_error("2");
+    }
+    spiralIncrease(arrayP, n, m);
+    printArray(cout, arrayP, n, m);
+    if (num == 2) {
+      delete[] arrayP;
     }
   } catch (const std::logic_error &err) {
     printErrorByErrcode(std::cout, err.what());
-    if (arrayP) {
+    if (num == 2) {
       delete[] arrayP;
       arrayP = nullptr;
     }

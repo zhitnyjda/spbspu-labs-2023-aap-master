@@ -17,4 +17,4 @@ bool checkPosition(const bool *map, int x, int y, int m);
 
 void generateMap(bool *map, int n, int m);
 
-#endif //ARRAYMODIFICATIONS_H
+#endif

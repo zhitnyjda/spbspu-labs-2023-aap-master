@@ -5,7 +5,7 @@ int inputArray(std::istream &cin, int *array, int n, int m)
 {
   for (int i = 0; i < n * m; ++i) {
     if (!(cin >> array[i])) {
-      return i + 1;
+      return i;
     }
   }
   return n * m;

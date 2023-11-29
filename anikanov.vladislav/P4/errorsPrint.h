@@ -3,6 +3,12 @@
 
 #include <iosfwd>
 
-void printErrorByErrcode(std::ostream &cout, const char* code);
+void printErrorByErrcode(std::ostream &, const char *code);
 
-#endif //ERRRSPRINT_H
+void wrongCountParams(std::ostream &);
+
+void invalidInput(std::ostream &);
+
+void invalidFirstArgument(std::ostream &);
+
+#endif

@@ -2,18 +2,30 @@
 #include <cstring>
 #include "errorsPrint.h"
 
-void print_error_by_errcode(std::ostream &cout, const char* code)
+void printErrorByErrcode(std::ostream &cout, const char *code)
 {
   if (strcmp(code, "1") != 0) {
-    cout << "Wrong count of params\n";
-    return;
+    return wrongCountParams(cout);
   }
   if (strcmp(code, "2") != 0) {
-    cout << "Invalid input\n";
-    return;
+    return invalidInput(cout);
   }
   if (strcmp(code, "3") != 0) {
-    cout << "Invalid first argument\n";
-    return;
+    return invalidFirstArgument(cout);
   }
+}
+
+void wrongCountParams(std::ostream &cout)
+{
+  cout << "Wrong count of params\n";
+}
+
+void invalidInput(std::ostream &cout)
+{
+  cout << "Invalid input\n";
+}
+
+void invalidFirstArgument(std::ostream &cout)
+{
+  cout << "Invalid first argument\n";
 }
