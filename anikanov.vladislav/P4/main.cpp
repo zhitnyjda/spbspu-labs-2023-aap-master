@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include "arrayModifications.cpp"
-#include "check.cpp"
-#include "errorsPrint.cpp"
-#include "inOutArray.cpp"
+#include "arrayModifications.h"
+#include "check.h"
+#include "errorsPrint.h"
+#include "inOutArray.h"
 
 int main(int argc, char **argv)
 {
