@@ -11,10 +11,14 @@ int main()
   int localMaxCount = 0;
   try {
     std::cin.exceptions(std::istream::failbit);
-    int input = 0;
+    int inputNumber = 0;
     do {
-      std::cin >> input;
-      sequence(input);
+      std::cin >> inputNumber;
+      if (!std::cin) {
+        std::cerr << "Not a sequence.\n";
+        return 1;
+      }
+      sequence(inputNumber);
       if (!sequence.have_samge_sing()) {
           singChangeCount++;
       }
@@ -25,7 +29,7 @@ int main()
         localMaxCount++;
       }
       prevMax = sequence.getLmax();
-    } while (input != 0);
+    } while (inputNumber != 0);
   } catch (const std::istream::failure & e) {
     std::cerr << "Input error\n";
     return 1;
