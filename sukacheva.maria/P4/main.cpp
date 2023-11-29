@@ -39,7 +39,7 @@ int main(int argc, char** argv)
   {
     return 0;
   }
-  const int sizeOfMatrix = rows * cols;
+  size_t sizeOfMatrix = rows * cols;
   int staticMatrix[10000];
   int* resultMatrix = (num == 1) ? staticMatrix : new int[sizeOfMatrix];
   size_t result = inputMatrix(input, resultMatrix, sizeOfMatrix, sizeOfMatrix);
