@@ -15,7 +15,7 @@ namespace likhachev
   private:
     int prevValue;
     int currValue;
-    int count;
+    size_t count;
     int localMax;
     int localMin;
   };
