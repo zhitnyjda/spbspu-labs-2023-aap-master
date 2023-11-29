@@ -26,7 +26,6 @@ namespace likhachev
       void checkSamgeSign(int newNumber);
       int getCount() const;
     private:
-      int prevValue;
       int currValue;
       size_t count;
       int singChangeCount;

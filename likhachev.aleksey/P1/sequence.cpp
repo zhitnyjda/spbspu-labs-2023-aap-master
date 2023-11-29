@@ -1,6 +1,5 @@
 #include "sequence.hpp"
 #include <limits>
-#include <iostream>
 
 likhachev::SequenceLocalMaxCount::SequenceLocalMaxCount():
   currValue(0),
@@ -39,7 +38,6 @@ int likhachev::SequenceLocalMaxCount::getCount() const
 }
 
 likhachev::SequenceSignChangeCount::SequenceSignChangeCount():
-  prevValue(0),
   currValue(0),
   count(0),
   singChangeCount(0)
