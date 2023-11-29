@@ -67,6 +67,7 @@ int main(int argc, char ** argv)
       if (input.peek() == EOF)
       {
         std::cerr << "not enough data\n";
+        delete [] dynarr;
         return 2;
       }
       input >> value;
