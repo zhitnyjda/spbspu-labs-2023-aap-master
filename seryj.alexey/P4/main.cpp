@@ -37,8 +37,8 @@ int main(int args, const char* argv[])
   }
   size_t to_read = line * column;
   const size_t max_size = 10000;
-  int static_values [max_size] = { 0 };
-  int * values = (n == 1) ? static_values : new int[to_read];
+  int integer_array1 [max_size] = { 0 };
+  int * values = (n == 1) ? integer_array1 : new int[to_read];
   size_t result = seryj::fillArray((n==1) ? max_size : to_read, to_read, input, values);
   if (result != to_read)
   {
