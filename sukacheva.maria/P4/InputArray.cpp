@@ -1,15 +1,16 @@
 #include "InputArray.hpp"
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 
-size_t sukacheva::inputMatrix(std::istream& in, int* matrix, size_t s, size_t toRead)
+size_t sukacheva::inputMatrix(std::istream& in, int* matrix, size_t size)
 {
-  for (size_t i = 0; i < std::min(toRead, s); ++i)
+  for (size_t i = 0; i < size; i++)
   {
-    if (!(in >> matrix[i]))
+    in >> matrix[i];
+    if (!input)
     {
+      std::cerr << "Cannot read an array.\n";
       return i;
     }
-  }
-  return std::min(toRead, s);
+  return size;
 }

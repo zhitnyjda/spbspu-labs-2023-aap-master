@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdexcept>
 #include "matrix.hpp"
 #include "InputArray.hpp"
 
@@ -14,15 +15,15 @@ int main(int argc, char** argv)
     return 1;
   }
 
-  char* end;
-  long long num = std::strtoll(argv[1], &end, 10);
+  char* end = nullptr;
+  long long num = std::strtoll(argv[1], std::addressof(end), 10);
   if (*end != '\0')
   {
     std::cout << "Input error: argument is not a number.\n";
     return 3;
   }
 
-  size_t rows = 1, cols = 1;
+  size_t rows = 0, cols = 0;
   std::ifstream input(argv[2]);
   try
   {
@@ -38,43 +39,27 @@ int main(int argc, char** argv)
   {
     return 0;
   }
-
-  if (num == 1)
+  int sizeOfMatrix = rows * cols;
+  (num == 1) ? (int resultMatrix[10000] = {0}) : (int* resultMatrix = new int[sizeOfMatrix]);
+  size_t result = inputMatrix(input, resultMatrix, sizeOfMatrix);
+  if (!(result == sizeOfMatrix))
   {
-    int staticMatrix[10000];
-    for (size_t i = 0; i < rows * cols; i++)
+    std::cerr << "Cannot read an array. Read " << result << " elements.\n";
+    if (num == 2)
     {
-      input >> staticMatrix[i];
-      if (!input)
-      {
-        std::cerr << "Cannot read an array.\n";
-        return 2;
-      }
+      delete[] resultMatrix;
     }
-    {
-      std::ofstream output(argv[3]);
-      output << MaxSideDiagonal(staticMatrix, cols) << "\n"
-             << upperTriangularMatrix(staticMatrix, cols, rows);
-    }
+    return 2;
   }
-  else if (num == 2)
   {
-    int* dynamicMatrix = new int[rows * cols];
-    size_t result = inputMatrix(input, dynamicMatrix, rows * cols, rows * cols);
-    if (!(result == rows * cols))
-    {
-      std::cerr << "Read " << result << " elements.\n";
-      delete [] dynamicMatrix;
-      return 3;
-    }
-    {
-      std::ofstream output(argv[3]);
-      output << MaxSideDiagonal(dynamicMatrix, rows) << "\n"
-             << upperTriangularMatrix(dynamicMatrix, cols, rows);
-    }
-    delete[] dynamicMatrix;
+    std::ofstream output(argv[3]);
+    output << MaxSideDiagonal(resultMatrix, rows) << "\n" << upperTriangularMatrix(resultMatrix, cols, rows);
   }
-  else
+  if (num == 2)
+  {
+    delete[] resultMatrix;
+  }
+  else if (num != 1)
   {
     std::cerr << "Argument is out of range. \n";
     return 1;
