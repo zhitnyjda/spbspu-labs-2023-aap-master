@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <string>
 #include "findCntLocMin.hpp"
 #include "inputArray.hpp"
 
@@ -12,56 +13,43 @@ int main(int argc, char** argv)
     return 1;
   }
   char* endNum;
-  int num = std::strtoll(argv[1], &endNum, 10);
+  int num = std::strtoll(argv[1], std::addressof(endNum), 10);
   if (*endNum != '\0')
   {
     std::cerr << "Cannot parse values\n";
     return 3;
   }
-  int resultNum = 0;
-  std::ifstream input(argv[2]);
-  size_t rows, cols;
-  input >> rows >> cols;
-  if (!input)
+  if (num == 1 || num == 2)
   {
-    std::cerr << " Cannot read an input.\n";
-    return 2;
-  }
-  if (num == 1)
-  {
-    int matrix[rows * cols];
-    for (size_t i = 0; i < rows * cols; i++)
+    int resultNum = 0;
+    std::ifstream input(argv[2]);
+    size_t rows, cols;
+    input >> rows >> cols;
+    size_t matrixSize = rows * cols;
+    if (!input)
     {
-      input >> matrix[i];
-      if (!input)
-      {
-        std::cerr << "Error read an input./n";
-        return 2;
-      }
-    }
-    resultNum = taskaev::findCntLocMin(matrix, rows, cols);
-  }
-  else if (num == 2)
-  {
-    int * matrix = new int [rows * cols];
-    if((taskaev::inputArray(input, matrix, rows * cols, rows * cols)) == (rows * cols))
-    {
-      resultNum = taskaev::findCntLocMin(matrix, rows, cols);
-      delete [] matrix;
-    }
-    else
-    {
-      std::cerr <<"Error matrix cannot read.\n";
-      delete [] matrix;
+      std::cerr << " Cannot read an input.\n";
       return 2;
     }
+    int matrixStatic[matrixSize];
+    int * matrix = (num == 2) ? new int[matrixSize] : matrixStatic;
+    if(!(taskaev::inputArray(input, matrix, matrixSize, matrixSize)) == (matrixSize))
+    {
+      if (num == 2)
+      {
+        delete [] matrix;
+      }
+      std::cerr <<"Error matrix cannot read.\n";
+      return 2;
+    }
+    resultNum = taskaev::findCntLocMin(matrix, rows, cols);
+    std::ofstream output(argv[3]);
+    output << resultNum;
   }
   else
   {
     std::cerr << "Error num != 1 or num != 2.\n";
     return 2;
   }
-  std::ofstream output(argv[3]);
-  output << resultNum;
   return 0;
 }
