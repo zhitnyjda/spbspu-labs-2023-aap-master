@@ -1,5 +1,4 @@
 #include "inputArray.hpp"
-#include <algorithm>
 #include <fstream>
 
 size_t reznikova::inputArray(std::istream & in, int * m, size_t s, size_t toRead)

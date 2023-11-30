@@ -4,7 +4,7 @@
 
 namespace reznikova
 {
-  size_t findNumRowLsr(int * matrix, size_t rows, size_t cols);
+  size_t findNumRowLsr(const int * matrix, size_t rows, size_t cols);
 }
 
 #endif
