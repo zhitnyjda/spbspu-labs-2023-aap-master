@@ -39,17 +39,17 @@ int main(int argc, char ** argv)
   std::ifstream input;
   input.open(argv[2]);
 
-  if (!input)
-  {
-    std::cerr << "Cannot read matrix data.\n";
-    return 2;
-  }
-
   int numberOfRows = 0;
   input >> numberOfRows;
 
   int numberOfColumns = 0;
   input >> numberOfColumns;
+
+  if (!input)
+  {
+    std::cerr << "Cannot read matrix data.\n";
+    return 2;
+  }
 
   int numberOfValues = numberOfRows * numberOfColumns;
   int * matrixValues = 0;
