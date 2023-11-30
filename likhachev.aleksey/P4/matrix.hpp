@@ -10,13 +10,13 @@ namespace likhachev
     int getCols() const;
     int getRows() const;
     int * getValues() const;
+    int * values;
   private:
     int cols;
     int rows;
-    int * values;
   };
 
-  Matrix createSpiralMatrix(int cols, int rows);
+  void changeMatrixWithSpiral(Matrix& matrix);
   int countNonRepeatColumns(Matrix);
 };
 #endif
