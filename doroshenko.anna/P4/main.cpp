@@ -2,11 +2,11 @@
 #include <fstream>
 #include <stdexcept>
 #include <cstring>
-#include "cntLocMax.hpp"
+#include "findingLocMax.hpp"
+#include "inputArray.hpp"
 
 int main(int argc, char** argv)
 {
-  using namespace doroshenko;
   if (argc != 4)
   {
     std::cerr << "Wrong number of arguments\n";
