@@ -1,7 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <stdexcept>
 #include "matrix.hpp"
 #include "InputArray.hpp"
 
