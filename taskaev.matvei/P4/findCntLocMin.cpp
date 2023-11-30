@@ -1,6 +1,5 @@
 #include "findCntLocMin.hpp"
 #include <iostream>
-#include <stdexcept>
 
 int taskaev::funcLineMin(int firstN, int secondN, int threeN)
 {
