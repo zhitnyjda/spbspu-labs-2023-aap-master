@@ -22,7 +22,7 @@ int main(int argc, char** argv)
     std::cerr << "First parameter is not a number\n";
     return 1;
   }
-  else if (num != 2 && num != 1)
+  if (num != 2 && num != 1)
   {
     std::cerr << "First parameter is out of range\n";
     return 1;
@@ -35,42 +35,54 @@ int main(int argc, char** argv)
     std::cerr << "File not open\n";
     return 2;
   }
+  std::ofstream output(argv[3]);
+  if (!output)
+  {
+    std::cerr << "Failed to open output file.\n";
+    return 2;
+  }
   input >> m >> n;
   if (!input)
   {
     std::cerr << "It is not number\n";
     return 2;
   }
+  if (m <= 0 || n <= 0)
+  {
+    std::cerr << "Input Error\n";
+    return 2;
+  }
   size_t Size = m * n;
-  int staticMatrix[10000] = { 0 };
-  int* matrix = (num == 2)? new int[Size] : staticMatrix;
-  size_t inputElements = inputArray(input, matrix, Size);
-  if (inputElements != Size)
+  int matrixStatic[Size];
+  int *matrix = matrixStatic;
+  try
   {
-    std::cerr << "Not all elements were read";
+    if (num == 2)
+    {
+      int *matrixDynamic = new int[Size];
+      matrix = matrixDynamic;
+    }
+    size_t inputElements = inputArray(input, matrix, Size);
+    if (inputElements != Size)
+    {
+      throw std::logic_error("2");
+    }
+    decreaseSpiralElements(matrix, m, n);
+    printArray(output, matrix, m, n);
     if (num == 2)
     {
       delete[] matrix;
     }
-    return 2;
   }
-  std::ofstream output(argv[3]);
-  if (!output)
+  catch (const std::logic_error &e)
   {
-    std::cerr << "File not open\n";
+    std::cerr << e.what() << "\n";
     if (num == 2)
     {
       delete[] matrix;
+      matrix = nullptr;
     }
-    return 2;
+    return 1;
   }
-  decreaseSpiralElements(matrix, m, n);
-  output << matrix[Size];
-  if (num == 2)
-  {
-    delete[] matrix;
-  }
-  return 0;
+  matrix = nullptr;
 }
-
-
