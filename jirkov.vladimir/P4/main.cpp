@@ -65,7 +65,7 @@ int main(int argc, char** argv)
     return 2;
   }
   decreaseSpiralElements(matrix, m, n);
-  output << matrix;
+  output << matrix[Size];
   if (num == 2)
   {
     delete[] matrix;
