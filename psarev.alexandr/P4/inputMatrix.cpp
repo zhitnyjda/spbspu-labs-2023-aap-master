@@ -10,4 +10,3 @@ size_t psarev::inputMatrix(std::istream& in, int* matrix, size_t cap)
   }
   return cap;
 }
-

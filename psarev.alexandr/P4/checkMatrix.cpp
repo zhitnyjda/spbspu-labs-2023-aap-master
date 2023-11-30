@@ -12,4 +12,3 @@ bool psarev::isTriMatrix(int* matrix, int rows, int cols)
   }
   return true;
 }
-

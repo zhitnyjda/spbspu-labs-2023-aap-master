@@ -6,4 +6,3 @@ namespace psarev
   bool isTriMatrix(int* matrix, int rows, int cols);
 }
 #endif
-
