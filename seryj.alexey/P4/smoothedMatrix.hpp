@@ -1,6 +1,7 @@
 #ifndef SMOOTHED_HPP
 #define SMOOTHED_HPP
 #include <fstream>
+#include <cstddef>
 namespace seryj
 {
   void printAvgOfNeigbours(size_t line, size_t column, std::ofstream&, int* values);

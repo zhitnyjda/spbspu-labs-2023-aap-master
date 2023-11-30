@@ -1,5 +1,6 @@
 #include "smoothedMatrix.hpp"
 #include <fstream>
+#include <cmath>
 
 void seryj::printAvgOfNeigbours(size_t line, size_t column, std::ofstream & output, int* values)
 {
