@@ -12,7 +12,7 @@ namespace likhachev
       int getCount() const;
     private:
       int currValue;
-      size_t count;
+      int count;
       int localMax;
       int localMaxCount;
       void checkLocalMax();
@@ -27,7 +27,7 @@ namespace likhachev
       int getCount() const;
     private:
       int currValue;
-      size_t count;
+      int count;
       int singChangeCount;
       void checkSamgeSign(int newNumber);
   };
