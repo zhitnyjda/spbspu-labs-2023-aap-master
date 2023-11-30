@@ -2,6 +2,9 @@
 #define INPUT_ARRAY_HPP
 #include <iosfwd>
 
-size_t inputArray(std::istream&, int*, size_t);
+namespace doroshenko
+{
+  size_t inputArray(std::istream&, int*, size_t);
+}
 
 #endif

@@ -7,6 +7,7 @@
 
 int main(int argc, char** argv)
 {
+  using namespace doroshenko;
   if (argc != 4)
   {
     std::cerr << "Wrong number of arguments\n";

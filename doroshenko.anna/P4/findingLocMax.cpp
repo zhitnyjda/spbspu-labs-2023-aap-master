@@ -1,6 +1,6 @@
 #include "findingLocMax.hpp"
 
-size_t findingLocMax(const int* Matrix, size_t rows_, size_t cols_)
+size_t doroshenko::findingLocMax(const int* Matrix, size_t rows_, size_t cols_)
 {
   size_t cntLocMax = 0;
   for (size_t i = 1; i < rows_ - 1; i++)
