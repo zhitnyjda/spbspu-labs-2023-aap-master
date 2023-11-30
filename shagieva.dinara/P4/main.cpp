@@ -43,6 +43,7 @@ int main(int argc, char ** argv)
   int numberOfColumns = 0;
   input >> numberOfColumns;
 
+  int numberOfValues = numberOfRows * numberOColumns;
   int * values = 0;
   int result = 0;
 
@@ -54,17 +55,13 @@ int main(int argc, char ** argv)
 
   if (task == 2)
   {
-    int * dynamicArray = new int[numberOfRows * numberOfColumns];
+    int * dynamicArray = new int[numberOfValues];
     values = dynamicArray;
   }
 
-  try
+  if (shagieva::matrixReader(input, values, numberOfValues) != numberOfValues)
   {
-    shagieva::matrixReader(input, values, numberOfRows * numberOfColumns);
-  }
-  catch (const std::invalid_argument & e)
-  {
-    std::cerr << e.what() << "\n";
+    std::cerr << "Number of matrix values is less than expected.\n";
     if (task == 2)
     {
       delete[] dynamicArray
@@ -80,6 +77,10 @@ int main(int argc, char ** argv)
   if (!output.is_open())
   {
     std::cerr << "Cannot open an output file.\n";
+    if (task == 2)
+    {
+      delete[] dynamicArray;
+    }
     return 2;
   }
 
