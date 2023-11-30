@@ -1,10 +1,11 @@
 #include "decreaseSpiralElements.hpp"
-#include <iostream>
 #include <stdexcept>
+
 void jirkov::decreaseSpiralElements(int *matrix, size_t m, size_t n)
 {
   size_t value = 1;
   size_t row_start = 0, row_end = m - 1, col_start = 0, col_end = n - 1;
+
   while (row_start <= row_end && col_start <= col_end)
   {
     for (size_t i = row_end; i >= row_start; i--)
@@ -16,7 +17,7 @@ void jirkov::decreaseSpiralElements(int *matrix, size_t m, size_t n)
 
     for (size_t i = col_start; i <= col_end; i++)
     {
-      matrix[row_start * m + i] -= value;
+      matrix[row_start * n + i] -= value;
       value++;
     }
     row_start++;
@@ -35,12 +36,10 @@ void jirkov::decreaseSpiralElements(int *matrix, size_t m, size_t n)
     {
       for (size_t i = col_end; i >= col_start; i--)
       {
-        matrix[row_end * m + i] -= value;
+        matrix[row_end * n + i] -= value;
         value++;
       }
       row_end--;
     }
   }
 }
-
-

@@ -1,7 +1,6 @@
 #ifndef DECREASESPIRALELEMENTS_HPP
 #define DECREASESPIRALELEMENTS_HPP
 #include <cstddef>
-#include <fstream>
 
 namespace jirkov
 {

@@ -1,96 +1,76 @@
 #include <iostream>
 #include <fstream>
+#include <stdexcept>
 #include <cstring>
 #include "decreaseSpiralElements.hpp"
 #include "inputArray.hpp"
 
-int main(int argc, char ** argv)
+int main(int argc, char** argv)
 {
   using namespace jirkov;
   using namespace Array;
   if (argc != 4)
   {
-    std::cerr << "Wrong input. Enter 4 arguments.\n";
+    std::cerr << "Wrong number of arguments\n";
     return 1;
   }
-  char * end = nullptr;
-  size_t num = 0;
-  num = std::strtoll(argv[1], &end, 10);
-  int len = strlen(argv[1]);
-  if (*end != '\0')
-  {
-    std::cerr << "Can't parse a value.\n";
-    return 1;
-  }
+  char* end = nullptr;
+  long long num = std::strtoll(argv[1], std::addressof(end), 10);
+  long long len = strlen(argv[1]);
   if (end != argv[1] + len)
   {
-    std::cerr << "It is not a number\n";
+    std::cerr << "First parameter is not a number\n";
     return 1;
   }
-  else if (num != 1 && num != 2)
+  else if (num != 2 && num != 1)
   {
-    std::cerr << "incorrect number\n";
+    std::cerr << "First parameter is out of range\n";
     return 1;
   }
-  size_t m = 0, n = 0;
+  size_t m;
+  size_t n;
+  std::ifstream input(argv[2]);
+  if (!input)
   {
-    std::ifstream cin(argv[2]);
-    if (!cin)
-    {
-      std::cerr << "Incorrect input.\n";
-      return 2;
-    }
-    std::ofstream cout(argv[3]);
-    if (!cout)
-    {
-      std::cerr << "Incorrect output.\n";
-      cin.close();
-      return 2;
-    }
-    cin >> m;
-    cin >> n;
-    try
-    {
-      if (num == 1)
-      {
-        int staticMatrix[10000];
-        for (size_t i = 0; i < m * n; i++)
-        {
-          cin >> staticMatrix[i];
-          if (!cin)
-          {
-            std::cerr << "Wrong input. Readed only " << i << " out of " << (m * n) << "\n";
-            return 2;
-          }
-        }
-        decreaseSpiralElements(staticMatrix, m, n);
-        printArray(cout, staticMatrix, m, n);
-      }
-      else
-      {
-        int * dinamicMatrix = new int[m * n];
-        size_t inputElements = 0;
-        inputElements = Array::inputArray(cin, dinamicMatrix, m * n, m * n);
-        if (inputElements != (m * n))
-        {
-          std::cerr << "Wrong input. Readed only " << inputElements << " out of " << (m * n) << "\n";
-          delete [] dinamicMatrix;
-          return 2;
-        }
-        decreaseSpiralElements(dinamicMatrix, m, n);
-        printArray(cout, dinamicMatrix, m,  n);
-        delete [] dinamicMatrix;
-      }
-    }
-    catch (std::exception& e)
-    {
-      std::cerr << e.what() << "\n";
-      cin.close();
-      cout.close();
-      return 2;
-    }
+    std::cerr << "File not open\n";
+    return 2;
   }
-  cin.close();
-  cout.close();
+  input >> m >> n;
+  if (!input)
+  {
+    std::cerr << "It is not number\n";
+    return 2;
+  }
+  size_t Size = m * n;
+  int staticMatrix[10000] = { 0 };
+  int* matrix = (num == 2)? new int[Size] : staticMatrix;
+  size_t inputElements = inputArray(input, matrix, Size);
+  if (inputElements != Size)
+  {
+    std::cerr << "Not all elements were read";
+    if (num == 2)
+    {
+      delete[] matrix;
+    }
+    return 2;
+  }
+  std::ofstream output(argv[3]);
+  if (!output)
+  {
+    std::cerr << "File not open\n";
+    if (num == 2)
+    {
+      delete[] matrix;
+    }
+    return 2;
+  }
+  decreaseSpiralElements(matrix, m, n);
+  output << matrix;
+  if (num == 2)
+  {
+    delete[] matrix;
+  }
   return 0;
 }
+
+

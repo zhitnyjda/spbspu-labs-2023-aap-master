@@ -1,22 +1,14 @@
+#include <istream>
 #include "inputArray.hpp"
-#include <algorithm>
-#include <fstream>
-size_t Array::inputArray(std::istream & cin, int *matrix, size_t s, size_t inputElements)
+size_t Array::inputArray(std::istream& input, int* matrix, size_t Size)
 {
-  for (size_t i = 0; i < std::min(inputElements, s); ++i)
+  for (size_t l = 0; l < Size; l++)
   {
-    if (!(cin >> matrix[i]))
+    input >> matrix[l];
+    if (!input)
     {
-      return i;
+      return l;
     }
   }
-  return std::min(inputElements, s);
-}
-void Array::printArray(std::ostream & cout, int *matrix, size_t m, size_t n)
-{
-  cout << m << " " << n << " ";
-  for (size_t i = 0; i < m * n; ++i)
-  {
-    cout << matrix[i] << " ";
-  }
+  return Size;
 }
