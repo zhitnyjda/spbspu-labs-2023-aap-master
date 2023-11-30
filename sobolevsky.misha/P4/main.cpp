@@ -49,38 +49,29 @@ int main(int argc, char ** argv)
       return 2;
     }
 
-    int * arr = nullptr;
-    if (number == 1)
-    {
-      sobolevsky::Arrays matrix(10000);
-      arr = matrix.statArray;
-    }
-    else
-    {
-      sobolevsky::Arrays matrix(rows, cols);
-      arr = matrix.dynArray;
-    }
+    int statArray[10000] = {};
+    int * matrix = (number == 1) ? statArray : new int[cols * rows];
     size_t counter = 0;
-    counter = sobolevsky::sizeMatrix(input, arr, (cols * rows), counter);
+    counter = sobolevsky::sizeMatrix(input, matrix, (cols * rows), counter);
     if (counter != (cols*rows))
     {
       std::cerr << "matrix size and number of numbers are different\n";
       if (number == 2)
       {
-        delete[] arr;
+        delete[] matrix;
       }
       return 2;
     }
-    (sobolevsky::isTrianglMatrix(arr, rows, cols)) == true ? output << "true\n" : output << "false\n";
+    (sobolevsky::isTrianglMatrix(matrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
     if (number == 2)
     {
-      delete[] arr;
+      delete[] matrix;
     }
     return 0;
   }
   else
   {
-    std::cerr << "the first argument should be either 1 or 2\n";
+    std::cerr << "first argument should be either 1 or 2\n";
     return 1;
   }
 }
