@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include "readMatrix.hpp"
 #include "findMaxColumn.hpp"
 
@@ -11,6 +12,12 @@ int main(int argc, char ** argv)
     return 1;
   }
 
+  if (strlen(argv[1]) != 1)
+  {
+    std::cerr << "First parameter is out of range.\n";
+    return 1;
+  }
+
   int task = 0;
 
   try
@@ -19,13 +26,13 @@ int main(int argc, char ** argv)
   }
   catch (const std::invalid_argument & e)
   {
-    std::cerr << "Cannot read the value of task.\n";
+    std::cerr << "First parameter is not a number.\n";
     return 1;
   }
 
   if (task != 1 && task != 2)
   {
-    std::cerr << "Task does not exist.\n";
+    std::cerr << "First parameter is out of range.\n";
     return 1;
   }
 
@@ -34,7 +41,7 @@ int main(int argc, char ** argv)
 
   if (!input)
   {
-    std::cerr << "Cannot read matrix data";
+    std::cerr << "Cannot read matrix data.\n";
     return 2;
   }
 
