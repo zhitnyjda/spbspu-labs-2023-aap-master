@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include "Funcs.hpp"
+#include <string>
+#include "fillArray.hpp"
+#include "smoothedMatrix.hpp"
 int main(int args, const char* argv[])
 {
   int task = 0;
