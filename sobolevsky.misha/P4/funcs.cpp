@@ -16,7 +16,7 @@ namespace sobolevsky
     return counter;
   }
 
-  bool isTrianglMatrix(int * matrix, size_t rows, size_t cols)
+  void isTrianglMatrix(std::ofstream& out, int * matrix, size_t rows, size_t cols)
   {
     for (size_t i = 0; i < rows; i++)
     {
@@ -24,10 +24,10 @@ namespace sobolevsky
       {
         if ((matrix[k*cols + i] != 0) && (i > k))
         {
-          return false;
+          out << std::boolalpha << false;
         }
       }
     }
-    return true;
+    out << std::boolalpha << true;
   }
 }

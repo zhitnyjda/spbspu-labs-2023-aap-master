@@ -62,7 +62,7 @@ int main(int argc, char ** argv)
       }
       return 2;
     }
-    (sobolevsky::isTrianglMatrix(matrix, rows, cols)) == true ? output << "true\n" : output << "false\n";
+    sobolevsky::isTrianglMatrix(output, matrix, rows, cols);
     if (number == 2)
     {
       delete[] matrix;
