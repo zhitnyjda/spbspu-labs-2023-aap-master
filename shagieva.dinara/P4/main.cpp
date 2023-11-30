@@ -60,7 +60,7 @@ int main(int argc, char ** argv)
 
   try
   {
-    read(input);
+    shagieva::matrixReader(input, values, numberOfRows * numberOfColumns);
   }
   catch (const std::invalid_argument & e)
   {
@@ -72,7 +72,7 @@ int main(int argc, char ** argv)
     return 2;
   }
 
-  result = findMaxColumn();
+  result = shagieva::findMaxColumn();
 
   std::ofstream output;
   output.open(argv[3]);

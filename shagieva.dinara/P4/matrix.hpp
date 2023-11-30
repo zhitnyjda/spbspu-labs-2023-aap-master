@@ -4,7 +4,7 @@
 
 namespace shagieva
 {
-  void read(std::ifstream & input);
+  int matrixReader(std::ifstream & input, int * values, const int numberOfValues);
   int findMaxColumn();
 };
 

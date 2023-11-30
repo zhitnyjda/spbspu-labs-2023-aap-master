@@ -1,17 +1,22 @@
 #include "matrix.hpp"
 #include <stdexcept>
 
-void shagieva::read(std::ifstream & input)
+int shagieva::matrixReader(std::ifstream & input, int * values, const int numberOfValues)
 {
-  for (int i = 0; i < numberOfRows * numberOfColumns; i++)
+  for (int read = 0; read < numberOfValues; read++)
   {
-    input >> values[i];
+    if (!(input >> values[i]))
+    {
+      return read;
+    }
 
     if (!input)
     {
       throw std::invalid_argument("Something is wrong with values of matrix.\n");
     }
   }
+
+  return read;
 }
 
 int shagieva::findMaxColumn()
