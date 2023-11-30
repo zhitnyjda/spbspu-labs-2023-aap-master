@@ -32,7 +32,7 @@ int main(int argc, char ** argv)
 
   if (task != 1 && task != 2)
   {
-    std::cerr << "First parameter is out of range.\n";
+    std::cerr << "Task does not exist.\n";
     return 1;
   }
 
