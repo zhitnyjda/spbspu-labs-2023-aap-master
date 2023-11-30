@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "matrix.hpp"
+#include "readMatrix.hpp"
+#include "findMaxColumn.hpp"
 
 int main(int argc, char ** argv)
 {
@@ -43,33 +44,32 @@ int main(int argc, char ** argv)
   int numberOfColumns = 0;
   input >> numberOfColumns;
 
-  int numberOfValues = numberOfRows * numberOColumns;
-  int * values = 0;
+  int numberOfValues = numberOfRows * numberOfColumns;
+  int * matrixValues = 0;
   int result = 0;
 
   if (task == 1)
   {
     int staticArray[10000] = { 0 };
-    values = staticArray;
+    matrixValues = staticArray;
   }
 
   if (task == 2)
   {
-    int * dynamicArray = new int[numberOfValues];
-    values = dynamicArray;
+    matrixValues = new int[numberOfValues];
   }
 
-  if (shagieva::matrixReader(input, values, numberOfValues) != numberOfValues)
+  if (shagieva::readMatrix(input, matrixValues, numberOfValues) != numberOfValues)
   {
     std::cerr << "Number of matrix values is less than expected.\n";
     if (task == 2)
     {
-      delete[] dynamicArray
+      delete[] matrixValues;
     }
     return 2;
   }
 
-  result = shagieva::findMaxColumn();
+  result = shagieva::findMaxColumn(matrixValues, numberOfRows, numberOfColumns);
 
   std::ofstream output;
   output.open(argv[3]);
@@ -79,7 +79,7 @@ int main(int argc, char ** argv)
     std::cerr << "Cannot open an output file.\n";
     if (task == 2)
     {
-      delete[] dynamicArray;
+      delete[] matrixValues;
     }
     return 2;
   }
@@ -88,7 +88,7 @@ int main(int argc, char ** argv)
 
   if (task == 2)
   {
-    delete[] dynamicArray;
+    delete[] matrixValues;
   }
 
   return 0;

@@ -3,7 +3,7 @@
 
 namespace shagieva
 {
-  int findMaxColumn(const int numberOfRows, const int numberOfColumns);
+  int findMaxColumn(const int * values, const int numberOfRows, const int numberOfColumns);
 };
 
 #endif

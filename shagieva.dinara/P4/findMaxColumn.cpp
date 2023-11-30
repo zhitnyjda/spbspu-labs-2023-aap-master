@@ -1,6 +1,6 @@
 #include "findMaxColumn.hpp"
 
-int shagieva::findMaxColumn(const int NumberOfRows, const int numberOfColumns)
+int shagieva::findMaxColumn(const int * values, const int numberOfRows, const int numberOfColumns)
 {
   int maxColumn = 0;
   int maxSeq = 0;

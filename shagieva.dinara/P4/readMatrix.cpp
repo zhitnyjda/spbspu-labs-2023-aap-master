@@ -4,11 +4,11 @@ int shagieva::readMatrix(std::ifstream & input, int * values, const int numberOf
 {
   for (int read = 0; read < numberOfValues; read++)
   {
-    if (!(input >> values[i]))
+    if (!(input >> values[read]))
     {
       return read;
     }
   }
 
-  return read;
+  return numberOfValues;
 }
