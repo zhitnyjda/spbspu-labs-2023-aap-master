@@ -2,13 +2,12 @@
 #include <fstream>
 #include <cstring>
 #include "funcs.hpp"
-#include "class.hpp"
 
 int main(int argc, char ** argv)
 {
   if (argc != 4)
   {
-    std::cerr << "Передано не 4 аргумента\n";
+    std::cerr << "you did not pass 4 arguments\n";
     return 1;
   }
 
@@ -19,7 +18,7 @@ int main(int argc, char ** argv)
     {
       if (!(isdigit(argv[1][i])))
       {
-        std::cerr << "Первый аргумент должен быть интом\n";
+        std::cerr << "the first argument should be int\n";
         return 1;
       }
     }
@@ -27,7 +26,7 @@ int main(int argc, char ** argv)
   }
   catch (const std::invalid_argument & e)
   {
-    std::cerr << "Первый аргумент должен быть интом\n";
+    std::cerr << "the first argument should be int\n";
     return 1;
   }
 
@@ -39,14 +38,14 @@ int main(int argc, char ** argv)
     input >> rows >> cols;
     if (!input)
     {
-      std::cerr << "Невозможно открыть input файл\n";
+      std::cerr << "input file cannot be opened\n";
       return 2;
     }
 
     std::ofstream output(argv[3]);
     if (!output.is_open())
     {
-      std::cerr << "Невозможно открыть output файл\n";
+      std::cerr << "output file cannot be opened\n";
       return 2;
     }
 
@@ -65,7 +64,7 @@ int main(int argc, char ** argv)
     counter = sobolevsky::sizeMatrix(input, arr, (cols * rows), counter);
     if (counter != (cols*rows))
     {
-      std::cerr << "Размер матрицы и кол-во чисел отличаются\n";
+      std::cerr << "matrix size and number of numbers are different\n";
       if (number == 2)
       {
         delete[] arr;
@@ -81,7 +80,7 @@ int main(int argc, char ** argv)
   }
   else
   {
-    std::cerr << "Первый аргумент должен быть либо 1 либо 2\n";
+    std::cerr << "the first argument should be either 1 or 2\n";
     return 1;
   }
 }
