@@ -13,17 +13,17 @@ int main(int argc, char* argv[])
       std::cerr << "Too many arguments" << "\n";
     }
     
-    //return 1;
+    //return 1; // Lavran [ToDo] : Раскоментить
   }
 
   if (!(argv[1] == "1" || argv[1] == "2")) {
     if (argc < 3) {
-      std::cerr << "Not enough arguments" << "\n"; // Lavran [ToDo] : Заменить на адекватную проверку (число вне радиуса / не число?)
+      std::cerr << "Not enough arguments" << "\n"; // Lavran [ToDo] : Заменить на адекватный текст (число вне радиуса / не число?)
     } else {
       std::cerr << "Too many arguments" << "\n";
     }
 
-    //return 1;
+    //return 1; // Lavran [ToDo] : Раскоментить
   }
 
   std::string filenameIN = "in.txt";
@@ -37,13 +37,13 @@ int main(int argc, char* argv[])
   int rows = 0;
 
   inStream >> cols >> rows;
-  likhachev::Matrix matrix = likhachev::Matrix('2', cols, rows);
+  likhachev::Matrix matrix = likhachev::Matrix('2', cols, rows); // Lavran [ToDo] : Заменить "2" на аргумент
   matrix.read(filenameIN);
 
   int countNRC = countNonRepeatColumns(matrix);
   likhachev::changeMatrixWithSpiral(matrix);
 
-  for(int i = 0; i < cols * rows; i++) {
+  for(int i = 0; i < cols * rows; i++) { // Lavran [ToDo] : Заменить на вывод в файл ((Желательно создать функцию))
     std::cout << matrix.values[i] << " ";
     if((i + 1) % cols == 0) {
       std::cout << "\n";

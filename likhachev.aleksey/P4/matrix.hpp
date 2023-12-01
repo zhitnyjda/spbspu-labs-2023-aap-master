@@ -20,3 +20,6 @@ namespace likhachev
   int countNonRepeatColumns(Matrix);
 };
 #endif
+
+// Lavran [ToDo] : Создать структуру "point"
+// Lavran [ToDo] : Создать метод вывода матрицы в файл

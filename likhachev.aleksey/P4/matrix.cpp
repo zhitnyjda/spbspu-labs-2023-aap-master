@@ -65,7 +65,7 @@ int likhachev::countNonRepeatColumns(Matrix matrix)
 
 void likhachev::changeMatrixWithSpiral(Matrix& matrix)
 {
-  int direction[2] = {1, 0};
+  int direction[2] = {1, 0}; // Lavran [ToDo] : Сделать "point" и заменить тут
   int position[2] = {-1, 0};
   int colsSteps = matrix.getCols();
   int rowsSteps = matrix.getRows();
@@ -83,15 +83,15 @@ void likhachev::changeMatrixWithSpiral(Matrix& matrix)
     for(int j = 0; j < steps; j++) {
       position[0] += direction[0] % 2;
       position[1] += direction[1] % 2;
-      std::cout << " | " << "Position: " << position[0] << " " << position[1] << "\n";
-      matrix.values[position[0] + position[1] * matrix.getCols()] += counter;
+      std::cout << " | " << "Position: " << position[0] << " " << position[1] << "\n"; // Lavran [ToDo] : Убрать
+      matrix.values[position[0] + position[1] * matrix.getCols()] += counter; // Lavran [ToDo] : Обращение напрямую к переменным неприемлемо, заменить
       counter++;
     }
 
     direction[0] == 2 ? direction[0] = -1 : direction[0]++;
     direction[1] == 2 ? direction[1] = -1 : direction[1]++;
     
-    std::cout << "iteration: " << rowsSteps << " " << colsSteps << "\n";
+    std::cout << "iteration: " << rowsSteps << " " << colsSteps << "\n"; // Lavran [ToDo] : Убрать
   }
 }
 
