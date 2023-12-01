@@ -1,16 +1,15 @@
 #include "fun.hpp"
 #include <iostream>
-char * seryj::changeArray(char* curr_arr, int size)
+char * seryj::changeArray(char* old_values, int size)
 {
-  char * values = new char[size*2];
-  if(!values)
+  char * new_values = new char[size*2];
+  if(!new_values)
     throw std::logic_error("Not enough space for array");
   for (int i = 0; i <= size; i++)
   {
-    values[i] = curr_arr[i];
+    *(new_values+i) = *(old_values+i);
   }
-  delete[] curr_arr;
-  return values;
+  return new_values;
 }
 unsigned long long seryj::counterOfEqualPairs(char* values, int size)
 {
