@@ -5,6 +5,6 @@
 namespace psarev
 {
   size_t makeLine(char*& line);
-  size_t makeMutUnLine(char* line1, char* line2, size_t len1, size_t len2, char* lineRes);
+  size_t makeMutUnLine(char* line1, const char* line2, size_t len1, size_t len2, char*& lineRes);
 };
 #endif

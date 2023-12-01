@@ -14,11 +14,9 @@ size_t psarev::makeLine(char*& line)
       line[elemNum - 1] = 0;
       break;
     }
-    if (elemNum % 10 == 0)
-    {
+    if (elemNum % 10 == 0) {
       char* extLine = new char[elemNum + 10] {};
-      for (size_t i = 0; i < elemNum; i++)
-      {
+      for (size_t i = 0; i < elemNum; i++) {
         extLine[i] = line[i];
       }
       delete[] line;
@@ -29,7 +27,7 @@ size_t psarev::makeLine(char*& line)
   return elemNum;
 }
 
-size_t psarev::makeMutUnLine(char* line1, char* line2, size_t len1, size_t len2, char* lineRes)
+size_t psarev::makeMutUnLine(char* line1, const char* line2, size_t len1, size_t len2, char*& lineRes)
 {
   size_t elemNum = 0;
   for (size_t i = 0; i < len2; i++) {
@@ -41,6 +39,14 @@ size_t psarev::makeMutUnLine(char* line1, char* line2, size_t len1, size_t len2,
   for (size_t j = 0; j < len1; j++) {
     if (std::strchr(line2, line1[j]) == NULL) {
       lineRes[elemNum++] = line1[j];
+      if (elemNum % 10 == 0) {
+        char* extLineRes = new char[elemNum + 10] {};
+        for (size_t i = 0; i < elemNum; i++) {
+          extLineRes[i] = lineRes[i];
+        }
+        delete[] lineRes;
+        lineRes = extLineRes;
+      }
     }
   }
   return elemNum;

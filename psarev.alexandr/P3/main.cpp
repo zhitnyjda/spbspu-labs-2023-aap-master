@@ -7,28 +7,25 @@ int main()
   try
   {
     char* line1 = new char[10] {};
-    char* line2 = new char[10] {};
+    const char* line2 = "abc ef";
 
-    char* lineRes = new char[10] {};
     size_t len1 = psarev::makeLine(line1);
-    size_t len2 = psarev::makeLine(line2);
-    if (len1 == 1 || len2 == 1) {
-      std::cerr << "Error: At least one value need!\n";
+    if (len1 == 1) {
+      std::cerr << "Error: Need at least one input value!\n";
       delete[] line1;
-      delete[] line2;
-      delete[] lineRes;
       return 1;
     }
+    size_t len2 = 6;
+
+    char* lineRes = new char[10] {};
     size_t resMarker = psarev::makeMutUnLine(line1, line2, len1, len2, lineRes);
 
     delete[] line1;
-    delete[] line2;
 
     for (size_t i = 0; i < resMarker; i++) {
       std::cout << lineRes[i];
     }
     std::cout << '\n';
-
     delete[] lineRes;
     return 0;
   }
