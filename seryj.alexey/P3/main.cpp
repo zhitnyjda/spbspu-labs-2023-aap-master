@@ -11,20 +11,19 @@ int main()
   {
     if(counter >= size)
     {
-      try
+      char * new_values = seryj::changeArray(values, size);
+      if (!new_values)
       {
-        values = seryj::changeArray(values, size);
-      }
-      catch (std::logic_error const & e)
-      {
+        std::cerr << "Not enough space for arran\n";
         delete[] values;
-        std::cerr << e.what();
+        delete[] new_values;
         return 1;
       }
+      delete[] values;
+      values = new_values;
       size *= 2;
     }
-    values[counter] = current_char;
-    counter++;
+    values[counter++] = current_char;
   }
   if (!counter)
   {
