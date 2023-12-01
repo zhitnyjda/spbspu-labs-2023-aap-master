@@ -15,7 +15,7 @@ int main()
       {
         values = seryj::changeArray(values, size);
       }
-      catch (std::logic_error const& e)
+      catch (std::logic_error const & e)
       {
         delete[] values;
         std::cerr << e.what();
