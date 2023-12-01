@@ -9,6 +9,7 @@ char * seryj::changeArray(char* curr_arr, int size)
   {
     values[i] = curr_arr[i];
   }
+  delete[] curr_arr;
   return values;
 }
 unsigned long long seryj::counterOfEqualPairs(char* values, int size)

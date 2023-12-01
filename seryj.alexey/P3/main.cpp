@@ -26,6 +26,12 @@ int main()
     values[counter] = current_char;
     counter++;
   }
+  if (!counter)
+  {
+    std::cerr << "Error: zero sequence\n";
+    delete[] values;
+    return 1;
+  }
   size_t answer = seryj::counterOfEqualPairs(values, counter);
   std::cout << "Found " << answer << " pair" << (answer != 1 ? "s" : "") << " of equal symbols\n";
   delete[] values;
