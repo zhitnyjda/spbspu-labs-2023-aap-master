@@ -17,6 +17,7 @@ int main()
       delete[] line1;
       delete[] line2;
       delete[] lineRes;
+      return 1;
     }
     size_t resMarker = psarev::makeMutUnLine(line1, line2, len1, len2, lineRes);
 
