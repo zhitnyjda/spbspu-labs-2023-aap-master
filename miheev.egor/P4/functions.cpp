@@ -2,19 +2,21 @@
 #include <iostream>
 #include "matrix_methods.hpp"
 
-void miheev::inputToArr(std::ifstream& in, int* arr, size_t size)
+size_t miheev::inputToArr(std::ifstream& in, int* arr, size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {
     in >> arr[i];
     if (!in)
     {
-      throw std::runtime_error("Error occured while trying to init arr");
+      throw std::runtime_error("Error occured while trying to init arr. " + std::to_string(i) + " elements were read\n");
+      return i;
     }
   }
+  return size;
 }
 
-void miheev::printArrInline(int* arr, size_t size)
+void miheev::printArrInline(const int* const arr, size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {
