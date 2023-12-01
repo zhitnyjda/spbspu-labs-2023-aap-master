@@ -3,17 +3,26 @@
 
 namespace likhachev
 {
+  struct Point {
+    public:
+      int x;
+      int y;
+      Point();
+      Point(int newX, int newY);
+      void operator()(int newNumber);
+      Point& operator+=(const Point& rhs);
+  };
+
   struct Matrix {
   public:
     Matrix(char type, int mCols, int mRows);
-    void read(std::string);
-    int getCols() const;
-    int getRows() const;
+    void readFromFile(std::string);
+    void inpunInFile(std::string);
+    Point getSize() const;
     int * getValues() const;
     int * values;
   private:
-    int cols;
-    int rows;
+    Point size;
   };
 
   void changeMatrixWithSpiral(Matrix& matrix);

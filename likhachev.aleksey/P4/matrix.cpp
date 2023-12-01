@@ -2,28 +2,45 @@
 #include <fstream>
 #include <iostream>
 
+likhachev::Point::Point():
+  x(0),
+  y(0)
+{}
+
+likhachev::Point::Point(int newX, int newY):
+  x(newX),
+  y(newY)
+{}
+
+likhachev::Point& likhachev::Point::operator+=(const Point& rhs)
+{
+  x += rhs.x;
+  y += rhs.y;
+  return *this;
+}
+
 likhachev::Matrix::Matrix(char type, int mCols, int mRows)
 {
-  cols = mCols;
-  rows = mRows;
+  size.x = mCols;
+  size.y = mRows;
 
   if (type == '1') {
     int array[10000] = { 0 };
     values = array;
   } else  if (type == '2') {
-    int * array = new int[cols * rows];
+    int * array = new int[size.x * size.y];
     values = array;
   }
 }
 
-void likhachev::Matrix::read(std::string fileName)
+void likhachev::Matrix::readFromFile(std::string fileName)
 {
   std::ifstream inStream;
   inStream.open(fileName);
 
   inStream >> values[0] >> values[0];
 
-  for(int i = 0; i < cols * rows; i++) {
+  for(int i = 0; i < size.x * size.y; i++) {
     inStream >> values[i];
   }
 }
@@ -33,21 +50,16 @@ int * likhachev::Matrix::getValues() const
   return values;
 }
 
-int likhachev::Matrix::getCols() const
+likhachev::Point likhachev::Matrix::getSize() const
 {
-  return cols;
-}
-
-int likhachev::Matrix::getRows() const
-{
-  return rows;
+  return size;
 }
 
 int likhachev::countNonRepeatColumns(Matrix matrix)
 {
 
-  int cols = matrix.getCols();
-  int rows = matrix.getRows();
+  int cols = matrix.getSize().x;
+  int rows = matrix.getSize().y;
   int * values = matrix.getValues();
   int totalCount = cols;
 
@@ -65,33 +77,29 @@ int likhachev::countNonRepeatColumns(Matrix matrix)
 
 void likhachev::changeMatrixWithSpiral(Matrix& matrix)
 {
-  int direction[2] = {1, 0}; // Lavran [ToDo] : Сделать "point" и заменить тут
-  int position[2] = {-1, 0};
-  int colsSteps = matrix.getCols();
-  int rowsSteps = matrix.getRows();
+  Point direction(1, 0);
+  Point position(-1, 0);
+  Point submatrixSize = matrix.getSize();
   int counter = 1;
   int steps = 0;
-  while (colsSteps > 0 && rowsSteps > 0) {
-    if (direction[0] % 2) {
-      steps = colsSteps;
-      rowsSteps--;
+  while (submatrixSize.x > 0 && submatrixSize.y > 0) {
+    if (direction.x % 2) {
+      steps = submatrixSize.x;
+      submatrixSize.y--;
     } else {
-      steps = rowsSteps;
-      colsSteps--;
+      steps = submatrixSize.y;
+      submatrixSize.x--;
     }
 
     for(int j = 0; j < steps; j++) {
-      position[0] += direction[0] % 2;
-      position[1] += direction[1] % 2;
-      std::cout << " | " << "Position: " << position[0] << " " << position[1] << "\n"; // Lavran [ToDo] : Убрать
-      matrix.values[position[0] + position[1] * matrix.getCols()] += counter; // Lavran [ToDo] : Обращение напрямую к переменным неприемлемо, заменить
+      position.x += direction.x % 2;
+      position.y += direction.y % 2;
+      matrix.values[position.x + position.y * matrix.getSize().x] += counter; // Lavran [ToDo] : Обращение напрямую к переменным неприемлемо, заменить
       counter++;
     }
 
-    direction[0] == 2 ? direction[0] = -1 : direction[0]++;
-    direction[1] == 2 ? direction[1] = -1 : direction[1]++;
-    
-    std::cout << "iteration: " << rowsSteps << " " << colsSteps << "\n"; // Lavran [ToDo] : Убрать
+    direction.x == 2 ? direction.x = -1 : direction.x++;
+    direction.y == 2 ? direction.y = -1 : direction.y++;
   }
 }
 
