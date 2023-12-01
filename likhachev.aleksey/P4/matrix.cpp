@@ -66,34 +66,32 @@ int likhachev::countNonRepeatColumns(Matrix matrix)
 void likhachev::changeMatrixWithSpiral(Matrix& matrix)
 {
   int direction[2] = {1, 0};
-  int position[2] = {0, 0};
-  int colsSteps = matrix.getCols() - 1;
-  int rowsSteps = matrix.getRows() - 1;
+  int position[2] = {-1, 0};
+  int colsSteps = matrix.getCols();
+  int rowsSteps = matrix.getRows();
   int counter = 1;
   int steps = 0;
   while (colsSteps > 0 && rowsSteps > 0) {
-    for (int i = 0; i < 4; i ++) {
-      if (direction[0] % 2) {
-        steps = colsSteps;
-      } else {
-        steps = rowsSteps;
-      }
-
-      for(int j = 0; j < steps; j++) {
-        std::cout << i << " | " << "Position: " << position[0] << " " << position[1] << "\n";
-        matrix.values[position[0] + position[1] * matrix.getCols()] += counter;
-        position[0] += direction[0] % 2;
-        position[1] += direction[1] % 2;
-        counter++;
-      }
-
-      direction[0] == 2 ? direction[0] = -1 : direction[0]++;
-      direction[1] == 2 ? direction[1] = -1 : direction[1]++;
+    if (direction[0] % 2) {
+      steps = colsSteps;
+      rowsSteps--;
+    } else {
+      steps = rowsSteps;
+      colsSteps--;
     }
-    colsSteps -= 2;
-    rowsSteps -= 2;
-    position[0]++;
-    position[1]++;
+
+    for(int j = 0; j < steps; j++) {
+      position[0] += direction[0] % 2;
+      position[1] += direction[1] % 2;
+      std::cout << " | " << "Position: " << position[0] << " " << position[1] << "\n";
+      matrix.values[position[0] + position[1] * matrix.getCols()] += counter;
+      counter++;
+    }
+
+    direction[0] == 2 ? direction[0] = -1 : direction[0]++;
+    direction[1] == 2 ? direction[1] = -1 : direction[1]++;
+    
+    std::cout << "iteration: " << rowsSteps << " " << colsSteps << "\n";
   }
 }
 
