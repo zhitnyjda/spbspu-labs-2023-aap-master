@@ -34,10 +34,10 @@ int main(int argc, char* argv[])
 
   inStream >> matrixSize.x >> matrixSize.y;
   likhachev::Matrix matrix = likhachev::Matrix('2', matrixSize.x, matrixSize.y);
-  matrix.readFromFile(filenameIN);
+  matrix.inputFromFile(inStream);
 
   int countNRC = countNonRepeatColumns(matrix);
-  likhachev::changeMatrixWithSpiral(matrix);
+  changeMatrixWithSpiral(matrix);
 
   std::cout << countNRC << "\n"; // Lavran [ToDo] : Удалить
   for(int i = 0; i < matrixSize.x * matrixSize.y; i++) { // Lavran [ToDo] : Удалить
@@ -50,10 +50,8 @@ int main(int argc, char* argv[])
     }
   }
   
-  
   outStream << countNRC << "\n";
-  changeMatrixWithSpiral(matrix);
-  matrix.inputInFile(filenameOUT);
+  matrix.outputToFile(outStream);
   
   return 0;
 }

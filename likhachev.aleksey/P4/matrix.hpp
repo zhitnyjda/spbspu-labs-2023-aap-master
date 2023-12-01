@@ -16,8 +16,8 @@ namespace likhachev
   struct Matrix {
   public:
     Matrix(char type, int mCols, int mRows);
-    void readFromFile(std::string fileName);
-    void inputInFile(std::string fileName);
+    void inputFromFile(std::ifstream& inStream);
+    void outputToFile(std::ofstream& outStream);
     Point getSize() const;
     int * getValues() const;
     int * values;

@@ -33,23 +33,15 @@ likhachev::Matrix::Matrix(char type, int mCols, int mRows)
   }
 }
 
-void likhachev::Matrix::readFromFile(std::string fileName)
+void likhachev::Matrix::inputFromFile(std::ifstream& inStream)
 {
-  std::ifstream inStream;
-  inStream.open(fileName);
-
-  inStream >> values[0] >> values[0];
-
   for(int i = 0; i < size.x * size.y; i++) {
     inStream >> values[i];
   }
 }
 
-void likhachev::Matrix::inputInFile(std::string fileName)
+void likhachev::Matrix::outputToFile(std::ofstream& outStream)
 {
-  std::ofstream outStream;
-  outStream.open(fileName, std::ios::app);
-
   outStream << size.x << " " << size.y << " ";
   for(int i = 0; i < size.x * size.y; i++) {
     outStream << values[i] << " ";
