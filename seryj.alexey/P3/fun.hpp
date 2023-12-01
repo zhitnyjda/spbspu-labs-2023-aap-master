@@ -1,5 +1,6 @@
 #ifndef FUN_HPP
 #define FUN_HPP
+#include <cstddef>
 namespace seryj
 {
   char* changeArray(char*, int);

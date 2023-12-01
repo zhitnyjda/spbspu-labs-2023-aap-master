@@ -12,7 +12,7 @@ char * seryj::changeArray(char* old_values, int size)
   delete[] old_values;
   return new_values;
 }
-size_t seryj::counterOfEqualPairs(char* values, int size)
+unsigned long long seryj::counterOfEqualPairs(char* values, int size)
 {
   int count = 0;
   for (int i = 0; i < size; i++)
