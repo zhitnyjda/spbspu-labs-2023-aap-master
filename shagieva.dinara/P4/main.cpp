@@ -52,19 +52,10 @@ int main(int argc, char ** argv)
   }
 
   int numberOfValues = numberOfRows * numberOfColumns;
-  int result = 0;
-
-  if (task == 1)
-  {
-    int matrixValues[10000] = { 0 };
-  }
-
+  int staticArray[10000] = { 0 };
   int * matrixValues = nullptr;
 
-  if (task == 2)
-  {
-    matrixValues = new int[numberOfValues];
-  }
+  matrixValues = (task == 1) ? staticArray : new int[numberOfValues];
 
   if (shagieva::readMatrix(input, matrixValues, numberOfValues) != numberOfValues)
   {
@@ -75,6 +66,8 @@ int main(int argc, char ** argv)
     }
     return 2;
   }
+
+  int result = 0;
 
   result = shagieva::findMaxColumn(matrixValues, numberOfRows, numberOfColumns);
 
