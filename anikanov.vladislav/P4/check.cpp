@@ -1,6 +1,6 @@
+#include "check.h"
 #include <cctype>
 #include <cstring>
-#include "check.h"
 
 bool isNumber(const char *str)
 {

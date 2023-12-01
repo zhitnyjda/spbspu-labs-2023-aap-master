@@ -1,6 +1,6 @@
+#include "errorsPrint.h"
 #include <iostream>
 #include <cstring>
-#include "errorsPrint.h"
 
 void printErrorByErrcode(std::ostream &cout, const char *code)
 {
