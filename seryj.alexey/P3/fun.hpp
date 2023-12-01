@@ -3,6 +3,6 @@
 namespace seryj
 {
   char* changeArray(char*, int);
-  unsigned long long counterOfEqualPairs(char* values, int size);
+  size_t counterOfEqualPairs(char*, int);
 }
 #endif
