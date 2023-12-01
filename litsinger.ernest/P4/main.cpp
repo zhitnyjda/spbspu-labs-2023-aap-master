@@ -63,7 +63,7 @@ int main(int args,char * argv[])
     }
     if (rows == 0 || cols == 0)
     {
-      std::cerr << "Error\n";
+      output << 0;
       return 0;
     }
     int * dynamic_array = new int[rows * cols];
