@@ -1,6 +1,6 @@
 #include "InputArray.hpp"
+#include <fstream>
 #include <algorithm>
-#include <iostream>
 
 size_t sukacheva::inputMatrix(std::istream& in, int* matrix, size_t s, size_t toRead)
 {
