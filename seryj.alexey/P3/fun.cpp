@@ -5,7 +5,7 @@ char * seryj::changeArray(char* old_values, int size)
   char * new_values = new char[size*2];
   if(!new_values)
     throw std::logic_error("Not enough space for array");
-  for (int i = 0; i <= size; i++)
+  for (int i = 0; i < size; i++)
   {
     new_values[i] = old_values[i];
   }
