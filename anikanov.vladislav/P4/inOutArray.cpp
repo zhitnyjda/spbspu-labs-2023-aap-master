@@ -1,5 +1,5 @@
-#include <fstream>
 #include "inOutArray.h"
+#include <fstream>
 
 int inputArray(std::istream &cin, int *array, int n, int m)
 {
