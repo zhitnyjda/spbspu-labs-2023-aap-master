@@ -12,6 +12,12 @@ int main()
     char* lineRes = new char[10] {};
     size_t len1 = psarev::makeLine(line1);
     size_t len2 = psarev::makeLine(line2);
+    if (len1 == 1 || len2 == 1) {
+      std::cerr << "Error: At least one value need!\n";
+      delete[] line1;
+      delete[] line2;
+      delete[] lineRes;
+    }
     size_t resMarker = psarev::makeMutUnLine(line1, line2, len1, len2, lineRes);
 
     delete[] line1;
