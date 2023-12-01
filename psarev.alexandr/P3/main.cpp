@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstddef>
-#include "lineFuncs.hpp"
+#include "readLine.hpp"
+#include "createLine.hpp"
 
 int main()
 {
@@ -9,7 +9,7 @@ int main()
     char* line1 = new char[10] {};
     const char* line2 = "abc ef";
 
-    size_t len1 = psarev::makeLine(line1);
+    size_t len1 = psarev::readLine(line1);
     if (len1 == 0) {
       std::cerr << "Error: At least ONE value need!\n";
       delete[] line1;
@@ -18,7 +18,7 @@ int main()
     size_t len2 = 6;
 
     char* lineRes = new char[10] {};
-    size_t resMarker = psarev::makeMutUnLine(line1, line2, len1, len2, lineRes);
+    size_t resMarker = psarev::createTaskLine(line1, line2, len1, len2, lineRes);
 
     delete[] line1;
 
