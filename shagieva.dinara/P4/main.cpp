@@ -52,13 +52,12 @@ int main(int argc, char ** argv)
   }
 
   int numberOfValues = numberOfRows * numberOfColumns;
-  int * matrixValues = 0;
+  int * matrixValues = nullptr;
   int result = 0;
 
   if (task == 1)
   {
-    int staticArray[10000] = { 0 };
-    matrixValues = staticArray;
+    int matrixValues[10000] = { 0 };
   }
 
   if (task == 2)
