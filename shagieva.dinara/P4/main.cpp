@@ -52,13 +52,14 @@ int main(int argc, char ** argv)
   }
 
   int numberOfValues = numberOfRows * numberOfColumns;
-  int * matrixValues = nullptr;
   int result = 0;
 
   if (task == 1)
   {
     int matrixValues[10000] = { 0 };
   }
+
+  int * matrixValues = nullptr;
 
   if (task == 2)
   {
