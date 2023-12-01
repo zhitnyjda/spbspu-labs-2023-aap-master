@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include "matrix_methods.hpp"
 #include "functions.hpp"
 
@@ -8,14 +7,12 @@ int main(int argc, char* argv[])
 {
   try
   {
-    // checking params
     using namespace miheev;
     if (argc != 4)
     {
       std::cerr << "Wrong amount of arguments\n";
       return 1;
     }
-    //initing params
     long long num = 0;
     try
     {
@@ -29,7 +26,6 @@ int main(int argc, char* argv[])
 
     size_t cols = 0, rows = 0;
 
-    // reading matrix from file
     std::ifstream inputFile(argv[2]);
     inputFile >> rows >> cols;
     if (!inputFile)
@@ -38,18 +34,8 @@ int main(int argc, char* argv[])
       return 2;
     }
 
-    std::string outputString = std::to_string(rows) + " " + std::to_string(cols);
-
     int stat[10000] = {0};
-    int* arr;
-    if (num == 1)
-    {
-      arr = stat;
-    }
-    else if (num == 2)
-    {
-      arr = new int[rows*cols];
-    }
+    int* arr = num == 1 ? stat : new int[rows*cols];
     try
     {
       inputToArr(inputFile, arr, rows*cols);
@@ -63,15 +49,20 @@ int main(int argc, char* argv[])
       }
       return 3;
     }
-    outputString += getIncreasedMatrixInline(arr, rows, cols);
+
+    increasePeriphery(arr, rows, cols);
+
+    std::ofstream outFile(argv[3]);
+    outFile << rows << ' ' << cols << ' ';
+    for (size_t i = 0; i < rows*cols; i++)
+    {
+      outFile << arr[i] << ' ';
+    }
+
     if (num == 2)
     {
       delete[] arr;
     }
-
-    inputFile.close();
-    std::ofstream outFile(argv[3]);
-    outFile << outputString;
 
     return 0;
   }
@@ -86,3 +77,4 @@ int main(int argc, char* argv[])
     return 2;
   }
 }
+

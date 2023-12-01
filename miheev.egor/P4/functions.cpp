@@ -23,18 +23,3 @@ void miheev::printArrInline(int* arr, size_t size)
   std::cout << '\n';
 }
 
-void miheev::extendStringWithArr(int* arr, size_t size, std::string& str)
-{
-  for (size_t i = 0; i < size; i++)
-  {
-    str += ' ' + std::to_string(arr[i]);
-  }
-}
-
-std::string miheev::getIncreasedMatrixInline(int* arr, size_t rows, size_t cols)
-{
-  miheev::increasePeriphery(arr, rows, cols);
-  std::string increasedMatrix("");
-  miheev::extendStringWithArr(arr, rows*cols, increasedMatrix);
-  return increasedMatrix;
-}
