@@ -45,6 +45,19 @@ void likhachev::Matrix::readFromFile(std::string fileName)
   }
 }
 
+void likhachev::Matrix::inputInFile(std::string fileName)
+{
+  std::ofstream outStream;
+  outStream.open(fileName, std::ios::app);
+
+  outStream << size.x << " " << size.y << " ";
+  for(int i = 0; i < size.x * size.y; i++) {
+    outStream << values[i] << " ";
+  }
+
+  outStream << "\n";
+}
+
 int * likhachev::Matrix::getValues() const
 {
   return values;
@@ -55,17 +68,15 @@ likhachev::Point likhachev::Matrix::getSize() const
   return size;
 }
 
-int likhachev::countNonRepeatColumns(Matrix matrix)
+int likhachev::countNonRepeatColumns(Matrix& matrix)
 {
-
-  int cols = matrix.getSize().x;
-  int rows = matrix.getSize().y;
+  likhachev::Point matrixSize = matrix.getSize();
   int * values = matrix.getValues();
-  int totalCount = cols;
+  int totalCount = matrixSize.x;
 
-  for( int i = 0; i < rows; i++) {
-    for (int j = 0; j < cols - 1; j++) {
-      if (values[cols * j + i] == values[cols * (j + 1) + i]) {
+  for( int i = 0; i < matrixSize.x; i++) {
+    for (int j = 0; j < matrixSize.y - 1; j++) {
+      if (values[matrixSize.x * j + i] == values[matrixSize.x * (j + 1) + i]) {
         totalCount--;
         break;
       }
@@ -94,7 +105,7 @@ void likhachev::changeMatrixWithSpiral(Matrix& matrix)
     for(int j = 0; j < steps; j++) {
       position.x += direction.x % 2;
       position.y += direction.y % 2;
-      matrix.values[position.x + position.y * matrix.getSize().x] += counter; // Lavran [ToDo] : Обращение напрямую к переменным неприемлемо, заменить
+      matrix.values[position.x + position.y * matrix.getSize().x] += counter; // Lavran [ToDo] : Обращение напрямую к переменным... не нравится, заменить
       counter++;
     }
 

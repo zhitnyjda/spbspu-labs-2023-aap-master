@@ -16,8 +16,8 @@ namespace likhachev
   struct Matrix {
   public:
     Matrix(char type, int mCols, int mRows);
-    void readFromFile(std::string);
-    void inpunInFile(std::string);
+    void readFromFile(std::string fileName);
+    void inputInFile(std::string fileName);
     Point getSize() const;
     int * getValues() const;
     int * values;
@@ -26,7 +26,7 @@ namespace likhachev
   };
 
   void changeMatrixWithSpiral(Matrix& matrix);
-  int countNonRepeatColumns(Matrix);
+  int countNonRepeatColumns(Matrix& matrix);
 };
 #endif
 
