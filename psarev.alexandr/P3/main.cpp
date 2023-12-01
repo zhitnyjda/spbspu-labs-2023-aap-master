@@ -10,8 +10,8 @@ int main()
     const char* line2 = "abc ef";
 
     size_t len1 = psarev::makeLine(line1);
-    if (len1 == 1) {
-      std::cerr << "Error: Need at least one input value!\n";
+    if (len1 == 0) {
+      std::cerr << "Error: At least ONE value need!\n";
       delete[] line1;
       return 1;
     }
