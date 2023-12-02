@@ -25,6 +25,10 @@ int khoroshkin::inputLine(char *& line, size_t capacity)
     if (c == '\n')
     {
       line[read - 1] = 0;
+      if (read == 1)
+      {
+        throw std::logic_error("Length of sting should be >0\n");
+      }
       break;
     }
   }
@@ -46,13 +50,13 @@ char khoroshkin::findFirstMax(std::map<char, int> dict)
   return firstMaxPair.first;
 }
 
-char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, char * alreadyTaken)
+char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, char first, char second)
 {
   std::pair<char, int> otherMaxPair;
   int maxValue = std::numeric_limits< int >::min();
   for (const auto & pair : dict)
   {
-    if (maxValue < pair.second && pair.second <= previousMaxChar && std::find(alreadyTaken, alreadyTaken+2, pair.first) == alreadyTaken+3)
+    if (maxValue < pair.second && pair.second <= previousMaxChar && pair.first != first && pair.first != second)
     {
       maxValue = pair.second;
       otherMaxPair = pair;
@@ -67,9 +71,9 @@ char * khoroshkin::generateNewString(std::map<char, int> dict)
   newString[3] = '\0';
   char firstMaxChar = findFirstMax(dict);
   newString[0] = firstMaxChar;
-  char secondMaxChar = findOtherMax(dict, dict[firstMaxChar], newString);
+  char secondMaxChar = findOtherMax(dict, dict[firstMaxChar], newString[0]);
   newString[1] = secondMaxChar;
-  char thirdMaxChar = findOtherMax(dict, dict[secondMaxChar], newString);
+  char thirdMaxChar = findOtherMax(dict, dict[secondMaxChar], newString[0], newString[1]);
   newString[2] = thirdMaxChar;
   std::sort(newString, newString+3);
   return newString;

@@ -13,6 +13,12 @@ int main()
     delete[] string;
     return 0;
   }
+  catch (const std::logic_error & e)
+  {
+    std::cerr << e.what();
+    delete[] string;
+    return 1;
+  }
   catch (const std::bad_alloc & e)
   {
     std::cerr << "Cannot allocate memory\n";
