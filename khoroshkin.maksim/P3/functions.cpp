@@ -1,7 +1,4 @@
 #include <iostream>
-#include <string>
-#include <iomanip>
-#include <algorithm>
 #include "functions.hpp"
 
 int khoroshkin::inputLine(char *& line, size_t capacity)
@@ -29,7 +26,6 @@ int khoroshkin::inputLine(char *& line, size_t capacity)
       break;
     }
   }
-  
   return read;
 }
 
@@ -48,13 +44,13 @@ char khoroshkin::findFirstMax(std::map<char, int> dict)
   return firstMaxPair.first;
 }
 
-char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, std::string alreadyTaken)
+char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, char * alreadyTaken)
 {
   std::pair<char, int> otherMaxPair;
   int maxValue = std::numeric_limits< int >::min();
   for (const auto & pair : dict)
   {
-    if (maxValue < pair.second && pair.second <= previousMaxChar && alreadyTaken.find(pair.first)==std::string::npos)
+    if (maxValue < pair.second && pair.second <= previousMaxChar && std::find(alreadyTaken, alreadyTaken+3, pair.first) == alreadyTaken+3)
     {
       maxValue = pair.second;
       otherMaxPair = pair;
