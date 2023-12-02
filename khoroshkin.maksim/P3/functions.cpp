@@ -25,10 +25,6 @@ int khoroshkin::inputLine(char *& line, size_t capacity)
     if (c == '\n' || c == '\0')
     {
       line[read - 1] = 0;
-      if (read == 1)
-      {
-        throw std::logic_error("Length of string should be >0\n");
-      }
       break;
     }
   }

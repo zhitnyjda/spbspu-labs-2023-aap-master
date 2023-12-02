@@ -7,6 +7,10 @@ int main()
   try
   {
     int length = khoroshkin::inputLine(string, 10);
+    if (length == 1);
+    {
+      throw std::logic_error("Error: Empty line\n");
+    }
     char * result = khoroshkin::getFrequency(string, length);
     std::cout << result << '\n';
     delete[] result;
@@ -21,7 +25,7 @@ int main()
   }
   catch (const std::bad_alloc & e)
   {
-    std::cerr << "Cannot allocate memory\n";
+    std::cerr << "Error: Cannot allocate memory\n";
     delete[] string;
     return 1;
   }
