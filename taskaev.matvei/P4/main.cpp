@@ -30,8 +30,9 @@ int main(int argc, char** argv)
       return 2;
     }
     int matrixStatic[matrixSize];
-    int * matrix = new int[matrixSize];
-    if((taskaev::inputArray(input, (num == 2) ? matrix : matrixStatic, matrixSize, matrixSize)) != (matrixSize))
+    int * matrixDimamic = new int[matrixSize];
+    int* matrix = (num == 2) ? matrixDimamic : matrixStatic; 
+    if((taskaev::inputArray(input, matrix, matrixSize, matrixSize)) != (matrixSize))
     {
       if (num == 2)
       {
@@ -40,7 +41,7 @@ int main(int argc, char** argv)
       std::cerr <<"Error matrix cannot read.\n";
       return 2;
     }
-    resultNum = taskaev::findCntLocMin((num == 2) ? matrix : matrixStatic, rows, cols);
+    resultNum = taskaev::findCntLocMin(matrix, rows, cols);
     std::ofstream output(argv[3]);
     output << resultNum;
   }
