@@ -9,17 +9,14 @@ int main(int argc, const char* argv[])
     return 1;
   }
 
-  int num = 0;
-
-  try
-  {
-    num = std::stoll(argv[1]);
-  }
-  catch (const std::invalid_argument& e)
+  char* endOfParsing = nullptr;
+  int num = std::strtoll(argv[1], std::addressof(endOfParsing), 10);
+  if (*endOfParsing != '\0')
   {
     std::cerr << "First parameter is not number\n";
     return 1;
   }
+
   if (num != 1 && num != 2)
   {
     std::cerr << "Incorrect value of the first argument\n";
