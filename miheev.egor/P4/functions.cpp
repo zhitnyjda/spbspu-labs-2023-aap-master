@@ -26,18 +26,6 @@ void miheev::printArrInline(const int* const arr, size_t size)
   std::cout << '\n';
 }
 
-// bool isUInt(char* str, size_t size)
-// {
-//   for (size_t i = 0; i < size; i++)
-//   {
-//     if (!std::isdigit(str[i]))
-//     {
-//       return 0;
-//     }
-//   }
-//   return 1;
-// }
-
 bool miheev::isUInt(char* str)
 {
   for (size_t i = 0; str[i] != '\0'; i++)
