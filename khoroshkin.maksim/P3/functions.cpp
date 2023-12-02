@@ -4,13 +4,24 @@
 #include <algorithm>
 #include "functions.hpp"
 
-int khoroshkin::inputLine(char * line)
+int khoroshkin::inputLine(char *& line, size_t capacity)
 {
   char c = 0;
   size_t read = 0;
   std::cin >> std::noskipws;
   while (std::cin >> c)
   {
+    if (read == capacity - 1)
+    {
+      capacity *= 2;
+      char * newLine = new char[capacity];
+      for (size_t i = 0; i < read; i++)
+      {
+        newLine[i] = line[i];
+      }
+      delete[] line;
+      line = newLine;
+    }
     line[read++] = c;
     if (c == '\n')
     {
@@ -18,6 +29,7 @@ int khoroshkin::inputLine(char * line)
       break;
     }
   }
+  
   return read;
 }
 
@@ -51,19 +63,20 @@ char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, std
   return otherMaxPair.first;
 }
 
-std::string khoroshkin::generateNewString(std::map<char, int> dict)
+char * khoroshkin::generateNewString(std::map<char, int> dict)
 {
+  char * newString = new char[3];
   char firstMaxChar = findFirstMax(dict);
-  std::string newString (1, firstMaxChar);
+  newString[0] = firstMaxChar;
   char secondMaxChar = findOtherMax(dict, dict[firstMaxChar], newString);
-  newString.push_back(secondMaxChar);
+  newString[1] = secondMaxChar;
   char thirdMaxChar = findOtherMax(dict, dict[secondMaxChar], newString);
-  newString.push_back(thirdMaxChar);
-  std::sort(newString.begin(), newString.end());
+  newString[2] = thirdMaxChar;
+  std::sort(newString, newString+3);
   return newString;
 }
 
-std::string khoroshkin::getFrequency(char * line, int length)
+char * khoroshkin::getFrequency(char * line, int length)
 {
   std::map<char, int> charFrequency;
   for (int i = 0; i < length; i++)
