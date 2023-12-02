@@ -18,7 +18,7 @@ char * inputString(std::istream & in, size_t & size, size_t & add_size)
       {
         newstring = new char[size + add_size];
       }
-      catch (const std::exception )
+      catch (const std::bad_alloc & e)
       {
         delete [] newstring;
         throw std::runtime_error("bad_alloc error");
@@ -33,7 +33,6 @@ char * inputString(std::istream & in, size_t & size, size_t & add_size)
       size += add_size;
     }
   }
-
   if (!string[0])
   {
     throw std::runtime_error("empty input");

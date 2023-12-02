@@ -13,7 +13,7 @@ int main() {
   {
     first_string = inputString(std::cin, first_size, add_size);
   }
-  catch (const std::exception & e)
+  catch (const std::runtime_error & e)
   {
     delete [] first_string;
     std::cerr << e.what() << "\n";
