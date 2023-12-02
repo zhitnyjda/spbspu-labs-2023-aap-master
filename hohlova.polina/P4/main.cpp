@@ -18,7 +18,7 @@ int main(int argc, char** argv)
   size_t rows = 0;
   size_t cols = 0;
   int num = std::stoll(argv[1]);
-  int* matrix = new int[rows * cols]
+  int* matrix = new int[rows * cols];
   if (num > 2 || num < 1)
   {
     std::cerr << "First parameter is out of range\n";
