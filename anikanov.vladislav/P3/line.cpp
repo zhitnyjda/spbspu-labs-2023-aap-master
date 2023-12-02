@@ -85,7 +85,7 @@ char &Line::operator[](size_t i)
 
 std::istream &operator>>(std::istream &in, Line &line)
 {
-  long long i = 0;
+  size_t i = 0;
   char c;
   do {
     in.get(c);
