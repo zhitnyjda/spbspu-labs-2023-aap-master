@@ -7,7 +7,7 @@ Line::Line(const char *string, size_t len)
   this->len = len;
   try {
     data = new char[len]{};
-    for (int i = 0; i < (string == nullptr ? 0 : strlen(string)); ++i) {
+    for (size_t i = 0; i < (string == nullptr ? 0 : strlen(string)); ++i) {
       data[i] = string[i];
     }
   } catch (std::exception const &ex) {
@@ -46,13 +46,13 @@ void Line::resize(size_t new_len)
   }
   try {
     char *new_data = new char[new_len]{};
-    for (int i = 0; i < len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
       new_data[i] = data[i];
     }
     delete[] data;
     len = new_len;
     data = new char[len];
-    for (int i = 0; i < len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
       data[i] = new_data[i];
     }
     delete[] new_data;
@@ -69,7 +69,7 @@ Line &Line::operator=(const Line &line)
   len = line.len;
   delete data;
   data = new char[len];
-  for (int i = 0; i < len; ++i) {
+  for (size_t i = 0; i < len; ++i) {
     data[i] = line.data[i];
   }
   return *this;
@@ -88,7 +88,7 @@ std::istream &operator>>(std::istream &in, Line &line)
   long long i = 0;
   char c;
   do {
-    std::cin.get(c);
+    in.get(c);
     if (i == line.size()) {
       line.resize(line.len * 2);
     }
@@ -100,7 +100,7 @@ std::istream &operator>>(std::istream &in, Line &line)
 
 std::ostream &operator<<(std::ostream &out, const Line &line)
 {
-  for (long long i = 0; i < line.len; ++i) {
+  for (size_t i = 0; i < line.len; ++i) {
     if (line.data[i] != '\0') {
       out << line.data[i];
     } else {
