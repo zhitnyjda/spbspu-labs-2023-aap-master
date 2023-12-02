@@ -75,9 +75,9 @@ Line &Line::operator=(const Line &line)
   return *this;
 }
 
-char &Line::operator[](long long i)
+char &Line::operator[](size_t i)
 {
-  if (i < 0 || i >= this->len) {
+  if (i >= this->len) {
     throw std::overflow_error("Invalid index\n");
   }
   return data[i];

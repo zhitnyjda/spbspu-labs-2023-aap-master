@@ -15,7 +15,7 @@ public:
   char *get_line() const;
   void resize(size_t);
   Line &operator=(const Line &);
-  char &operator[](long long);
+  char &operator[](size_t);
 
   friend std::istream &operator>>(std::istream &, Line &);
   friend std::ostream &operator<<(std::ostream &, const Line &);
