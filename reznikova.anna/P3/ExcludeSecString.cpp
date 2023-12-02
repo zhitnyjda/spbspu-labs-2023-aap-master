@@ -20,6 +20,5 @@ char * ExcludeSecString(char * first_str, char * sec_str, size_t first_size, siz
             result_string[read++] = first_str[i];
         }
     }
-    
     return result_string;
 }
