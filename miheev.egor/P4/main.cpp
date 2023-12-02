@@ -1,5 +1,7 @@
-#include <iostream>
+#include <cctype>
+#include <cstring>
 #include <fstream>
+#include <iostream>
 #include "matrix_methods.hpp"
 #include "functions.hpp"
 
@@ -16,7 +18,15 @@ int main(int argc, char* argv[])
     long long num = 0;
     try
     {
-      num = std::stoll(argv[1]);
+      if (isUInt(argv[1]))
+      {
+        num = std::stoll(argv[1]);
+      }
+      else
+      {
+        std::cerr << "First arg is not numeric or have zero lenght\n";
+        return 1;
+      }
     }
     catch(const std::invalid_argument& e)
     {

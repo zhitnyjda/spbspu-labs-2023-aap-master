@@ -1,5 +1,6 @@
 #include "functions.hpp"
 #include <iostream>
+#include <cctype>
 #include "matrix_methods.hpp"
 
 size_t miheev::inputToArr(std::ifstream& in, int* arr, size_t size)
@@ -25,3 +26,19 @@ void miheev::printArrInline(const int* const arr, size_t size)
   std::cout << '\n';
 }
 
+// bool isUInt(char* str, size_t size)
+// {
+//   for (size_t i = 0; i < size; i++)
+//   {
+//     if (!std::isdigit(str[i]))
+//     {
+//       return 0;
+//     }
+//   }
+//   return 1;
+// }
+
+bool isUIint(char* str)
+{
+  return 1;
+}

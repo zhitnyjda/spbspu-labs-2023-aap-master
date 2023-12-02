@@ -4,8 +4,9 @@
 
 namespace miheev
 {
-  void inputToArr(std::ifstream& in, int* arr, size_t size);
-  void printArrInline(int* arr, size_t size);
+  size_t inputToArr(std::ifstream& in, int* arr, size_t size);
+  void printArrInline(const int* const arr, size_t size);
+  bool isUInt(char* str);
 }
 
 #endif

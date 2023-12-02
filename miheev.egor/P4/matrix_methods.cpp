@@ -2,8 +2,7 @@
 #include <iostream>
 #include "functions.hpp"
 
-void miheev::increaseRectBorder(int* arr, size_t cols,
-    size_t xStart, size_t yStart, size_t width, size_t height, int increment)
+void miheev::increaseRectBorder(int* arr, size_t cols, size_t xStart, size_t yStart, size_t width, size_t height, int increment)
 {
   if (height == 1)
   {
