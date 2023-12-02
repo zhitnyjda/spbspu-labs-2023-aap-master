@@ -52,7 +52,7 @@ char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, cha
   int maxValue = std::numeric_limits< int >::min();
   for (const auto & pair : dict)
   {
-    if (maxValue < pair.second && pair.second <= previousMaxChar && std::find(alreadyTaken, alreadyTaken+3, pair.first) == alreadyTaken+3)
+    if (maxValue < pair.second && pair.second <= previousMaxChar && std::find(alreadyTaken, alreadyTaken+2, pair.first) == alreadyTaken+3)
     {
       maxValue = pair.second;
       otherMaxPair = pair;
@@ -63,7 +63,8 @@ char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, cha
 
 char * khoroshkin::generateNewString(std::map<char, int> dict)
 {
-  char * newString = new char[3];
+  char * newString = new char[4];
+  newString[3] = '\0';
   char firstMaxChar = findFirstMax(dict);
   newString[0] = firstMaxChar;
   char secondMaxChar = findOtherMax(dict, dict[firstMaxChar], newString);

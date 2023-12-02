@@ -10,4 +10,5 @@ namespace khoroshkin
   char * generateNewString(std::map<char, int> dict);
   char * getFrequency(char * line, int length);
 }
+
 #endif
