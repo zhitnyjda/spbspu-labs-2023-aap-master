@@ -31,7 +31,7 @@ int main(int argc, char** argv)
     }
     int matrixStatic[matrixSize];
     int * matrix = new int[matrixSize];
-    if(!(taskaev::inputArray(input, (num == 2) ? matrix : matrixStatic, matrixSize, matrixSize)) == (matrixSize))
+    if((taskaev::inputArray(input, (num == 2) ? matrix : matrixStatic, matrixSize, matrixSize)) != (matrixSize))
     {
       if (num == 2)
       {
