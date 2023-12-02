@@ -2,11 +2,9 @@
 #include <string>
 #include "CreateMatrix.hpp"
 
-using namespace nikiforov;
-
 int main(int argc, const char* argv[])
 {
-  if (argc < 4 || argc > 4) {
+  if (argc != 4) {
     std::cerr << "Not enough args.\n";
     return 1;
   }
@@ -27,7 +25,6 @@ int main(int argc, const char* argv[])
     std::cerr << "Incorrect value of the first argument\n";
     return 1;
   }
-
   std::ifstream input(argv[2]);
   size_t rows = 0;
   size_t cols = 0;
@@ -42,31 +39,34 @@ int main(int argc, const char* argv[])
     std::cerr << "Error: Can't open an output file!\n";
     return 2;
   }
-  Matrix matrix;
+
+  int staticArr[10000] = {};
+  int* Arr = 0;
 
   if (num == 1)
   {
-    int staticArr[10000] = {};
-    if (matrix.inputMatrix(input, staticArr, rows * cols) != rows * cols)
-    {
-      std::cerr << "Mismatch of dimension and values!\n";
-      return 2;
-    }
-    matrix.spiralMatrix(output, staticArr, rows, cols);
+    Arr = staticArr;
   }
   else if (num == 2)
   {
-    int* dynamicArr = new int[rows * cols];
-    if (matrix.inputMatrix(input, dynamicArr, rows * cols) != rows * cols)
-    {
-      std::cerr << "Mismatch of dimension and values!\n";
-      delete[] dynamicArr;
-      dynamicArr = nullptr;
-      return 2;
+    Arr = new int[rows * cols];
+  }
+
+  if (nikiforov::inputMatrix(input, Arr, rows * cols) != rows * cols)
+  {
+    std::cerr << "Mismatch of dimension and values!\n";
+    if (num == 2) {
+      delete[] Arr;
+      Arr = nullptr;
     }
-    matrix.spiralMatrix(output, dynamicArr, rows, cols);
-    delete[] dynamicArr;
-    dynamicArr = nullptr;
+    return 2;
+  }
+
+  nikiforov::spiralMatrix(output, Arr, rows, cols);
+
+  if (num == 2) {
+    delete[] Arr;
+    Arr = nullptr;
   }
   return 0;
 }
