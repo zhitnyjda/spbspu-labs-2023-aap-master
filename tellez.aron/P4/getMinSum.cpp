@@ -1,6 +1,5 @@
 #include "getMinSum.hpp"
 #include <stdexcept>
-#include <limits>
 
 size_t getMinSum(const size_t * arr, size_t m, size_t n)
 {
