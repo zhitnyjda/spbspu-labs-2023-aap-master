@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <stdexcept>
+#include <cstring>
 #include "getMinSum.hpp"
 #include "readMatrix.hpp"
 
@@ -55,7 +56,7 @@ int main(int argc, char* argv[])
   catch (const std::invalid_argument& e)
   {
     std::cerr << "Error:\n" << e.what() << '\n';
-    if (matrix != nullptr && argv[1] == "2")
+    if (matrix != nullptr &&  std::strcmp(argv[1], "2") == 0)
     {
       delete[] matrix;
     }
