@@ -10,14 +10,14 @@ bool isVowel(char c) {
 char *dropVowels(char *string, size_t len){
   char *new_string = new char[len];
   size_t j = 0;
-  for (int i = 0; i < strlen(string) + 1; ++i) {
+  for (size_t i = 0; i < strlen(string) + 1; ++i) {
     if (!isVowel(string[i])) {
       new_string[j++] = string[i];
     }
   }
   delete[] string;
   string = new char[len];
-  for (int i = 0; i < len; ++i) {
+  for (size_t i = 0; i < len; ++i) {
     string[i] = new_string[i];
   }
   delete[] new_string;
