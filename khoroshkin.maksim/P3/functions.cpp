@@ -1,4 +1,6 @@
 #include <iostream>
+#include <limits>
+#include <algorithm>
 #include "functions.hpp"
 
 int khoroshkin::inputLine(char *& line, size_t capacity)
