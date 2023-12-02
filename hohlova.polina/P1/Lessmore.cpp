@@ -8,11 +8,6 @@ hohlova::LessMore::LessMore():
 
 void hohlova::LessMore::operator()(int prev, int curr, int next)
 {
-  const size_t maxSize = std::numeric_limits< size_t >::max();
-  if (countres_ == maxSize)
-  {
-    throw std::logic_error("Sequence is too long\n");
-  }
   if (curr < prev && curr > next && next != 0 && curr != 0 and prev != 0)
   {
     ++countres_;
