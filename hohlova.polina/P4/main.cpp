@@ -17,17 +17,15 @@ int main(int argc, char** argv)
   }
   size_t rows = 0;
   size_t cols = 0;
-  char* lastNum = nullptr;
   int num = std::stoll(argv[1]);
-  int* matrix = new int[rows * cols];
-  int staticm[10000] = { 0 };
+  int* matrix = new int[rows * cols]
   if (num > 2 || num < 1)
   {
     std::cerr << "First parameter is out of range\n";
     return 1;
   }
   std::ifstream inputFile(argv[2]);
-  inputFile >> rows, cols;
+  inputFile >> rows >> cols;
   if (!inputFile)
   {
     std::cerr << "Cannot read an input\n";
