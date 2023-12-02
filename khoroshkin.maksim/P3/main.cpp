@@ -7,7 +7,7 @@ int main()
   try
   {
     int length = khoroshkin::inputLine(string, 10);
-    if (length == 1);
+    if (length == 1)
     {
       throw std::logic_error("Error: Empty line\n");
     }
