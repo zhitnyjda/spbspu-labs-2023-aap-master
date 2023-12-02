@@ -36,7 +36,7 @@ int main(int argc, char** argv)
     {
       if (num == 2)
       {
-        delete [] matrix;
+        delete[] matrix;
       }
       std::cerr <<"Error matrix cannot read.\n";
       return 2;
@@ -44,6 +44,10 @@ int main(int argc, char** argv)
     resultNum = taskaev::findCntLocMin(matrix, rows, cols);
     std::ofstream output(argv[3]);
     output << resultNum;
+    if (num == 2)
+    {
+      delete[] matrix;
+    }
   }
   else
   {
