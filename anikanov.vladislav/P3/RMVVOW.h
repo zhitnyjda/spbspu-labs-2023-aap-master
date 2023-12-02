@@ -1,5 +1,6 @@
 #ifndef RMVVOW_H
 #define RMVVOW_H
+#include <cctype>
 
 bool isVowel(char);
 
