@@ -62,7 +62,9 @@ int main(int argc, char* argv[])
     inputMatrixFromFile(matrixSize, inStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
-    delete[] matrixValues;
+    if (type == 2) {
+      delete[] matrixValues;
+    }
     return 2;
   }
 
