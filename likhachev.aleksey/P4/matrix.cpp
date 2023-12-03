@@ -106,3 +106,17 @@ void likhachev::changeMatrixWithSpiral(Matrix& matrix)
   }
 }
 
+
+void likhachev::coutMatrix(Matrix& matrix) {
+  Point matrixSize = matrix.getSize();
+  for(int i = 0; i < matrixSize.x * matrixSize.y; i++) { // Lavran [ToDo] : Удалить
+    if(matrix.values[i] < 10) {
+      std::cout << "0";
+    }
+    std::cout << matrix.values[i] << " ";
+    if((i + 1) % matrixSize.x == 0) {
+      std::cout << "\n";
+    }
+  }
+}
+

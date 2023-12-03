@@ -25,10 +25,8 @@ namespace likhachev
     Point size;
   };
 
+  void coutMatrix(Matrix& matrix);
   void changeMatrixWithSpiral(Matrix& matrix);
   int countNonRepeatColumns(Matrix& matrix);
 };
 #endif
-
-// Lavran [ToDo] : Создать структуру "point"
-// Lavran [ToDo] : Создать метод вывода матрицы в файл

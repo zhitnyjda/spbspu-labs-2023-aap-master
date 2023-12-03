@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <exception>
 #include <fstream>
+#include <string>
 #include "matrix.cpp"
 #include "matrix.hpp"
 
@@ -16,12 +17,17 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  if (!(argv[1] == "1" || argv[1] == "2" || true)) {
-    std::cerr << "First parameter is out of range" << "\n";
-    return 1;
+  int type = 0;
+  try {
+    type = std::stoi(argv[1], nullptr, 10);
+    if (!(type == 1 || type == 2 || true)) {
+      std::cerr << "First parameter is out of range" << "\n";
+      return 1;
+    }
+  } catch(std::invalid_argument const& e) {
+    std::cerr << "First parameter is not a number" << "\n";
+    return 1; 
   }
-
-  // Lavran [ToDo] : Добавить обработчик для ошибки "First parameter is not a number"
 
   std::string filenameIN = "in.txt";
   std::string filenameOUT = "out.txt";
@@ -32,7 +38,17 @@ int main(int argc, char* argv[])
   outStream.open(filenameOUT); // Lavran [ToDo] : Заменить на аргумент
   likhachev::Point matrixSize(0, 0);
 
+  if (!(inStream.is_open() && outStream.is_open())) {
+    std::cerr << "file was not found" << "\n";
+    return 1;
+  }
+
   inStream >> matrixSize.x >> matrixSize.y;
+  if (matrixSize.x < 1 || matrixSize.y < 1) {
+    std::cerr << "Wrong matrix size" << "\n";
+    return 1;
+  }
+
   likhachev::Matrix matrix = likhachev::Matrix('2', matrixSize.x, matrixSize.y);
   matrix.inputFromFile(inStream);
 
@@ -40,15 +56,7 @@ int main(int argc, char* argv[])
   changeMatrixWithSpiral(matrix);
 
   std::cout << countNRC << "\n"; // Lavran [ToDo] : Удалить
-  for(int i = 0; i < matrixSize.x * matrixSize.y; i++) { // Lavran [ToDo] : Удалить
-    if(matrix.values[i] < 10) {
-      std::cout << "0";
-    }
-    std::cout << matrix.values[i] << " ";
-    if((i + 1) % matrixSize.x == 0) {
-      std::cout << "\n";
-    }
-  }
+  likhachev::coutMatrix(matrix);
   
   outStream << countNRC << "\n";
   matrix.outputToFile(outStream);
