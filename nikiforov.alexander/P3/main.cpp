@@ -2,7 +2,7 @@
 #include <cstring>
 #include <iomanip>
 #include "Func.hpp"
-  
+
 using namespace nikiforov;
 int main()
 {
