@@ -33,6 +33,7 @@ char * inputString(std::istream & in, size_t & size, size_t & add_size)
       size += add_size;
     }
   }
+  string[size == 0 ? size : size - 1] = '\0';
   if (!string[0])
   {
     delete [] string;
