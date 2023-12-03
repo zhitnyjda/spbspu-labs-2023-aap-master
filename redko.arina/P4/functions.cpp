@@ -1,7 +1,21 @@
 #include "functions.hpp"
 #include <iostream>
+#include <cctype>
 
-void redko::Matrix::inputArray(std::ifstream & in, int * matrix, size_t matrixSize)
+bool redko::isInteger(char * str)
+{
+  size_t i = 0;
+  while (str[i])
+  {
+    if (!isdigit(str[i++]))
+    {
+      return false;
+    }
+  }
+  return true;
+}
+
+void redko::inputArray(std::ifstream & in, int * matrix, size_t matrixSize)
 {
   for (size_t i = 0; i < matrixSize; ++i)
   {
@@ -13,7 +27,7 @@ void redko::Matrix::inputArray(std::ifstream & in, int * matrix, size_t matrixSi
   }
 }
 
-int redko::Matrix::countCols(int * matrix, int rows, int cols)
+int redko::countCols(int * matrix, int rows, int cols)
 {
   int colsWithRep = 0;
   for (int i = 0; i < cols; ++i)

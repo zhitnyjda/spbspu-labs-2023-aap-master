@@ -10,20 +10,23 @@ int main(int argc, char** argv)
     std::cerr << "wrong number of arguments\n";
     return 1;
   }
-  int num;
-  try
+  int num = 0;
+  if (redko::isInteger(argv[1]))
   {
     num = std::stoll(argv[1]);
   }
-  catch (const std::invalid_argument & e)
+  else
   {
     std::cerr << "wrong first argument\n";
     return 1;
   }
-  redko::Matrix Matrix;
-  int result;
-  int rows;
-  int cols;
+  if (num != 1 && num != 2)
+  {
+    std::cerr << "the first argument must be 1 or 2\n";
+    return 1;
+  }
+  int rows = 0;
+  int cols = 0;
   std::ifstream input(argv[2]);
   input >> rows >> cols;
   if (!input)
@@ -31,49 +34,35 @@ int main(int argc, char** argv)
     std::cerr << "can't read input\n";
     return 2;
   }
-  if (num != 1 && num != 2)
+  int staticMatrix[10000] = {};
+  int * matrix = nullptr;
+  if (num == 1)
   {
-    std::cerr << "the first argument must be 1 or 2\n";
-    return 1;
-  }
-  else if (num == 1)
-  {
-    int staticMatrix[10000] = {};
-    try
-    {
-      Matrix.inputArray(input, staticMatrix, rows * cols);
-    }
-    catch (std::runtime_error & e)
-    {
-      std::cerr << e.what();
-      return 2;
-    }
-    result = Matrix.countCols(staticMatrix, rows, cols);
+    matrix = &staticMatrix[0];
   }
   else
   {
-    int * dynamicMatrix = new int[rows * cols];
-    try
-    {
-      Matrix.inputArray(input, dynamicMatrix, rows * cols);
-    }
-    catch (std::runtime_error & e)
-    {
-      std::cerr << e.what();
-      delete[] dynamicMatrix;
-      return 2;
-    }
-    result = Matrix.countCols(dynamicMatrix, rows, cols);
-    delete[] dynamicMatrix;
+    matrix = new int[rows * cols];
   }
-  input.close();
-  std::ofstream output(argv[3]);
-  if (!output)
+  try
   {
-    std::cerr << "can't output\n";
+    redko::inputArray(input, matrix, rows * cols);
+  }
+  catch (std::runtime_error & e)
+  {
+    std::cerr << e.what();
+    if (num == 2)
+    {
+      delete[] matrix;
+    }
     return 2;
   }
+  int result = redko::countCols(matrix, rows, cols);
+  if (num == 2)
+  {
+    delete[] matrix;
+  }
+  std::ofstream output(argv[3]);
   output << result;
-  output.close();
   return 0;
 }
