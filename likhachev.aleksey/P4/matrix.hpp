@@ -16,7 +16,6 @@ namespace likhachev
   void inputMatrixFromFile(Point size, std::ifstream& inStream, int* values);
   void outputMatrixToFile(Point size, std::ofstream& outStream, int* values);
 
-  void coutMatrix(Point size, int* values);
   void changeMatrixWithSpiral(Point size, int* values);
   int countNonRepeatColumns(Point size, int* values);
 };

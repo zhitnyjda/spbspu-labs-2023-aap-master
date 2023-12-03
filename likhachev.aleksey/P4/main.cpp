@@ -64,9 +64,6 @@ int main(int argc, char* argv[])
 
   int countNRC = countNonRepeatColumns(matrixSize, matrixValues);
   changeMatrixWithSpiral(matrixSize, matrixValues);
-
-  std::cout << countNRC << "\n"; // Lavran [ToDo] : Удалить
-  likhachev::coutMatrix(matrixSize, matrixValues);
   
   outStream << countNRC << "\n";
   try {

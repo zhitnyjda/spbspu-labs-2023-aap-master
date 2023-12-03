@@ -21,7 +21,7 @@ likhachev::Point& likhachev::Point::operator+=(const Point& rhs)
 
 void likhachev::inputMatrixFromFile(Point size, std::ifstream& inStream, int* values)
 {
-  for(int i = 0; i < size.x * size.y; i++) {
+  for (int i = 0; i < size.x * size.y; i++) {
     inStream >> values[i];
     if (!inStream) {
       throw std::runtime_error("Error reading the matrix from the file.\n");
@@ -32,7 +32,7 @@ void likhachev::inputMatrixFromFile(Point size, std::ifstream& inStream, int* va
 void likhachev::outputMatrixToFile(Point size, std::ofstream& outStream, int* values)
 {
   outStream << size.x << " " << size.y << " ";
-  for(int i = 0; i < size.x * size.y; i++) {
+  for (int i = 0; i < size.x * size.y; i++) {
     outStream << values[i] << " ";
     if (!outStream) {
       throw std::runtime_error("Error writing the matrix to the file.\n");
@@ -46,7 +46,7 @@ int likhachev::countNonRepeatColumns(Point size, int* values)
 {
   int totalCount = size.x;
 
-  for( int i = 0; i < size.x; i++) {
+  for ( int i = 0; i < size.x; i++) {
     for (int j = 0; j < size.y - 1; j++) {
       if (values[size.x * j + i] == values[size.x * (j + 1) + i]) {
         totalCount--;
@@ -74,7 +74,7 @@ void likhachev::changeMatrixWithSpiral(Point size, int* values)
       submatrixSize.x--;
     }
 
-    for(int j = 0; j < steps; j++) {
+    for (int j = 0; j < steps; j++) {
       position.x += direction.x % 2;
       position.y += direction.y % 2;
       values[position.x + position.y * size.x] += counter;
@@ -85,17 +85,3 @@ void likhachev::changeMatrixWithSpiral(Point size, int* values)
     direction.y == 2 ? direction.y = -1 : direction.y++;
   }
 }
-
-
-void likhachev::coutMatrix(Point size, int* values) {
-  for(int i = 0; i < size.x * size.y; i++) { // Lavran [ToDo] : Удалить
-    if(values[i] < 10) {
-      std::cout << "0";
-    }
-    std::cout << values[i] << " ";
-    if((i + 1) % size.x == 0) {
-      std::cout << "\n";
-    }
-  }
-}
-
