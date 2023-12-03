@@ -1,16 +1,14 @@
-#include "inputArray.hpp"
-#include <algorithm>
 #include <iostream>
+#include "inputArray.hpp"
 
-size_t readArray::inputArray(std::istream & in, int * matrix, size_t s, size_t toRead)
+size_t mihalchenko::inputArray(std::istream & in, int * arrInput, size_t arrCols)
 {
-  for (size_t i = 0; i < std::min(toRead, s); ++i)
+  for (size_t i = 0; i < arrCols; ++i)
   {
-    if (!(in >> matrix[i]))
+    if (!(in >> arrInput[i]))
     {
       return i;
     }
-    //std::cout << matrix[i] << "\t";
   }
-  return std::min(toRead, s);
+  return arrCols;
 }

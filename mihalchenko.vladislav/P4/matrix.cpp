@@ -1,43 +1,31 @@
-#include "matrix.hpp"
-#include <memory>
 #include <iostream>
+#include "matrix.hpp"
 
-int ** matrixLife::createMatrix(size_t rows, size_t cols)
+int * mihalchenko::createMatrix(size_t rows, size_t cols)
 {
-  int ** rowsPtrs = new int *[rows];
-  for (size_t i = 0; i < rows; ++i)
-  {
-    rowsPtrs[i] = nullptr;
-  }
-  try
-  {
-    for (size_t i = 0; i < rows; ++i)
-    {
-      rowsPtrs[i] = new int[cols];
-    }
-    return rowsPtrs;
-  }
-  catch (const std::bad_alloc & ba)
-  {
-    freeMatrix(rowsPtrs, rows, cols);
-    throw ba;
-  }
+  int * rowsPtrs = new int[rows*cols];  
+  return rowsPtrs;
 }
 
-void matrixLife::freeMatrix(int ** matrix, size_t rows)
+float * mihalchenko::createMatrix(size_t rows, size_t cols, int)
+{
+  float * rowsPtrs = new float[rows*cols];  
+  return rowsPtrs;
+}
+
+void mihalchenko::freeMatrix(int * matrix, size_t matrLength)
 {
   if (!matrix)
   {
-    std::cerr << "Alas\n";
-  }
-  for (size_t i = 0; i < rows; ++i)
-  {
-    delete [] matrix[i];
+    std::cerr << "The matrix being deleted was not detected\n";
   }
   delete [] matrix;
 }
-
-void matrixLife::freeMatrix(int ** matrix, size_t rows, size_t)
+void mihalchenko::freeMatrix(float * matrix, size_t matrLength, int)
 {
-  freeMatrix(matrix, rows);
+  if (!matrix)
+  {
+    std::cerr << "The matrix being deleted was not detected\n";
+  }
+  delete [] matrix;
 }
