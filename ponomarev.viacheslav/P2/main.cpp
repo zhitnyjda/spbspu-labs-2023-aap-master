@@ -8,20 +8,15 @@ int main(int argc, char ** argv)
     std::cerr << "I feel that something wrong-_-.\n";
     return 1;
   }
-  char * endOfParcing = nullptr;
-  int num = std::strtoll(argv[1], &endOfParcing, 10);
-  if (num == 0 && endOfParcing == argv[1])
+  int num = 0;
+  try
+  {
+    num = std::stoll(argv[1]);
+  }
+  catch (const std::invalid_argument & e)
   {
     std::cerr << "Cannot parse a value.\n";
     return 1;
-  }
-  else if (num == 0 && endOfParcing != argv[1])
-  {
-    std::cout << "Num is zero.\n";
-  }
-  else
-  {
-    std::cout << num << "\n";
   }
   int i = 0;
   {
