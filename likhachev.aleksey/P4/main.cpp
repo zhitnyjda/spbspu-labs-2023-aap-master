@@ -41,6 +41,10 @@ int main(int argc, char* argv[])
   }
 
   inStream >> matrixSize.x >> matrixSize.y;
+  if (!inStream) {
+    std::cerr << "Input file is empty" << "\n";
+    return 2;
+  }
   if (matrixSize.x < 0 || matrixSize.y < 0) {
     std::cerr << "Wrong matrix size" << "\n";
     return 2;
