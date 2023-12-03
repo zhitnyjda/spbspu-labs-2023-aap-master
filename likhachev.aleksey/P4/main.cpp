@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
     }
   } catch(std::logic_error const& e) {
     std::cerr << "First parameter is not a number" << "\n";
-    // return 1; 
+    return 1; 
   }
 
   std::string filenameIN = "in.txt";
