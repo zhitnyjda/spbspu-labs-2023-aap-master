@@ -87,3 +87,31 @@ char * khoroshkin::getFrequency(char * line, int length)
   }
   return generateNewString(charFrequency);
 }
+
+char * khoroshkin::generateNewWithTwo(char * firstLine, char * secondLine, size_t size1, size_t size2)
+{
+  char * newString = new char[size1+1];
+  newString[size1] = '\0';
+  for (size_t i = 0; i < size1; i++)
+  {
+    for (size_t j = 0; j < size2; j++)
+    {
+      if (firstLine[i] == secondLine[j])
+      {
+        break;
+      }
+      if (j == size2 - 1)
+      {
+        for (size_t k = 0; k < size1; k++)
+        {
+          if (!newString[k])
+          {
+            newString[k] = firstLine[i];
+            break;
+          }
+        }
+      }
+    }
+  }
+  return newString;
+}
