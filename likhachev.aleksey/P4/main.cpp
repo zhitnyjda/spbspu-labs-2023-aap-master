@@ -65,15 +65,19 @@ int main(int argc, char* argv[])
   int countNRC = countNonRepeatColumns(matrixSize, matrixValues);
   changeMatrixWithSpiral(matrixSize, matrixValues);
 
-  outStream << countNRC << "\n";
   try {
+    outStream << countNRC << "\n";
     outputMatrixToFile(matrixSize, outStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
-    delete[] matrixValues;
+    if (type == 1) {
+      delete[] matrixValues;
+    }
     return 1;
   }
 
-  delete[] matrixValues;
+  if (type == 1) {
+    delete[] matrixValues;
+  }
   return 0;
 }
