@@ -11,7 +11,7 @@ int main()
     int lengthFRQTOP = khoroshkin::inputLine(stringFRQTOP, 10);
     int lengthEXCSND1 = khoroshkin::inputLine(stringEXCSND1, 10);
     int lengthEXCSND2 = khoroshkin::inputLine(stringEXCSND2, 10);
-    if (lengthFRQTOP < 3 || lengthEXCSND1 < 1 || lengthEXCSND2 < 1)
+    if (lengthFRQTOP < 3)
     {
       throw std::logic_error("Error: Too short string\n");
     }
