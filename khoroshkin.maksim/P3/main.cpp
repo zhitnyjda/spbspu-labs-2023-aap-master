@@ -32,6 +32,7 @@ int main()
     delete[] stringFRQTOP;
     delete[] stringEXCSND1;
     delete[] stringEXCSND2;
+    return 1;
   }
   catch (const std::bad_alloc & e)
   {
