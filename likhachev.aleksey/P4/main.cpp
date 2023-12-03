@@ -58,6 +58,7 @@ int main(int argc, char* argv[])
     inputMatrixFromFile(matrixSize, inStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
+    delete[] matrixValues;
     return 1; 
   }
 
@@ -72,8 +73,10 @@ int main(int argc, char* argv[])
     outputMatrixToFile(matrixSize, outStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
+    delete[] matrixValues;
     return 1; 
   }
   
+  delete[] matrixValues;
   return 0;
 }
