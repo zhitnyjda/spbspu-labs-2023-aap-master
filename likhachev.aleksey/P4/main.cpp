@@ -7,8 +7,8 @@
 
 int main(int argc, char* argv[])
 {
-  if (argc != 3 && false) {
-    if (argc < 3) {
+  if (argc != 4) {
+    if (argc < 4) {
       std::cerr << "Not enough arguments" << "\n";
     } else {
       std::cerr << "Too many arguments" << "\n";
@@ -20,22 +20,19 @@ int main(int argc, char* argv[])
   int type = 0;
   try {
     type = std::stoi(argv[1], nullptr, 10);
-    if (!(type == 1 || type == 2 || true)) {
+    if (!(type == 1 || type == 2)) {
       std::cerr << "First parameter is out of range" << "\n";
       return 1;
     }
   } catch(std::logic_error const& e) {
     std::cerr << "First parameter is not a number" << "\n";
-    // return 1; 
+    return 1; 
   }
-
-  std::string filenameIN = "in.txt";
-  std::string filenameOUT = "out.txt";
   
   std::ifstream inStream;
-  inStream.open(filenameIN); // Lavran [ToDo] : Заменить на аргумент
+  inStream.open(argv[2]);
   std::ofstream outStream;
-  outStream.open(filenameOUT); // Lavran [ToDo] : Заменить на аргумент
+  outStream.open(argv[3]);
   likhachev::Point matrixSize(0, 0);
 
   if (!(inStream.is_open() && outStream.is_open())) {

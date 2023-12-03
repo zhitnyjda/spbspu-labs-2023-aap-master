@@ -23,7 +23,7 @@ void likhachev::inputMatrixFromFile(Point size, std::ifstream& inStream, int* va
 {
   for(int i = 0; i < size.x * size.y; i++) {
     inStream >> values[i];
-    if (inStream) {
+    if (!inStream) {
       throw std::runtime_error("Error reading the matrix from the file.\n");
     }
   }
@@ -34,7 +34,7 @@ void likhachev::outputMatrixToFile(Point size, std::ofstream& outStream, int* va
   outStream << size.x << " " << size.y << " ";
   for(int i = 0; i < size.x * size.y; i++) {
     outStream << values[i] << " ";
-    if (outStream) {
+    if (!outStream) {
       throw std::runtime_error("Error writing the matrix to the file.\n");
     }
   }
@@ -77,7 +77,7 @@ void likhachev::changeMatrixWithSpiral(Point size, int* values)
     for(int j = 0; j < steps; j++) {
       position.x += direction.x % 2;
       position.y += direction.y % 2;
-      values[position.x + position.y * size.x] += counter; // Lavran [ToDo] : Обращение напрямую к переменным... не нравится, заменить
+      values[position.x + position.y * size.x] += counter;
       counter++;
     }
 
