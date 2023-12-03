@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
     }
   } catch(std::logic_error const& e) {
     std::cerr << "First parameter is not a number" << "\n";
-    return 1; 
+    // return 1; 
   }
 
   std::string filenameIN = "in.txt";
@@ -50,7 +50,12 @@ int main(int argc, char* argv[])
   }
 
   likhachev::Matrix matrix = likhachev::Matrix('2', matrixSize.x, matrixSize.y);
-  matrix.inputFromFile(inStream);
+  try {
+    matrix.inputFromFile(inStream);
+  } catch(std::runtime_error const& e) {
+    std::cerr << e.what() << "\n";
+    return 1; 
+  }
 
   int countNRC = countNonRepeatColumns(matrix);
   changeMatrixWithSpiral(matrix);
@@ -59,7 +64,12 @@ int main(int argc, char* argv[])
   likhachev::coutMatrix(matrix);
   
   outStream << countNRC << "\n";
-  matrix.outputToFile(outStream);
+  try {
+    matrix.outputToFile(outStream);
+  } catch(std::runtime_error const& e) {
+    std::cerr << e.what() << "\n";
+    return 1; 
+  }
   
   return 0;
 }

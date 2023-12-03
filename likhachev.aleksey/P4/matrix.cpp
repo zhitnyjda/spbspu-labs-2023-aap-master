@@ -37,6 +37,9 @@ void likhachev::Matrix::inputFromFile(std::ifstream& inStream)
 {
   for(int i = 0; i < size.x * size.y; i++) {
     inStream >> values[i];
+    if (inStream) {
+      throw std::runtime_error("Error reading the matrix from the file.\n");
+    }
   }
 }
 
@@ -45,6 +48,9 @@ void likhachev::Matrix::outputToFile(std::ofstream& outStream)
   outStream << size.x << " " << size.y << " ";
   for(int i = 0; i < size.x * size.y; i++) {
     outStream << values[i] << " ";
+    if (outStream) {
+      throw std::runtime_error("Error writing the matrix to the file.\n");
+    }
   }
 
   outStream << "\n";
