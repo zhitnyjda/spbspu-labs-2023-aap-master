@@ -2,8 +2,8 @@
 #include <exception>
 #include <fstream>
 #include <string>
-#include "matrix.cpp"
-#include "matrix.hpp"
+#include "matrixActions.hpp"
+#include "point.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     } else {
       std::cerr << "Too many arguments" << "\n";
     }
-    
+
     return 1;
   }
 
@@ -26,9 +26,9 @@ int main(int argc, char* argv[])
     }
   } catch(std::logic_error const& e) {
     std::cerr << "First parameter is not a number" << "\n";
-    return 1; 
+    return 1;
   }
-  
+
   std::ifstream inStream;
   inStream.open(argv[2]);
   std::ofstream outStream;
@@ -59,21 +59,21 @@ int main(int argc, char* argv[])
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     delete[] matrixValues;
-    return 1; 
+    return 1;
   }
 
   int countNRC = countNonRepeatColumns(matrixSize, matrixValues);
   changeMatrixWithSpiral(matrixSize, matrixValues);
-  
+
   outStream << countNRC << "\n";
   try {
     outputMatrixToFile(matrixSize, outStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     delete[] matrixValues;
-    return 1; 
+    return 1;
   }
-  
+
   delete[] matrixValues;
   return 0;
 }
