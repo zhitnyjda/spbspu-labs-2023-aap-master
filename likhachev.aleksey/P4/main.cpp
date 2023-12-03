@@ -24,9 +24,9 @@ int main(int argc, char* argv[])
       std::cerr << "First parameter is out of range" << "\n";
       return 1;
     }
-  } catch(std::invalid_argument const& e) {
+  } catch(std::logic_error const& e) {
     std::cerr << "First parameter is not a number" << "\n";
-    return 1; 
+    // return 1; 
   }
 
   std::string filenameIN = "in.txt";
