@@ -49,12 +49,18 @@ int main(int argc, char **argv)
     int matrixCheck = MatrixStuff::readMatrix(input, matrixPointer, n, m);
     if (matrixCheck != m * n)
     {
-      delete[] matrixPointer;
+      if (num == 2)
+      {
+        delete[] matrixPointer;
+      }
       throw std::logic_error("invalid input");
     }
     size_t count = MatrixStuff::NumberOfDiagonals(matrixPointer, n, m);
     bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrixPointer, n, m);
-    delete[] matrixPointer;
+    if (num == 2)
+    {
+      delete[] matrixPointer;
+    }
     if (output.is_open())
     {
       MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
@@ -66,4 +72,5 @@ int main(int argc, char **argv)
     std::cerr << err.what() << "\n";
     return 2;
   }
+
 }
