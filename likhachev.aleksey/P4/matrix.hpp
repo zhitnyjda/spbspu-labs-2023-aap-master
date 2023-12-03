@@ -11,7 +11,6 @@ namespace likhachev
       Point(int newX, int newY);
       void operator()(int newNumber);
       Point& operator+=(const Point& rhs);
-      Point& operator%(const Point& rhs);
   };
 
   void inputMatrixFromFile(Point size, std::ifstream& inStream, int* values);
