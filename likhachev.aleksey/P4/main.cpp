@@ -46,30 +46,30 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  int * values;
+  int * matrixValues;
   if (type == '1') {
     int array[10000] = { 0 };
-    values = array;
+    matrixValues = array;
   } else  if (type == '2') {
-    values = new int[matrixSize.x * matrixSize.y];
+    matrixValues = new int[matrixSize.x * matrixSize.y];
   }
 
   try {
-    inputMatrixFromFile(matrixSize, inStream, values);
+    inputMatrixFromFile(matrixSize, inStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     return 1; 
   }
 
-  int countNRC = countNonRepeatColumns(matrixSize, values);
-  changeMatrixWithSpiral(matrixSize, values);
+  int countNRC = countNonRepeatColumns(matrixSize, matrixValues);
+  changeMatrixWithSpiral(matrixSize, matrixValues);
 
   std::cout << countNRC << "\n"; // Lavran [ToDo] : Удалить
-  likhachev::coutMatrix(matrixSize, values);
+  likhachev::coutMatrix(matrixSize, matrixValues);
   
   outStream << countNRC << "\n";
   try {
-    outputMatrixToFile(matrixSize, outStream, values);
+    outputMatrixToFile(matrixSize, outStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     return 1; 
