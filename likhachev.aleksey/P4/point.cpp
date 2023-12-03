@@ -32,7 +32,6 @@ likhachev::Point& likhachev::Point::operator+=(const Point& rhs)
 
 likhachev::Point& likhachev::Point::operator-=(const Point& rhs)
 {
-
   *this = *this - rhs;
   return *this;
 }

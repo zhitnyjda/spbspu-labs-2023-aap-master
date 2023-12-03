@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
   }
 
   inStream >> matrixSize.x >> matrixSize.y;
-  if (matrixSize.x < 1 || matrixSize.y < 1) {
+  if (matrixSize.x < 0 || matrixSize.y < 0) {
     std::cerr << "Wrong matrix size" << "\n";
     return 2;
   }
