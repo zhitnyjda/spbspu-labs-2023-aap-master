@@ -3,7 +3,7 @@
 void likhachev::inputMatrixFromFile(Point size, std::ifstream& inStream, int* values)
 {
   size = (size.x * size.y < 10000) ? size : Point(100, 100);
-  for (int i = 0; i < size.x * size.y; i++) {
+  for (int i = 0; i < 10; i++) {
     inStream >> *(values + i);
     if (!inStream) {
       throw std::runtime_error("Error reading the matrix from the file.\n");
