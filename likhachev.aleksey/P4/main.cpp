@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
   inStream >> matrixSize.x >> matrixSize.y;
   if (matrixSize.x < 1 || matrixSize.y < 1) {
     std::cerr << "Wrong matrix size" << "\n";
-    return 1;
+    return 2;
   }
 
   int * matrixValues;
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     delete[] matrixValues;
-    return 1;
+    return 2;
   }
 
   int countNRC = countNonRepeatColumns(matrixSize, matrixValues);
