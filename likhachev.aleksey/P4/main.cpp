@@ -51,10 +51,10 @@ int main(int argc, char* argv[])
   }
 
   int * matrixValues;
-  if (type == '1') {
+  if (type == 1) {
     int array[10000] = { 0 };
     matrixValues = array;
-  } else  if (type == '2') {
+  } else  if (type == 2) {
     matrixValues = new int[matrixSize.x * matrixSize.y];
   }
 
