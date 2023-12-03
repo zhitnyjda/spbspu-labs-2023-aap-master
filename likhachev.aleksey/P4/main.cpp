@@ -49,23 +49,30 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  likhachev::Matrix matrix = likhachev::Matrix('2', matrixSize.x, matrixSize.y);
+  int * values;
+  if (type == '1') {
+    int array[10000] = { 0 };
+    values = array;
+  } else  if (type == '2') {
+    values = new int[matrixSize.x * matrixSize.y];
+  }
+
   try {
-    matrix.inputFromFile(inStream);
+    inputMatrixFromFile(matrixSize, inStream, values);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     return 1; 
   }
 
-  int countNRC = countNonRepeatColumns(matrix);
-  changeMatrixWithSpiral(matrix);
+  int countNRC = countNonRepeatColumns(matrixSize, values);
+  changeMatrixWithSpiral(matrixSize, values);
 
   std::cout << countNRC << "\n"; // Lavran [ToDo] : Удалить
-  likhachev::coutMatrix(matrix);
+  likhachev::coutMatrix(matrixSize, values);
   
   outStream << countNRC << "\n";
   try {
-    matrix.outputToFile(outStream);
+    outputMatrixToFile(matrixSize, outStream, values);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     return 1; 

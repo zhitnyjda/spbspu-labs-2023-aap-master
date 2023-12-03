@@ -11,22 +11,14 @@ namespace likhachev
       Point(int newX, int newY);
       void operator()(int newNumber);
       Point& operator+=(const Point& rhs);
+      Point& operator%(const Point& rhs);
   };
 
-  struct Matrix {
-  public:
-    Matrix(char type, int mCols, int mRows);
-    void inputFromFile(std::ifstream& inStream);
-    void outputToFile(std::ofstream& outStream);
-    Point getSize() const;
-    int * getValues() const;
-    int * values;
-  private:
-    Point size;
-  };
+  void inputMatrixFromFile(Point size, std::ifstream& inStream, int* values);
+  void outputMatrixToFile(Point size, std::ofstream& outStream, int* values);
 
-  void coutMatrix(Matrix& matrix);
-  void changeMatrixWithSpiral(Matrix& matrix);
-  int countNonRepeatColumns(Matrix& matrix);
+  void coutMatrix(Point size, int* values);
+  void changeMatrixWithSpiral(Point size, int* values);
+  int countNonRepeatColumns(Point size, int* values);
 };
 #endif

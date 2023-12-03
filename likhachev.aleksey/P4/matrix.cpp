@@ -19,21 +19,7 @@ likhachev::Point& likhachev::Point::operator+=(const Point& rhs)
   return *this;
 }
 
-likhachev::Matrix::Matrix(char type, int mCols, int mRows)
-{
-  size.x = mCols;
-  size.y = mRows;
-
-  if (type == '1') {
-    int array[10000] = { 0 };
-    values = array;
-  } else  if (type == '2') {
-    int * array = new int[size.x * size.y];
-    values = array;
-  }
-}
-
-void likhachev::Matrix::inputFromFile(std::ifstream& inStream)
+void likhachev::inputMatrixFromFile(Point size, std::ifstream& inStream, int* values)
 {
   for(int i = 0; i < size.x * size.y; i++) {
     inStream >> values[i];
@@ -43,7 +29,7 @@ void likhachev::Matrix::inputFromFile(std::ifstream& inStream)
   }
 }
 
-void likhachev::Matrix::outputToFile(std::ofstream& outStream)
+void likhachev::outputMatrixToFile(Point size, std::ofstream& outStream, int* values)
 {
   outStream << size.x << " " << size.y << " ";
   for(int i = 0; i < size.x * size.y; i++) {
@@ -56,25 +42,13 @@ void likhachev::Matrix::outputToFile(std::ofstream& outStream)
   outStream << "\n";
 }
 
-int * likhachev::Matrix::getValues() const
+int likhachev::countNonRepeatColumns(Point size, int* values)
 {
-  return values;
-}
+  int totalCount = size.x;
 
-likhachev::Point likhachev::Matrix::getSize() const
-{
-  return size;
-}
-
-int likhachev::countNonRepeatColumns(Matrix& matrix)
-{
-  likhachev::Point matrixSize = matrix.getSize();
-  int * values = matrix.getValues();
-  int totalCount = matrixSize.x;
-
-  for( int i = 0; i < matrixSize.x; i++) {
-    for (int j = 0; j < matrixSize.y - 1; j++) {
-      if (values[matrixSize.x * j + i] == values[matrixSize.x * (j + 1) + i]) {
+  for( int i = 0; i < size.x; i++) {
+    for (int j = 0; j < size.y - 1; j++) {
+      if (values[size.x * j + i] == values[size.x * (j + 1) + i]) {
         totalCount--;
         break;
       }
@@ -84,11 +58,11 @@ int likhachev::countNonRepeatColumns(Matrix& matrix)
   return totalCount;
 }
 
-void likhachev::changeMatrixWithSpiral(Matrix& matrix)
+void likhachev::changeMatrixWithSpiral(Point size, int* values)
 {
   Point direction(1, 0);
   Point position(-1, 0);
-  Point submatrixSize = matrix.getSize();
+  Point submatrixSize(size.x, size.y);
   int counter = 1;
   int steps = 0;
   while (submatrixSize.x > 0 && submatrixSize.y > 0) {
@@ -103,7 +77,7 @@ void likhachev::changeMatrixWithSpiral(Matrix& matrix)
     for(int j = 0; j < steps; j++) {
       position.x += direction.x % 2;
       position.y += direction.y % 2;
-      matrix.values[position.x + position.y * matrix.getSize().x] += counter; // Lavran [ToDo] : Обращение напрямую к переменным... не нравится, заменить
+      values[position.x + position.y * size.x] += counter; // Lavran [ToDo] : Обращение напрямую к переменным... не нравится, заменить
       counter++;
     }
 
@@ -113,14 +87,13 @@ void likhachev::changeMatrixWithSpiral(Matrix& matrix)
 }
 
 
-void likhachev::coutMatrix(Matrix& matrix) {
-  Point matrixSize = matrix.getSize();
-  for(int i = 0; i < matrixSize.x * matrixSize.y; i++) { // Lavran [ToDo] : Удалить
-    if(matrix.values[i] < 10) {
+void likhachev::coutMatrix(Point size, int* values) {
+  for(int i = 0; i < size.x * size.y; i++) { // Lavran [ToDo] : Удалить
+    if(values[i] < 10) {
       std::cout << "0";
     }
-    std::cout << matrix.values[i] << " ";
-    if((i + 1) % matrixSize.x == 0) {
+    std::cout << values[i] << " ";
+    if((i + 1) % size.x == 0) {
       std::cout << "\n";
     }
   }
