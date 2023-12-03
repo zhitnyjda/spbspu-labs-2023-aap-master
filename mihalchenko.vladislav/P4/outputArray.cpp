@@ -3,7 +3,7 @@
 #include <cmath>
 #include "outputArray.hpp"
 
-size_t mihalchenko::outputArray(char * argv3, int * matrix, size_t rows, size_t cols)
+size_t mihalchenko::outputArray(char* argv3, int* matrix, size_t rows, size_t cols)
 {
   float* matrixNew = new float[rows * cols];
 
@@ -12,7 +12,7 @@ size_t mihalchenko::outputArray(char * argv3, int * matrix, size_t rows, size_t 
 
   for (int ii = 0; ii < rows; ++ii)
   {
-    for (int jj{ 0 }; jj < cols; jj++)
+    for (int jj = 0; jj < cols; jj++)
     {
       countNew = 0;
       sum = 0;
@@ -52,10 +52,10 @@ size_t mihalchenko::outputArray(char * argv3, int * matrix, size_t rows, size_t 
   return 0;
 }
 
-float * mihalchenko::outputDinArray(char * argv3, int * matrix, size_t rows, size_t cols)
+float* mihalchenko::outputDinArray(char* argv3, int* matrix, size_t rows, size_t cols)
 {
   float* matrixNew = new float[rows * cols];
- 
+
   int countNew = 0;
   int sum = 0;
   for (int m = 0; m < rows; ++m)

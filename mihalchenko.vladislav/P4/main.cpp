@@ -5,7 +5,7 @@
 #include "inputArray.hpp"
 #include "outputArray.hpp"
 
-int main(int argc, char ** argv)
+int main(int argc, char** argv)
 {
   using namespace mihalchenko;
   if (argc != 4)
@@ -45,8 +45,8 @@ int main(int argc, char ** argv)
       std::cerr << "The number of matrix elements exceeds 10000";
     }
 
-    int masInput[rows*cols];
-    size_t result = inputArray(input, masInput, rows*cols);
+    int masInput[rows * cols];
+    size_t result = inputArray(input, masInput, rows * cols);
 
     if (!input)
     {
@@ -61,8 +61,8 @@ int main(int argc, char ** argv)
   {
     int countNew = 0;
     int sum = 0;
-    int * m1 = nullptr;
-    float * m2 = nullptr;
+    int* m1 = nullptr;
+    float* m2 = nullptr;
     try
     {
       m1 = createMatrix(rows, cols);
@@ -70,8 +70,8 @@ int main(int argc, char ** argv)
     }
     catch(...)
     {
-      freeMatrix(m1, rows*cols);
-      freeMatrix(m2, rows*cols, sum);
+      freeMatrix(m1, rows * cols);
+      freeMatrix(m2, rows * cols, sum);
       return 3;
     }
     for (int i = 0; i < rows * cols; ++i)
@@ -87,11 +87,11 @@ int main(int argc, char ** argv)
     for (size_t i = 0; i < rows * cols; ++i)
     {
       output << (float) round(m2[i] * 10) / 10 << " ";
-    }   
- 
-  freeMatrix(m1, rows*cols);
-    freeMatrix(m1, rows*cols);
-    freeMatrix(m2, rows*cols, sum);
+    }
+
+    freeMatrix(m1, rows * cols);
+    freeMatrix(m1, rows * cols);
+    freeMatrix(m2, rows * cols, sum);
     return 0;
   }
   else
