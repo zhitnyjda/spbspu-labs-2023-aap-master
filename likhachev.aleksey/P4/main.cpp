@@ -74,13 +74,13 @@ int main(int argc, char* argv[])
     outputMatrixToFile(matrixSize, outStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
-    if (type == 1) {
+    if (type == 2) {
       delete[] matrixValues;
     }
     return 1;
   }
 
-  if (type == 1) {
+  if (type == 2) {
     delete[] matrixValues;
   }
   return 0;
