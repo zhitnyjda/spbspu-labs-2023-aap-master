@@ -66,11 +66,11 @@ int main(int argc, char** argv)
     }
     catch(...)
     {
-      freeMatrix(m1, rows * cols);
+      freeMatrix(m1);
       return 3;
     }
 
-    for (int i = 0; i < rows * cols; ++i)
+    for (size_t i = 0; i < rows * cols; ++i)
     {
       if (!(input >> m1[i]))
       {
@@ -78,7 +78,7 @@ int main(int argc, char** argv)
       }
     }
     outputDinArray(argv[3], m1, rows, cols);
-    freeMatrix(m1, rows * cols);
+    freeMatrix(m1);
     return 0;
   }
   else

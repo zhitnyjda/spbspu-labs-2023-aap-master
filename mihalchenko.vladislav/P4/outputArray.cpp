@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <iomanip>
 #include "outputArray.hpp"
 
 void mihalchenko::outputDinArray(char* argv3, float* matrix, size_t rows, size_t cols)
@@ -10,17 +11,17 @@ void mihalchenko::outputDinArray(char* argv3, float* matrix, size_t rows, size_t
   int countNew = 0;
   int sum = 0;
 
-  for (int m = 0; m < rows; ++m)
+  for (size_t m = 0; m < rows; ++m)
   {
-    for (int n = 0; n < cols; ++n)
+    for (size_t n = 0; n < cols; ++n)
     {
       countNew = 0;
       sum = 0;
-      for (int i = m - 1; i <= m + 1; ++i)
+      for (size_t i = m - 1; i <= m + 1; ++i)
       {
         if ((i >= 0) and (i < rows))
         {
-          for (int j = n - 1; j <= n + 1; ++j)
+          for (size_t j = n - 1; j <= n + 1; ++j)
           {
             if ((j >= 0) and (j < cols))
             {
@@ -47,6 +48,8 @@ void mihalchenko::outputDinArray(char* argv3, float* matrix, size_t rows, size_t
   output << rows << " " << cols << " ";
   for (size_t i = 0; i < rows * cols; ++i)
   {
-    output << (float) round(matrixNew[i] * 10) / 10 << " ";
+    //output << (float) round(matrixNew[i] * 10) / 10 << " ";
+    int num = static_cast<int>(matrixNew[i] * 10);
+    output << static_cast<float>(num) / 10;
   }
 }

@@ -7,7 +7,7 @@ float* mihalchenko::createMatrix(size_t rows, size_t cols)
   return rowsPtrs;
 }
 
-void mihalchenko::freeMatrix(float* matrix, size_t matrLength)
+void mihalchenko::freeMatrix(float* matrix)
 {
   if (!matrix)
   {
