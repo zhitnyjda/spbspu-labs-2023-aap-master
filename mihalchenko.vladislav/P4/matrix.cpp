@@ -22,7 +22,7 @@ void mihalchenko::freeMatrix(int* matrix, size_t matrLength)
   delete [] matrix;
 }
 
-void mihalchenko::freeMatrix(float* matrix, size_t matrLength)
+void mihalchenko::freeMatrix(float* matrix, size_t matrLength, int)
 {
   if (!matrix)
   {

@@ -90,8 +90,6 @@ int main(int argc, char** argv)
     {
       output << (float) round(m2[i] * 10) / 10 << " ";
     }
-
-    freeMatrix(m1, rows * cols);
     freeMatrix(m1, rows * cols);
     freeMatrix(m2, rows * cols, sum);
     return 0;
