@@ -42,37 +42,19 @@ int main(int argc, char *argv[])
     return 2;
   }
   int result = 0;
-  if (task == 1)
+  int * array = task == 2 ? new int[matrix.columns * matrix.rows] : new int[10000];
+  try
   {
-    try
-    {
-      int staticArray[10001] = {0};
-      matrix.values = staticArray;
-      matrix.read(inputStream);
-      result = matrix.findMaxRow();
-    }
-    catch (const std::runtime_error &e)
-    {
-      std::cerr << e.what();
-      return 2;
-    }
+    matrix.values = array;
+    matrix.read(inputStream);
+    result = matrix.findMaxRow();
+    delete[] array;
   }
-  if (task == 2)
+  catch (const std::runtime_error &e)
   {
-    int *dynamicArray = new int[matrix.columns * matrix.rows];
-    try
-    {
-      matrix.values = dynamicArray;
-      matrix.read(inputStream);
-      result = matrix.findMaxRow();
-      delete[] dynamicArray;
-    }
-    catch (const std::runtime_error &e)
-    {
-      delete[] dynamicArray;
-      std::cerr << e.what();
-      return 2;
-    }
+    delete[] array;
+    std::cerr << e.what();
+    return 2;
   }
   outputStream << result;
   return 0;
