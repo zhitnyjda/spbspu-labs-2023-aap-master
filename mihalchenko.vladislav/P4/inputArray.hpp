@@ -4,6 +4,6 @@
 
 namespace mihalchenko
 {
-  size_t inputArray(std::istream& in, int* matrix, size_t s);
+  size_t inputArray(std::istream& in, float* matrix, size_t s);
 }
 #endif // !INPUT_ARRAY_HPP
