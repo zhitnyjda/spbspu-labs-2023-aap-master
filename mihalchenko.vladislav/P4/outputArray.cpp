@@ -33,10 +33,9 @@ size_t mihalchenko::outputArray(char* argv3, int* matrix, size_t rows, size_t co
                 countNew++;
                 sum += matrix[i * cols + j];
               }
-
             }
-	        }
-	      }
+	  }
+	}
       }
       if (countNew != 0)
       {
@@ -59,6 +58,7 @@ float* mihalchenko::outputDinArray(char* argv3, int* matrix, size_t rows, size_t
 
   int countNew = 0;
   int sum = 0;
+
   for (int m = 0; m < rows; ++m)
   {
     for (int n = 0; n < cols; ++n)

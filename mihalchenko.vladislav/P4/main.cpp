@@ -74,6 +74,7 @@ int main(int argc, char** argv)
       freeMatrix(m2, rows * cols, sum);
       return 3;
     }
+
     for (int i = 0; i < rows * cols; ++i)
     {
       if (!(input >> m1[i]))
@@ -84,6 +85,7 @@ int main(int argc, char** argv)
     m2 = outputDinArray(argv[3], m1, rows, cols);
     std::ofstream output(argv[3]);
     output << rows << " " << cols << " ";
+
     for (size_t i = 0; i < rows * cols; ++i)
     {
       output << (float) round(m2[i] * 10) / 10 << " ";
