@@ -1,17 +1,17 @@
 #include "classes.hpp"
 
-void zheleznyakov::Matrix::read(std::ifstream & input)
+void zheleznyakov::readMatrix(std::ifstream & input, int * matrix, int columns, int rows)
 {
   for (int i = 0; i < columns * rows; i++)
   {
-    input >> values[i];
+    input >> matrix[i];
     if (!input)
     {
       throw std::runtime_error("Error: The Matrix is broken.\n");
     }
   }
 }
-int zheleznyakov::Matrix::findMaxRow()
+int zheleznyakov::findMaxRowInMatrix(int * matrix, int columns, int rows)
 {
   int maxColumn = 0;
   int maxSequenceLength = 0;
@@ -21,8 +21,8 @@ int zheleznyakov::Matrix::findMaxRow()
     int maxCurrentStreak = 0;
     for (int row = 1; row < rows; row++)
     {
-      const int current = values[row * columns + col];
-      const int previous = values[(row - 1) * columns + col];
+      const int current = matrix[row * columns + col];
+      const int previous = matrix[(row - 1) * columns + col];
       if (current == previous)
       {
         currentStreak++;

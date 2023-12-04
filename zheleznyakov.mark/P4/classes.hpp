@@ -4,14 +4,7 @@
 
 namespace zheleznyakov
 {
-  class Matrix
-  {
-    public:
-      int columns;
-      int rows;
-      int * values;
-      void read(std::ifstream & input);
-      int findMaxRow();
-  };
+  void readMatrix(std::ifstream & input, int * matrix, int columns, int rows);
+  int findMaxRowInMatrix(int * matrix, int columns, int rows);
 };
 #endif

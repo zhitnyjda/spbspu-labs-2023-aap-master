@@ -41,27 +41,34 @@ int main(int argc, char *argv[])
   inputStream.open(argv[2]);
   std::ofstream outputStream;
   outputStream.open(argv[3]);
-  zheleznyakov::Matrix matrix;
-  inputStream >> matrix.columns;
-  inputStream >> matrix.rows;
+  int columns = 0;
+  int rows = 0;
+  inputStream >> columns;
+  inputStream >> rows;
   if (!inputStream)
   {
     std::cerr << "Error: Cannot read input.\n";
     return 2;
   }
   int result = 0;
-  int * array = task == 2 ? new int[matrix.columns * matrix.rows] : new int[10000];
+  int * array = {};
   try
   {
-    matrix.values = array;
-    matrix.read(inputStream);
-    result = matrix.findMaxRow();
+    array = task == 2 ? new int[columns * rows] : new int[10000];
+    zheleznyakov::readMatrix(inputStream, array, columns, rows);
+    result = zheleznyakov::findMaxRowInMatrix(array, columns, rows);
     delete[] array;
   }
   catch (const std::runtime_error &e)
   {
     delete[] array;
     std::cerr << e.what();
+    return 2;
+  }
+  catch (const std::bad_alloc &e)
+  {
+    delete[] array;
+    std::cerr << "Error: Cannot reserve memory.\n";
     return 2;
   }
   outputStream << result;
