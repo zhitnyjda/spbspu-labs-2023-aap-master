@@ -38,7 +38,7 @@ int main(int argc, const char* argv[])
   }
 
   int staticArr[10000] = {};
-  int* Arr = 0;
+  int* Arr = nullptr;
 
   if (num == 1)
   {
