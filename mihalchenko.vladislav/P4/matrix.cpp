@@ -9,7 +9,7 @@ int* mihalchenko::createMatrix(size_t rows, size_t cols)
 
 float* mihalchenko::createMatrix(size_t rows, size_t cols, int)
 {
-  float* rowsPtrs = new float[rows*cols];
+  float* rowsPtrs = new float[rows * cols];
   return rowsPtrs;
 }
 
