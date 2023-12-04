@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include "classes.hpp"
+#include "functions.hpp"
 
 int main(int argc, char *argv[])
 {

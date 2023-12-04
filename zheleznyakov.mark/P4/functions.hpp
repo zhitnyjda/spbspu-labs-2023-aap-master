@@ -1,5 +1,5 @@
-#ifndef CLASSES_HPP
-#define CLASSES_HPP
+#ifndef FUNCTIONS_HPP
+#define FUNCTIONS_HPP
 #include <fstream>
 
 namespace zheleznyakov

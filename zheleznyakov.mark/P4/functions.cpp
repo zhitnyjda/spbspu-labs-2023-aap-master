@@ -1,4 +1,4 @@
-#include "classes.hpp"
+#include "functions.hpp"
 
 void zheleznyakov::readMatrix(std::ifstream & input, int * matrix, int columns, int rows)
 {
