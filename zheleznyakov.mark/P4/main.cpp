@@ -4,14 +4,9 @@
 
 int main(int argc, char *argv[])
 {
-  if (argc < 4)
+  if (argc != 4)
   {
-    std::cerr << "Error: Not enough args.\n";
-    return 1;
-  }
-  if (argc > 4)
-  {
-    std::cerr << "Error: Too many args.\n";
+    std::cerr << "Error: wrong args count.\n";
     return 1;
   }
   int task = 0;
