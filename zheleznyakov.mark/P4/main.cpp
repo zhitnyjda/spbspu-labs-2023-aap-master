@@ -12,11 +12,19 @@ int main(int argc, char *argv[])
   int task = 0;
   try
   {
-    task = std::stoll(argv[1]);
+    char * arg = argv[1];
+    for (size_t i = 0; i < std::strlen(arg); i++)
+    {
+      if (!(std::isdigit(arg[i])))
+      {
+        throw std::invalid_argument("Error: The task number is not an integer.\n");
+      }
+    }
+    task = std::stoll(arg);
   }
   catch (const std::invalid_argument &e)
   {
-    std::cerr << "Error: Cannot read task ID: invalid argument.\n";
+    std::cerr << "Error: Cannot read task ID: Invalid argument.\n";
     return 1;
   }
   catch (const std::istream::failure &e)
