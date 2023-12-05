@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "matrix.hpp"
+#include "InputOutput.hpp"
 
 int main(int argc, char **argv)
 {
@@ -39,7 +40,7 @@ int main(int argc, char **argv)
   }
   try
   {
-    int matrix[n * m];
+    int matrix[10000];
     int *matrixPointer = matrix;
     if (num == 2)
     {
@@ -53,7 +54,7 @@ int main(int argc, char **argv)
       {
         delete[] matrixPointer;
       }
-      throw std::logic_error("invalid input");
+      throw std::logic_error("invalid matix input");
     }
     size_t count = MatrixStuff::NumberOfDiagonals(matrixPointer, n, m);
     bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrixPointer, n, m);
@@ -64,7 +65,6 @@ int main(int argc, char **argv)
     if (output.is_open())
     {
       MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
-      output.close();
     }
   }
   catch (const std::exception &err)
