@@ -70,7 +70,7 @@ int main(int argc, char** argv)
       return 3;
     }
 
-    for (size_t i = 0; i < rows * cols; ++i)
+    for (size_t i = 0; i < rows * cols; i++)
     {
       if (!(input >> m1[i]))
       {
