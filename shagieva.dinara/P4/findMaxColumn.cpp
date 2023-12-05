@@ -20,7 +20,7 @@ int shagieva::findMaxColumn(const int * values, const int numberOfRows, const in
         currentSeq++;
       }
 
-      if (currentSeq > maxCurrentSeq)
+      else if (currentSeq > maxCurrentSeq)
       {
         maxCurrentSeq = currentSeq;
       }
