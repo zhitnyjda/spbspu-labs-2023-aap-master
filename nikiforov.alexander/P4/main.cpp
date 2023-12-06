@@ -38,32 +38,32 @@ int main(int argc, const char* argv[])
   }
 
   int staticArr[10000] = {};
-  int* Arr = nullptr;
+  int* arr = nullptr;
 
   if (num == 1)
   {
-    Arr = staticArr;
+    arr = staticArr;
   }
   else if (num == 2)
   {
-    Arr = new int[rows * cols];
+    arr = new int[rows * cols];
   }
 
-  if (nikiforov::inputMatrix(input, Arr, rows * cols) != rows * cols)
+  if (nikiforov::inputMatrix(input, arr, rows * cols) != rows * cols)
   {
     std::cerr << "Mismatch of dimension and values!\n";
     if (num == 2) {
-      delete[] Arr;
-      Arr = nullptr;
+      delete[] arr;
+      arr = nullptr;
     }
     return 2;
   }
 
-  nikiforov::spiralMatrix(output, Arr, rows, cols);
+  nikiforov::spiralMatrix(output, arr, rows, cols);
 
   if (num == 2) {
-    delete[] Arr;
-    Arr = nullptr;
+    delete[] arr;
+    arr = nullptr;
   }
   return 0;
 }
