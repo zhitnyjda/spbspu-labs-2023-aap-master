@@ -23,7 +23,12 @@ int main(int argc, char* argv[])
   size_t * matrix = nullptr;
   try
   {
-    size_t num = std::stoll(argv[1]);
+    char* end = nullptr;
+    size_t num = std::strtoll(argv[1], &end, 10);
+    if (*end != '\0')
+    {
+      std::cerr << "Invalid input format for the first argument.\n";
+    }
     if (num == 1 || num == 2)
     {
       size_t size_of_matrix = rows * columns;
