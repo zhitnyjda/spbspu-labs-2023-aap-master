@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
     int* arr = num == 1 ? stat : new int[length];
     try
     {
-      inputToArr(inputFile, arr, rows*cols);
+      inputToArr(inputFile, arr, length);
     }
     catch (const std::runtime_error& e)
     {
@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
 
     std::ofstream outFile(argv[3]);
     outFile << rows << ' ' << cols << ' ';
-    for (size_t i = 0; i < rows*cols; i++)
+    for (size_t i = 0; i < length; i++)
     {
       outFile << arr[i] << ' ';
     }
