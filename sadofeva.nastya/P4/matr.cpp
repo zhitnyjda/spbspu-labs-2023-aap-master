@@ -1,4 +1,4 @@
-#include "matr.h"
+#include "matr.hpp"
 #include <iostream>
 #include <fstream>
 #include <cmath>

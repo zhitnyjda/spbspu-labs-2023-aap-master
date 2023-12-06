@@ -1,7 +1,7 @@
 #include "iostream"
 #include "fstream"
 #include "string"
-#include "matr.h"
+#include "matr.hpp"
 using namespace sadofeva;
 
 int main(int argc, char** argv)
