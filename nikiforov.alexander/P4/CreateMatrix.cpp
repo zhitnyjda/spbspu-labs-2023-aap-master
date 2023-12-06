@@ -1,11 +1,6 @@
 #include "CreateMatrix.hpp"
-#include <iostream>
 
 void nikiforov::spiralMatrix(std::ofstream& out, int* ArrMatrix, size_t rows, size_t cols) {
-  if (rows != cols) {
-    std::cerr << "Error: Matrix is not square.";
-    exit(2);
-  }
   int count = 1;
   size_t p = rows / 2;
   size_t c = cols;

@@ -31,6 +31,12 @@ int main(int argc, const char* argv[])
     std::cerr << "Cannot read an input.\n";
     return 2;
   }
+
+  if (rows != cols) {
+    std::cerr << "Error: Matrix is not square.";
+    return 1;
+  }
+
   std::ofstream output(argv[3]);
   if (!output.is_open()) {
     std::cerr << "Error: Can't open an output file!\n";
