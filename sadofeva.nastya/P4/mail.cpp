@@ -14,7 +14,7 @@ int main(int argc, char** argv)
   int num = 0;
   try
   {
-    int num = std::stoll(argv[1]);
+    num = std::stoll(argv[1]);
   }
   catch (const std::invalid_argument& e)
   {
