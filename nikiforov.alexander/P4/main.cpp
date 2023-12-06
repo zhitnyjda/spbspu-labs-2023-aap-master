@@ -37,6 +37,7 @@ int main(int argc, const char* argv[])
     return 2;
   }
 
+  int score = rows * cols;
   int staticArr[10000] = {};
   int* arr = nullptr;
 
@@ -46,10 +47,10 @@ int main(int argc, const char* argv[])
   }
   else if (num == 2)
   {
-    arr = new int[rows * cols];
+    arr = new int[score];
   }
 
-  if (nikiforov::inputMatrix(input, arr, rows * cols) != rows * cols)
+  if (nikiforov::inputMatrix(input, arr, score) != score)
   {
     std::cerr << "Mismatch of dimension and values!\n";
     if (num == 2) {
