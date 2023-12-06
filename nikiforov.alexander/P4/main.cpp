@@ -43,7 +43,7 @@ int main(int argc, const char* argv[])
     return 2;
   }
 
-  int score = rows * cols;
+  size_t score = rows * cols;
   int staticArr[10000] = {};
   int* arr = nullptr;
 
