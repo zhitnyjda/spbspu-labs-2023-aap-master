@@ -1,16 +1,16 @@
+#include <iostream>
 #include "function.hpp"
-#include <cctype>
-#include <cstring>
 
-std::string removeVowels(const std::string& input) {
-  if (input.empty()) {
-    return "";
+int main() {
+  std::string input;
+  std::getline(std::cin, input);
+  try {
+    std::string result = removeVowels(input);
+    std::cout << result << std::endl;
   }
-  std::string result;
-  for (char c : input) {
-    if (!std::isalpha(c) || std::strchr("AOEIUYaoeiuy", c) == nullptr) {
-      result += c;
-    }
+  catch (const std::bad_alloc& e) {
+    std::cerr << "Error: Unable to allocate memory." << std::endl;
+    return 1;
   }
-  return result;
+  return 0;
 }
