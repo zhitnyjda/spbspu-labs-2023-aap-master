@@ -4,7 +4,7 @@
 
 std::string removeVowels(const std::string& input) {
   if (input.empty()) {
-    return "";
+    return "\n";
   }
 
   std::string result;
