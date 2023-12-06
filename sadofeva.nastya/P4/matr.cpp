@@ -28,7 +28,7 @@ namespace sadofeva
         if (*(values + (i * j)) > *(values + (i * j + 1)) && *(values + (i * j - 1)) < *(values + (i * j)))
 	{
 	  count++;
-	}
+        }
       }
     }
     return count;
