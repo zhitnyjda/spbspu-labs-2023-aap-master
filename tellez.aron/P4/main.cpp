@@ -12,9 +12,8 @@ int main(int argc, char* argv[])
     std::cerr << "Invalid number of arguments." << '\n';
     return 1;
   }
-  size_t rows = 0;
-  size_t columns = 0;
   std::ifstream file(argv[2]);
+  size_t rows, columns;
   file >> rows >> columns;
   if (!file)
   {
@@ -24,19 +23,12 @@ int main(int argc, char* argv[])
   size_t * matrix = nullptr;
   try
   {
-    size_t num = std::stoi(argv[1]);
+    size_t num = std::stoll(argv[1]);
     if (num == 1 || num == 2)
     {
       size_t size_of_matrix = rows * columns;
-      std::vector<size_t> static_matrix(10000);
-      if (num == 1)
-      {
-        matrix = static_matrix.data();
-      }
-      else
-      {
-        matrix = new size_t[size_of_matrix];
-      }
+      std::vector< size_t > static_matrix(10000);
+      matrix = (num == 1) ? static_matrix.data() : new size_t[size_of_matrix];
       size_t result = readMatrix(file, matrix, size_of_matrix, size_of_matrix);
       if (!(result == size_of_matrix))
       {
@@ -57,7 +49,7 @@ int main(int argc, char* argv[])
     }
     else
     {
-      throw std::invalid_argument("No such parameter");
+      std::cerr << "Error: No such parameter\n";
     }
   }
   catch (const std::invalid_argument& e)
