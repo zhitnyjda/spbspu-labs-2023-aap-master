@@ -47,13 +47,13 @@ int main(int argc, char** argv)
     values = static_ar;
     matrix.fl_ar(rows, cols, input, values);
     std::ofstream outputFile(argv[3]);
-      if (!outputFile.is_open())
-      {
-        std::cerr << "Cannot open an output" <<  "\n";
-	return 2;
-      }
-      outputFile << matrix.locMax(values, rows, cols);
-      return 0;
+    if (!outputFile.is_open())
+    {
+      std::cerr << "Cannot open an output" <<  "\n";
+      return 2;
+    }
+    outputFile << matrix.locMax(values, rows, cols);
+    return 0;
   }
   if (num == 2)
   {
@@ -66,8 +66,8 @@ int main(int argc, char** argv)
       std::ofstream outputFile(argv[3]);
       if (!outputFile.is_open())
       {
-      std::cerr << "Cannot open an output" << "\n";
-      return 2;
+        std::cerr << "Cannot open an output" << "\n";
+        return 2;
       }
       outputFile << matrix.locMax(values, rows, cols);
       delete[] dm_ar;
@@ -77,6 +77,6 @@ int main(int argc, char** argv)
       std::cerr << e.what();
       delete[] dm_ar;
       return 2;
-     }
+    }
   }
 }
