@@ -1,5 +1,37 @@
 #include <iostream>
 #include <fstream>
+int createMatrix(size_t rows, size_t cols)
+{
+  int rowsPtrs = new int * [rows];
+  for (size_t i = 0; i < rows; i++)
+  {
+    rowsPtrs[i] = nullptr;
+  }
+  try
+  {
+    for (size_t i = 0; i < rows; i++)
+    {
+      rowsPtrs[i] new int[cols];
+    }
+    return rowsPtrs;
+  }
+  catch (const std::bad_alloc & e)
+  {
+    freeMatrix(rowsPtrs, rows, cols);
+    throw;
+  }
+}
+
+void freeMatrix(int ** m, size_t rows, size_t cols)
+{
+  for (size_t i = 0;i < rows; i++)
+  {
+    delete [] m[i];
+  }
+  delete [] m;
+}
+
+
 
 int main(int argc, char ** argv)
 {
@@ -10,23 +42,6 @@ int main(int argc, char ** argv)
   }
 
   //arg[1] - номер задания
-/* char * end_parcing = nullptr;
-  int num_input = std::strtoll(argv[1], &end_parcing, 10);
-  if (num_input == 0 && end_parcing == argv[1])
-  {
-    std::cerr << "Can not parce a value... \n";
-    return 1;
-  }
-  else if (num_input == 0 && end_parcing != argv[1])
-  {
-    std::cout << "Num is zero... \n";
-  }
-  else
-  {
-    std::cout << num_input << "\n";
-  } */
-// Аналог на C++
-
   int num_input = 0;
   try
   {
@@ -53,6 +68,31 @@ int main(int argc, char ** argv)
 
   //argv[3] - имя файла для вывода результатов
   std::ofstream output(argv[3]);
-  output << num << "\n";
+  output << rows << " " << cols << "\n";
 
+
+  //num == 1;
+  //int a[10000]
+
+  //num == 2
+  //size_t rows = 0;
+  //size_t cols = 0;
+  //input >> rows >> cols;
+  // int * a = new int[rows * cols]
+  // a[i * cols + j]
+  int ** m1 = nullptr;
+
+  try
+  {
+    m1 = createMatrix(rows, cols);
+    m2 = createMatrix(rows, cols);
+    // go brrr...
+    freeMatrix(m1, rows, cols);
+    freeMatrix(m2, rows, cols);
+  }
+  catch (....)
+  {
+    freeMatrix(m1, rows, cols);
+    freeMatrix(m2, rows, cols);
+    
 }
