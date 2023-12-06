@@ -8,27 +8,21 @@
 using namespace litsinger;
 int main(int args,char * argv[])
 {
-  if (args < 4)
+  if (args != 4)
   {
-    std::cerr << "Not enough arguments\n";
+    std::cerr << "Problem with arguments\n";
     return 1;
   }
-  if (args > 4)
-  {
-    std::cerr << "Too many arguments\n";
-    return 1;
-  }
-  size_t rows = 0;
-  size_t cols = 0;
   std::ifstream input(argv[2]);
+  size_t rows, cols;
   input >> rows;
   input >> cols;
   if (!input)
   {
-    std::cerr << "Error\n";
+    std::cerr << "Error with input file\n";
     return 2;
   }
-  if (!std::strcmp(argv[1], "1"))
+  if (!std::strcmp(argv[1], "1") || !std::strcmp(argv[1], "2"))
   {
     std::ofstream output(argv[3]);
     if (rows != cols)
@@ -41,6 +35,10 @@ int main(int args,char * argv[])
       output << 0;
       return 0;
     }
+  }
+  if (!std::strcmp(argv[1], "1"))
+  {
+    std::ofstream output(argv[3]);
     int static_array[10000] = {0};
     try
     {
@@ -56,20 +54,11 @@ int main(int args,char * argv[])
   else if (!std::strcmp(argv[1], "2"))
   {
     std::ofstream output(argv[3]);
-    if (rows != cols)
-    {
-      std::cerr << "Rows and cols are different\n";
-      return 0;
-    }
-    if (rows == 0 || cols == 0)
-    {
-      output << 0;
-      return 0;
-    }
-    int * dynamic_array = new int[rows * cols];
+    size_t size_dyn_array = rows * cols;
+    int * dynamic_array = new int[size_dyn_array];
     try
     {
-      inputArray(input, dynamic_array, rows * cols);
+      inputArray(input, dynamic_array, size_dyn_array);
     }
     catch (const std::logic_error& e)
     {

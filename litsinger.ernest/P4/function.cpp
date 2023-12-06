@@ -1,9 +1,10 @@
 #include "function.hpp"
-#include <limits>
+
 namespace litsinger
 {
-  void inputArray(std::ifstream & input, int * matrix, size_t sizeMatrix)
+  size_t inputArray(std::ifstream & input, int * matrix, size_t sizeMatrix)
   {
+    size_t count = 0;
     for (size_t i = 0; i < sizeMatrix; ++i)
     {
       input >> matrix[i];
@@ -11,7 +12,9 @@ namespace litsinger
       {
         throw std::logic_error("Error\n");
       }
+      count++;
     }
+    return count;
   }
   int MaximalSum(const int * arr, size_t rows, size_t cols)
   {
