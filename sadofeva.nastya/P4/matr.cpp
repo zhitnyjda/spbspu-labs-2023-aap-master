@@ -26,8 +26,8 @@ namespace sadofeva
       for (int j = 1; j < cols; j++)
       {
         if (*(values + (i * j)) > *(values + (i * j + 1)) && *(values + (i * j - 1)) < *(values + (i * j)))
-	{
-	  count++;
+        {
+          count++;
         }
       }
     }
