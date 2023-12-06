@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstring>
 #include "function.hpp"
+#include "variantlogic.hpp"
 
 using namespace litsinger;
 int main(int args,char * argv[])
