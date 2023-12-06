@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
       }
       else
       {
-        std::cerr << "First arg is not numeric or have zero lenght\n";
+        std::cerr << "First arg is not numeric or have zero length\n";
         return 1;
       }
     }
@@ -43,9 +43,10 @@ int main(int argc, char* argv[])
       std::cerr << "Can't read input\n";
       return 2;
     }
+    size_t length = rows*cols;
 
     int stat[10000] = {0};
-    int* arr = num == 1 ? stat : new int[rows*cols];
+    int* arr = num == 1 ? stat : new int[length];
     try
     {
       inputToArr(inputFile, arr, rows*cols);
