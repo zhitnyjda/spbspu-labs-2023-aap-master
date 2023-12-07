@@ -53,6 +53,21 @@ int main(int argc, char** argv)
     }
   }
 
+  if ((rows == 0) && (cols == 0))
+  {
+    std::ofstream output(argv[3]);
+    output << rows << " " << cols << " ";
+    return 0;
+  }
+
+  if (((rows == 0) || (cols == 0)) && (!((rows == 0) && (cols == 0))))
+  {
+    std::ofstream output(argv[3]);
+    output << rows << " " << cols << " ";
+    std::cout << "Cannot be an element\n";
+    return 1;
+  }
+
   if (num == 1)
   {
     if (rows * cols > 10000)
