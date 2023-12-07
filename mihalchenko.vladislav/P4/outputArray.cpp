@@ -53,4 +53,5 @@ void mihalchenko::outputDinArray(char* argv3, float* matrix, size_t rows, size_t
     // std::cout << matrixNew[i] << ' ';
     output << static_cast<float>(round(matrixNew[i] * 10)) / 10 << " ";
   }
+  delete [] matrixNew;
 }

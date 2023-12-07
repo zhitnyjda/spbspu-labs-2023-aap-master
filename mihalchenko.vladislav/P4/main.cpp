@@ -43,6 +43,7 @@ int main(int argc, char** argv)
     if (rows * cols > 10000)
     {
       std::cerr << "The number of matrix elements exceeds 10000";
+      return 1;
     }
 
     float masInput[rows * cols];
