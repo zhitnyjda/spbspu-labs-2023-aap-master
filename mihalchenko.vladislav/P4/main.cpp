@@ -95,7 +95,7 @@ int main(int argc, char** argv)
       if (m1 == nullptr)
       {
         return 2;
-      } 
+      }
     }
     catch(...)
     {

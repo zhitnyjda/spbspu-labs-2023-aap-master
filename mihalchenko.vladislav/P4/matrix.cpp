@@ -5,7 +5,7 @@ float* mihalchenko::createMatrix(size_t rows, size_t cols)
 {
   try
   {
-    float* rowsPtrs = new float[rows * cols];  
+    float* rowsPtrs = new float[rows * cols];
     return rowsPtrs;
   }
   catch(const std::exception& e)
