@@ -13,5 +13,8 @@ void mihalchenko::freeMatrix(float* matrix)
   {
     std::cerr << "The matrix being deleted was not detected\n";
   }
-  delete [] matrix;
+  else
+  {
+    delete [] matrix;
+  }
 }
