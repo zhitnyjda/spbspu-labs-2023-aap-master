@@ -92,6 +92,10 @@ int main(int argc, char** argv)
     try
     {
       m1 = createMatrix(rows, cols);
+      if (m1 == nullptr)
+      {
+        return 2;
+      } 
     }
     catch(...)
     {

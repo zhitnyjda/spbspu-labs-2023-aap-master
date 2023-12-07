@@ -3,8 +3,16 @@
 
 float* mihalchenko::createMatrix(size_t rows, size_t cols)
 {
-  float* rowsPtrs = new float[rows * cols];
-  return rowsPtrs;
+  try
+  {
+    float* rowsPtrs = new float[rows * cols];  
+    return rowsPtrs;
+  }
+  catch(const std::exception& e)
+  {
+    std::cerr << e.what() << '\n';
+    return nullptr;
+  }
 }
 
 void mihalchenko::freeMatrix(float* matrix)
