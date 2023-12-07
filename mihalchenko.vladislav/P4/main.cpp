@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <ctype.h>
 #include "matrix.hpp"
 #include "inputArray.hpp"
 #include "outputArray.hpp"
@@ -8,12 +9,26 @@
 int main(int argc, char** argv)
 {
   using namespace mihalchenko;
-  if (argc != 4)
+  if (argc < 4)
   {
-    std::cerr << "Something wrong...\n";
+    std::cerr << "Not enough arguments\n";
     return 1;
   }
-
+  if (argc > 4)
+  {
+    std::cerr << "Too many arguments\n";
+    return 1;
+  }
+  if (isdigit(*argv[1]) != true)
+  {
+    std::cerr << "First parameter is not a number\n";
+    return 1;
+  }
+  if ((*argv[1] != '1') && (*argv[1] != '2'))
+  {
+    std::cerr << "First parameter is out of range\n";
+    return 1;
+  }
   int num;
 
   try
@@ -51,8 +66,8 @@ int main(int argc, char** argv)
 
     if (!input)
     {
-      std::cerr << "Read " << result << "elements...\n";
-      return 3;
+      std::cerr << "Read " << result << " elements...\n";
+      return 2;
     }
     outputDinArray(argv[3], masInput, rows, cols);
     return 0;
@@ -68,7 +83,7 @@ int main(int argc, char** argv)
     catch(...)
     {
       freeMatrix(m1);
-      return 3;
+      return 2;
     }
 
     for (size_t i = 0; i < rows * cols; i++)
