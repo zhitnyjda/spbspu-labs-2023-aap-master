@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     std::cerr << "File is empty" << "\n";
     return 2;
   }
-  if (rows <= 0 || cols <= 0)
+  if (rows == 0 && cols == 0)
   {
     std::ofstream outp(argv[3]);
     outp << 0;
@@ -70,6 +70,7 @@ int main(int argc, char** argv)
       matrix.fl_ar(rows, cols, input, values);
       outputFile << matrix.locMax(values, rows, cols);
       delete[] dm_ar;
+      return 0;
     }
     catch (const std::logic_error & e)
     {
