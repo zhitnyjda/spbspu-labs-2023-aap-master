@@ -16,7 +16,6 @@ int main(int argc, char** argv)
     return 1;
   }
   int num = std::stoi(argv[1]);
-  char* dynamicm = nullptr;
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
