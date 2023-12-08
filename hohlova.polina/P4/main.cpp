@@ -37,6 +37,12 @@ int main(int argc, char** argv)
   {
     std::ofstream output(argv[3]);
     int staticm[1000] = { 0 };
+    size_t sizeM = hohlova::inputArray(input, staticm, rows * cols);
+    if (sizeM != rows * cols
+    {
+      std::cerr << "Not all elements are read\n";
+      return 1;
+    }
     try
     {
       hohlova::inputArray(input, staticm, rows * cols);
