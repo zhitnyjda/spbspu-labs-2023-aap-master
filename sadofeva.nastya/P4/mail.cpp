@@ -53,7 +53,7 @@ int main(int argc, char** argv)
     std::cerr << "Cannot open an ouput file" << "\n";
     return 2;
   }
-  int kolvo = matrix.fl_ar(rows,cols,input,values);
+  int kolvo = matrix.fl_ar(input,values);
   if (kolvo != rows * cols)
   {
     std::cerr << "Not" << "\n";
@@ -63,7 +63,7 @@ int main(int argc, char** argv)
   {
     int static_ar[10000] = { 0 };
     values = static_ar;
-    matrix.fl_ar(rows, cols, input, values);
+    //matrix.fl_ar(rows, cols, input, values);
     outputFile << matrix.locMax(values, rows, cols);
     return 0;
   }
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
     values = dm_ar;
     try
     {
-      matrix.fl_ar(rows, cols, input, values);
+      //matrix.fl_ar(rows, cols, input, values);
       outputFile << matrix.locMax(values, rows, cols);
       delete[] dm_ar;
       return 0;
