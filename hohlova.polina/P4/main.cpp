@@ -43,6 +43,7 @@ int main(int argc, char** argv)
   }
   else
   {
+    int* dynamicm = new int[rows * cols];
     size_t toRead = hohlova::inputArray(input, dynamicm, rows * cols);
     if (toRead != rows * cols)
     {
@@ -51,7 +52,6 @@ int main(int argc, char** argv)
     }
     try
     {
-      int* dynamicm = new int[rows * cols];
       std::ofstream output(argv[3]);
       output << hohlovaa::countStrings(dynamicm, rows, cols);
     }
