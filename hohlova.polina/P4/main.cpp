@@ -29,8 +29,8 @@ int main(int argc, char** argv)
   std::ofstream output(argv[3]);
   if (num > 2 || num < 1)
   {
-  std::cerr << "It can be only 1 or 2\n";
-  return 2;
+    std::cerr << "It can be only 1 or 2\n";
+    return 2;
   }
   else if (num == 1)
   {
@@ -42,16 +42,26 @@ int main(int argc, char** argv)
     size_t toRead = hohlova::inputArray(input, dynamicm, rows * cols);
     if (toRead != static_cast<unsigned long long>(rows) * cols)
     {
-    std::cerr << "Not all elements are read\n";
-    delete[] dynamicm;
-    }
-    std::ofstream output(argv[3]);
-    output << hohlovaa::countStrings(dynamicm, rows, cols);
-    if (!output)
-    {
-      std::cerr << "File not open\n";
+      std::cerr << "Not all elements are read\n";
       delete[] dynamicm;
-      return 2;
+    }
+    try
+    {
+      std::ofstream output(argv[3]);
+      output << hohlovaa::countStrings(dynamicm, rows, cols);
+    }
+    catch (std::runtime_error const& e)
+    {
+      std::cerr << e.what() << "\n";
+      if (num == 2)
+      {
+        delete[] dynamicm;
+      }
+      return 1;
+    }
+    if (num == 2)
+    {
+      delete[] dynamicm;
     }
   }
   return 0;
