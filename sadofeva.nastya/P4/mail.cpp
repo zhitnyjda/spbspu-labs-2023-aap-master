@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     std::cerr << "File is empty" << "\n";
     return 2;
   }
-  if (rows == 0 and cols == 0)
+  if (rows <= 0 || cols <= 0)
   {
     std::ofstream outp(argv[3]);
     outp << 0;
