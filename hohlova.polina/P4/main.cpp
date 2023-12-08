@@ -15,21 +15,7 @@ int main(int argc, char** argv)
     std::cerr << "Something wrong, problem with number of arguments\n";
     return 1;
   }
-  int num;
-  try
-  {
-    num = std::stoi(argv[1]);
-  }
-  catch (std::exception const& e)
-  {
-    std::cerr << "First arg is not a number\n";
-    return 1;
-  }
-  if (num != 1 && num != 2)
-  {
-    std::cerr << "First arg is out or range\n";
-    return 1;
-  }
+  int num = std::stoi(argv[1]);
   char* dynamicm = nullptr;
   size_t rows = 0;
   size_t cols = 0;
