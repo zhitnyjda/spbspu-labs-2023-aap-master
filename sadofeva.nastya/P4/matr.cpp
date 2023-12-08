@@ -5,17 +5,19 @@
 namespace sadofeva
 {
   Matrix::Matrix(){}
-  void Matrix::fl_ar(int& rows, int& cols, std::ifstream& file, int *& values)
+  int Matrix::fl_ar(int& rows, int& cols, std::ifstream& file, int *& values)
   {
     int count = 0;
     while (file.good())
     {
       file >> *(values + count);
       count++;
+      return 1;
     }
     if (count < rows * cols)
     {
       std::cerr << "Not" << "\n";
+      return 2;
     }
   }
   int Matrix::locMax(int* values, int rows, int cols)
