@@ -20,6 +20,11 @@ int main(int argc, char** argv)
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
+  if (!input)
+  {
+    std::cerr << "Cannot open file\n";
+    return 2;
+  }
   input >> rows >> cols;
   if (!input)
   {
