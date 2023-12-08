@@ -47,17 +47,17 @@ int main(int argc, char** argv)
   }
   int* values;
   Matrix matrix;
+  std::ofstream outputFile(argv[3]);
+  if (!outputFile.is_open())
+  {
+    std::cerr << "Cannot open an ouput file" << "\n";
+    return 2;
+  }
   if (num == 1)
   {
     int static_ar[10000] = { 0 };
     values = static_ar;
     matrix.fl_ar(rows, cols, input, values);
-    std::ofstream outputFile(argv[3]);
-    if (!outputFile.is_open())
-    {
-      std::cerr << "Cannot open an output" <<  "\n";
-      return 2;
-    }
     outputFile << matrix.locMax(values, rows, cols);
     return 0;
   }
@@ -68,17 +68,10 @@ int main(int argc, char** argv)
     try
     {
       matrix.fl_ar(rows, cols, input, values);
-      input.close();
-      std::ofstream outputFile(argv[3]);
-      if (!outputFile.is_open())
-      {
-        std::cerr << "Cannot open an output" << "\n";
-        return 2;
-      }
       outputFile << matrix.locMax(values, rows, cols);
       delete[] dm_ar;
     }
-    catch (std::logic_error const & e)
+    catch (const std::logic_error & e)
     {
       std::cerr << e.what();
       delete[] dm_ar;
