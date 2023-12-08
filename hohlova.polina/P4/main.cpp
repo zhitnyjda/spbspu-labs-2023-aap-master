@@ -27,7 +27,7 @@ int main(int argc, char** argv)
   input >> rows >> cols;
   if (!input)
   {
-    std::cerr << "Cannot read an input\n";
+    std::cerr << "Not a num\n";
     return 2;
   }
   std::ofstream output(argv[3]);
@@ -45,10 +45,10 @@ int main(int argc, char** argv)
   {
     int* dynamicm = new int[rows * cols];
     size_t toRead = hohlova::inputArray(input, dynamicm, rows * cols);
-    if (toRead != static_cast<unsigned long long>(rows) * cols)
+    if (toRead != rows * cols)
     {
       std::cerr << "Not all elements are read\n";
-      delete[] dynamicm;
+      return 1;
     }
     try
     {
