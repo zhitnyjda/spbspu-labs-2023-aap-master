@@ -56,35 +56,30 @@ matrix::Matrix matrix::Matrix::operator()(const std::string& text)
 
 void matrix::Matrix::creatDynamicMatrix(const std::string&)
 {
-  try
+  rows = size_t(fileText[0] - '0');
+  cols = size_t(fileText[1] - '0');
+  if (fileText.length() != rows * cols)
   {
-    rows = size_t(fileText[0] - '0');
-    cols = size_t(fileText[1] - '0');
-    matrix = new int[rows * cols];
-    for (size_t i = 0; i < (rows * cols); i++)
-    {
-      matrix[i] = fileText[i + 2] - '0';
-    }
+    throw std::out_of_range("the matrix is the wrong size");
   }
-  catch (const std::exception&)
+  matrix = new int[rows * cols];
+  for (size_t i = 0; i < (rows * cols); i++)
   {
-    throw "the matrix is the wrong size";
+    matrix[i] = fileText[i + 2] - '0';
   }
 }
 
 void matrix::Matrix::creatStaticMatrix(const std::string&)
 {
-  try
+  rows = size_t(fileText[0] - '0');
+  cols = size_t(fileText[1] - '0');
+  std::cout << 123445;
+  if (fileText.length() != rows * cols)
   {
-    rows = size_t(fileText[0] - '0');
-    cols = size_t(fileText[1] - '0');
-    for (size_t i = 0; i <= (rows * cols); i++)
-    {
-      staticMatrix[i] = fileText[i + 2] - '0';
-    }
+    throw std::out_of_range("the matrix is the wrong size");
   }
-  catch (const std::exception&)
+  for (size_t i = 0; i <= (rows * cols); i++)
   {
-    throw "the matrix is the wrong size";
+    staticMatrix[i] = fileText[i + 2] - '0';
   }
 }
