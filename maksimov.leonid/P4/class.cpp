@@ -13,9 +13,9 @@ bool matrix::Matrix::matrixConditionCheck(const int flag)
   int count_zero = 0;
   if (flag == 1)
   {
-    for (int i = 0; i < rows; i++)
+    for (size_t i = 0; i < rows; i++)
     {
-      for (int j = 0; j < i; j++)
+      for (size_t j = 0; j < i; j++)
       {
         if (staticMatrix[(i * rows) + j] == 0)
         {
@@ -27,9 +27,9 @@ bool matrix::Matrix::matrixConditionCheck(const int flag)
   }
   else if (flag == 2)
   {
-    for (int i = 0; i < rows; i++)
+    for (size_t i = 0; i < rows; i++)
     {
-      for (int j = 0; j < i; j++)
+      for (size_t j = 0; j < i; j++)
       {
         if (matrix[(i * rows) + j] == 0)
         {
@@ -58,10 +58,10 @@ void matrix::Matrix::creatDynamicMatrix(const std::string&)
 {
   try
   {
-    rows = (size_t)fileText[0] - '0';
-    cols = (size_t)fileText[1] - '0';
+    rows = size_t(fileText[0] - '0');
+    cols = size_t(fileText[1] - '0');
     matrix = new int[rows * cols];
-    for (int i = 0; i < (rows * cols); i++)
+    for (size_t i = 0; i < (rows * cols); i++)
     {
       matrix[i] = fileText[i + 2] - '0';
     }
@@ -76,9 +76,9 @@ void matrix::Matrix::creatStaticMatrix(const std::string&)
 {
   try
   {
-    rows = (size_t)fileText[0] - '0';
-    cols = (size_t)fileText[1] - '0';
-    for (int i = 0; i <= (rows * cols); i++)
+    rows = size_t(fileText[0] - '0');
+    cols = size_t(fileText[1] - '0');
+    for (size_t i = 0; i <= (rows * cols); i++)
     {
       staticMatrix[i] = fileText[i + 2] - '0';
     }
