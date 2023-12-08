@@ -12,12 +12,7 @@ namespace sadofeva
     {
       file >> *(values + count);
       count++;
-      return 1;
-    }
-    if (count < rows * cols)
-    {
-      std::cerr << "Not" << "\n";
-      return 2;
+      return count;
     }
   }
   int Matrix::locMax(int* values, int rows, int cols)

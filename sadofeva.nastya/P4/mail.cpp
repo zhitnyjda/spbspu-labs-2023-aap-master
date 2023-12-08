@@ -53,6 +53,12 @@ int main(int argc, char** argv)
     std::cerr << "Cannot open an ouput file" << "\n";
     return 2;
   }
+  int kolvo = matrix.fl_ar(rows,cols,input,values);
+  if (kolvo != rows * cols)
+  {
+    std::cerr << "Not" << "\n";
+    return 2;
+  }
   if (num == 1)
   {
     int static_ar[10000] = { 0 };
