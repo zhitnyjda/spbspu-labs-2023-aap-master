@@ -16,7 +16,6 @@ int main(int argc, char** argv)
   }
   char* dynamicm = nullptr;
   int num = std::strtoll(argv[1], std::addressof(dynamicm), 10);
-  int staticm[1000] = { 0 };
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
@@ -39,6 +38,7 @@ int main(int argc, char** argv)
   }
   else if (num == 1)
   {
+    int staticm[1000] = { 0 };
     output << hohlovaa::countStrings(staticm, rows, cols);
   }
   else
