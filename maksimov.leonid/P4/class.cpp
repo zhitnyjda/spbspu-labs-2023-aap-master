@@ -73,7 +73,6 @@ void matrix::Matrix::creatStaticMatrix(const std::string&)
 {
   rows = size_t(fileText[0] - '0');
   cols = size_t(fileText[1] - '0');
-  std::cout << 123445;
   if (fileText.length() != rows * cols)
   {
     throw std::out_of_range("the matrix is the wrong size");
