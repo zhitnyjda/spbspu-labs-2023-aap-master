@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <string>
 #include <stdexcept>
 
 int main(int argc, char** argv)
@@ -15,7 +16,21 @@ int main(int argc, char** argv)
     return 1;
   }
   char* dynamicm = nullptr;
-  int num = std::strtoll(argv[1], std::addressof(dynamicm), 10);
+  int num;
+  try
+  {
+    num = std::stoi(argv[1]);
+  }
+  catch (std::exception const& e)
+  {
+    std::cerr << "First arg is not a number\n";
+    return 1;
+  }
+  if (num != 1 && num != 2)
+  {
+    std::cerr << "First arg is out or range\n";
+    return 1;
+  }
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
