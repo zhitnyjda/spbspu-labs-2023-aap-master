@@ -107,6 +107,7 @@ int main(int argc, char** argv)
     {
       if (!(input >> m1[i]))
       {
+        freeMatrix(m1);
         return i;
       }
     }
