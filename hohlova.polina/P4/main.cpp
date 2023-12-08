@@ -15,7 +15,6 @@ int main(int argc, char** argv)
     std::cerr << "Something wrong, problem with number of arguments\n";
     return 1;
   }
-  char* dynamicm = nullptr;
   int num;
   try
   {
@@ -31,6 +30,7 @@ int main(int argc, char** argv)
     std::cerr << "First arg is out or range\n";
     return 1;
   }
+  char* dynamicm = nullptr;
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
