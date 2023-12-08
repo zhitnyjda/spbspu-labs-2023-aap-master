@@ -16,7 +16,6 @@ int main(int argc, char** argv)
   }
   char* dynamicm = nullptr;
   int num = std::strtoll(argv[1], std::addressof(dynamicm), 10);
-  delete[] dynamicm;
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
