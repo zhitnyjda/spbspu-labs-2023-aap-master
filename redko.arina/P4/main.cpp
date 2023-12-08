@@ -1,4 +1,5 @@
-#include "functions.hpp"
+#include "inputArray.hpp"
+#include "countCols.hpp"
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -10,15 +11,12 @@ int main(int argc, char** argv)
     std::cerr << "wrong number of arguments\n";
     return 1;
   }
-  int num = 0;
-  if (redko::isInteger(argv[1]))
+  char * endOfParsing = nullptr;
+  int num = std::strtoll(argv[1], std::addressof(endOfParsing), 10);
+  if (*endOfParsing != '\0')
   {
-    num = std::stoll(argv[1]);
-  }
-  else
-  {
-    std::cerr << "wrong first argument\n";
-    return 1;
+      std::cerr << "wrong first argument\n";
+      return 1;
   }
   if (num != 1 && num != 2)
   {
@@ -29,28 +27,18 @@ int main(int argc, char** argv)
   int cols = 0;
   std::ifstream input(argv[2]);
   input >> rows >> cols;
+  int size = rows * cols;
   if (!input)
   {
     std::cerr << "can't read input\n";
     return 2;
   }
   int staticMatrix[10000] = {};
-  int * matrix = nullptr;
-  if (num == 1)
+  int * matrix = num == 1 ? &staticMatrix[0] : new int[size];
+  int countedElem = redko::inputArray(input, matrix, size);
+  if (countedElem < size)
   {
-    matrix = &staticMatrix[0];
-  }
-  else
-  {
-    matrix = new int[rows * cols];
-  }
-  try
-  {
-    redko::inputArray(input, matrix, rows * cols);
-  }
-  catch (std::runtime_error & e)
-  {
-    std::cerr << e.what();
+    std::cerr << "error while filling array: counted only " << countedElem << " elements\n";
     if (num == 2)
     {
       delete[] matrix;
