@@ -91,7 +91,7 @@ int main(int argc, char** argv)
     float* m1 = nullptr;
     try
     {
-      m1 = createMatrix(rows, cols);
+      m1 = createMatrix(m1, rows, cols);
       if (m1 == nullptr)
       {
         return 2;

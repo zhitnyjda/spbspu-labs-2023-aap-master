@@ -1,11 +1,11 @@
 #include <iostream>
 #include "matrix.hpp"
 
-float* mihalchenko::createMatrix(size_t rows, size_t cols)
+float* mihalchenko::createMatrix(float* rowsPtrs, size_t rows, size_t cols)
 {
   try
   {
-    float* rowsPtrs = new float[rows * cols];
+    rowsPtrs = new float[rows * cols];
     return rowsPtrs;
   }
   catch(const std::exception& e)
@@ -23,6 +23,6 @@ void mihalchenko::freeMatrix(float* matrix)
   }
   else
   {
-    delete [] matrix;
+    delete[] matrix;
   }
 }

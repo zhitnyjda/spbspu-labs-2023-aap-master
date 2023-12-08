@@ -9,22 +9,24 @@ void mihalchenko::outputDinArray(char* argv3, float* matrix, size_t rows, size_t
 
   int countNew = 0;
   int sum = 0;
-  int iRows = static_cast<int>(rows);
-  int iCols = static_cast<int>(cols);
 
-  for (int m = 0; m < iRows; ++m)
+  for (size_t m = 0; m < rows; m++)
   {
-    for (int n = 0; n < iCols; ++n)
+    for (size_t n = 0; n < cols; n++)
     {
       countNew = 0;
       sum = 0;
-      for (int i = m - 1; i <= m + 1; ++i)
+      size_t sch;
+      (m > 0) ? (sch = m - 1) : (sch = 0);
+      for (size_t i = sch; i <= m + 1; i++)
       {
-        if ((i >= 0) and (i < iRows))
+        if (i < rows)
         {
-          for (int j = n - 1; j <= n + 1; ++j)
+          size_t schNext;
+          (n > 0) ? (schNext = n - 1) : (schNext = 0);
+          for (size_t j = schNext; j <= n + 1; j++)
           {
-            if ((j >= 0) and (j < iCols))
+            if (j < cols)
             {
               if ((m == i) and (n == j))
               {
@@ -32,8 +34,8 @@ void mihalchenko::outputDinArray(char* argv3, float* matrix, size_t rows, size_t
               }
               else
               {
-                countNew++;
-                sum += matrix[i * cols + j];
+              countNew++;
+              sum += matrix[i * cols + j];
               }
             }
           }
@@ -49,9 +51,7 @@ void mihalchenko::outputDinArray(char* argv3, float* matrix, size_t rows, size_t
   output << rows << " " << cols << " ";
   for (size_t i = 0; i < rows * cols; ++i)
   {
-    //output << (float) round(matrixNew[i] * 10) / 10 << " ";
-    // std::cout << matrixNew[i] << ' ';
     output << static_cast<float>(round(matrixNew[i] * 10)) / 10 << " ";
   }
-  delete [] matrixNew;
+  delete[] matrixNew;
 }
