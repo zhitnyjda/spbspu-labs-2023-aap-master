@@ -19,30 +19,38 @@ int main(int argc, char** argv)
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
-  if (!input)
-  {
-    std::cerr << "Cannot open file\n";
-    return 2;
-  }
   input >> rows >> cols;
   if (!input)
   {
-    std::cerr << "Not a num\n";
+    std::cerr << "Cannot open an input file\n";
     return 2;
   }
-  std::ofstream output(argv[3]);
-  if (num > 2 || num < 1)
+  if (num == 1 || num == 2)
   {
-    std::cerr << "It can be only 1 or 2\n";
-    return 2;
+    std::ofstream output(argv[3]);
+    if (rows != cols)
+    {
+      std::cerr << "Not a square\n";
+    }
   }
-  else if (num == 1)
+  if (num == 1)
   {
+    std::ofstream output(argv[3]);
     int staticm[1000] = { 0 };
+    try
+    {
+      hohlova::inputArray(input, staticm, rows * cols);
+    }
+    catch (std::logic_error const& e)
+    {
+      std::cerr << e.what() << "\n";
+      return 2;
+    }
     output << hohlovaa::countStrings(staticm, rows, cols);
   }
-  else
+  else if (num == 2)
   {
+    std::ofstream output(argv[3]);
     int* dynamicm = new int[rows * cols];
     size_t toRead = hohlova::inputArray(input, dynamicm, rows * cols);
     if (toRead != rows * cols)
@@ -53,22 +61,32 @@ int main(int argc, char** argv)
     }
     try
     {
+      hohlova::inputArray(input, dynamicm, rows * cols);
       std::ofstream output(argv[3]);
-      output << hohlovaa::countStrings(dynamicm, rows, cols);
     }
-    catch (std::runtime_error const& e)
+    catch (std::logic_error const& e)
     {
       std::cerr << e.what() << "\n";
-      if (num == 2)
-      {
-        delete[] dynamicm;
-      }
-      return 1;
+      delete[] dynamicm;
+      return 2;
     }
-    if (num == 2)
+    try
+    {
+      output << hohlovaa::countStrings(dynamicm, rows, cols);
+    }
+    catch (std::invalid_argument const& e)
     {
       delete[] dynamicm;
+      std::cerr << e.what();
+      return 0;
     }
+    delete[] dynamicm;
+  }
+  else
+  {
+    std::cerr << "Error\n";
+    return 1;
   }
   return 0;
 }
+
