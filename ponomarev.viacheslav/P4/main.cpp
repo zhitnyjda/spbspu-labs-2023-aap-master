@@ -23,17 +23,13 @@ int main(int argc, char ** argv)
     std::cerr << "Wrong first argument value, expected 1 or 2.\n";
     return 1;
   }
-  int i = 0;
+  std::ifstream input(argv[2]);
+  size_t rows = 0, cols = 0;
+  if (!(input >> rows >> cols))
   {
-    std::ifstream input(argv[2]);
-    input >> i;
-    if (!input)
-    {
-      std::cerr << "Cannot read a number.\n";
-      return 1;
-    }
+    std::cerr << "Error from reading numbers from a file.\n";
+    return 1;
   }
-  std::cout << i << "\n";
   std::ofstream output(argv[3]);
-  output << i << "\n";
+  output << rows << cols << "\n";
 }
