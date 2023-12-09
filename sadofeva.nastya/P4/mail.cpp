@@ -34,11 +34,6 @@ int main(int argc, char** argv)
     std::cerr << "Cannot read file" << "\n";
     return 2;
   }
-  //if (input.eof())
-  //{
-    //std::cerr << "File is empty" << "\n";
-    //return 2;
-  //}
   if (rows < 3 || cols < 0)
   {
     std::ofstream outp(argv[3]);
