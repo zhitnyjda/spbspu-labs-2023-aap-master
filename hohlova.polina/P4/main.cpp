@@ -14,7 +14,7 @@ int main(int argc, char** argv)
     std::cerr << "Something wrong, problem with number of arguments\n";
     return 1;
   }
-  cahr* lastNum = nullptr;
+  char* lastNum = nullptr;
   int num = std::strtoll(argv[1], std::addressof(lastNum), 10);
   if (num != 1 && num != 2)
   {
