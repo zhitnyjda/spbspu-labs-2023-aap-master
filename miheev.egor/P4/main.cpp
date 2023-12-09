@@ -47,13 +47,8 @@ int main(int argc, char* argv[])
 
     int stat[10000] = {0};
     int* arr = num == 1 ? stat : new int[length];
-    try
+    if (inputToArr(inputFile, arr, length) != length)
     {
-      inputToArr(inputFile, arr, length);
-    }
-    catch (const std::runtime_error& e)
-    {
-      std::cerr << e.what();
       if (num == 2)
       {
         delete[] arr;

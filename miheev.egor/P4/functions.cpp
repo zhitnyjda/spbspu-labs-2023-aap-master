@@ -9,7 +9,7 @@ size_t miheev::inputToArr(std::ifstream& in, int* arr, size_t size)
     in >> arr[i];
     if (!in)
     {
-      throw std::runtime_error("Error occured while trying to init arr. " + std::to_string(i) + " elements were read\n");
+      std::cerr << "something went wrong only " << i << " elements were initialized\n";
       return i;
     }
   }
