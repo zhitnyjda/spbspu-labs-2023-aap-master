@@ -5,7 +5,7 @@
 namespace sadofeva
 {
   Matrix::Matrix(){}
-  int Matrix::fl_ar(std::ifstream& file, int *& values, sz_M)
+  int Matrix::fl_ar(std::ifstream& file, int *& values, int sz_M)
   {
     int count = 0;
     while (count < sz_M)
