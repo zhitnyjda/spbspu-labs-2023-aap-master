@@ -2,6 +2,7 @@
 #include "matrix.hpp"
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <cstring>
 #include <stdexcept>
 
@@ -14,8 +15,7 @@ int main(int argc, char** argv)
     std::cerr << "Something wrong, problem with number of arguments\n";
     return 1;
   }
-  char* lastNum = nullptr;
-  int num = std::strtoll(argv[1], std::addressof(lastNum), 10);
+  int num = std::stoi(argv[1]);
   if (num != 1 && num != 2)
   {
     std::cerr << "First arg 1 or 2\n";
