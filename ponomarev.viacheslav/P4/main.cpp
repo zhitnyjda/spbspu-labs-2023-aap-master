@@ -18,6 +18,11 @@ int main(int argc, char ** argv)
     std::cerr << "Cannot parse a value.\n";
     return 1;
   }
+  if (num != 1 && num != 2)
+  {
+    std::cerr << "Wrong first argument value, expected 1 or 2.\n";
+    return 1;
+  }
   int i = 0;
   {
     std::ifstream input(argv[2]);
