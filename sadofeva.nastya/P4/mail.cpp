@@ -73,7 +73,7 @@ int main(int argc, char** argv)
     try
     {
       int kolvo = matrix.fl_ar(input, values);
-      if (kolvo != rows*= * cols)
+      if (kolvo != rows * cols)
       {
         std::cerr << "Not" << "\n";
         return 2;
