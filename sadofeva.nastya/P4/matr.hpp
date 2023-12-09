@@ -7,8 +7,8 @@ namespace sadofeva
   class Matrix
   {
   public:
-    int fl_ar(std::ifstream& file, int*& values);
-    int locMax(int* velues, int rows, int cols);
+    int fl_ar(std::ifstream& file, int *& values, int sz_M);
+    int locMax(int* values, int rows, int cols);
     Matrix();
   private:
     int rows;

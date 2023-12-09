@@ -57,14 +57,22 @@ int main(int argc, char** argv)
   {
     int static_ar[10000] = { 0 };
     values = static_ar;
-    int kolvo = matrix.fl_ar(input, values);
-    if (kolvo != rows * cols)
+    try
     {
-      std::cerr << "Not" << "\n";
+      int kolvo = matrix.fl_ar(input, values,rows * cols);
+      if (kolvo != rows * cols)
+      {
+        std::cerr << "Not" << "\n";
+        return 2;
+      }
+      outputFile << matrix.locMax(values, rows, cols);
+      return 0;
+    }
+    catch (const std::logic_error & e)
+    {
+      std::cerr << e.what();
       return 2;
     }
-    outputFile << matrix.locMax(values, rows, cols);
-    return 0;
   }
   if (num == 2)
   {
@@ -72,10 +80,10 @@ int main(int argc, char** argv)
     values = dm_ar;
     try
     {
-      int kolvo = matrix.fl_ar(input, values);
+      int kolvo = matrix.fl_ar(input, values,rows * cols);
       if (kolvo != rows * cols)
       {
-        std::cerr << "Not" << "\n";
+        std::cerr << "Not correct" << "\n";
         delete[] dm_ar;
         return 2;
       }
