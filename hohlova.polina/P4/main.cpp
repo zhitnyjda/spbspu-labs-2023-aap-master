@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include <string>
 #include <stdexcept>
 
 int main(int argc, char** argv)
@@ -15,7 +14,13 @@ int main(int argc, char** argv)
     std::cerr << "Something wrong, problem with number of arguments\n";
     return 1;
   }
-  int num = std::stoi(argv[1]);
+  cahr* lastNum = nullptr;
+  int num = std::strtoll(argv[1], std::addressof(lastNum), 10);
+  if (num != 1 && num != 2)
+  {
+    std::cerr << "First arg 1 or 2\n";
+    return 1;
+  }
   size_t rows = 0;
   size_t cols = 0;
   std::ifstream input(argv[2]);
