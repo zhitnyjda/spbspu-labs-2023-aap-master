@@ -73,7 +73,6 @@ int main(int argc, char** argv)
     try
     {
       hohlova::inputArray(input, dynamicm, rows * cols);
-      std::ofstream output(argv[3]);
     }
     catch (std::logic_error const& e)
     {
