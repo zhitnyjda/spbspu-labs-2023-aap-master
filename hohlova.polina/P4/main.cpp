@@ -46,10 +46,6 @@ int main(int argc, char** argv)
     if (sizeM != rows * cols)
     {
       std::cerr << "Not all elements are read\n";
-      if (num == 2)
-      {
-        delete[] dynamicm;
-      }
       return 2;
     }
     try
