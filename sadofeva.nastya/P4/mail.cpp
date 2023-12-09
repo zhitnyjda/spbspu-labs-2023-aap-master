@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     std::cerr << "File is empty" << "\n";
     return 2;
   }
-  if (rows == 0 && cols == 0)
+  if (rows < 3 || cols < 0)
   {
     std::ofstream outp(argv[3]);
     outp << 0;
@@ -76,6 +76,7 @@ int main(int argc, char** argv)
       if (kolvo != rows * cols)
       {
         std::cerr << "Not" << "\n";
+        delete[] dm_ar;
         return 2;
       }
       outputFile << matrix.locMax(values, rows, cols);
