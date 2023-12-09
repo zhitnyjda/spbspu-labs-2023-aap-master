@@ -57,7 +57,7 @@ int main(int argc, char** argv)
       int kolvo = matrix.fl_ar(input, values,rows * cols);
       if (kolvo != rows * cols)
       {
-        std::cerr << "Not" << "\n";
+        std::cerr << "Not correct" << "\n";
         return 2;
       }
       outputFile << matrix.locMax(values, rows, cols);
