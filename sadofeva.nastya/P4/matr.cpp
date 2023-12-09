@@ -12,8 +12,8 @@ namespace sadofeva
     {
       file >> *(values + count);
       count++;
-      return count;
     }
+    return count;
   }
   int Matrix::locMax(int* values, int rows, int cols)
   {
