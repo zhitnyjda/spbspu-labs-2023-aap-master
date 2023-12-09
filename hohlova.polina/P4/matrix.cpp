@@ -10,7 +10,7 @@ size_t hohlovaa::countStrings(const int* matrix, size_t rows, size_t cols)
   {
     for (size_t j = 1; j < rows; j++)
     {
-      if (matrix[i + rows + j - 1)] == matrix[i * rows + j - 1])
+      if (matrix[i + rows + j - 1] == matrix[i * rows + j - 1])
       {
         ++counter;
         break;
