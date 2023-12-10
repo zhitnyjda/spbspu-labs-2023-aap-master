@@ -22,26 +22,15 @@ int main(int argc, char** argv)
     std::cerr << "Is not a number\n";
     return 1;
   }
-  if (num != 2 || num != 1)
+  if (num != 2 && num != 1)
   {
     std::cerr << "First parameter is 1 or 2\n";
     return 1;
   }
-  int m;
-  int n;
+  int m = 0;
+  int n = 0;
   std::ifstream input(argv[2]);
   if (!input)
-  {
-    std::cerr << "Input Error\n";
-    return 2;
-  }
-  input >> m >> n;
-  if (!input)
-  {
-    std::cerr << "It is not number\n";
-    return 2;
-  }
-  if (m <= 0 || n <= 0)
   {
     std::cerr << "Input Error\n";
     return 2;
@@ -50,6 +39,16 @@ int main(int argc, char** argv)
   if (!output)
   {
     std::cerr << "Failed to open output file.\n";
+    return 2;
+  }
+  if (!(input >> m >> n))
+  {
+    std::cerr << "It is not number\n";
+    return 2;
+  }
+  if (m <= 0 || n <= 0)
+  {
+    std::cerr << "Input Error\n";
     return 2;
   }
   int Size = m * n;
