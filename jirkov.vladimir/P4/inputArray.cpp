@@ -1,9 +1,9 @@
 #include <fstream>
 #include "inputArray.hpp"
 
-size_t Array::inputArray(std::istream &input, int *matrix, size_t Size)
+int Array::inputArray(std::istream &input, int *matrix, int Size)
 {
-  for (size_t i = 0; i < Size; ++i)
+  for (int i = 0; i < Size; ++i)
   {
     if (!(input >> matrix[i]))
     {
@@ -13,10 +13,10 @@ size_t Array::inputArray(std::istream &input, int *matrix, size_t Size)
   return Size;
 }
 
-void Array::printArray(std::ostream &output, int const *matrix, size_t m, size_t n)
+void Array::printArray(std::ostream &output, int const *matrix, int m, int n)
 {
   output << n << " " << m << " ";
-  for (size_t i = 0; i < n * m; ++i)
+  for (int i = 0; i < n * m; ++i)
   {
     output << matrix[i] << " ";
   }

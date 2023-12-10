@@ -27,8 +27,8 @@ int main(int argc, char** argv)
     std::cerr << "First parameter is out of range\n";
     return 1;
   }
-  size_t m;
-  size_t n;
+  int m;
+  int n;
   std::ifstream input(argv[2]);
   if (!input)
   {
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
     std::cerr << "Input Error\n";
     return 2;
   }
-  size_t Size = m * n;
+  int Size = m * n;
   int matrixStatic[Size];
   int *matrix = matrixStatic;
   try
@@ -62,7 +62,7 @@ int main(int argc, char** argv)
       int *matrixDynamic = new int[Size];
       matrix = matrixDynamic;
     }
-    size_t inputElements = inputArray(input, matrix, Size);
+    int inputElements = inputArray(input, matrix, Size);
     if (inputElements != Size)
     {
       throw std::logic_error("2");
