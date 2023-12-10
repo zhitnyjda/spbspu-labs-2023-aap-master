@@ -34,7 +34,7 @@ int main(int argc, char** argv)
     std::cerr << "Cannot read file" << "\n";
     return 2;
   }
-  if (rows < 3 || cols < 0)
+  if (rows < 3 || cols < 3)
   {
     std::ofstream outp(argv[3]);
     outp << 0;
