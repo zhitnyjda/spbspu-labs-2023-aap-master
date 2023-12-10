@@ -17,12 +17,12 @@ int main(int argc, char** argv)
   char* end = nullptr;
   long long num = std::strtoll(argv[1], std::addressof(end), 10);
   long long len = strlen(argv[1]);
-  if (end != argv[1] + len)
+  if (end != argv[1] + len || len == 0)
   {
     std::cerr << "First parameter is not a number\n";
     return 1;
   }
-  if (num != 2 && num != 1)
+  if (num != 2 || num != 1)
   {
     std::cerr << "First parameter is out of range\n";
     return 1;
