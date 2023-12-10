@@ -1,7 +1,7 @@
 #include <fstream>
 #include "inputArray.hpp"
 
-int Array::inputArray(std::istream &input, int *matrix, int Size)
+int Array::inputArray(std::istream &input, int *matrix, int m, int n)
 {
   for (int i = 0; i < Size; ++i)
   {
@@ -15,8 +15,8 @@ int Array::inputArray(std::istream &input, int *matrix, int Size)
 
 void Array::printArray(std::ostream &output, int const *matrix, int m, int n)
 {
-  output << n << " " << m << " ";
-  for (int i = 0; i < n * m; ++i)
+  output << m << " " << n << " ";
+  for (int i = 0; i < m * n; ++i)
   {
     output << matrix[i] << " ";
   }

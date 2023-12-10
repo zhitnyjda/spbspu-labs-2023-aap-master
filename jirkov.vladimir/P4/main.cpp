@@ -51,18 +51,17 @@ int main(int argc, char** argv)
     std::cerr << "Input Error\n";
     return 2;
   }
-  int Size = m * n;
-  int matrixStatic[Size];
+  int matrixStatic[m * n];
   int *matrix = matrixStatic;
   try
   {
     if (num == 2)
     {
-      int *matrixDynamic = new int[Size];
+      int *matrixDynamic = new int[m * n];
       matrix = matrixDynamic;
     }
-    int inputElements = inputArray(input, matrix, Size);
-    if (inputElements != Size)
+    int inputElements = inputArray(input, matrix, m, n);
+    if (inputElements != m * n)
     {
       throw std::logic_error("2");
     }
