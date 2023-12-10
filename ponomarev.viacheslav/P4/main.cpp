@@ -1,6 +1,18 @@
 #include <iostream>
 #include <fstream>
 
+size_t inputArray(std::istream & in, int * matrix, size_t lenArray)
+{
+  for (size_t i = 0; i < lenArray; i++)
+  {
+    if (!(in >> matrix[i]))
+    {
+      return i;
+    }
+  }
+  return lenArray;
+}
+
 int main(int argc, char ** argv)
 {
   if (argc != 4)
@@ -28,8 +40,27 @@ int main(int argc, char ** argv)
   if (!(input >> rows >> cols))
   {
     std::cerr << "Error from reading numbers from a file.\n";
-    return 1;
+    return 2;
+  }
+  int fixMatrix[10000] = { 0 };
+  int * matrix = (num == 2) ? new int[rows * cols] : fixMatrix;
+  if (inputArray(input, matrix, rows * cols) != (rows * cols))
+  {
+    std::cerr << "The wrong number of matrix elements.\n";
+    if (num == 2)
+    {
+      delete[] matrix;
+    }
+    return 2;
   }
   std::ofstream output(argv[3]);
-  output << rows << cols << "\n";
+  for (size_t i = 0; i < (rows * cols); i++)
+  {
+  output << matrix[i] << "\n";
+  }
+  if (num == 2)
+  {
+    delete[] matrix;
+  }
+  return 0;
 }
