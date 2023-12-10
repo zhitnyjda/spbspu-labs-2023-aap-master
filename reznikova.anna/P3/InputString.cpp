@@ -3,7 +3,7 @@
 
 char * inputString(std::istream & in, size_t & size, size_t & add_size)
 {
-  char * string = new char[size];
+  char * string = new char[size]();
   char chr = 0;
   size_t read = 0;
   in >> std::noskipws;
