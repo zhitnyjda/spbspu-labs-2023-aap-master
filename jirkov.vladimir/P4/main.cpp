@@ -67,7 +67,6 @@ int main(int argc, char** argv)
     {
       throw std::logic_error("2");
     }
-    decreaseSpiralElements(matrix, m, n);
     printArray(output, matrix, m, n);
     if (num == 2)
     {
