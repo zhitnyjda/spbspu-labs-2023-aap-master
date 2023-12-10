@@ -4,10 +4,10 @@ char * ExcludeSecString(char * first_str, char * sec_str, size_t first_size, siz
 {
     char * result_string = new char[first_size]();
     size_t read = 0;
-    for (size_t i = 0; i < first_size; i++)
+    for (size_t i = 0; i < (first_size-1); i++)
     {
         int flag = 0;
-        for (size_t j = 0; j < sec_size; j++)
+        for (size_t j = 0; j < (sec_size-1); j++)
         {
             if (first_str[i] == sec_str[j])
             {
