@@ -45,8 +45,24 @@ int main(int argc, char** argv)
 	if (num == 1)
 	{
 		int static_[10000] = { 0 };
-		aboba.arraay(rows, cols, input,values);
 		values = static_;
+		try
+		{
+			int kolvo = matrix.fl_ar(input, values,rows * cols);
+	        	if (kolvo != rows * cols)
+	        	{
+        			std::cerr << "Not correct" << "\n";
+        			return 2;
+      			}
+      			outputFile << principal.minsum(values, rows, cols);
+      			return 0;
+    		}
+    		catch (const std::logic_error & e)
+    		{
+      			std::cerr << e.what();
+      			return 2;
+    		}
+
 	}
 	if (num == 2)
 	{
