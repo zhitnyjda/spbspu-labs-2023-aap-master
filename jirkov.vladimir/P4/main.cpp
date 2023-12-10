@@ -17,14 +17,14 @@ int main(int argc, char** argv)
   char* end = nullptr;
   long long num = std::strtoll(argv[1], std::addressof(end), 10);
   long long len = strlen(argv[1]);
-  if (end != argv[1] + len || len == 0)
+  if (end != argv[1] + len)
   {
-    std::cerr << "First parameter is not a number\n";
+    std::cerr << "Is not a number\n";
     return 1;
   }
   if (num != 2 || num != 1)
   {
-    std::cerr << "First parameter is out of range\n";
+    std::cerr << "First parameter is 1 or 2\n";
     return 1;
   }
   int m;
@@ -32,13 +32,7 @@ int main(int argc, char** argv)
   std::ifstream input(argv[2]);
   if (!input)
   {
-    std::cerr << "File not open\n";
-    return 2;
-  }
-  std::ofstream output(argv[3]);
-  if (!output)
-  {
-    std::cerr << "Failed to open output file.\n";
+    std::cerr << "Input Error\n";
     return 2;
   }
   input >> m >> n;
@@ -50,6 +44,12 @@ int main(int argc, char** argv)
   if (m <= 0 || n <= 0)
   {
     std::cerr << "Input Error\n";
+    return 2;
+
+  std::ofstream output(argv[3]);
+  if (!output)
+  {
+    std::cerr << "Failed to open output file.\n";
     return 2;
   }
   int Size = m * n;
