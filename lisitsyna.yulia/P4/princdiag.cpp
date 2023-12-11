@@ -24,9 +24,10 @@ void lisitsyna::principal::input_ar(std::ifstream& in, int* values, size_t sizeM
 		in >> values[i];
 		if (!in)
 		{
-			throw std::runtime_error("Incorrect input");			}
+			return i;			}
 		}
 	}
+	return sizeMatrix;
 }
 long long lisitsyna::principal::minSum(int rows, int cols, int* values)
 {
