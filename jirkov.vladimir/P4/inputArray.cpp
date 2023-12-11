@@ -1,7 +1,7 @@
 #include <fstream>
 #include "inputArray.hpp"
 
-int inputArray(std::istream &input, int *arr, int m, int n)
+int Array::inputArray(std::istream &input, int *arr, int m, int n)
 {
   int count = 0;
   for (int i = 0; i < m; ++i)
@@ -17,7 +17,7 @@ int inputArray(std::istream &input, int *arr, int m, int n)
   }
   return count;
 }
-void printArray(std::ostream &output, const int *arr, int m, int n)
+void Array::printArray(std::ostream &output, const int *arr, int m, int n)
 {
   for (int i = 0; i < m; ++i)
   {
