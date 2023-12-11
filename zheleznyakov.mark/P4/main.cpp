@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <cstring>
 #include "functions.hpp"
 
 int main(int argc, char *argv[])

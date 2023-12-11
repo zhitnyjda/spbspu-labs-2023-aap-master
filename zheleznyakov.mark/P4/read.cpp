@@ -1,3 +1,4 @@
+#include <cstring>
 #include "functions.hpp"
 
 int zheleznyakov::stringToInt(char * str)
