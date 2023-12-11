@@ -1,21 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <iosfwd>
-
-char* resizeArray(char* array, size_t size, size_t newSize)
-{
-  char* newArray = new char[newSize+1];
-  for (size_t i = 0; i < size; i++)
-  {
-    newArray[i] = array[i];
-  }
-  for (size_t j = size; j < newSize; j++)
-  {
-    newArray[j] = '0';
-  }
-  delete[] array;
-  return newArray;
-}
+#include "resizeArray.hpp"
 
 int main()
 {
@@ -37,7 +23,7 @@ int main()
     }
     else
     {
-      input = resizeArray(input, size, size + 20);
+      input = doroshenko::resizeArray(input, size, size + 20);
       size += 20;
       input[readEl++] = ch;
     }
