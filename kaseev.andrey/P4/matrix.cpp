@@ -1,8 +1,9 @@
 #include "matrix.hpp"
 
 namespace MatrixStuff {
-  size_t NumberOfDiagonals(int *matrix, int n, int m) {
-    if (matrix == nullptr)
+  size_t NumberOfDiagonals(int *matrixPointer, int n, int m)
+  {
+    if (matrixPointer == nullptr)
     {
       return 0;
     }
@@ -15,14 +16,13 @@ namespace MatrixStuff {
       {
         int index = i * m + j;
 
-        if ((i == j && matrix[index] == 0) || matrix[m - 1] == 0)
+        if ((i == j && matrixPointer[index] == 0) || matrixPointer[m - 1] == 0)
         {
           containsZero = true;
-          break;
-        } else if (i != j && matrix[index] == 0)
+        }
+        else if (i != j && matrixPointer[index] == 0)
         {
           containsZero = true;
-          break;
         }
       }
 
@@ -34,33 +34,9 @@ namespace MatrixStuff {
     return count;
   }
 
-  void writeResult(std::ostream &output, int result, bool UpperTriangularMatrix)
+  bool upperTriangularMatrix(int *matrixPointer, int n, int m)
   {
-    if (UpperTriangularMatrix)
-    {
-      output << result << "\n" << "true";
-    }
-    else
-    {
-      output << result << "\n" << "false";
-    }
-  }
-
-  bool readMatrix(std::istream &input, int *matrix, int n, int m)
-  {
-    bool marker = true;
-    for (int i = 0; i < n * m; ++i)
-    {
-      if (!(input >> matrix[i])) {
-        return false;
-      }
-    }
-    return marker;
-  }
-
-  bool upperTriangularMatrix(int *matrix, int n, int m)
-  {
-    if (matrix == nullptr)
+    if (matrixPointer == nullptr)
     {
       return false;
     }
@@ -69,7 +45,7 @@ namespace MatrixStuff {
       for (int j = 0; j < m; ++j)
       {
         int index = i * m + j;
-        if (i > j && matrix[index] != 0)
+        if (i > j && matrixPointer[index] != 0)
         {
           return false;
         }
