@@ -1,23 +1,11 @@
 #include "funcs.hpp"
-#include <iostream>
 #include <fstream>
 
 namespace sobolevsky
 {
-  size_t fillMatrix(std::istream & in, int * matrix, size_t s, size_t counter)
-  {
-    for (size_t i = 0; i < s; ++i)
-    {
-      if (in >> matrix[i])
-      {
-        counter++;
-      }
-    }
-    return counter;
-  }
-
   void isTrianglMatrix(std::ofstream& out, int * matrix, size_t rows, size_t cols)
   {
+    bool flag = true;
     for (size_t i = 0; i < rows; i++)
     {
       for (size_t k = 0; k < cols; k++)
@@ -25,9 +13,13 @@ namespace sobolevsky
         if ((matrix[k*cols + i] != 0) && (i > k))
         {
           out << std::boolalpha << false;
+          flag = false;
         }
       }
     }
-    out << std::boolalpha << true;
+    if (flag)
+    {
+      out << std::boolalpha << true;
+    }
   }
 }

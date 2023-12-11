@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "fillMatrix.hpp"
 #include "funcs.hpp"
 
 int main(int argc, char ** argv)
