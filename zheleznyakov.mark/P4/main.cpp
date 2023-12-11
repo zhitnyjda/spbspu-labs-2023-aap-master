@@ -13,15 +13,7 @@ int main(int argc, char *argv[])
   int task = 0;
   try
   {
-    char * arg = argv[1];
-    for (size_t i = 0; i < std::strlen(arg); i++)
-    {
-      if (!(std::isdigit(arg[i])))
-      {
-        throw std::invalid_argument("Error: The task number is not an integer.\n");
-      }
-    }
-    task = std::stoll(arg);
+    task = zheleznyakov::stringToInt(argv[1]);
   }
   catch (const std::invalid_argument &e)
   {
@@ -52,7 +44,7 @@ int main(int argc, char *argv[])
     return 2;
   }
   int result = 0;
-  int * array = {};
+  int *array = {};
   try
   {
     array = task == 2 ? new int[columns * rows] : new int[10000];
