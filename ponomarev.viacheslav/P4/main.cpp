@@ -2,6 +2,7 @@
 #include <fstream>
 #include "inputArray.hpp"
 #include "sedlElem.hpp"
+#include "minSu.hpp"
 
 int main(int argc, char ** argv)
 {
@@ -45,6 +46,14 @@ int main(int argc, char ** argv)
   }
   std::ofstream output(argv[3]);
   output << "Число седловых элементов = " << ponomarev::countingSed(matrix, rows, cols) << "\n";
+  if (rows == cols)
+  {
+    output << "Миннимальная сумма элементов, среди диагоналей, параллельных побочной диагонали = " << ponomarev::minSu(matrix, rows, cols) << "\n";
+  }
+  else
+  {
+    output << "Вычислить миннимальную сумму элементов, среди диагоналей, параллельных побочной диагонали невозможно, так как побочной диагонали не существует.\n";
+  }
   if (num == 2)
   {
     delete[] matrix;

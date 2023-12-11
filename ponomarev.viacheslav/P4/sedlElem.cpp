@@ -1,5 +1,4 @@
 #include "sedlElem.hpp"
-#include <iostream>
 
 int ponomarev::countingSed(int * matrix, int rows, int cols)
 {
