@@ -9,7 +9,7 @@ int redko::countCols(int matrix[], int rows, int cols)
     {
       if (matrix[i + cols * (j - 1)] == matrix[i + cols * j])
       {
-        colsWithRep += 1;
+        colsWithRep++;
         break;
       }
     }

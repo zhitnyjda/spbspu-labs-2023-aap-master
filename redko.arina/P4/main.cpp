@@ -1,8 +1,8 @@
-#include "inputArray.hpp"
-#include "countCols.hpp"
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "inputArray.hpp"
+#include "countCols.hpp"
 
 int main(int argc, char** argv)
 {
@@ -23,20 +23,20 @@ int main(int argc, char** argv)
     std::cerr << "the first argument must be 1 or 2\n";
     return 1;
   }
-  int rows = 0;
-  int cols = 0;
+  int rows;
+  int cols;
   std::ifstream input(argv[2]);
   input >> rows >> cols;
-  int size = rows * cols;
+  int matrixSize = rows * cols;
   if (!input)
   {
     std::cerr << "can't read input\n";
     return 2;
   }
   int staticMatrix[10000] = {};
-  int * matrix = num == 1 ? &staticMatrix[0] : new int[size];
-  int countedElem = redko::inputArray(input, matrix, size);
-  if (countedElem < size)
+  int * matrix = num == 1 ? &staticMatrix[0] : new int[matrixSize];
+  int countedElem = redko::inputArray(input, matrix, matrixSize);
+  if (countedElem < matrixSize)
   {
     std::cerr << "error while filling array: counted only " << countedElem << " elements\n";
     if (num == 2)
