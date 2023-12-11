@@ -20,12 +20,12 @@ int main(int argc, char** argv)
   if (end != argv[1] + len)
   {
     std::cerr << "Is not a number\n";
-    return 1;
+    return 3;
   }
   if (num != 2 && num != 1)
   {
     std::cerr << "First parameter is 1 or 2\n";
-    return 1;
+    return 2;
   }
   int m = 0;
   int n = 0;
@@ -33,18 +33,18 @@ int main(int argc, char** argv)
   if (!input)
   {
     std::cerr << "Input Error\n";
-    return 2;
+    return 1;
   }
   std::ofstream output(argv[3]);
   if (!output)
   {
     std::cerr << "Failed to open output file.\n";
-    return 2;
+    return 1;
   }
   if (!(input >> m >> n) || m <= 0 || n <= 0 || input.fail())
   {
     std::cerr << "Invalid array dimensions\n";
-    return 2;
+    return 1;
   }
   int matrixStatic[m * n];
   int *matrix = matrixStatic;
@@ -58,7 +58,7 @@ int main(int argc, char** argv)
     int inputElements = inputArray(input, matrix, m, n);
     if (inputElements != m * n)
     {
-      std::cerr << "Wrong number of elements array\n";
+      throw std::logic_error("2");
     }
     printArray(output, matrix, m, n);
     if (num == 2)
