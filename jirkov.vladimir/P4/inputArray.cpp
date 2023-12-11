@@ -3,14 +3,16 @@
 
 int Array::inputArray(std::istream &input, int *matrix, int m, int n)
 {
+  int count = 0;
   for (int i = 0; i < m * n; ++i)
   {
     if (!(input >> matrix[i]))
     {
-      return i;
+      return count;
     }
+    count += 1;
   }
-  return m * n;
+  return count;
 }
 
 void Array::printArray(std::ostream &output, int const *matrix, int m, int n)
