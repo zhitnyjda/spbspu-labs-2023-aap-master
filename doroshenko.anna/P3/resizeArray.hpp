@@ -1,5 +1,6 @@
 #ifndef RESIZE_ARRAY_HPP
 #define RESIZE_ARRAY_HPP
+#include <cstddef>
 
 namespace doroshenko
 {
