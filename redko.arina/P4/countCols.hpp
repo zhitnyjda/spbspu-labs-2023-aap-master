@@ -3,7 +3,7 @@
 
 namespace redko
 {
-  int countCols(int matrix[], int rows, int cols);
+  int countCols(const int * matrix, int rows, int cols);
 }
 
 #endif

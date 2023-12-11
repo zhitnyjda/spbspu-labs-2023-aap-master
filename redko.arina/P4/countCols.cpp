@@ -1,6 +1,6 @@
 #include "countCols.hpp"
 
-int redko::countCols(int matrix[], int rows, int cols)
+int redko::countCols(const int * matrix, int rows, int cols)
 {
   int colsWithRep = 0;
   for (int i = 0; i < cols; ++i)
