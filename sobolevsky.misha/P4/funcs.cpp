@@ -4,7 +4,7 @@
 
 namespace sobolevsky
 {
-  size_t sizeMatrix(std::istream & in, int * matrix, size_t s, size_t counter)
+  size_t fillMatrix(std::istream & in, int * matrix, size_t s, size_t counter)
   {
     for (size_t i = 0; i < s; ++i)
     {

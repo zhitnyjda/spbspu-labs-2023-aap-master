@@ -52,7 +52,7 @@ int main(int argc, char ** argv)
     int statArray[10000] = {};
     int * matrix = (number == 1) ? statArray : new int[cols * rows];
     size_t counter = 0;
-    counter = sobolevsky::sizeMatrix(input, matrix, (cols * rows), counter);
+    counter = sobolevsky::fillMatrix(input, matrix, (cols * rows), counter);
     if (counter != (cols*rows))
     {
       std::cerr << "matrix size and number of numbers are different\n";
