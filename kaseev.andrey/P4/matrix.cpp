@@ -1,34 +1,81 @@
 #include "matrix.hpp"
 
 namespace MatrixStuff {
-  size_t NumberOfDiagonals(int *matrix, int size)
-  {
-    int count = 0;
-    for (int n = 0; n < size; ++n)
+  size_t NumberOfDiagonals(int *matrixPointer, int n, int m) {
+    if (matrixPointer == nullptr)
     {
-      if (matrix[n * size + n] != 0)
+      return 0;
+    }
+    int count = 0;
+    for (int i = 0; i < n; ++i)
+    {
+      bool containsZero = false;
+
+      for (int j = 0; j < m; ++j)
       {
-        int m = n + 1;
-        while (m < size && matrix[m * size + m] != 0 && matrix[m * size + m] != matrix[n * size + n])
+        int index = i * m + j;
+
+        if ((i == j && matrixPointer[index] == 0) || matrixPointer[m - 1] == 0)
         {
-          ++count;
-          ++m;
+          containsZero = true;
         }
+        else if (i != j && matrixPointer[index] == 0)
+        {
+          containsZero = true;
+        }
+      }
+
+      if (!containsZero)
+      {
+        count++;
       }
     }
     return count;
   }
 
-  void writeResult(std::ostream &output, int result)
+  void writeResult(std::ostream &output, int result, bool UpperTriangularMatrix)
   {
-    output << result;
+    if (UpperTriangularMatrix)
+    {
+      output << result << "\n" << "true";
+    }
+    else
+    {
+      output << result << "\n" << "false";
+    }
   }
 
-  void readMatrix(std::istream &input, int *matrix, int n, int m) {
-    for (int i = 0; i < n * m; ++i) {
-      if (!(input >> matrix[i])) {
-        throw std::logic_error("invalid input");
+  int readMatrix(std::istream &input, int *matrixPointer, int n, int m)
+  {
+    int count = 0;
+    for (int i = 0; i < n * m; ++i)
+    {
+      if (!(input >> matrixPointer[i]))
+      {
+        return count;
+      }
+      count += 1;
+    }
+    return count;
+  }
+
+  bool upperTriangularMatrix(int *matrixPointer, int n, int m)
+  {
+    if (matrixPointer == nullptr)
+    {
+      return false;
+    }
+    for (int i = 0; i < n; ++i)
+    {
+      for (int j = 0; j < m; ++j)
+      {
+        int index = i * m + j;
+        if (i > j && matrixPointer[index] != 0)
+        {
+          return false;
+        }
       }
     }
+    return true;
   }
 }
