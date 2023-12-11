@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
   try
   {
     char* end = nullptr;
-    size_t num = std::strtoll(argv[1], &end, 10);
+    size_t num = std::strtoll(argv[1], std::addressof(end), 10);
     if (*end != '\0')
     {
       std::cerr << "Invalid input format for the first argument.\n";
