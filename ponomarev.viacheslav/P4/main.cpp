@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "inputArray.hpp"
+#include "sedlElem.hpp"
 
 int main(int argc, char ** argv)
 {
@@ -43,10 +44,7 @@ int main(int argc, char ** argv)
     return 2;
   }
   std::ofstream output(argv[3]);
-  for (size_t i = 0; i < (rows * cols); i++)
-  {
-  output << matrix[i] << "\n";
-  }
+  output << "Число седловых элементов = " << ponomarev::countingSed(matrix, rows, cols) << "\n";
   if (num == 2)
   {
     delete[] matrix;
