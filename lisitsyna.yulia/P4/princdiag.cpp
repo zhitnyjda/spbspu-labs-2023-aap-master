@@ -4,27 +4,14 @@
 #include <cmath>
 #include <algorithm>
 
-void lisitsyna::principal::arraay(int& rows, int& cols, std::ifstream& file, int*& values)
+size_t lisitsyna::principal::input_ar(std::ifstream& in, int* values, size_t sizeMatrix)
 {
-	int count = 0;
-	while (file.good())
-	{
-		file >> *(values + count);
-		count++;
-	}
-	if (count < rows * cols)
-	{
-		std::cerr << "Insufficient number of elements" << "\n";
-	}
-}
-void lisitsyna::principal::input_ar(std::ifstream& in, int* values, size_t sizeMatrix)
-{
-	for (size_t i = 0; i < sizeMatrix; ++i)
+	for (size_t i = 0; i < sizeMatrix; i++)
 	{
 		in >> values[i];
 		if (!in)
 		{
-			return i;			}
+			return i;
 		}
 	}
 	return sizeMatrix;
