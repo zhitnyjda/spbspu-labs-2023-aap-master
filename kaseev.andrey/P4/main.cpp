@@ -1,76 +1,88 @@
+#include "matrix.hpp"
 #include <iostream>
 #include <fstream>
-#include "matrix.hpp"
-#include "InputOutput.hpp"
 
 int main(int argc, char **argv)
 {
-  if (argc != 4)
-  {
-    std::cerr << "There are wrong number of arguments";
-    return 1;
-  }
-  char *endptr = nullptr;
-  long long int num = std::strtol(argv[1], std::addressof(endptr), 10);
-  if (num != 1 && num != 2)
-  {
-    std::cerr << "Wrong type of matrix";
-    return 1;
-  }
-  std::ifstream input(argv[2]);
-  std::ofstream output(argv[3]);
-  int m = 0, n = 0;
-  if (!(input >> n >> m))
-  {
-    std::cerr << "There are wrong number of arguments";
-    return 1;
-  }
-  if (m < 0 || n < 0)
-  {
-    std::cerr << "Wrong marix size!";
-    return 1;
-  }
-  else if (m == 0 && n == 0)
-  {
-    if (output.is_open())
-    {
-      MatrixStuff::writeResult(output, 0, false);
-      output.close();
-    }
-  }
   try
   {
-    int matrix[10000];
-    int *matrixPointer = matrix;
-    if (num == 2)
+    if (argc != 4)
     {
-      int *matrixD = new int[n * m];
-      matrixPointer = matrixD;
+      throw std::logic_error("There are more arguments than should be!");
     }
-    int matrixCheck = MatrixStuff::readMatrix(input, matrixPointer, n, m);
-    if (matrixCheck != m * n)
+    char *endptr;
+    long long int num = std::strtol(argv[1], &endptr, 10);
+    if (num != 1 && num != 2)
     {
-      if (num == 2)
+      throw std::logic_error("Invalid argument!");
+    }
+    std::ifstream input(argv[2]);
+    std::ofstream output(argv[3]);
+    int m = 0, n = 0;
+    if (!(input >> n >> m))
+    {
+      throw std::logic_error("Invalid argument!");
+    }
+    if (m < 0 || n < 0)
+    {
+      throw std::logic_error("Invalid argument!");
+    }
+    else if (m == 0 && n == 0)
+    {
+      if (output.is_open())
       {
-        delete[] matrixPointer;
+        MatrixStuff::writeResult(output, 0, 0);
+        output.close();
       }
-      throw std::logic_error("invalid matix input");
     }
-    size_t count = MatrixStuff::NumberOfDiagonals(matrixPointer, n, m);
-    bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrixPointer, n, m);
-    if (num == 2)
+    try
     {
-      delete[] matrixPointer;
+      if (num == 1)
+      {
+        int matrix[n * m];
+        bool matrixCheck = false;
+        matrixCheck = MatrixStuff::readMatrix(input, matrix, n, m);
+        if (!matrixCheck)
+        {
+          throw std::logic_error("invalid input");
+        }
+        bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrix, n, m);
+        size_t count = MatrixStuff::NumberOfDiagonals(matrix, n, m);
+        if (output.is_open())
+        {
+          MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
+          output.close();
+        }
+      }
+      else
+      {
+        int *matrix = new int[n * m];
+        bool matrixCheck = false;
+        matrixCheck = MatrixStuff::readMatrix(input, matrix, n, m);
+        if (!matrixCheck)
+        {
+          delete[] matrix;
+          throw std::logic_error("invalid input");
+        }
+        size_t count = MatrixStuff::NumberOfDiagonals(matrix, n, m);
+        bool UpperTriangularMatrix = MatrixStuff::upperTriangularMatrix(matrix, n, m);
+        delete[] matrix;
+        if (output.is_open())
+        {
+          MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
+          output.close();
+        }
+      }
     }
-    if (output.is_open())
+    catch (std::exception &err)
     {
-      MatrixStuff::writeResult(output, count, UpperTriangularMatrix);
+      std::cerr << err.what() << "\n";
+      return 2;
     }
   }
-  catch (const std::exception &err)
+  catch (std::exception &err)
   {
     std::cerr << err.what() << "\n";
-    return 2;
+    return 1;
   }
-
 }

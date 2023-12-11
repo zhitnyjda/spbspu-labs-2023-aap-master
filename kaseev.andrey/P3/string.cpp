@@ -40,4 +40,8 @@ char* kaseev::interleaveStrings(char* str1, char* str2) {
     newStr[t] = '\0';
   }
   return newStr;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/kaseev.andrey/P3
