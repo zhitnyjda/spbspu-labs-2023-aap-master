@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     return 2;
   }
   int result = 0;
-  int *array = {};
+  int * array = nullptr;
   try
   {
     array = task == 2 ? new int[columns * rows] : new int[10000];
