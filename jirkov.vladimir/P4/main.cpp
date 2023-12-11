@@ -58,7 +58,7 @@ int main(int argc, char** argv)
     int inputElements = inputArray(input, matrix, m, n);
     if (inputElements != m * n)
     {
-      throw std::logic_error("2");
+      std::cerr << "Wrong number of elements array\n";
     }
     printArray(output, matrix, m, n);
     if (num == 2)
