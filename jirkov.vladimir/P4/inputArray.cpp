@@ -1,23 +1,30 @@
 #include <fstream>
 #include "inputArray.hpp"
 
-int Array::inputArray(std::istream &input, int *matrix, int m, int n)
+int inputArray(std::istream &input, int *arr, int m, int n)
 {
-  for (int i = 0; i < m * n; ++i)
+  int count = 0;
+  for (int i = 0; i < m; ++i)
   {
-    if (!(input >> matrix[i]))
+    for (int j = 0; j < n; ++j)
     {
-      return i;
+      if (!(input >> arr[i * n + j]))
+      {
+        throw std::runtime_error("Input Error");
+      }
+      ++count;
     }
   }
-  return m * n;
+  return count;
 }
-
-void Array::printArray(std::ostream &output, int const *matrix, int m, int n)
+void printArray(std::ostream &output, const int *arr, int m, int n)
 {
-  output << m << " " << n << " ";
-  for (int i = 0; i < m * n; ++i)
+  for (int i = 0; i < m; ++i)
   {
-    output << matrix[i] << " ";
+    for (int j = 0; j < n; ++j)
+    {
+      output << arr[i * n + j] << " ";
+    }
+    output << std::endl;
   }
 }
