@@ -19,11 +19,6 @@ int main(int argc, char *argv[])
     std::cerr << "Error: Cannot read task ID: Invalid argument.\n";
     return 1;
   }
-  catch (const std::istream::failure &e)
-  {
-    std::cerr << "Error: Cannot read task ID: input error.\n";
-    return 1;
-  }
   if (task != 1 && task != 2)
   {
     std::cerr << "Error: I can't do that - this task ID is invalid.\n";
