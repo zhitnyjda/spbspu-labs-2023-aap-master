@@ -5,7 +5,7 @@
 #include "decreaseSpiralElements.hpp"
 #include "inputArray.hpp"
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
   using namespace jirkov;
   using namespace Array;
@@ -14,12 +14,17 @@ int main(int argc, char **argv)
     std::cerr << "Wrong number of arguments\n";
     return 1;
   }
-  char *end = nullptr;
+  char* end = nullptr;
   long long num = std::strtoll(argv[1], std::addressof(end), 10);
-  long long len = std::strlen(argv[1]);
-  if (end != argv[1] + len || (num != 1 && num != 2))
+  long long len = strlen(argv[1]);
+  if (end != argv[1] + len)
   {
-    std::cerr << "Invalid first parameter\n";
+    std::cerr << "Is not a number\n";
+    return 1;
+  }
+  if (num != 2 && num != 1)
+  {
+    std::cerr << "First parameter is 1 or 2\n";
     return 1;
   }
   int m = 0;
@@ -27,7 +32,7 @@ int main(int argc, char **argv)
   std::ifstream input(argv[2]);
   if (!input)
   {
-    std::cerr << "Failed to open input file.\n";
+    std::cerr << "Input Error\n";
     return 2;
   }
   std::ofstream output(argv[3]);
@@ -41,32 +46,35 @@ int main(int argc, char **argv)
     std::cerr << "Invalid array dimensions\n";
     return 2;
   }
-  int *matrix = nullptr;
   int matrixStatic[m * n];
-  if (num == 1)
-  {
-    matrix = matrixStatic;
-  }
-  else if (num == 2)
-  {
-    matrix = new int[m * n];
-  }
+  int *matrix = matrixStatic;
   try
   {
-    if (matrix != nullptr)
+    if (num == 2)
     {
-      int inputElements = inputArray(input, matrix, m, n);
-      if (inputElements != m * n)
-      {
-        throw std::logic_error("Wrong number of array elements\n");
-      }
-      printArray(output, matrix, m, n);
+      int *matrixDynamic = new int[m * n];
+      matrix = matrixDynamic;
+    }
+    int inputElements = inputArray(input, matrix, m, n);
+    if (inputElements != m * n)
+    {
+      throw std::logic_error("2");
+    }
+    printArray(output, matrix, m, n);
+    if (num == 2)
+    {
+      delete[] matrix;
     }
   }
-  catch (const std::exception &e)
+  catch (const std::logic_error &e)
   {
-    std::cerr << "Error: " << e.what() << "\n";
+    std::cerr << e.what() << "\n";
+    if (num == 2)
+    {
+      delete[] matrix;
+      matrix = nullptr;
+    }
+    return 1;
   }
-  delete[] matrix;
-  return 0;
+  matrix = nullptr;
 }

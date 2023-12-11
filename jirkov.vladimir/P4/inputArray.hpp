@@ -3,7 +3,7 @@
 #include <iosfwd>
 namespace Array
 {
-  int inputArray(std::istream &, int *arr, int m, int n);
-  void printArray(std::ostream &, int const *arr, int m, int n);
+  int inputArray(std::istream &, int *matrix, int m, int n);
+  void printArray(std::ostream &, int const *matrix, int m, int n);
 }
 #endif
