@@ -1,6 +1,6 @@
 #include "functions.hpp"
 
-int zheleznyakov::findMaxRowInMatrix(int * matrix, int columns, int rows)
+int zheleznyakov::findMaxRowInMatrix(const int * matrix, int columns, int rows)
 {
   int maxColumn = 0;
   int maxSequenceLength = 0;
