@@ -14,7 +14,7 @@ int main()
     std::cin >> std::noskipws;
     while (std::cin >> ch)
     {
-      if (ch == "\0")
+      if (ch == '\0')
       {
         std::cerr << "Could not read an element of the string\n";
         return 1;
