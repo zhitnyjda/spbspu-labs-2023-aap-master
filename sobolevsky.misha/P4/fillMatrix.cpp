@@ -1,5 +1,4 @@
 #include "funcs.hpp"
-#include <fstream>
 
 namespace sobolevsky
 {
