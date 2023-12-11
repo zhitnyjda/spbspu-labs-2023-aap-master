@@ -41,13 +41,17 @@ int main(int argc, char** argv)
     std::cerr << "Failed to open output file.\n";
     return 1;
   }
-  if (!(input >> m >> n) || m <= 0 || n <= 0 || input.fail())
+  if (!(input >> m >> n) || m < 0 || n < 0 || input.fail())
   {
     std::cerr << "Invalid array dimensions\n";
     return 1;
   }
   int matrixStatic[m * n];
   int *matrix = matrixStatic;
+  if (m == 0 && n == 0)
+  {
+    printArray(output, matrix, m, n);
+  }
   try
   {
     if (num == 2)
