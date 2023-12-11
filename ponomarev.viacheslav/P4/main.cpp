@@ -1,17 +1,6 @@
 #include <iostream>
 #include <fstream>
-
-size_t inputArray(std::istream & in, int * matrix, size_t lenArray)
-{
-  for (size_t i = 0; i < lenArray; i++)
-  {
-    if (!(in >> matrix[i]))
-    {
-      return i;
-    }
-  }
-  return lenArray;
-}
+#include "inputArray.hpp"
 
 int main(int argc, char ** argv)
 {
@@ -44,9 +33,9 @@ int main(int argc, char ** argv)
   }
   int fixMatrix[10000] = { 0 };
   int * matrix = (num == 2) ? new int[rows * cols] : fixMatrix;
-  if (inputArray(input, matrix, rows * cols) != (rows * cols))
+  if (ponomarev::inputArray(input, matrix, rows * cols) != (rows * cols))
   {
-    std::cerr << "The wrong number of matrix elements.\n";
+    std::cerr << "The wrong input of matrix elements.\n";
     if (num == 2)
     {
       delete[] matrix;
