@@ -61,7 +61,6 @@ int main(int argc, char** argv)
 			std::cerr << e.what();
 			return 2;
 		}
-
 	}
 	if (num == 2)
 	{
