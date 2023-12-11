@@ -2,8 +2,8 @@
 #include <fstream>
 #include <string>
 #include "princdiag.hpp"
-
 using namespace lisitsyna;
+
 int main(int argc, char** argv)
 {
 	if (argc != 4)
@@ -21,7 +21,6 @@ int main(int argc, char** argv)
 		std::cerr << "Please enter a valid value" << "\n";
 		return 1;
 	}
-	// argv[2] имя файла с матрицей 
 	if (num > 2 || num <= 0)
 	{
 		std::cerr << "Incorrect value" << "\n";
@@ -40,7 +39,7 @@ int main(int argc, char** argv)
 		std::cerr << "File is empty" << "\n";
 		return 2;
 	}
-	principal aboba;
+	principal drive;
 	int* values;
 	if (num == 1)
 	{
@@ -48,32 +47,32 @@ int main(int argc, char** argv)
 		values = static_;
 		try
 		{
-			int kolvo = matrix.fl_ar(input, values,rows * cols);
-	        	if (kolvo != rows * cols)
-	        	{
-        			std::cerr << "Not correct" << "\n";
-        			return 2;
-      			}
-      			outputFile << principal.minsum(values, rows, cols);
-      			return 0;
-    		}
-    		catch (const std::logic_error & e)
-    		{
-      			std::cerr << e.what();
-      			return 2;
-    		}
+			int kolvo = matrix.fl_ar(input, values, rows * cols);
+			if (kolvo != rows * cols)
+			{
+				std::cerr << "Not correct" << "\n";
+				return 2;
+			}
+			outputFile << principal.minsum(values, rows, cols);
+			return 0;
+		}
+		catch (const std::logic_error& e)
+		{
+			std::cerr << e.what();
+			return 2;
+		}
 
 	}
 	if (num == 2)
 	{
-		int * dinamo_ = new int[rows * cols];
+		int* dinamo_ = new int[rows * cols];
 		values = dinamo_;
 		try
 		{
-			aboba.arraay(rows, cols, input, values);
+			drive.arraay(rows, cols, input, values);
 			delete[] dinamo_;
 		}
-		catch (std::logic_error const & e)
+		catch (std::logic_error const& e)
 		{
 			std::cerr << e.what();
 			delete[] dinamo_;
