@@ -1,8 +1,8 @@
-#include "count_saddle.hpp"
-#include "create_matrix.hpp"
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "count_saddle.hpp"
+#include "create_matrix.hpp"
 using namespace kovshikov;
 
 int main(int argc, char ** argv)
@@ -13,7 +13,7 @@ int main(int argc, char ** argv)
     return 1;
   }
   char * endOfParcing = nullptr;
-  int num = std::strtoll(argv[1], &endOfParcing, 10);
+  int num = std::strtoll(argv[1], std::addressof(endOfParcing), 10);
   int lenght = strlen(argv[1]);
   if(endOfParcing != argv[1] + lenght)
   {
@@ -60,9 +60,3 @@ int main(int argc, char ** argv)
   }
   return 0;
 }
-
-
-
-
-
-
