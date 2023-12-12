@@ -49,22 +49,20 @@ int main(int argc, char ** argv)
     }
   }
   Saddle saddle;
-  if(num == 1)
+  size_t stat_matrix[rows * cols] = {};
+  size_t * matrix = (num == 1)? stat_matrix : new size_t [rows * cols];
+  createMatrix(matrix, argv[2]);
+  std::ofstream output(argv[3]);
+  output << saddle(rows, cols, matrix);
+  if(num == 2)
   {
-    size_t matrix[rows * cols] = {};
-    createMatrix(matrix, argv[2]);
-    std::ofstream output(argv[3]);
-    output << saddle(rows, cols, matrix);
-    return 0;
+    delete [] matrix;
   }
-  {
-    size_t * matrix = new size_t[rows * cols];
-    createMatrix(matrix, argv[2]);
-    std::ofstream output(argv[3]);
-    output << saddle(rows, cols, matrix);
-    delete[] matrix;
-    return 0;
-  }
+  return 0;
 }
+
+
+
+
 
 
