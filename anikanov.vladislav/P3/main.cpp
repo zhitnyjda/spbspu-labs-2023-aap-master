@@ -9,7 +9,7 @@ int main()
     Line line;
     std::cin >> line;
     Line answerRMVVOW = line;
-    dropVowels(answerRMVVOW.get_line(), answerRMVVOW.size());
+    dropVowels(answerRMVVOW);
     std::cout << answerRMVVOW << "\n";
     std::cout << hasDuplicateDigits(line.get_line()) << "\n";
   } catch (const std::exception &ex) {

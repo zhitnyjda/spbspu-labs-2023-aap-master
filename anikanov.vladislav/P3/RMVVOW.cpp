@@ -7,19 +7,15 @@ bool isVowel(char c) {
   return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
 
-char *dropVowels(char *string, size_t len){
-  char *new_string = new char[len];
+void dropVowels(Line &line){
+  char *new_string = new char[line.size()];
   size_t j = 0;
-  for (size_t i = 0; i < strlen(string) + 1; ++i) {
-    if (!isVowel(string[i])) {
-      new_string[j++] = string[i];
+  for (size_t i = 0; i < line.size() && line[i] != '\0'; ++i) {
+    if (!isVowel(line[i])) {
+      new_string[j++] = line[i];
     }
   }
-  delete[] string;
-  string = new char[len];
-  for (size_t i = 0; i < len; ++i) {
-    string[i] = new_string[i];
-  }
+  new_string[j] = '\0';
+  line.set_line(new_string);
   delete[] new_string;
-  return string;
 }

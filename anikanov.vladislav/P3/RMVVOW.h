@@ -1,9 +1,10 @@
 #ifndef RMVVOW_H
 #define RMVVOW_H
 #include <cstring>
+#include <link.h>
 
 bool isVowel(char);
 
-char *dropVowels(char *, size_t);
+void dropVowels(Line&);
 
 #endif

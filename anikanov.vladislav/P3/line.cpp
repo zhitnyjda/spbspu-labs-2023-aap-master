@@ -31,9 +31,7 @@ Line::Line(const Line &line)
 Line::~Line()
 {
   len = 0;
-  if (data != nullptr) {
-    delete[] data;
-  }
+  delete[] data;
 }
 
 size_t Line::size() const
@@ -76,10 +74,8 @@ Line &Line::operator=(const Line &line)
   if (this == &line) {
     return *this;
   }
-  len = line.len;
-  if (data != nullptr) {
-    delete[] data;
-  }
+  this->len = line.len;
+  delete[] data;
   try {
     data = new char[len]{};
     for (size_t i = 0; i < len; ++i) {
@@ -91,7 +87,7 @@ Line &Line::operator=(const Line &line)
   return *this;
 }
 
-char &Line::operator[](size_t i)
+char &Line::operator[](size_t i) const
 {
   if (i >= this->len) {
     throw std::overflow_error("Invalid index\n");
@@ -129,3 +125,23 @@ std::ostream &operator<<(std::ostream &out, const Line &line)
   }
   return out;
 }
+
+void Line::set_line(const char *new_data)
+{
+  if (new_data == nullptr) {
+    delete[] data;
+    data = nullptr;
+    len = 0;
+  } else {
+    size_t new_len = strlen(new_data);
+    if (new_len != len) {
+      delete[] data;
+      data = new char[new_len + 1];
+      strcpy(data, new_data);
+      len = new_len;
+    } else {
+      strcpy(data, new_data);
+    }
+  }
+}
+
