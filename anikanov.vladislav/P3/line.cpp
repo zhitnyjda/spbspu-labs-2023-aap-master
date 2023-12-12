@@ -93,7 +93,7 @@ std::istream &operator>>(std::istream &in, Line &line)
       line.resize(line.len * 2);
     }
     line[i++] = c;
-  } while (c != '\n');
+  } while (c != '\n' || c == EOF);
   line[i - 1] = '\0';
   return in;
 }
@@ -101,7 +101,7 @@ std::istream &operator>>(std::istream &in, Line &line)
 std::ostream &operator<<(std::ostream &out, const Line &line)
 {
   for (size_t i = 0; i < line.len; ++i) {
-    if (line.data[i] != '\0' || line.data[i] == EOF) {
+    if (line.data[i] != '\0') {
       out << line.data[i];
     } else {
       break;
