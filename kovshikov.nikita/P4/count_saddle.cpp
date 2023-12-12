@@ -32,4 +32,3 @@ size_t kovshikov::Saddle::operator()(size_t rows, size_t cols, size_t * matrix)
   }
   return count;
 }
-
