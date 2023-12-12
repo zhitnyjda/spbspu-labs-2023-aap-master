@@ -4,7 +4,7 @@
 #include <cstring>
 #include "decreaseSpiralElements.hpp"
 #include "inputArray.hpp"
-
+#include "sumArrays.hpp"
 int main(int argc, char** argv)
 {
   using namespace jirkov;
@@ -46,26 +46,32 @@ int main(int argc, char** argv)
     return 1;
   }
   int matrixStatic[10000];
-  int *matrix = matrixStatic;
+  int *matrix1 = matrixStatic;
+  int *matrix2 = matrixStatic;
   if (rows == 0 && cols == 0)
   {
-    printArray(output, matrix, rows, cols);
+    printArray(output, matrix1, rows, cols);
   }
   try{
     if (num == 2)
     {
       int *matrixDynamic = new int[rows * cols];
-      matrix = matrixDynamic;
+      matrix1 = matrixDynamic;
+      matrix2 = matrixDynamic;
     }
-    int inputElements = inputArray(input, matrix, rows, cols);
+    int inputElements = inputArray(input, matrix1, rows, cols);
     if (inputElements != rows * cols)
     {
       throw std::logic_error("2");
     }
-    printArray(output, matrix, rows, cols);
+    int result[rows * cols];
+    decreaseSpiralElements(matrix2, rows, cols);
+    sumArrays(matrix1, matrix2, result, rows, cols);
+    printArray(output, result, rows, cols);
     if (num == 2)
     {
-      delete[] matrix;
+      delete[] matrix1;
+      delete[] matrix2;
     }
   }
   catch (const std::logic_error &e)
@@ -73,10 +79,13 @@ int main(int argc, char** argv)
     std::cerr << e.what() << "\n";
     if (num == 2)
     {
-      delete[] matrix;
-      matrix = nullptr;
+      delete[] matrix1;
+      delete[] matrix2;
+      matrix1 = nullptr;
+      matrix2 = nullptr;
     }
     return 1;
   }
-  matrix = nullptr;
+  matrix1 = nullptr;
+  matrix2 = nullptr;
 }

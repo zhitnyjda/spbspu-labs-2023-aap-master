@@ -3,46 +3,47 @@
 
 void jirkov::decreaseSpiralElements(int *matrix, int rows, int cols)
 {
-  int value = 1;
-  int rowstart = 0;
-  int rowend = rows - 1;
-  int colstart = 0;
-  int colend = cols - 1;
+  int num = -1;
+  int r1 = 0;
+  int r2 = rows - 1;
+  int c1 = 0;
+  int c2 = cols - 1;
 
-  while (rowstart <= rowend && colstart <= colend)
+  while (r1 <= r2 && c1 <= c2)
   {
-    for (int i = rowend; i >= rowstart; i--)
+    for (int c = c1; c <= c2; c++)
     {
-      matrix[i * cols + colstart] -= value;
-      value++;
+      matrix[r2 * cols + c] = num;
+      num--;
     }
-    colstart++;
-
-    for (int i = colstart; i <= colend; i++)
+    for (int r = r2 - 1; r >= r1; r--)
     {
-      matrix[rowstart * cols + i] -= value;
-      value++;
+      matrix[r * cols + c2] = num;
+      num--;
     }
-    rowstart++;
-
-    if (rowstart <= rowend)
+    if (r1 < r2 && c1 < c2)
     {
-      for (int i = rowstart; i <= rowend; i++)
+      for (int c = c2 - 1; c > c1; c--)
       {
-        matrix[i * cols + colend] -= value;
-        value++;
+        matrix[r1 * cols + c] = num;
+        num--;
       }
-      colend--;
-    }
-
-    if (colstart <= colend)
-    {
-      for (int i = colend; i >= colstart; i--)
+      for (int r = r1; r < r2; r++)
       {
-        matrix[rowend * cols + i] -= value;
-        value++;
+        matrix[r * cols + c1] = num;
+        num--;
       }
-      rowend--;
+    }
+    r1++;
+    r2--;
+    c1++;
+    c2--;
+  }
+  for (int i = 0; i < rows; i++)
+  {
+    for (int j = 0; j < cols; j++)
+    {
+      matrix[i * cols + j];
     }
   }
 }
