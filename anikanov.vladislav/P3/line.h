@@ -7,6 +7,7 @@ class Line {
   char *data;
 
 public:
+  explicit Line();
   explicit Line(const char *string=nullptr, size_t=0);
   Line(const Line &);
   ~Line();

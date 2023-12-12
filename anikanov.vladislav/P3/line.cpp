@@ -31,7 +31,9 @@ Line::Line(const Line &line)
 Line::~Line()
 {
   len = 0;
-  delete[] data;
+  if (data != nullptr) {
+    delete[] data;
+  }
 }
 
 size_t Line::size() const
@@ -126,4 +128,10 @@ std::ostream &operator<<(std::ostream &out, const Line &line)
     }
   }
   return out;
+}
+
+Line::Line()
+{
+  len = 0;
+  data = new char[0];
 }
