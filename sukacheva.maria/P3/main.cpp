@@ -1,5 +1,6 @@
 #include <iostream>
-#include "InputString.hpp"
+#include <cstddef>
+#include "inputString.hpp"
 #include "formingNewString.hpp"
 
 int main()
