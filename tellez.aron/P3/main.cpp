@@ -35,7 +35,7 @@ int main()
     delete[] cstring;
     return 1;
   }
-  char replaceFrom, replaceTo;
+  char replaceFrom = '\0', replaceTo = '\0';
   std::cout << "Enter the first character to replace: ";
   std::cin >> replaceFrom;
   std::cin.ignore(std::numeric_limits< std::streamsize >::max(), '\n');
