@@ -11,10 +11,10 @@ int main(int argc, char** argv)
     std::cerr << "Incorrectly entered data" << "\n";
     return 1;
   }
-  int num;
+  int num = 0;
   try
   {
-    int num = std::stoll(argv[1]);
+    num = std::stoll(argv[1]);
   }
   catch (const std::invalid_argument& e)
   {
@@ -75,6 +75,6 @@ int main(int argc, char** argv)
   {
     std::cerr << e.what();
     delete[] dinamo_;
-    return 2;		}
+    return 2;
   }
 }
