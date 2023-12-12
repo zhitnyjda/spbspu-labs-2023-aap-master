@@ -1,7 +1,7 @@
 #ifndef RMVVOW_H
 #define RMVVOW_H
 #include <cstring>
-#include <link.h>
+#include "line.h"
 
 bool isVowel(char);
 
