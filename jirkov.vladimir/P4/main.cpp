@@ -71,7 +71,6 @@ int main(int argc, char** argv)
     if (num == 2)
     {
       delete[] matrix1;
-      delete[] matrix2;
     }
   }
   catch (const std::logic_error &e)
@@ -80,7 +79,6 @@ int main(int argc, char** argv)
     if (num == 2)
     {
       delete[] matrix1;
-      delete[] matrix2;
       matrix1 = nullptr;
       matrix2 = nullptr;
     }
