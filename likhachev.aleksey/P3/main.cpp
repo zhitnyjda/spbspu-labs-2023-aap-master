@@ -4,7 +4,7 @@
 
 int main()
 {
-  likhachev::CharSequence charSequence = likhachev::CharSequence();
-  charSequence.read();
-  charSequence.outValues();
+  char *line = new char[10];
+  int size = likhachev::readSequence(line);
+  likhachev::outLine(line, size);
 }

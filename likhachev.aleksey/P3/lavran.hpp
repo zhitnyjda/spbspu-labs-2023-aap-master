@@ -1,21 +1,9 @@
 #ifndef LAVRAN_HPP
 #define LAVRAN_HPP
-namespace likhachev
+namespace likhachev // Lavran [ToDo] : Придумать адекватное название
 {
-  struct CharSequence
-  { // Lavran [ToDo] : Придумать адекватное название
-  public:
-    CharSequence();
-    void read();
-    void outValues();
-
-  private:
-    char *array1;
-    char *array2;
-    char *input;
-    int size;
-    void switchInput();
-    void moveValues(int isStraight);
-  };
+  int readSequence(char *array);
+  int copyCharArray(char *copyFrom, char *copyTo, int size);
+  void outLine(char *array, int size);
 };
 #endif

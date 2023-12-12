@@ -2,76 +2,75 @@
 #include <limits>
 #include <iostream>
 
-likhachev::CharSequence::CharSequence() : array1(new char[size]{}), array2(new char[size]{}),
-                      input(array1), size(10)
+int likhachev::readSequence(char *array)
 {
-}
-
-void likhachev::CharSequence::read()
-{
-  int counter = 0;
+  char *reserveArray;
+  char *input = array;
+  int size = 0;
   char c = ' ';
   while (std::cin >> c)
   {
+    
     if (c == '\n')
     {
       break;
     }
 
-    input[counter] = c;
-    counter++;
+    input[size] = c;
+    size++;
 
-    if (counter == size)
+    if (size == size)
     {
-      switchInput();
+      if (input == array) // Lavran TODO: Заменить логику на матэматичэскую
+      {
+        reserveArray = new char[size * 2];
+        copyCharArray(array, reserveArray, size);
+        input = reserveArray;
+        delete[] array;
+      }
+      else if (input == reserveArray)
+      {
+        array = new char[size * 2];
+        copyCharArray(reserveArray, array, size);
+        input = array;
+        delete[] reserveArray;
+      }
+
+      size *= 2;
     }
+    
   }
 
-  size = counter;
+  if (input == array) // Lavran TODO: Заменить логику на матэматичэскую, убрать дублирование кода
+  {
+    reserveArray = new char[size * 2];
+    copyCharArray(array, reserveArray, size);
+    input = reserveArray;
+    delete[] array;
+  }
+  else if (input == reserveArray)
+  {
+    array = new char[size * 2];
+    copyCharArray(reserveArray, array, size);
+    input = array;
+    delete[] reserveArray;
+  }
+
+  return size;
 }
 
-void likhachev::CharSequence::outValues()
+int likhachev::copyCharArray(char *copyFrom, char *copyTo, int size)
 {
   for (int i = 0; i < size; i++)
   {
-    std::cout << input[i];
+    copyTo[i] = copyFrom[i];
   }
 }
 
-void likhachev::CharSequence::switchInput()
+void likhachev::outLine(char *array, int size)
 {
-  if (input == array1)
+  for (int i = 0; i < size; i++)
   {
-    array2 = new char[size * 2];
-    moveValues(1);
-    input = array2;
-    delete[] array1;
-  }
-  else if (input == array2)
-  {
-    array1 = new char[size * 2];
-    moveValues(0);
-    input = array1;
-    delete[] array2;
-  }
-
-  size *= 2;
-}
-
-void likhachev::CharSequence::moveValues(int isStraight)
-{
-  if (isStraight)
-  {
-    for (int i = 0; i < size; i++)
-    {
-      array2[i] = array1[i];
-    }
-  }
-  else
-  {
-    for (int i = 0; i < size; i++)
-    {
-      array1[i] = array2[i];
-    }
+    std::cout << array[i];
   }
 }
