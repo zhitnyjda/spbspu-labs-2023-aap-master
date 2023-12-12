@@ -61,7 +61,7 @@ void Line::resize(size_t new_len)
     }
     delete[] data;
     len = new_len;
-    data = new char[len];
+    data = new char[len]{};
     for (size_t i = 0; i < len; ++i) {
       data[i] = new_data[i];
     }
@@ -81,7 +81,7 @@ Line &Line::operator=(const Line &line)
     delete[] data;
   }
   try {
-    data = new char[len];
+    data = new char[len]{};
     for (size_t i = 0; i < len; ++i) {
       data[i] = line.data[i];
     }
@@ -128,10 +128,4 @@ std::ostream &operator<<(std::ostream &out, const Line &line)
     }
   }
   return out;
-}
-
-Line::Line()
-{
-  len = 0;
-  data = new char[0];
 }
