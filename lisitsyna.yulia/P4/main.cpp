@@ -51,7 +51,7 @@ int main(int argc, char** argv)
       if (kolvo != rows * cols)
       {
         std::cerr << "Not correct" << "\n";
-	return 2;
+        return 2;
       }
       outputFile << principal.minsum(values, rows, cols);
       return 0;
