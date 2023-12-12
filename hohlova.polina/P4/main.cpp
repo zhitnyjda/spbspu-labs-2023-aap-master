@@ -1,35 +1,36 @@
-#include "inputArray.hpp"
-#include "matrix.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <cstring>
 #include <stdexcept>
+#include "inputArray.hpp"
+#include "matrix.hpp"
 
 int main(int argc, char** argv)
 {
   using namespace hohlova;
-  using namespace hohlovaa;
   if (argc != 4)
   {
     std::cerr << "Something wrong, problem with number of arguments\n";
     return 1;
   }
-  int num = std::stoi(argv[1]);
+  char* seqEnd = nullptr;
+  int num = std::strtoll(argv[1], std::addressof(seqEnd), 10);
   if (num != 1 && num != 2)
   {
     std::cerr << "First arg 1 or 2\n";
     return 1;
   }
+  std::ifstream input(argv[2]);
   size_t rows = 0;
   size_t cols = 0;
-  std::ifstream input(argv[2]);
   input >> rows >> cols;
   if (!input)
   {
     std::cerr << "Cannot open an input file\n";
     return 2;
   }
+  size_t sizee = rows * cols;
   if (num == 1 || num == 2)
   {
     std::ofstream output(argv[3]);
@@ -42,29 +43,29 @@ int main(int argc, char** argv)
   {
     std::ofstream output(argv[3]);
     int staticm[1000] = { 0 };
-    size_t sizeM = hohlova::inputArray(input, staticm, rows * cols);
-    if (sizeM != rows * cols)
+    size_t sizeM = hohlova::inputArray(input, staticm, sizee);
+    if (sizeM != sizee)
     {
       std::cerr << "Not all elements are read\n";
       return 2;
     }
     try
     {
-      hohlova::inputArray(input, staticm, rows * cols);
+      hohlova::inputArray(input, staticm, sizee);
     }
     catch (std::logic_error const& e)
     {
       std::cerr << e.what() << "\n";
       return 2;
     }
-    output << hohlovaa::countStrings(staticm, rows, cols);
+    output << hohlova::countStrings(staticm, rows, cols);
   }
   else if (num == 2)
   {
     std::ofstream output(argv[3]);
-    int* dynamicm = new int[rows * cols];
-    size_t toRead = hohlova::inputArray(input, dynamicm, rows * cols);
-    if (toRead != rows * cols)
+    int* dynamicm = new int[sizee];
+    size_t toRead = hohlova::inputArray(input, dynamicm, sizee);
+    if (toRead != sizee)
     {
       delete[] dynamicm;
       std::cerr << "Not all elements are read\n";
@@ -72,7 +73,7 @@ int main(int argc, char** argv)
     }
     try
     {
-      hohlova::inputArray(input, dynamicm, rows * cols);
+      hohlova::inputArray(input, dynamicm, sizee);
     }
     catch (std::logic_error const& e)
     {
@@ -82,7 +83,7 @@ int main(int argc, char** argv)
     }
     try
     {
-      output << hohlovaa::countStrings(dynamicm, rows, cols);
+      output << hohlova::countStrings(dynamicm, rows, cols);
     }
     catch (std::invalid_argument const& e)
     {

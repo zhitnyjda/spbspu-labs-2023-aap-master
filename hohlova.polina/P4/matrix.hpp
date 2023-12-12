@@ -2,7 +2,7 @@
 #define MATRIX_HPP
 #include <iosfwd>
 
-namespace hohlovaa
+namespace hohlova
 {
   size_t countStrings(const int* matrix, size_t rows, size_t cols);
 }
