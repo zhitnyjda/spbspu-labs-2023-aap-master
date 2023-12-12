@@ -8,7 +8,6 @@
 int main(int argc, char** argv)
 {
   using namespace jirkov;
-  using namespace Array;
   if (argc != 4)
   {
     std::cerr << "Wrong number of arguments\n";
@@ -27,8 +26,8 @@ int main(int argc, char** argv)
     std::cerr << "First parameter is 1 or 2\n";
     return 2;
   }
-  int m = 0;
-  int n = 0;
+  int rows = 0;
+  int cols = 0;
   std::ifstream input(argv[2]);
   if (!input)
   {
@@ -41,30 +40,29 @@ int main(int argc, char** argv)
     std::cerr << "Failed to open output file.\n";
     return 1;
   }
-  if (!(input >> m >> n) || m < 0 || n < 0 || input.fail())
+  if (!(input >> rows >> cols) || rows < 0 || cols < 0 || input.fail())
   {
     std::cerr << "Invalid array dimensions\n";
     return 1;
   }
-  int matrixStatic[m * n];
+  int matrixStatic[10000];
   int *matrix = matrixStatic;
-  if (m == 0 && n == 0)
+  if (rows == 0 && cols == 0)
   {
-    printArray(output, matrix, m, n);
+    printArray(output, matrix, rows, cols);
   }
-  try
-  {
+  try{
     if (num == 2)
     {
-      int *matrixDynamic = new int[m * n];
+      int *matrixDynamic = new int[rows * cols];
       matrix = matrixDynamic;
     }
-    int inputElements = inputArray(input, matrix, m, n);
-    if (inputElements != m * n)
+    int inputElements = inputArray(input, matrix, rows, cols);
+    if (inputElements != rows * cols)
     {
       throw std::logic_error("2");
     }
-    printArray(output, matrix, m, n);
+    printArray(output, matrix, rows, cols);
     if (num == 2)
     {
       delete[] matrix;

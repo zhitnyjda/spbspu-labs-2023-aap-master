@@ -4,6 +4,6 @@
 
 namespace jirkov
 {
-  void decreaseSpiralElements(int *matrix, size_t m, size_t n);
+  void decreaseSpiralElements(int *matrix, int rows, int cols);
 }
 #endif

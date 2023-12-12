@@ -1,45 +1,48 @@
 #include "decreaseSpiralElements.hpp"
 #include <stdexcept>
 
-void jirkov::decreaseSpiralElements(int *matrix, size_t m, size_t n)
+void jirkov::decreaseSpiralElements(int *matrix, int rows, int cols)
 {
-  size_t value = 1;
-  size_t row_start = 0, row_end = m - 1, col_start = 0, col_end = n - 1;
+  int value = 1;
+  int rowstart = 0;
+  int rowend = rows - 1;
+  int colstart = 0;
+  int colend = cols - 1;
 
-  while (row_start <= row_end && col_start <= col_end)
+  while (rowstart <= rowend && colstart <= colend)
   {
-    for (size_t i = row_end; i >= row_start; i--)
+    for (int i = rowend; i >= rowstart; i--)
     {
-      matrix[i * n + col_start] -= value;
+      matrix[i * cols + colstart] -= value;
       value++;
     }
-    col_start++;
+    colstart++;
 
-    for (size_t i = col_start; i <= col_end; i++)
+    for (int i = colstart; i <= colend; i++)
     {
-      matrix[row_start * n + i] -= value;
+      matrix[rowstart * cols + i] -= value;
       value++;
     }
-    row_start++;
+    rowstart++;
 
-    if (row_start <= row_end)
+    if (rowstart <= rowend)
     {
-      for (size_t i = row_start; i <= row_end; i++)
+      for (int i = rowstart; i <= rowend; i++)
       {
-        matrix[i * n + col_end] -= value;
+        matrix[i * cols + colend] -= value;
         value++;
       }
-      col_end--;
+      colend--;
     }
 
-    if (col_start <= col_end)
+    if (colstart <= colend)
     {
-      for (size_t i = col_end; i >= col_start; i--)
+      for (int i = colend; i >= colstart; i--)
       {
-        matrix[row_end * n + i] -= value;
+        matrix[rowend * cols + i] -= value;
         value++;
       }
-      row_end--;
+      rowend--;
     }
   }
 }

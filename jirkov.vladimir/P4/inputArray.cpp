@@ -1,10 +1,10 @@
-#include <fstream>
 #include "inputArray.hpp"
+#include <fstream>
 
-int Array::inputArray(std::istream &input, int *matrix, int m, int n)
+int jirkov::inputArray(std::istream &input, int *matrix, int rows, int cols)
 {
   int count = 0;
-  for (int i = 0; i < m * n; ++i)
+  for (int i = 0; i < rows * cols; ++i)
   {
     if (!(input >> matrix[i]))
     {
@@ -15,10 +15,10 @@ int Array::inputArray(std::istream &input, int *matrix, int m, int n)
   return count;
 }
 
-void Array::printArray(std::ostream &output, int const *matrix, int m, int n)
+void jirkov::printArray(std::ostream &output, int const *matrix, int rows, int cols)
 {
-  output << m << " " << n << " ";
-  for (int i = 0; i < m * n; ++i)
+  output << rows << " " << cols << " ";
+  for (int i = 0; i < rows * cols; ++i)
   {
     output << matrix[i] << " ";
   }
