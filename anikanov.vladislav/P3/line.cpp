@@ -67,10 +67,14 @@ Line &Line::operator=(const Line &line)
     return *this;
   }
   len = line.len;
-  delete data;
-  data = new char[len];
-  for (size_t i = 0; i < len; ++i) {
-    data[i] = line.data[i];
+  delete[] data;
+  try {
+    data = new char[len];
+    for (size_t i = 0; i < len; ++i) {
+      data[i] = line.data[i];
+    }
+  } catch (const std::exception &er){
+    throw std::logic_error("memerr");
   }
   return *this;
 }
