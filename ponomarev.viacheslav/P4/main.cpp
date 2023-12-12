@@ -48,11 +48,11 @@ int main(int argc, char ** argv)
   output << "Число седловых элементов = " << ponomarev::countingSed(matrix, rows, cols) << "\n";
   if (rows == cols)
   {
-    output << "Миннимальная сумма элементов, среди диагоналей, параллельных побочной диагонали = " << ponomarev::minSu(matrix, rows, cols) << "\n";
+    output << "Миннимальная сумма элементов = " << ponomarev::minSu(matrix, rows, cols) << "\n";
   }
   else
   {
-    output << "Вычислить миннимальную сумму элементов, среди диагоналей, параллельных побочной диагонали невозможно, так как побочной диагонали не существует.\n";
+    output << "Требуется квадратная матрица.\n";
   }
   if (num == 2)
   {
