@@ -1,6 +1,5 @@
 #include "RMVVOW.h"
 #include <cctype>
-#include <cstring>
 #include "line.h"
 
 bool isVowel(char c) {
