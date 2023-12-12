@@ -11,7 +11,7 @@ Line::Line(const char *string, size_t len)
       data[i] = string[i];
     }
   } catch (std::exception const &ex) {
-    throw std::runtime_error(ex.what());
+    throw std::logic_error("memerr");
   }
 }
 
