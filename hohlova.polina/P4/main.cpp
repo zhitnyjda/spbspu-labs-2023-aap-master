@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <cstring>
 #include <stdexcept>
 #include "inputArray.hpp"
