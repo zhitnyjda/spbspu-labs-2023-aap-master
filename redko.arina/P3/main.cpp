@@ -1,33 +1,16 @@
 #include <iostream>
-#include "functions.hpp"
+#include "getString.hpp"
+#include "buildWithoutInt.hpp"
 
 int main()
 {
   try
   {
-    int len = 0;
     const int add = 10;
-    char* str = new char[add];
-    char c;
-    std::cin >> std::noskipws;
-    do
-    {
-      std::cin >> c;
-      str[len++] = c;
-      if (len % add == 0)
-      {
-        char* strNew = new char[len + add];
-        for (int i = 0; i < len; i++)
-        {
-          strNew[i] = str[i];
-        }
-        delete[] str;
-        str = strNew;
-      }
-    } while (c != '\n');
-    std::cin >> std::skipws;
-    char* strResult = new char[len];
-    int lenResult = redko::buildWithoutInt(strResult, str, len);
+    char * str = new char[add];
+    int lenght = redko::getString(str);
+    char * strResult = new char[lenght];
+    int lenResult = redko::buildWithoutInt(strResult, str, lenght);
     delete[] str;
     for (int i = 0; i < lenResult; i++)
     {
