@@ -101,7 +101,7 @@ std::istream &operator>>(std::istream &in, Line &line)
 std::ostream &operator<<(std::ostream &out, const Line &line)
 {
   for (size_t i = 0; i < line.len; ++i) {
-    if (line.data[i] != '\0') {
+    if (line.data[i] != '\0' || line.data[i] == EOF) {
       out << line.data[i];
     } else {
       break;

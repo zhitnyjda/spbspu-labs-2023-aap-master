@@ -1,7 +1,7 @@
 #include <iostream>
-#include "line.h"
-#include "RMVVOW.h"
-#include "REPDGT.h"
+#include "line.cpp"
+#include "RMVVOW.cpp"
+#include "REPDGT.cpp"
 
 int main()
 {
