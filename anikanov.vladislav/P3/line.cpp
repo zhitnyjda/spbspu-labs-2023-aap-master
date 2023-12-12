@@ -94,7 +94,7 @@ std::istream &operator>>(std::istream &in, Line &line)
       line.resize(line.len * 2);
     }
     line[i++] = c;
-  } while (c != '\n' || c == EOF || c != '\0');
+  } while (c != '\n' && c != EOF && c != '\0');
   line[i - 1] = '\0';
   return in;
 }
