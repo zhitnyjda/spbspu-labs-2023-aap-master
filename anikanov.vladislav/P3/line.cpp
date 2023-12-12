@@ -17,7 +17,15 @@ Line::Line(const char *string, size_t len)
 
 Line::Line(const Line &line)
 {
-  (*this) = Line(line.get_line(), line.size());
+  this->len = line.len;
+  try {
+    data = new char[len]{};
+    for (size_t i = 0; i < len; ++i) {
+      data[i] = line.data[i];
+    }
+  } catch (std::exception const &ex) {
+    throw std::runtime_error(ex.what());
+  }
 }
 
 Line::~Line()
