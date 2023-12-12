@@ -89,7 +89,7 @@ std::istream &operator>>(std::istream &in, Line &line)
   size_t i = 0;
   char c;
   do {
-    in.get(c);
+    in >> c;
     if (i == line.size()) {
       line.resize(line.len * 2);
     }
