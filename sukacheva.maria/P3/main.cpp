@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstddef>
 #include "inputString.hpp"
 #include "formingNewString.hpp"
 
