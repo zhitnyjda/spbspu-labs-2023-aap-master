@@ -85,11 +85,14 @@ char &Line::operator[](size_t i)
 
 std::istream &operator>>(std::istream &in, Line &line)
 {
-  in >> std::noskipws;
   size_t i = 0;
+  in >> std::noskipws;
   char c;
   do {
-    in >> c;
+    if (!(in >> c)) {
+      ++i;
+      break;
+    }
     if (i == line.size()) {
       line.resize(line.len * 2);
     }
