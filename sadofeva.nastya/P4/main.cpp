@@ -48,11 +48,8 @@ int main(int argc, char** argv)
     std::cerr << "Cannot open an ouput file" << "\n";
     return 2;
   }
-  if (num == 1)
-  {
-    int static_array[10000] = { 0 };
-    values = static_array;
-  }
+  int static_array[10000] = { 0 };
+  values = static_array;
   if (num == 2)
   {
     int * dm_ar = new int[rows * cols];
