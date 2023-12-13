@@ -1,5 +1,5 @@
 #ifndef INPUTARRAY_HPP
-#DEFINE INPUTARRAY_HPP
+#define INPUTARRAY_HPP
 #include <fstream>
 
 namespace sadofeve
