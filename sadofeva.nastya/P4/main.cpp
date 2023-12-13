@@ -11,12 +11,10 @@ int main(int argc, char** argv)
     std::cerr << "Incorrectly entered data" << "\n";
     return 1;
   }
-  int num = 0;
-  try
-  {
-    num = std::stoll(argv[1]);
-  }
-  catch (const std::invalid_argument& e)
+  char * end0fParcing = nullptr;
+  int num = std::strtoll(argv[1], std::addressof(end0fParcing), 10);
+  int len = strlen(argv[1]);
+  if (end0fParcing != argv[1] + len)
   {
     std::cerr << "Please enter a valid value" << "\n";
     return 1;
@@ -48,39 +46,47 @@ int main(int argc, char** argv)
     std::cerr << "Cannot open an ouput file" << "\n";
     return 2;
   }
-  int static_array[10000] = { 0 };
-  values = static_array;
+  if (num == 1)
+  {
+    try
+    {
+      int static_array[10000] = { 0 };
+      values = static_array;
+      size_t count = input_ar(input,values,rows * cols);
+      if (count != rows * cols)
+      {
+        std::cerr << "Not correct" << "\n";
+        return 2;
+      }
+      outputFile << locMax(values,rows,cols);
+      return 0;
+    }
+    catch (const std::logic_error & e)
+    {
+      std::cerr << e.what();
+      return 2;
+    }
+  }
   if (num == 2)
   {
     int * dm_ar = new int[rows * cols];
     values = dm_ar;
-  }
-  try
-  {
-    size_t count = input_ar(input, values,rows * cols);
-    if (count != rows * cols)
+    try
     {
-      std::cerr << "Not correct" << "\n";
-      return 2;
-      if (num == 2)
+      size_t count = input_ar(input, values,rows * cols);
+      if (count != rows * cols)
       {
+        std::cerr << "Not correct" << "\n";
+        return 2;
         delete[] dm_ar;
-      }
     }
     outputFile << locMax(values, rows, cols);
-    if (num == 2)
-    {
-      delete[] dm_ar;
-    }
+    delete[] dm_ar;
     return 0;
-  }
-  catch (const std::logic_error & e)
-  {
-    std::cerr << e.what();
-    if (num == 2)
+    catch (const std::logic_error & e)
     {
+      std::cerr << e.what();
       delete[] dm_ar;
     }
-    return 2;
   }
 }
