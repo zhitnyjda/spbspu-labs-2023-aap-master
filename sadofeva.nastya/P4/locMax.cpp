@@ -1,7 +1,6 @@
 #include "locMax.hpp"
 
-using namespace sadofeva;
-size_t locMax(int * values, size_t rows, size_t cols)
+size_t sadofeva::locMax(int * values, size_t rows, size_t cols)
 {
   size_t count = 0;
   for (size_t i = 0; i < rows;i++)
