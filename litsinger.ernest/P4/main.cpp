@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <cstddef>
 #include <cstring>
-#include "function.hpp"
+#include "functioninput.hpp"
 #include "variantlogic.hpp"
 
 using namespace litsinger;
