@@ -4,7 +4,6 @@
 #include "locMax.hpp"
 
 using namespace sadofeva;
-
 int main(int argc, char** argv)
 {
   if (argc != 4)
@@ -29,7 +28,7 @@ int main(int argc, char** argv)
   }
   size_t rows = 0, cols = 0;
   std::ifstream input(argv[2]);
-  input >> rows
+  input >> rows;
   intput >> cols;
   if (!input)
   {
