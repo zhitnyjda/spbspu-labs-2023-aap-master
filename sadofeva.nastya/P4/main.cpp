@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include "inputArray.hpp"
 #include "locMax.hpp"
 
@@ -87,6 +88,7 @@ int main(int argc, char** argv)
     {
       std::cerr << e.what();
       delete[] dm_ar;
+      return 2;
     }
   }
 }
