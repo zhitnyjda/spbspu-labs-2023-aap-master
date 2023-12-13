@@ -52,45 +52,38 @@ int main(int argc, char** argv)
   {
     int static_array[10000] = { 0 };
     values = static_array;
-    try
-    {
-      size_t count = input_ar(input, values,rows * cols);
-      if (count != rows * cols)
-      {
-        std::cerr << "Not correct" << "\n";
-        return 2;
-      }
-      outputFile << locMax(values, rows, cols);
-      return 0;
-    }
-    catch (const std::logic_error & e)
-    {
-      std::cerr << e.what();
-      return 2;
-    }
   }
   if (num == 2)
   {
     int * dm_ar = new int[rows * cols];
     values = dm_ar;
-    try
+  }
+  try
+  {
+    size_t count = input_ar(input, values,rows * cols);
+    if (count != rows * cols)
     {
-      size_t count = input_ar(input, values,rows * cols);
-      if (count != rows * cols)
-      {
-        std::cerr << "Not correct" << "\n";
-        delete[] dm_ar;
-        return 2;
-      }
-      outputFile << locMax(values, rows, cols);
-      delete[] dm_ar;
-      return 0;
-    }
-    catch (const std::logic_error & e)
-    {
-      std::cerr << e.what();
-      delete[] dm_ar;
+      std::cerr << "Not correct" << "\n";
       return 2;
+      if (num == 2)
+      {
+        delete[] dm_ar;
+      }
     }
+    outputFile << locMax(values, rows, cols);
+    if (num == 2)
+    {
+      delete[] dm_ar;
+    }
+    return 0;
+  }
+  catch (const std::logic_error & e)
+  {
+    std::cerr << e.what();
+    if (num == 2)
+    {
+      delete[] dm_ar;
+    }
+    return 2;
   }
 }
