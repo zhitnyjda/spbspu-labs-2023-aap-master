@@ -1,4 +1,4 @@
-#ifdef LOCMAX_HPP
+#ifndef LOCMAX_HPP
 #define LOCMAX_HPP
 
 namespace sadofeva
