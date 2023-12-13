@@ -29,7 +29,7 @@ int main(int argc, char** argv)
   size_t rows = 0, cols = 0;
   std::ifstream input(argv[2]);
   input >> rows;
-  intput >> cols;
+  input >> cols;
   if (!input)
   {
     std::cerr << "Cannot read file" << "\n";
