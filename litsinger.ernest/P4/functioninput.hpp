@@ -1,5 +1,5 @@
-#ifndef FUNCTION_HPP
-#define FUNCTION_HPP
+#ifndef FUNCTIONINPUT_HPP
+#define FUNCTIONINPUT_HPP
 #include <cstddef>
 #include <fstream>
 namespace litsinger
