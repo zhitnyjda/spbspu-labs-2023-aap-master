@@ -1,5 +1,6 @@
 #ifndef LOC_MAX_HPP
 #define LOC_MAX_HPP
+#include <cstddef>
 
 namespace sadofeva
 {
