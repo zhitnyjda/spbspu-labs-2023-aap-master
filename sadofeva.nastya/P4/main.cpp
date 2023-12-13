@@ -49,10 +49,10 @@ int main(int argc, char** argv)
   }
   if (num == 1)
   {
+    int static_array[10000] = { 0 };
+    values = static_array;
     try
     {
-      int static_array[10000] = { 0 };
-      values = static_array;
       size_t count = input_ar(input,values,rows * cols);
       if (count != rows * cols)
       {
