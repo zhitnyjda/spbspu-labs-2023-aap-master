@@ -1,7 +1,8 @@
-#include "iostream"
-#include "fstream"
-#include "string"
-#include "matr.hpp"
+#include <iostream>
+#include <fstream>
+#include "inputArray.hpp"
+#include "locMax.hpp"
+
 using namespace sadofeva;
 
 int main(int argc, char** argv)
@@ -26,9 +27,10 @@ int main(int argc, char** argv)
     std::cerr << "Incorrect value" << "\n";
     return 2;
   }
-  int rows = 0, cols = 0;
+  size_t rows = 0, cols = 0;
   std::ifstream input(argv[2]);
-  input >> rows >> cols;
+  input >> rows
+  intput >> cols;
   if (!input)
   {
     std::cerr << "Cannot read file" << "\n";
@@ -40,8 +42,7 @@ int main(int argc, char** argv)
     outp << 0;
     return 0;
   }
-  int* values;
-  Matrix matrix;
+  int* values = 0;
   std::ofstream outputFile(argv[3]);
   if (!outputFile.is_open())
   {
@@ -50,17 +51,17 @@ int main(int argc, char** argv)
   }
   if (num == 1)
   {
-    int static_ar[10000] = { 0 };
-    values = static_ar;
+    int static_array[10000] = { 0 };
+    values = static_array;
     try
     {
-      int kolvo = matrix.fl_ar(input, values,rows * cols);
-      if (kolvo != rows * cols)
+      size_t count = input_ar(input, values,rows * cols);
+      if (count != rows * cols)
       {
         std::cerr << "Not correct" << "\n";
         return 2;
       }
-      outputFile << matrix.locMax(values, rows, cols);
+      outputFile << locMax(values, rows, cols);
       return 0;
     }
     catch (const std::logic_error & e)
@@ -75,14 +76,14 @@ int main(int argc, char** argv)
     values = dm_ar;
     try
     {
-      int kolvo = matrix.fl_ar(input, values,rows * cols);
-      if (kolvo != rows * cols)
+      size_t count = input_ar(input, values,rows * cols);
+      if (count != rows * cols)
       {
         std::cerr << "Not correct" << "\n";
         delete[] dm_ar;
         return 2;
       }
-      outputFile << matrix.locMax(values, rows, cols);
+      outputFile << locMax(values, rows, cols);
       delete[] dm_ar;
       return 0;
     }
