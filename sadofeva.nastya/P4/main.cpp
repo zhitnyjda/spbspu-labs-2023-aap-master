@@ -80,10 +80,11 @@ int main(int argc, char** argv)
         std::cerr << "Not correct" << "\n";
         return 2;
         delete[] dm_ar;
+      }
+      outputFile << locMax(values, rows, cols);
+      delete[] dm_ar;
+      return 0;
     }
-    outputFile << locMax(values, rows, cols);
-    delete[] dm_ar;
-    return 0;
     catch (const std::logic_error & e)
     {
       std::cerr << e.what();
