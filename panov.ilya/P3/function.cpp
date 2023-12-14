@@ -1,5 +1,6 @@
 #include "function.hpp"
 #include <cctype>
+#include <iostream>
 
 void function(char* input) {
   if (input == nullptr || input[0] == '\0') {
