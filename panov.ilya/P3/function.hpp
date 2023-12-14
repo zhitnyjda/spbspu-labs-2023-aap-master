@@ -1,7 +1,6 @@
-#ifndef REMOVE_VOWELS_HPP
-#define REMOVE_VOWELS_HPP
-#include <string>
+#ifndef FUNCTION_HPP
+#define FUNCTION_HPP
 
-std::string removeVowels(const std::string& input);
+void function(char* input);
 
 #endif

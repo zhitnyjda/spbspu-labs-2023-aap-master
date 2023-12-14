@@ -1,18 +1,21 @@
 #include <iostream>
 #include "function.hpp"
 
-int main() {
-  std::string input;
-  std::getline(std::cin, input);
+int main()
+{
+  const int MAX_LENGTH = 100;
+  char input[MAX_LENGTH];
+  std::cin.getline(input, MAX_LENGTH);
 
-  try {
-    std::string result = removeVowels(input);
-    std::cout << result << std::endl;
+  try
+  {
+    function(input);
+    std::cout << input << std::endl;
   }
-  catch (const std::bad_alloc& e) {
+  catch (...)
+  {
     std::cerr << "Error: Unable to allocate memory." << std::endl;
     return 1;
   }
-
   return 0;
 }
