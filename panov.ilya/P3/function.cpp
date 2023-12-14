@@ -3,7 +3,7 @@
 
 void function(char* input) {
   if (input == nullptr || input[0] == '\0') {
-    return;
+    exit(1);
   }
 
   int len = 0;
