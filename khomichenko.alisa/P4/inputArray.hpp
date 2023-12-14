@@ -4,6 +4,6 @@
 
 namespace khomichenko
 {
-  int inputArray(std::istream & in, int * matrix, size_t s, size_t toRead);
+  int inputArray(std::istream & in, int * matrix, size_t number);
 }
 #endif

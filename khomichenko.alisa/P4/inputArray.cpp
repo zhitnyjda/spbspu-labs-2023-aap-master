@@ -1,15 +1,14 @@
 #include "inputArray.hpp"
-#include <algorithm>
 #include <iostream>
 
-int khomichenko::inputArray(std::istream & in, int * matrix, size_t s, size_t toRead)
+int khomichenko::inputArray(std::istream & in, int * matrix, size_t number)
 {
-  for (size_t i = 0; i < std::min(toRead, s); ++i)
+  for (size_t i = 0; i < number; ++i)
   {
     if (!(in >> matrix[i]))
     {
       return i;
     }
   }
-  return std::min(toRead, s);
+  return number;
 }

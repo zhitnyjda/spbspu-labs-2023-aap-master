@@ -1,65 +1,90 @@
 #include <iostream>
 #include <fstream>
+#include "incPer.hpp"
 #include "inputArray.hpp"
+
 int main(int argc, char ** argv)
 {
   using namespace khomichenko;
-  if (argc !=4)
+
+  if (argc != 4)
   {
-    std::cerr<<"something wrong.\n";
+    std::cerr << "something wrong.\n";
     return 1;
+
   }
-  //argv[1] -номер задания
-  int num=0;
+
+  int num = 0;
+
   try
   {
-    num=std::stoll(argv[1]);
+    num = std::stoll(argv[1]);
   }
   catch (const std::invalid_argument & e)
   {
-    std::cerr<<"can not parse a value\n";
+    std::cerr << "can not parse a value\n";
     return 1;
   }
+
   if (num > 2 || num < 1)
   {
-    std::cerr<<"first parameter is out of range\n";
+    std::cerr << "first parameter is out of range\n";
     return 1;
   }
-  //argv[2]-имя файла с матрицей
+
   size_t rows;
   size_t cols;
 
   std::ifstream input (argv[2]);
+  input >> rows >> cols;
 
-  input>> rows>> cols;
   if (!input)
   {
-    std::cerr<<"can not read file\n";
+    std::cerr << "can not read file\n";
     return 2;
   }
-  std::cout<<rows<<" "<<cols<<"\n";
-  int firstMatrix[10000]={0};
+
+  int firstMatrix[10000] = {0};
   int* Matrix = firstMatrix;
-  if (num==2)
+  if (num == 2)
   {
-    Matrix=new int[rows * cols];
+    Matrix = new int[rows * cols];
   }
-  int hadRead = inputArray(input, Matrix, rows, cols);
-  if (hadRead != std::min(rows,cols))
+
+  int hadRead = inputArray(input, Matrix, rows*cols);
+
+  if (hadRead != rows*cols)
   {
-    std::cerr<<"not all elements were read\n";
-    if (num==2)
+    std::cerr << "not all elements were read\n";
+    if (num == 2)
     {
       delete [] Matrix;
     }
     return 2;
   }
-  //argv[3]-имя файла для вывода результатов
-  if (num==2)
+
+  std::ofstream output (argv[3]);
+  output << rows << " " << cols << " ";
+  if (cols * rows != 0)
+  {
+    //FLL-INC-WAV
+    callFunc(Matrix, cols, rows);
+  }
+  else
+  {
+    output << "\n";
+    return 0;
+  }
+
+  for (size_t i = 0; i < cols*rows; ++i)
+  {
+    output << Matrix[i] << " ";
+  }
+  output << "\n";
+
+  if (num == 2)
   {
     delete [] Matrix;
   }
-  //std::ofstream output (argv[3]);
-  //output << Matrix << "\n";
+  return 0;
 }
-
