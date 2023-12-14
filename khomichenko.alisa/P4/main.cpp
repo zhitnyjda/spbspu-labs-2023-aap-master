@@ -52,7 +52,7 @@ int main(int argc, char ** argv)
     Matrix = new int[rows * cols];
   }
 
-  int hadRead = inputArray(input, Matrix, rows*cols);
+  size_t hadRead = inputArray(input, Matrix, rows*cols);
 
   if (hadRead != rows*cols)
   {
