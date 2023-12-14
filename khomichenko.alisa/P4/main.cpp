@@ -1,4 +1,5 @@
 #include <iostream>
+#include <exception>
 #include <fstream>
 #include "spiralSub.hpp"
 #include "incPer.hpp"
@@ -52,10 +53,18 @@ int main(int argc, char ** argv)
   }
 
   int firstMatrix[10000] = {0};
-  int* Matrix = firstMatrix;
+  int *Matrix = firstMatrix;
   if (num == 2)
   {
-    Matrix = new int[rows * cols];
+    try
+    {
+      Matrix = new int[rows * cols];
+    }
+    catch (const std::bad_alloc&)
+    {
+      std::cerr<<"unable to allocate memory\n";
+      return 1;
+    }
   }
 
   size_t hadRead = inputArray(input, Matrix, rows*cols);
