@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "princdiag.hpp"
 using namespace lisitsyna;
 
 int main(int argc, char** argv)
