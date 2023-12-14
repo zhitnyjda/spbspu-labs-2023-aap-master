@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "spiralSub.hpp"
 #include "incPer.hpp"
 #include "inputArray.hpp"
 
@@ -69,18 +70,26 @@ int main(int argc, char ** argv)
   {
     //FLL-INC-WAV
     callFunc(Matrix, cols, rows);
+    for (size_t i = 0; i < cols*rows; ++i)
+    {
+      output << Matrix[i] << " ";
+    }
+    output << "\n";
+    output << "\n";
+    output << rows << " " << cols << " ";
+    //LFT-TOP-CLK
+    callFuncSec(Matrix, cols, rows);
+    for (size_t i = 0; i < cols*rows; ++i)
+    {
+      output << Matrix[i] << " ";
+    }
+    output << "\n";
   }
   else
   {
     output << "\n";
     return 0;
   }
-
-  for (size_t i = 0; i < cols*rows; ++i)
-  {
-    output << Matrix[i] << " ";
-  }
-  output << "\n";
 
   if (num == 2)
   {
