@@ -1,19 +1,28 @@
 #include "function.hpp"
 #include <cctype>
-#include <cstring>
 
-std::string removeVowels(const std::string& input) {
-  if (input.empty()) {
-    exit (1);
+void function(char* input) {
+  if (input == nullptr || input[0] == '\0') {
+    return;
   }
 
-  std::string result;
+  int len = 0;
+  while (input[len] != '\0') {
+    len++;
+  }
 
-  for (char c : input) {
-    if (!std::isalpha(c) || std::strchr("AOEIUYaoeiuy", c) == nullptr) {
-      result += c;
+  int index = 0;
+
+  for (int i = 0; i < len; i++) {
+    char c = input[i];
+    if (char(c) && std::isdigit && c != 'A' && c != 'O' && c != 'E' && c != 'I' && c != 'U' && c != 'Y' &&
+      c != 'a' && c != 'o' && c != 'e' && c != 'i' && c != 'u' && c != 'y') {
+      input[index++] = c;
+    }
+    else if (c == ' ') {
+      input[index++] = c;
     }
   }
 
-  return result;
+  input[index] = '\0';
 }
