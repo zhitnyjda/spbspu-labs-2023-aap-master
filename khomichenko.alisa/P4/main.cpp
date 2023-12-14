@@ -37,11 +37,17 @@ int main(int argc, char ** argv)
   size_t cols;
 
   std::ifstream input (argv[2]);
+  if (!input)
+  {
+    std::cerr << "can not read file\n";
+    return 2;
+  }
+
   input >> rows >> cols;
 
   if (!input)
   {
-    std::cerr << "can not read file\n";
+    std::cerr << "can't read cols and rows\n";
     return 2;
   }
 
@@ -66,6 +72,15 @@ int main(int argc, char ** argv)
 
   std::ofstream output (argv[3]);
   output << rows << " " << cols << " ";
+  if (!output)
+  {
+    std::cerr<<"file not open\n";
+    if (num==2)
+    {
+      delete[] Matrix;
+    }
+    return 2;
+  }
   if (cols * rows != 0)
   {
     //FLL-INC-WAV
