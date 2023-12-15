@@ -53,4 +53,5 @@ char* seryj::readLine(size_t& real_size)
     throw std::logic_error("Error: zero sequence\n");
   }
   std::cin >> std::noskipws;
+  return line;
 }
