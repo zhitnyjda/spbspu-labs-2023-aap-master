@@ -5,6 +5,6 @@
 
 bool isVowel(char);
 
-void dropVowels(Line&);
+char* dropVowels(const char*);
 
 #endif
