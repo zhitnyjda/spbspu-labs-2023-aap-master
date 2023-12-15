@@ -14,5 +14,6 @@ int main()
   catch (std::logic_error const& e)
   {
     std::cerr << e.what();
+    return 1;
   }
 }
