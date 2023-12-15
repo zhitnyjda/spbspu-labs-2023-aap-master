@@ -1,4 +1,6 @@
 #include "functionsMatrix.h"
+#include <fstream>
+#include <cstdlib>
 #include <stdexcept>
 
 Matrix::Matrix(int r, int c, int arrayType) : rows(r), cols(c), arrayType(arrayType) {
