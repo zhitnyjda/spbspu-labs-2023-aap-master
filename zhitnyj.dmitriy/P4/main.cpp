@@ -1,6 +1,7 @@
 #include "functionsMatrix.h"
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 int main(int argc, char *argv[]) {
     if (argc != 4) {
@@ -8,12 +9,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    char task = argv[1][0];
-    if (task != '1' && task != '2') {
-        std::cerr << "Invalid task number.\n";
-        return 1;
-    }
-
+    int arrayType = std::atoi(argv[1]);
     std::ifstream infile(argv[2]);
     std::ofstream outfile(argv[3]);
     if (!infile || !outfile) {
@@ -22,23 +18,19 @@ int main(int argc, char *argv[]) {
     }
 
     int rows, cols;
-    infile >> rows >> cols;
+    if (!(infile >> rows >> cols)) {
+        std::cerr << "Failed to read matrix size.\n";
+        return 1;
+    }
 
     try {
-        Matrix matrix(rows, cols);
+        Matrix matrix(rows, cols, arrayType);
         matrix.readFromFile(infile);
-
-        if (task == '1') {
-            int maxSum = matrix.calculateMaxSumDiagonal();
-            outfile << "Max Sum Diagonal: " << maxSum << std::endl;
-        } else {
-            matrix.transformMatrix();
-            matrix.writeToOutput(outfile);
-        }
+        matrix.calculateMaxSumDiagonal(); 
+        matrix.transformMatrix();  
+        matrix.writeToOutput(outfile);
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
-        infile.close();
-        outfile.close();
         return 1;
     }
 
