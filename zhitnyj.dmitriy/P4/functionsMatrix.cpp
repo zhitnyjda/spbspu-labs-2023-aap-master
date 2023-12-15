@@ -54,7 +54,9 @@ void Matrix::transformMatrix() {
 void Matrix::readFromFile(std::ifstream &infile) {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            infile >> elements[i][j];
+            if (!(infile >> elements[i][j])) {
+                throw std::runtime_error("Failed to read matrix data.");
+            }
         }
     }
 }
