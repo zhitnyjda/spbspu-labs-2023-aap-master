@@ -1,42 +1,58 @@
 #include "decreaseSpiralElements.hpp"
-#include <stdexcept>
+#include <iosfwd>
 
-void jirkov::decreaseSpiralElements(int *matrix, int rows, int cols)
+void jirkov::fillTopRow(int* matrix, int rowend, int cols, int& num)
+{
+  for (int c = rowend; c >= 0; c--)
+  {
+    matrix[rowend * cols + c] = num;
+    num--;
+  }
+}
+
+void jirkov::fillRightColumn(int* matrix, int colend, int rows, int cols, int& num)
+{
+  for (int r = rows - 1; r >= 0; r--)
+  {
+    matrix[r * cols + colend] = num;
+    num--;
+  }
+}
+
+void jirkov::fillBottomRow(int* matrix, int rowstart, int colstart, int cols, int& num)
+{
+  for (int c = cols - 1; c >= colstart; c--)
+  {
+    matrix[rowstart * cols + c] = num;
+    num--;
+  }
+}
+
+void jirkov::fillLeftColumn(int* matrix, int colstart, int rowstart, int cols, int rows, int& num)
+{
+  for (int r = rows - 1; r > rowstart; r--)
+  {
+    matrix[r * cols + colstart] = num;
+    num--;
+  }
+}
+
+void jirkov::decreaseSpiralElements(int* matrix, int rows, int cols)
 {
   int num = -1;
-  int r1 = 0;
-  int r2 = rows - 1;
-  int c1 = 0;
-  int c2 = cols - 1;
-
-  while (r1 <= r2 && c1 <= c2)
+  int rowstart = 0;
+  int rowend = rows - 1;
+  int colstart = 0;
+  int colend = cols - 1;
+  while (rowstart <= rowend && colstart <= colend)
   {
-    for (int c = c1; c <= c2; c++)
-    {
-      matrix[r2 * cols + c] = num;
-      num--;
-    }
-    for (int r = r2 - 1; r >= r1; r--)
-    {
-      matrix[r * cols + c2] = num;
-      num--;
-    }
-    if (r1 < r2 && c1 < c2)
-    {
-      for (int c = c2 - 1; c > c1; c--)
-      {
-        matrix[r1 * cols + c] = num;
-        num--;
-      }
-      for (int r = r1; r < r2; r++)
-      {
-        matrix[r * cols + c1] = num;
-        num--;
-      }
-    }
-    r1++;
-    r2--;
-    c1++;
-    c2--;
+    fillTopRow(matrix, rowend, cols, num);
+    fillRightColumn(matrix, colend, rows, cols, num);
+    fillBottomRow(matrix, rowstart, colstart, cols, num);
+    fillLeftColumn(matrix, colstart, rowstart, rows, cols, num);
+    rowstart++;
+    rowend--;
+    colstart++;
+    colend--;
   }
 }
