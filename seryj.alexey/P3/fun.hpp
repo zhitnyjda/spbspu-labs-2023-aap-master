@@ -4,6 +4,7 @@
 namespace seryj
 {
   char* changeArray(char*, int);
-  unsigned long long counterOfEqualPairs(char*, int);
+  size_t counterOfEqualPairs(char*, int);
+  char* readLine(size_t&);
 }
 #endif
