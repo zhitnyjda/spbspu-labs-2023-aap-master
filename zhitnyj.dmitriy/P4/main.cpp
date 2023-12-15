@@ -1,5 +1,4 @@
-#include "functionsMaxSumDiagonal.h"
-#include "functionsTransformMatrix.h"
+#include "functionsMatrix.h"
 #include <iostream>
 #include <fstream>
 
