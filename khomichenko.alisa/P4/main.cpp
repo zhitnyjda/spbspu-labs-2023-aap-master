@@ -62,7 +62,7 @@ int main(int argc, char ** argv)
     {
       std::cerr<<"unable to allocate memory\n";
       delete [] Matrix;
-      return 2;
+      return 3;
     }
   size_t hadRead = inputArray(input, Matrix, rows*cols);
 
