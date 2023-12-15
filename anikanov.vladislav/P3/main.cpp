@@ -12,6 +12,7 @@ int main()
     char *line_c = new char[answerRMVVOW.size()];
     strcpy(line_c, answerRMVVOW.get_line());
     answerRMVVOW.set_line(line_c);
+    delete[] line_c;
     std::cout << answerRMVVOW << "\n";
     std::cout << hasDuplicateDigits(line.get_line()) << "\n";
   } catch (const std::exception &ex) {
