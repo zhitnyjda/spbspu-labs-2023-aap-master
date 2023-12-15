@@ -56,7 +56,6 @@ void Matrix::calculateMaxSumDiagonal() const {
         }
         maxSum = std::max(maxSum, sum);
     }
-    
     for (int d = 1; d < rows; ++d) {
         int sum = 0;
         for (int i = d, j = 0; i < rows && j < cols; ++i, ++j) {
@@ -113,6 +112,7 @@ void Matrix::transformMatrix() {
             startCol++;
         }
     }
+
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             if (arrayType == 1) {
