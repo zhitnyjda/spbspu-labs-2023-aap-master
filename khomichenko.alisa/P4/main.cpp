@@ -49,7 +49,7 @@ int main(int argc, char ** argv)
   if (!input)
   {
     std::cerr << "can't read cols and rows\n";
-    return 2;
+    return 0;
   }
 
   int firstMatrix[10000] = {0};
