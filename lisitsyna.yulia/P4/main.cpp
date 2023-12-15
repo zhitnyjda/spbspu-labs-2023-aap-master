@@ -1,8 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-using namespace lisitsyna;
+#include "input_ar.hpp"
+#include "minS.hpp"
 
+using namespace lisitsyna;
 int main(int argc, char** argv)
 {
   if (argc != 4)
