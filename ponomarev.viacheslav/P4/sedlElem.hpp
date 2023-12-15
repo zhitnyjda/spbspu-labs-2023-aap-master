@@ -3,6 +3,6 @@
 
 namespace ponomarev
 {
-  int countingSed(int * matrix, int rows, int cols);
+  int saddleElem(int * matrix, int rows, int cols);
 }
 #endif

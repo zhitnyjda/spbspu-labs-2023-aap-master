@@ -11,12 +11,9 @@ int main(int argc, char ** argv)
     std::cerr << "I feel that something wrong-_-.\n";
     return 1;
   }
-  int num = 0;
-  try
-  {
-    num = std::stoll(argv[1]);
-  }
-  catch (const std::invalid_argument & e)
+  char * endOfParcing = nullptr;
+  int num = std::strtoll(argv[1], std::addressof(endOfParcing), 10);
+  if (*endOfParcing != '\0')
   {
     std::cerr << "Cannot parse a value.\n";
     return 1;
@@ -45,14 +42,14 @@ int main(int argc, char ** argv)
     return 2;
   }
   std::ofstream output(argv[3]);
-  output << "Число седловых элементов = " << ponomarev::countingSed(matrix, rows, cols) << "\n";
+  output << "Number of saddle elements = " << ponomarev::saddleElem(matrix, rows, cols) << "\n";
   if (rows == cols)
   {
-    output << "Миннимальная сумма элементов = " << ponomarev::minSu(matrix, rows, cols) << "\n";
+    output << "Minimum sum of elements = " << ponomarev::minSu(matrix, rows, cols) << "\n";
   }
   else
   {
-    output << "Требуется квадратная матрица.\n";
+    output << "A square matrix is required.\n";
   }
   if (num == 2)
   {

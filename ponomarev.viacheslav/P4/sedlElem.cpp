@@ -1,37 +1,47 @@
 #include "sedlElem.hpp"
 
-int ponomarev::countingSed(int * matrix, int rows, int cols)
+int searchMinInLine(int * matrix, int cols, int numLine)
 {
-  int k = 0;
-  for (int j = 0; j < rows; j++)
+  int minEl = matrix[cols * numLine];
+  for (int i = (cols * numLine); i < (cols + cols * numLine); i++)
+    {
+      if (minEl > matrix[i])
+      {
+        minEl = matrix[i];
+      }
+    }
+  return minEl;
+}
+
+int searchMaxInCol(int * matrix, int rows, int cols, int minEl, int numLine)
+{
+  int maxEl = 0;
+  for (int i = (cols * numLine); i < (cols + cols * numLine); i++)
   {
-    int a = 10000000;
-    int b = 0;
-    for (int i = (cols * j); i < (cols + cols * j); i++)
+    if (minEl == matrix[i])
     {
-      if (matrix[i] < a)
+      int numOfColumn = i % cols;
+      maxEl = matrix[numOfColumn];
+      for (int j = numOfColumn; j <= numOfColumn + (cols * (rows - 1)); j += cols)
       {
-        a = matrix[i];
+        maxEl = matrix[j] > maxEl ? matrix[j] : maxEl;
       }
-    }
-    for (int i = (cols * j); i < (cols + cols * j); i++)
-    {
-      if (matrix[i] == a)
-      {
-        int c = i % cols;
-        for (int p = c; p <= c + (cols * (rows - 1)); p += cols)
-        {
-          if (matrix[p] > b)
-          {
-            b = matrix[p];
-          }
-        }
-      }
-    }
-    if (a == b)
-    {
-      k += 1;
     }
   }
-  return k;
+  return maxEl;
+}
+
+int ponomarev::saddleElem(int * matrix, int rows, int cols)
+{
+  int numOfSaddEl = 0, minEl = 0, maxEl = 0;
+  for (int j = 0; j < rows; j++)
+  {
+    minEl = searchMinInLine(matrix, cols, j);
+    maxEl = searchMaxInCol(matrix, rows, cols, minEl, j);
+    if (minEl == maxEl)
+    {
+      numOfSaddEl += 1;
+    }
+  }
+  return numOfSaddEl;
 }

@@ -1,5 +1,5 @@
 #include "inputArray.hpp"
-#include <iostream>
+#include <istream>
 
 size_t ponomarev::inputArray(std::istream & in, int * matrix, size_t lenArray)
 {
