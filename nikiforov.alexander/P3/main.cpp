@@ -34,7 +34,6 @@ int main()
     size_t len2 = read;
     std::cin >> std::skipws;
     std::cout << '\n' << nikiforov::result(str1, str2, len1, len2) << '\n';
-    
     delete[] str1;
     delete[] str2;
     return 0;
