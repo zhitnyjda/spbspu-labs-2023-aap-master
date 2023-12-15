@@ -1,11 +1,11 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef FUNCTIONS_MATRIX_H
+#define FUNCTIONS_MATRIX_H
 
 #include <fstream>
 
-struct Matrix {
+class Matrix {
 public:
-    Matrix(int r, int c);
+    Matrix(int r, int c, int arrayType);
     ~Matrix();
     void readFromFile(std::ifstream &infile);
     int calculateMaxSumDiagonal() const;
@@ -13,8 +13,14 @@ public:
     void writeToOutput(std::ofstream &outfile) const;
 
 private:
-    int **elements;
+    static const int MAX_SIZE = 100;
+    int staticArray[MAX_SIZE][MAX_SIZE];
+    int **dynamicArray;
     int rows, cols;
+    int arrayType;
+
+    void allocateDynamicArray();
+    void deallocateDynamicArray();
 };
 
 #endif
