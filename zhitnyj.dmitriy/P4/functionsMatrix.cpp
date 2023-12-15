@@ -1,61 +1,45 @@
 #include "functionsMatrix.h"
-#include <algorithm>
 #include <stdexcept>
 
-Matrix::Matrix(int r, int c) : rows(r), cols(c) {
-    if (rows > 100 || cols > 100) {
-        throw std::invalid_argument("Invalid matrix size.");
-    }
-    try {
-        elements = new int*[rows];
-        for (int i = 0; i < rows; ++i) {
-            elements[i] = new int[cols];
+Matrix::Matrix(int r, int c, int arrayType) : rows(r), cols(c), arrayType(arrayType) {
+    if (arrayType == 1) {
+        if (rows <= 0 || cols <= 0 || rows > MAX_SIZE || cols > MAX_SIZE) {
+            throw std::invalid_argument("Invalid size for static array.");
         }
-    } catch (const std::bad_alloc&) {
-        throw std::runtime_error("Failed to allocate memory for matrix.");
+    } else if (arrayType == 2) {
+        allocateDynamicArray();
+    } else {
+        throw std::invalid_argument("Invalid array type.");
     }
 }
 
 Matrix::~Matrix() {
-    for (int i = 0; i < rows; ++i) {
-        delete[] elements[i];
+    if (arrayType == 2) {
+        deallocateDynamicArray();
     }
-    delete[] elements;
 }
 
-void Matrix::transformMatrix() {
-    int decrement = 1;
-    int startRow = 0, endRow = rows - 1;
-    int startCol = 0, endCol = cols - 1;
-    while (startRow <= endRow && startCol <= endCol) {
-        for (int i = startCol; i <= endCol; ++i) {
-            elements[startRow][i] -= decrement++;
-        }
-        startRow++;
-        for (int i = startRow; i <= endRow; ++i) {
-            elements[i][endCol] -= decrement++;
-        }
-        endCol--;
-        if (startRow <= endRow) {
-            for (int i = endCol; i >= startCol; --i) {
-                elements[endRow][i] -= decrement++;
-            }
-            endRow--;
-        }
-        if (startCol <= endCol) {
-            for (int i = endRow; i >= startRow; --i) {
-                elements[i][startCol] -= decrement++;
-            }
-            startCol++;
-        }
+void Matrix::allocateDynamicArray() {
+    dynamicArray = new int*[rows];
+    for (int i = 0; i < rows; ++i) {
+        dynamicArray[i] = new int[cols]{};
     }
+}
+
+void Matrix::deallocateDynamicArray() {
+    for (int i = 0; i < rows; ++i) {
+        delete[] dynamicArray[i];
+    }
+    delete[] dynamicArray;
 }
 
 void Matrix::readFromFile(std::ifstream &infile) {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            if (!(infile >> elements[i][j])) {
-                throw std::runtime_error("Failed to read matrix data.");
+            if (arrayType == 1) {
+                infile >> staticArray[i][j];
+            } else {
+                infile >> dynamicArray[i][j];
             }
         }
     }
@@ -63,27 +47,19 @@ void Matrix::readFromFile(std::ifstream &infile) {
 
 int Matrix::calculateMaxSumDiagonal() const {
     int maxSum = 0;
-    for (int d = 1; d < cols; ++d) {
-        int sum = 0;
-        for (int i = 0; i < rows && d + i < cols; ++i) {
-            sum += elements[i][d + i];
-        }
-        maxSum = std::max(maxSum, sum);
-    }
-    for (int d = 1; d < rows; ++d) {
-        int sum = 0;
-        for (int i = 0; i < cols && d + i < rows; ++i) {
-            sum += elements[d + i][i];
-        }
-        maxSum = std::max(maxSum, sum);
-    }
+    // Реализация calculateMaxSumDiagonal
     return maxSum;
+}
+
+void Matrix::transformMatrix() {
+    // Реализация transformMatrix
 }
 
 void Matrix::writeToOutput(std::ofstream &outfile) const {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            outfile << elements[i][j] << " ";
+            int value = (arrayType == 1) ? staticArray[i][j] : dynamicArray[i][j];
+            outfile << value << " ";
         }
         outfile << std::endl;
     }
