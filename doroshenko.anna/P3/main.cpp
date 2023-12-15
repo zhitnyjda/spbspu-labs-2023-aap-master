@@ -8,18 +8,13 @@ int main()
   char ch = 0;
   size_t readEl = 0;
   size_t size = 20;
+  char* input = new char [size] {};
   try
   {
-    char* input = new char [size] {};
     std::cin >> std::noskipws;
     while (std::cin >> ch)
     {
-      if (ch == '\0')
-      {
-        std::cerr << "Could not read an element of the string\n";
-        return 1;
-      }
-      else if (readEl < size)
+      if (readEl < size)
       {
         input[readEl++] = ch;
         if (ch == '\n')
@@ -34,6 +29,12 @@ int main()
         size += 20;
         input[readEl++] = ch;
       }
+    }
+    if (readEl == 0)
+    {
+      std::cerr << "There is no elements in the string\n";
+      delete[] input;
+      return 1;
     }
     bool pair = false;
     for (size_t i = 0; i < readEl - 1; i++)
@@ -61,6 +62,7 @@ int main()
   catch (const std::bad_alloc& e)
   {
     std::cerr << "Allocation error\n";
+    delete[] input;
     return 1;
   }
 }
