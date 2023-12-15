@@ -29,9 +29,7 @@ int main(int argc, char** argv)
   }
   size_t rows = 0, cols = 0;
   std::ifstream input(argv[2]);
-  input >> rows;
-  input >> cols;
-  if (!input)
+  if (!(input >> rows >> cols))
   {
     std::cerr << "Cannot read the file" << "\n";
     return 2;
@@ -41,42 +39,73 @@ int main(int argc, char** argv)
     std::cerr << "File is empty" << "\n";
     return 2;
   }
-  principal drive;
-  int* values;
-  if (num == 1)
+  if (rows < 3 || cols < 3)
   {
-    int static_[10000] = { 0 };
-    values = static_;
-    try
-    {
-      int kolvo = matrix.fl_ar(input, values, rows * cols);
-      if (kolvo != rows * cols)
-      {
-        std::cerr << "Not correct" << "\n";
-        return 2;
-      }
-      outputFile << principal.minsum(values, rows, cols);
-      return 0;
-      }
-    catch (const std::logic_error& e)
-    {
-      std::cerr << e.what();
-      return 2;
-    }
+    std::ofstream outp(argv[3]);
+    outp << 0;
+    return 0;
   }
-  if (num == 2)
+  int* values = 0;
+  std::ofstream outputFile(argv[3]);
+  if (!outputFile.is_open())
   {
-  int* dinamo_ = new int[rows * cols];
-  values = dinamo_;
-  try
-  {
-    drive.arraay(rows, cols, input, values);
-    delete[] dinamo_;
-  }
-  catch (std::logic_error const& e)
-  {
-    std::cerr << e.what();
-    delete[] dinamo_;
+    std::cerr << "Cannot open an ouput file" << "\n";
     return 2;
   }
+  int* array;
+  if (num == 1)
+  {
+    int static_array[10000];
+    array = static_array;
+  }
+  else if (num == 2)
+  {
+    array = new int[cols * rows];
+  }
+  try
+  {
+    size_t count = input_ar(input, array, rows * cols);
+    if (count != rows * cols)
+    {
+      std::cerr << "Not correct" << "\n";
+      return 2;
+      delete[] array;
+    }
+    outputFile << minS(rows, cols, array);
+    return 0;
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr << e.what();
+    if (num == 2)
+    {
+      delete[] array;
+    }
+    return 2;
+  }
+  try
+  {
+    size_t count = input_ar(input, array, rows * cols);
+    if (count != rows * cols)
+    {
+      std::cerr << "Not correct" << "\n";
+      return 2;
+      delete[] array;
+    }
+    outputFile << minS(rows, cols, array);
+    return 0;
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr << e.what();
+    if (num == 2)
+    {
+      delete[] array;
+    }
+    return 2;
+  }
+  if (num == 2) {
+    delete[] array;
+  }
+  return 0;
 }
