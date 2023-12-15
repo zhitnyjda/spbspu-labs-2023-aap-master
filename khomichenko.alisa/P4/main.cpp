@@ -53,20 +53,17 @@ int main(int argc, char ** argv)
   }
 
   int firstMatrix[10000] = {0};
-  int *Matrix = firstMatrix;
-  if (num == 2)
-  {
+  int *Matrix = nullptr;
     try
     {
-      Matrix = new int[rows * cols];
+      Matrix = num==2?new int[rows * cols]:firstMatrix;
     }
     catch (const std::bad_alloc&)
     {
       std::cerr<<"unable to allocate memory\n";
-      return 1;
+      delete [] Matrix;
+      return 2;
     }
-  }
-
   size_t hadRead = inputArray(input, Matrix, rows*cols);
 
   if (hadRead != rows*cols)
