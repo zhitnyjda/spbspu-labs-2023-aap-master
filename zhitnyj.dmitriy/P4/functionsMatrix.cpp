@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 Matrix::Matrix(int r, int c) : rows(r), cols(c) {
-    if (rows <= 0 || cols <= 0 || rows > 100 || cols > 100) {
+    if (rows > 100 || cols > 100) {
         throw std::invalid_argument("Invalid matrix size.");
     }
     try {
