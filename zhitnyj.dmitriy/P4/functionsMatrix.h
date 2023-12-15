@@ -4,7 +4,7 @@
 #include <fstream>
 #include <cstdlib>
 
-class Matrix {
+struct Matrix {
 public:
     Matrix(int r, int c, int arrayType);
     ~Matrix();
