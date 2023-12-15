@@ -45,7 +45,6 @@ int main(int argc, char** argv)
     outp << 0;
     return 0;
   }
-  int* values = 0;
   std::ofstream outputFile(argv[3]);
   if (!outputFile.is_open())
   {
