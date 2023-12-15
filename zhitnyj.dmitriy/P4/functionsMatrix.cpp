@@ -23,14 +23,6 @@ Matrix::~Matrix() {
     delete[] elements;
 }
 
-void Matrix::readFromFile(std::ifstream &infile) {
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            infile >> elements[i][j];
-        }
-    }
-}
-
 void Matrix::transformMatrix() {
     int decrement = 1;
     int startRow = 0, endRow = rows - 1;
@@ -56,15 +48,6 @@ void Matrix::transformMatrix() {
             }
             startCol++;
         }
-    }
-}
-
-void Matrix::writeToOutput(std::ofstream &outfile) const {
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            outfile << elements[i][j] << " ";
-        }
-        outfile << std::endl;
     }
 }
 
