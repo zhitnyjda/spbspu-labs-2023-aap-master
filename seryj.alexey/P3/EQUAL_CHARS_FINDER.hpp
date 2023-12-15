@@ -1,5 +1,5 @@
-#ifndef FUN_HPP
-#define FUN_HPP
+#ifndef EQUAL_CHARS_FINDER
+#define EQUAL_CHARS_FINDER
 #include <cstddef>
 namespace seryj
 {

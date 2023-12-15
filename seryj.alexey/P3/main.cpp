@@ -1,5 +1,5 @@
 #include <iostream>
-#include "fun.hpp"
+#include "EQUAL_CHARS_FINDER.hpp"
 int main()
 {
   try

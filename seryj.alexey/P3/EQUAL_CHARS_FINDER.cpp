@@ -1,4 +1,4 @@
-#include "fun.hpp"
+#include "EQUAL_CHARS_FINDER.hpp"
 #include <iostream>
 char * seryj::changeArray(char* old_line, int max_size)
 {
