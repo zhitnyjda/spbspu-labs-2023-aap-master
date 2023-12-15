@@ -1,4 +1,4 @@
-#include "functionsMaxSumDiagonal.h"
+#include "functionsMatrix.h"
 #include <algorithm>
 #include <stdexcept>
 
