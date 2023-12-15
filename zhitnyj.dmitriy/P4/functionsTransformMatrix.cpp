@@ -1,4 +1,4 @@
-#include "functionsTransformMatrix.h"
+#include "functionsMatrix.h"
 #include <stdexcept>
 
 Matrix::Matrix(int r, int c) : rows(r), cols(c) {
