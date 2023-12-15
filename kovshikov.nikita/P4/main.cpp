@@ -3,7 +3,6 @@
 #include <cstring>
 #include "count_saddle.hpp"
 #include "create_matrix.hpp"
-using namespace kovshikov;
 
 int main(int argc, char ** argv)
 {
@@ -48,9 +47,10 @@ int main(int argc, char ** argv)
       return 2;
     }
   }
+  using namespace kovshikov;
   Saddle saddle;
-  size_t stat_matrix[rows * cols] = {};
-  size_t * matrix = (num == 1)? stat_matrix : new size_t [rows * cols];
+  size_t statMatrix[rows * cols] = {};
+  size_t * matrix = (num == 1)? statMatrix : new size_t [rows * cols];
   createMatrix(matrix, argv[2]);
   std::ofstream output(argv[3]);
   output << saddle(rows, cols, matrix);

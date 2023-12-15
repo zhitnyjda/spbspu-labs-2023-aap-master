@@ -5,7 +5,7 @@ kovshikov::Saddle::Saddle():
   minrows(std::numeric_limits< size_t >::max()),
   maxcols(std::numeric_limits< size_t >::min()),
   coordinateMinRowsj(0)
-  {};
+{};
 size_t kovshikov::Saddle::operator()(size_t rows, size_t cols, size_t * matrix)
 {
   for (size_t i = 0; i < rows; ++i)
