@@ -10,6 +10,7 @@ public:
     void readFromFile(std::ifstream &infile);
     int calculateMaxSumDiagonal() const;
     void writeToOutput(std::ofstream &outfile) const;
+    void transformMatrix();
 
 private:
     int **elements;
