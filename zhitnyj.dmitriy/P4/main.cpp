@@ -26,8 +26,8 @@ int main(int argc, char *argv[]) {
     try {
         Matrix matrix(rows, cols, arrayType);
         matrix.readFromFile(infile);
-        matrix.calculateMaxSumDiagonal(); 
-        matrix.transformMatrix();  
+        matrix.calculateMaxSumDiagonal();
+        matrix.transformMatrix();
         matrix.writeToOutput(outfile);
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
