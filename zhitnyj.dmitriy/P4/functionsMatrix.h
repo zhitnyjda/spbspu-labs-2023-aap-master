@@ -2,6 +2,7 @@
 #define FUNCTIONS_MATRIX_H
 
 #include <fstream>
+#include <cstdlib>
 
 class Matrix {
 public:
