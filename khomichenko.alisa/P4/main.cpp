@@ -49,7 +49,7 @@ int main(int argc, char ** argv)
   if (!input)
   {
     std::cerr << "can't read cols and rows\n";
-    return 0;
+    return 2;
   }
 
   int firstMatrix[10000] = {0};
@@ -65,7 +65,7 @@ int main(int argc, char ** argv)
     {
       delete [] Matrix;
     }
-    return 2;
+    return 0;
   }
 
   std::ofstream output (argv[3]);
