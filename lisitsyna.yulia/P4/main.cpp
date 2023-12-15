@@ -27,9 +27,10 @@ int main(int argc, char** argv)
     std::cerr << "Incorrect value" << "\n";
     return 2;
   }
-  int rows = 0, cols = 0;
+  size_t rows = 0, cols = 0;
   std::ifstream input(argv[2]);
-  input >> rows >> cols;
+  input >> rows;
+  input >> cols;
   if (!input)
   {
     std::cerr << "Cannot read the file" << "\n";
