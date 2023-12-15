@@ -101,7 +101,7 @@ int main(int argc, char** argv)
     {
       delete[] array;
     }
-    return 2;
+    return 1;
   }
   if (num == 2) {
     delete[] array;
