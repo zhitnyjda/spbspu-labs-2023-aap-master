@@ -26,7 +26,6 @@ int main()
     nikiforov::AddElem(str2, size, read);
     str2[read++] = c;
   }
-
   size_t len2 = read;
   std::cin >> std::skipws;
   if (len1 == 0 || len2 == 0)
