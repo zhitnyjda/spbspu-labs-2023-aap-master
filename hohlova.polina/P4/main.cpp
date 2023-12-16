@@ -21,8 +21,7 @@ int main(int argc, char** argv)
     return 1;
   }
   std::ifstream input(argv[2]);
-  size_t rows = 0;
-  size_t cols = 0;
+  size_t rows, cols;
   input >> rows >> cols;
   if (!input)
   {
