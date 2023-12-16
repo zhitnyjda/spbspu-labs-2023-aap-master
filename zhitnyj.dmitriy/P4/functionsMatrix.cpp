@@ -1,4 +1,5 @@
 #include "functionsMatrix.h"
+#include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <stdexcept>
