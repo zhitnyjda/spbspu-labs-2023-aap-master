@@ -65,7 +65,7 @@ int main(int argc, char ** argv)
     {
       delete [] Matrix;
     }
-    return 0;
+    return 2;
   }
 
   std::ofstream output (argv[3]);
