@@ -67,10 +67,17 @@ int main(int argc, char** argv)
     if (count != rows * cols)
     {
       std::cerr << "Not correct" << "\n";
+      if (num == 2)
+      {
+        delete[] array;
+      }
       return 2;
-      delete[] array;
     }
     outputFile << minS(rows, cols, array);
+    if (num == 2)
+    {
+      delete[] array;
+    }
     return 0;
   }
   catch (const std::exception& e)
@@ -88,11 +95,17 @@ int main(int argc, char** argv)
     if (count != rows * cols)
     {
       std::cerr << "Not correct" << "\n";
+      if (num == 2)
+      {
+        delete[] array;
+      }
       return 2;
-      delete[] array;
     }
     outputFile << minS(rows, cols, array);
-    delete[] array;
+    if (num == 2)
+    {
+      delete[] array;
+    }
     return 0;
   }
   catch (const std::exception& e)
