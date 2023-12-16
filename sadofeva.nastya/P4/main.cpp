@@ -78,8 +78,8 @@ int main(int argc, char** argv)
       if (count != rows * cols)
       {
         std::cerr << "Not correct" << "\n";
-        return 2;
         delete[] dm_ar;
+        return 2;
       }
       outputFile << locMax(values, rows, cols);
       delete[] dm_ar;
