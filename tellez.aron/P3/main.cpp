@@ -22,7 +22,7 @@ int main()
   std::cin >> replaceTo;
   char* replacedResult = remplaceChar(cstring, size, replaceFrom, replaceTo);
   size_t hasRepResult = hasRepeatedChars(cstring, size);
-  std::cout << "New string: " << replacedResult << " There are duplicate characters: " << hasRepResult << "\n";
+  std::cout << "New string: " << replacedResult << "There are duplicate characters: " << hasRepResult << "\n";
   delete[] replacedResult;
   delete[] cstring;
   return 0;

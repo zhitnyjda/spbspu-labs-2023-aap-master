@@ -3,13 +3,15 @@
 #include <cstddef>
 char* makeNewCapacityCString(const char* cstring, size_t newSize, size_t& newCapacity)
 {
-  newCapacity = newSize * 2;
-  char* newstring = new char[newCapacity];
-  for (size_t i = 0; i < newSize; ++i)
+  newCapacity = newSize + newCapacity;
+  char* newString = new char[newCapacity + 1];
+  const char* sourceEnd = cstring + newSize;
+  for (char* dest = newString; cstring != sourceEnd; ++cstring, ++dest)
   {
-    newstring[i] = cstring[i];
+    *dest = *cstring;
   }
-  return newstring;
+  newString[newSize + newCapacity] = '\0';
+  return newString;
 }
 
 char* readDynamicString(size_t& size, size_t& capacity)
