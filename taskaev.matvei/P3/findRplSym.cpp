@@ -2,16 +2,9 @@
 
 char * taskaev::findRplSym(char * string)
 {
-  for (size_t i = 0; string[i] != '\0' ; i++)
+  for (int i = 0; string[i] != '\0' ; i++)
   {
-	if (string[i] == 'c')
-        {
-	  string[i] = 'b';
-	}
-        if (string[i] == 'C')
-        {
-          string[i] = 'B';
-        }
+    string[i] = (string[i] == 'c' ? 'b' : string[i]);
   }
   return string;
 }

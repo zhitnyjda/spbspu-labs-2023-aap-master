@@ -1,12 +1,13 @@
 #include "readingString.hpp"
 #include "formingString.hpp"
+#include <iostream>
+#include <iomanip>
 
 char * taskaev::readingString(std::istream& input)
 {
   int size = 10;
   int newSize = 0;
-  char* string = new char[size]{};
-  char c = 0;
+  char* string = new char[size];
   input >> std::noskipws;
   do
   {
@@ -14,23 +15,23 @@ char * taskaev::readingString(std::istream& input)
     {
       try
       {
-        char* newString = taskaev::formingString(string, size, newSize);
+        char * newString = taskaev::formingString(string, size, newSize);
         delete[] string;
         string = newString;
       }
       catch (const std::exception& e)
       {
         delete[] string;
-        throw std::logic_error("Error forming string.");
+        throw std::logic_error("Error: forming string, couldn't reed the string.");
       }
     }
-    string[newSize++] = c;
   }
-  while ((input >> c) && (c != '\n'));
+  while ((input >> string[newSize] ) && (string[newSize++] != '\n'));
+  string[newSize != 0 ? newSize - 1 : newSize] = '\0';
   if (!string[0])
   {
-    throw std::logic_error("The string is remowed, no string.");
     delete[] string;
+    throw std::logic_error("Error: nothing was entered, an empty input.");
   }
   input >> std::skipws;
   return string;

@@ -16,10 +16,7 @@ int main()
     delete [] string;
     return 1;
   }
-  char * answerString = nullptr;
-  answerString = taskaev::findRplSym(string);
-  std::cout << answerString << "\n";
+  std::cout << taskaev::findRplSym(string) << "\n";
   delete[] string;
-  delete[] answerString;
   return 0;
 }
