@@ -27,6 +27,9 @@ void Matrix::allocateDynamicArray() {
     for (int i = 0; i < rows; ++i) {
         dynamicArray[i] = new int[cols]{};
     }
+    if (!dynamicArray[0]) {
+        throw std::invalid_argument("Invalid matrix data");
+    }
 }
 
 void Matrix::deallocateDynamicArray() {
@@ -45,6 +48,9 @@ void Matrix::readFromFile(std::ifstream &infile) {
                 infile >> dynamicArray[i][j];
             }
         }
+    }
+    if ((arrayType == 1 && !staticArray[0][0]) || ( arrayType == 0 && dynamicArray[0][0] )) {
+        throw std::invalid_argument("Invalid matrix data");
     }
 }
 
