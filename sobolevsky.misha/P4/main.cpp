@@ -31,7 +31,12 @@ int main(int argc, char ** argv)
     return 1;
   }
 
-  if (number == 1 || number == 2)
+  if (!(number == 1 || number == 2))
+  {
+    std::cerr << "first argument should be either 1 or 2\n";
+    return 1;
+  }
+  else
   {
     size_t rows = 0, cols = 0;
 
@@ -69,10 +74,5 @@ int main(int argc, char ** argv)
       delete[] matrix;
     }
     return 0;
-  }
-  else
-  {
-    std::cerr << "first argument should be either 1 or 2\n";
-    return 1;
   }
 }
