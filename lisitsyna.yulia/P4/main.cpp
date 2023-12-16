@@ -92,6 +92,7 @@ int main(int argc, char** argv)
       delete[] array;
     }
     outputFile << minS(rows, cols, array);
+    delete[] array;
     return 0;
   }
   catch (const std::exception& e)
