@@ -45,7 +45,7 @@ char * reznikova::inputString(std::istream & in, size_t & size, size_t & add_siz
     delete [] string;
     throw std::runtime_error("empty input");
   }
-  
+
   in >> std::skipws;
   return string;
 }
