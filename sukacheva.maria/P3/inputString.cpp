@@ -26,6 +26,11 @@ char * sukacheva::inputString(std::istream& in, size_t& read)
     input[read] = c;
     read++;
   }
+  if (!input[0])
+  {
+    delete[] input;
+    throw std::runtime_error("Run without input");
+  }
   in >> std::skipws;
   return input;
 }
