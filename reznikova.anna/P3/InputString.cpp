@@ -22,7 +22,6 @@ char * reznikova::inputString(std::istream & in, size_t & size, size_t & add_siz
         delete [] string;
         throw std::runtime_error("bad_alloc error");
       }
-
       for (size_t i = 0; i < size; i++)
       {
         newstring[i] = string[i];
@@ -45,7 +44,6 @@ char * reznikova::inputString(std::istream & in, size_t & size, size_t & add_siz
     delete [] string;
     throw std::runtime_error("empty input");
   }
-
   in >> std::skipws;
   return string;
 }
