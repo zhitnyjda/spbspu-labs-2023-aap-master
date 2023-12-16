@@ -54,6 +54,7 @@ int main(int argc, char ** argv)
 
   int firstMatrix[10000] = {0};
   int *Matrix = nullptr;
+
   Matrix = num==2?new int[rows * cols]:firstMatrix;
 
   size_t hadRead = inputArray(input, Matrix, rows*cols);
@@ -101,6 +102,7 @@ int main(int argc, char ** argv)
   else
   {
     output << "\n";
+    delete [] Matrix;
     return 0;
   }
 
