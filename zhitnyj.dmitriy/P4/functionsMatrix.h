@@ -17,7 +17,7 @@ private:
     static const int MAX_SIZE = 100;
     int staticArray[MAX_SIZE][MAX_SIZE];
     int **dynamicArray;
-    size_t rows, cols;
+    int rows, cols;
     int arrayType;
 
     void allocateDynamicArray();
