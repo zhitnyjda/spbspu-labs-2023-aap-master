@@ -38,10 +38,10 @@ int main(int argc, char ** argv)
   }
   else
   {
-    size_t rows = 0, cols = 0;
-
     std::ifstream input(argv[2]);
-    input >> rows >> cols;
+    size_t rows, cols;
+    input >> rows;
+    input >> cols;
     if (!input)
     {
       std::cerr << "input file cannot be opened\n";
