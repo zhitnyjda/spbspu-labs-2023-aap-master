@@ -29,7 +29,7 @@ int main(int argc, char** argv)
     std::cerr << "Cannot open an input file\n";
     return 2;
   }
-  size_t sizee = rows * cols;
+  size_t matrixSize = rows * cols;
   if (num == 1 || num == 2)
   {
     std::ofstream output(argv[3]);
@@ -42,15 +42,15 @@ int main(int argc, char** argv)
   {
     std::ofstream output(argv[3]);
     int staticm[1000] = { 0 };
-    size_t sizeM = hohlova::inputArray(input, staticm, sizee);
-    if (sizeM != sizee)
+    size_t sizeM = hohlova::inputArray(input, staticm, matrixSize);
+    if (sizeM != matrixSize)
     {
       std::cerr << "Not all elements are read\n";
       return 2;
     }
     try
     {
-      hohlova::inputArray(input, staticm, sizee);
+      hohlova::inputArray(input, staticm, matrixSize);
     }
     catch (std::logic_error const& e)
     {
@@ -62,9 +62,9 @@ int main(int argc, char** argv)
   else if (num == 2)
   {
     std::ofstream output(argv[3]);
-    int* dynamicm = new int[sizee];
-    size_t toRead = hohlova::inputArray(input, dynamicm, sizee);
-    if (toRead != sizee)
+    int* dynamicm = new int[matrixSize];
+    size_t toRead = hohlova::inputArray(input, dynamicm, matrixSize);
+    if (toRead != matrixSize)
     {
       delete[] dynamicm;
       std::cerr << "Not all elements are read\n";
@@ -72,7 +72,7 @@ int main(int argc, char** argv)
     }
     try
     {
-      hohlova::inputArray(input, dynamicm, sizee);
+      hohlova::inputArray(input, dynamicm, matrixSize);
     }
     catch (std::logic_error const& e)
     {

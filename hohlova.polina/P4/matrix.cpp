@@ -1,5 +1,4 @@
 #include "matrix.hpp"
-#include <iostream>
 #include <iosfwd>
 
 size_t hohlova::countStrings(const int* matrix, size_t rows, size_t cols)
@@ -15,6 +14,5 @@ size_t hohlova::countStrings(const int* matrix, size_t rows, size_t cols)
       }
     }
   }
-  int res = rows - counter;
-  return res;
+  return rows - counter;
 }
