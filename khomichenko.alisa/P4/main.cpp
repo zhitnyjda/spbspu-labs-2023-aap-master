@@ -102,8 +102,6 @@ int main(int argc, char ** argv)
   else
   {
     output << "\n";
-    delete [] Matrix;
-    return 0;
   }
 
   if (num == 2)
