@@ -14,8 +14,8 @@ int main(int argc, char** argv)
   }
   char* endOfParcing = nullptr;
   int num = std::strtoll(argv[1], std::addressof(endOfParcing), 10);
-  int lenght = strlen(argv[1]);
-  if (endOfParcing != argv[1] + lenght)
+  int length = strlen(argv[1]);
+  if (endOfParcing != argv[1] + length)
   {
     std::cerr << "Please enter a valid value\n";
     return 1;
