@@ -1,59 +1,35 @@
 #include <iostream>
 #include <iomanip>
 #include <cctype>
+#include "read_input.hpp"
+#include "shr_sym.hpp"
+#include "dgt_snd.hpp"
+
 int main()
 {
-  size_t read = 0;
-  char symbol = 0;
-  int add = 25;
-  size_t size = 25;
   std::cin >> std::noskipws;
-  char * newarray = nullptr;
-  char * array = new char[size]{};
-  while ((std::cin >> symbol) && (symbol != '\n'))
+  size_t readStr1 = 0;
+  size_t readStr2 = 0;
+  char * string1 = new char[25]{};
+  char * string2 = new char[25]{};
+  try
   {
-    array[read++] = symbol;
-    if (read == size)
-    {
-      try
-      {
-        newarray = new char[size + add]{};
-        for(size_t i = 0; i < size; i++)
-        {
-          newarray[i] = array[i];
-        }
-        delete[] array;
-        char * array = newarray;
-        size += add;
-      }
-      catch(const std::bad_alloc &e)
-      {
-        std::cerr << "Unable to allocate memory\n";
-        return 1;
-      }
-    }
+    readStr1 = readInput(string1);
+    readStr2 = readInput(string2);
   }
-  char output[26] = {};
-  std::cout << output << "\n";
-  int element = 0;
-  bool flag = false;
-  for(int i = 97; i <= 122 ; i++)
+  catch(const std::bad_alloc &e)
   {
-    for(size_t j = 0; j < read; j++)
-    {
-      if(char(i) == (char)tolower(array[j]))
-      {
-        flag = true;
-      }
-      else if((j == read - 1) && char(i) != (char)tolower(array[j]) && flag == false)
-      {
-        output[element++] = char(i);
-      }
-    }
-    flag = false;
+    std:: cerr << "Unable to allocate memory\n";
+    return 1;
   }
-  std::cout << output << "\n";
+  char outputShrSym[26] = {};
+  missingChar(string1, outputShrSym, readStr1);
+  char outputDgtSnd[readStr1 + readStr2] = {};
+  withDigits(string1, string2, outputDgtSnd, readStr2, readStr1);
+  std::cout << outputShrSym << "\n";
+  std::cout << outputDgtSnd << "\n";
   std::cin >> std::skipws;
-  delete[] array;
+  delete[] string1;
+  delete[] string2;
   return 0;
 }
