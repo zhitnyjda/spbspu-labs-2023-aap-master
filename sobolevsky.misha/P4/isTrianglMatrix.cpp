@@ -1,4 +1,4 @@
-#include "funcs.hpp"
+#include "isTrianglMatrix.hpp"
 
 namespace sobolevsky
 {

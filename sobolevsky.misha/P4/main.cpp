@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include "fillMatrix.hpp"
-#include "funcs.hpp"
+#include "isTrianglMatrix.hpp"
 
 int main(int argc, char ** argv)
 {

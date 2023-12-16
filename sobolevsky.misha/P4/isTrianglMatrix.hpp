@@ -1,5 +1,5 @@
-#ifndef FUNCS_HPP
-#define FUNCS_HPP
+#ifndef ISTRIANGLMATRIX_HPP
+#define ISTRIANGLMATRIX_HPP
 #include <fstream>
 
 namespace sobolevsky
