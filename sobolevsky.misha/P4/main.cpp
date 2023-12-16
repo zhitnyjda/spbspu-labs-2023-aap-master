@@ -12,20 +12,9 @@ int main(int argc, char ** argv)
     return 1;
   }
 
-  int number;
-  try
-  {
-    for (size_t i = 0; i < strlen(argv[1]); i++)
-    {
-      if (!(isdigit(argv[1][i])))
-      {
-        std::cerr << "the first argument should be int\n";
-        return 1;
-      }
-    }
-    number = std::stoll(argv[1]);
-  }
-  catch (const std::invalid_argument & e)
+  char * endOfParsing = nullptr;
+  int number = std::strtoll(argv[1], std::addressof(endOfParsing), 10);
+  if (*endOfParsing != '\0')
   {
     std::cerr << "the first argument should be int\n";
     return 1;
