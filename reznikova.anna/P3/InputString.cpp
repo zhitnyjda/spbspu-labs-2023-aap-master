@@ -1,22 +1,21 @@
 #include <iostream>
 #include "InputString.hpp"
 
-char * inputString(std::istream & in, size_t & size, size_t & add_size)
+char * reznikova::inputString(std::istream & in, size_t & size, size_t & add_size)
 {
   char * string = new char[size]();
   char chr = 0;
   size_t read = 0;
   in >> std::noskipws;
 
-  while ((in >> chr) && (chr != '\n'))
+  while (in >> chr)
   {
-    string[read++] = chr;
-    if (read == size)
+    if (read == (size-1))
     {
       char * newstring = nullptr;
       try
       {
-        newstring = new char[size + add_size];
+        newstring = new char[size + add_size]();
       }
       catch (const std::bad_alloc & e)
       {
@@ -32,14 +31,21 @@ char * inputString(std::istream & in, size_t & size, size_t & add_size)
       string = newstring;
       size += add_size;
     }
+    if  (chr == '\n')
+    {
+      size = size - add_size + read;
+      break;
+    }
+    string[read++] = chr;
   }
+
   string[size == 0 ? size : size - 1] = '\0';
   if (!string[0])
   {
     delete [] string;
     throw std::runtime_error("empty input");
   }
-
+  
   in >> std::skipws;
   return string;
 }

@@ -11,7 +11,7 @@ int main() {
   char * first_string = nullptr;
   try
   {
-    first_string = inputString(std::cin, first_size, add_size);
+    first_string = reznikova::inputString(std::cin, first_size, add_size);
   }
   catch (const std::runtime_error & e)
   {
@@ -21,8 +21,7 @@ int main() {
   }
 
   char second_string[3] = {'a', 'b', ' '};
-  char * result_string = nullptr;
-  result_string = ExcludeSecString(first_string, second_string, first_size, second_size);
+  char * result_string = reznikova::ExcludeSecString(first_string, second_string, first_size, second_size);
 
   std::cout << result_string << "\n";
 
