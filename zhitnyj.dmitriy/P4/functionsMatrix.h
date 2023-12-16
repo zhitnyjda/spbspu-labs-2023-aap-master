@@ -9,7 +9,7 @@ public:
     Matrix(int r, int c, int arrayType);
     ~Matrix();
     void readFromFile(std::ifstream &infile);
-    int calculateMaxSumDiagonal() const;
+    void calculateMaxSumDiagonal() const;
     void transformMatrix();
     void writeToOutput(std::ofstream &outfile) const;
 
@@ -17,7 +17,7 @@ private:
     static const int MAX_SIZE = 100;
     int staticArray[MAX_SIZE][MAX_SIZE];
     int **dynamicArray;
-    int rows, cols;
+    size_t rows, cols;
     int arrayType;
 
     void allocateDynamicArray();
