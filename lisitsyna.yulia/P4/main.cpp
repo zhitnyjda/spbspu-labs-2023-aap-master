@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <cstring>
 #include "input_ar.hpp"
 #include "minS.hpp"
 
@@ -12,17 +12,15 @@ int main(int argc, char** argv)
     std::cerr << "Incorrectly entered data" << "\n";
     return 1;
   }
-  int num = 0;
-  try
+  char* endOfParcing = nullptr;
+  int num = std::strtoll(argv[1], std::addressof(endOfParcing), 10);
+  int lenght = strlen(argv[1]);
+  if (endOfParcing != argv[1] + lenght)
   {
-    num = std::stoll(argv[1]);
-  }
-  catch (const std::invalid_argument& e)
-  {
-    std::cerr << "Please enter a valid value" << "\n";
+    std::cerr << "Please enter a valid value\n";
     return 1;
   }
-  if (num > 2 || num <= 0)
+    if (num > 2 || num <= 0)
   {
     std::cerr << "Incorrect value" << "\n";
     return 2;
