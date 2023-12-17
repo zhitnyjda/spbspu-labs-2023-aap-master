@@ -36,7 +36,7 @@ int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, s
   dynamicArray = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
-    dynamicArray[i] = new int[cols]
+    dynamicArray[i] = new int[cols];
     for (int j = 0; j < cols; ++j)
     {
       if (!(inputFile >> dynamicArray[i][j]))
