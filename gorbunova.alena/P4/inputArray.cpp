@@ -22,6 +22,12 @@ int gorbunova::readFixedSizeArray(const char* fileName, int(&fixedArray)[100][10
     inputFile.close();
     return 2;
   }
+  if (rows * cols > 100000)
+  {
+    std::cerr << "Array size exceeds maximum limit." << std::endl;
+    inputFile.close();
+    return 2;
+  }
   for (int i = 0; i < rows; ++i)
   {
     for (int j = 0; j < cols; ++j)
