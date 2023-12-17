@@ -1,5 +1,5 @@
-#ifndef LAVRAN_HPP
-#define LAVRAN_HPP // Lavran [ToDo] : Придумать адекватное название
+#ifndef SEQUENCES_HPP
+#define SEQUENCES_HPP
 namespace likhachev
 {
   int readSequence(char *array);

@@ -1,4 +1,4 @@
-#include "lavran.hpp"
+#include "sequences.hpp"
 #include <iostream>
 #include <cctype>
 

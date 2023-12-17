@@ -1,6 +1,5 @@
 #include <iostream>
-#include "lavran.cpp"
-#include "lavran.hpp"
+#include "sequences.hpp"
 
 int main()
 {
