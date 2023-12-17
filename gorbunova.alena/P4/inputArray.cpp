@@ -16,7 +16,7 @@ int gorbunova::readFixedSizeArray(const char* fileName, int(&fixedArray)[100][10
     std::cerr << "File is empty\n";
     return 2;
   }
-  if (!(inputFile >> rows) || !(inputFile >> cols))
+  if (!(inputFile >> rows >> cols))
   {
     std::cerr << "Failed to read rows or cols from the file\n";
     inputFile.close();
@@ -80,6 +80,10 @@ int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, i
       {
         std::cerr << "Invalid data\n";
         inputFile.close();
+        for (int k = 0; k < i; ++k)
+        {
+        delete[] dynamicArray;
+        return 4;
       }
     }
   }
