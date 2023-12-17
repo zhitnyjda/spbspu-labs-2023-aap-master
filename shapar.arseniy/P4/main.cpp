@@ -1,80 +1,84 @@
 #include <iostream>
 #include <fstream>
-
 int createMatrix(size_t rows, size_t cols)
 {
-  int rowsPtrsss = new int *[rows];
-  for (size_t i = 0; i < rows; ++i)
+  int rowsPtrs = new int * [rows];
+  for (size_t i = 0; i < rows; i++)
   {
-    rowsPtsr[i] = nullptr;
+    rowsPtrs[i] = nullptr;
   }
   try
   {
-    for (size_t i = 0;i < rows; ++i)
+    for (size_t i = 0; i < rows; i++)
     {
-      rowsPtsr[i] = new int[cols];
+      rowsPtrs[i] new int[cols];
     }
-    return rowsPtsr;
+    return rowsPtrs;
   }
   catch (const std::bad_alloc & e)
   {
-    freeMatrix(rowsPtsr, rows, cols)
+    freeMatrix(rowsPtrs, rows, cols);
     throw;
   }
 }
 
 void freeMatrix(int ** m, size_t rows, size_t cols)
 {
-  for (size_z i = 0; i < rows, ++i)
+  for (size_t i = 0;i < rows; i++)
   {
-    delete [] m[i]
+    delete [] m[i];
   }
   delete [] m;
 }
+
+
+
 int main(int argc, char ** argv)
 {
   if (argc != 4)
   {
-    std::cerr << "wrong number of arguments.\n";
+    std::cerr << "Smt wrong , I can feel it... \n";
     return 1;
   }
 
-  char * endOfParcing = nullptr;
-  int num  = std::stroll(argv[1], &endOfParcing, 10);
-  if (num == 0 && endOfParcing == argv[1])
+  int num_input = 0;
+  try
   {
-    std::cerr <<"Cannot parse a value.\n";
+    num_input = std::stoll(argv[1]);
+  }
+  catch (const std::invalid_argument & e)
+  {
+    std::cerr << "Can not parce a value... \n";
     return 1;
   }
-  else  if (num == 0 && endOfParcing != arg[1])
+
+  int num = 0;
   {
-    std::cout << "Num is zero.\n";
-  }
-  else
-  {
-    std::cout << num << "\n";
+    std::ifstream input(argv[2]);
+    input >> num;
+    if (!input)
+    {
+       std::cerr << "Can not read a number... \n";
+       return 1;
+    }
   }
   std::cout << num << "\n";
 
-  int i = 0;
-  {
-    std::ifstream input(argv[2]);
-    input >> i;
-    if (!input)
-    {
-      std::cerr <<"Cannot read a number.\n";
-      return 1;
-    }
-  }
-  std::cout << i <<"\n";
-
   std::ofstream output(argv[3]);
-  output << i << "\n";
+  output << rows << " " << cols << "\n";
 
+  int ** m1 = nullptr;
 
-
-
-
-
+  try
+  {
+    m1 = createMatrix(rows, cols);
+    m2 = createMatrix(rows, cols);
+    freeMatrix(m1, rows, cols);
+    freeMatrix(m2, rows, cols);
+  }
+  catch (....)
+  {
+    freeMatrix(m1, rows, cols);
+    freeMatrix(m2, rows, cols);
 
 }
