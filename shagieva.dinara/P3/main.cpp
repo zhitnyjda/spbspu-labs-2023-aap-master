@@ -13,6 +13,11 @@ int main()
   do
   {
     std::cin >> cur;
+    if (read == 0 && cur == '\n')
+    {
+      std::cerr << "No line.\n";
+      return 1;
+    }
     input[read++] = cur;
     if (read % add == 0)
     {
