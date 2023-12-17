@@ -5,7 +5,7 @@
 int main()
 {
   char * inputStr = new char[10]{};
-  size_t add = 10;
+  size_t add = 30;
   char cur = 0;
   size_t read = 0;
 
