@@ -7,7 +7,6 @@ size_t countGlobal = 0;
 
 int main()
 {
-  //size_t countGlobal = 0;
   using namespace mihalchenko;
 
   char element = 0;
@@ -21,7 +20,7 @@ int main()
   {
     if (s1.counterCurrent < s1.size)
     {
-        s1.dinAppend(element);
+      s1.dinAppend(element);
     }
     else
     {
@@ -43,18 +42,18 @@ int main()
   {
     if (s2.counterCurrent < s2.size)
     {
-        s2.dinAppend(element);
+      s2.dinAppend(element);
     }
     else
     {
-        s2.dinResize();
-        s2.dinAppend(element);
+      s2.dinResize();
+      s2.dinAppend(element);
     }
   }
   s2.dinOutput();
 
-  char * resultStr;
-  size_t counterLenMas;
+  char * resultStr = nullptr;
+  size_t counterLenMas = 0;
   countGlobal = 0;
   resultStr = findIdenticalChars(s1.dinstr, s2.dinstr, s1.size, s2.size);
   (s1.size > s2.size) ? (counterLenMas = s2.size) : (counterLenMas = s1.size);

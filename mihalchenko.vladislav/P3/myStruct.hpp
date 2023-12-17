@@ -12,7 +12,7 @@ namespace mihalchenko
     void dinResize();
     void dinAppend(char elem);
     void dinOutput();
-  //private:
+
     size_t size;
     size_t size2;
     char *dinstr;

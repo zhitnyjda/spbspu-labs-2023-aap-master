@@ -52,36 +52,36 @@ void mihalchenko::DinString::dinOutput()
 
 char * mihalchenko::findIdenticalChars(char * str1, char * str2, size_t size1, size_t size2)
 {
-    size_t revers = 0;
+  size_t revers = 0;
 
-    (size1 > size2) ? (revers = size2) : (revers = size1);
-    char * resultStr = new char[revers];
+  (size1 > size2) ? (revers = size2) : (revers = size1);
+  char * resultStr = new char[revers];
 
-    revers = 0;
-    if (size1 > size2)
+  revers = 0;
+  if (size1 > size2)
+  {
+    for (size_t i = 0; i < size2; i++)
     {
-      for (size_t i = 0; i < size2; i++)
+      if (std::strchr(str1,str2[i]) != 0)
       {
-        if (std::strchr(str1,str2[i]) != 0)
-        {
-            resultStr[revers] = str2[i];
-            revers ++;
-        }
+        resultStr[revers] = str2[i];
+        revers ++;
       }
     }
-    else
+  }
+  else
+  {
+    for (size_t i = 0; i < size1; i++)
     {
-      for (size_t i = 0; i < size1; i++)
+      if (std::strchr(str2, str1[i]) != 0)
       {
-        if (std::strchr(str2, str1[i]) != 0)
-        {
-          resultStr[revers] = str1[i];
-          revers ++;
-        }
+        resultStr[revers] = str1[i];
+        revers ++;
       }
     }
-    ::countGlobal = revers;
-    return resultStr;
+  }
+  ::countGlobal = revers;
+  return resultStr;
 }
 
 size_t mihalchenko::arr_uniq(char * mas, size_t size)
