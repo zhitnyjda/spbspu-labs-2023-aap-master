@@ -16,6 +16,12 @@ int gorbunova::readFixedSizeArray(const char* fileName, int(&fixedArray)[100][10
     std::cerr << "File is empty\n";
     return 2;
   }
+  if (!(inputFile >> rows) || !(inputFile >> cols))
+  {
+    std::cerr << "Failed to read rows or cols from the file\n";
+    inputFile.close();
+    return 2;
+  }
   for (int i = 0; i < rows; ++i)
   {
     for (int j = 0; j < cols; ++j)
@@ -45,6 +51,12 @@ int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, i
     std::cerr << "File is empty\n";
     return 2;
   }
+  if (!(inputFile >> rows >> cols))
+  {
+    std::cerr << "Failed to read rows or cols from the file\n";
+    inputFile.close();
+    return 2;
+  }
   dynamicArray = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
@@ -67,7 +79,7 @@ int gorbunova::writeResultToFile(const char* fileName, int result)
     std::ofstream outputFile(fileName);
     if (outputFile.is_open())
     {
-        outputFile << (result == 1 ? "true" : "false") << std::endl;
+        outputFile << (result == 1 ? "true\n" : "false\n");
         outputFile.close();
     }
     else
