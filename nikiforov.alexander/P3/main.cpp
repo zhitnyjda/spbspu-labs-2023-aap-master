@@ -28,7 +28,7 @@ int main()
   }
   size_t len2 = read;
   std::cin >> std::skipws;
-  if (len1 == 0 || len2 == 0)
+  if (len1 == 0 && len2 == 0)
   {
     std::cerr << "Too short sequence\n";
     delete[] str1;
