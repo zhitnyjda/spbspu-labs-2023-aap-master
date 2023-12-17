@@ -24,7 +24,7 @@ int gorbunova::readFixedSizeArray(const char* fileName, int(&fixedArray)[100][10
   }
   if (rows * cols > 100000)
   {
-    std::cerr << "Array size exceeds maximum limit." << std::endl;
+    std::cerr << "Array size exceeds maximum limit\n";
     inputFile.close();
     return 2;
   }
@@ -80,12 +80,7 @@ int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, i
       {
         std::cerr << "Invalid data\n";
         inputFile.close();
-        for (int k = 0; k < i; ++k)
-        {
-          delete[] dynamicArray[k];
-        }
-        delete[] dynamicArray;
-        return 4;
+        return 2;
       }
     }
   }
