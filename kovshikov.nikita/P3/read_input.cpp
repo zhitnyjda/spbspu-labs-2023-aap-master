@@ -1,6 +1,6 @@
 #include "read_input.hpp"
 
-size_t readInput(char * array)
+size_t kovshikov::readInput(char * array)
 {
   size_t size = 25;
   size_t read = 0;
@@ -11,7 +11,7 @@ size_t readInput(char * array)
   {
     if (read == size)
     {
-      newArray = new char[size + add]{};
+      newArray = new char[size + add];
       for(size_t i = 0; i < size; i++)
       {
         newArray[i] = array[i];

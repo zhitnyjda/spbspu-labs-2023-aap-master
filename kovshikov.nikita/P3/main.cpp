@@ -10,12 +10,12 @@ int main()
   std::cin >> std::noskipws;
   size_t readStr1 = 0;
   size_t readStr2 = 0;
-  char * string1 = new char[25]{};
-  char * string2 = new char[25]{};
+  char * string1 = new char[25];
+  char * string2 = new char[25];
   try
   {
-    readStr1 = readInput(string1);
-    readStr2 = readInput(string2);
+    readStr1 = kovshikov::readInput(string1);
+    readStr2 = kovshikov::readInput(string2);
   }
   catch(const std::bad_alloc &e)
   {
@@ -23,9 +23,9 @@ int main()
     return 1;
   }
   char outputShrSym[26] = {};
-  missingChar(string1, outputShrSym, readStr1);
+  kovshikov::missingChar(string1, outputShrSym, readStr1);
   char outputDgtSnd[readStr1 + readStr2] = {};
-  withDigits(string1, string2, outputDgtSnd, readStr2, readStr1);
+  kovshikov::withDigits(string1, string2, outputDgtSnd, readStr2, readStr1);
   std::cout << outputShrSym << "\n";
   std::cout << outputDgtSnd << "\n";
   std::cin >> std::skipws;

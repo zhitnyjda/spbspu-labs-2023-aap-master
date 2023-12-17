@@ -3,6 +3,9 @@
 #include <iostream>
 #include <cstddef>
 
-size_t readInput(char * array);
+namespace kovshikov
+{
+  size_t readInput(char * array);
+}
 
 #endif

@@ -3,6 +3,9 @@
 #include <cstddef>
 #include <cctype>
 
-void missingChar(char * array, char * output, const size_t read);
+namespace kovshikov
+{
+  void missingChar(char * array, char * output, const size_t read);
+}
 
 #endif

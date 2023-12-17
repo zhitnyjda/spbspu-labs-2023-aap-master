@@ -1,6 +1,6 @@
 #include "shr_sym.hpp"
 
-void missingChar(char * array, char * output, const size_t read)
+void kovshikov::missingChar(char * array, char * output, const size_t read)
 {
    int element = 0;
    bool flag = false;
