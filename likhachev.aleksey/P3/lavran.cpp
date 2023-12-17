@@ -1,6 +1,6 @@
 #include "lavran.hpp"
-#include <limits>
 #include <iostream>
+#include <cctype>
 
 int likhachev::readSequence(char *array)
 {
@@ -112,7 +112,7 @@ int likhachev::strRemoveDigits(char *array, int size)
 
   int counter = 0;
   for (int i = 0; i < size; i++) {
-    if (!charIsDigit(array[i])) {
+    if (!std::isdigit(array[i])) {
       reserveArray[counter] = array[i];
     }
   }
@@ -122,40 +122,4 @@ int likhachev::strRemoveDigits(char *array, int size)
   copyCharArray(reserveArray, array, counter);
 
   return counter;
-}
-
-bool likhachev::charIsDigit(char chr)
-{
-  if (chr == '0') {
-    return true;
-  }
-  if (chr == '1') {
-    return true;
-  }
-  if (chr == '2') {
-    return true;
-  }
-  if (chr == '3') {
-    return true;
-  }
-  if (chr == '4') {
-    return true;
-  }
-  if (chr == '5') {
-    return true;
-  }
-  if (chr == '6') {
-    return true;
-  }
-  if (chr == '7') {
-    return true;
-  }
-  if (chr == '8') {
-    return true;
-  }
-  if (chr == '9') {
-    return true;
-  }
-
-  return false;
 }

@@ -8,7 +8,6 @@ namespace likhachev
   bool strDoesHasSame(char *array1, int size1, char *array2, int size2);
   int strRemoveDigits(char *array, int size);
 
-  bool charIsDigit(char chr);
   void outLine(char *array, int size);
 };
 #endif
