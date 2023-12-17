@@ -13,6 +13,7 @@ int main()
     int hasSame = likhachev::strDoesHasSame(line, size, subString, 9);
     likhachev::strRemoveDigits(line, size);
 
+    std::cout << "\n";
     std::cout << "Strings ";
     if (!hasSame) {
       std::cout << "do not have ";
