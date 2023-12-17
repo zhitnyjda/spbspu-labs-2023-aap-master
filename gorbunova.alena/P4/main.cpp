@@ -29,7 +29,6 @@ int main(int argc, char** argv)
     return 1;
   }
   const char* input = argv[2];
-  const char* output = argv[3];
   size_t rows, cols;
   int flag;
   if (num == 1)
@@ -45,6 +44,7 @@ int main(int argc, char** argv)
     {
       return 2;
     }
+  }
   else if (num == 2)
   {
     int** dynamicArray = nullptr;
