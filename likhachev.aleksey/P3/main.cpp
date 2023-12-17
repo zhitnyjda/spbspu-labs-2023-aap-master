@@ -7,4 +7,5 @@ int main()
   char *line = new char[10];
   int size = likhachev::readSequence(line);
   likhachev::outLine(line, size);
+  std::cout << " | " << size;
 }
