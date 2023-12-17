@@ -97,10 +97,11 @@ int likhachev::strDoesHasSame(char *array1, int size1, char *array2, int size2)
   while (i < size1 && !haseSame) {
     while (j < size2 && !haseSame) {
       if (array1[i] == array2[j]) {
-        haseSame == 1;
+        haseSame = 1;
       }
       j++;
     }
+    j = 0;
     i++;
   }
 

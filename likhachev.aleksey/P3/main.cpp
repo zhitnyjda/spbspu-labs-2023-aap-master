@@ -10,7 +10,7 @@ int main()
     char subString[10]{"abc"};
     int size = likhachev::readSequence(line);
 
-    int hasSame = likhachev::strDoesHasSame(line, size, subString, 9);
+    int hasSame = likhachev::strDoesHasSame(line, size, subString, 3);
     size = likhachev::strRemoveDigits(line, size);
 
     std::cout << "\n";
