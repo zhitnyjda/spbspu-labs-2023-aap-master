@@ -34,6 +34,13 @@ int gorbunova::readFixedSizeArray(const char* fileName, int(&fixedArray)[100][10
       }
     }
   }
+  int temp;
+  if (inputFile >> temp)
+  {
+    std::cerr << "Too many elements in the matrix\n";
+    inputFile.close();
+    return 2;
+  }
   inputFile.close();
   return 0;
 }
@@ -70,6 +77,13 @@ int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, i
         return 2;
       }
     }
+  }
+  int temp;
+  if (inputFile >> temp)
+  {
+    std::cerr << "Too many elements in the matrix\n";
+    inputFile.close();
+    return 2;
   }
   inputFile.close();
   return 0;
