@@ -80,7 +80,6 @@ int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, i
       {
         std::cerr << "Invalid data\n";
         inputFile.close();
-        return 2;
       }
     }
   }
