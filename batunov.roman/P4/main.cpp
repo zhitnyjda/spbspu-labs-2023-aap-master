@@ -1,126 +1,76 @@
 #include <iostream>
-#include <fstream>
 #include <string>
+#include "readMatrixFromFile.hpp"
+#include "readMatrixFromFilee.hpp"
+#include "freeMatrix.hpp"
+#include "longestCombin.hpp"
+#include "writeResultToFile.hpp"
+#include "writeArrayToFile.hpp"
+#include "smoothMatrix.hpp"
 
-//функция - считать двумерный массива из файла
-int** readMatrixFromFile(const std::string& filename, int& rows, int& cols) {
-    std::ifstream inputFile(filename);
-    if (!inputFile.is_open())
-    {
-        throw std::runtime_error("Do not open the input file.");
-    }
-    inputFile >> rows >> cols;
-    int** matrix = new int* [rows];
-    for (int i = 0; i < rows; i++)
-    {
-        matrix[i] = new int[cols];
-        for (int j = 0; j < cols; j++)
-        {
-            inputFile >> matrix[i][j];
-        }
-    }
-    inputFile.close();
-    return matrix;
-}
-
-//функция - освобожденип памяти, выделенной под двумерный массив
-void freeMatrix(int** matrix, int rows)
-{
-    for (int i = 0; i < rows; i++)
-    {
-        delete[] matrix[i];
-    }
-    delete[] matrix;
-}
-
-//функция - логика (вариант)
-int longestCombin(int** matrix, int rows, int cols) {
-    int longestCombinRow = -1;
-    int longestCombinLength = 0;
-    for (int i = 0; i < rows; i++)
-    {
-        int currentCombinLength = 1;
-        for (int j = 1; j < cols; j++)
-        {
-            if (matrix[i][j] == matrix[i][j - 1])
-            {
-                currentCombinLength++;
-            }
-            else {
-                if (currentCombinLength > longestCombinLength)
-                {
-                    longestCombinRow = i;
-                    longestCombinLength = currentCombinLength;
-                }
-                currentCombinLength = 1;
-            }
-        }
-        if (currentCombinLength > longestCombinLength)
-        {
-            longestCombinRow = i;
-            longestCombinLength = currentCombinLength;
-        }
-    }
-    return longestCombinRow + 1;
-}
-
-//функция - запись результата в файл
-void writeResultToFile(const std::string& filename, int result)
-{
-    std::ofstream outputFile(filename);
-    if (!outputFile.is_open())
-    {
-        throw std::runtime_error("Do not open the output file.");
-    }
-    outputFile << result;
-    outputFile.close();
-}
-
-//майн, обработки исключений
 int main(int argc, char* argv[])
 {
-    if (argc != 4)
-    {
-        std::cerr << "Wrong number of arguments." << std::endl;
-        return 1;
-    }
-    int taskNumber;
+  if (argc != 4)
+  {
+    std::cerr << "Invalid number of arguments" << std::endl;
+    return 1;
+  }
+  int num;
+  try
+  {
+    num = std::stoi(argv[1]);
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr << "Invalid number: " << argv[1] << std::endl;
+    return 1;
+  }
+  if (num != 1 && num != 2)
+  {
+    std::cerr << "Invalid task number: " << num << std::endl;
+    return 1;
+  }
+  std::string inputFilename = argv[2];
+  std::string outputFilename = argv[3];
+  int rows, cols;
+  int** matrix;
+  try
+  {
+    matrix = batunov::readMatrixFromFile(inputFilename, rows, cols);
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr << "Failed to read matrix from file: " << e.what() << std::endl;
+    return 2;
+  }
+  if (num == 1)
+  {
+    int result = batunov::longestCombin(matrix, rows, cols);
     try
     {
-        taskNumber = std::stoi(argv[1]);
+      batunov::writeResultToFile(outputFilename, result);
     }
-    catch (std::exception& e)
+    catch (const std::exception& e)
     {
-        std::cerr << "Wrong task number." << std::endl;
-        return 1;
+      std::cerr << "Failed to write result to file: " << e.what() << std::endl;
+      return 2;
     }
-    std::string inputFilename = argv[2];
-    std::string outputFilename = argv[3];
-    int** matrix;
-    int rows, cols;
+  }
+  else if (num == 2)
+  {
+    double* smoothedMatrix = batunov::smoothMatrix(matrix, rows, cols);
     try
     {
-        matrix = readMatrixFromFile(inputFilename, rows, cols);
+      batunov::writeArrayToFile(smoothedMatrix, rows * cols, outputFilename);
     }
-    catch (std::exception& e)
+    catch (const std::exception& e)
     {
-        std::cerr << "Error reading input file: " << e.what() << std::endl;
-        return 2;
+      std::cerr << "Failed to write array to file: " << e.what() << std::endl;
+      return 2;
     }
-    int result;
-    if (taskNumber == 1)
-    {
-        result = longestCombin(matrix, rows, cols);
-    }
-    try
-    {
-        writeResultToFile(outputFilename, result);
-    }
-    catch (std::exception& e)
-    {
-        std::cerr << "Error writing output file: " << e.what() << std::endl;
-        return 2;
-    }
-    freeMatrix(matrix, rows);
-    return 0;
+    delete[] smoothedMatrix;
+  }
+  batunov::freeMatrix(matrix, rows);
+  return 0;
 }
+
