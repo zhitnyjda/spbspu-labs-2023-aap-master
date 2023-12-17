@@ -99,7 +99,9 @@ int likhachev::strDoesHasSame(char *array1, int size1, char *array2, int size2)
       if (array1[i] == array2[j]) {
         haseSame == 1;
       }
+      j++;
     }
+    i++;
   }
 
   return haseSame;
