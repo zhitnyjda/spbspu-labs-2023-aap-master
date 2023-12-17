@@ -29,6 +29,7 @@ int main(int argc, char** argv)
     return 1;
   }
   const char* input = argv[2];
+  const char* output = argv[3];
   size_t rows, cols;
   int flag;
   if (num == 1)
@@ -44,6 +45,11 @@ int main(int argc, char** argv)
     {
       return 2;
     }
+    flag = writeResultToFile(output, isUpperTriangularResult);
+    if (flag == 2)
+    {
+        return 2;
+    }
   }
   else if (num == 2)
   {
@@ -55,6 +61,11 @@ int main(int argc, char** argv)
     }
     int isUpperTriangularResult = isUpperTriangular(dynamicArray, rows, cols);
     if (isUpperTriangularResult == 2)
+    {
+      return 2;
+    }
+    flag = writeResultToFile(output, isUpperTriangularResult);
+    if (flag == 2) 
     {
       return 2;
     }

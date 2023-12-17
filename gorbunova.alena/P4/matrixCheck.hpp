@@ -1,6 +1,5 @@
 #ifndef MATRIX_CHECK_HPP
 #define MATRIX_CHECK_HPP
-#include <cstddef>
 
 namespace gorbunova
 {
