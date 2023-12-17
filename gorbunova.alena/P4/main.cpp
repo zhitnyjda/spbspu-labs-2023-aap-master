@@ -30,7 +30,7 @@ int main(int argc, char** argv)
   }
   const char* input = argv[2];
   const char* output = argv[3];
-  size_t rows, cols;
+  int rows = 0, cols = 0;
   int flag;
   if (num == 1)
   {
