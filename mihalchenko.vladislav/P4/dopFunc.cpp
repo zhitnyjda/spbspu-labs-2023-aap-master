@@ -1,6 +1,5 @@
-#include "dopfunc.hpp"
+#include "dopFunc.hpp"
 #include <iostream>
-#include <string>
 #include <locale>
 
 bool mihalchenko::ifAlp(char* argv1)
