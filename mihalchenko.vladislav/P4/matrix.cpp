@@ -1,5 +1,5 @@
-#include <iostream>
 #include "matrix.hpp"
+#include <iostream>
 
 float* mihalchenko::createMatrix(float* rowsPtrs, size_t rows, size_t cols)
 {

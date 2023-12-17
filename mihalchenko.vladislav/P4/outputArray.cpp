@@ -1,7 +1,7 @@
+#include "outputArray.hpp"
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include "outputArray.hpp"
 
 void mihalchenko::outputDinArray(char* argv3, float* matrix, size_t rows, size_t cols)
 {

@@ -6,4 +6,4 @@ namespace mihalchenko
 {
   void outputDinArray(char* argv3, float* matrix, size_t rows, size_t cols);
 }
-#endif // !OUTPUT_ARRAY_HPP
+#endif

@@ -1,5 +1,5 @@
-#include <iostream>
 #include "inputArray.hpp"
+#include <iostream>
 
 size_t mihalchenko::inputArray(std::istream& in, float* arrInput, size_t arrCols)
 {

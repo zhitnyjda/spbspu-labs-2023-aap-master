@@ -5,35 +5,42 @@
 #include "matrix.hpp"
 #include "inputArray.hpp"
 #include "outputArray.hpp"
+#include "dopFunc.hpp"
 
 int main(int argc, char** argv)
+
 {
   using namespace mihalchenko;
-  if (argc < 4)
+  if ((argc < 4) || (argc > 4))
   {
-    std::cerr << "Not enough arguments\n";
+    (argc < 4) ? (std::cerr << "Not enough arguments\n") : ( std::cerr << "Too many arguments\n");
     return 1;
   }
-  if (argc > 4)
-  {
-    std::cerr << "Too many arguments\n";
-    return 1;
-  }
+
   if (isdigit(*argv[1]) != true)
   {
     std::cerr << "First parameter is not a number\n";
     return 1;
   }
+
   if ((*argv[1] != '1') && (*argv[1] != '2'))
   {
     std::cerr << "First parameter is out of range\n";
     return 1;
   }
-  int num;
+  int num = 0;
 
   try
   {
-    num = std::stoll(argv[1]);
+    if (ifAlp(argv[1]) == false)
+    {
+      num = std::stoll(argv[1]);
+    }
+    else
+    {
+      std::cout << "It's not a digit\n";
+      return 1;
+    }
   }
   catch (const std::invalid_argument & e)
   {
@@ -66,16 +73,18 @@ int main(int argc, char** argv)
     return 1;
   }
 
+  size_t prod = rows * cols;
+
   if (num == 1)
   {
-    if (rows * cols > 10000)
+    if (prod > 10000)
     {
       std::cerr << "The number of matrix elements exceeds 10000";
       return 1;
     }
 
-    float masInput[rows * cols];
-    size_t result = inputArray(input, masInput, rows * cols);
+    float masInput[prod];
+    size_t result = inputArray(input, masInput, prod);
 
     if (!input)
     {
@@ -103,7 +112,7 @@ int main(int argc, char** argv)
       return 2;
     }
 
-    for (size_t i = 0; i < rows * cols; i++)
+    for (size_t i = 0; i < prod; i++)
     {
       if (!(input >> m1[i]))
       {

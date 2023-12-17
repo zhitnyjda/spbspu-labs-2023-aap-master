@@ -7,4 +7,4 @@ namespace mihalchenko
   float* createMatrix(float* rowsPtrs, size_t rows, size_t cols);
   void freeMatrix(float* matrix);
 }
-#endif // !MATRIX_HPP
+#endif
