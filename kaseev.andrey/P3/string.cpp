@@ -2,14 +2,14 @@
 #include "iostream"
 #include <cstring>
 
-char* kaseev::readLine()
+char *kaseev::readLine()
 {
   std::string inputStr;
   std::getline(std::cin, inputStr);
-  char *charArray[inputStr.length() + 1];
-  strcpy(*charArray, inputStr.c_str());
+  char *charArray = new char[inputStr.length() + 1];
+  strcpy(charArray, inputStr.c_str());
 
-  return *charArray;
+  return charArray;
 }
 
 char* kaseev::interleaveStrings(char* str1, char* str2)

@@ -8,6 +8,8 @@ int main()
   try
   {
     char *newStr = kaseev::interleaveStrings(str1, str2);
+    delete[] str1;
+    delete[] str2;
     if (newStr == nullptr)
     {
       delete[] newStr;
