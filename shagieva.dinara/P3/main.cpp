@@ -4,7 +4,7 @@
 
 int main()
 {
-  char * input = new char[10]{};
+  char * inputStr = new char[10]{};
   size_t add = 10;
   char cur = 0;
   size_t read = 0;
@@ -15,26 +15,26 @@ int main()
     std::cin >> cur;
     if (read == 0 && cur == '\n')
     {
-      std::cerr << "No line.\n";
+      std::cerr << "Empty line entered.\n";
       return 1;
     }
-    input[read++] = cur;
+    inputStr[read++] = cur;
     if (read % add == 0)
     {
-      char * newInput = new char[read + add];
+      char * newInputStr = new char[read + add];
       for (size_t i = 0; i < read; i++)
       {
-        newInput[i] = input[i];
+        newInputStr[i] = inputStr[i];
       }
-      delete [] input;
-      input = newInput;
+      delete [] inputStr;
+      inputStr = newInputStr;
     }
   }
   while (cur != '\n');
   std::cin >> std::skipws;
 
   char * changedStr = new char[read]{};
-  shagieva::uppLow(input, changedStr, read);
+  shagieva::uppLow(inputStr, changedStr, read);
 
   for (size_t i = 0; i < read; i++)
   {
@@ -42,7 +42,7 @@ int main()
   }
   std::cout << "\n";
 
-  delete[] input;
+  delete[] inputStr;
   delete[] changedStr;
   return 0;
 }
