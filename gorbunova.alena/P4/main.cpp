@@ -17,7 +17,7 @@ int main(int argc, char** argv)
     return 1;
   }
   char* end = nullptr;
-  long long num = std::stroll(argv[1], std::addressof(end), 10);
+  long long num = std::strtoll(argv[1], std::addressof(end), 10);
   if (*end != '\0')
   {
     std::cerr << "First parameter is not a number\n";
