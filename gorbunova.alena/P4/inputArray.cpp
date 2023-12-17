@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-int gorbunova::readFixedSizeArray(const char* fileName, int(&fixedArray)[100][100], int& rows, int& cols)
+int gorbunova::readFixedSizeArray(const char* fileName, int(&fixedArray)[100][100], size_t& rows, size_t& cols)
 {
   std::ifstream inputFile(fileName);
   if(!inputFile.is_open())
@@ -25,7 +25,7 @@ int gorbunova::readFixedSizeArray(const char* fileName, int(&fixedArray)[100][10
   inputFile.close();
   return 0;
 }
-int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, int& rows, int& cols)
+int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, size_t& rows, size_t& cols)
 {
   std::ifstream inputFile(fileName);
   if(!inputFile.is_open())
