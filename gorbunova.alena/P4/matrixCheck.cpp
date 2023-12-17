@@ -1,7 +1,7 @@
 #include "matrixCheck.hpp"
 #include <iostream>
 
-int gorbunova::isUpperTriangular(int matrix[100][100], size_t rows, size_t cols)
+int gorbunova::isUpperTriangular(int matrix[100][100], int rows, int cols)
 {
   if (rows != cols)
   {
@@ -21,7 +21,7 @@ int gorbunova::isUpperTriangular(int matrix[100][100], size_t rows, size_t cols)
   return 1;
 }
 
-int gorbunova::isUpperTriangular(int** matrix, size_t rows, size_t cols)
+int gorbunova::isUpperTriangular(int** matrix, int rows, int cols)
 {
   if (rows != cols)
   {
