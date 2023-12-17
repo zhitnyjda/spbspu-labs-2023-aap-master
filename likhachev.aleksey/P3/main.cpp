@@ -7,8 +7,8 @@ int main()
   try
   {
     char *line = new char[10];
+    char subString[10]{"abc"};
     int size = likhachev::readSequence(line);
-    char *subString = "substring";
 
     int hasSame = likhachev::strDoesHasSame(line, size, subString, 9);
     likhachev::strRemoveDigits(line, size);
