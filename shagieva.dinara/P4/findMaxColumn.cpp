@@ -1,20 +1,6 @@
-#include "matrix.hpp"
-#include <stdexcept>
+#include "findMaxColumn.hpp"
 
-void shagieva::Matrix::read(std::ifstream & input)
-{
-  for (int i = 0; i < numberOfRows * numberOfColumns; i++)
-  {
-    input >> values[i];
-
-    if (!input)
-    {
-      throw std::invalid_argument("Something is wrong with values of matrix.\n");
-    }
-  }
-}
-
-int shagieva::Matrix::findMaxColumn()
+int shagieva::findMaxColumn(const int * values, const int numberOfRows, const int numberOfColumns)
 {
   int maxColumn = 0;
   int maxSeq = 0;
@@ -34,7 +20,7 @@ int shagieva::Matrix::findMaxColumn()
         currentSeq++;
       }
 
-      if (currentSeq > maxCurrentSeq)
+      else if (currentSeq > maxCurrentSeq)
       {
         maxCurrentSeq = currentSeq;
       }

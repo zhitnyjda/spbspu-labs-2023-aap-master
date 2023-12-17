@@ -1,12 +1,20 @@
 #include <iostream>
 #include <fstream>
-#include "matrix.hpp"
+#include <cstring>
+#include "readMatrix.hpp"
+#include "findMaxColumn.hpp"
 
 int main(int argc, char ** argv)
 {
   if (argc != 4)
   {
     std::cerr << "Wrong number of input parameters.\n";
+    return 1;
+  }
+
+  if (strlen(argv[1]) != 1)
+  {
+    std::cerr << "First parameter is out of range.\n";
     return 1;
   }
 
@@ -18,7 +26,7 @@ int main(int argc, char ** argv)
   }
   catch (const std::invalid_argument & e)
   {
-    std::cerr << "Cannot read the value of task.\n";
+    std::cerr << "First parameter is not a number.\n";
     return 1;
   }
 
@@ -31,67 +39,57 @@ int main(int argc, char ** argv)
   std::ifstream input;
   input.open(argv[2]);
 
-  std::ofstream output;
-  output.open(argv[3]);
+  int numberOfRows = 0;
+  input >> numberOfRows;
 
-  using namespace shagieva;
-  Matrix matrix;
-
-  input >> matrix.numberOfRows;
-  input >> matrix.numberOfColumns;
+  int numberOfColumns = 0;
+  input >> numberOfColumns;
 
   if (!input)
   {
-    std::cerr << "Cannot read matrix data";
+    std::cerr << "Cannot read matrix data.\n";
     return 2;
   }
 
-  if (!output.is_open())
+  int numberOfValues = numberOfRows * numberOfColumns;
+  int staticArray[10000] = { 0 };
+  int * matrixValues = nullptr;
+
+  matrixValues = (task == 1) ? staticArray : new int[numberOfValues];
+
+  if (shagieva::readMatrix(input, matrixValues, numberOfValues) != numberOfValues)
   {
-    std::cerr << "Cannot open an output file.\n";
+    std::cerr << "Number of matrix values is less than expected.\n";
+    if (task == 2)
+    {
+      delete[] matrixValues;
+    }
     return 2;
   }
 
   int result = 0;
 
-  if (task == 1)
+  result = shagieva::findMaxColumn(matrixValues, numberOfRows, numberOfColumns);
+
+  std::ofstream output;
+  output.open(argv[3]);
+
+  if (!output.is_open())
   {
-    int staticArray[10000] = { 0 };
-    matrix.values = staticArray;
-
-    try
+    std::cerr << "Cannot open an output file.\n";
+    if (task == 2)
     {
-      matrix.read(input);
+      delete[] matrixValues;
     }
-    catch (const std::invalid_argument & e)
-    {
-      std::cerr << e.what() << "\n";
-      return 2;
-    }
-
-    result = matrix.findMaxColumn();
-    output << result;
+    return 2;
   }
+
+  output << result;
 
   if (task == 2)
   {
-    int * dynamicArray = new int[matrix.numberOfRows * matrix.numberOfColumns];
-    matrix.values = dynamicArray;
-
-    try
-    {
-      matrix.read(input);
-    }
-    catch (const std::invalid_argument & e)
-    {
-      std::cerr << e.what() << "\n";
-      delete[] dynamicArray;
-      return 2;
-    }
-
-    result = matrix.findMaxColumn();
-    output << result;
-    delete[] dynamicArray;
+    delete[] matrixValues;
   }
+
   return 0;
 }
