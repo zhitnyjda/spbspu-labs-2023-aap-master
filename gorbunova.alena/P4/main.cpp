@@ -21,7 +21,7 @@ int main(int argc, char** argv)
   if (*end != '\0')
   {
     std::cerr << "First parameter is not a number\n";
-    return 1;
+    return 3;
   }
   if (num < 1 || num > 2)
   {
@@ -58,6 +58,10 @@ int main(int argc, char** argv)
     if (flag == 2)
     {
       return 2;
+    }
+    if (flag == 4)
+    {
+      return 4;
     }
     int isUpperTriangularResult = isUpperTriangular(dynamicArray, rows, cols);
     if (isUpperTriangularResult == 2)
