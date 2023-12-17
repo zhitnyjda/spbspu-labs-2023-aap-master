@@ -88,16 +88,16 @@ void likhachev::outLine(char *array, int size)
   }
 }
 
-bool likhachev::strDoesHasSame(char *array1, int size1, char *array2, int size2)
+int likhachev::strDoesHasSame(char *array1, int size1, char *array2, int size2)
 {
-  bool haseSame = false;
+  int haseSame = 0;
 
   int i = 0;
   int j = 0;
   while (i < size1 && !haseSame) {
     while (j < size2 && !haseSame) {
       if (array1[i] == array2[j]) {
-        haseSame == true;
+        haseSame == 1;
       }
     }
   }
