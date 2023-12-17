@@ -45,12 +45,6 @@ int main(int argc, char** argv)
     {
       return 2;
     }
-    flag = writeResultToFile(output, isUpperTriangularResult);
-    if (flag == 2)
-    {
-      return 2;
-    }
-  }
   else if (num == 2)
   {
     int** dynamicArray = nullptr;
@@ -61,11 +55,6 @@ int main(int argc, char** argv)
     }
     int isUpperTriangularResult = isUpperTriangular(dynamicArray, rows, cols);
     if (isUpperTriangularResult == 2)
-    {
-      return 2;
-    }
-    flag = writeResultToFile(output, isUpperTriangularResult);
-    if (flag == 2)
     {
       return 2;
     }

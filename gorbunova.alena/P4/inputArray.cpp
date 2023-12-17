@@ -50,18 +50,3 @@ int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, s
   inputFile.close();
   return 0;
 }
-int gorbunova::writeResultToFile(const char* fileName, int result)
-{
-  std::ofstream outputFile(fileName);
-  if (outputFile.is_open())
-  {
-    outputFile << result == 1 ? "true" : "false") << "\n";
-    outputFile.close();
-  }
-  else
-  {
-    std::cerr << "Unable to open output file" << fileName << "\n";
-    return 2;
-  }
-  return 0;
-}
