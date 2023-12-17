@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 
   try
   {
-    if (ifAlp(argv[1]) == false)
+    if (ifAlp(argv[1]) == true)
     {
       num = std::stoll(argv[1]);
     }

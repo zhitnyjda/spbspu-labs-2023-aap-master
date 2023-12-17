@@ -1,23 +1,23 @@
-#include "dopFunc.hpp"
+#include "dopfunc.hpp"
 #include <iostream>
-#include <cctype>
+#include <string>
+#include <locale>
 
 bool mihalchenko::ifAlp(char* argv1)
 {
+  std::locale loc;
   unsigned int c = 0;
   bool fl = true;
 
   while (argv1[c] && fl)
   {
-    if (std::isalpha(argv1[c]) == true)
+    if (std::isalpha(argv1[c],loc))
     {
       fl = false;
-      std::cout << argv1[c];
       break;
     }
     else
     {
-      std::cout << argv1[c];
       fl = true;
     }
     c++;
