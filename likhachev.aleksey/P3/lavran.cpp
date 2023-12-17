@@ -110,12 +110,12 @@ int likhachev::strDoesHasSame(char *array1, int size1, char *array2, int size2)
 int likhachev::strRemoveDigits(char *array, int size)
 {
   char *reserveArray = new char[size];
-  copyCharArray(array, reserveArray, size);
 
   int counter = 0;
   for (int i = 0; i < size; i++) {
     if (!std::isdigit(array[i])) {
       reserveArray[counter] = array[i];
+      counter++;
     }
   }
 
