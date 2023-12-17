@@ -10,7 +10,7 @@ int likhachev::readSequence(char *array)
   int size = 0;
   char c = ' ';
   std::cin >> std::noskipws;
-  
+
   while (std::cin >> c && c != '\n')
   {
     input[size] = c;
@@ -45,10 +45,10 @@ int likhachev::readSequence(char *array)
 
       max_size *= 2;
     }
-    
+
   }
 // Lavran TODO: Заменить логику, убрать дублирование кода
-  if (input == array) 
+  if (input == array)
   {
     reserveArray = new char[size];
     if (!reserveArray) {
