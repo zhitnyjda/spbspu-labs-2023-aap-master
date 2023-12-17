@@ -1,73 +1,79 @@
 #include <iostream>
-#include <fstream>
-#include "triMatrix.hpp"
-using namespace gorbunova;
+#include "inputArray.hpp"
+#include "matrixCheck.hpp"
 
 int main(int argc, char** argv)
 {
-  if (argc != 4)
+  using namespace gorbunova;
+
+  if (argc < 4)
   {
-     std::cerr << "Incorrectly entered data\n";
+     std::cerr << "Not enough arguments\n";
      return 1;
   }
-  int num = 0;
-  try
+  if (argc > 4)
   {
-    num = std::stoll(argv[1]);
-  }
-  catch (const std::invalid_argument& e)
-  {
-    std::cerr << "Invalid value\n";
+    std::cerr << "Too many arguments\n";
     return 1;
   }
-  if (num == 1 || num == 2)
+  char* end = nullptr;
+  long long num = std::stroll(argv[1], std::addressof(end), 10);
+  if (*end != '\0')
   {
-    matrix uppMatrix;
-    size_t counter = 0;
-    size_t rows = 0;
-    size_t cols = 0;
-    std::ifstream input(argv[2]);
-    std::ofstream output(argv[3]);
-    if (!(input >> rows >> cols))
-    {
-      std::cerr << "Can't read the file\n";
-      return 2;
-    }
-    if (!output.is_open())
-    {
-      std::cerr << "Can't open  the file\n";
-      return 2;
-    }
-    if (num == 2)
-    {
-      int* matrixx = new int[rows * cols];
-      if (uppMatrix.inputMatrix(input, matrixx, rows * cols, counter) != (rows * cols))
-      {
-        std::cerr << "Dismatch of dimension and values\n";
-        delete[] matrixx;
-        return 2;
-      }
-      int verdict = uppMatrix.isTriMatrix(matrixx, rows, cols);
-      verdict == 1? output << "true\n" : output << "false\n";
-      delete[] matrixx;
-    }
-    else
-    {
-      int statMatrix[10000] = {};
-      if (uppMatrix.inputMatrix(input, statMatrix, rows * cols, counter) != (rows * cols))
-      {
-        std::cerr << "Dismatch of dimension and values\n";
-        return 2;
-      }
-      int verdict = uppMatrix.isTriMatrix(statMatrix, rows, cols);
-      verdict == 1? output << "true\n" : output << "false\n";
-    }
-    input.close();
-  }
-  else
-  {
-    std::cerr << "Incorrect value of the first argument\n";
+    std::cerr << "First parameter is not a number\n";
     return 1;
+  }
+  if (num < 1 || num > 2)
+  {
+    std::cerr << "First parameter is out of range\n";
+    return 1;
+  }
+  const char* input = argv[2];
+  const char* output = argv[3];
+  size_t rows, cols;
+  int flag;
+  if (num == 1)
+  {
+    int staticArray[100][100];
+    flag = readFixedSizeArray(input, staticArray, rows, cols);
+    if (flag == 2)
+    {
+      return 2;
+    }
+    int isUpperTriangularResult = isUpperTriangular(staticArray, rows, cols);
+    if (isUpperTriangularResult == 2)
+    {
+      return 2;
+    }
+    flag = writeResultToFile(output, isUpperTriangularResult);
+    if (flag == 2)
+    {
+      return 2;
+    }
+  }
+  else if (num == 2)
+  {
+    int** dynamicArray = nullptr;
+    flag = readDynamicSizeArray(input, dynamicArray, rows, cols);
+    if (flag == 2)
+    {
+      return 2;
+    }
+    int isUpperTriangularResult = isUpperTriangular(dynamicArray, rows, cols);
+    if (isUpperTriangularResult == 2)
+    {
+      return 2;
+    }
+    flag = writeResultToFile(output, isUpperTriangularResult);
+    if (flag == 2)
+    {
+      return 2;
+    }
+    for (int i = 0; i < rows; ++i)
+    {
+      delete[] dynamicArray[i];
+    }
+    delete[] dynamicArray;
   }
   return 0;
 }
