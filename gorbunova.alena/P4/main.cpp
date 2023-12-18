@@ -57,12 +57,6 @@ int main(int argc, char** argv)
     flag = readDynamicSizeArray(input, dynamicArray, rows, cols);
     if (flag == 2)
     {
-      for (int i = 0; i < rows; ++i)
-      {
-        delete[] dynamicArray[i];
-        return 2;
-      }
-      delete[] dynamicArray;
       return 2;
     }
     int isUpperTriangularResult = isUpperTriangular(dynamicArray, rows, cols);
