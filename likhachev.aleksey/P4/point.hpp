@@ -7,7 +7,6 @@ namespace likhachev
     public:
       int x;
       int y;
-      Point();
       Point(int newX, int newY);
       void operator()(int newNumber);
       Point operator+(const Point& rhs);

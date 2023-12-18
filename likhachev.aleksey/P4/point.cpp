@@ -1,10 +1,5 @@
 #include "point.hpp"
 
-likhachev::Point::Point():
-  x(0),
-  y(0)
-{}
-
 likhachev::Point::Point(int newX, int newY):
   x(newX),
   y(newY)
