@@ -82,7 +82,7 @@ int gorbunova::readDynamicSizeArray(const char* fileName, int**& dynamicArray, i
         inputFile.close();
         for (int k = 0; k < rows; ++k)
         {
-          delete dynamicArray[k];
+          delete[] dynamicArray[k];
         }
         delete[] dynamicArray;
         return 2;
@@ -114,3 +114,4 @@ int gorbunova::writeResultToFile(const char* fileName, int result)
     }
     return 0;
 }
+
