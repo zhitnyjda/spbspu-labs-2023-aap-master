@@ -1,41 +1,26 @@
 #include <iostream>
-
-void pushBack(size_t & size, char *& str, bool & flag)
-{
-  char temp = 0;
-  char * new_str = new char[size + 10]{};
-  for (int i = 0; i < size; i++)
-  {
-    new_str[i] = str[i];
-  }
-  int count = 0;
-  while ((std::cin >> temp) && count < 10 && flag)
-  {
-    new_str[size + count] = temp;
-    count++;
-    if (temp == '\n' || !flag)
-    {
-      flag = 0;
-      break;
-    }
-  }
-  size += 10;
-  delete[] str;
-  str = new_str;
-}
+#include "pushback.hpp"
+#include "comparison.hpp"
+#include "delvow.hpp"
 
 int main()
 {
   std::cin >> std::noskipws;
-  size_t size_str = 10;
-  char* str = new char[10]{0};
+  size_t sizeStr = 0;
+  char* str = new char[0]{};
   bool flag = 1;
   while (flag)
   {
-    pushBack(size_str, str, flag);
+    arr::pushBack(sizeStr, str, flag);
   }
-  for (int i = 0; i < size_str; i++)
+  std::cout << "[HAS-SAM]: " << arr::comparison(str, sizeStr, "abc") << '\n';
+  arr::delVow(str, sizeStr);
+  std::cout << "[RMV-VOW]: ";
+  for (size_t i = 0; i < sizeStr; i++)
   {
     std::cout << str[i];
   }
+  std::cin >> std::skipws;
+  delete[] str;
+  return 0;
 }
