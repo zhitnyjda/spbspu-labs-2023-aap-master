@@ -15,6 +15,10 @@ int main(int argc, char* argv[])
   int type = 0;
   try {
     type = std::stoi(argv[1], nullptr, 10);
+    if (!(argv[1] == std::to_string(type))) {
+      std::cerr << "First parameter is not a number" << "\n";
+      return 1;
+    }
     if (!(type == 1 || type == 2)) {
       std::cerr << "First parameter is out of range" << "\n";
       return 1;
