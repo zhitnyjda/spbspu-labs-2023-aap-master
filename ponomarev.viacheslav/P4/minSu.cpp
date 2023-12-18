@@ -1,6 +1,6 @@
 #include "minSu.hpp"
 
-int sumBeforeDiag(int * matrix, int rows)
+int ponomarev::sumBeforeDiag(const int * matrix, int rows)
 {
   int minSum = matrix[0];
   for (int i = 0; i < (rows - 1); i++)
@@ -15,7 +15,7 @@ int sumBeforeDiag(int * matrix, int rows)
   return minSum;
 }
 
-int sumAfterDiag(int * matrix, int cols, int rows, int minSum)
+int ponomarev::sumAfterDiag(const int * matrix, int cols, int rows, int minSum)
 {
   for (int i = cols * (cols - 1) + 1; i < rows * rows; i++)
   {
@@ -29,7 +29,7 @@ int sumAfterDiag(int * matrix, int cols, int rows, int minSum)
   return minSum;
 }
 
-int ponomarev::minSu(int * matrix, int rows, int cols)
+int ponomarev::minSu(const int * matrix, int rows, int cols)
 {
   int minSum = sumBeforeDiag(matrix, rows);
   minSum = sumAfterDiag(matrix, cols, rows, minSum);
