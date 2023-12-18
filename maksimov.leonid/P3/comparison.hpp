@@ -3,7 +3,7 @@
 
 namespace arr
 {
-  int comparison(char*, size_t, const char*);
+  int comparison(char*, size_t lenStr, const char*);
 }
 
 #endif

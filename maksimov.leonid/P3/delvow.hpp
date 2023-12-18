@@ -3,7 +3,7 @@
 
 namespace arr
 {
-  void delVow(char*&, size_t);
+  void delVow(char*&, size_t lenStr);
 }
 
 #endif

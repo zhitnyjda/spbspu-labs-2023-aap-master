@@ -4,7 +4,7 @@
 
 namespace arr
 {
-  void pushBack(size_t&, char*&, bool&);
+  void pushBack(size_t& lenStr, char*&, bool&);
 }
 
 #endif

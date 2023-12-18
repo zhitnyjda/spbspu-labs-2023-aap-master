@@ -6,7 +6,7 @@ void arr::delVow(char*& str, size_t lenStr)
   int count = 0;
   for (size_t i = 0; i < lenStr; i++)
   {
-    for (size_t j = 0; j < 6; j++)
+    for (size_t j = 0; j < size_t(sizeof(vowels) - 2); j++)
     {
       if (int(str[i]) == int(vowels[j]))
       {
