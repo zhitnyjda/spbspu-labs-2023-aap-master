@@ -36,8 +36,8 @@ int ponomarev::saddleElem(const int * matrix, int rows, int cols)
   int numOfSaddEl = 0, minEl = 0, maxEl = 0;
   for (int j = 0; j < rows; j++)
   {
-    minEl = searchMinInLine(matrix, cols, j);
-    maxEl = searchMaxInCol(matrix, rows, cols, minEl, j);
+    minEl = ponomarev::searchMinInLine(matrix, cols, j);
+    maxEl = ponomarev::searchMaxInCol(matrix, rows, cols, minEl, j);
     if (minEl == maxEl)
     {
       numOfSaddEl += 1;

@@ -31,7 +31,7 @@ int ponomarev::sumAfterDiag(const int * matrix, int cols, int rows, int minSum)
 
 int ponomarev::minSu(const int * matrix, int rows, int cols)
 {
-  int minSum = sumBeforeDiag(matrix, rows);
-  minSum = sumAfterDiag(matrix, cols, rows, minSum);
+  int minSum = ponomarev::sumBeforeDiag(matrix, rows);
+  minSum = ponomarev::sumAfterDiag(matrix, cols, rows, minSum);
   return minSum;
 }
