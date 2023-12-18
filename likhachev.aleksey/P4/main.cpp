@@ -8,7 +8,7 @@
 int main(int argc, char* argv[])
 {
   if (argc != 4) {
-    std::cerr << "Шnvalid number of arguments" << "\n";
+    std::cerr << "Invalid number of arguments" << "\n";
     return 1;
   }
 
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     return 2;
   }
 
-  int * matrixValues;
+  int * matrixValues = nullptr;
   if (type == 1) {
     int array[10000] = { 0 };
     matrixValues = array;
