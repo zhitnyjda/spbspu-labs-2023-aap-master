@@ -32,11 +32,13 @@ int likhachev::countNonRepeatColumns(int sizeX, int sizeY, int* values)
 {
   int totalCount = sizeX;
 
+  bool hasSubbed = false;
   for ( int i = 0; i < sizeX; i++) {
+    hasSubbed = false;
     for (int j = 0; j < sizeY - 1; j++) {
-      if (values[sizeX * j + i] == values[sizeX * (j + 1) + i]) {
+      if (!hasSubbed && values[sizeX * j + i] == values[sizeX * (j + 1) + i]) {
         totalCount--;
-        break;
+        hasSubbed = true;
       }
     }
   }
