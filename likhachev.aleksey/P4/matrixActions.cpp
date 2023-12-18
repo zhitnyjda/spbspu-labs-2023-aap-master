@@ -1,9 +1,13 @@
 #include "matrixActions.hpp"
 
-void likhachev::inputMatrixFromFile(Point size, std::ifstream& inStream, int* values)
+void likhachev::inputMatrixFromFile(int sizeX, int sizeY, std::ifstream& inStream, int* values)
 {
-  size = (size.x * size.y < 10000) ? size : Point(100, 100);
-  for (int i = 0; i < size.x * size.y; i++) {
+  if (sizeX * sizeY > 10000) {
+    sizeX = 100;
+    sizeY = 100;
+  }
+
+  for (int i = 0; i < sizeX * sizeY; i++) {
     inStream >> *(values + i);
     if (!inStream) {
       throw std::runtime_error("Error reading the matrix from the file.\n");
@@ -11,10 +15,10 @@ void likhachev::inputMatrixFromFile(Point size, std::ifstream& inStream, int* va
   }
 }
 
-void likhachev::outputMatrixToFile(Point size, std::ofstream& outStream, int* values)
+void likhachev::outputMatrixToFile(int sizeX, int sizeY, std::ofstream& outStream, int* values)
 {
-  outStream << size.x << " " << size.y << " ";
-  for (int i = 0; i < size.x * size.y; i++) {
+  outStream << sizeX << " " << sizeY << " ";
+  for (int i = 0; i < sizeX * sizeY; i++) {
     outStream << values[i] << " ";
     if (!outStream) {
       throw std::runtime_error("Error writing the matrix to the file.\n");
@@ -24,13 +28,13 @@ void likhachev::outputMatrixToFile(Point size, std::ofstream& outStream, int* va
   outStream << "\n";
 }
 
-int likhachev::countNonRepeatColumns(Point size, int* values)
+int likhachev::countNonRepeatColumns(int sizeX, int sizeY, int* values)
 {
-  int totalCount = size.x;
+  int totalCount = sizeX;
 
-  for ( int i = 0; i < size.x; i++) {
-    for (int j = 0; j < size.y - 1; j++) {
-      if (values[size.x * j + i] == values[size.x * (j + 1) + i]) {
+  for ( int i = 0; i < sizeX; i++) {
+    for (int j = 0; j < sizeY - 1; j++) {
+      if (values[sizeX * j + i] == values[sizeX * (j + 1) + i]) {
         totalCount--;
         break;
       }
@@ -40,30 +44,34 @@ int likhachev::countNonRepeatColumns(Point size, int* values)
   return totalCount;
 }
 
-void likhachev::changeMatrixWithSpiral(Point size, int* values)
+void likhachev::changeMatrixWithSpiral(int sizeX, int sizeY, int* values)
 {
-  Point direction(1, 0);
-  Point position(-1, 0);
-  Point submatrixSize(size.x, size.y);
+  int directionX(1);
+  int directionY(0);
+  int positionX(-1);
+  int positionY(0);
+  int submatrixSizeX(sizeX);
+  int submatrixSizeY(sizeY);
+
   int counter = 1;
   int steps = 0;
-  while (submatrixSize.x > 0 && submatrixSize.y > 0) {
-    if (direction.x % 2) {
-      steps = submatrixSize.x;
-      submatrixSize.y--;
+  while (submatrixSizeX > 0 && submatrixSizeY > 0) {
+    if (directionX % 2) {
+      steps = submatrixSizeX;
+      submatrixSizeY--;
     } else {
-      steps = submatrixSize.y;
-      submatrixSize.x--;
+      steps = submatrixSizeY;
+      submatrixSizeX--;
     }
 
     for (int j = 0; j < steps; j++) {
-      position.x += direction.x % 2;
-      position.y += direction.y % 2;
-      values[position.x + position.y * size.x] += counter;
+      positionX += directionX % 2;
+      positionY += directionY % 2;
+      values[positionX + positionY * sizeX] += counter;
       counter++;
     }
 
-    direction.x == 2 ? direction.x = -1 : direction.x++;
-    direction.y == 2 ? direction.y = -1 : direction.y++;
+    directionX == 2 ? directionX = -1 : directionX++;
+    directionY == 2 ? directionY = -1 : directionY++;
   }
 }

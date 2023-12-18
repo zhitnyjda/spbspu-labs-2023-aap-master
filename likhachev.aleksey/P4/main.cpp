@@ -3,7 +3,6 @@
 #include <fstream>
 #include <string>
 #include "matrixActions.hpp"
-#include "point.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -32,19 +31,20 @@ int main(int argc, char* argv[])
   inStream.open(argv[2]);
   std::ofstream outStream;
   outStream.open(argv[3]);
-  likhachev::Point matrixSize(0, 0);
+  int matrixSizeX(0);
+  int matrixSizeY(0);
 
   if (!(inStream.is_open() && outStream.is_open())) {
     std::cerr << "file was not found" << "\n";
     return 1;
   }
 
-  inStream >> matrixSize.x >> matrixSize.y;
+  inStream >> matrixSizeX >> matrixSizeY;
   if (!inStream) {
     std::cerr << "Input file is empty" << "\n";
     return 2;
   }
-  if (matrixSize.x < 0 || matrixSize.y < 0) {
+  if (matrixSizeX < 0 || matrixSizeY < 0) {
     std::cerr << "Wrong matrix size" << "\n";
     return 2;
   }
@@ -54,11 +54,11 @@ int main(int argc, char* argv[])
     int array[10000] = { 0 };
     matrixValues = array;
   } else  if (type == 2) {
-    matrixValues = new int[matrixSize.x * matrixSize.y];
+    matrixValues = new int[matrixSizeX * matrixSizeY];
   }
 
   try {
-    inputMatrixFromFile(matrixSize, inStream, matrixValues);
+    likhachev::inputMatrixFromFile(matrixSizeX, matrixSizeY, inStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     if (type == 2) {
@@ -67,12 +67,12 @@ int main(int argc, char* argv[])
     return 2;
   }
 
-  int countNRC = countNonRepeatColumns(matrixSize, matrixValues);
-  changeMatrixWithSpiral(matrixSize, matrixValues);
+  int countNRC = likhachev::countNonRepeatColumns(matrixSizeX, matrixSizeY, matrixValues);
+  likhachev::changeMatrixWithSpiral(matrixSizeX, matrixSizeY, matrixValues);
 
   try {
     outStream << countNRC << "\n";
-    outputMatrixToFile(matrixSize, outStream, matrixValues);
+    likhachev::outputMatrixToFile(matrixSizeX, matrixSizeY, outStream, matrixValues);
   } catch(std::runtime_error const& e) {
     std::cerr << e.what() << "\n";
     if (type == 2) {
