@@ -1,14 +1,13 @@
 #include "readDynamicString.hpp"
 #include <iostream>
+#include <cstring>
 #include <cstddef>
+
 char* makeNewCapacityCString(const char* cstring, size_t newSize, size_t& newCapacity)
 {
   newCapacity = newSize * 2;
   char* newstring = new char[newCapacity];
-  for (size_t i = 0; i < newSize; ++i)
-  {
-    newstring[i] = cstring[i];
-  }
+  std::memcpy(newstring, cstring, newSize);
   return newstring;
 }
 
