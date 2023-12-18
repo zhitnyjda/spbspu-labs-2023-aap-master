@@ -2,7 +2,6 @@
 #define MATRIX_ACTIONS_HPP
 #include "point.hpp"
 #include <fstream>
-#include <iostream>
 
 namespace likhachev
 {
