@@ -8,12 +8,7 @@
 int main(int argc, char* argv[])
 {
   if (argc != 4) {
-    if (argc < 4) {
-      std::cerr << "Not enough arguments" << "\n";
-    } else {
-      std::cerr << "Too many arguments" << "\n";
-    }
-
+    std::cerr << "Шnvalid number of arguments" << "\n";
     return 1;
   }
 
