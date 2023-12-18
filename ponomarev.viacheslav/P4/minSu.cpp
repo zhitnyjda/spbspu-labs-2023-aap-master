@@ -1,12 +1,8 @@
 #include "minSu.hpp"
 
-int ponomarev::minSu(const int * matrix, int rows, int cols)
+int ponomarev::sumBeforeDiag(const int * matrix, int rows)
 {
-  if (rows == 2)
-  {
-    return matrix[0] > matrix[3] ? matrix[3] : matrix[0];
-  }
-  int minSum = 10000;
+  int minSum = matrix[0];
   for (int i = 0; i < (rows - 1); i++)
   {
     int locSum = 0;
@@ -16,6 +12,11 @@ int ponomarev::minSu(const int * matrix, int rows, int cols)
     }
     minSum = locSum < minSum ? locSum : minSum;
   }
+  return minSum;
+}
+
+int ponomarev::sumAfterDiag(const int * matrix, int cols, int rows, int minSum)
+{
   for (int i = cols * (cols - 1) + 1; i < rows * rows; i++)
   {
     int locSum = 0;
@@ -25,9 +26,16 @@ int ponomarev::minSu(const int * matrix, int rows, int cols)
     }
     minSum = locSum < minSum ? locSum : minSum;
   }
-  if (minSum == 10000)
+  return minSum;
+}
+
+int ponomarev::minSu(const int * matrix, int rows, int cols)
+{
+  if (rows == 0)
   {
     return 0;
   }
+  int minSum = sumBeforeDiag(matrix, rows);
+  minSum = sumAfterDiag(matrix, cols, rows, minSum);
   return minSum;
 }
