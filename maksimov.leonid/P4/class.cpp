@@ -13,28 +13,28 @@ bool matrix::Matrix::matrixConditionCheck(const int flag)
   int count_zero = 0;
   if (flag == 1)
   {
-    for (int i = 0; i < rows; i++)
+    for (size_t i = 0; i < rows; i++)
     {
-      for (int j = 0; j < i; j++)
+      for (size_t j = 0; j < i; j++)
       {
         if (staticMatrix[(i * rows) + j] == 0)
-	{
-	  count++;
-	}
-	count_zero++;
+        {
+          count++;
+        }
+        count_zero++;
       }
     }
   }
   else if (flag == 2)
   {
-    for (int i = 0; i < rows; i++)
+    for (size_t i = 0; i < rows; i++)
     {
-      for (int j = 0; j < i; j++)
+      for (size_t j = 0; j < i; j++)
       {
-	if (matrix[(i * rows) + j] == 0)
-	{
-	  count++;
-	}
+        if (matrix[(i * rows) + j] == 0)
+        {
+          count++;
+        }
         count_zero++;
       }
     }
@@ -47,7 +47,7 @@ void matrix::Matrix::delMatrix()
   delete[] matrix;
 }
 
-matrix::Matrix matrix::Matrix::operator()(const std::string & text)
+matrix::Matrix matrix::Matrix::operator()(const std::string& text)
 {
   matrix::Matrix matrix;
   fileText = text;
@@ -56,35 +56,29 @@ matrix::Matrix matrix::Matrix::operator()(const std::string & text)
 
 void matrix::Matrix::creatDynamicMatrix(const std::string&)
 {
-  try
+  rows = size_t(fileText[0] - '0');
+  cols = size_t(fileText[1] - '0');
+  if (fileText.length() != (rows * cols) + 2)
   {
-    rows = (size_t)fileText[0] - '0';
-    cols = (size_t)fileText[1] - '0';
-    matrix = new int[rows * cols];
-    for (int i = 0; i < (rows * cols); i++)
-    {
-      matrix[i] = fileText[i + 2] - '0';
-    }
+    throw std::out_of_range("the matrix is the wrong size");
   }
-  catch (const std::exception&)
+  matrix = new int[rows * cols];
+  for (size_t i = 0; i < (rows * cols); i++)
   {
-    throw "the matrix is the wrong size";
+    matrix[i] = fileText[i + 2] - '0';
   }
 }
 
-void matrix::Matrix::creatStaticMatrix(const std::string &)
+void matrix::Matrix::creatStaticMatrix(const std::string&)
 {
-  try
+  rows = size_t(fileText[0] - '0');
+  cols = size_t(fileText[1] - '0');
+  if (fileText.length() != (rows * cols) + 2)
   {
-    rows = (size_t)fileText[0] - '0';
-    cols = (size_t)fileText[1] - '0';
-    for (int i = 0; i <= (rows * cols); i++)
-    {
-      staticMatrix[i] = fileText[i + 2] - '0';
-    }
+    throw std::out_of_range("the matrix is the wrong size");
   }
-  catch (const std::exception&)
+  for (size_t i = 0; i <= (rows * cols); i++)
   {
-    throw "the matrix is the wrong size";
+    staticMatrix[i] = fileText[i + 2] - '0';
   }
 }

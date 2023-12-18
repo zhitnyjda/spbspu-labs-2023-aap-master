@@ -58,13 +58,14 @@ int main(int argc, char** argv)
       mtrx.delMatrix();
     }
   }
-  catch (const std::invalid_argument &)
+  catch (const std::invalid_argument & ex)
   {
-    std::cerr << "invalid argument";
+    std::cerr << ex.what();
+    return 1;
   }
-  catch (const std::string & ex)
+  catch (const std::out_of_range & ex)
   {
-    std::cerr << ex;
+    std::cerr << ex.what();
     return 2;
   }
 }
