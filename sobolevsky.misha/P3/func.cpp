@@ -27,9 +27,9 @@ namespace sobolevsky
       }
     }
 
-    for(int i = 0; i < (size1 + size2); i++)
+    for(size_t i = 0; i < (size1 + size2); i++)
     {
-      for(int j = 0; j < (size1 + size2); j++)
+      for(size_t j = 0; j < (size1 + size2); j++)
       {
         if (static_cast<unsigned char>(uniqArray[j + 1]) < static_cast<unsigned char>(uniqArray[j]))
         {
