@@ -44,7 +44,7 @@ int susidko::NUM_COL_LSR(const int * matrix, size_t rows, size_t cols)
 	{
 	  mmax = counter;
 	  res = j + 1;
-	}
+    }
   }
   return res;
 }

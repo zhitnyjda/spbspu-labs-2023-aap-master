@@ -59,7 +59,6 @@ int main(int argc, char ** argv)
 	  std::cout << "Firts parametr is wrong";
       return 2;
     }
-
     return 0;
   }
   catch (const std::invalid_argument & e)
@@ -67,7 +66,4 @@ int main(int argc, char ** argv)
     std::cerr << "Cannot parse a value!!!!";
     return 1;
   }
-  
- //argv[2] - имя файла с матрицей
-  
 }
