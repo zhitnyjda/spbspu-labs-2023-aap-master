@@ -2,6 +2,7 @@
 
 void arr::pushBack(size_t& size, char*& str, bool& flag)
 {
+  std::skipws;
   char temp = 0;
   char* new_str = new char[size + 10] {};
   for (size_t i = 0; i < size; i++)
@@ -31,4 +32,5 @@ void arr::pushBack(size_t& size, char*& str, bool& flag)
   size += 10;
   delete[] str;
   str = new_str;
+  std::cin >> std::noskipws;
 }
