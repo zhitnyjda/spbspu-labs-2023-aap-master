@@ -4,7 +4,7 @@ void arr::pushBack(size_t& size, char*& str, bool& flag)
 {
   char temp = 0;
   char* new_str = new char[size + 10] {};
-  for (int i = 0; i < size; i++)
+  for (size_t i = 0; i < size; i++)
   {
     new_str[i] = str[i];
   }
