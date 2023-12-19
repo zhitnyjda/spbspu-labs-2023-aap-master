@@ -1,5 +1,6 @@
 #ifndef DELVOW_HPP
 #define DELVOW_HPP
+#include <cstddef>
 
 namespace arr
 {
