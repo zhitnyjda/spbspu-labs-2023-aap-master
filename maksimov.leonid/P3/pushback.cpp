@@ -19,10 +19,13 @@ void arr::pushBack(size_t& size, char*& str, bool& flag)
       break;
     }
   }
-  if (temp == 0)
+  if (temp != '\0')
   {
-    delete[] new_str;
-    throw std::exception();
+    if (temp == 0)
+    {
+      delete[] new_str;
+      throw std::exception();
+    }
   }
   new_str[size + count] = temp;
   size += 10;
