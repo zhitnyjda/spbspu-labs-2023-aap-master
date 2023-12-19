@@ -46,8 +46,8 @@ int main(int argc, char ** argv)
       if (result != cols*rows)
       {
         std::cerr << "sorry";
-        return 2;
         delete[] matrix;
+        return 2;
       }
       int res = susidko::CNT_ROW_NSM(matrix, rows, cols);
       int res1 = susidko::NUM_COL_LSR(matrix, rows, cols);
