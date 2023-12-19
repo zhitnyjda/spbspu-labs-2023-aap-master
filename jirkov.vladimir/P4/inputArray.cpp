@@ -1,22 +1,25 @@
 #include "inputArray.hpp"
-#include <algorithm>
 #include <fstream>
-size_t jirkov::inputArray(std::istream & cin, int *matrix, size_t s, size_t inputElements)
+
+int jirkov::inputArray(std::istream &input, int *matrix, int rows, int cols)
 {
-  for (size_t i = 0; i < std::min(inputElements, s); ++i)
+  int count = 0;
+  for (int i = 0; i < rows * cols; ++i)
   {
-    if (!(cin >> matrix[i]))
+    if (!(input >> matrix[i]))
     {
-      return i;
+      return count;
     }
+    count += 1;
   }
-  return std::min(inputElements, s);
+  return count;
 }
-void jirkov::printArray(std::ostream & cout, int *matrix, size_t m, size_t n)
+
+void jirkov::printArray(std::ostream &output, int const *matrix, int rows, int cols)
 {
-  cout << m << " " << n << " ";
-  for (size_t i = 0; i < m * n; ++i)
+  output << rows << " " << cols << " ";
+  for (int i = 0; i < rows * cols; ++i)
   {
-    cout << matrix[i] << " ";
+    output << matrix[i] << " ";
   }
 }

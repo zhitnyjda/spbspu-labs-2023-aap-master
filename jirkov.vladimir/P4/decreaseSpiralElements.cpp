@@ -1,51 +1,58 @@
 #include "decreaseSpiralElements.hpp"
-#include <iostream>
-#include <stdexcept>
+#include <iosfwd>
 
-namespace jirkov {
-  void decreaseSpiralElements(int* matrix, size_t m, size_t n);
-}
-
-void jirkov::decreaseSpiralElements(int *matrix, size_t m, size_t n)
+void jirkov::fillTopRow(int* matrix, int rowend, int cols, int& num)
 {
-  size_t value = 1;
-  size_t row_start = 0, row_end = m - 1, col_start = 0, col_end = n - 1;
-  while (row_start <= row_end && col_start <= col_end)
+  for (int c = rowend; c >= 0; c--)
   {
-    for (size_t i = row_end; i >= row_start; i--)
-    {
-      matrix[i * n + col_start] -= value;
-      value++;
-    }
-    col_start++;
-
-    for (size_t i = col_start; i <= col_end; i++)
-    {
-      matrix[row_start * m + i] -= value;
-      value++;
-    }
-    row_start++;
-
-    if (row_start <= row_end)
-    {
-      for (size_t i = row_start; i <= row_end; i++)
-      {
-        matrix[i * n + col_end] -= value;
-        value++;
-      }
-      col_end--;
-    }
-
-    if (col_start <= col_end)
-    {
-      for (size_t i = col_end; i >= col_start; i--)
-      {
-        matrix[row_end * m + i] -= value;
-        value++;
-      }
-      row_end--;
-    }
+    matrix[rowend * cols + c] = num;
+    num--;
   }
 }
 
+void jirkov::fillRightColumn(int* matrix, int colend, int rows, int cols, int& num)
+{
+  for (int r = rows - 1; r >= 0; r--)
+  {
+    matrix[r * cols + colend] = num;
+    num--;
+  }
+}
 
+void jirkov::fillBottomRow(int* matrix, int rowstart, int colstart, int cols, int& num)
+{
+  for (int c = cols - 1; c >= colstart; c--)
+  {
+    matrix[rowstart * cols + c] = num;
+    num--;
+  }
+}
+
+void jirkov::fillLeftColumn(int* matrix, int colstart, int rowstart, int cols, int rows, int& num)
+{
+  for (int r = rows - 1; r > rowstart; r--)
+  {
+    matrix[r * cols + colstart] = num;
+    num--;
+  }
+}
+
+void jirkov::decreaseSpiralElements(int* matrix, int rows, int cols)
+{
+  int num = -1;
+  int rowstart = 0;
+  int rowend = rows - 1;
+  int colstart = 0;
+  int colend = cols - 1;
+  while (rowstart <= rowend && colstart <= colend)
+  {
+    fillTopRow(matrix, rowend, cols, num);
+    fillRightColumn(matrix, colend, rows, cols, num);
+    fillBottomRow(matrix, rowstart, colstart, cols, num);
+    fillLeftColumn(matrix, colstart, rowstart, rows, cols, num);
+    rowstart++;
+    rowend--;
+    colstart++;
+    colend--;
+  }
+}

@@ -1,73 +1,89 @@
 #include <iostream>
 #include <fstream>
+#include <stdexcept>
+#include <cstring>
 #include "decreaseSpiralElements.hpp"
 #include "inputArray.hpp"
-int main(int argc, char ** argv)
+#include "sumArrays.hpp"
+int main(int argc, char** argv)
 {
   using namespace jirkov;
-
   if (argc != 4)
   {
-    std::cerr << "Wrong input. Enter 4 arguments.\n";
+    std::cerr << "Wrong number of arguments\n";
     return 1;
   }
-
-  char * end = nullptr;
-  size_t num = 0;
-  num = std::strtoll(argv[1], &end, 10);
-  if (*end != '\0')
+  char* end = nullptr;
+  long long num = std::strtoll(argv[1], std::addressof(end), 10);
+  long long len = strlen(argv[1]);
+  if (end != argv[1] + len)
   {
-    std::cerr << "Can't parse a value.\n";
+    std::cerr << "Is not a number\n";
+    return 3;
+  }
+  if (num != 2 && num != 1)
+  {
+    std::cerr << "First parameter is 1 or 2\n";
+    return 2;
+  }
+  int rows = 0;
+  int cols = 0;
+  std::ifstream input(argv[2]);
+  if (!input)
+  {
+    std::cerr << "Input Error\n";
     return 1;
   }
-
-  size_t m = 0, n = 0;
+  std::ofstream output(argv[3]);
+  if (!output)
   {
-    std::ifstream cin(argv[2]);
-    std::ofstream cout(argv[3]);
-    cin >> m;
-    if (!cin)
+    std::cerr << "Failed to open output file.\n";
+    return 1;
+  }
+  if (!(input >> rows >> cols) || rows < 0 || cols < 0 || input.fail())
+  {
+    std::cerr << "Invalid array dimensions\n";
+    return 1;
+  }
+  int matrixStatic[10000];
+  int *matrix1 = matrixStatic;
+  int *matrix2 = matrixStatic;
+  if (rows == 0 && cols == 0)
+  {
+    printArray(output, matrix1, rows, cols);
+  }
+  try{
+    if (num == 2)
     {
-      std::cerr << "Incorrect input.\n";
-      return 2;
+      int *matrixDynamic = new int[rows * cols];
+      matrix1 = matrixDynamic;
+      matrix2 = matrixDynamic;
     }
-    if (num == 1)
+    int inputElements = inputArray(input, matrix1, rows, cols);
+    if (inputElements != rows * cols)
     {
-      int staticMatrix[10000];
-      for (size_t i = 0; i < m * n; i++)
-      {
-        cin >> staticMatrix[i];
-        if (!cin)
-        {
-          std::cerr << "Wrong input. Readed only " << i << " out of " << (m * n) << "\n";
-          return 2;
-        }
-      }
-      decreaseSpiralElements(staticMatrix, m, n);
-      printArray(cout, staticMatrix, m, n);
+      throw std::logic_error("2");
     }
-
-    else if (num == 2)
+    int result[rows * cols];
+    decreaseSpiralElements(matrix2, rows, cols);
+    sumArrays(matrix1, matrix2, result, rows, cols);
+    printArray(output, result, rows, cols);
+    if (num == 2)
     {
-      int * dinamicMatrix = new int[m * n];
-      size_t inputElements = 0;
-      inputElements = jirkov::inputArray(cin, dinamicMatrix, m * n, m * n);
-      if (inputElements != (m * n))
-      {
-        std::cerr << "Wrong input. Readed only " << inputElements << " out of " << (m * n) << "\n";
-        delete [] dinamicMatrix;
-        return 2;
-      }
-      decreaseSpiralElements(dinamicMatrix, m, n);
-      printArray(cout, dinamicMatrix, m,  n);
-      delete [] dinamicMatrix;
-    }
-    else
-    {
-      std::cerr << "You may enter onty 1 and 2! \n";
-      return 2;
+      delete[] matrix1;
     }
   }
-
-  return 0;
+  catch (const std::logic_error &e)
+  {
+    std::cerr << e.what() << "\n";
+    if (num == 2)
+    {
+      delete[] matrix1;
+      matrix1 = nullptr;
+      matrix2 = nullptr;
+    }
+    return 1;
+  }
+  matrix1 = nullptr;
+  matrix2 = nullptr;
 }

@@ -3,7 +3,7 @@
 #include <iosfwd>
 namespace jirkov
 {
-  size_t inputArray(std::istream &cin, int *matrix, size_t s, size_t inputElements);
-  void printArray(std::ostream &cout, int *matrix, size_t m, size_t n);
+  int inputArray(std::istream &, int *matrix, int rows, int cols);
+  void printArray(std::ostream &, int const *matrix, int rows, int cols);
 }
 #endif
