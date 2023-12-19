@@ -32,8 +32,8 @@ int main(int argc, char ** argv)
       if (result != cols*rows)
       {
         std::cerr << "sorry";
-		return 2;
-	  }
+		    return 2;
+	    }
       int res = susidko::CNT_ROW_NSM(matrix, rows, cols);
       int res1 = susidko::NUM_COL_LSR(matrix, rows, cols);
       std::ofstream output(argv[3]);
@@ -41,22 +41,22 @@ int main(int argc, char ** argv)
     }
     else if (num == 2)
     {
-	  int * matrix = new int[rows * cols];
-	  size_t result = readArray::inputArray(input, matrix, rows * cols, rows * cols);
-	  if (result != cols*rows)
+	    int * matrix = new int[rows * cols];
+	    size_t result = readArray::inputArray(input, matrix, rows * cols, rows * cols);
+	    if (result != cols*rows)
       {
-		std::cerr << "sorry";
-		return 2;
-	  }
-	  int res = susidko::CNT_ROW_NSM(matrix, rows, cols);
-	  int res1 = susidko::NUM_COL_LSR(matrix, rows, cols);
-	  std::ofstream output(argv[3]);
+		    std::cerr << "sorry";
+		    return 2;
+	    }
+	    int res = susidko::CNT_ROW_NSM(matrix, rows, cols);
+	    int res1 = susidko::NUM_COL_LSR(matrix, rows, cols);
+	    std::ofstream output(argv[3]);
       output << res << "\n" << res1;
       delete[] matrix;
     }
     else
     {
-	  std::cout << "Firts parametr is wrong";
+	    std::cout << "Firts parametr is wrong";
       return 2;
     }
     return 0;
