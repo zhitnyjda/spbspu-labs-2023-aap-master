@@ -11,7 +11,14 @@ int main()
   bool flag = 1;
   while (flag)
   {
-    arr::pushBack(sizeStr, str, flag);
+    try
+    {
+      arr::pushBack(sizeStr, str, flag);
+    }
+    catch (const std::exception& ex)
+    {
+      std::cerr << ex.what();
+    }
   }
   std::cout << "[HAS-SAM]: " << arr::comparison(str, sizeStr, "abc") << '\n';
   arr::delVow(str, sizeStr);

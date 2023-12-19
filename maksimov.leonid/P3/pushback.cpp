@@ -11,6 +11,10 @@ void arr::pushBack(size_t& size, char*& str, bool& flag)
   int count = 0;
   while ((std::cin >> temp) && count < 9 && flag)
   {
+    if (temp == '\0')
+    {
+      throw std::exception("Could not read an element of the string\n");
+    }
     new_str[size + count] = temp;
     count++;
     if (temp == '\n' || !flag)
