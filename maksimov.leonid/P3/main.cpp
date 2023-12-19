@@ -15,9 +15,10 @@ int main()
     {
       arr::pushBack(sizeStr, str, flag);
     }
-    catch (const std::exception& ex)
+    catch (const std::exception&)
     {
-      std::cerr << ex.what();
+      std::cerr << "Could not read an element of the string\n";
+      return 1;
     }
   }
   std::cout << "[HAS-SAM]: " << arr::comparison(str, sizeStr, "abc") << '\n';

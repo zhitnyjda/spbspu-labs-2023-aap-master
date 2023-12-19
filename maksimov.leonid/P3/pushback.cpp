@@ -13,7 +13,7 @@ void arr::pushBack(size_t& size, char*& str, bool& flag)
   {
     if (temp == '\0')
     {
-      throw std::exception("Could not read an element of the string\n");
+      throw std::exception();
     }
     new_str[size + count] = temp;
     count++;
