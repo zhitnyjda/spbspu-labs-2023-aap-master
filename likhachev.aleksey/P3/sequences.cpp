@@ -72,7 +72,7 @@ int likhachev::readSequence(char *array)
   return size;
 }
 
-int likhachev::copyCharArray(char *copyFrom, char *copyTo, int size)
+void likhachev::copyCharArray(char *copyFrom, char *copyTo, int size)
 {
   for (int i = 0; i < size; i++)
   {
