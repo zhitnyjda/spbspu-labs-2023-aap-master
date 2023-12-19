@@ -13,7 +13,7 @@ int main()
     size = likhachev::strRemoveDigits(line, size);
 
     std::cout << "\n";
-    std::cout << "Strings ";
+    std::cout << "String ";
     if (!hasSame) {
       std::cout << "do not have ";
     }
