@@ -18,6 +18,7 @@ int main()
     catch (const std::exception&)
     {
       std::cerr << "Could not read an element of the string\n";
+      delete[] str;
       return 1;
     }
   }

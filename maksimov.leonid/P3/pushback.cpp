@@ -11,10 +11,6 @@ void arr::pushBack(size_t& size, char*& str, bool& flag)
   int count = 0;
   while ((std::cin >> temp) && count < 9 && flag)
   {
-    if (temp == '\0')
-    {
-      throw std::exception();
-    }
     new_str[size + count] = temp;
     count++;
     if (temp == '\n' || !flag)
@@ -22,6 +18,11 @@ void arr::pushBack(size_t& size, char*& str, bool& flag)
       flag = 0;
       break;
     }
+  }
+  if (temp == 0)
+  {
+    delete[] new_str;
+    throw std::exception();
   }
   new_str[size + count] = temp;
   size += 10;
