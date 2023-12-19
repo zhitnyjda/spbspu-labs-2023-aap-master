@@ -47,6 +47,7 @@ int main(int argc, char ** argv)
       {
         std::cerr << "sorry";
         return 2;
+        delete[] matrix;
       }
       int res = susidko::CNT_ROW_NSM(matrix, rows, cols);
       int res1 = susidko::NUM_COL_LSR(matrix, rows, cols);
