@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstring>
 #include <cctype>
-#include "readDynamicString.hpp"
 #include <limits>
+#include "readDynamicString.hpp"
 #include "functions.hpp"
 
 int main()
