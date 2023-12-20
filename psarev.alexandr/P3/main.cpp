@@ -1,14 +1,14 @@
 #include "readLine.hpp"
 #include "createLine.hpp"
+#include "expandLine.hpp"
 
 int main()
 {
   try
   {
-    char* userLine = new char[10] {};
+    char* userLine = psarev::readLine();
     const char* presetLine = "abc ef";
 
-    psarev::readLine(userLine);
     size_t presetLen = strlen(presetLine);
     size_t userLen = strlen(userLine);
     if (userLen == 0) {
@@ -17,21 +17,21 @@ int main()
       return 1;
     }
 
-    char* resLine = new char[10] {};
-    size_t resMarker = psarev::createTaskLine(userLine, presetLine, userLen, presetLen, resLine);
+    char* resLine = psarev::createTaskLine(userLine, presetLine, userLen, presetLen);
+    size_t resLen = strlen(resLine);
 
     delete[] userLine;
 
-    for (size_t i = 0; i < resMarker; i++) {
+    for (size_t i = 0; i < resLen; i++) {
       std::cout << resLine[i];
     }
     std::cout << '\n';
     delete[] resLine;
     return 0;
   }
-  catch (const std::bad_alloc& e)
+  catch (const std::logic_error& e)
   {
-    std::cerr << "Error: Can't allocate memory!\n";
+    std::cerr << e.what();
     return 1;
   }
 }
