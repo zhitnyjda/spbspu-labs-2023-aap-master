@@ -5,6 +5,6 @@
 
 namespace psarev
 {
-  char* expandLine(char* line, size_t elemNum, size_t expAm);
+  char* expandLine(char* line, size_t elemNum, size_t extSize);
 };
 #endif

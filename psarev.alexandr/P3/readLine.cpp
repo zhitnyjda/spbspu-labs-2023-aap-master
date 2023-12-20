@@ -1,26 +1,26 @@
 #include "readLine.hpp"
 #include "expandLine.hpp"
 
-char* psarev::readLine()
+char* psarev::readLine(std::istream& input, size_t extSize, size_t& maxElemNum)
 {
-  char elem = ' ';
   size_t elemNum = 0;
-  size_t expAm = 10;
-  size_t maxElemNum = expAm;
+  char elem = ' ';
   char* line = new char[maxElemNum] {};
-  std::cin >> std::noskipws;
+  input >> std::noskipws;
 
-  while (std::cin >> elem) {
+  while (input >> elem) {
     line[elemNum++] = elem;
     if (elem == '\n') {
       line[elemNum - 1] = 0;
       break;
     }
     if (elemNum == maxElemNum) {
-      line = expandLine(line, elemNum, expAm);
-      maxElemNum += expAm;
+      char* expandedLine = expandLine(line, elemNum, extSize);
+      delete[] line;
+      line = expandedLine;
+      maxElemNum += extSize;
     }
   }
-  std::cin >> std::skipws;
+  input >> std::skipws;
   return line;
 }

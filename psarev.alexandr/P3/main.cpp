@@ -6,7 +6,9 @@ int main()
 {
   try
   {
-    char* userLine = psarev::readLine();
+    size_t maxElemNum = 10;
+    size_t extSize = 10;
+    char* userLine = psarev::readLine(std::cin, extSize, maxElemNum);
     const char* presetLine = "abc ef";
 
     size_t presetLen = strlen(presetLine);
