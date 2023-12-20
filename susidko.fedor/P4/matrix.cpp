@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 
-int susidko::CNT_ROW_NSM(const int * matrix, size_t rows, size_t cols)
+int susidko::countUniqueRows(const int * matrix, size_t rows, size_t cols)
 {
   int res = 0;
   int flag;
@@ -21,7 +21,7 @@ int susidko::CNT_ROW_NSM(const int * matrix, size_t rows, size_t cols)
   return res;
 }
 
-int susidko::NUM_COL_LSR(const int * matrix, size_t rows, size_t cols)
+int susidko::getColNumber(const int * matrix, size_t rows, size_t cols)
 {
   int mmax = 0;
   int counter = 0;

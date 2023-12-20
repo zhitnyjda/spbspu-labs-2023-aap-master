@@ -34,8 +34,8 @@ int main(int argc, char ** argv)
         std::cerr << "sorry";
         return 2;
       }
-      int res = susidko::CNT_ROW_NSM(matrix, rows, cols);
-      int res1 = susidko::NUM_COL_LSR(matrix, rows, cols);
+      int res = susidko::countUniqueRows(matrix, rows, cols);
+      int res1 = susidko::getColNumber(matrix, rows, cols);
       std::ofstream output(argv[3]);
       output << res << "\n" << res1;
     }
@@ -49,8 +49,8 @@ int main(int argc, char ** argv)
         delete[] matrix;
         return 2;
       }
-      int res = susidko::CNT_ROW_NSM(matrix, rows, cols);
-      int res1 = susidko::NUM_COL_LSR(matrix, rows, cols);
+      int res = susidko::countUniqueRows(matrix, rows, cols);
+      int res1 = susidko::getColNumber(matrix, rows, cols);
       std::ofstream output(argv[3]);
       output << res << "\n" << res1;
       delete[] matrix;
