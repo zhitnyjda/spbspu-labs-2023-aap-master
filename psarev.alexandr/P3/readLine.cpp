@@ -1,7 +1,6 @@
 #include "readLine.hpp"
-#include <iostream>
 
-size_t psarev::readLine(char*& line)
+void psarev::readLine(char*& line)
 {
   char elem = 0;
   size_t elemNum = 0;
@@ -9,9 +8,6 @@ size_t psarev::readLine(char*& line)
   while (std::cin >> elem) {
     line[elemNum++] = elem;
     if (elem == '\n') {
-      if (elemNum == 1) {
-        return 0;
-      }
       line[elemNum - 1] = 0;
       break;
     }
@@ -25,5 +21,4 @@ size_t psarev::readLine(char*& line)
     }
   }
   std::cin >> std::skipws;
-  return elemNum;
 }

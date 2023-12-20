@@ -1,9 +1,10 @@
 #ifndef READ_LINE_HPP
 #define READ_LINE_HPP
 #include <cstddef>
+#include <iostream>
 
 namespace psarev
 {
-  size_t readLine(char*& line);
+  void readLine(char*& line);
 };
 #endif
