@@ -18,6 +18,7 @@ int main()
     }
     if ((userLen == 0) || (userLine == nullptr)) {
       std::cerr << "Error: Not enough values or memory to allocate!\n";
+      delete[] userLine;
       return 1;
     }
 
