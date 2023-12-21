@@ -14,7 +14,7 @@ int main()
     return 1;
   }
   size_t Result = checkDuplicatesChars(string, size);
-  std::cout << Result << '\n'
+  std::cout << Result << '\n';
   delete[] string;
   return 0;
 }
