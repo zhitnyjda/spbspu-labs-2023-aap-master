@@ -16,10 +16,11 @@ char* psarev::readLine(std::istream& input, size_t extSize, size_t& maxElemNum)
     }
     if (elemNum == maxElemNum) {
       char* expandedLine = expandLine(line, elemNum, extSize);
-      if (expandedLine == nullptr)
-      {
+      if (expandedLine == nullptr) {
         delete[] line;
-        return nullptr;
+        line = new char[maxElemNum] {};
+        line[0] = 0;
+        return line;
       }
       delete[] line;
       line = expandedLine;
