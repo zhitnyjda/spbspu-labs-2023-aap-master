@@ -1,6 +1,5 @@
 #include "checkDuplicatesChars.hpp"
-
-size_t checkDuplicatesChars(const char* str, size_t size)
+int checkDuplicatesChars(const char* str, size_t size)
 {
   for (size_t i = 0; i < size - 1; i++)
   {
