@@ -3,7 +3,6 @@
 
 char * redko::getString(char *& dest, int & len, const int add)
 {
-  //len = 0;
   char c;
   std::cin >> std::noskipws;
   do
@@ -28,6 +27,5 @@ char * redko::getString(char *& dest, int & len, const int add)
   } while (c != '\n');
   dest[len-1] = '\0';
   std::cin >> std::skipws;
-//  return len;
   return dest;
 }
