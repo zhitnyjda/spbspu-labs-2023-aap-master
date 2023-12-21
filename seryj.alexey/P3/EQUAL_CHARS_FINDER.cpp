@@ -22,8 +22,11 @@ char* seryj::readLine(size_t& real_size)
     {
       char* new_line = new char[max_size * 2];
       if (!new_line)
+      {
+        delete[] line;
         throw std::logic_error("Error: not enough space\n");
-      for (int i = 0; i < max_size; i++)
+      }
+      for (size_t i = 0; i < max_size; i++)
       {
         new_line[i] = line[i];
       }
@@ -36,7 +39,6 @@ char* seryj::readLine(size_t& real_size)
   }
   if (!real_size)
   {
-    std::cerr << "Error: zero sequence\n";
     delete[] line;
     throw std::logic_error("Error: zero sequence\n");
   }
