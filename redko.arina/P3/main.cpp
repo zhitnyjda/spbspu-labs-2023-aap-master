@@ -8,7 +8,7 @@ int main()
   {
     const int add = 10;
     char * str = new char[add];
-    int lenght = redko::getString(str);
+    int lenght = redko::getString(str, add);
     char * strResult = new char[lenght];
     int lenResult = redko::buildWithoutInt(strResult, str, lenght);
     delete[] str;

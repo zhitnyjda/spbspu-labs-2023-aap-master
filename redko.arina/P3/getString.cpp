@@ -1,10 +1,9 @@
 #include "getString.hpp"
 #include <iostream>
 
-int redko::getString(char *& dest)
+int redko::getString(char *& dest, const int add)
 {
   int len = 0;
-  const int add = 10;
   char c;
   std::cin >> std::noskipws;
   do

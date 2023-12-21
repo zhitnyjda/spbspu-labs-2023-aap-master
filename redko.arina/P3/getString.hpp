@@ -3,7 +3,7 @@
 
 namespace redko
 {
-  int getString(char *& str);
+  int getString(char *& dest, const int add);
 }
 
 #endif
