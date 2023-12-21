@@ -10,10 +10,7 @@ char* psarev::readLine(std::istream& input, size_t extSize, size_t& maxElemNum)
 
   while (input >> elem) {
     line[elemNum++] = elem;
-    if ((elem == '\n') && (elemNum == 1)) {
-      return nullptr;
-    }
-    if ((elem == '\n') && (elemNum != 1)) {
+    if (elem == '\n') {
       line[elemNum - 1] = 0;
       break;
     }
@@ -21,7 +18,6 @@ char* psarev::readLine(std::istream& input, size_t extSize, size_t& maxElemNum)
       char* expandedLine = expandLine(line, elemNum, extSize);
       if (expandedLine == nullptr)
       {
-        std::cerr << "Error: Can't allocate memory!\n";
         delete[] line;
         return nullptr;
       }
