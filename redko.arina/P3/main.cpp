@@ -26,6 +26,7 @@ int main()
   {
     std::cout << strResult[i];
   }
+  std::cout << '\n';
   delete[] strResult;
   return 0;
 }
