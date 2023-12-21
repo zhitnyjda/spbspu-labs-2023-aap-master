@@ -24,7 +24,7 @@ char * redko::getString(char *& dest, int & len, const int add)
       delete[] dest;
       dest = destNew;
     }
-  } while (c != '\n');
+  } while (c != '\n' && c != '\0');
   dest[len-1] = '\0';
   std::cin >> std::skipws;
   return dest;
