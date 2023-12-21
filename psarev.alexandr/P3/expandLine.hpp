@@ -1,6 +1,5 @@
 #ifndef EXPAND_LINE_HPP
 #define EXPAND_LINE_HPP
-#include <iostream>
 #include <cstddef>
 
 namespace psarev

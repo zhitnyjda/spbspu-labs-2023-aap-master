@@ -4,6 +4,6 @@
 
 namespace psarev
 {
-  char* createTaskLine(char* userLine, const char* presetLine, size_t userLen, size_t presetLen);
+  char* createTaskLine(char* userLine, const char* presetLine, size_t userLen, const size_t presetLen);
 };
 #endif
