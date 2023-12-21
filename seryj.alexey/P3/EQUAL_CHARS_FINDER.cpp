@@ -1,17 +1,5 @@
 #include "EQUAL_CHARS_FINDER.hpp"
 #include <iostream>
-char * seryj::changeArray(char* old_line, int max_size)
-{
-  char * new_line = new char[max_size*2];
-  if(!new_line)
-    throw std::logic_error("Error: not enough space for array\n");
-  for (int i = 0; i < max_size; i++)
-  {
-    new_line[i] = old_line[i];
-  }
-  delete[] old_line;
-  return new_line;
-}
 size_t seryj::counterOfEqualPairs(char* values, int real_size)
 {
   int count = 0;
@@ -32,16 +20,16 @@ char* seryj::readLine(size_t& real_size)
   {
     if(real_size >= max_size)
     {
-      try
+      char* new_line = new char[max_size * 2];
+      if (!new_line)
+        throw std::logic_error("Error: not enough space\n");
+      for (int i = 0; i < max_size; i++)
       {
-        line = seryj::changeArray(line, max_size);
-      }
-      catch (std::logic_error const& e)
-      {
-        delete[] line;
-        throw std::logic_error(e.what());
+        new_line[i] = line[i];
       }
       max_size *= 2;
+      delete[] line;
+      line = new_line;
     }
     line[real_size] = current_char;
     real_size++;
