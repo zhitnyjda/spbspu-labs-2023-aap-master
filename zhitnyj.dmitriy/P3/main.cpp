@@ -19,10 +19,14 @@ int main()
         }
 
         std::cout << strSymbolsRepeats(str) << std::endl;
-        std::cout << appendNumToStr(str, str_) << std::endl;
+
+        char * str1_ = appendNumToStr(str, str_);
+
+        std::cout << str1_ << std::endl;
 
         delete[] str;
         delete[] str_;
+        delete[] str1_;
     }
     catch (const std::logic_error& err)
     {
