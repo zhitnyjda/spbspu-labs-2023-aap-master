@@ -13,6 +13,13 @@ char * shagieva::readString(size_t & read)
   do
   {
     std::cin >> cur;
+
+    if (!std::cin)
+    {
+      delete[] inputStr;
+      throw std::invalid_argument("No input");
+    }
+
     if (read == 0 && cur == '\n')
     {
       delete[] inputStr;
@@ -30,7 +37,7 @@ char * shagieva::readString(size_t & read)
       inputStr = newInputStr;
     }
   }
-  while (cur != '\n');
+  while (std::cin && cur != '\n');
   std::cin >> std::skipws;
 
   return inputStr;

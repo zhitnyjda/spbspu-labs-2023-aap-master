@@ -21,13 +21,14 @@ int main()
   char * changedStr = new char[read]{};
   shagieva::uppLow(inputStr, changedStr, read);
 
+  delete[] inputStr;
+
   for (size_t i = 0; i < read; i++)
   {
     std::cout << changedStr[i];
   }
   std::cout << "\n";
 
-  delete[] inputStr;
   delete[] changedStr;
   return 0;
 }
