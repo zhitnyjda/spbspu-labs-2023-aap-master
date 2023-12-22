@@ -1,18 +1,18 @@
-#include "functionStrRead.h"
+#include "DynamicStringReader.h"
 #include <iostream>
 #include <cstring>
 
 char* readDynamicString()
 {
-    const size_t BUFFER_SIZE = 1024;
+    size_t BUFFER_SIZE = 100;
     char* buffer = new char[BUFFER_SIZE];
     size_t capacity = BUFFER_SIZE;
     size_t size = 0;
-
     char ch;
+
     while (std::cin.get(ch))
     {
-        if (ch == '\n' || ch == '\0')
+        if (ch == '\n' || ch == EOF)
         {
             break;
         }
@@ -27,6 +27,15 @@ char* readDynamicString()
         }
 
         buffer[size++] = ch;
+    }
+
+    if (size == capacity)
+    {
+        capacity += 1;
+        char* newBuffer = new char[capacity];
+        std::memcpy(newBuffer, buffer, size);
+        delete[] buffer;
+        buffer = newBuffer;
     }
     buffer[size] = '\0';
 
