@@ -13,6 +13,12 @@ int main()
     std::cerr << "Error: can't allocate memory for input string\n";
     return 1;
   }
+  if (!str[0])
+  {
+    std::cerr << "Error: empty string\n";
+    delete[] str;
+    return 1;
+  }
   char * strResult = new char[lenght];
   if (!strResult)
   {
