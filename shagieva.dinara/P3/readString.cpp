@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include <iostream>
 
-
 char * shagieva::readString(std::istream & input, size_t & read)
 {
   char * inputStr = new char[10]{};
@@ -19,7 +18,9 @@ char * shagieva::readString(std::istream & input, size_t & read)
       delete[] inputStr;
       throw std::invalid_argument("Empty line entered.\n");
     }
+
     inputStr[read++] = cur;
+
     if (read % add == 0)
     {
       char * newInputStr = new char[read + add]{};

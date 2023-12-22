@@ -30,5 +30,6 @@ int main()
   std::cout << "\n";
 
   delete[] changedStr;
+
   return 0;
 }
