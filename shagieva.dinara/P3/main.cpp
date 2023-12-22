@@ -10,7 +10,7 @@ int main()
 
   try
   {
-    inputStr = shagieva::readString(read);
+    inputStr = shagieva::readString(std::cin, read);
   }
   catch (const std::invalid_argument & e)
   {

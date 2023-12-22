@@ -3,24 +3,18 @@
 #include <iostream>
 
 
-char * shagieva::readString(size_t & read)
+char * shagieva::readString(std::istream & input, size_t & read)
 {
   char * inputStr = new char[10]{};
   size_t add = 10;
   char cur = 0;
 
-  std::cin >> std::noskipws;
+  input >> std::noskipws;
   do
   {
-    std::cin >> cur;
+    input >> cur;
 
-    if (!std::cin)
-    {
-      delete[] inputStr;
-      throw std::invalid_argument("No input");
-    }
-
-    if (read == 0 && cur == '\n')
+    if (read == 0 && (cur == '\n' || cur == '\0'))
     {
       delete[] inputStr;
       throw std::invalid_argument("Empty line entered.\n");
@@ -28,7 +22,7 @@ char * shagieva::readString(size_t & read)
     inputStr[read++] = cur;
     if (read % add == 0)
     {
-      char * newInputStr = new char[read + add];
+      char * newInputStr = new char[read + add]{};
       for (size_t i = 0; i < read; i++)
       {
         newInputStr[i] = inputStr[i];
@@ -37,8 +31,8 @@ char * shagieva::readString(size_t & read)
       inputStr = newInputStr;
     }
   }
-  while (std::cin && cur != '\n');
-  std::cin >> std::skipws;
+  while (input && cur != '\n');
+  input >> std::skipws;
 
   return inputStr;
 }
