@@ -9,14 +9,12 @@ int main()
 
     try
     {
-        if (!(std::cin >> str >> str_))
-        {
-            throw std::logic_error("Input error!");
-        }
+        std::cin >> str >> str_;
+
         std::cout << strSymbolsRepeats(str) << std::endl;
         std::cout << appendNumToStr(str, str_) << std::endl;
     }
-    catch (const std::logic_error& err)
+    catch (const std::exception& err)
     {
         std::cerr << err.what() << std::endl;
         return 1;
