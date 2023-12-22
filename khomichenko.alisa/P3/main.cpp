@@ -38,6 +38,7 @@ int main()
   if (read < 2)
   {
     std::cerr << "empty input\n";
+    delete [] firstInput;
     return 1;
   }
   std::cin >> std::skipws;
