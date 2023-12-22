@@ -28,3 +28,26 @@ int khomichenko::countDifLat (char * string, int size)
   }
   return marker;
 }
+
+void  khomichenko::makingRmvVow (char * string, int size, char * newString)
+{
+  int count = 0;
+  const char vowel [6] = {'a', 'o', 'u', 'e', 'i', 'y'};
+  int marker = 0;
+  for (int i = 0; i < size; i++)
+  {
+    count = 0;
+    for (int j = 0; j < 6; j++)
+    {
+      if (string[i] == vowel[j])
+      {
+        ++count;
+      }
+    }
+    if (count == 0)
+    {
+      newString[marker] = string[i];
+      ++marker;
+    }
+  }
+}
