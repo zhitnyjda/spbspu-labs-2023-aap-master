@@ -1,13 +1,12 @@
 #include <iostream>
 #include <cstring>
-#include <cstddef>
 #include "inputString.hpp"
-char* inputString(size_t& size, size_t& scope)
+char* inputString(std::istream& input, size_t& size, size_t& scope)
 {
   char* string = new char[scope];
   size = 0;
   string[0] = '\0';
-  std::cin >> std::noskipws;
+  input >> std::noskipws;
   do
   {
     if (size == scope)
@@ -23,7 +22,7 @@ char* inputString(size_t& size, size_t& scope)
       scope = newScope;
     }
     std::cin >> string[size];
-  } while (std::cin && string[size++] != '\n');
+  } while (input && string[size++] != '\n');
   if (string[0] == '\0' || string[0] == '\n')
   {
     std::cerr << "Input error\n";
