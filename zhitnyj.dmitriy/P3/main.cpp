@@ -5,11 +5,14 @@
 
 int main()
 {
-    char* str = readDynamicString();
-    char* str_ = readDynamicString();
+    char* str = nullptr;
+    char* str_ = nullptr;
 
     try
     {
+        str = readDynamicString();
+        str_ = readDynamicString();
+
         std::cout << strSymbolsRepeats(str) << std::endl;
         std::cout << appendNumToStr(str, str_) << std::endl;
 
