@@ -1,4 +1,4 @@
-#include "DynamicStringReader.h"
+#include "functionStrRead.h"
 #include <iostream>
 #include <cstring>
 
