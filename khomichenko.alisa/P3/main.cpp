@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include "readString.hpp"
+#include "varFunc.hpp"
 
 int main()
 {
@@ -20,5 +21,7 @@ int main()
     firstInput =(c != '\n' && read == size)? khomichenko::createBiggerString (&size, firstInput): firstInput;
   }
   std::cin >> std::skipws;
+  std::cout<<khomichenko::countDifLat(firstInput, size)<<"\n";
   delete [] firstInput;
+  return 0;
 }
