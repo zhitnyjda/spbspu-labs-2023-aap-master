@@ -11,6 +11,7 @@ int main()
   if (!str)
   {
     std::cerr << "Error: can't allocate memory for input string\n";
+    delete[] str;
     return 1;
   }
   if (!str[0])
@@ -28,7 +29,7 @@ int main()
   }
   int lenResult = redko::buildWithoutInt(strResult, str, lenght);
   delete[] str;
-  for (int i = 0; i < lenResult; i++)
+  for (int i = 0; i < lenResult-1; i++)
   {
     std::cout << strResult[i];
   }

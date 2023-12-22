@@ -14,7 +14,6 @@ char * redko::getString(char *& dest, int & len, const int add)
       char* destNew = new char[len + add];
       if (!destNew)
       {
-        delete[] dest;
         return nullptr;
       }
       for (int i = 0; i < len; i++)
