@@ -1,4 +1,4 @@
-#include "readString.cpp"
+#include "readString.hpp"
 
 void khomichenko::swapStrings ( char * first, char * second, int size, const char * type)
 {
