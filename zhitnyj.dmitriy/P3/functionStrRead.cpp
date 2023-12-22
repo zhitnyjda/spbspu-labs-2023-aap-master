@@ -4,20 +4,20 @@
 
 char* readDynamicString()
 {
-    const size_t BUFFER_SIZE = 1024;
+    size_t BUFFER_SIZE = 100;
     char* buffer = new char[BUFFER_SIZE];
     size_t capacity = BUFFER_SIZE;
     size_t size = 0;
-
     char ch;
+
     while (std::cin.get(ch))
     {
-        if (ch == '\n' || ch == '\0')
+        if (ch == '\n' || ch == EOF)
         {
             break;
         }
 
-        if (size == capacity - 1)
+        if (size >= capacity - 1)
         {
             capacity *= 2;
             char* newBuffer = new char[capacity];
@@ -30,5 +30,9 @@ char* readDynamicString()
     }
     buffer[size] = '\0';
 
-    return buffer;
+    char* finalBuffer = new char[size + 1];
+    std::memcpy(finalBuffer, buffer, size + 1);
+    delete[] buffer;
+
+    return finalBuffer;
 }
