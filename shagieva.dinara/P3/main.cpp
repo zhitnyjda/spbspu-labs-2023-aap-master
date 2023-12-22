@@ -27,6 +27,7 @@ int main()
   }
   std::cout << "\n";
 
+  delete[] inputStr;
   delete[] changedStr;
   return 0;
 }
