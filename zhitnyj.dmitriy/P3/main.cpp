@@ -1,32 +1,42 @@
 #include "functionSeqSym.h"
 #include "functionDgtSnd.h"
+#include "functionStrRead.h"
 #include <iostream>
 
 int main()
 {
-    char* str = new char();
-    char* str_ = new char();
+    char* str = readDynamicString();
+    char* str_ = readDynamicString();
 
     try
     {
         std::cin >> str >> str_;
 
-        if(!*str || !*str_)
+        if (!*str || !*str_)
         {
             throw std::logic_error("Input error!");
         }
 
         std::cout << strSymbolsRepeats(str) << std::endl;
         std::cout << appendNumToStr(str, str_) << std::endl;
+
+        delete[] str;
+        delete[] str_;
     }
-    catch(const std::logic_error& err)
+    catch (const std::logic_error& err)
     {
         std::cerr << err.what() << std::endl;
+
+        delete[] str;
+        delete[] str_;
         return 1;
     }
     catch (const std::exception& err)
     {
         std::cerr << err.what() << std::endl;
+
+        delete[] str;
+        delete[] str_;
         return 1;
     }
 
