@@ -13,7 +13,7 @@ int main()
         str = readDynamicString();
         str_ = readDynamicString();
 
-        if(!*str || !*str_)
+        if(!*str)
         {
             throw std::logic_error("Invalid input!");
         }
