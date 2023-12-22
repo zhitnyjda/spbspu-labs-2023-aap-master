@@ -13,6 +13,11 @@ int main()
         str = readDynamicString();
         str_ = readDynamicString();
 
+        if(!*str || !*str_)
+        {
+            throw std::logic_error("Invalid input!");
+        }
+
         std::cout << strSymbolsRepeats(str) << std::endl;
         std::cout << appendNumToStr(str, str_) << std::endl;
 
