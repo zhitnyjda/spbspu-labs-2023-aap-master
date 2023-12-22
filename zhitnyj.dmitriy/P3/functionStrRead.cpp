@@ -4,15 +4,15 @@
 
 char* readDynamicString()
 {
-    size_t BUFFER_SIZE = 100;
+    const size_t BUFFER_SIZE = 1024;
     char* buffer = new char[BUFFER_SIZE];
     size_t capacity = BUFFER_SIZE;
     size_t size = 0;
-    char ch;
 
+    char ch;
     while (std::cin.get(ch))
     {
-        if (ch == '\n' || ch == EOF)
+        if (ch == '\n' || ch == '\0')
         {
             break;
         }
@@ -27,15 +27,6 @@ char* readDynamicString()
         }
 
         buffer[size++] = ch;
-    }
-
-    if (size == capacity)
-    {
-        capacity += 1;
-        char* newBuffer = new char[capacity];
-        std::memcpy(newBuffer, buffer, size);
-        delete[] buffer;
-        buffer = newBuffer;
     }
     buffer[size] = '\0';
 
