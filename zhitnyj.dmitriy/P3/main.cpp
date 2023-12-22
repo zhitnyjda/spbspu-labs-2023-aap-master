@@ -4,23 +4,23 @@
 
 int main()
 {
-		char* str = new char();
-		char* str_ = new char();
+    char* str = new char();
+    char* str_ = new char();
 
-		try
-		{
-				if (!(std::cin >> str >> str_))
-				{
-						throw std::logic_error("Input error!");
-				}
-				std::cout << strSymbolsRepeats(str) << std::endl;
-				std::cout << appendNumToStr(str, str_) << std::endl;
-		}
-		catch (const std::exception& err)
-		{
-				std::cerr << err.what() << std::endl;
-				return 1;
-		}
+    try
+    {
+        if (!(std::cin >> str >> str_))
+        {
+            throw std::logic_error("Input error!");
+        }
+        std::cout << strSymbolsRepeats(str) << std::endl;
+        std::cout << appendNumToStr(str, str_) << std::endl;
+    }
+    catch (const std::logic_error& err)
+    {
+        std::cerr << err.what() << std::endl;
+        return 1;
+    }
 
-		return 0;
+    return 0;
 }
