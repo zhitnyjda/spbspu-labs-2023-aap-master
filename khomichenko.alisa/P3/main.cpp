@@ -9,7 +9,7 @@ int main()
   int size = 20;
   char * firstInput = new char[size]{};
   char c = 0;
-  size_t read = 0;
+  int read = 0;
   std::cin >> std::noskipws;
   while ((std::cin >> c) && (read < size))
   {
