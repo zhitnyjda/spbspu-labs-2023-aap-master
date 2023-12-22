@@ -35,7 +35,7 @@ int main()
       return 1;
     }
   }
-  if (read == 1)
+  if (read < 2)
   {
     std::cerr << "empty input\n";
     return 1;
