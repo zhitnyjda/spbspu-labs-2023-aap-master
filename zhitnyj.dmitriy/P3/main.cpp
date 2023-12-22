@@ -11,12 +11,7 @@ int main()
     try
     {
         std::cin >> str >> str_;
-
-        if (!*str || !*str_)
-        {
-            throw std::logic_error("Input error!");
-        }
-
+        
         std::cout << strSymbolsRepeats(str) << std::endl;
         std::cout << appendNumToStr(str, str_) << std::endl;
 
