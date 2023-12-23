@@ -2,11 +2,11 @@
 #include <fstream>
 #include <sstream>
 
-Matrix::Matrix() : rows(0), cols(0), num(2), data(nullptr)
+Matrix::Matrix() : rows(0), cols(0), num_(2), data(nullptr)
 {
 }
 
-Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), data(nullptr), num(num)
+Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num), data(nullptr)
 {
   allocateMemory();
 }
@@ -61,7 +61,7 @@ void Matrix::loadFromFile(char* filename)
 
   allocateMemory();
 
-  if ((rows > 99 || cols > 99) && num == 1)
+  if ((rows > 99 || cols > 99) && num_ == 1)
   {
     throw std::length_error("Invalid data!");
   }
