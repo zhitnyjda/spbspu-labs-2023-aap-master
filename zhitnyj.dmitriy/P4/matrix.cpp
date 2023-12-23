@@ -49,7 +49,7 @@ void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
 
-  if (!file || file.peek() == ' ')
+  if (!file)
   {
     throw std::logic_error("No file!");
   }
