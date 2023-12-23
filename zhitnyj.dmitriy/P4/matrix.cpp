@@ -13,10 +13,11 @@ Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num),
 
 Matrix::~Matrix()
 {
-  if (data != nullptr)
+  for (int i = 0; i < rows; ++i)
   {
-    freeMemory();
+    delete[] data[i];
   }
+  delete[] data;
 }
 
 void Matrix::allocateMemory()
@@ -25,23 +26,6 @@ void Matrix::allocateMemory()
   for (int i = 0; i < rows; ++i)
   {
     data[i] = new int[cols];
-  }
-}
-
-void Matrix::freeMemory()
-{
-  if (data != nullptr)
-  {
-    for (int i = 0; i < rows; ++i)
-    {
-      if (data[i] != nullptr)
-      {
-        delete[] data[i];
-        data[i] = nullptr;
-      }
-    }
-    delete[] data;
-    data = nullptr;
   }
 }
 
