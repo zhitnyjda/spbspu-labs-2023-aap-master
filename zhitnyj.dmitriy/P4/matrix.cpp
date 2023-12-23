@@ -13,11 +13,10 @@ Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num),
 
 Matrix::~Matrix()
 {
-  for (int i = 0; i < rows; ++i)
+  if (data != nullptr)
   {
-    delete[] data[i];
+    freeMemory();
   }
-  delete[] data;
 }
 
 void Matrix::allocateMemory()
@@ -29,17 +28,38 @@ void Matrix::allocateMemory()
   }
 }
 
+void Matrix::freeMemory()
+{
+  if (data != nullptr)
+  {
+    for (int i = 0; i < rows; ++i)
+    {
+      if (data[i] != nullptr)
+      {
+        delete[] data[i];
+        data[i] = nullptr;
+      }
+    }
+    delete[] data;
+    data = nullptr;
+  }
+}
+
 void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
 
   if (!file || file.peek() == std::ifstream::traits_type::eof())
   {
+    rows = -1;
+    cols = -1;
     throw std::logic_error("No file!");
   }
 
   if (!(file >> rows >> cols))
   {
+    rows = -1;
+    cols = -1;
     throw std::length_error("Invalid data!");
   }
 
