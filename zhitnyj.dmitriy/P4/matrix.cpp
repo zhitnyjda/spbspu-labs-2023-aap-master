@@ -55,6 +55,7 @@ void Matrix::loadFromFile(char* filename)
   int newRows, newCols;
   if (!(file >> newRows >> newCols))
   {
+    freeMemory();
     throw std::length_error("Invalid data!");
   }
   if (data)
@@ -74,6 +75,8 @@ void Matrix::loadFromFile(char* filename)
     {
       if (!(file >> data[i][j]))
       {
+        freeMemory();
+        file.close();
         throw std::length_error("Invalid input!");
       }
     }
@@ -82,19 +85,19 @@ void Matrix::loadFromFile(char* filename)
   char s = file.get();
   if ((s > 20) && rows != 0)
   {
+    freeMemory();
+    file.close();
     throw std::length_error("Invalid input!");
   }
 }
 
 void Matrix::processLFT()
 {
-  if (!data || rows <= 0 || cols <= 0) return;
-
   int decrement = 1;
   int i = rows - 1;
   int j = 0;
 
-  int directions[][2] = {{ -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 }}; // up, right, down, left
+  int directions[][2] = {{ -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 }};
   int dir = 0;
   int** visited = new int* [rows];
 
@@ -173,5 +176,6 @@ void Matrix::saveToFile(char* filename)
       file << data[i][j] << " ";
     }
   }
+
   freeMemory();
 }
