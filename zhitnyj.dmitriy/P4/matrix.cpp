@@ -14,7 +14,10 @@ Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), data(nullptr)
 
 Matrix::~Matrix()
 {
-  freeMemory();
+  if (data)
+  {
+    freeMemory();
+  }
 }
 
 void Matrix::allocateMemory()
@@ -34,7 +37,7 @@ void Matrix::freeMemory()
 {
   if (data != nullptr)
   {
-    for (int i = 0; i < rows; i++)
+    for (int i = 0; i < rows; ++i)
     {
       if (data[i] != nullptr)
       {
@@ -76,7 +79,10 @@ void Matrix::loadFromFile(char* filename)
     {
       if (!(file >> data[i][j]))
       {
-        freeMemory();
+        if (data)
+        {
+          freeMemory();
+        }
         file.close();
         throw std::length_error("Invalid input!");
       }
@@ -86,7 +92,10 @@ void Matrix::loadFromFile(char* filename)
   char s = file.get();
   if ((s > 20) && rows != 0)
   {
-    freeMemory();
+    if (data)
+    {
+      freeMemory();
+    }
     file.close();
     throw std::length_error("Invalid input!");
   }
@@ -177,6 +186,8 @@ void Matrix::saveToFile(char* filename)
       file << data[i][j] << " ";
     }
   }
-
-  freeMemory();
+  if (data)
+  {
+    freeMemory();
+  }
 }
