@@ -18,6 +18,7 @@ Matrix::~Matrix()
 
 void Matrix::allocateMemory()
 {
+  freeMemory();
   data = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
