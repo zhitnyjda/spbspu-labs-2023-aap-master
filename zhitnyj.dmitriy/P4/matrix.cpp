@@ -72,10 +72,6 @@ void Matrix::loadFromFile(char* filename)
     {
       if (!(file >> data[i][j]))
       {
-        if (data)
-        {
-          freeMemory();
-        }
         file.close();
         throw std::length_error("Invalid input!");
       }
@@ -85,10 +81,6 @@ void Matrix::loadFromFile(char* filename)
   char s = file.get();
   if ((s > 20) && rows != 0)
   {
-    if (data)
-    {
-      freeMemory();
-    }
     file.close();
     throw std::length_error("Invalid input!");
   }
