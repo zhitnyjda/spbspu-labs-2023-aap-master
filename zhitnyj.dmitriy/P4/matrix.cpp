@@ -13,7 +13,7 @@ Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), data(nullp
 
 Matrix::~Matrix()
 {
-  if (data)
+  if (data != nullptr)
   {
     freeMemory();
   }
@@ -54,8 +54,6 @@ void Matrix::loadFromFile(char* filename)
     throw std::logic_error("No file!");
   }
 
-  int newRows = 0;
-  int newCols = 0;
   if (!(file >> rows >> cols))
   {
     throw std::length_error("Invalid data!");
