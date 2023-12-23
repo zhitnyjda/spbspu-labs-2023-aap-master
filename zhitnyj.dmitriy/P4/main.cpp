@@ -21,17 +21,15 @@ int main(int argc, char* argv[])
 
     if (num == 1)
     {
-      Matrix* matrix = new Matrix(100, 100, 1);
-      matrix->loadFromFile(argv[2]);
-      matrix->saveToFile(argv[3]);
-      delete matrix;
+      Matrix matrix = Matrix(100, 100, 1);
+      matrix.loadFromFile(argv[2]);
+      matrix.saveToFile(argv[3]);
     }
     else if (num == 2)
     {
-      Matrix* matrix = new Matrix();
-      matrix->loadFromFile(argv[2]);
-      matrix->saveToFile(argv[3]);
-      delete matrix;
+      Matrix matrix = Matrix();
+      matrix.loadFromFile(argv[2]);
+      matrix.saveToFile(argv[3]);
     }
     else
     {
