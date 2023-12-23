@@ -5,8 +5,7 @@
 class Matrix
 {
 public:
-    Matrix();
-    Matrix(int rows, int cols, int num);
+    Matrix(int rows = 0, int cols = 0, int num = 2);
     ~Matrix();
     void loadFromFile(char* filename);
     void saveToFile(char* filename);
