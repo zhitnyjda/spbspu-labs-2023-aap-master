@@ -4,7 +4,7 @@
 using namespace nikiforov;
 int main()
 {
-  char c = 0;
+  char c = '\0';
   size_t size = 0;
   size_t read = 0;
   char* str1 = new char[size] {};
