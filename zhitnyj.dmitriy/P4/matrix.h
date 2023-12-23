@@ -15,9 +15,9 @@ public:
 private:
     int rows, cols, num_;
     int** data;
+    int data_[100][100];
 
     void allocateMemory();
-    void freeMemory();
 };
 
 #endif
