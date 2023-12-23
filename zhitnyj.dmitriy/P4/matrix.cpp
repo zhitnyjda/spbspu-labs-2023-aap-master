@@ -18,19 +18,16 @@ Matrix::~Matrix()
 
 void Matrix::allocateMemory()
 {
-  if (data == nullptr)
+  data = new int* [rows];
+  for (int i = 0; i < rows; ++i)
   {
-    data = new int* [rows];
-    for (int i = 0; i < rows; i++)
-    {
-      data[i] = new int[cols]{ 0 };
-    }
+    data[i] = new int[cols]{ 0 };
   }
 }
 
 void Matrix::freeMemory()
 {
-  for (int i = 0; i < rows; i++)
+  for (int i = 0; i < rows; ++i)
   {
     delete[] data[i];
   }
@@ -62,9 +59,9 @@ void Matrix::loadFromFile(char* filename)
     throw std::length_error("Invalid data!");
   }
 
-  for (int i = 0; i < rows; i++)
+  for (int i = 0; i < rows; ++i)
   {
-    for (int j = 0; j < cols; j++)
+    for (int j = 0; j < cols; ++j)
     {
       if (!(file >> data[i][j]))
       {
@@ -131,7 +128,7 @@ size_t Matrix::processMAX()
   for (int start_row = 1; start_row < rows; ++start_row)
   {
     int sum_diag = 0;
-    for (int i = 0; start_row + i < rows && i < cols; i++)
+    for (int i = 0; start_row + i < rows && i < cols; ++i)
     {
       sum_diag += data[start_row + i][i];
     }
@@ -141,7 +138,7 @@ size_t Matrix::processMAX()
   for (int start_col = 1; start_col < cols; ++start_col)
   {
     int sum_diag = 0;
-    for (int i = 0; i < rows && start_col + i < cols; i++)
+    for (int i = 0; i < rows && start_col + i < cols; ++i)
     {
       sum_diag += data[i][start_col + i];
     }
@@ -160,9 +157,9 @@ void Matrix::saveToFile(char* filename)
   processLFT();
 
   file << rows << " " << cols << " ";
-  for (int i = 0; i < rows; i++)
+  for (int i = 0; i < rows; ++i)
   {
-    for (int j = 0; j < cols; j++)
+    for (int j = 0; j < cols; ++j)
     {
       file << data[i][j] << " ";
     }
