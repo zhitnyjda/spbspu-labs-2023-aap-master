@@ -40,18 +40,7 @@ void Matrix::freeMemory()
         data[i] = nullptr;
       }
     }
-    if (rows == 0)
-    {
-      delete data;
-    }
-    else
-    {
-      delete[] data;
-    }
-  }
-  else
-  {
-    delete data;
+    delete[] data;
   }
 }
 
@@ -59,7 +48,7 @@ void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
 
-  if (!file)
+  if (!file || file.peek() == std::ifstream::traits_type::eof())
   {
     throw std::logic_error("No file!");
   }
