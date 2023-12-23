@@ -1,7 +1,6 @@
 #include "matrix.h"
 #include <fstream>
 #include <sstream>
-#include <iostream>
 
 Matrix::Matrix() : rows(0), cols(0), data(nullptr)
 {
@@ -14,19 +13,39 @@ Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), data(nullptr)
 
 Matrix::~Matrix()
 {
-  delete[] data;
+  if (data)
+  {
+    freeMemory();
+  }
 }
 
 void Matrix::allocateMemory()
 {
   if (data)
   {
-    delete[] data;
+    freeMemory();
   }
   data = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
     data[i] = new int[cols];
+  }
+}
+
+void Matrix::freeMemory()
+{
+  if (data != nullptr)
+  {
+    for (int i = 0; i < rows; ++i)
+    {
+      if (data[i] != nullptr)
+      {
+        delete[] data[i];
+        data[i] = nullptr;
+      }
+    }
+    delete[] data;
+    data = nullptr;
   }
 }
 
@@ -59,6 +78,10 @@ void Matrix::loadFromFile(char* filename)
     {
       if (!(file >> data[i][j]))
       {
+        if (data)
+        {
+          freeMemory();
+        }
         file.close();
         throw std::length_error("Invalid input!");
       }
@@ -68,6 +91,10 @@ void Matrix::loadFromFile(char* filename)
   char s = file.get();
   if ((s > 20) && rows != 0)
   {
+    if (data)
+    {
+      freeMemory();
+    }
     file.close();
     throw std::length_error("Invalid input!");
   }
@@ -158,6 +185,8 @@ void Matrix::saveToFile(char* filename)
       file << data[i][j] << " ";
     }
   }
-
-  delete[] data;
+  if (data)
+  {
+    freeMemory();
+  }
 }
