@@ -1,6 +1,7 @@
 #include "matrix.h"
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 Matrix::Matrix() : rows(0), cols(0), data(nullptr)
 {
@@ -8,41 +9,35 @@ Matrix::Matrix() : rows(0), cols(0), data(nullptr)
 
 Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), data(nullptr)
 {
-  allocateMemory();
+  if (rows > 0 && cols > 0)
+  {
+    allocateMemory();
+  }
 }
 
 Matrix::~Matrix()
 {
-  if (data)
-  {
-    freeMemory();
-  }
+  freeMemory();
 }
 
 void Matrix::allocateMemory()
 {
-  if (data)
-  {
-    freeMemory();
-  }
+  freeMemory();
   data = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
-    data[i] = new int[cols];
+    data[i] = new int[cols]{ 0 };
   }
 }
 
 void Matrix::freeMemory()
 {
-  if (data != nullptr)
+  for (int i = 0; i < rows; ++i)
   {
-    for (int i = 0; i < rows; ++i)
-    {
-      delete[] data[i];
-    }
-    delete[] data;
-    data = nullptr;
+    delete[] data[i];
   }
+  delete[] data;
+  data = nullptr;
 }
 
 void Matrix::loadFromFile(char* filename)
@@ -59,7 +54,10 @@ void Matrix::loadFromFile(char* filename)
     throw std::length_error("Invalid data!");
   }
 
-  freeMemory();
+  if (newRows <= 0 || newCols <= 0 || newRows > 99 || newCols > 99)
+  {
+    throw std::length_error("Invalid data!");
+  }
 
   rows = newRows;
   cols = newCols;
@@ -71,13 +69,10 @@ void Matrix::loadFromFile(char* filename)
     {
       if (!(file >> data[i][j]))
       {
-        freeMemory();
-        file.close();
         throw std::length_error("Invalid input!");
       }
     }
   }
-
   int s = file.get();
   if ((s > 20) && rows != 0)
   {
@@ -90,6 +85,7 @@ void Matrix::loadFromFile(char* filename)
   }
   file.close();
 }
+
 void Matrix::processLFT()
 {
   int decrement = 1;
@@ -108,7 +104,7 @@ void Matrix::processLFT()
   for (int processed = 0; processed < rows * cols; ++processed)
   {
     data[i][j] -= decrement;
-    visited[i][j] = true;
+    visited[i][j] = 1;
     decrement++;
 
     int next_i = i + directions[dir][0];
@@ -134,9 +130,9 @@ void Matrix::processLFT()
 
 size_t Matrix::processMAX()
 {
-  int max_sum = 0;
+  int max_sum = INT_MIN;
 
-  for (int start_row = 1; start_row < rows; ++start_row)
+  for (int start_row = 0; start_row < rows; ++start_row)
   {
     int sum_diag = 0;
     for (int i = 0; start_row + i < rows && i < cols; ++i)
@@ -159,24 +155,27 @@ size_t Matrix::processMAX()
   return max_sum;
 }
 
-void Matrix::saveToFile(char* filename)
+void Matrix::saveToFile(const char* filename)
 {
   std::ofstream file(filename);
+
+  if (!file)
+  {
+    throw std::logic_error("Could not open file for writing!");
+  }
 
   file << processMAX() << std::endl;
 
   processLFT();
 
-  file << rows << " " << cols << " ";
+  file << rows << " " << cols << std::endl;
   for (int i = 0; i < rows; ++i)
   {
     for (int j = 0; j < cols; ++j)
     {
       file << data[i][j] << " ";
     }
+    file << std::endl;
   }
-  if (data)
-  {
-    freeMemory();
-  }
+  file.close();
 }
