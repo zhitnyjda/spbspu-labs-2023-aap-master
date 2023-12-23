@@ -49,21 +49,15 @@ void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
 
-  if (!file)
+  if (!file || file.peek() == 10)
   {
     throw std::logic_error("No file!");
   }
-  int rows_ = 0;
-  int cols_ = 0;
-  file >> rows_ >> cols_;
 
-  if (!rows_)
+  if (!(file >> rows >> cols))
   {
     throw std::length_error("Invalid data!");
   }
-
-  rows = rows_;
-  cols = cols_;
 
   allocateMemory();
 
