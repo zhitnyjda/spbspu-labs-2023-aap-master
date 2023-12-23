@@ -19,7 +19,7 @@ Matrix::~Matrix()
 void Matrix::allocateMemory()
 {
   data = new int* [rows];
-  for (int i = 0; i < rows; ++i)
+  for (int i = 0; i < rows - 1; ++i)
   {
     data[i] = new int[cols]{ 0 };
   }
