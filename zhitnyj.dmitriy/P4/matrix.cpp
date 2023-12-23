@@ -34,19 +34,16 @@ void Matrix::allocateMemory()
 
 void Matrix::freeMemory()
 {
-  if (data != nullptr)
+  for (int i = 0; i < rows; ++i)
   {
-    for (int i = 0; i < rows; ++i)
+    if (data[i] != nullptr)
     {
-      if (data[i] != nullptr)
-      {
-        delete[] data[i];
-        data[i] = nullptr;
-      }
+      delete[] data[i];
+      data[i] = nullptr;
     }
-    delete[] data;
-    data = nullptr;
   }
+  delete[] data;
+  data = nullptr;
 }
 
 void Matrix::loadFromFile(char* filename)
