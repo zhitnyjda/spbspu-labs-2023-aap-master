@@ -19,7 +19,7 @@ Matrix::~Matrix()
 void Matrix::allocateMemory()
 {
   data = new int* [rows];
-  for (int i = 0; i < rows; ++i)
+  for (size_t i = 0; i < rows; ++i)
   {
     data[i] = new int[cols];
   }
@@ -29,7 +29,7 @@ void Matrix::freeMemory()
 {
   if (data != nullptr)
   {
-    for (int i = 0; i < rows; ++i)
+    for (size_t i = 0; i < rows; ++i)
     {
       delete[] data[i];
     }
@@ -41,8 +41,6 @@ void Matrix::freeMemory()
 void Matrix::loadFromFile(const std::string& filename)
 {
   std::ifstream file(filename);
-
-  char s = ' ';
 
   if (!file)
   {
@@ -57,9 +55,9 @@ void Matrix::loadFromFile(const std::string& filename)
   freeMemory();
   allocateMemory();
 
-  for (int i = 0; i < rows; ++i)
+  for (size_t i = 0; i < rows; ++i)
   {
-    for (int j = 0; j < cols; ++j)
+    for (size_t j = 0; j < cols; ++j)
     {
       if (!(file >> data[i][j]))
       {
@@ -78,24 +76,27 @@ void Matrix::processLFT()
 {
   if (!data || rows <= 0 || cols <= 0) return;
 
-  int decrement = 1;
-  int i = rows - 1, j = 0;
-  int directions[][2] = {{ -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 }}; // up, right, down, left
-  int dir = 0;
-  bool** visited = new bool* [rows];
-  for (int k = 0; k < rows; ++k)
+  size_t decrement = 1;
+  size_t i = rows - 1;
+  size_t j = 0;
+
+  size_t directions[][2] = {{ -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 }}; // up, right, down, left
+  size_t dir = 0;
+  int** visited = new int* [rows];
+
+  for (size_t k = 0; k < rows; ++k)
   {
-    visited[k] = new bool[cols]();
+    visited[k] = new int[cols]();
   }
 
   for (int processed = 0; processed < rows * cols; ++processed)
   {
     data[i][j] -= decrement;
-    visited[i][j] = true;
+    visited[i][j] = 1;
     decrement++;
 
-    int next_i = i + directions[dir][0];
-    int next_j = j + directions[dir][1];
+    size_t next_i = i + directions[dir][0];
+    size_t next_j = j + directions[dir][1];
 
     if (next_i < 0 || next_i >= rows || next_j < 0 || next_j >= cols || visited[next_i][next_j])
     {
@@ -108,7 +109,7 @@ void Matrix::processLFT()
     j = next_j;
   }
 
-  for (int k = 0; k < rows; ++k)
+  for (size_t k = 0; k < rows; ++k)
   {
     delete[] visited[k];
   }
@@ -119,20 +120,20 @@ size_t Matrix::processMAX()
 {
   size_t max_sum = 0;
 
-  for (int start_row = 1; start_row < rows; ++start_row)
+  for (size_t start_row = 1; start_row < rows; ++start_row)
   {
     size_t sum_diag = 0;
-    for (int i = 0; start_row + i < rows && i < cols; ++i)
+    for (size_t i = 0; start_row + i < rows && i < cols; ++i)
     {
       sum_diag += data[start_row + i][i];
     }
     max_sum = std::max(max_sum, sum_diag);
   }
 
-  for (int start_col = 1; start_col < cols; ++start_col)
+  for (size_t start_col = 1; start_col < cols; ++start_col)
   {
     size_t sum_diag = 0;
-    for (int i = 0; i < rows && start_col + i < cols; ++i)
+    for (size_t i = 0; i < rows && start_col + i < cols; ++i)
     {
       sum_diag += data[i][start_col + i];
     }
@@ -151,9 +152,9 @@ void Matrix::saveToFile(const std::string& filename)
   processLFT();
 
   file << rows << " " << cols << " ";
-  for (int i = 0; i < rows; ++i)
+  for (size_t i = 0; i < rows; ++i)
   {
-    for (int j = 0; j < cols; ++j)
+    for (size_t j = 0; j < cols; ++j)
     {
       file << data[i][j] << " ";
     }
