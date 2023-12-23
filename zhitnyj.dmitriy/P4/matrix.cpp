@@ -13,15 +13,11 @@ Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num),
 
 Matrix::~Matrix()
 {
-  if (data != nullptr)
-  {
-    freeMemory();
-  }
+  freeMemory();
 }
 
 void Matrix::allocateMemory()
 {
-  freeMemory();
   data = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
