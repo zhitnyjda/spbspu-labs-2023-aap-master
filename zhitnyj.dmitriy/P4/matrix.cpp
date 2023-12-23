@@ -2,16 +2,11 @@
 #include <fstream>
 #include <sstream>
 
-Matrix::Matrix() : rows(0), cols(0), num_(2), data(nullptr)
-{
-}
-
 Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num), data(nullptr)
 {
-  data = new int* [rows];
-  for (int c = 0; c < rows; c++)
+  if (num == 1)
   {
-    data[c] = new int[cols];
+    allocateMemory();
   }
 }
 
@@ -22,7 +17,6 @@ Matrix::~Matrix()
     delete[] data[i];
   }
   delete[] data;
-  data = nullptr;
 }
 
 void Matrix::allocateMemory()
