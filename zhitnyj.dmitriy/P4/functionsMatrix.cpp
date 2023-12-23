@@ -4,7 +4,8 @@
 #include <cstdlib>
 #include <stdexcept>
 
-Matrix::Matrix(int r, int c, int arrayType) : rows(r), cols(c), arrayType(arrayType) {
+Matrix::Matrix(int r, int c, int arrayType) : rows(r), cols(c), arrayType(arrayType)
+{
     if (arrayType == 1) {
         if (rows > MAX_SIZE || cols > MAX_SIZE) {
             throw std::invalid_argument("Invalid size for static array.");
@@ -16,7 +17,8 @@ Matrix::Matrix(int r, int c, int arrayType) : rows(r), cols(c), arrayType(arrayT
     }
 }
 
-Matrix::~Matrix() {
+Matrix::~Matrix()
+{
     if (arrayType == 2) {
         deallocateDynamicArray();
     }
