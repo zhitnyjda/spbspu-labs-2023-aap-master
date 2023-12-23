@@ -74,10 +74,6 @@ void Matrix::loadFromFile(char* filename)
 
   if (rows > 99 || cols > 99)
   {
-    if (data)
-    {
-      freeMemory();
-    }
     throw std::length_error("Invalid data!");
   }
 
