@@ -1,6 +1,7 @@
 #include "matrix.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 Matrix::Matrix() : rows(0), cols(0), data(nullptr)
 {
@@ -66,7 +67,7 @@ void Matrix::loadFromFile(const std::string& filename)
     }
   }
 
-  if (file.get() && rows != 0)
+  if (file.get() != '\n' && rows != 0)
   {
     throw std::length_error("Invalid input!");
   }
