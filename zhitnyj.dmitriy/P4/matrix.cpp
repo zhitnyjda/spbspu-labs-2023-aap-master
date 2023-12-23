@@ -7,6 +7,11 @@ Matrix::Matrix() : rows(0), cols(0), data(nullptr)
 {
 }
 
+Matrix::Matrix(const Matrix& matrix) : rows(matrix.rows), cols(matrix.cols), data(new int[rows * cols])
+{
+  std::copy(&matrix.data[0], &matrix.data[0] + rows * cols, &data[0]);
+}
+
 Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), data(nullptr)
 {
   allocateMemory();
