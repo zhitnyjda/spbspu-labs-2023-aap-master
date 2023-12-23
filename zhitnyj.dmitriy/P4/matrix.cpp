@@ -13,7 +13,7 @@ Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num),
 
 Matrix::~Matrix()
 {
-  
+
 }
 
 void Matrix::allocateMemory()
