@@ -21,7 +21,10 @@ int main(int argc, char* argv[])
 
     if (num == 1)
     {
-      Matrix matrix = Matrix(10, 10, 1);
+      const int rows = 100;
+      const int cols = 100;
+
+      Matrix matrix = Matrix(rows, cols, 1);
       matrix.loadFromFile(argv[2]);
       matrix.saveToFile(argv[3]);
     }
