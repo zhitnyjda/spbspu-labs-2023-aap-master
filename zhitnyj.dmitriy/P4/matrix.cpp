@@ -1,6 +1,7 @@
 #include "matrix.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 Matrix::Matrix() : rows(0), cols(0), num_(2), data(nullptr)
 {
@@ -8,15 +9,25 @@ Matrix::Matrix() : rows(0), cols(0), num_(2), data(nullptr)
 
 Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num), data(nullptr)
 {
-  allocateMemory();
+  data = new int* [rows];
+  for (int c = 0; c < rows; c++)
+  {
+    data[c] = new int[cols];
+
+    for (int j = 0; j < cols; j++)
+    {
+      data[c][j] = 0;
+    }
+  }
 }
 
 Matrix::~Matrix()
 {
-  if (data != nullptr)
+  for (int i = 0; i < rows; ++i)
   {
-    freeMemory();
+    delete[] data[i];
   }
+  delete[] data;
 }
 
 void Matrix::allocateMemory()
@@ -28,38 +39,17 @@ void Matrix::allocateMemory()
   }
 }
 
-void Matrix::freeMemory()
-{
-  if (data != nullptr)
-  {
-    for (int i = 0; i < rows; ++i)
-    {
-      if (data[i] != nullptr)
-      {
-        delete[] data[i];
-        data[i] = nullptr;
-      }
-    }
-    delete[] data;
-    data = nullptr;
-  }
-}
-
 void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
 
   if (!file || file.peek() == std::ifstream::traits_type::eof())
   {
-    rows = -1;
-    cols = -1;
     throw std::logic_error("No file!");
   }
 
   if (!(file >> rows >> cols))
   {
-    rows = -1;
-    cols = -1;
     throw std::length_error("Invalid data!");
   }
 
