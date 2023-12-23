@@ -1,6 +1,7 @@
 #include "matrix.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 Matrix::Matrix() : rows(0), cols(0), num_(2), data(nullptr)
 {
@@ -58,8 +59,9 @@ void Matrix::loadFromFile(char* filename)
 
   if (!(file >> rows >> cols))
   {
-    rows = -1;
-    cols = -1;
+    Matrix::rows = -1;
+    Matrix::cols = -1;
+    std::cout << rows << " " << cols << std::endl;
     throw std::length_error("Invalid data!");
   }
 
