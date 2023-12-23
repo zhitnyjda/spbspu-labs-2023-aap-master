@@ -40,7 +40,6 @@ void Matrix::freeMemory()
         data[i] = nullptr;
       }
     }
-    delete[] data;
     data = nullptr;
   }
 }
@@ -49,16 +48,17 @@ void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
 
-  if (!file || file.peek() == 10)
+  if (!file)
   {
     throw std::logic_error("No file!");
   }
-
-  if (!(file >> rows >> cols))
+  if (num_ == 2)
   {
-    throw std::length_error("Invalid data!");
+    if (!(file >> rows >> cols))
+    {
+      throw std::length_error("Invalid data!");
+    }
   }
-
   allocateMemory();
 
   if ((rows > 99 || cols > 99) && num_ == 1)
