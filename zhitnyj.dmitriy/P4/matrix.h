@@ -1,7 +1,6 @@
 #ifndef MATRIX_H
 #define MATRIX_H
-
-#include <string>
+#include <cstdio>
 
 class Matrix
 {
@@ -9,8 +8,8 @@ public:
     Matrix();
     Matrix(int rows, int cols);
     ~Matrix();
-    void loadFromFile(const std::string& filename);
-    void saveToFile(const std::string& filename);
+    void loadFromFile(char* filename);
+    void saveToFile(char* filename);
     void processLFT();
     size_t processMAX();
 
