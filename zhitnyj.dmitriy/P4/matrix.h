@@ -14,7 +14,7 @@ public:
     size_t processMAX();
 
 private:
-    int rows, cols, num;
+    int rows, cols, num_;
     int** data;
 
     void allocateMemory();
