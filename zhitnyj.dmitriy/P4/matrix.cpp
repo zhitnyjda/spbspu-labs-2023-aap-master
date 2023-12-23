@@ -34,60 +34,36 @@ void Matrix::allocateMemory()
 
 void Matrix::freeMemory()
 {
-  for (int i = 0; i < rows; ++i)
+  if (data != nullptr)
   {
-    if (data[i] != nullptr)
+    for (int i = 0; i < rows; ++i)
     {
       delete[] data[i];
-      data[i] = nullptr;
     }
+    delete[] data;
+    data = nullptr;
   }
-  delete[] data;
-  data = nullptr;
 }
 
 void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
-
   if (!file)
   {
-    if (data)
-    {
-      freeMemory();
-    }
     throw std::logic_error("No file!");
   }
 
-  int newRows = 0;
-  int newCols = 0;
+  int newRows, newCols;
   if (!(file >> newRows >> newCols))
   {
-    if (data)
-    {
-      freeMemory();
-    }
     throw std::length_error("Invalid data!");
-  }
-  if (data)
-  {
-    freeMemory();
-  }
-  if (newRows != rows || newCols != cols || rows == 0)
-  {
-    rows = newRows;
-    cols = newCols;
-    allocateMemory();
   }
 
-  if (rows > 99 || cols > 99)
-  {
-    if (data)
-    {
-      freeMemory();
-    }
-    throw std::length_error("Invalid data!");
-  }
+  freeMemory();
+
+  rows = newRows;
+  cols = newCols;
+  allocateMemory();
 
   for (int i = 0; i < rows; ++i)
   {
@@ -95,28 +71,25 @@ void Matrix::loadFromFile(char* filename)
     {
       if (!(file >> data[i][j]))
       {
-        if (data)
-        {
-          freeMemory();
-        }
+        freeMemory();
         file.close();
         throw std::length_error("Invalid input!");
       }
     }
   }
 
-  char s = file.get();
+  int s = file.get();
   if ((s > 20) && rows != 0)
   {
-    if (data)
+    if (data != nullptr)
     {
       freeMemory();
     }
     file.close();
     throw std::length_error("Invalid input!");
   }
+  file.close();
 }
-
 void Matrix::processLFT()
 {
   int decrement = 1;
