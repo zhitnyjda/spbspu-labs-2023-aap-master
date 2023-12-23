@@ -17,9 +17,6 @@ private:
     int rows, cols, num_;
     int** data;
 
-    Matrix(const Matrix&) = delete;
-    Matrix& operator=(const Matrix&) = delete;
-
     void allocateMemory();
     void freeMemory();
 };
