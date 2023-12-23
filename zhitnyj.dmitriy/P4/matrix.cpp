@@ -34,7 +34,7 @@ void Matrix::freeMemory()
 {
   if (data != nullptr)
   {
-    for (int i = 0; i < rows; ++i)
+    for (int i = 0; i < rows; i++)
     {
       if (data[i] != nullptr)
       {
@@ -62,10 +62,7 @@ void Matrix::loadFromFile(char* filename)
   {
     throw std::length_error("Invalid data!");
   }
-  if (data)
-  {
-    freeMemory();
-  }
+
   if (newRows != rows || newCols != cols || rows == 0)
   {
     rows = newRows;
