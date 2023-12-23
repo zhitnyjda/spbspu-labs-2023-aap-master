@@ -53,10 +53,12 @@ void Matrix::loadFromFile(char* filename)
   {
     throw std::length_error("Invalid data!");
   }
-
-  if (newRows != rows || newCols != cols)
+  if(data)
   {
     freeMemory();
+  }
+  if (newRows != rows || newCols != cols)
+  {
     rows = newRows;
     cols = newCols;
     allocateMemory();
@@ -167,4 +169,6 @@ void Matrix::saveToFile(char* filename)
       file << data[i][j] << " ";
     }
   }
+  
+  freeMemory();
 }
