@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 
     if (num == 1)
     {
-      Matrix matrix = Matrix(100, 100, 1);
+      Matrix matrix = Matrix(10, 10, 1);
       matrix.loadFromFile(argv[2]);
       matrix.saveToFile(argv[3]);
     }
