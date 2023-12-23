@@ -1,7 +1,6 @@
 #include "matrix.h"
 #include <fstream>
 #include <sstream>
-#include <algorithm>
 
 Matrix::Matrix() : rows(0), cols(0), data(nullptr)
 {
@@ -9,59 +8,82 @@ Matrix::Matrix() : rows(0), cols(0), data(nullptr)
 
 Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), data(nullptr)
 {
-  if (rows > 0 && cols > 0)
-  {
-    allocateMemory();
-  }
+  allocateMemory();
 }
 
 Matrix::~Matrix()
 {
-  freeMemory();
+  if (data)
+  {
+    freeMemory();
+  }
 }
 
 void Matrix::allocateMemory()
 {
-  freeMemory();
+  if (data)
+  {
+    freeMemory();
+  }
   data = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
-    data[i] = new int[cols]{ 0 };
+    data[i] = new int[cols];
   }
 }
 
 void Matrix::freeMemory()
 {
-  for (int i = 0; i < rows; ++i)
+  if (data != nullptr)
   {
-    delete[] data[i];
+    for (int i = 0; i < rows; ++i)
+    {
+      if (data[i] != nullptr)
+      {
+        delete[] data[i];
+        data[i] = nullptr;
+      }
+    }
+    delete[] data;
+    data = nullptr;
   }
-  delete[] data;
-  data = nullptr;
 }
 
 void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
+
   if (!file)
   {
     throw std::logic_error("No file!");
   }
 
-  int newRows, newCols;
+  int newRows = 0;
+  int newCols = 0;
   if (!(file >> newRows >> newCols))
   {
+    if (data)
+    {
+      freeMemory();
+    }
     throw std::length_error("Invalid data!");
   }
 
-  if (newRows <= 0 || newCols <= 0 || newRows > 99 || newCols > 99)
+  if (newRows != rows || newCols != cols || rows == 0)
   {
-    throw std::length_error("Invalid data!");
+    rows = newRows;
+    cols = newCols;
+    allocateMemory();
   }
 
-  rows = newRows;
-  cols = newCols;
-  allocateMemory();
+  if (rows > 99 || cols > 99)
+  {
+    if (data)
+    {
+      freeMemory();
+    }
+    throw std::length_error("Invalid data!");
+  }
 
   for (int i = 0; i < rows; ++i)
   {
@@ -69,70 +91,33 @@ void Matrix::loadFromFile(char* filename)
     {
       if (!(file >> data[i][j]))
       {
+        if (data)
+        {
+          freeMemory();
+        }
+        file.close();
         throw std::length_error("Invalid input!");
       }
     }
   }
-  int s = file.get();
+
+  char s = file.get();
   if ((s > 20) && rows != 0)
   {
-    if (data != nullptr)
+    if (data)
     {
       freeMemory();
     }
     file.close();
     throw std::length_error("Invalid input!");
   }
-  file.close();
-}
-
-void Matrix::processLFT()
-{
-  int decrement = 1;
-  int i = rows - 1;
-  int j = 0;
-
-  int directions[][2] = {{ -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 }};
-  int dir = 0;
-  int** visited = new int* [rows];
-
-  for (int k = 0; k < rows; ++k)
-  {
-    visited[k] = new int[cols]();
-  }
-
-  for (int processed = 0; processed < rows * cols; ++processed)
-  {
-    data[i][j] -= decrement;
-    visited[i][j] = 1;
-    decrement++;
-
-    int next_i = i + directions[dir][0];
-    int next_j = j + directions[dir][1];
-
-    if (next_i < 0 || next_i >= rows || next_j < 0 || next_j >= cols || visited[next_i][next_j])
-    {
-      dir = (dir + 1) % 4;
-      next_i = i + directions[dir][0];
-      next_j = j + directions[dir][1];
-    }
-
-    i = next_i;
-    j = next_j;
-  }
-
-  for (int k = 0; k < rows; ++k)
-  {
-    delete[] visited[k];
-  }
-  delete[] visited;
 }
 
 size_t Matrix::processMAX()
 {
-  int max_sum = INT_MIN;
+  int max_sum = 0;
 
-  for (int start_row = 0; start_row < rows; ++start_row)
+  for (int start_row = 1; start_row < rows; ++start_row)
   {
     int sum_diag = 0;
     for (int i = 0; start_row + i < rows && i < cols; ++i)
@@ -155,27 +140,15 @@ size_t Matrix::processMAX()
   return max_sum;
 }
 
-void Matrix::saveToFile(const char* filename)
+void Matrix::saveToFile(char* filename)
 {
   std::ofstream file(filename);
 
-  if (!file)
-  {
-    throw std::logic_error("Could not open file for writing!");
-  }
-
   file << processMAX() << std::endl;
 
-  processLFT();
-
-  file << rows << " " << cols << std::endl;
-  for (int i = 0; i < rows; ++i)
+  file << rows << " " << cols << " ";
+  if (data)
   {
-    for (int j = 0; j < cols; ++j)
-    {
-      file << data[i][j] << " ";
-    }
-    file << std::endl;
+    freeMemory();
   }
-  file.close();
 }
