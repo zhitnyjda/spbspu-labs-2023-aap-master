@@ -4,16 +4,16 @@
 
 int main(int argc, char* argv[])
 {
-  if (argc != 4)
-  {
-    throw std::logic_error("Not enough parameters!");
-  }
-
   try
   {
+    if (argc != 4)
+    {
+      throw std::logic_error("Not enough parameters!");
+    }
+
     int num = std::stoi(argv[1]);
-    std::string inputFilename = argv[2];
-    std::string outputFilename = argv[3];
+    char* inputFilename = argv[2];
+    char* outputFilename = argv[3];
 
     Matrix matrix;
     if (num == 1)
