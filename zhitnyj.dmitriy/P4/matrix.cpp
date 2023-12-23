@@ -18,29 +18,21 @@ Matrix::~Matrix()
 
 void Matrix::allocateMemory()
 {
-  freeMemory();
   data = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
-    data[i] = new int[cols];
+    data[i] = new int[cols]{ 0 };
   }
 }
 
 void Matrix::freeMemory()
 {
-  if (data != nullptr)
+  for (int i = 0; i < rows; ++i)
   {
-    for (int i = 0; i < rows; ++i)
-    {
-      if (data[i] != nullptr)
-      {
-        delete[] data[i];
-        data[i] = nullptr;
-      }
-    }
-    delete[] data;
-    data = nullptr;
+    delete[] data[i];
   }
+  delete[] data;
+  data = nullptr;
 }
 
 void Matrix::loadFromFile(char* filename)
