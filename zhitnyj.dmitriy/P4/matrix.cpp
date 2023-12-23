@@ -52,13 +52,12 @@ void Matrix::loadFromFile(char* filename)
   {
     throw std::logic_error("No file!");
   }
-  if (num_ == 2)
+
+  if (!(file >> rows >> cols))
   {
-    if (!(file >> rows >> cols))
-    {
-      throw std::length_error("Invalid data!");
-    }
+    throw std::length_error("Invalid data!");
   }
+
   allocateMemory();
 
   if ((rows > 99 || cols > 99) && num_ == 1)
