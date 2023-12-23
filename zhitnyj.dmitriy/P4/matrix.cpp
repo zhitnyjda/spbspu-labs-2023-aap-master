@@ -12,11 +12,6 @@ Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num),
   for (int c = 0; c < rows; c++)
   {
     data[c] = new int[cols];
-
-    for (int j = 0; j < cols; j++)
-    {
-      data[c][j] = 0;
-    }
   }
 }
 
