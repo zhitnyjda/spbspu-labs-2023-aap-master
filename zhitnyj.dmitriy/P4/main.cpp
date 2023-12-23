@@ -11,13 +11,11 @@ int main(int argc, char* argv[])
     }
 
     int num = std::stoi(argv[1]);
-    char* inputFilename = argv[2];
-    char* outputFilename = argv[3];
 
     Matrix matrix;
     if (num == 1)
     {
-      matrix = Matrix(100, 100);
+      matrix = Matrix(100, 100, 1);
     }
     else if (num == 2)
     {
@@ -28,8 +26,8 @@ int main(int argc, char* argv[])
       throw std::overflow_error("First parameter is out of range");
     }
 
-    matrix.loadFromFile(inputFilename);
-    matrix.saveToFile(outputFilename);
+    matrix.loadFromFile(argv[2]);
+    matrix.saveToFile(argv[3]);
   }
   catch (const std::length_error& err)
   {
