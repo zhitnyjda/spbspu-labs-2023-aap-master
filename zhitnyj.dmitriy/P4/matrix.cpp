@@ -42,6 +42,10 @@ void Matrix::freeMemory()
     }
     delete[] data;
   }
+  else
+  {
+    delete data;
+  }
 }
 
 void Matrix::loadFromFile(char* filename)
