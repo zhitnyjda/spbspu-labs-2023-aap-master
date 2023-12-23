@@ -48,13 +48,19 @@ void Matrix::loadFromFile(const std::string& filename)
     throw std::logic_error("No file!");
   }
 
-  if (!(file >> rows >> cols))
+  int newRows, newCols;
+  if (!(file >> newRows >> newCols))
   {
-    throw std::length_error("No data in file!");
+    throw std::length_error("Invalid data!");
   }
 
-  freeMemory();
-  allocateMemory();
+  if (newRows != rows || newCols != cols)
+  {
+    freeMemory();
+    rows = newRows;
+    cols = newCols;
+    allocateMemory();
+  }
 
   for (int i = 0; i < rows; ++i)
   {
@@ -67,7 +73,7 @@ void Matrix::loadFromFile(const std::string& filename)
     }
   }
 
-  if (file.get() != '\n' && rows != 0)
+  if (file.get() != 10 && rows != 0)
   {
     throw std::length_error("Invalid input!");
   }
