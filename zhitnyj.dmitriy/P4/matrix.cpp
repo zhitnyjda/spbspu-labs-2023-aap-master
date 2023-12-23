@@ -40,7 +40,14 @@ void Matrix::freeMemory()
         data[i] = nullptr;
       }
     }
-    delete[] data;
+    if (rows == 0)
+    {
+      delete data;
+    }
+    else
+    {
+      delete[] data;
+    }
   }
   else
   {
