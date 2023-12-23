@@ -39,7 +39,7 @@ void Matrix::freeMemory()
   }
 }
 
-void Matrix::loadFromFile(const std::string& filename)
+void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
 
@@ -151,7 +151,7 @@ size_t Matrix::processMAX()
   return max_sum;
 }
 
-void Matrix::saveToFile(const std::string& filename)
+void Matrix::saveToFile(char* filename)
 {
   std::ofstream file(filename);
 
