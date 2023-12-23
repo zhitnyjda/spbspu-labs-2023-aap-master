@@ -30,7 +30,7 @@ void Matrix::allocateMemory()
 
 void Matrix::freeMemory()
 {
-  if (data != nullptr && data != NULL)
+  if (data != nullptr)
   {
     for (int i = 0; i < rows; ++i)
     {
@@ -56,6 +56,8 @@ void Matrix::loadFromFile(char* filename)
 
   if (!(file >> rows >> cols))
   {
+    rows = 0;
+    cols = 0;
     throw std::length_error("Invalid data!");
   }
 
