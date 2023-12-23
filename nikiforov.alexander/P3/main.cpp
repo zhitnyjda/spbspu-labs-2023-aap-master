@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Func.hpp"
+#include <cstring>
 
 using namespace nikiforov;
 int main()
