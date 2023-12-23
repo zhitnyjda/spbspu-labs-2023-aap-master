@@ -73,7 +73,8 @@ void Matrix::loadFromFile(const std::string& filename)
     }
   }
 
-  if (file.get() != 10 && rows != 0)
+  char s = file.get();
+  if ((s > 20) && rows != 0)
   {
     throw std::length_error("Invalid input!");
   }
