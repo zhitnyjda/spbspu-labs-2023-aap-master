@@ -49,7 +49,7 @@ void Matrix::loadFromFile(char* filename)
 {
   std::ifstream file(filename);
 
-  if (!file)
+  if (!file || file.tellg() == 0)
   {
     throw std::logic_error("No file!");
   }
