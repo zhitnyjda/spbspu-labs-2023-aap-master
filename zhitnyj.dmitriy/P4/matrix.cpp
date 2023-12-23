@@ -7,7 +7,7 @@ Matrix::Matrix() : rows(0), cols(0), data(nullptr)
 {
 }
 
-Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols)
+Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), data(nullptr)
 {
   allocateMemory();
 }
@@ -30,6 +30,10 @@ void Matrix::freeMemory()
 {
   if (data != nullptr)
   {
+    for (int i = 0; i < rows; ++i)
+    {
+      delete[] data[i];
+    }
     delete[] data;
     data = nullptr;
   }
