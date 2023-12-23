@@ -41,7 +41,6 @@ void Matrix::freeMemory()
       }
     }
     delete[] data;
-    data = nullptr;
   }
 }
 
