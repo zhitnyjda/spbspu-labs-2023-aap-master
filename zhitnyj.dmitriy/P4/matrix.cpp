@@ -51,15 +51,11 @@ void Matrix::loadFromFile(char* filename)
 
   if (!file || file.peek() == std::ifstream::traits_type::eof())
   {
-    rows = -1;
-    cols = -1;
     throw std::logic_error("No file!");
   }
 
   if (!(file >> rows >> cols))
   {
-    rows = -1;
-    cols = -1;
     throw std::length_error("Invalid data!");
   }
 
