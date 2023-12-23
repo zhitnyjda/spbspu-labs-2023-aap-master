@@ -80,7 +80,7 @@ void Matrix::processLFT()
   size_t i = rows - 1;
   size_t j = 0;
 
-  size_t directions[][2] = {{ -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 }}; // up, right, down, left
+  int directions[][2] = {{ -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 }}; // up, right, down, left
   size_t dir = 0;
   int** visited = new int* [rows];
 
@@ -89,7 +89,7 @@ void Matrix::processLFT()
     visited[k] = new int[cols]();
   }
 
-  for (int processed = 0; processed < rows * cols; ++processed)
+  for (size_t processed = 0; processed < rows * cols; ++processed)
   {
     data[i][j] -= decrement;
     visited[i][j] = 1;
@@ -98,7 +98,7 @@ void Matrix::processLFT()
     size_t next_i = i + directions[dir][0];
     size_t next_j = j + directions[dir][1];
 
-    if (next_i < 0 || next_i >= rows || next_j < 0 || next_j >= cols || visited[next_i][next_j])
+    if (next_i >= rows || next_j < 0 || next_j >= cols || visited[next_i][next_j])
     {
       dir = (dir + 1) % 4;
       next_i = i + directions[dir][0];
