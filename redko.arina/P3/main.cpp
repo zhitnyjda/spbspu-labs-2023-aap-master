@@ -29,7 +29,7 @@ int main()
   }
   int lenResult = redko::buildWithoutInt(strResult, str, lenght);
   delete[] str;
-  for (int i = 0; i < lenResult-1; i++)
+  for (int i = 0; i < lenResult; i++)
   {
     std::cout << strResult[i];
   }
