@@ -1,7 +1,6 @@
 #include "matrix.h"
 #include <fstream>
 #include <sstream>
-#include <iostream>
 
 Matrix::Matrix() : rows(0), cols(0), num_(2), data(nullptr)
 {
@@ -28,6 +27,7 @@ Matrix::~Matrix()
     delete[] data[i];
   }
   delete[] data;
+  data = nullptr;
 }
 
 void Matrix::allocateMemory()
