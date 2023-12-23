@@ -32,7 +32,11 @@ void Matrix::freeMemory()
   {
     for (int i = 0; i < rows; ++i)
     {
-      delete[] data[i];
+      if (data[i] != nullptr)
+      {
+        delete[] data[i];
+        data[i] = nullptr;
+      }
     }
     delete[] data;
     data = nullptr;
