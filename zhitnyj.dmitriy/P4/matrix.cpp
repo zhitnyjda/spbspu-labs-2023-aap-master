@@ -19,6 +19,10 @@ Matrix::~Matrix()
 
 void Matrix::allocateMemory()
 {
+  if (data)
+  {
+    freeMemory();
+  }
   data = new int* [rows];
   for (int i = 0; i < rows; ++i)
   {
@@ -52,17 +56,17 @@ void Matrix::loadFromFile(char* filename)
     throw std::logic_error("No file!");
   }
 
-  int newRows, newCols;
+  int newRows = 0;
+  int newCols = 0;
   if (!(file >> newRows >> newCols))
   {
-    freeMemory();
     throw std::length_error("Invalid data!");
   }
   if (data)
   {
     freeMemory();
   }
-  if (newRows != rows || newCols != cols)
+  if (newRows != rows || newCols != cols || rows == 0)
   {
     rows = newRows;
     cols = newCols;
