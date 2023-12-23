@@ -10,6 +10,13 @@ int main(int argc, char* argv[])
       throw std::logic_error("Not enough parameters!");
     }
 
+    for (int c = 0; argv[1][c] != '\0'; c++)
+    {
+      if (!std::isdigit(argv[1][c]))
+      {
+        throw std::invalid_argument("First argument must be a number");
+      }
+    }
     int num = std::stoi(argv[1]);
 
     Matrix matrix;
