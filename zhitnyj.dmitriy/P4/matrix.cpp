@@ -30,7 +30,7 @@ void Matrix::allocateMemory()
 
 void Matrix::freeMemory()
 {
-  if (data != nullptr)
+  if (data != nullptr && data != NULL)
   {
     for (int i = 0; i < rows; ++i)
     {
