@@ -55,6 +55,10 @@ void Matrix::loadFromFile(char* filename)
 
   if (!file)
   {
+    if (data)
+    {
+      freeMemory();
+    }
     throw std::logic_error("No file!");
   }
 
@@ -62,9 +66,16 @@ void Matrix::loadFromFile(char* filename)
   int newCols = 0;
   if (!(file >> newRows >> newCols))
   {
+    if (data)
+    {
+      freeMemory();
+    }
     throw std::length_error("Invalid data!");
   }
-
+  if (data)
+  {
+    freeMemory();
+  }
   if (newRows != rows || newCols != cols || rows == 0)
   {
     rows = newRows;
@@ -72,8 +83,12 @@ void Matrix::loadFromFile(char* filename)
     allocateMemory();
   }
 
-  if (rows > 100 || cols > 100)
+  if (rows > 99 || cols > 99)
   {
+    if (data)
+    {
+      freeMemory();
+    }
     throw std::length_error("Invalid data!");
   }
 
