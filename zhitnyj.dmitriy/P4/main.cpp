@@ -19,22 +19,22 @@ int main(int argc, char* argv[])
     }
     int num = std::stoi(argv[1]);
 
-    Matrix matrix;
     if (num == 1)
     {
-      matrix = Matrix(100, 100, 1);
+      Matrix matrix = Matrix(100, 100, 1);
+      matrix.loadFromFile(argv[2]);
+      matrix.saveToFile(argv[3]);
     }
     else if (num == 2)
     {
-      matrix = Matrix();
+      Matrix matrix = Matrix();
+      matrix.loadFromFile(argv[2]);
+      matrix.saveToFile(argv[3]);
     }
     else
     {
       throw std::overflow_error("First parameter is out of range");
     }
-
-    matrix.loadFromFile(argv[2]);
-    matrix.saveToFile(argv[3]);
   }
   catch (const std::length_error& err)
   {
