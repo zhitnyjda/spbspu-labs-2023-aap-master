@@ -137,7 +137,7 @@ void Matrix::saveToFile(char* filename)
   std::ofstream file(filename);
 
   file << processMAX() << std::endl;
-  
+
   if (data)
   {
     freeMemory();
