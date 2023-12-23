@@ -6,7 +6,7 @@ class Matrix
 {
 public:
     Matrix();
-    Matrix(int rows, int cols);
+    Matrix(int rows, int cols, int num);
     ~Matrix();
     void loadFromFile(char* filename);
     void saveToFile(char* filename);
@@ -14,7 +14,7 @@ public:
     size_t processMAX();
 
 private:
-    int rows, cols;
+    int rows, cols, num;
     int** data;
 
     void allocateMemory();
