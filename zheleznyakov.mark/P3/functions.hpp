@@ -5,6 +5,7 @@
 namespace zheleznyakov
 {
   size_t readLine(char * input);
+  bool findSymbol(const char * str, int c);
   size_t findNonDuplicateChars(char * dest, char * str1, char * str2, size_t size1, size_t size2);
 };
 #endif
