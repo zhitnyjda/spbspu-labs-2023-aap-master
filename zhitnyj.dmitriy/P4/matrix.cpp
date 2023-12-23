@@ -4,19 +4,25 @@
 
 Matrix::Matrix(int rows, int cols, int num) : rows(rows), cols(cols), num_(num), data(nullptr)
 {
-  if (num == 1)
+  for (int c = 0; c < rows; ++c)
   {
-    allocateMemory();
+    for (int j = 0; j < cols; ++j)
+    {
+      data_[c][j] = 0;
+    }
   }
 }
 
 Matrix::~Matrix()
 {
-  for (int i = 0; i < rows; ++i)
+  if (num_ == 2)
   {
-    delete[] data[i];
+    for (int i = 0; i < rows; ++i)
+    {
+      delete[] data[i];
+    }
+    delete[] data;
   }
-  delete[] data;
 }
 
 void Matrix::allocateMemory()
@@ -56,7 +62,7 @@ void Matrix::loadFromFile(char* filename)
   {
     for (int j = 0; j < cols; ++j)
     {
-      if (!(file >> data[i][j]))
+      if (!(file >> (num_ == 1 ? data_[i][j] : data[i][j])))
       {
         file.close();
         throw std::length_error("Invalid input!");
@@ -89,7 +95,7 @@ void Matrix::processLFT()
 
   for (int processed = 0; processed < rows * cols; ++processed)
   {
-    data[i][j] -= decrement;
+    (num_ == 1 ? data_[i][j] : data[i][j]) -= decrement;
     visited[i][j] = true;
     decrement++;
 
@@ -123,7 +129,7 @@ size_t Matrix::processMAX()
     int sum_diag = 0;
     for (int i = 0; start_row + i < rows && i < cols; ++i)
     {
-      sum_diag += data[start_row + i][i];
+      sum_diag += (num_ == 1 ? data_[start_row + i][i] : data[start_row + i][i]);
     }
     max_sum = std::max(max_sum, sum_diag);
   }
@@ -133,7 +139,7 @@ size_t Matrix::processMAX()
     int sum_diag = 0;
     for (int i = 0; i < rows && start_col + i < cols; ++i)
     {
-      sum_diag += data[i][start_col + i];
+      sum_diag += (num_ == 1 ? data_[i][start_col + i] : data[i][start_col + i]);
     }
     max_sum = std::max(max_sum, sum_diag);
   }
@@ -154,7 +160,7 @@ void Matrix::saveToFile(char* filename)
   {
     for (int j = 0; j < cols; ++j)
     {
-      file << data[i][j] << " ";
+      file << (num_ == 1 ? data_[i][j] : data[i][j]) << " ";
     }
   }
 }
