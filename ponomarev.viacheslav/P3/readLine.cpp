@@ -2,7 +2,7 @@
 
 char * ponomarev::readLine(std::istream & input)
 {
-  int incremOfEl = 10;
+  size_t incremOfEl = 10;
   char * line = new char[incremOfEl]{};
   char elem = 0;
   size_t numOfEl = 0;

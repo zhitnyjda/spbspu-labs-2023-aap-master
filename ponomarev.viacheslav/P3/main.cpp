@@ -5,7 +5,7 @@
 int main()
 {
   char * line = ponomarev::readLine(std::cin);
-  int lenLine = strlen(line);
+  size_t lenLine = strlen(line);
   if (lenLine == 0)
   {
     std::cerr << "Error, not enough memory\n";

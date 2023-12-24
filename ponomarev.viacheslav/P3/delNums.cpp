@@ -1,6 +1,6 @@
 #include "delNums.hpp"
 
-char * ponomarev::delNums(char * line, int lenLine)
+char * ponomarev::delNums(char * line, size_t lenLine)
 {
   char * resLine = new char[lenLine] {};
   size_t numOfEl = 0;
