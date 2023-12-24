@@ -6,13 +6,16 @@ int main()
 {
   using namespace cringecode;
   DynamicStringReader stringReader = DynamicStringReader(10);
-  char* string = stringReader.read(std::cin);
-  if (containsRepeatingDigits(string, stringReader.getLength()))
+  char* string;
+  try
   {
-    std::cout << "Ja" << '\n';
+    string = stringReader.read(std::cin);
   }
-  else
+  catch (const std::bad_alloc& e)
   {
-    std::cout << "Nein" << '\n';
+    std::cout << "Could not allocate memory for the string. Detais: " << e.what() << '\n';
+    return 1;
   }
+  std::cout << (containsRepeatingDigits(string, stringReader.getLength()) ? '1' : '0') << '\n';
+  return 0;
 }
