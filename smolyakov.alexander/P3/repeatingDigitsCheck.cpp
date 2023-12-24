@@ -1,8 +1,14 @@
 #include "repeatingDigitsCheck.hpp"
 #include <cctype>
+#include <stdexcept>
 
 int containsRepeatingDigits(const char* string, std::size_t length)
 {
+  if (length == 0)
+  {
+    throw std::logic_error("The string was empty.");
+  }
+
   int digitsCount[10] = {0};
 
   for (size_t i = 0; i < length; i++)

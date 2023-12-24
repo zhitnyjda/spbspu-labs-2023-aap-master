@@ -27,6 +27,7 @@ char* cringecode::DynamicStringReader::read(std::istream& stream)
     buffer_[length_] = currentCharacter;
     length_++;
   }
+
   buffer_[length_] = '\0';
   return buffer_;
 }
