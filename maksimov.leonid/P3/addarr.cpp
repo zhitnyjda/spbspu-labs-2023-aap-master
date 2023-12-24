@@ -22,7 +22,7 @@ void addarr(std::istream& in, char*& arr, size_t& size_arr, bool& endin)
   {
     delete[] arr;
     delete[] newArr;
-    throw std::exception("Could not read an element of the string\n");
+    throw std::exception();
   }
   newArr[count] = temp;
   delete[] arr;

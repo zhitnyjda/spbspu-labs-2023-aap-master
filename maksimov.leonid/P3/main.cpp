@@ -17,7 +17,7 @@ int main()
     }
     catch (const std::exception& ex)
     {
-      std::cerr << ex.what();
+      std::cerr << "Could not read an element of the string\n";
       return 1;
     }
   }
