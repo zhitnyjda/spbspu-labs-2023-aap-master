@@ -12,7 +12,7 @@ int containsRepeatingDigits(const char* string, std::size_t length)
       int digit = string[i] - '0';
       if (digitsCount[digit]++ > 0)
       {
-	return 1;
+        return 1;
       }
     }
   }
