@@ -1,26 +1,29 @@
 #include <iostream>
-#include "pushback.hpp"
 #include "comparison.hpp"
 #include "delvow.hpp"
+#include "addarr.hpp"
 
 int main()
 {
   std::cin >> std::noskipws;
-  size_t sizeStr = 0;
-  char* str = new char[0]{};
-  bool flag = 1;
-  while (flag)
+  size_t sizeStr = 10;
+  char* str = new char[10]{};
+  bool endin = 1;
+  while (endin)
   {
     try
     {
-      arr::pushBack(sizeStr, str, flag);
+      addarr(std::cin, str, sizeStr, endin);
     }
-    catch (const std::exception&)
+    catch (const std::exception& ex)
     {
-      std::cerr << "Could not read an element of the string\n";
-      delete[] str;
+      std::cerr << ex.what();
       return 1;
     }
+  }
+  for (size_t i = 0; i < sizeStr; i++)
+  {
+    std::cout << str[i];
   }
   std::cout << "[HAS-SAM]: " << arr::comparison(str, sizeStr, "abc") << '\n';
   arr::delVow(str, sizeStr);
