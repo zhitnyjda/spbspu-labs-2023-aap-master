@@ -9,6 +9,11 @@ cringecode::DynamicStringReader::DynamicStringReader(int bufferIncrement)
   bufferIncrement_ = bufferIncrement;
 }
 
+cringecode::DynamicStringReader::~DynamicStringReader()
+{
+  delete[] buffer_;
+}
+
 char* cringecode::DynamicStringReader::read(std::istream& stream)
 {
   char currentCharacter;

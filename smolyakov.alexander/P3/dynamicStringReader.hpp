@@ -9,6 +9,7 @@ namespace cringecode
   {
   public:
     DynamicStringReader(int bufferIncrement);
+    ~DynamicStringReader();
     char* read(std::istream& stream);
     std::size_t getLength() const;
   private:
