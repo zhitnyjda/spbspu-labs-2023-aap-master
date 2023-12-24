@@ -26,7 +26,6 @@ char * ponomarev::readLine(std::istream & input)
       {
         delete[] line;
         line = new char[1] {};
-        line[0] = 0;
         return line;
       }
       delete [] line;
