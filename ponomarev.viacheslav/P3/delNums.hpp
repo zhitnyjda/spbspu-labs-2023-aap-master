@@ -5,6 +5,6 @@
 
 namespace ponomarev
 {
-  char * delNums(char * line, int lenLine);
+  char * delNums(char * line, size_t lenLine);
 };
 #endif
