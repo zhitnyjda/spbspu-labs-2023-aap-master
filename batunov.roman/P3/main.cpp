@@ -20,7 +20,6 @@ int main()
     std::cerr << "Error: memory cannot be allocated.\n";
     exit(1);
   }
-  char c;
   if (str2->empty())
   {
     std::cerr << "Error: empty string.\n";
