@@ -3,20 +3,31 @@
 
 int main()
 {
-  char * input = new char[10]{};
-  char c = 0;
-  size_t read = 0;
+  int incremOfEl = 10;
+  char * line = new char[incremOfEl]{};
+  char elem = 0;
+  size_t numOfEl = 0;
   std::cin >> std::noskipws;
-  while ((std::cin >> c) && (read < 9))
+  while (std::cin >> elem)
   {
-    input[read++] = c;
-    if (c == '\n')
+    line[numOfEl++] = elem;
+    if (elem == '\n')
     {
-      input[read - 1] = 0;
+      line[numOfEl - 1] = 0;
       break;
+    }
+    if (numOfEl == incremOfEl)
+    {
+      char * enlargedArr = new char[numOfEl + incremOfEl]{};
+      for (size_t i = 0; i < numOfEl; i++)
+      {
+        enlargedArr[i] = line[i];
+      }
+      delete[] line;
+      line = enlargedArr;
     }
   }
   std::cin >> std::skipws;
-  std::cout << input << "\n";
-  delete [] input;
+  std::cout << line << "\n";
+  delete [] line;
 }
