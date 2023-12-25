@@ -1,4 +1,6 @@
 #include "RMVVOW.h"
+#include <cctype>
+
 
 bool isVowel(char c) {
   c = std::tolower(c);
