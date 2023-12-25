@@ -7,7 +7,7 @@ bool isVowel(char c)
   return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
 
-void dropVowels(char *to_copy, char *line)
+void dropVowels(char *to_copy, const char *line)
 {
   size_t j = 0;
   for (size_t i = 0; i < strlen(line) && line[i] != '\0'; ++i) {

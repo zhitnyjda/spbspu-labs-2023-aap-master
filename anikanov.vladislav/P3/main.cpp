@@ -1,7 +1,7 @@
 #include <iostream>
-#include "RMVVOW.h"
-#include "REPDGT.h"
-#include "input.h"
+#include "RMVVOW.cpp"
+#include "REPDGT.cpp"
+#include "input.cpp"
 
 int main()
 {
@@ -12,6 +12,10 @@ int main()
     char *line = new char[n]{'\0', '\0'};
     line_p = line;
     n = input(std::cin, line, n);
+    if (std::strlen(line) == 0){
+      std::cerr << "invalid input\n";
+      return 1;
+    }
     char *answerRMVVOW = new char[n];
     answerRMVVOW_p = answerRMVVOW;
     dropVowels(answerRMVVOW, line);
