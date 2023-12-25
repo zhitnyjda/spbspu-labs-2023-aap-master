@@ -4,6 +4,6 @@
 
 size_t input(std::istream &, char *, size_t);
 
-size_t resize(char *line, size_t len);
+size_t resize(char *&line, size_t len);
 
 #endif
