@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include "RMVVOW.h"
 #include "REPDGT.h"
 #include "input.h"
@@ -15,7 +14,7 @@ int main()
     n = input(std::cin, line, 2);
     char *answerRMVVOW = new char[n];
     answerRMVVOW_p = answerRMVVOW;
-    strcpy(answerRMVVOW, dropVowels(line));
+    dropVowels(answerRMVVOW, line);
     std::cout << answerRMVVOW << "\n";
     delete[] answerRMVVOW;
     answerRMVVOW_p = nullptr;

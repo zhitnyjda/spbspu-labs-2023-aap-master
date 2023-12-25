@@ -4,6 +4,6 @@
 
 bool isVowel(char);
 
-char* dropVowels(char*);
+void dropVowels(char *to_copy, char *);
 
 #endif
