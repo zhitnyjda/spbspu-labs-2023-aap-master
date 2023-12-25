@@ -1,7 +1,7 @@
 #include <iostream>
-#include "RMVVOW.h"
-#include "REPDGT.h"
-#include "input.h"
+#include "RMVVOW.cpp"
+#include "REPDGT.cpp"
+#include "input.cpp"
 
 int main()
 {
@@ -11,11 +11,12 @@ int main()
   try {
     char *line = new char[n]{'\0', '\0'};
     line_p = line;
-    n = input(std::cin, line, 2);
+    n = input(std::cin, line, n);
     char *answerRMVVOW = new char[n];
     answerRMVVOW_p = answerRMVVOW;
     dropVowels(answerRMVVOW, line);
-    std::cout << answerRMVVOW << "\n";
+    print(std::cout, answerRMVVOW, n);
+    std::cout << "\n";
     delete[] answerRMVVOW;
     answerRMVVOW_p = nullptr;
     std::cout << hasDuplicateDigits(line) << "\n";

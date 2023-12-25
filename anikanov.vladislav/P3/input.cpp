@@ -1,7 +1,8 @@
 #include "input.h"
 #include <iostream>
 
-size_t input(std::istream &in, char *line, size_t len){
+size_t input(std::istream &in, char *&line, size_t len)
+{
   size_t i = 0;
   in >> std::noskipws;
   char c;
@@ -19,7 +20,8 @@ size_t input(std::istream &in, char *line, size_t len){
   return len;
 }
 
-size_t resize(char *&line, size_t len){
+size_t resize(char *&line, size_t len)
+{
   try {
     char *new_data = new char[len * 2]{};
     for (size_t i = 0; i < len; ++i) {
@@ -36,4 +38,15 @@ size_t resize(char *&line, size_t len){
     throw std::runtime_error(ex.what());
   }
   return len;
+}
+
+void print(std::ostream &out, const char *line, size_t len)
+{
+  for (size_t i = 0; i < len; ++i) {
+    if (line[i] != '\0') {
+      out << line[i];
+    } else {
+      break;
+    }
+  }
 }
