@@ -29,8 +29,8 @@ int main()
     if (answerRMVVOW_p != nullptr){
       delete[] line_p;
     }
-    char *line_p = nullptr;
-    char *answerRMVVOW_p = nullptr;
+    line_p = nullptr;
+    answerRMVVOW_p = nullptr;
     std::cerr << ex.what() << "\n";
     return 1;
   }
