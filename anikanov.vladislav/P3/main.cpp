@@ -13,6 +13,7 @@ int main()
     line_p = line;
     n = input(std::cin, line, n);
     if (std::strlen(line) == 0){
+      delete[] line;
       std::cerr << "invalid input\n";
       return 1;
     }
