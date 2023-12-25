@@ -6,8 +6,8 @@
 int main()
 {
   std::cin >> std::noskipws;
-  size_t sizeStr = 10;
-  char* str = new char[10]{};
+  size_t sizeStr = 1;
+  char* str = new char[1]{};
   bool endin = 1;
   while (endin)
   {
