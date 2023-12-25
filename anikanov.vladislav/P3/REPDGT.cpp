@@ -1,7 +1,7 @@
 #include "REPDGT.h"
+#include <iostream>
 #include <cstring>
 #include <cctype>
-#include <iostream>
 
 int hasDuplicateDigits(const char *str)
 {
