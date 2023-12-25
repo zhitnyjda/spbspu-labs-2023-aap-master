@@ -19,7 +19,7 @@ size_t input(std::istream &in, char *line, size_t len){
   return len;
 }
 
-size_t resize(char *line, size_t len){
+size_t resize(char *&line, size_t len){
   try {
     char *new_data = new char[len * 2]{};
     for (size_t i = 0; i < len; ++i) {
@@ -27,7 +27,11 @@ size_t resize(char *line, size_t len){
     }
     delete[] line;
     len *= 2;
-    line = new_data;
+    line = new char[len]{};
+    for (size_t i = 0; i < len; ++i) {
+      line[i] = new_data[i];
+    }
+    delete[] new_data;
   } catch (std::exception const &ex) {
     throw std::runtime_error(ex.what());
   }
