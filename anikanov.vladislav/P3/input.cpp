@@ -27,11 +27,7 @@ size_t resize(char *line, size_t len){
     }
     delete[] line;
     len *= 2;
-    line = new char[len]{};
-    for (size_t i = 0; i < len; ++i) {
-      line[i] = new_data[i];
-    }
-    delete[] new_data;
+    line = new_data;
   } catch (std::exception const &ex) {
     throw std::runtime_error(ex.what());
   }
