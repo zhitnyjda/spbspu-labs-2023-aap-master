@@ -9,12 +9,14 @@
 int main()
 {
   const char input2[10]{"g1h2k"};
+  int read2 = 6;
   try
   {
     char * input1 = new char[10]{};
-    char * output = new char[10]{};
-    int len1 = readLine(input1);
-    std::cout <<//OUTPUT
+    int read1 = readLine(input1);
+    char output[read1 + read2] = {};
+    DgtSnd(input1, input2, output, read1, read2);
+    std::cout << output << "\n";
 
     delete[] input1;
     delete input2;

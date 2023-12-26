@@ -7,14 +7,21 @@ size_t readLine(char * input)
   char symbol = 0;
   size_t read = 0;
   std::cin >> std::noskipws;
-  while (std::cin >> symbol)
+  while ((std::cin >> symbol) && (symbol != '\n'))
   {
-    input[read++] = symbol;
-    if (symbol == '\n')
+    if (read == 10)
     {
-      input[read - 1] = 0;
-      break;
+      newArray = new char[size + 10];
+      for(size_t i = 0; i < size; i++)
+      {
+        newArray[i] = array[i];
+      }
+      delete[] array;
+      array = newArray;
+      newArray = nullptr;
+      size += 10;
     }
+    array[read++] = symbol;
   }
   std::cin >> std::skipws;
   return read;
