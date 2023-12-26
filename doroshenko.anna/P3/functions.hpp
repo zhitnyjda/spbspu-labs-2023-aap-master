@@ -1,5 +1,5 @@
-#ifndef RESIZE_ARRAY_HPP
-#define RESIZE_ARRAY_HPP
+#ifndef FUNCTIONS_HPP
+#define FUNCTIONS_HPP
 #include <cstddef>
 #include <istream>
 

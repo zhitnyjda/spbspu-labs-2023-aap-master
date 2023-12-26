@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <iosfwd>
-#include "resizeArray.hpp"
+#include "functions.hpp"
 
 int main()
 {

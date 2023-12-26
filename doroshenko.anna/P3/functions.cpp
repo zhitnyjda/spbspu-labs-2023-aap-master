@@ -1,4 +1,4 @@
-#include "resizeArray.hpp"
+#include "functions.hpp"
 #include <iostream>
 
 char* doroshenko::resizeArray(char* array, size_t size, size_t newSize)
