@@ -22,6 +22,11 @@ int main()
     std:: cerr << "Unable to allocate memory\n";
     return 1;
   }
+  if(readStr1 == 0 || readStr2 == 0)
+  {
+    std::cerr << "zero characters\n";
+    return 1;
+  }
   char outputShrSym[26] = {};
   kovshikov::missingChar(string1, outputShrSym, readStr1);
   char outputDgtSnd[readStr1 + readStr2] = {};
