@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cctype>
+#include "noInt.hpp"
 
 int main()
 {
+  using namespace popov;
   const int add = 15;
   char * input = new char[add]{};
   int len = 0;
@@ -12,10 +14,7 @@ int main()
   do
   {
     std::cin >> c;
-    if (isdigit(c) == 0)
-    {
-      input[len++] = c;
-    }
+    input[len++] = c;
     if (len - (add * count) == 0)
     {
       ++count;
@@ -29,6 +28,10 @@ int main()
     }
   }while (c != '\n');
   std::cin >> std::skipws;
-  std::cout << input;
+  char * res = new char[len]{};
+  noInt(res, input, len);
+  std::cout << res;
   delete [] input;
+  delete [] res;
+  return 0;
 }
