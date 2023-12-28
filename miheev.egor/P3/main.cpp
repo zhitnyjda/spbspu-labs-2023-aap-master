@@ -5,7 +5,7 @@
 #include "transformations.hpp"
 
 
-int main(int argc, char* argv[])
+int main()
 {
   using namespace miheev;
   const size_t BUFF_SIZE = 5;
