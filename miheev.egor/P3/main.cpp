@@ -19,6 +19,11 @@ int main()
     isEnd = buffer.fillFromCin();
     str.fillFromBuff(buffer);
   }
+  if (str.getString()[0] == 0)
+  {
+    std::cerr << "you've entered empty line\n";
+    return 1;
+  }
   std::cout << countDiffLat(str.getString()) << '\n';
   return 0;
 }

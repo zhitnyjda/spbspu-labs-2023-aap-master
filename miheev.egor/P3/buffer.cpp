@@ -10,7 +10,6 @@ miheev::Buffer::Buffer(size_t size):
 
 miheev::Buffer::~Buffer()
 {
-  std::cout << "buffer destruct" << '\n';
   print();
   delete[] buff_;
 }
