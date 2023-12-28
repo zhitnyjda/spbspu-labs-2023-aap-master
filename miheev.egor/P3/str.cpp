@@ -20,6 +20,7 @@ void miheev::String::expand(size_t size)
   {
     temp[i] = string_[i];
   }
+  delete[] string_;
   string_ = temp;
   size_ += size;
   temp = nullptr;
@@ -34,7 +35,7 @@ void miheev::String::print() const
   std::cout << '\n';
 }
 
-void miheev::String::fillFromBuff(miheev::Buffer buff)
+void miheev::String::fillFromBuff(miheev::Buffer& buff)
 {
   if (indexOfFirstFree_ + buff.getSize() > size_)
   {

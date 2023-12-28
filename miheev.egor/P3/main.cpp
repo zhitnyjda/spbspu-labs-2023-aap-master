@@ -19,6 +19,6 @@ int main()
     isEnd = buffer.fillFromCin();
     str.fillFromBuff(buffer);
   }
-  std::cout << countDiffLat(str.getString());
+  std::cout << countDiffLat(str.getString()) << '\n';
   return 0;
 }

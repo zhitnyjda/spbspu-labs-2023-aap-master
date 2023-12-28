@@ -11,7 +11,7 @@ namespace miheev
     ~String();
     void expand(size_t size);
     void print() const;
-    void fillFromBuff(Buffer buff);
+    void fillFromBuff(Buffer& buff);
     char* getString() const;
 
   private:
