@@ -2,6 +2,6 @@
 
 int main()
 {
-  std::cout << "maksimov.leonid/p0";
+  std::cout << "hohlova.polina\n";
   return 0;
 }
