@@ -8,6 +8,7 @@ namespace miheev
   {
   public:
     String();
+    ~String();
     void expand(size_t size);
     void print() const;
     void fillFromBuff(Buffer buff);

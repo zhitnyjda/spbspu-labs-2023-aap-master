@@ -8,6 +8,11 @@ miheev::Buffer::Buffer(size_t size):
   buff_ = new char[size]{};
 }
 
+miheev::Buffer::~Buffer()
+{
+  delete[] buff_;
+}
+
 void miheev::Buffer::clean()
 {
   for (size_t i = 0; i < size_; i++)

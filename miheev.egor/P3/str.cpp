@@ -8,6 +8,11 @@ miheev::String::String()
   indexOfFirstFree_ = 0;
 }
 
+miheev::String::~String()
+{
+  delete[] string_;
+}
+
 void miheev::String::expand(size_t size)
 {
   char* temp = new char[size_ + size]{};

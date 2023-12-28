@@ -8,6 +8,7 @@ namespace miheev
   {
   public:
     Buffer(const size_t size);
+    ~Buffer();
     void clean();
     size_t getSize();
     char operator[](size_t index);
