@@ -1,9 +1,9 @@
 //DIF-LAT
-#include "str.hpp"
-#include "buffer.hpp"
-#include <cctype>
 #include <iostream>
-#include <iomanip>
+#include "buffer.hpp"
+#include "str.hpp"
+#include "transformations.hpp"
+
 
 int main(int argc, char* argv[])
 {
@@ -19,8 +19,6 @@ int main(int argc, char* argv[])
     isEnd = buffer.fillFromCin();
     str.fillFromBuff(buffer);
   }
-  str.print();
-
+  std::cout << countDiffLat(str.getString());
   return 0;
 }
-

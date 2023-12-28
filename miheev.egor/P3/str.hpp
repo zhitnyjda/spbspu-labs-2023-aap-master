@@ -9,8 +9,9 @@ namespace miheev
   public:
     String();
     void expand(size_t size);
-    void print();
+    void print() const;
     void fillFromBuff(Buffer buff);
+    char* getString() const;
 
   private:
     char* string_;
