@@ -11,7 +11,7 @@ bool zheleznyakov::findSymbol(const char * str, int c) {
     return false;
 }
 
-size_t zheleznyakov::findNonDuplicateChars(char * dest, char * str1, char * str2, size_t size1, size_t size2)
+size_t zheleznyakov::findNonDuplicateChars(char * dest, char * str1, const char * str2, size_t size1, size_t size2)
 {
   size_t charSize = 0;
   for (size_t i = 0; i < size2; i++)
