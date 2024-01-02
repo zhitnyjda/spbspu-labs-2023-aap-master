@@ -4,7 +4,7 @@
 int main()
 {
   char* str1 = kaseev::readLine();
-  char* str2 = "def ";
+  const char* str2 = "def ";
   try
   {
     char *newStr = kaseev::interleaveStrings(str1, str2);
