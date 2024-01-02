@@ -1,10 +1,10 @@
 #include <iostream>
-#include "string.hpp"
+#include "WorkWithString.hpp"
 
 int main()
 {
   char* str1 = kaseev::readLine();
-  char* str2 = kaseev::readLine();
+  char* str2 = "def ";
   try
   {
     char *newStr = kaseev::interleaveStrings(str1, str2);
@@ -12,7 +12,6 @@ int main()
     delete[] str2;
     if (newStr == nullptr)
     {
-      delete[] newStr;
       throw std::logic_error("Invalid input");
     }
     std::cout << newStr;
