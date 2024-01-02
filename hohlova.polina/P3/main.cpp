@@ -1,41 +1,23 @@
 #include <iostream>
 #include <cstring>
+#include "findCommonChars.hpp"
 #include "readLine.hpp"
 
-char* hohlova::readLine(std::istream& inputstring, size_t& size, size_t& maxCharNum)
+int main()
 {
-  size_t charNum = 0;
-  char symbol = ' ';
-  char* str = new char[maxCharNum];
-  inputstring >> std::noskipws;
-  while (inputstring >> symbol)
+  using namespace hohlova;
+  size_t maxCharNum = 10;
+  size_t size = 0;
+  char* inputStr = readLine(std::cin, size, maxCharNum);
+  size_t lenInputStr = strlen(inputStr);
+  if (lenInputStr == 0)
   {
-    str[charNum++] = symbol;
-    if (symbol == '\n')
-    {
-      str[charNum - 1] = 0;
-      break;
-    }
-    if (charNum == maxCharNum)
-    {
-      char* longerStr = new char[charNum + size];
-      for (size_t i = 0; i < charNum; i++)
-      {
-        longerStr[i] = str[i];
-      }
-      return longerStr;
-      if (longerStr == nullptr)
-      {
-        delete[] str;
-        str = new char[maxCharNum];
-        str[0] = 0;
-        return str;
-      }
-      delete[] str;
-      str = longerStr;
-      maxCharNum += size;
-    }
+    std::cerr << "Cannot read string\n";
+    delete[] inputStr;
+    return 1;
   }
-  inputstring >> std::skipws;
-  return str;
+  int answer = findCommonChars(inputStr, size);
+  std::cout << answer;
+  delete[] inputStr;
+  return 0;
 }

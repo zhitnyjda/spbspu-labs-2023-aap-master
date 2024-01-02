@@ -2,7 +2,7 @@
 #include <cstring>
 #include "readLine.hpp"
 
-char* hohlova::readLine(std::istream& inputstring, size_t size, size_t maxCharNum)
+char* hohlova::readLine(std::istream& inputstring, size_t& size, size_t& maxCharNum)
 {
   size_t charNum = 0;
   char symbol = ' ';
