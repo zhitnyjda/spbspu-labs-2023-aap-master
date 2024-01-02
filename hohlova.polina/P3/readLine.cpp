@@ -6,7 +6,7 @@ char* hohlova::readLine(std::istream& inputstring, size_t& size, size_t& maxChar
 {
   size_t charNum = 0;
   char symbol = ' ';
-  char* str = new char[maxCharNum];
+  char* str = new char[maxCharNum] {};
   inputstring >> std::noskipws;
   while (inputstring >> symbol)
   {
@@ -18,7 +18,7 @@ char* hohlova::readLine(std::istream& inputstring, size_t& size, size_t& maxChar
     }
     if (charNum == maxCharNum)
     {
-      char* longerStr = new char[charNum + size];
+      char* longerStr = new char[charNum + size] {};
       for (size_t i = 0; i < charNum; i++)
       {
         longerStr[i] = str[i];
@@ -27,7 +27,7 @@ char* hohlova::readLine(std::istream& inputstring, size_t& size, size_t& maxChar
       if (longerStr == nullptr)
       {
         delete[] str;
-        str = new char[maxCharNum];
+        str = new char[maxCharNum] {};
         str[0] = 0;
         return str;
       }
