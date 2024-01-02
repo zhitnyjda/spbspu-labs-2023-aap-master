@@ -1,5 +1,7 @@
 #ifndef READLINE_HPP
 #define READLINE_HPP
+#include <istream>
+#include <cstddef>
 
 namespace hohlova
 {
