@@ -9,7 +9,7 @@ namespace miheev
     char* temp = new char[receiverSize + additionalSize]{};
     for (size_t i = 0; i < receiverSize; i++)
     {
-      temp[i] = (*toExpand)[i];
+      temp[i] = *(*toExpand + i);
     }
     delete[] *toExpand;
     *toExpand = temp;
@@ -27,17 +27,13 @@ namespace miheev
     {
       if (firstFree >= receiverSize)
       {
-        std::cout << *(*receiver + firstFree - 1) << '\n';
         expandString(receiver, receiverSize, additionalSize);
       }
       if (c == '\n')
       {
-        std::cout << "first free - " << firstFree << "\nsize - " << receiverSize << '\n';
-        std::cout << *(*receiver + firstFree - 1) << '\n';
         *(*receiver + firstFree) = 0;
         break;
       }
-      std::cout << c << '\n' << "ff = " << firstFree << '\n';
       *(*receiver + firstFree++) = c;
     }
     std::cin >> std::skipws;
