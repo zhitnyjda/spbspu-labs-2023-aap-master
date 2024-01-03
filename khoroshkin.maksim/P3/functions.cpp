@@ -70,6 +70,7 @@ void khoroshkin::generateNewString(std::map<char, int> dict, char * newString)
   char thirdMaxChar = findOtherMax(dict, dict[secondMaxChar], newString[0], newString[1]);
   newString[2] = thirdMaxChar;
   std::sort(newString, newString+3);
+  newString[3] = '\0';
 }
 
 void khoroshkin::getFrequency(const char * line, int length, char * newString)
