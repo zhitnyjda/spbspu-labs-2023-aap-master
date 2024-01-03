@@ -21,7 +21,8 @@ int main()
     std:: cerr << "Unable to allocate memory\n";
     return 1;
   }
- const char * myString = "Any fool can write code that is understandable to a computer, a good programmer will write code that is understandable to a person";
+ const char * myString = "Any fool can write code that is understandable "
+ "to a computer, a good programmer will write code that is understandable to a person";
  size_t length = strlen(myString);
  if(read == 0 || length == 0)
   {
