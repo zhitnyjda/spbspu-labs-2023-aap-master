@@ -3,11 +3,12 @@
 
 int main()
 {
-  char * userString = new char[0];
+  const size_t initialCapacity = 10;
+  char * userString = new char[initialCapacity];
   const char * givenString = "abc";
   try
   {
-    int userStringLength = khoroshkin::inputLine(userString, 10);
+    int userStringLength = khoroshkin::inputLine(userString, initialCapacity);
     if (userStringLength < 3)
     {
       throw std::logic_error("Error: Too short string\n");

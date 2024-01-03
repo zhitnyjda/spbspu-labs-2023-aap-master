@@ -22,9 +22,9 @@ int khoroshkin::inputLine(char *& line, size_t capacity)
       line = newLine;
     }
     line[read++] = c;
-    if (c == '\n')
+    if (read == capacity - 1 || c == '\n')
     {
-      line[read - 1] = 0;
+      line[read] = '\0';
       break;
     }
   }
