@@ -1,6 +1,6 @@
 #include "readString.hpp"
 #include <stdexcept>
-#include <iostream>
+#include "increaseString.hpp"
 
 char * shagieva::readString(std::istream & input, size_t & read)
 {
@@ -9,30 +9,26 @@ char * shagieva::readString(std::istream & input, size_t & read)
   char cur = 0;
 
   input >> std::noskipws;
+
+  input >> cur;
+  if (cur == '\n' || cur == '\0')
+  {
+    delete[] inputStr;
+    throw std::invalid_argument("Empty line entered.\n");
+  }
+
   do
   {
-    input >> cur;
-
-    if (read == 0 && (cur == '\n' || cur == '\0'))
-    {
-      delete[] inputStr;
-      throw std::invalid_argument("Empty line entered.\n");
-    }
-
     inputStr[read++] = cur;
 
     if (read % add == 0)
     {
-      char * newInputStr = new char[read + add]{};
-      for (size_t i = 0; i < read; i++)
-      {
-        newInputStr[i] = inputStr[i];
-      }
-      delete [] inputStr;
-      inputStr = newInputStr;
+      inputStr = shagieva::increaseString(inputStr, read, add);
     }
+    input >> cur;
   }
-  while (input && cur != '\n');
+  while (input && cur != '\n' && cur != '\0');
+
   input >> std::skipws;
 
   return inputStr;

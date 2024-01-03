@@ -1,6 +1,5 @@
 #include "uppLow.hpp"
 #include <cctype>
-#include <iostream>
 
 void shagieva::uppLow(const char * inputStr, char * changedStr, const size_t read)
 {

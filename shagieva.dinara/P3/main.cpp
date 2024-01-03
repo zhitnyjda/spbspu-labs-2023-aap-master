@@ -1,7 +1,8 @@
-#include "readString.hpp"
-#include "uppLow.hpp"
+#include <cstddef>
 #include <stdexcept>
 #include <iostream>
+#include "readString.hpp"
+#include "uppLow.hpp"
 
 int main()
 {

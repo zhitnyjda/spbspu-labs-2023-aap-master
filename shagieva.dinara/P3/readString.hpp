@@ -1,7 +1,7 @@
 #ifndef READ_STRING_HPP
 #define READ_STRING_HPP
-#include <cstddef>
 #include <iostream>
+#include <cstddef>
 
 namespace shagieva
 {
