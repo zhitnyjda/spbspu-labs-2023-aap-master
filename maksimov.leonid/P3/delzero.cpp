@@ -18,7 +18,7 @@ void delzero(char*& arr, size_t& sizeArr)
     {
       newArr[counter++] = arr[i];
     }
-  } 
+  }
   newArr[sizeArr - count] = '\0';
   delete[] arr;
   arr = newArr;
