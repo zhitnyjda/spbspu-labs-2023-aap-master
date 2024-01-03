@@ -6,11 +6,10 @@
 
 int main()
 {
-  size_t size = 20;
+  size_t size = 5;
   char* string = new char[size]{};
 
-  miheev::readString(string, size);
+  miheev::readString(&string, size);
   std::cout << miheev::countDiffLat(string);
-
   delete[] string;
 }
