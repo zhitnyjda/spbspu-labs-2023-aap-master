@@ -1,26 +1,32 @@
-#include "structs.hpp"
-#include "functions.hpp"
-#include <iostream>
-#include <cstddef>
+#include <cctype>
+#include <cstring>
 #include <fstream>
-#include <string>
+#include <iostream>
+#include "matrix_methods.hpp"
+#include "functions.hpp"
 
 int main(int argc, char* argv[])
 {
   try
   {
-    // checking params
     using namespace miheev;
     if (argc != 4)
     {
       std::cerr << "Wrong amount of arguments\n";
       return 1;
     }
-    //initing params
     long long num = 0;
     try
     {
-      num = std::stoll(argv[1]);
+      if (isUInt(argv[1]))
+      {
+        num = std::stoll(argv[1]);
+      }
+      else
+      {
+        std::cerr << "First arg is not numeric or have zero length\n";
+        return 1;
+      }
     }
     catch(const std::invalid_argument& e)
     {
@@ -30,7 +36,6 @@ int main(int argc, char* argv[])
 
     size_t cols = 0, rows = 0;
 
-    // reading matrix from file
     std::ifstream inputFile(argv[2]);
     inputFile >> rows >> cols;
     if (!inputFile)
@@ -38,38 +43,32 @@ int main(int argc, char* argv[])
       std::cerr << "Can't read input\n";
       return 2;
     }
+    size_t length = rows*cols;
 
-    std::string outputString = std::to_string(rows) + " " + std::to_string(cols);
-
-    if (num == 1)
+    int stat[10000] = {0};
+    int* arr = num == 1 ? stat : new int[length];
+    if (inputToArr(inputFile, arr, length) != length)
     {
-      int sarr[10000] = {0};
-      inputToArr(inputFile, sarr, rows*cols);
-      outputString += getIncreasedMatrixInline(sarr, rows, cols);
-    }
-    else if (num == 2)
-    {
-      int* darr = new int[rows*cols]{};
-      try
+      if (num == 2)
       {
-        inputToArr(inputFile, darr, rows*cols);
-        outputString += getIncreasedMatrixInline(darr, rows, cols);
+        delete[] arr;
       }
-      catch(const std::runtime_error& e)
-      {
-        delete[] darr;
-        std::cerr << e.what();
-      }
-      catch(...)
-      {
-        delete[] darr;
-        std::cerr << "unexpected error\n";
-      }
+      return 3;
     }
 
-    inputFile.close();
+    increasePeriphery(arr, rows, cols);
+
     std::ofstream outFile(argv[3]);
-    outFile << outputString;
+    outFile << rows << ' ' << cols << ' ';
+    for (size_t i = 0; i < length; i++)
+    {
+      outFile << arr[i] << ' ';
+    }
+
+    if (num == 2)
+    {
+      delete[] arr;
+    }
 
     return 0;
   }
@@ -84,3 +83,4 @@ int main(int argc, char* argv[])
     return 2;
   }
 }
+

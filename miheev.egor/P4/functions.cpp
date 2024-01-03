@@ -1,21 +1,22 @@
-#include "structs.hpp"
 #include "functions.hpp"
 #include <iostream>
-#include <string>
+#include <cctype>
 
-void miheev::inputToArr(std::ifstream& in, int* arr, size_t size)
+size_t miheev::inputToArr(std::ifstream& in, int* arr, size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {
     in >> arr[i];
     if (!in)
     {
-      throw std::runtime_error("Error occured while trying to init arr");
+      std::cerr << "something went wrong only " << i << " elements were initialized\n";
+      return i;
     }
   }
+  return size;
 }
 
-void miheev::printArrInline(int* arr, size_t size)
+void miheev::printArrInline(const int* const arr, size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {
@@ -24,18 +25,14 @@ void miheev::printArrInline(int* arr, size_t size)
   std::cout << '\n';
 }
 
-void miheev::extendStringWithArr(int* arr, size_t size, std::string& str)
+bool miheev::isUInt(char* str)
 {
-  for (size_t i = 0; i < size; i++)
+  for (size_t i = 0; str[i] != '\0'; i++)
   {
-    str += ' ' + std::to_string(arr[i]);
+    if (!std::isdigit(str[i]))
+    {
+      return 0;
+    }
   }
-}
-
-std::string miheev::getIncreasedMatrixInline(int* arr, size_t rows, size_t cols)
-{
-  miheev::increasePeriphery(arr, rows, cols);
-  std::string increasedMatrix("");
-  miheev::extendStringWithArr(arr, rows*cols, increasedMatrix);
-  return increasedMatrix;
+  return 1;
 }

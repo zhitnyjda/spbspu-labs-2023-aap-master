@@ -1,9 +1,6 @@
-#include "structs.hpp"
-#include "functions.hpp"
-#include <iostream>
+#include "matrix_methods.hpp"
 
-void miheev::increaseRectBorder(int* arr, size_t cols,
-    size_t xStart, size_t yStart, size_t width, size_t height, int increment)
+void miheev::increaseRectBorder(int* arr, size_t cols, size_t xStart, size_t yStart, size_t width, size_t height, int increment)
 {
   if (height == 1)
   {
@@ -33,7 +30,6 @@ void miheev::increasePeriphery(int* arr, size_t rows, size_t cols)
   size_t h = rows;
   while (ys + h <= rows && xs + w <= cols && h > 0 && w > 0)
   {
-    // std::cout << "--------\nxs = " << xs << "\nys = " << ys << "\nw = " << w << "\nh = " << h << "\n sum xs + w = " << xs + w  + 1<< '\n';
     miheev::increaseRectBorder(arr, cols, xs, ys, w, h, increment);
     xs += 1;
     ys += 1;
