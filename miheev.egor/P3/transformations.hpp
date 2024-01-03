@@ -5,7 +5,7 @@
 
 namespace miheev
 {
-  size_t countDiffLat(char* s);
+  size_t countDiffLat(char*);
 }
 
 #endif

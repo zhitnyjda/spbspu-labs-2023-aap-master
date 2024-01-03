@@ -7,7 +7,7 @@ size_t miheev::countDiffLat(char* s)
   for(size_t i = 0; s[i] != '\0'; i++)
   {
     short current = std::tolower(s[i]);
-    if (current >= 97 && current <= 122)
+    if (current >= 'a' && current <= 'z')
     {
       count += 1;
       for(size_t j = i + 1; s[j] != '\0'; j++)
