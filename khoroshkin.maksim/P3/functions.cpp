@@ -61,10 +61,8 @@ char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, cha
   return otherMaxPair.first;
 }
 
-char * khoroshkin::generateNewString(std::map<char, int> dict)
+void khoroshkin::generateNewString(std::map<char, int> dict, char * newString)
 {
-  char * newString = new char[4];
-  newString[3] = '\0';
   char firstMaxChar = findFirstMax(dict);
   newString[0] = firstMaxChar;
   char secondMaxChar = findOtherMax(dict, dict[firstMaxChar], newString[0]);
@@ -72,10 +70,9 @@ char * khoroshkin::generateNewString(std::map<char, int> dict)
   char thirdMaxChar = findOtherMax(dict, dict[secondMaxChar], newString[0], newString[1]);
   newString[2] = thirdMaxChar;
   std::sort(newString, newString+3);
-  return newString;
 }
 
-char * khoroshkin::getFrequency(char * line, int length)
+void khoroshkin::getFrequency(const char * line, int length, char * newString)
 {
   std::map<char, int> charFrequency;
   for (int i = 0; i < length; i++)
@@ -85,13 +82,19 @@ char * khoroshkin::getFrequency(char * line, int length)
       charFrequency[std::tolower(line[i])]++;
     }
   }
-  return generateNewString(charFrequency);
+  generateNewString(charFrequency, newString);
 }
 
-char * khoroshkin::generateNewWithTwo(char * firstLine, char * secondLine, size_t size1, size_t size2)
+void khoroshkin::clearString(char * string, size_t stringSize)
 {
-  char * newString = new char[size1+1];
-  newString[size1] = '\0';
+  for (size_t i = 0; i < stringSize; ++i)
+  {
+    string[i] = '\0';
+  }
+}
+
+void khoroshkin::generateNewWithTwo(const char * firstLine, const char * secondLine, size_t size1, size_t size2, char * newString)
+{
   for (size_t i = 0; i < size1; i++)
   {
     for (size_t j = 0; j < size2; j++)
@@ -113,5 +116,4 @@ char * khoroshkin::generateNewWithTwo(char * firstLine, char * secondLine, size_
       }
     }
   }
-  return newString;
 }
