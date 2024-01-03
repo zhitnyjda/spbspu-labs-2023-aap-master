@@ -1,4 +1,5 @@
 #include <iostream>
+#include "addarr.hpp"
 
 void addarr(std::istream& in, char*& arr, size_t& size_arr, bool& endin)
 {

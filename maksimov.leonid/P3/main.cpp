@@ -2,6 +2,7 @@
 #include "comparison.hpp"
 #include "delvow.hpp"
 #include "addarr.hpp"
+#include "delzero.hpp"
 
 int main()
 {
@@ -21,10 +22,7 @@ int main()
       return 1;
     }
   }
-  for (size_t i = 0; i < sizeStr; i++)
-  {
-    std::cout << str[i];
-  }
+  delzero(str, sizeStr);
   std::cout << "[HAS-SAM]: " << arr::comparison(str, sizeStr, "abc") << '\n';
   arr::delVow(str, sizeStr);
   std::cout << "[RMV-VOW]: ";
