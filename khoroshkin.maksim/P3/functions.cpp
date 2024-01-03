@@ -110,6 +110,7 @@ void khoroshkin::generateNewWithTwo(const char * firstLine, const char * secondL
           if (!newString[k])
           {
             newString[k] = firstLine[i];
+            newString[k + 1] = '\0';
             break;
           }
         }
