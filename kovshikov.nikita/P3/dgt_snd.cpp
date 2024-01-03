@@ -1,6 +1,6 @@
 #include "dgt_snd.hpp"
 
-void kovshikov::withDigits(char * string1, char * string2, char * output, size_t readStr2, size_t readStr1)
+void kovshikov::withDigits(char * string1, const char * string2, char * output, size_t readStr2, size_t readStr1)
 {
   for(size_t i = 0; i < readStr1; i++)
   {
