@@ -1,5 +1,5 @@
 #ifndef EXPANDSTRING_HPP
-#define EXPNDSTRING_HPP
+#define EXPANDSTRING_HPP
 
 namespace redko
 {
