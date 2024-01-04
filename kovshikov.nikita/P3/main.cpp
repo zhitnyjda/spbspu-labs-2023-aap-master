@@ -21,12 +21,13 @@ int main()
     std:: cerr << "Unable to allocate memory\n";
     return 1;
   }
- const char * myString = "Any fool can write code that is understandable "
- "to a computer, a good programmer will write code that is understandable to a person";
- size_t length = strlen(myString);
- if(read == 0 || length == 0)
+  const char * myString = "Any f00l can wr1te c0de that 1s understandable "
+  "to a c0mputer, a g00d pr0grammer w1ll wr1te c0de that 1s understandable t0 a pers0n";
+  size_t length = strlen(myString);
+  if(read == 0 || length == 0)
   {
     std::cerr << "zero characters\n";
+    delete[] userString;
     return 1;
   }
   char outputShrSym[26] = {};
