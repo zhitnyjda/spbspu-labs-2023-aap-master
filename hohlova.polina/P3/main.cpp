@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include <cstddef>
+#include <cstring>
 #include "findCommonChars.hpp"
 #include "readLine.hpp"
 
