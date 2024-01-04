@@ -1,13 +1,14 @@
 #include <cctype>
 #include "varFunc.hpp"
 
-int khomichenko::countDifLat (char * string, int size)
+int khomichenko::countDifLat (char * string)
 {
   int marker = 0;
   int count = 0;
+  int i = 0;
   const int num = 53;
   char letters[num] = {};
-  for (int i = 0; i < size; i++)
+  while (string[i] != '\0')
   {
     if (isalpha(string[i]))
     {
@@ -25,16 +26,18 @@ int khomichenko::countDifLat (char * string, int size)
         ++marker;
       }
     }
+    ++i;
   }
   return marker;
 }
 
-void  khomichenko::makingRmvVow (char * string, int size, char * newString)
+void  khomichenko::makingRmvVow (char * string, char * newString)
 {
   int count = 0;
   const char vowel [6] = {'a', 'o', 'u', 'e', 'i', 'y'};
   int marker = 0;
-  for (int i = 0; i < size; i++)
+  int i = 0;
+  while (string[i] != '\0')
   {
     count = 0;
     for (int j = 0; j < 6; j++)
@@ -49,5 +52,6 @@ void  khomichenko::makingRmvVow (char * string, int size, char * newString)
       newString[marker] = string[i];
       ++marker;
     }
+    ++i;
   }
 }

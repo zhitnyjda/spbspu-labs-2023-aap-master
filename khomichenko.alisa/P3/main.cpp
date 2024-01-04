@@ -43,10 +43,10 @@ int main()
   }
   std::cin >> std::skipws;
   //DIF-LAT
-  std::cout << khomichenko::countDifLat(firstInput, size)<<"\n";
+  std::cout << khomichenko::countDifLat(firstInput)<<"\n";
   char result [size] = {};
   //RMV-VOW
-  khomichenko::makingRmvVow(firstInput, size, result);
+  khomichenko::makingRmvVow(firstInput, result);
   for (int i = 0; i < size; i++)
   {
     std::cout << result[i];

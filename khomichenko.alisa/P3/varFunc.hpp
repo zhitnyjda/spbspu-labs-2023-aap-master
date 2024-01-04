@@ -4,8 +4,8 @@
 
 namespace khomichenko
 {
-  int countDifLat (char * string, int size);
-  void makingRmvVow (char * string, int size, char * newString);
+  int countDifLat (char * string);
+  void makingRmvVow (char * string, char * newString);
 }
 
 #endif
