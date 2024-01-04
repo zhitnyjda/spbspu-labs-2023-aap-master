@@ -37,11 +37,5 @@ char* hohlova::readLine(std::istream& input, size_t& size, size_t& maxCharNum)
       maxCharNum += size;
     }
   }
-  if (str[0] == '\0' || str[0] == '\n')
-  {
-    std::cerr << "empty line\n";
-    delete[] str;
-    return nullptr;
-  }
   return str;
 }
