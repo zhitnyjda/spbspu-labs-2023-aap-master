@@ -33,7 +33,7 @@ int main()
   char outputShrSym[26] = {};
   kovshikov::missingChar(userString, outputShrSym, read);
   char outputDgtSnd[read + length] = {};
-  kovshikov::withDigits(userString, myString, outputDgtSnd, read, length);
+  kovshikov::withDigits(userString, myString, outputDgtSnd, length, read);
   std::cout << outputShrSym << "\n";
   std::cout << outputDgtSnd << "\n";
   std::cin >> std::skipws;
