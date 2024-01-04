@@ -1,5 +1,6 @@
 #include <iostream>
-#include <cstring>
+#include <stdexcept>
+#include <cstddef>
 #include "findCommonChars.hpp"
 #include "readLine.hpp"
 
@@ -8,16 +9,17 @@ int main()
   using namespace hohlova;
   size_t maxCharNum = 10;
   size_t size = 0;
-  char* inputStr = readLine(std::cin, size, maxCharNum);
-  size_t lenInputStr = strlen(inputStr);
-  if (lenInputStr == 0)
+  char* inputStr = nullptr;
+  try
   {
-    std::cerr << "Cannot read string\n";
-    delete[] inputStr;
+    inputStr = hohlova::readLine(std::cin, size, maxCharNum);
+  }
+  catch (const std::invalid_argument & ex)
+  {
+    std::cerr << ex.what();
     return 1;
   }
-  int answer = findCommonChars(inputStr, size);
-  std::cout << answer;
+  std::cout << hohlova::findCommonChars(inputStr);
   delete[] inputStr;
   return 0;
 }

@@ -3,9 +3,10 @@
 #include <cstddef>
 #include "findCommonChars.hpp"
 
-int hohlova::findCommonChars(const char* s, size_t size)
+int hohlova::findCommonChars(const char* s)
 {
-  for (size_t i = 0; i < size - 1; i++)
+  int inputString[10] = { 0 };
+  for (size_t i = 0; i < strlen(s) - 1; i++)
   {
     if (s[i] == s[i + 1])
     {
@@ -14,3 +15,4 @@ int hohlova::findCommonChars(const char* s, size_t size)
   }
   return 0;
 }
+
