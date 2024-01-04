@@ -2,13 +2,14 @@
 #include <cstring>
 #include "readLine.hpp"
 
-char* hohlova::readLine(std::istream& inputstring, size_t& size, size_t& maxCharNum)
+char* hohlova::readLine(std::istream& input, size_t& size, size_t& maxCharNum)
 {
   size_t charNum = 0;
   char symbol = ' ';
   char* str = new char[maxCharNum] {};
-  inputstring >> std::noskipws;
-  while (inputstring >> symbol)
+  str[0] = '\0';
+  input >> std::noskipws;
+  while (input >> symbol)
   {
     str[charNum++] = symbol;
     if (symbol == '\n')
@@ -36,6 +37,11 @@ char* hohlova::readLine(std::istream& inputstring, size_t& size, size_t& maxChar
       maxCharNum += size;
     }
   }
-  inputstring >> std::skipws;
+  if (str[0] == '\0' || str[0] == '\n')
+  {
+    std::cerr << "empty line\n";
+    delete[] str;
+    return nullptr;
+  }
   return str;
 }
