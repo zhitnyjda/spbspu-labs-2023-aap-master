@@ -3,7 +3,7 @@
 
 namespace redko
 {
-  int buildWithoutInt(char *& dest, char * src, int size);
+  char * buildWithoutInt(char * src, int add);
 }
 
 #endif

@@ -1,8 +1,11 @@
 #include "getString.hpp"
+#include "expandString.hpp"
 #include <iostream>
+#include <new>
 
-char * redko::getString(char *& dest, int & len, const int add)
+char * redko::getString(int & len, const int add)
 {
+  char * dest = new (std::nothrow) char[add];
   char c = ' ';
   std::cin >> std::noskipws;
   while (std::cin >> c && c != '\n')
@@ -10,17 +13,11 @@ char * redko::getString(char *& dest, int & len, const int add)
     dest[len++] = c;
     if (len % add == 0)
     {
-      char* destNew = new char[len + add];
-      if (!destNew)
+      dest = redko::expandString(dest, len, add);
+      if (!dest)
       {
         return nullptr;
       }
-      for (int i = 0; i < len; i++)
-      {
-        destNew[i] = dest[i];
-      }
-      delete[] dest;
-      dest = destNew;
     }
   }
   dest[len] = '\0';

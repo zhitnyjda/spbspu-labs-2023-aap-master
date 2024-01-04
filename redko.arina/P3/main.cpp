@@ -5,9 +5,8 @@
 int main()
 {
   const int add = 10;
-  char * str = new char[add];
   int lenght = 0;
-  str = redko::getString(str, lenght, add);
+  char * str = redko::getString(lenght, add);
   if (!str)
   {
     std::cerr << "Error: can't allocate memory for input string\n";
@@ -20,18 +19,18 @@ int main()
     delete[] str;
     return 1;
   }
-  char * strResult = new char[lenght];
+  char * strResult = redko::buildWithoutInt(str, lenght);
   if (!strResult)
   {
     std::cerr << "Error: can't allocate memory for result\n";
     delete[] str;
     return 1;
   }
-  int lenResult = redko::buildWithoutInt(strResult, str, lenght);
   delete[] str;
-  for (int i = 0; i < lenResult; i++)
+  int i = 0;
+  while (strResult[i] != '\0')
   {
-    std::cout << strResult[i];
+    std::cout << strResult[i++];
   }
   std::cout << '\n';
   delete[] strResult;
