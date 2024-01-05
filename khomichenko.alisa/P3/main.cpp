@@ -20,8 +20,14 @@ int main()
     delete [] firstInput;
     return 1;
   }
-  while (std::cin>>c && readString(firstInput, c, read++))
+  while (std::cin>>c && read < size)
   {
+    firstInput [read++] = c;
+    if (c == '\n')
+    {
+      firstInput [read - 1] = 0;
+      break;
+    }
     if (c != '\n' && read >= size)
     {
       try
