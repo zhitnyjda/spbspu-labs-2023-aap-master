@@ -33,11 +33,13 @@ int main()
       try
       {
         char * secondInput = new char [size + size] {};
-        std::swap(firstInput, secondInput);
-        size += size;
+//        std::swap(firstInput, secondInput);
+swapStrings(firstInput, secondInput, (size)); 
+       size += size;
         delete [] firstInput;
         firstInput = new char [size] {};
-        std::swap(firstInput, secondInput);
+//        std::swap(firstInput, secondInput);
+swapStrings(secondInput, firstInput, size);
         delete [] secondInput;
       }
       catch (std::bad_alloc & e)
