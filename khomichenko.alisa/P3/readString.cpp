@@ -1,10 +1,13 @@
 #include "readString.hpp"
 
-void khomichenko::swapStrings ( char * first, char * second, int size)
+int khomichenko::readString(char * firstInput, char lit, const int read)
 {
-  for (int i = 0; i < size;  i++)
+  if (lit=='\n')
   {
-    second[i] = first[i];
+    firstInput[read] = 0;
+    return 0;
   }
+  firstInput[read] = lit;
+  return 1;
 }
 

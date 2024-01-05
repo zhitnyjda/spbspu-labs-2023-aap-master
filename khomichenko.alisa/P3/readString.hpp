@@ -3,7 +3,7 @@
 
 namespace khomichenko
 {
-  void swapStrings ( char * first, char * second, int size);
+  int readString(char * firstInput, char lit, const int read);
 }
 
 #endif

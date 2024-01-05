@@ -1,7 +1,7 @@
 #include <cctype>
 #include "varFunc.hpp"
 
-int khomichenko::countDifLat ( char * string)
+int khomichenko::countDifLat ( char * const string)
 {
   int marker = 0;
   int count = 0;
@@ -31,7 +31,7 @@ int khomichenko::countDifLat ( char * string)
   return marker;
 }
 
-void  khomichenko::makingRmvVow (char * string,char * newString)
+void  khomichenko::makingRmvVow (char * const string,char * newString)
 {
   int count = 0;
   const char vowel [6] = {'a', 'o', 'u', 'e', 'i', 'y'};
