@@ -34,7 +34,7 @@ int main()
       {
         char * secondInput = new char [size + size] {};
 //        std::swap(firstInput, secondInput);
-swapStrings(firstInput, secondInput, (size)); 
+swapStrings(firstInput, secondInput, (size));
        size += size;
         delete [] firstInput;
         firstInput = new char [size] {};
