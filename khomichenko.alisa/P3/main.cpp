@@ -19,8 +19,8 @@ int main()
     std::cerr<<"input failed\n";
     return 1;
   }
-  std::cin>>c;
-  while (readString(firstInput, c, read++) && (read < size))
+  //std::cin>>c;
+  while (std::cin>>c && readString(firstInput, c, read++) && (read < size))
   {
     if (c != '\n' && read == size)
     {
@@ -40,7 +40,7 @@ int main()
         return 1;
       }
     }
-    std::cin>>c;
+   // std::cin>>c;
   }
   if (read < 2)
   {
