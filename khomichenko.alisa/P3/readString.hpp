@@ -4,7 +4,6 @@
 namespace khomichenko
 {
   void swapStrings ( char * first, char * second, int size);
-  char * createBiggerString (int * size, char * first);
 }
 
 #endif

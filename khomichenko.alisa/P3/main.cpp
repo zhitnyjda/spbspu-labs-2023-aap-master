@@ -7,6 +7,7 @@
 
 int main()
 {
+  using namespace khomichenko;
   int size = 20;
   char * firstInput = new char[size]{};
   char c = 0;
@@ -27,7 +28,16 @@ int main()
     }
     try
     {
-      firstInput = (c != '\n' && read == size)? khomichenko::createBiggerString (&size, firstInput) : firstInput;
+      if (c != '\n' && read == size)
+      {
+        char * secondInput = new char [size + size] {};
+        swapStrings(firstInput, secondInput, (size));
+        size += size;
+        delete [] firstInput;
+        firstInput = new char [size] {};
+        swapStrings(secondInput, firstInput, size);
+        delete [] secondInput;
+      }
     }
     catch (std::bad_alloc & e)
     {
@@ -42,10 +52,8 @@ int main()
     return 1;
   }
   std::cin >> std::skipws;
-  //DIF-LAT
   std::cout << khomichenko::countDifLat(firstInput)<<"\n";
   char result [size] = {};
-  //RMV-VOW
   khomichenko::makingRmvVow(firstInput, result);
   for (int i = 0; i < size; i++)
   {

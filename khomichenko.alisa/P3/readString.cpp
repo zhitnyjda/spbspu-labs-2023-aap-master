@@ -8,14 +8,3 @@ void khomichenko::swapStrings ( char * first, char * second, int size)
   }
 }
 
-char * khomichenko::createBiggerString (int * size, char * first)
-{
-  char * secondInput = new char [(*size) + (*size)] {};
-  swapStrings(first, secondInput, (*size));
-  (*size) += (*size);
-  delete [] first;
-  first = new char [(*size)] {};
-  swapStrings(secondInput, first, (*size));
-  delete [] secondInput;
-  return first;
-}
