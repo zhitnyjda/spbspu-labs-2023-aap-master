@@ -1,11 +1,25 @@
 #include "readString.hpp"
 #include <stdexcept>
-#include "increaseString.hpp"
+
+namespace shagieva
+{
+  char * increaseString(char * inputStr, const size_t read, const size_t add)
+  {
+    char * newInputStr = new char[read + add]{};
+    for (size_t i = 0; i < read; i++)
+    {
+      newInputStr[i] = inputStr[i];
+    }
+    delete [] inputStr;
+
+    return newInputStr;
+  }
+};
 
 char * shagieva::readString(std::istream & input, size_t & read)
 {
   char * inputStr = new char[10]{};
-  size_t add = 10;
+  static const size_t add = 10;
   char cur = 0;
 
   input >> std::noskipws;
