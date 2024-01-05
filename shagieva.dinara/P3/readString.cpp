@@ -19,7 +19,7 @@ namespace shagieva
 char * shagieva::readString(std::istream & input, size_t & read)
 {
   char * inputStr = new char[10]{};
-  static const size_t add = 10;
+  const size_t add = 10;
   char cur = 0;
 
   input >> std::noskipws;
