@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <exception>
-#include <algorithm>
 #include <cctype>
 #include "readString.hpp"
 #include "varFunc.hpp"
@@ -20,26 +19,18 @@ int main()
     delete [] firstInput;
     return 1;
   }
-  while (std::cin>>c && read < size)
+  while (std::cin>>c && readString(firstInput, c, read++))
   {
-    firstInput [read++] = c;
-    if (c == '\n')
-    {
-      firstInput [read - 1] = 0;
-      break;
-    }
     if (c != '\n' && read >= size)
     {
       try
       {
         char * secondInput = new char [size + size] {};
-//        std::swap(firstInput, secondInput);
-swapStrings(firstInput, secondInput, (size));
-       size += size;
+        swapStrings(firstInput, secondInput, (size));
+        size += size;
         delete [] firstInput;
         firstInput = new char [size] {};
-//        std::swap(firstInput, secondInput);
-swapStrings(secondInput, firstInput, size);
+        swapStrings(secondInput, firstInput, size);
         delete [] secondInput;
       }
       catch (std::bad_alloc & e)
