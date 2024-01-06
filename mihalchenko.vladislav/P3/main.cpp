@@ -29,7 +29,7 @@ int main()
         s1.dinResize();
         s1.dinAppend(element);
       }
-      catch(const std::exception& e)
+      catch (const std::exception &e)
       {
         std::cerr << e.what() << '\n';
         return 1;
@@ -52,7 +52,7 @@ int main()
   }
   s2.dinOutput();
 
-  char * resultStr = nullptr;
+  char *resultStr = nullptr;
   size_t counterLenMas = 0;
   countGlobal = 0;
   resultStr = findIdenticalChars(s1.dinstr, s2.dinstr, s1.size, s2.size);
