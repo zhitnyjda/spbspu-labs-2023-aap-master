@@ -1,11 +1,12 @@
 #include "readLine.hpp"
+#include "incremArr.hpp"
 
-char * ponomarev::readLine(std::istream & input)
+char * ponomarev::readLine(std::istream & input, size_t incremOfEl)
 {
-  size_t incremOfEl = 10;
   char * line = new char[incremOfEl]{};
   char elem = 0;
   size_t numOfEl = 0;
+  size_t limitOfMem = incremOfEl - 1;
   input >> std::noskipws;
   while (std::cin >> elem)
   {
@@ -15,20 +16,17 @@ char * ponomarev::readLine(std::istream & input)
       line[numOfEl - 1] = 0;
       break;
     }
-    if (numOfEl == incremOfEl)
+    if (numOfEl == limitOfMem)
     {
-      char * enlargedArr = new char[numOfEl + incremOfEl]{};
-      for (size_t i = 0; i < numOfEl; i++)
-      {
-        enlargedArr[i] = line[i];
-      }
+      char * enlargedArr = ponomarev::incremArr(line, incremOfEl, numOfEl);
       if (enlargedArr == nullptr)
       {
         delete[] line;
         line = new char[1] {};
         return line;
       }
-      delete [] line;
+      limitOfMem += incremOfEl;
+      delete[] line;
       line = enlargedArr;
     }
   }

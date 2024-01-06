@@ -4,6 +4,6 @@
 
 namespace ponomarev
 {
-  char* readLine(std::istream& input);
+  char * readLine(std::istream& input, size_t incremOfEl);
 };
 #endif
