@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Func.hpp"
-#include <cstring>
 
 using namespace nikiforov;
 int main()
@@ -16,18 +15,21 @@ int main()
   {
     nikiforov::AddElem(str1, size, read);
     str1[read++] = c;
+    if (c == '\n') {
+      str1[read - 1] = 0;
+      break;
+    }
   }
 
   size_t len1 = read;
   size = 0;
-
   size_t len2 = strlen(str2);
   std::cin >> std::skipws;
-  if (len1 == 0 && len2 == 0)
+  if (len1 == 0)
   {
     std::cerr << "Too short sequence\n";
     delete[] str1;
-    return 1;
+    return 2;
   }
   std::cout << '\n' << nikiforov::result(str1, str2, len1, len2) << '\n';
   delete[] str1;
