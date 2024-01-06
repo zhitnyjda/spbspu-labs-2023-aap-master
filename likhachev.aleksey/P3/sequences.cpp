@@ -28,6 +28,7 @@ int likhachev::readSequence(char *array)
       inputData[newInputId] = new char[max_size];
       if(!inputData[newInputId])
       {
+        delete[] input;
         delete[] inputData[oldInputId];
         std::cin >> std::noskipws;
         throw std::logic_error("Error: not enough space for array\n");
@@ -44,13 +45,14 @@ int likhachev::readSequence(char *array)
   delete[] array;
   array = new char[size];
   if (!array) {
+    delete[] input;
     delete[] inputData[inputId];
     std::cin >> std::noskipws;
     throw std::logic_error("Error: not enough space for array\n");
   }
   copyCharArray(input, array, size);
 
-
+  delete[] input;
   delete[] inputData[inputId];
   std::cin >> std::noskipws;
   return size;
