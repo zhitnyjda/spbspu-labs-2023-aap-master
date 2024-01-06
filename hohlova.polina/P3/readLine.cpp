@@ -11,7 +11,8 @@ char* hohlova::readLine(std::istream& input, size_t& size, size_t& maxCharNum)
   {
     if (size == maxCharNum)
     {
-      str = hohlova::extensionOfLine(std::cin, size, maxCharNum);
+      char* longerStr = new char[maxCharNum + size] {};
+      str = hohlova::extensionOfLine(size, maxCharNum);
     }
     std::cin >> str[size];
   } while (str[size++] != '\n');
@@ -22,10 +23,11 @@ char* hohlova::readLine(std::istream& input, size_t& size, size_t& maxCharNum)
   return str;
 }
 
-char* hohlova::extensionOfLine(std::istream& input, size_t& size, size_t& maxCharNum)
+char* hohlova::extensionOfLine(size_t& size, size_t& maxCharNum)
 {
   char* str = new char[maxCharNum];
   char* longerStr = new char[maxCharNum + size] {};
+  size_t size = 0;
   for (size_t i = 0; i < maxCharNum; i++)
   {
     longerStr[i] = str[i];
