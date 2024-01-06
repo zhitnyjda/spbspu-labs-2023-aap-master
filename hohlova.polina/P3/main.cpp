@@ -10,8 +10,7 @@ int main()
   size_t maxCharNum = 10;
   size_t size = 0;
   char* inputStr = hohlova::readLine(std::cin, size, maxCharNum);
-  size_t inputLength = strlen(inputStr);
-  if (inputLength == 0)
+  if (inputStr = nullptr)
   {
     std::cerr << "error: empty line\n";
     delete[] inputStr;
