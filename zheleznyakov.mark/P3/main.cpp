@@ -8,7 +8,7 @@ int main()
   {
     char *str1 = new char[1000];
     size_t len1 = zheleznyakov::readLine(str1);
-    if (len1 - 1 == 0)
+    if (len1 < 2)
     {
       std::cerr << "Empty string provided; exiting\n";
       return 1;

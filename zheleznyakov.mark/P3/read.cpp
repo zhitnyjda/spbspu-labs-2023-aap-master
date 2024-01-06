@@ -7,6 +7,10 @@ size_t zheleznyakov::readLine(char * input)
   char c = 0;
   size_t read = 0;
   std::cin >> std::noskipws;
+  if (!std::cin)
+  {
+    return 0;
+  }
   while (std::cin >> c)
   {
     input[read++] = c;
