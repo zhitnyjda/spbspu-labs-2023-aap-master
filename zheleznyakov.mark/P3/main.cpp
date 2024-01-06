@@ -11,6 +11,7 @@ int main()
     if (len1 < 2)
     {
       std::cerr << "Empty string provided; exiting\n";
+      delete[] str1;
       return 1;
     }
     const char *str2 = "abc ef";
