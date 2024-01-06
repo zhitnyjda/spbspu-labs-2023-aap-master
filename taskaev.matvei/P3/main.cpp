@@ -6,6 +6,8 @@
 int main()
 {
   char * string = nullptr;
+  char simbolOld = '0';
+  char simbolNew = '0';
   try
   {
     string = taskaev::readingString(std::cin);
@@ -16,7 +18,9 @@ int main()
     delete [] string;
     return 1;
   }
-  std::cout << taskaev::findRplSym(string) << "\n";
+  std::cin >> simbolOld;
+  std::cin >> simbolNew;
+  std::cout << taskaev::findRplSym(string, simbolOld, simbolNew) << "\n";
   delete[] string;
   return 0;
 }
