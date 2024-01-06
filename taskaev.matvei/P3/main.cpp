@@ -20,7 +20,9 @@ int main()
     delete[] string;
     return 1;
   }
-  std::cout << taskaev::findRplSym(string, simbolOld, simbolNew) << "\n";
+  char * resultString = taskaev::findRplSym(string, size, newSize, simbolOld, simbolNew);
+  std::cout << resultString << "\n";
+  delete[] resultString;
   delete[] string;
   return 0;
 }
