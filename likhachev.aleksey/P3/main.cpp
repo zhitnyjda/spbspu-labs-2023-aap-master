@@ -9,7 +9,7 @@ int main()
   try
   {
     line = likhachev::readSequence(size);
-    
+
     if (size == 0) {
       std::cerr << "There are no symbols here, my dude :L ";
       delete[] line;
