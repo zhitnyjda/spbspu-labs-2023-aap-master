@@ -1,14 +1,23 @@
+<<<<<<< HEAD
 #include "functions.hpp"
 #include "incremArr.hpp"
 
 char * ponomarev::delNums(const char * line, size_t lenLine)
 {
   char * lineBefDelNums = new char[lenLine] {};
+=======
+#include "delNums.hpp"
+
+char * ponomarev::delNums(char * line, size_t lenLine)
+{
+  char * resLine = new char[lenLine] {};
+>>>>>>> origin/ponomarev.viacheslav/P3
   size_t numOfEl = 0;
   for (size_t i = 0; i < lenLine; i++)
   {
     if (std::isdigit(line[i]) == 0)
     {
+<<<<<<< HEAD
       lineBefDelNums[numOfEl++] = line[i];
     }
   }
@@ -43,3 +52,10 @@ char * ponomarev::addNums(const char * line, size_t lenLine, const char * second
 
 
 
+=======
+      resLine[numOfEl++] = line[i];
+    }
+  }
+  return resLine;
+}
+>>>>>>> origin/ponomarev.viacheslav/P3
