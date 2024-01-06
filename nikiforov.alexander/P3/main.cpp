@@ -18,7 +18,7 @@ int main()
     str1[read++] = c;
   }
 
-  size_t len1 = strlen(str1);
+  size_t len1 = read;
   size = 0;
 
   size_t len2 = strlen(str2);
