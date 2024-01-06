@@ -57,7 +57,7 @@ int main()
   countGlobal = 0;
   resultStr = findIdenticalChars(s1.dinstr, s2.dinstr, s1.size, s2.size);
   (s1.size > s2.size) ? (counterLenMas = s2.size) : (counterLenMas = s1.size);
-  counterLenMas = arr_uniq(resultStr, countGlobal);
+  counterLenMas = arrUniq(resultStr, countGlobal);
 
   for (size_t i = 0; i < counterLenMas; i++)
   {
@@ -65,6 +65,9 @@ int main()
   }
   std::cout << std::endl;
 
-  delete[] resultStr;
+  if (resultStr != nullptr)
+  {
+    delete[] resultStr;
+  }
   return 0;
 }

@@ -22,6 +22,6 @@ namespace mihalchenko
 
   char *findIdenticalChars(char *str1, char *str2, size_t size1, size_t size2);
 
-  size_t arr_uniq(char *mas, size_t size);
+  size_t arrUniq(char *mas, size_t size);
 }
 #endif
