@@ -27,7 +27,6 @@ char* hohlova::extensionOfLine(size_t& size, size_t& maxCharNum)
 {
   char* str = new char[maxCharNum];
   char* longerStr = new char[maxCharNum + size] {};
-  size_t size = 0;
   for (size_t i = 0; i < maxCharNum; i++)
   {
     longerStr[i] = str[i];
