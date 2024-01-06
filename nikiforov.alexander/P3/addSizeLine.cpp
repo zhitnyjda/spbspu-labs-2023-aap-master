@@ -1,6 +1,6 @@
-#include "AddElem.hpp"
+#include "addSizeLine.hpp"
 
-void nikiforov::AddElem(char*& arr, size_t& size, size_t& lenth)
+void nikiforov::AddElem(char *& arr, size_t& size, size_t& lenth)
 {
   if (lenth == size)
   {
@@ -11,7 +11,6 @@ void nikiforov::AddElem(char*& arr, size_t& size, size_t& lenth)
       newArr[i] = arr[i];
     }
     size += 10;
-    delete[] arr;
     arr = newArr;
   }
 }

@@ -1,4 +1,4 @@
-#include "Func.hpp"
+#include "comparisonLine.hpp"
 
 size_t nikiforov::result(char* str1, const char* str2, size_t len1, size_t len2) {
   size_t count = 0;
