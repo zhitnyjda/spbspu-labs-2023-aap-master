@@ -10,11 +10,14 @@ int main()
   char simbolNew = 'b';
   int size = 5;
   int newSize = 5;
-  string = taskaev::readingString(std::cin, size, newSize);
-  if(string == nullptr)
+  try
   {
-    std::cerr << "Error, bad string." << "\n";
-    delete [] string;
+    string = taskaev::readingString(std::cin, size, newSize);
+  }
+  catch(const std::exception& e)
+  {
+    std::cerr << e.what() << "\n";
+    delete[] string;
     return 1;
   }
   char * resultString = taskaev::findRplSym(string, simbolOld, simbolNew);

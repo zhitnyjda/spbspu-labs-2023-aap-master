@@ -10,19 +10,26 @@ char * taskaev::readingString(std::istream& input, int size, int newSize)
   {
     if (size == sizeNum)
     {
-      char * newString = taskaev::formingString(string, sizeNum, newSize);
-      delete[] string;
-      string = newString;
-      size += newSize;
+      try
+      {
+        char * newString = taskaev::formingString(string, sizeNum, newSize);
+        delete[] string;
+        string = newString;
+        size += newSize;
+      }
+      catch(const std::exception& e)
+      {
+        delete[] string;
+        throw std::logic_error("Error forming string, couldn't reed the string.");
+      }
     }
   }
   while ((input >> string[sizeNum] ) && (string[sizeNum++] != '\n'));
   string[sizeNum != 0 ? sizeNum - 1 : sizeNum] = '\0';
   if (string[0] == '\0')
   {
-    string = nullptr;
-    return string;
     delete[] string;
+    throw std::logic_error("Error: nothing was entered, an empty input");
   }
   input >> std::skipws;
   return string;
