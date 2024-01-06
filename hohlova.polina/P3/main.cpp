@@ -17,7 +17,7 @@ int main()
     delete[] inputStr;
     return 1;
   }
-  std::cout << findCommonChars(inputStr);
+  std::cout << findCommonChars(inputStr, size);
   delete[] inputStr;
   return 0;
 }

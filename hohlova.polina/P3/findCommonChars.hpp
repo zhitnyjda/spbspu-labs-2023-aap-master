@@ -4,6 +4,6 @@
 
 namespace hohlova
 {
-  int findCommonChars(const char* s);
+  int findCommonChars(const char* s, size_t size);
 };
 #endif
