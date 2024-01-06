@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "Func.hpp"
 
 using namespace nikiforov;
@@ -6,10 +7,11 @@ int main()
 {
   char c = '\0';
   size_t size = 0;
-  size_t read = 0;
   char* str1 = new char[size] {};
   const char* str2 = "abs";
+
   std::cin >> std::noskipws;
+  size_t read = 0;
 
   while ((std::cin >> c) && (c != '\n'))
   {
@@ -25,6 +27,7 @@ int main()
   size = 0;
   size_t len2 = strlen(str2);
   std::cin >> std::skipws;
+
   if (len1 == 0)
   {
     std::cerr << "Too short sequence\n";
