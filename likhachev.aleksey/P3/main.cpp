@@ -10,6 +10,12 @@ int main()
   {
     line = likhachev::readSequence(size);
 
+    if (size == 0) {
+      std::cerr << "There are no symbols here, my dude :L ";
+      delete[] line;
+      return 1;
+    }
+
     int hasSame = likhachev::strDoesHasSame(line, size, subString, 3);
     size = likhachev::strRemoveDigits(line, size);
 
