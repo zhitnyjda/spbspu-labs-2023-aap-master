@@ -5,6 +5,8 @@ int main()
 {
   char *line = nullptr;
   int size = 0;
+  char *noDigitsline = nullptr;
+  int ndlSize = 0;
   char subString[10]{"abc"};
   try
   {
@@ -17,7 +19,7 @@ int main()
     }
 
     int hasSame = likhachev::strDoesHasSame(line, size, subString, 3);
-    size = likhachev::strRemoveDigits(line, size);
+    noDigitsline = likhachev::strRemoveDigits(size, line, ndlSize);
 
     std::cout << "\n";
     std::cout << "String ";
@@ -27,15 +29,17 @@ int main()
     std::cout << "common characters.\n";
 
     std::cout << "The string received after deleting the digits: ";
-    likhachev::outLine(line, size);
+    likhachev::outLine(noDigitsline, ndlSize);
 
     delete[] line;
+    delete[] noDigitsline;
     return 0;
   }
   catch (std::logic_error const& e)
   {
     std::cerr << e.what();
     delete[] line;
+    delete[] noDigitsline;
     return 1;
   }
 }

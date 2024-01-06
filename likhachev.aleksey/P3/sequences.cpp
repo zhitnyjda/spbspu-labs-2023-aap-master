@@ -79,21 +79,17 @@ int likhachev::strDoesHasSame(char *array1, int size1, char *array2, int size2)
   return haseSame;
 }
 
-int likhachev::strRemoveDigits(char *array, int size)
+char* likhachev::strRemoveDigits(int maxSize, char *array, int &size)
 {
-  char *newArray = new char[size];
+  char *newArray = new char[maxSize];
 
-  int counter = 0;
-  for (int i = 0; i < size; i++) {
+  size = 0;
+  for (int i = 0; i < maxSize; i++) {
     if (!std::isdigit(array[i])) {
-      newArray[counter] = array[i];
-      counter++;
+      newArray[size] = array[i];
+      size++;
     }
   }
 
-  delete[] array;
-  array = new char[counter];
-  copyCharArray(newArray, array, counter);
-
-  return counter;
+  return newArray;
 }
