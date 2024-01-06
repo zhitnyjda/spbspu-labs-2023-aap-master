@@ -9,6 +9,7 @@ int likhachev::readSequence(char *array)
   int size = 0;
   char *inputData[2] = { nullptr, nullptr };
   inputData[0] = new char[max_size];
+  inputData[1] = new char[max_size];
   char *input = inputData[0];
   char c = ' ';
   std::cin >> std::noskipws;
@@ -25,6 +26,7 @@ int likhachev::readSequence(char *array)
       int oldInputId = (input == inputData[0]) ? 0 : 1;
       int newInputId = (oldInputId + 1) % 2;
 
+      delete[] inputData[newInputId];
       inputData[newInputId] = new char[max_size];
       if(!inputData[newInputId])
       {
@@ -36,7 +38,6 @@ int likhachev::readSequence(char *array)
 
       copyCharArray(inputData[oldInputId], inputData[newInputId], size);
       input = inputData[newInputId];
-      delete[] inputData[oldInputId];
     }
 
   }
@@ -45,15 +46,15 @@ int likhachev::readSequence(char *array)
   delete[] array;
   array = new char[size];
   if (!array) {
-    delete[] input;
     delete[] inputData[inputId];
+    delete[] inputData[(inputId + 1) % 2];
     std::cin >> std::noskipws;
     throw std::logic_error("Error: not enough space for array\n");
   }
   copyCharArray(input, array, size);
 
-  delete[] input;
   delete[] inputData[inputId];
+  delete[] inputData[(inputId + 1) % 2];
   std::cin >> std::noskipws;
   return size;
 }
