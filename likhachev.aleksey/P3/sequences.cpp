@@ -17,7 +17,6 @@ int likhachev::readSequence(char *array)
   {
     input[size] = c;
     size++;
-    likhachev::outLine(input, size);
 
     if (size == max_size)
     {
