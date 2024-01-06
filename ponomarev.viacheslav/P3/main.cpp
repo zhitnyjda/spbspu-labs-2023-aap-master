@@ -7,10 +7,8 @@ int main()
   const size_t incremOfEl = 10;
   char * line = ponomarev::readLine(std::cin, incremOfEl);
   const char * secondLine = "g1h2k";
-  const char * thirdLine = "abc";
   size_t lenLine = strlen(line);
   size_t lenSecLine = strlen(secondLine);
-  size_t lenThirdLine = strlen(thirdLine);
   if (lenLine == 0)
   {
     std::cerr << "Error, not enough memory\n";

@@ -1,9 +1,9 @@
 #include "functions.hpp"
 #include "incremArr.hpp"
 
-char * ponomarev::delNums(char * line, size_t lenLine)
+char * ponomarev::delNums(const char * line, size_t lenLine)
 {
-  char * resLine = new char[lenLine] {};
+  char * lineBefDelNums = new char[lenLine] {};
   size_t numOfEl = 0;
   for (size_t i = 0; i < lenLine; i++)
   {
