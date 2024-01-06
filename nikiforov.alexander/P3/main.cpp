@@ -8,12 +8,13 @@ int main()
   const char* str2 = "abs";
   std::cin >> std::noskipws;
 
-  str1 = nikiforov::readLine(std::cin, str1);
-
-  size_t len1 = strlen(str1);
+  size_t len1 = 0;
   size_t len2 = strlen(str2);
-  std::cin >> std::skipws;
 
+  str1 = nikiforov::readLine(std::cin, str1, len1);
+
+  std::cin >> std::skipws;
+  std::cout << str1 << '\n' << len1;
   if (len1 == 0)
   {
     std::cerr << "Too short sequence\n";

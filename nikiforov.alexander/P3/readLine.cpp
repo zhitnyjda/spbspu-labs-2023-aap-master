@@ -1,6 +1,6 @@
 #include "readLine.hpp"
 
-char* nikiforov::readLine(std::istream& input, char* str1)
+char* nikiforov::readLine(std::istream& input, char* str1, size_t& lenth)
 {
   char c = '\0';
   size_t size = 0;
@@ -14,6 +14,7 @@ char* nikiforov::readLine(std::istream& input, char* str1)
       str1[--read] = 0;
       break;
     }
+    lenth++;
   }
   return str1;
 }
