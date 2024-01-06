@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <string.h>
-#include "myStruct.hpp"
+#include "dinString.hpp"
 
 size_t countGlobal = 0;
 
@@ -11,8 +11,8 @@ int main()
 
   char element = 0;
 
-  DinString s1(1, '0');
-  DinString s2(1, '0');
+  DinString s1(1);
+  DinString s2(1);
 
   std::cin >> std::noskipws;
 
