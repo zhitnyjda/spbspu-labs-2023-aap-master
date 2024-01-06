@@ -1,9 +1,8 @@
 #ifndef FINDRPLSYM_HPP
 #define FINDRPLSYM_HPP
-#include <cstddef>
 
 namespace taskaev
 {
-  char * findRplSym(char * string);
+  char * findRplSym(char * string, char simbolOld, char simbolNew);
 }
 #endif

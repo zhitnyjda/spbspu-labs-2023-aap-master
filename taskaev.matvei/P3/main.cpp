@@ -8,13 +8,12 @@ int main()
   char * string = nullptr;
   char simbolOld = '0';
   char simbolNew = '0';
-  try
+  int size = 5;
+  int newSize = 5;
+  string = taskaev::readingString(std::cin, size, newSize);
+  if(string == nullptr)
   {
-    string = taskaev::readingString(std::cin);
-  }
-  catch(const std::exception& e)
-  {
-    std::cerr << e.what() << "\n";
+    std::cerr << "Error, bad string." << "\n";
     delete [] string;
     return 1;
   }
