@@ -1,12 +1,12 @@
 #include "comparisonLine.hpp"
 
-size_t nikiforov::resComparison(char* str1, const char* str2, size_t len1, size_t len2) {
+size_t nikiforov::resComparison(char* userStr, const char* staticStr, size_t userLen, size_t staticLen) {
   size_t count = 0;
-  for (size_t i = 0; i < len1; i++)
+  for (size_t i = 0; i < userLen; i++)
   {
-    for (size_t j = 0; j < len2; j++)
+    for (size_t j = 0; j < staticLen; j++)
     {
-      if (str1[i] == str2[j] && str1[i] != ' ')
+      if (userStr[i] == staticStr[j] && userStr[i] != ' ')
       {
         count++;
         break;

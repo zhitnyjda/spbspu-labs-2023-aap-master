@@ -4,23 +4,23 @@
 using namespace nikiforov;
 int main()
 {
-  char* str1 = new char[0] {};
-  const char* str2 = "abs";
+  char* userStr = new char[0] {};
+  const char* staticStr = "abs";
   std::cin >> std::noskipws;
 
-  size_t len1 = 0;
-  size_t len2 = strlen(str2);
+  size_t userLen = 0;
+  size_t staticLen = strlen(staticStr);
 
-  str1 = nikiforov::readLine(std::cin, str1, len1);
+  userStr = nikiforov::readLine(std::cin, userStr, userLen);
 
   std::cin >> std::skipws;
-  if (len1 == 0)
+  if (userLen == 0)
   {
     std::cerr << "Too short sequence\n";
-    delete[] str1;
+    delete[] userStr;
     return 1;
   }
-  std::cout << '\n' << nikiforov::resComparison(str1, str2, len1, len2) << '\n';
-  delete[] str1;
+  std::cout << '\n' << nikiforov::resComparison(userStr, staticStr, userLen, staticLen) << '\n';
+  delete[] userStr;
   return 0;
 }

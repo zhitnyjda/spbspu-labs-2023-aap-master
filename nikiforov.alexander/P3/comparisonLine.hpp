@@ -3,7 +3,7 @@
 #include "addSizeLine.hpp"
 
 namespace nikiforov {
-  size_t resComparison(char* str1, const char* str2, size_t len1, size_t len2);
+  size_t resComparison(char* userStr, const char* staticStr, size_t userLen, size_t staticLen);
 }
 
 #endif

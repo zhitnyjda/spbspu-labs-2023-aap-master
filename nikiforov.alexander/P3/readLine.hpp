@@ -4,7 +4,7 @@
 #include "comparisonLine.hpp"
 
 namespace nikiforov {
-  char* readLine(std::istream& input, char* str1, size_t& lenth);
+  char* readLine(std::istream& input, char* str, size_t& userLen);
 }
 
 #endif

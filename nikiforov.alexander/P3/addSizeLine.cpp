@@ -1,14 +1,13 @@
 #include "addSizeLine.hpp"
 
-char* nikiforov::AddElem(char* arr, size_t size, size_t lenth)
+char* nikiforov::AddElem(char* arr, size_t size, size_t read)
 {
-  char* newArr = new char[lenth + size];
+  char* newArr = new char[read + size];
 
-  for (size_t i = 0; i < lenth; i++)
+  for (size_t i = 0; i < read; i++)
   {
     newArr[i] = arr[i];
   }
   delete[] arr;
-  arr = newArr;
-  return arr;
+  return newArr;
 }
