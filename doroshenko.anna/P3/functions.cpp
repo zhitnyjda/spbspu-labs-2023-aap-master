@@ -2,7 +2,7 @@
 
 char* doroshenko::resizeArray(char* array, size_t size, size_t newSize)
 {
-  char* newArray = new char[newSize + 1];
+  char* newArray = new char[newSize];
   size_t i;
   size_t j;
   for (i = 0; i < size; i++)
