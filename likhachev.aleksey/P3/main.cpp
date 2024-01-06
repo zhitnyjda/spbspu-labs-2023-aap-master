@@ -3,11 +3,12 @@
 
 int main()
 {
-  char *line = new char[10];
+  char *line = nullptr;
+  int size = 0;
   char subString[10]{"abc"};
   try
   {
-    int size = likhachev::readSequence(line);
+    line = likhachev::readSequence(size);
 
     int hasSame = likhachev::strDoesHasSame(line, size, subString, 3);
     size = likhachev::strRemoveDigits(line, size);

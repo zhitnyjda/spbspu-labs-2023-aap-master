@@ -2,14 +2,13 @@
 #include <iostream>
 #include <cctype>
 
-int likhachev::readSequence(char *array)
+char* likhachev::readSequence(int &size)
 {
 
   int max_size = 10;
-  int size = 0;
+  size = 0;
   char *inputData[2] = { nullptr, nullptr };
   inputData[0] = new char[max_size];
-  inputData[1] = new char[max_size];
   char *input = inputData[0];
   char c = ' ';
   std::cin >> std::noskipws;
@@ -26,37 +25,22 @@ int likhachev::readSequence(char *array)
       int oldInputId = (input == inputData[0]) ? 0 : 1;
       int newInputId = (oldInputId + 1) % 2;
 
-      delete[] inputData[newInputId];
       inputData[newInputId] = new char[max_size];
-      if(!inputData[newInputId])
+      if (!inputData[newInputId])
       {
         delete[] input;
-        delete[] inputData[oldInputId];
         std::cin >> std::noskipws;
         throw std::logic_error("Error: not enough space for array\n");
       }
 
       copyCharArray(inputData[oldInputId], inputData[newInputId], size);
+      delete[] input;
       input = inputData[newInputId];
     }
-
   }
 
-  int inputId = (input == inputData[0]) ? 0 : 1;
-  delete[] array;
-  array = new char[size];
-  if (!array) {
-    delete[] inputData[inputId];
-    delete[] inputData[(inputId + 1) % 2];
-    std::cin >> std::noskipws;
-    throw std::logic_error("Error: not enough space for array\n");
-  }
-  copyCharArray(input, array, size);
-
-  delete[] inputData[inputId];
-  delete[] inputData[(inputId + 1) % 2];
   std::cin >> std::noskipws;
-  return size;
+  return input;
 }
 
 void likhachev::copyCharArray(char *copyFrom, char *copyTo, int size)
