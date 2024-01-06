@@ -19,7 +19,9 @@ int main()
   }
   std::cin >> simbolOld;
   std::cin >> simbolNew;
-  std::cout << taskaev::findRplSym(string, simbolOld, simbolNew) << "\n";
+  char * resultString = taskaev::findRplSym(string, simbolOld, simbolNew);
+  std::cout << resultString << "\n";
+  delete[] resultString;
   delete[] string;
   return 0;
 }
