@@ -1,5 +1,4 @@
 #include "functions.hpp"
-#include <iostream>
 
 char* doroshenko::resizeArray(char* array, size_t size, size_t newSize)
 {
@@ -16,6 +15,40 @@ char* doroshenko::resizeArray(char* array, size_t size, size_t newSize)
   }
   delete[] array;
   return newArray;
+}
+
+size_t doroshenko::readInput(char* input, std::istream& in)
+{
+  char ch = 0;
+  size_t readEl = 0;
+  size_t size = 20;
+  while (in >> ch)
+  {
+    if (readEl < size)
+    {
+      input[readEl++] = ch;
+      if (ch == '\n')
+      {
+        input[readEl - 1] = 0;
+        break;
+      }
+    }
+    else
+    {
+      input = doroshenko::resizeArray(input, size, size + 20);
+      size += 20;
+      input[readEl++] = ch;
+    }
+  }
+  if (readEl == 0)
+  {
+    delete[] input;
+    return 0;
+  }
+  else
+  {
+    return readEl;
+  }
 }
 
 void doroshenko::removeDup(char* input, size_t readEl)
@@ -39,35 +72,4 @@ void doroshenko::removeDup(char* input, size_t readEl)
     }
     pair = 0;
   }
-}
-
-size_t doroshenko::readInput(char* input, std::istream& in)
-{
-  char ch = 0;
-  size_t readEl = 0;
-  size_t size = 20;
-  while (in >> ch)
-  {
-    if (readEl < size)
-    {
-      input[readEl++] = ch;
-      if (ch == '\n')
-      {
-        input[readEl - 1] = 0;
-        return readEl;
-      }
-    }
-    else
-    {
-      input = doroshenko::resizeArray(input, size, size + 20);
-      size += 20;
-      input[readEl++] = ch;
-    }
-  }
-  if (readEl == 0)
-  {
-    delete[] input;
-    throw std::logic_error("There is no elements in the string\n");
-  }
-  return readEl;
 }

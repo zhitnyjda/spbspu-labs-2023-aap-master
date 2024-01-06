@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <iosfwd>
 #include "functions.hpp"
-
 int main()
 {
   char* input = new char[20];
@@ -11,9 +10,13 @@ int main()
     size_t readEl = 0;
     std::cin >> std::noskipws;
     readEl = doroshenko::readInput(input, std::cin);
+    if (readEl == 0)
+    {
+      std::cerr << "There is no elements in the string\n";
+      return 1;
+    }
     doroshenko::removeDup(input, readEl);
     std::cin >> std::skipws;
-    std::cout << input << '\n';
     delete[] input;
     return 0;
   }
@@ -22,11 +25,5 @@ int main()
     std::cerr << "Allocation error\n";
     delete[] input;
     return 1;
-  }
-  catch (const std::logic_error& e)
-  {
-      std::cerr << e.what();
-      delete[] input;
-      return 1;
   }
 }
