@@ -4,10 +4,12 @@
 
 int likhachev::readSequence(char *array)
 {
-  char *reserveArray;
-  char *input = array;
+
   int max_size = 10;
   int size = 0;
+  char *inputData[2] = { nullptr, nullptr };
+  inputData[0] = new char[max_size];
+  char *input = inputData[0];
   char c = ' ';
   std::cin >> std::noskipws;
 
@@ -15,60 +17,43 @@ int likhachev::readSequence(char *array)
   {
     input[size] = c;
     size++;
+    likhachev::outLine(input, size);
 
     if (size == max_size)
     {
-      if (input == array) // Lavran TODO: Заменить логику
-      {
-        reserveArray = new char[max_size];
-        if (!reserveArray) {
-          delete[] reserveArray;
-          throw std::logic_error("Error: not enough space for array\n");
-        }
-
-        copyCharArray(array, reserveArray, size);
-        input = reserveArray;
-        delete[] array;
-      }
-      else if (input == reserveArray)
-      {
-        array = new char[max_size];
-        if (!array) {
-          delete[] reserveArray;
-          throw std::logic_error("Error: not enough space for array\n");
-        }
-
-        copyCharArray(reserveArray, array, size);
-        input = array;
-        delete[] reserveArray;
-      }
-
       max_size *= 2;
+
+      int oldInputId = (input == inputData[0]) ? 0 : 1;
+      int newInputId = (oldInputId + 1) % 2;
+
+      inputData[newInputId] = new char[max_size];
+      if(!inputData[newInputId])
+      {
+        delete[] inputData[oldInputId];
+        std::cin >> std::noskipws;
+        throw std::logic_error("Error: not enough space for array\n");
+      }
+
+      copyCharArray(inputData[oldInputId], inputData[newInputId], size);
+      input = inputData[newInputId];
+      delete[] inputData[oldInputId];
     }
 
   }
-// Lavran TODO: Заменить логику, убрать дублирование кода
-  if (input == array)
-  {
-    reserveArray = new char[size];
-    if (!reserveArray) {
-      delete[] reserveArray;
-      throw std::logic_error("Error: not enough space for array\n");
-    }
 
-    copyCharArray(array, reserveArray, size);
-    delete[] array;
-  }
-
+  int inputId = (input == inputData[0]) ? 0 : 1;
+  delete[] array;
   array = new char[size];
   if (!array) {
-    delete[] reserveArray;
+    delete[] inputData[inputId];
+    std::cin >> std::noskipws;
     throw std::logic_error("Error: not enough space for array\n");
   }
-  copyCharArray(reserveArray, array, size);
-  delete[] reserveArray;
-  std::cin >> std::noskipws;
+  copyCharArray(input, array, size);
 
+
+  delete[] inputData[inputId];
+  std::cin >> std::noskipws;
   return size;
 }
 
@@ -110,19 +95,19 @@ int likhachev::strDoesHasSame(char *array1, int size1, char *array2, int size2)
 
 int likhachev::strRemoveDigits(char *array, int size)
 {
-  char *reserveArray = new char[size];
+  char *newArray = new char[size];
 
   int counter = 0;
   for (int i = 0; i < size; i++) {
     if (!std::isdigit(array[i])) {
-      reserveArray[counter] = array[i];
+      newArray[counter] = array[i];
       counter++;
     }
   }
 
   delete[] array;
   array = new char[counter];
-  copyCharArray(reserveArray, array, counter);
+  copyCharArray(newArray, array, counter);
 
   return counter;
 }

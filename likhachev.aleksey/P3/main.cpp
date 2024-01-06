@@ -3,10 +3,10 @@
 
 int main()
 {
+  char *line = new char[10];
+  char subString[10]{"abc"};
   try
   {
-    char *line = new char[10];
-    char subString[10]{"abc"};
     int size = likhachev::readSequence(line);
 
     int hasSame = likhachev::strDoesHasSame(line, size, subString, 3);
@@ -28,6 +28,7 @@ int main()
   catch (std::logic_error const& e)
   {
     std::cerr << e.what();
+    delete[] line;
     return 1;
   }
 }
