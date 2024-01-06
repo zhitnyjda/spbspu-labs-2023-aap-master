@@ -8,7 +8,11 @@ int main()
   {
     char *str1 = new char[1000];
     size_t len1 = zheleznyakov::readLine(str1);
-
+    if (len1 - 1 == 0)
+    {
+      std::cerr << "Empty string provided; exiting\n";
+      return 1;
+    }
     const char *str2 = "abc ef";
     size_t len2 = 6;
     char *nonDuplicateDest = new char[1000];
