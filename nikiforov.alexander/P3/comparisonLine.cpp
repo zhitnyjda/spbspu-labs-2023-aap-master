@@ -1,6 +1,6 @@
 #include "comparisonLine.hpp"
 
-size_t nikiforov::result(char* str1, const char* str2, size_t len1, size_t len2) {
+size_t nikiforov::resComparison(char* str1, const char* str2, size_t len1, size_t len2) {
   size_t count = 0;
   for (size_t i = 0; i < len1; i++)
   {

@@ -1,20 +1,25 @@
 #include "readLine.hpp"
 
-char* nikiforov::readLine(std::istream& input, char* str1, size_t& lenth)
+char* nikiforov::readLine(std::istream& input, char* str, size_t& lenth)
 {
   char c = '\0';
-  size_t size = 0;
+  size_t size = 10;
   size_t read = 0;
+  size_t maxlenth = 0;
 
   while (input >> c)
   {
-    nikiforov::AddElem(str1, size, read);
-    str1[read++] = c;
+    if (read == maxlenth)
+    {
+      str = nikiforov::AddElem(str, size, read);
+      maxlenth += size;
+    }
+    str[read++] = c;
     if (c == '\n') {
-      str1[--read] = 0;
+      str[--read] = 0;
       break;
     }
     lenth++;
   }
-  return str1;
+  return str;
 }

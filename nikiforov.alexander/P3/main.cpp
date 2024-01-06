@@ -20,7 +20,7 @@ int main()
     delete[] str1;
     return 1;
   }
-  std::cout << '\n' << nikiforov::result(str1, str2, len1, len2) << '\n';
+  std::cout << '\n' << nikiforov::resComparison(str1, str2, len1, len2) << '\n';
   delete[] str1;
   return 0;
 }
