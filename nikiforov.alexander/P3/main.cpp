@@ -13,12 +13,12 @@ int main()
   std::cin >> std::noskipws;
   size_t read = 0;
 
-  while ((std::cin >> c) && (c != '\n'))
+  while (std::cin >> c)
   {
     nikiforov::AddElem(str1, size, read);
     str1[read++] = c;
     if (c == '\n') {
-      str1[read - 1] = 0;
+      str1[--read] = 0;
       break;
     }
   }
