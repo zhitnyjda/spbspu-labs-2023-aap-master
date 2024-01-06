@@ -2,8 +2,8 @@
 #define INPUT_ARRAY_HPP
 #include <iosfwd>
 
-namespace readArray
+namespace mihalchenko
 {
-  size_t inputArray(std::istream & in, int * matrix, size_t s, size_t toRead);
+  size_t inputArray(std::istream& in, float* arrInput, size_t arrCols);
 }
-#endif // !INPUT_ARRAY_HPP
+#endif

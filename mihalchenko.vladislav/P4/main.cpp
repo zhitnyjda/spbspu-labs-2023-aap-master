@@ -1,24 +1,46 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
+#include <ctype.h>
 #include "matrix.hpp"
 #include "inputArray.hpp"
 #include "outputArray.hpp"
-#include <string>
-#include <cmath>
+#include "dopFunc.hpp"
 
-int main(int argc, char ** argv)
+int main(int argc, char** argv)
+
 {
-  if (argc != 4)
+  using namespace mihalchenko;
+  if ((argc < 4) || (argc > 4))
   {
-    std::cerr << "Something wrong...\n";
+    (argc < 4) ? (std::cerr << "Not enough arguments\n") : ( std::cerr << "Too many arguments\n");
     return 1;
   }
 
-  int num;
+  if (isdigit(*argv[1]) != true)
+  {
+    std::cerr << "First parameter is not a number\n";
+    return 1;
+  }
+
+  if ((*argv[1] != '1') && (*argv[1] != '2'))
+  {
+    std::cerr << "First parameter is out of range\n";
+    return 1;
+  }
+  int num = 0;
 
   try
   {
-    num = std::stoll(argv[1]);
+    if (ifAlp(argv[1]) == true)
+    {
+      num = std::stoll(argv[1]);
+    }
+    else
+    {
+      std::cout << "It's not a digit\n";
+      return 1;
+    }
   }
   catch (const std::invalid_argument & e)
   {
@@ -27,8 +49,8 @@ int main(int argc, char ** argv)
   }
 
   std::ifstream input(argv[2]);
-
   size_t rows = 0, cols = 0;
+
   input >> rows >> cols;
   {
     if (!input)
@@ -38,93 +60,72 @@ int main(int argc, char ** argv)
     }
   }
 
-  if (num == 1)
+  if ((rows == 0) && (cols == 0))
   {
-    if (num * cols > 10000)
-    {
-      std::cerr << "The number of matrix elements exceeds 10000";
-    }
-
-    int * matrix = new int[rows * cols];
-    size_t result = readArray::inputArray(input, matrix, rows * cols, rows * cols);
-    if (!input)
-    {
-      std::cerr << "Read " << result << "elements...\n";
-      delete [] matrix;
-      return 3;
-    }
-    writeArray::outputArray(argv[3], matrix, rows, cols);
+    std::ofstream output(argv[3]);
+    output << rows << " " << cols << " ";
     return 0;
   }
+
+  if (((rows == 0) || (cols == 0)) && (!((rows == 0) && (cols == 0))))
+  {
+    std::cout << "Cannot be an element\n";
+    return 1;
+  }
+
+  size_t prod = rows * cols;
+
+  if (num == 1)
+  {
+    if (prod > 10000)
+    {
+      std::cerr << "The number of matrix elements exceeds 10000";
+      return 1;
+    }
+
+    float masInput[prod];
+    size_t result = inputArray(input, masInput, prod);
+
+    if (!input)
+    {
+      std::cerr << "Read " << result << " elements...\n";
+      return 2;
+    }
+    outputDinArray(argv[3], masInput, rows, cols);
+    return 0;
+  }
+
   if (num == 2)
   {
-    int countNew = 0;
-    int sum = 0;
-    int ** m1 = nullptr;
-    int ** m2 = nullptr;
+    float* m1 = nullptr;
     try
     {
-      m1 = matrixLife::createMatrix(rows, cols);
-      m2 = matrixLife::createMatrix(rows, cols);
+      m1 = createMatrix(m1, rows, cols);
+      if (m1 == nullptr)
+      {
+        return 2;
+      }
     }
     catch(...)
     {
-      //delete [] matrix;
-      matrixLife::freeMatrix(m1, rows, cols);
-      matrixLife::freeMatrix(m2, rows, cols);
-      return 3;
+      freeMatrix(m1);
+      return 2;
     }
-    for (int i = 0; i < rows; ++i)
+
+    for (size_t i = 0; i < prod; i++)
     {
-      for (size_t j = 0; j < cols; ++j)
+      if (!(input >> m1[i]))
       {
-        if (!(input >> m1[i][j]))
-        {
-          return i;
-        }
+        freeMatrix(m1);
+        return i;
       }
     }
-    std::ofstream output(argv[3]);
-    output << rows << " " << cols << " ";
-    for (int ii = 0; ii < rows; ++ii)
-    {
-      for(int jj {0}; jj < cols; jj++)
-      {
-        countNew = 0;
-        sum = 0;
-        for (int i = ii - 1; i <= ii + 1; i++)
-        {
-          if ((i >= 0) and (i < rows))
-          {
-            for(int j = jj - 1; j <= jj +1; j++)
-            {
-              if ((j >= 0) and (j < cols))
-              {
-                if ((ii == i) and (jj == j))
-                {
-                  //std::cout << std::endl;
-                }
-                else
-                {
-                  countNew ++;
-                  sum += m1[i][j];
-                }
-              }
-            }
-          }
-        }
-        if (countNew != 0)
-        {
-          float rezult = float(sum) / countNew;
-          m2[ii][jj] = rezult;
-          output << (float) round(rezult * 10) / 10 << " ";
-        }
-      }
-    }
-    matrixLife::freeMatrix(m1, rows, cols);
-    matrixLife::freeMatrix(m2, rows, cols);
+    outputDinArray(argv[3], m1, rows, cols);
+    freeMatrix(m1);
     return 0;
   }
   else
+  {
     return 2;
+  }
 }
