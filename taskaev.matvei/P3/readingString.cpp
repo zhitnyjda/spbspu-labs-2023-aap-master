@@ -20,8 +20,9 @@ char * taskaev::readingString(std::istream& input, int size, int newSize)
   string[sizeNum != 0 ? sizeNum - 1 : sizeNum] = '\0';
   if (string[0] == '\0')
   {
-    delete[] string;
+    string = nullptr;
     return string;
+    delete[] string;
   }
   input >> std::skipws;
   return string;
