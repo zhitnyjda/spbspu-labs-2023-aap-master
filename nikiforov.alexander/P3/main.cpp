@@ -14,7 +14,6 @@ int main()
   str1 = nikiforov::readLine(std::cin, str1, len1);
 
   std::cin >> std::skipws;
-  std::cout << str1 << '\n' << len1;
   if (len1 == 0)
   {
     std::cerr << "Too short sequence\n";
