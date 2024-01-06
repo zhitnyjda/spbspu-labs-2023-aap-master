@@ -22,11 +22,11 @@ int main()
     noDigitsline = likhachev::strRemoveDigits(size, line, ndlSize);
 
     std::cout << "\n";
-    std::cout << "String ";
+    std::cout << "String";
     if (!hasSame) {
-      std::cout << "do not have ";
+      std::cout << " do not";
     }
-    std::cout << "common characters.\n";
+    std::cout << " have a common characters.\n";
 
     std::cout << "The string received after deleting the digits: ";
     likhachev::outLine(noDigitsline, ndlSize);
