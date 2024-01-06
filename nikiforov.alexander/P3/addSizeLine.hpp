@@ -3,7 +3,7 @@
 #include <cstddef>
 
 namespace nikiforov {
-  char* AddElem(char *& arr, size_t& size, size_t& lenth);
+  char* AddElem(char* arr, size_t size, size_t lenth);
 }
 
 #endif

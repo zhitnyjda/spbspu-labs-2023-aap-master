@@ -1,6 +1,6 @@
 #include "addSizeLine.hpp"
 
-char* nikiforov::AddElem(char *& arr, size_t& size, size_t& lenth)
+char* nikiforov::AddElem(char* arr, size_t size, size_t lenth)
 {
   char* newArr = new char[lenth + size];
 
