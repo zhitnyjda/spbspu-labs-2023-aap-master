@@ -4,38 +4,34 @@
 
 char* hohlova::readLine(std::istream& input, size_t& size, size_t& maxCharNum)
 {
-  size_t charNum = 0;
-  char symbol = ' ';
-  char* str = new char[maxCharNum] {};
-  str[0] = '\0';
+  char* str = new char[maxCharNum];
+  str[0] = ' ';
   input >> std::noskipws;
-  while (input >> symbol)
+  do
   {
-    str[charNum++] = symbol;
-    if (symbol == '\n')
+    if (size == maxCharNum)
     {
-      str[charNum - 1] = 0;
-      break;
+      str = hohlova::extensionOfLine(std::cin, size, maxCharNum);
     }
-    if (charNum == maxCharNum)
-    {
-      char* longerStr = new char[charNum + size] {};
-      for (size_t i = 0; i < charNum; i++)
-      {
-        longerStr[i] = str[i];
-      }
-      return longerStr;
-      if (longerStr == nullptr)
-      {
-        delete[] str;
-        str = new char[maxCharNum] {};
-        str[0] = 0;
-        return str;
-      }
-      delete[] str;
-      str = longerStr;
-      maxCharNum += size;
-    }
+    std::cin >> str[size];
+  } while (str[size++] != '\n');
+  if (str[0] == '\0' || str[0] == '\n')
+  {
+    return nullptr;
   }
+  return str;
+}
+
+char* hohlova::extensionOfLine(std::istream& input, size_t& size, size_t& maxCharNum)
+{
+  char* str = new char[maxCharNum];
+  char* longerStr = new char[maxCharNum + size] {};
+  for (size_t i = 0; i < maxCharNum; i++)
+  {
+    longerStr[i] = str[i];
+  }
+  maxCharNum += size;
+  delete[] str;
+  str = longerStr;
   return str;
 }

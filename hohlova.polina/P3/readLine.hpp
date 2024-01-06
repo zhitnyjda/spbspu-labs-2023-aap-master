@@ -5,6 +5,7 @@
 namespace hohlova
 {
   char* readLine(std::istream& input, size_t& size, size_t& maxCharNum);
+  char* extensionOfLine(std::istream& input, size_t size, size_t& maxCharNum);
 };
 #endif
 
