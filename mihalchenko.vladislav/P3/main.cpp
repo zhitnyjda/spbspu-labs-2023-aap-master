@@ -1,7 +1,7 @@
+#include "dinString.hpp"
 #include <iostream>
 #include <cstring>
 #include <string.h>
-#include "dinString.hpp"
 
 size_t countGlobal = 0;
 

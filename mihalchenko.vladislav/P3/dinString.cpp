@@ -1,7 +1,7 @@
+#include "dinString.hpp"
 #include <iostream>
 #include <cstring>
 #include <cmath>
-#include "dinString.hpp"
 
 extern size_t countGlobal;
 
