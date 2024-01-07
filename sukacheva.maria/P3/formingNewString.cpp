@@ -1,5 +1,6 @@
 #include "formingNewString.hpp"
 #include <iostream>
+#include <cstddef>
 
 char* sukacheva::formingNewString(char* first, const char* second, size_t firstStringSize, const size_t secondStringSize)
 {
