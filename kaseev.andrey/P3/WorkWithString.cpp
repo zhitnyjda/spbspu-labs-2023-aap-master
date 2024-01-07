@@ -1,6 +1,7 @@
 #include "WorkWithString.hpp"
 #include <iostream>
 #include <cstring>
+#include <cstddef>
 
 const char *kaseev::readLine()
 {
@@ -42,7 +43,7 @@ char* kaseev::interleaveStrings(const char* str1,const char* str2)
   {
     return nullptr;
   }
-  size_t len1 = kaseev::lenth(str1);
+  size_t len1 = kaseev::lent(str1);
   size_t len2 = 4;
   size_t newLen = len1 + len2 + 1;
   size_t t = 0;
@@ -75,7 +76,7 @@ char* kaseev::interleaveStrings(const char* str1,const char* str2)
   return newStr;
 }
 
-size_t kaseev::lenth(const char* str1)
+size_t kaseev::lent(const char* str1)
 {
   size_t len = 0;
   while (str1[len] != '\0')
