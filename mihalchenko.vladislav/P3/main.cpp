@@ -36,7 +36,13 @@ int main()
       }
     }
   }
-  s1.dinOutput();
+
+  if (s1.getCounterCurrent() == 0)
+  {
+    return 2;
+  }
+
+  std::cin >> std::noskipws;
 
   while ((std::cin >> element) && (element != '\n'))
   {
@@ -46,16 +52,38 @@ int main()
     }
     else
     {
-      s2.dinResize();
-      s2.dinAppend(element);
+      try
+      {
+        s2.dinResize();
+        s2.dinAppend(element);
+      }
+      catch (const std::exception &e)
+      {
+        std::cerr << e.what() << '\n';
+        return 1;
+      }
     }
   }
-  s2.dinOutput();
+
+  if (s2.getCounterCurrent() == 0)
+  {
+    return 2;
+  }
 
   char *resultStr = nullptr;
   size_t counterLenMas = 0;
   countGlobal = 0;
-  resultStr = findIdenticalChars(s1.getDinstr(), s2.getDinstr(), s1.getSize(), s2.getSize());
+
+  try
+  {
+    resultStr = findIdenticalChars(s1.getDinstr(), s2.getDinstr(), s1.getSize(), s2.getSize());
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+    return 1;
+  }
+
   (s1.getSize() > s2.getSize()) ? (counterLenMas = s2.getSize()) : (counterLenMas = s1.getSize());
 
   counterLenMas = arrUniq(resultStr, countGlobal);

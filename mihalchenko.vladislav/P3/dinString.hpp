@@ -11,17 +11,16 @@ namespace mihalchenko
     ~DinString();
     void dinResize();
     void dinAppend(char elem);
-    void dinOutput();
 
     size_t getSize();
     size_t getCounterCurrent();
     char *getDinstr();
 
   private:
-    size_t size = 0;
-    char *dinstr = nullptr;
-    size_t counterCurrent = 0;
-    size_t addArr = 0;
+    size_t size_ = 0;
+    char *dinstr_ = nullptr;
+    size_t counterCurrent_ = 0;
+    size_t addArr_ = 0;
   };
 
   char *findIdenticalChars(char *str1, char *str2, size_t size1, size_t size2);

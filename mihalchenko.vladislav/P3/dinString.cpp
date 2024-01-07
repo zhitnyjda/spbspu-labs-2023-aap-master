@@ -7,67 +7,59 @@ extern size_t countGlobal;
 
 mihalchenko::DinString::DinString(size_t n)
 {
-  this->dinstr = new char[n + 1];
+  this->dinstr_ = new char[n + 1];
 
   for (size_t i = 0; i <= n; i++)
   {
-    this->dinstr[i] = '\0';
+    this->dinstr_[i] = '\0';
   }
-  size = n;
-  counterCurrent = 0;
-  addArr = 10;
+  size_ = n;
+  counterCurrent_ = 0;
+  addArr_ = 10;
 }
 
 mihalchenko::DinString::~DinString()
 {
-  delete[] dinstr;
+  delete[] dinstr_;
 }
 
 void mihalchenko::DinString::dinResize()
 {
-  char *newInput = new char[size + addArr];
-  for (size_t i = 0; i < size; i++)
+  char *newInput = new char[size_ + addArr_];
+  for (size_t i = 0; i < size_; i++)
   {
-    newInput[i] = dinstr[i];
+    newInput[i] = dinstr_[i];
   }
-  for (size_t i = size; i < size + addArr; i++)
+  for (size_t i = size_; i < size_ + addArr_; i++)
   {
     newInput[i] = '\0';
   }
-  size = size + addArr;
-  if (dinstr != nullptr)
+  size_ = size_ + addArr_;
+  if (dinstr_ != nullptr)
   {
-    delete[] dinstr;
+    delete[] dinstr_;
   }
-  dinstr = newInput;
+  dinstr_ = newInput;
 }
 
 void mihalchenko::DinString::dinAppend(char elem)
 {
-  dinstr[counterCurrent++] = elem;
-}
-
-void mihalchenko::DinString::dinOutput()
-{
-  for (size_t i = 0; i < size; i++)
-  {
-    continue;
-  }
+  dinstr_[counterCurrent_++] = elem;
 }
 
 size_t mihalchenko::DinString::getSize()
 {
-  return size;
+  return size_;
 }
 
 size_t mihalchenko::DinString::getCounterCurrent()
 {
-  return counterCurrent;
+  return counterCurrent_;
 }
 
 char *mihalchenko::DinString::getDinstr()
 {
-  return dinstr;
+  return dinstr_;
 }
 
 char *mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, size_t size2)
