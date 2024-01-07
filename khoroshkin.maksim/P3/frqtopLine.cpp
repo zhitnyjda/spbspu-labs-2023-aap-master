@@ -2,34 +2,34 @@
 #include <algorithm>
 #include "frqtopLine.hpp"
 
-char khoroshkin::findFirstMax(std::map<char, int> dict)
+char khoroshkin::findFirstMax(std::map<char, int> Dict)
 {
-  std::pair<char, int> firstMaxPair;
+  std::pair<char, int> FirstMaxPair;
   int maxValue = std::numeric_limits< int >::min();
-  for (const auto & pair : dict)
+  for (const auto & pair : Dict)
   {
     if (maxValue < pair.second)
     {
       maxValue = pair.second;
-      firstMaxPair = pair;
+      FirstMaxPair = pair;
     }
   }
-  return firstMaxPair.first;
+  return FirstMaxPair.first;
 }
 
-char khoroshkin::findOtherMax(std::map<char, int> dict, int previousMaxChar, char first, char second)
+char khoroshkin::findOtherMax(std::map<char, int> Dict, int previousMaxChar, char first, char second)
 {
-  std::pair<char, int> otherMaxPair;
+  std::pair<char, int> OtherMaxPair;
   int maxValue = std::numeric_limits< int >::min();
-  for (const auto & pair : dict)
+  for (const auto & pair : Dict)
   {
     if (maxValue < pair.second && pair.second <= previousMaxChar && pair.first != first && pair.first != second)
     {
       maxValue = pair.second;
-      otherMaxPair = pair;
+      OtherMaxPair = pair;
     }
   }
-  return otherMaxPair.first;
+  return OtherMaxPair.first;
 }
 
 void khoroshkin::generateNewString(std::map<char, int> dict, char * newString)
@@ -46,13 +46,13 @@ void khoroshkin::generateNewString(std::map<char, int> dict, char * newString)
 
 void khoroshkin::getFrequency(const char * line, int length, char * newString)
 {
-  std::map<char, int> charFrequency;
+  std::map<char, int> CharFrequency;
   for (int i = 0; i < length; i++)
   {
     if (std::isalpha(line[i]) && line[i] != ' ')
     {
-      charFrequency[std::tolower(line[i])]++;
+      CharFrequency[std::tolower(line[i])]++;
     }
   }
-  generateNewString(charFrequency, newString);
+  generateNewString(CharFrequency, newString);
 }
