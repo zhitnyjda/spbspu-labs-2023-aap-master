@@ -16,8 +16,8 @@ int main()
     return 1;
   }
   char * lineBefDel = ponomarev::delNums(line, lenLine);
-  size_t temp = strlen(lineBefDel);
-  for (size_t i = 0; i < temp; i++)
+  size_t te = strlen(lineBefDel);
+  for (size_t i = 0; i < te; i++)
   {
     std::cout << lineBefDel[i];
   }
