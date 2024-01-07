@@ -3,8 +3,6 @@
 #include <cstring>
 #include <cmath>
 
-extern size_t countGlobal;
-
 mihalchenko::DinString::DinString(size_t n)
 {
   this->dinstr_ = new char[n + 1];
@@ -87,6 +85,5 @@ char *mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, size
       }
     }
   }
-  ::countGlobal = countLen;
   return resStr;
 }

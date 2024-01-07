@@ -4,8 +4,6 @@
 #include <string.h>
 #include <algorithm>
 
-size_t countGlobal = 0;
-
 int main()
 {
   using namespace mihalchenko;
@@ -72,8 +70,6 @@ int main()
   }
 
   char *resultStr = nullptr;
-  size_t counterLenMas = 0;
-  countGlobal = 0;
 
   size_t sizeDin1 = std::find(s1.getDinstr(), s1.getDinstr() + s1.getSize(), '\0') - s1.getDinstr();
   size_t sizeDin2 = std::find(s2.getDinstr(), s2.getDinstr() + s2.getSize(), '\0') - s2.getDinstr();
