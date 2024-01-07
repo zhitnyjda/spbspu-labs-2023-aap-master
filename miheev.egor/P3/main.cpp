@@ -6,10 +6,9 @@
 
 int main()
 {
-  size_t size = 5;
-  char* string = new char[size]{};
+  char* string = nullptr;
 
-  miheev::readString(&string, size);
+  miheev::readString(&string);
   if (string[0] == '\0')
   {
     std::cerr << "you've entered an empty line\n";

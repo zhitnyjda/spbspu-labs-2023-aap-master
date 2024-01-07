@@ -1,10 +1,10 @@
 #ifndef STRING_HPP
 #define STRING_HPP
 #include "cstddef"
+#include <istream>
 
 namespace miheev
 {
-  void expandString(char** toExpand, size_t& receiverSize, size_t additionalSize);
   size_t readString(char **receiver);
 }
 
