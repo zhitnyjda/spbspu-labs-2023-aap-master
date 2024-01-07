@@ -7,7 +7,7 @@ void khoroshkin::generateNewWithTwo(char * firstLine, const char * secondLine)
   for (size_t i = 0; firstLine[i] != '\0'; ++i)
   {
     bool shouldRemove = false;
-    for (size_t j = 0; j < secondLine[j] != '\0'; ++j)
+    for (size_t j = 0; secondLine[j] != '\0'; ++j)
     {
       shouldRemove = shouldRemove || (firstLine[i] == secondLine[j]);
     }

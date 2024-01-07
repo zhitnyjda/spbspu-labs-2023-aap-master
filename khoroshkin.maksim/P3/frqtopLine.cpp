@@ -1,5 +1,6 @@
 #include <limits>
 #include <algorithm>
+#include <cctype>
 #include "frqtopLine.hpp"
 
 char khoroshkin::findFirstMax(std::map<char, int> Dict)
