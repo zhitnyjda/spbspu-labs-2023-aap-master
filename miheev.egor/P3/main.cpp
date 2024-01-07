@@ -6,9 +6,7 @@
 int main()
 {
   char* string = nullptr;
-
-  miheev::readString(&string, std::cin);
-  if (string[0] == '\0')
+  if (miheev::readString(&string, std::cin) == 0)
   {
     std::cerr << "you've entered an empty line\n";
     delete[] string;

@@ -18,7 +18,7 @@ namespace miheev
     stream >> std::noskipws;
     char c = 0;
     size_t firstFree = 0;
-    while (stream >> c)
+    while (stream >> c) // may crush
     {
       if (firstFree >= receiverSize)
       {
@@ -38,6 +38,10 @@ namespace miheev
         break;
       }
       *(*receiver + firstFree++) = c;
+    }
+    if (*receiver == nullptr or firstFree == 0)
+    {
+      return 0;
     }
     stream >> std::skipws;
     return firstFree - 1;
