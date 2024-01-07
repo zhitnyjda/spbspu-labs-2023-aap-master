@@ -115,10 +115,14 @@ size_t mihalchenko::arrUniq(char *mas, size_t size)
         if (mas[i] == mas[j])
         {
           while ((mas[j] == mas[size - 1]) && (j < size - 1))
+          {
             size--;
+          }
           std::swap(mas[size - 1], mas[j]);
           if ((i != size - 1) || (j != size - 1))
+          {
             size--;
+          }
         }
       }
     }
