@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <string.h>
+#include <algorithm>
 
 size_t countGlobal = 0;
 
@@ -74,9 +75,15 @@ int main()
   size_t counterLenMas = 0;
   countGlobal = 0;
 
+  size_t sizeDin1 = std::find(s1.getDinstr(), s1.getDinstr() + s1.getSize(), '\0') - s1.getDinstr();
+  size_t sizeDin2 = std::find(s2.getDinstr(), s2.getDinstr() + s2.getSize(), '\0') - s2.getDinstr();
+  size_t minLength = 0;
+
   try
   {
-    resultStr = findIdenticalChars(s1.getDinstr(), s2.getDinstr(), s1.getSize(), s2.getSize());
+    (sizeDin1 > sizeDin2) ? (minLength = sizeDin2) : (minLength = sizeDin1);
+    resultStr = new char[minLength];
+    resultStr = findIdenticalChars(s1.getDinstr(), s2.getDinstr(), sizeDin1, sizeDin2, resultStr);
   }
   catch (const std::exception &e)
   {
@@ -84,11 +91,7 @@ int main()
     return 1;
   }
 
-  (s1.getSize() > s2.getSize()) ? (counterLenMas = s2.getSize()) : (counterLenMas = s1.getSize());
-
-  counterLenMas = arrUniq(resultStr, countGlobal);
-
-  for (size_t i = 0; i < counterLenMas; i++)
+  for (size_t i = 0; i < minLength; i++)
   {
     std::cout << resultStr[i];
   }
