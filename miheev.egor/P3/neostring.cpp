@@ -4,7 +4,20 @@
 
 namespace miheev
 {
-  void expandString(char** toExpand, size_t& receiverSize, size_t additionalSize)
+  size_t findSize(char* string)
+  {
+    size_t size = 0;
+    if (string == nullptr)
+    {
+      return size;
+    }
+    while (string[size] != '\0')
+    {
+      size++;
+    }
+    return size;
+  }
+  void expandString(char** toExpand, size_t& receiverSize)
   {
     char* temp = new char[receiverSize + additionalSize]{};
     for (size_t i = 0; i < receiverSize; i++)
@@ -17,8 +30,18 @@ namespace miheev
     temp = nullptr;
   }
 
-  size_t readString(char** receiver, size_t receiverSize)
+  size_t readString(char** receiver)
   {
+    size_t receiverSize = 0;
+    if (*receiver != nullptr)
+    {
+      size_t receiverSize = 0;
+      while (*(*receiver + receiverSize) != '\0')
+      {
+        receiverSize++;
+      }
+
+    }
     size_t additionalSize = 5;
     std::cin >> std::noskipws;
     char c = 0;
