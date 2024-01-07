@@ -15,14 +15,14 @@ int main()
     delete[] line;
     return 1;
   }
-  char * lineBefDelNums = ponomarev::delNums(line, lenLine);
-  size_t temp = strlen(lineBefDelNums);
+  char * lineBefDel = ponomarev::delNums(line, lenLine);
+  size_t temp = strlen(lineBefDel);
   for (size_t i = 0; i < temp; i++)
   {
-    std::cout << lineBefDelNums[i];
+    std::cout << lineBefDel[i];
   }
   std::cout << "\n";
-  delete[] lineBefDelNums;
+  delete[] lineBefDel;
   char * lineBefAdNums = ponomarev::addNums(line, lenLine, secondLine, lenSecLine, incremOfEl);
   size_t t = strlen(lineBefAdNums);
   for (size_t i = 0; i < t; i++)
