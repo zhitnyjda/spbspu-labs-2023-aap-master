@@ -2,14 +2,14 @@
 #include <iostream>
 #include <cstring>
 
-char *kaseev::readLine()
+const char *kaseev::readLine()
 {
   const int initialSize = 10;
   int currentSize = initialSize;
   char* charArray = new char[currentSize];
   if (charArray == nullptr)
   {
-    std::cerr << "Memory erorr";
+    std::cerr << "Memory error";
     return nullptr;
   }
   int c;
@@ -42,7 +42,7 @@ char* kaseev::interleaveStrings(const char* str1,const char* str2)
   {
     return nullptr;
   }
-  size_t len1 = sizeof(str1);
+  size_t len1 = kaseev::lenth(str1);
   size_t len2 = 4;
   size_t newLen = len1 + len2 + 1;
   size_t t = 0;
@@ -73,4 +73,14 @@ char* kaseev::interleaveStrings(const char* str1,const char* str2)
     newStr[t] = '\0';
   }
   return newStr;
+}
+
+size_t kaseev::lenth(const char* str1)
+{
+  size_t len = 0;
+  while (str1[len] != '\0')
+  {
+    len++;
+  }
+  return len;
 }

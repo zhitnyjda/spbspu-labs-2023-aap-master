@@ -3,15 +3,20 @@
 
 int main()
 {
-  char* str1 = kaseev::readLine();
+  const char* str1 = kaseev::readLine();
   const char* str2 = "def ";
+  if (str1[0] == '\0')
+  {
+    std::cerr << "Wrong input";
+    return 1;
+  }
   try
   {
     char *newStr = kaseev::interleaveStrings(str1, str2);
     delete[] str1;
     if (newStr == nullptr)
     {
-      throw std::logic_error("Invalid input");
+      throw std::logic_error("Impossible to convert");
     }
     std::cout << newStr;
     delete[] newStr;
