@@ -1,4 +1,3 @@
-//DIF-LAT
 #include <iostream>
 #include "neostring.hpp"
 #include "transformations.hpp"
@@ -8,7 +7,7 @@ int main()
 {
   char* string = nullptr;
 
-  miheev::readString(&string);
+  miheev::readString(&string, std::cin);
   if (string[0] == '\0')
   {
     std::cerr << "you've entered an empty line\n";

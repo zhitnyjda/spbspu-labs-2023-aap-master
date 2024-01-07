@@ -5,7 +5,7 @@
 
 namespace miheev
 {
-  size_t readString(char **receiver);
+  size_t readString(char **receiver, std::istream& stream);
 }
 
 #endif

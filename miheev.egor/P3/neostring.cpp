@@ -4,7 +4,7 @@
 
 namespace miheev
 {
-  size_t readString(char** receiver)
+  size_t readString(char** receiver, std::istream& stream)
   {
     size_t receiverSize = 0;
     if (*receiver != nullptr)
@@ -15,10 +15,10 @@ namespace miheev
       }
     }
     const size_t additionalSize = 5;
-    std::cin >> std::noskipws;
+    stream >> std::noskipws;
     char c = 0;
     size_t firstFree = 0;
-    while (std::cin >> c)
+    while (stream >> c)
     {
       if (firstFree >= receiverSize)
       {
@@ -39,7 +39,7 @@ namespace miheev
       }
       *(*receiver + firstFree++) = c;
     }
-    std::cin >> std::skipws;
+    stream >> std::skipws;
     return firstFree - 1;
   }
 }
