@@ -1,31 +1,30 @@
 #include <iostream>
-#include "functions.hpp"
+#include "setLine.hpp"
+#include "frqtopLine.hpp"
+#include "excsndLine.hpp"
 
 int main()
 {
-  const size_t initialCapacity = 10;
-  char * userString = new char[initialCapacity];
+  size_t userAddSize = 10;
+  size_t userStringLength = 0;
+  char * userString = khoroshkin::inputLine(std::cin, userStringLength, userAddSize);
   const char * givenString = "abc";
+
+  if (userStringLength < 4)
+  {
+    std::cerr << "Error: Too short string\n";
+    delete[] userString;
+    return 1;
+  }
+
   try
   {
-    int userStringLength = khoroshkin::inputLine(userString, initialCapacity);
-    if (userStringLength < 3)
-    {
-      throw std::logic_error("Error: Too short string\n");
-    }
     char * newString = new char[userStringLength + 1];
     khoroshkin::getFrequency(userString, userStringLength, newString);
     std::cout << "Result for FRQ-TOP: " << newString << '\n';
-    khoroshkin::clearString(newString, userStringLength);
-    khoroshkin::generateNewWithTwo(userString, givenString, userStringLength, 3, newString);
-    std::cout << "Result for EXC-SND: " << newString << '\n';
+    khoroshkin::generateNewWithTwo(userString, givenString);
+    std::cout << "Result for EXC-SND: " << userString << '\n';
     delete[] newString;
-  }
-  catch (const std::logic_error & e)
-  {
-    std::cerr << e.what();
-    delete[] userString;
-    return 1;
   }
   catch (const std::bad_alloc & e)
   {
