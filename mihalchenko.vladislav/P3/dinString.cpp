@@ -15,7 +15,7 @@ mihalchenko::DinString::DinString(size_t n)
   }
   size_ = n;
   counterCurrent_ = 0;
-  addArr_ = 10;
+  addArr_ = 2;
 }
 
 mihalchenko::DinString::~DinString()
@@ -25,16 +25,16 @@ mihalchenko::DinString::~DinString()
 
 void mihalchenko::DinString::dinResize()
 {
-  char *newInput = new char[size_ + addArr_];
+  char *newInput = new char[size_ * addArr_];
   for (size_t i = 0; i < size_; i++)
   {
     newInput[i] = dinstr_[i];
   }
-  for (size_t i = size_; i < size_ + addArr_; i++)
+  for (size_t i = size_; i < size_ * addArr_; i++)
   {
     newInput[i] = '\0';
   }
-  size_ = size_ + addArr_;
+  size_ = size_ * addArr_;
   if (dinstr_ != nullptr)
   {
     delete[] dinstr_;
