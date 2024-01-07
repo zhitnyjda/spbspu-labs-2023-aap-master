@@ -30,8 +30,10 @@ char * ponomarev::addNums(const char * line, size_t lenLine, const char * second
     {
       if (numOfEl == limitOfMem)
       {
-        lineBefAdNums = ponomarev::incremArr(lineBefAdNums, incremOfEl, numOfEl);
+        char * incremLine = incremArr(lineBefAdNums, incremOfEl, numOfEl);
         limitOfMem += incremOfEl;
+        delete[] lineBefAdNums;
+        lineBefAdNums = incremLine;
       }
       numOfEl += 1;
       lineBefAdNums[numOfEl] = secondLine[i];

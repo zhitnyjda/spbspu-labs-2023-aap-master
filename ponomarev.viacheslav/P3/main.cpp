@@ -24,8 +24,8 @@ int main()
   std::cout << "\n";
   delete[] lineBefDelNums;
   char * lineBefAdNums = ponomarev::addNums(line, lenLine, secondLine, lenSecLine, incremOfEl);
-  temp = strlen(lineBefAdNums);
-  for (size_t i = 0; i < temp; i++)
+  size_t t = strlen(lineBefAdNums);
+  for (size_t i = 0; i < t; i++)
   {
     std::cout << lineBefAdNums[i];
   }
