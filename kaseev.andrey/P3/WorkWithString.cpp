@@ -1,7 +1,6 @@
 #include "WorkWithString.hpp"
 #include <iostream>
 #include <cstring>
-#include <cstddef>
 
 const char *kaseev::readLine()
 {

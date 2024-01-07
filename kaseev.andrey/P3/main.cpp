@@ -8,6 +8,7 @@ int main()
   if (str1[0] == '\0')
   {
     std::cerr << "Wrong input";
+    delete[] str1;
     return 1;
   }
   try
