@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "InputString.hpp"
 #include "ExcludeSecString.hpp"
 
