@@ -18,7 +18,7 @@ int main()
 
   while ((std::cin >> element) && (element != '\n'))
   {
-    if (s1.counterCurrent < s1.size)
+    if (s1.getCounterCurrent() < s1.getSize())
     {
       s1.dinAppend(element);
     }
@@ -40,7 +40,7 @@ int main()
 
   while ((std::cin >> element) && (element != '\n'))
   {
-    if (s2.counterCurrent < s2.size)
+    if (s2.getCounterCurrent() < s2.getSize())
     {
       s2.dinAppend(element);
     }
@@ -55,8 +55,9 @@ int main()
   char *resultStr = nullptr;
   size_t counterLenMas = 0;
   countGlobal = 0;
-  resultStr = findIdenticalChars(s1.dinstr, s2.dinstr, s1.size, s2.size);
-  (s1.size > s2.size) ? (counterLenMas = s2.size) : (counterLenMas = s1.size);
+  resultStr = findIdenticalChars(s1.getDinstr(), s2.getDinstr(), s1.getSize(), s2.getSize());
+  (s1.getSize() > s2.getSize()) ? (counterLenMas = s2.getSize()) : (counterLenMas = s1.getSize());
+
   counterLenMas = arrUniq(resultStr, countGlobal);
 
   for (size_t i = 0; i < counterLenMas; i++)

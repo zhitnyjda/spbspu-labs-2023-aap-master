@@ -25,7 +25,6 @@ mihalchenko::DinString::~DinString()
 
 void mihalchenko::DinString::dinResize()
 {
-  // char* tmp = new char[size + addArr];
   char *newInput = new char[size + addArr];
   for (size_t i = 0; i < size; i++)
   {
@@ -56,6 +55,21 @@ void mihalchenko::DinString::dinOutput()
   }
 }
 
+size_t mihalchenko::DinString::getSize()
+{
+  return size;
+}
+
+size_t mihalchenko::DinString::getCounterCurrent()
+{
+  return counterCurrent;
+}
+
+char *mihalchenko::DinString::getDinstr()
+{
+  return dinstr;
+}
+
 char *mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, size_t size2)
 {
   size_t revers = 0;
@@ -79,7 +93,7 @@ char *mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, size
   {
     for (size_t i = 0; i < size1; i++)
     {
-      if ((std::strchr(str2, str1[i]) != 0) && (str2[i] != '\0'))
+      if ((std::strchr(str2, str1[i]) != 0) && (str1[i] != '\0'))
       {
         resultStr[revers] = str1[i];
         revers++;
@@ -92,16 +106,19 @@ char *mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, size
 
 size_t mihalchenko::arrUniq(char *mas, size_t size)
 {
-  for (size_t i = 0; i < size; i++)
+  for (size_t i = 0; i < size - 1; i++)
   {
-    for (size_t j = 0; j < size; j++)
+    for (size_t j = i + 1; j < size; j++)
     {
       if (i != j)
       {
         if (mas[i] == mas[j])
         {
+          while ((mas[j] == mas[size - 1]) && (j < size - 1))
+            size--;
           std::swap(mas[size - 1], mas[j]);
-          size--;
+          if ((i != size - 1) || (j != size - 1))
+            size--;
         }
       }
     }

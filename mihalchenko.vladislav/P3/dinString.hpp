@@ -13,8 +13,12 @@ namespace mihalchenko
     void dinAppend(char elem);
     void dinOutput();
 
+    size_t getSize();
+    size_t getCounterCurrent();
+    char *getDinstr();
+
+  private:
     size_t size = 0;
-    size_t size2 = 0;
     char *dinstr = nullptr;
     size_t counterCurrent = 0;
     size_t addArr = 0;
