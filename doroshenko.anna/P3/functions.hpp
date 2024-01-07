@@ -5,8 +5,8 @@
 
 namespace doroshenko
 {
-  char* resizeArray(char*, size_t, size_t);
-  size_t readInput(char* input, std::istream& in);
+  char* resizeArray(char* input, size_t size, size_t newSize);
+  char* readInput(char* input, std::istream& in, size_t& readEl);
   void removeDup(char* input, size_t readEl);
 }
 

@@ -4,21 +4,23 @@
 #include "functions.hpp"
 int main()
 {
-  char* input = new char[20];
+  char* input = nullptr;
+  size_t readEl = 0;
   try
   {
-    size_t readEl = 0;
     std::cin >> std::noskipws;
-    readEl = doroshenko::readInput(input, std::cin);
+    input = doroshenko::readInput(input, std::cin, readEl);
     if (readEl == 0)
     {
       std::cerr << "There is no elements in the string\n";
+      delete[] input;
       return 1;
     }
-    doroshenko::removeDup(input, readEl);
+    else
+    {
+      doroshenko::removeDup(input, readEl);
+    }
     std::cin >> std::skipws;
-    delete[] input;
-    return 0;
   }
   catch (const std::bad_alloc& e)
   {
@@ -26,4 +28,6 @@ int main()
     delete[] input;
     return 1;
   }
+  delete[] input;
+  return 0;
 }

@@ -17,11 +17,11 @@ char* doroshenko::resizeArray(char* array, size_t size, size_t newSize)
   return newArray;
 }
 
-size_t doroshenko::readInput(char* input, std::istream& in)
+char* doroshenko::readInput(char* input, std::istream& in, size_t& readEl)
 {
   char ch = 0;
-  size_t readEl = 0;
   size_t size = 20;
+  input = new char[20];
   while (in >> ch)
   {
     if (readEl < size)
@@ -29,7 +29,7 @@ size_t doroshenko::readInput(char* input, std::istream& in)
       input[readEl++] = ch;
       if (ch == '\n')
       {
-        input[readEl - 1] = 0;
+        input[readEl - 1] = '\0';
         break;
       }
     }
@@ -40,15 +40,7 @@ size_t doroshenko::readInput(char* input, std::istream& in)
       input[readEl++] = ch;
     }
   }
-  if (readEl == 0)
-  {
-    delete[] input;
-    return 0;
-  }
-  else
-  {
-    return readEl;
-  }
+  return input;
 }
 
 void doroshenko::removeDup(char* input, size_t readEl)
