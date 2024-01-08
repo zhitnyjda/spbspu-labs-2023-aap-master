@@ -121,6 +121,7 @@ int main()
   {
     std::cout << itogUniq[i];
   }
+  std::cout << std::endl;
 
   if (resultStr != nullptr)
   {
