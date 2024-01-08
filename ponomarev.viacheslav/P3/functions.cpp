@@ -3,8 +3,9 @@
 
 char * ponomarev::delNums(const char * line, size_t lenLine)
 {
-  char * lineBefDelNums = new char[lenLine] {};
+  char * lineBefDelNums = new char[lenLine + 1] {};
   size_t numOfEl = 0;
+  size_t incremOfEl = 1;
   for (size_t i = 0; i < lenLine; i++)
   {
     if (std::isdigit(line[i]) == 0)
@@ -12,6 +13,7 @@ char * ponomarev::delNums(const char * line, size_t lenLine)
       lineBefDelNums[numOfEl++] = line[i];
     }
   }
+  lineBefDelNums[numOfEl] = 0;
   return lineBefDelNums;
 }
 
@@ -39,5 +41,6 @@ char * ponomarev::addNums(const char * line, size_t lenLine, const char * second
       lineBefAdNums[numOfEl] = secondLine[i];
     }
   }
+  lineBefAdNums[numOfEl + 1] = 0;
   return lineBefAdNums;
 }

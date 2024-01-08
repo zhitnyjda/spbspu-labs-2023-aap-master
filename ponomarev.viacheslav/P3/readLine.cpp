@@ -10,15 +10,9 @@ char * ponomarev::readLine(std::istream & input, size_t incremOfEl)
   input >> std::noskipws;
   while (std::cin >> elem)
   {
-    line[numOfEl++] = elem;
-    if (elem == '\n')
-    {
-      line[numOfEl - 1] = 0;
-      break;
-    }
     if (numOfEl == limitOfMem)
     {
-      char * enlargedLine = incremArr(line, incremOfEl, (numOfEl - 1));
+      char * enlargedLine = incremArr(line, incremOfEl, numOfEl);
       if (enlargedLine == nullptr)
       {
         delete[] line;
@@ -29,6 +23,13 @@ char * ponomarev::readLine(std::istream & input, size_t incremOfEl)
       delete[] line;
       line = enlargedLine;
     }
+    line[numOfEl] = elem;
+    if (elem == '\n')
+    {
+      line[numOfEl] = 0;
+      break;
+    }
+    numOfEl += 1;
   }
   input >> std::skipws;
   return line;

@@ -16,11 +16,19 @@ int main()
     return 1;
   }
   char * lineBefDelNums = ponomarev::delNums(line, lenLine);
-  std::cout << lineBefDelNums;
+  size_t lenResLine = strlen(lineBefDelNums);
+  for (size_t i = 0; i < lenResLine; i++)
+  {
+    std::cout << lineBefDelNums[i];
+  }
   std::cout << "\n";
   delete[] lineBefDelNums;
   char * lineBefAdNums = ponomarev::addNums(line, lenLine, secondLine, lenSecLine, incremOfEl);
-  std::cout << lineBefAdNums;
+  lenResLine = strlen(lineBefAdNums);
+  for (size_t i = 0; i < lenResLine; i++)
+  {
+    std::cout << lineBefAdNums[i];
+  }
   std::cout << "\n";
   delete[] lineBefAdNums;
   delete[] line;
