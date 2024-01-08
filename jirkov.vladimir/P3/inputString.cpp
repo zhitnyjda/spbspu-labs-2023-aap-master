@@ -1,28 +1,30 @@
 #include <iostream>
 #include <cstring>
 #include "inputString.hpp"
-char* inputString(std::istream& input, size_t& size, size_t& scope)
+
+char* inputString(std::istream& input)
 {
+  const size_t initialSize = 10;
+  size_t size = 0;
+  size_t scope = initialSize;
   char* string = new char[scope];
-  size = 0;
   string[0] = '\0';
   input >> std::noskipws;
   do
   {
     if (size == scope)
     {
-      size_t newScope = scope * 2;
-      char* newString = new char[newScope];
-      for (size_t i = 0; i < scope; i++)
+      char* newString = resizeString(string, scope, scope * 2);
+      if (newString == nullptr)
       {
-        newString[i] = string[i];
+        delete[] string;
+        return nullptr;
       }
-      delete[] string;
       string = newString;
-      scope = newScope;
     }
-    std::cin >> string[size];
-  } while (input && string[size++] != '\n');
+    input >> string[size];
+  }
+  while (input && string[size++] != '\n');
   if (string[0] == '\0' || string[0] == '\n')
   {
     std::cerr << "Input error\n";
@@ -30,4 +32,20 @@ char* inputString(std::istream& input, size_t& size, size_t& scope)
     return nullptr;
   }
   return string;
+}
+char* resizeString(char* string, size_t currentSize, size_t newSize)
+{
+  char* newString = new char[newSize];
+  if (newString == nullptr)
+  {
+    std::cerr << "Dynamic memory error\n";
+    delete[] string;
+    return nullptr;
+  }
+  for (size_t i = 0; i < currentSize; i++)
+  {
+    newString[i] = string[i];
+  }
+  delete[] string;
+  return newString;
 }
