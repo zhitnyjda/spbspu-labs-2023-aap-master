@@ -86,6 +86,8 @@ size_t mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, siz
     }
   }
 
+  return countLen;
+
   char *newTwoInOne = new char[countLen];
   for (size_t i = 0; i < countLen; i++)
   {
@@ -126,7 +128,7 @@ size_t mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, siz
   {
     delete[] itogUniq;
   }
-  return counterItog;
+  // return counterItog;
 }
 
 char *mihalchenko::arrUniq(char *mas, size_t size)
