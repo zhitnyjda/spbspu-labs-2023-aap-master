@@ -61,17 +61,20 @@ int main()
 
   if ((s1.getCounterCurrent() == 0) && (s2.getCounterCurrent() != 0))
   {
-    return 0;
+    std::cerr << "You entered the first empty line\n";
+    return 1;
   }
 
   if ((s2.getCounterCurrent() == 0) && (s1.getCounterCurrent() != 0))
   {
-    return 0;
+    std::cerr << "You have entered a second empty line\n";
+    return 1;
   }
 
   if ((s1.getCounterCurrent() == 0) && (s2.getCounterCurrent() == 0))
   {
-    return 2;
+    std::cerr << "You have entered both empty lines\n";
+    return 1;
   }
 
   char *resultStr = nullptr;
