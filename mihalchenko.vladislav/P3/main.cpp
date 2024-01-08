@@ -1,8 +1,8 @@
-#include "dinString.hpp"
 #include <iostream>
 #include <cstring>
 #include <string.h>
 #include <algorithm>
+#include "dinString.hpp"
 
 int main()
 {
@@ -36,6 +36,11 @@ int main()
     }
   }
 
+  if (s1.getCounterCurrent() == 0)
+  {
+    return 2;
+  }
+
   std::cin >> std::noskipws;
 
   while ((std::cin >> element) && (element != '\n'))
@@ -59,22 +64,9 @@ int main()
     }
   }
 
-  if ((s1.getCounterCurrent() == 0) && (s2.getCounterCurrent() != 0))
+  if (s2.getCounterCurrent() == 0)
   {
-    std::cerr << "You entered the first empty line\n";
-    return 1;
-  }
-
-  if ((s2.getCounterCurrent() == 0) && (s1.getCounterCurrent() != 0))
-  {
-    std::cerr << "You have entered a second empty line\n";
-    return 1;
-  }
-
-  if ((s1.getCounterCurrent() == 0) && (s2.getCounterCurrent() == 0))
-  {
-    std::cerr << "You have entered both empty lines\n";
-    return 1;
+    return 2;
   }
 
   char *resultStr = nullptr;
@@ -95,39 +87,9 @@ int main()
     return 1;
   }
 
-  char *newTwoInOne = new char[minLength];
   for (size_t i = 0; i < minLength; i++)
   {
-    newTwoInOne[i] = resultStr[i];
-  }
-
-  resultStr = arrUniq(resultStr, minLength);
-
-  size_t counter = 0;
-
-  while ((resultStr[counter] != '\0') && (counter < minLength))
-  {
-    counter++;
-  }
-
-  char *itogUniq = new char[counter];
-  size_t counterItog = 0;
-
-  for (size_t i = 0; i < minLength; i++)
-  {
-    for (size_t j = 0; j < counter; j++)
-    {
-      if (newTwoInOne[i] == resultStr[j])
-      {
-        itogUniq[counterItog++] = newTwoInOne[i];
-        resultStr[j] = '\0';
-      }
-    }
-  }
-
-  for (size_t i = 0; i < counterItog; i++)
-  {
-    std::cout << itogUniq[i];
+    std::cout << resultStr[i];
   }
   std::cout << std::endl;
 
@@ -135,13 +97,6 @@ int main()
   {
     delete[] resultStr;
   }
-  if (newTwoInOne != nullptr)
-  {
-    delete[] newTwoInOne;
-  }
-  if (itogUniq != nullptr)
-  {
-    delete[] itogUniq;
-  }
+
   return 0;
 }

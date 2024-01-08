@@ -85,7 +85,48 @@ size_t mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, siz
       }
     }
   }
-  return countLen;
+
+  char *newTwoInOne = new char[countLen];
+  for (size_t i = 0; i < countLen; i++)
+  {
+    newTwoInOne[i] = resStr[i];
+  }
+  newTwoInOne = arrUniq(newTwoInOne, countLen);
+
+  size_t counter = 0;
+  while ((resStr[counter] != '\0') && (counter < countLen))
+  {
+    counter++;
+  }
+
+  char *itogUniq = new char[counter];
+  size_t counterItog = 0;
+
+  for (size_t i = 0; i < countLen; i++)
+  {
+    for (size_t j = 0; j < counter; j++)
+    {
+      if (resStr[i] == newTwoInOne[j])
+      {
+        itogUniq[counterItog++] = resStr[i];
+        newTwoInOne[j] = '\0';
+      }
+    }
+  }
+  for (size_t i = 0; i < counterItog; i++)
+  {
+    resStr[i] = itogUniq[i];
+  }
+
+  if (newTwoInOne != nullptr)
+  {
+    delete[] newTwoInOne;
+  }
+  if (itogUniq != nullptr)
+  {
+    delete[] itogUniq;
+  }
+  return counterItog;
 }
 
 char *mihalchenko::arrUniq(char *mas, size_t size)
