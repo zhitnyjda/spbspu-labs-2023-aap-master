@@ -5,7 +5,6 @@ char * ponomarev::delNums(const char * line, size_t lenLine)
 {
   char * lineBefDelNums = new char[lenLine + 1] {};
   size_t numOfEl = 0;
-  size_t incremOfEl = 1;
   for (size_t i = 0; i < lenLine; i++)
   {
     if (std::isdigit(line[i]) == 0)
