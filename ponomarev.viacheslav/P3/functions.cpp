@@ -43,3 +43,37 @@ char * ponomarev::addNums(const char * line, size_t lenLine, const char * second
   lineBefAdNums[numOfEl] = 0;
   return lineBefAdNums;
 }
+
+char * ponomarev::delDuplic(const char * line, size_t lenLine, const char * thirdLine, size_t lenThirdLine)
+{
+  size_t flag = 0;
+  size_t numOfEl = 0;
+  char * lineBefSort = new char[lenLine + 1] {};
+  for (size_t i = 0; i < lenLine; i++)
+  {
+    for (size_t j = 0; j < lenThirdLine; j++)
+    {
+      if (line[i] == thirdLine[j])
+      {
+        flag += 1;
+        break;
+      }
+    }
+    if (flag == 0)
+    {
+      lineBefSort[numOfEl] = line[i];
+      numOfEl += 1;
+    }
+    flag = 0;
+  }
+  lineBefSort[numOfEl] = 0;
+  return lineBefSort;
+}
+
+
+
+
+
+
+
+

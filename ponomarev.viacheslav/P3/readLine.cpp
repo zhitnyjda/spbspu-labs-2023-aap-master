@@ -3,7 +3,7 @@
 
 char * ponomarev::readLine(std::istream & input, size_t incremOfEl)
 {
-  char * line = new char[incremOfEl]{};
+  char * line = new char[incremOfEl] {};
   char elem = 0;
   size_t numOfEl = 0;
   size_t limitOfMem = incremOfEl;
@@ -16,7 +16,7 @@ char * ponomarev::readLine(std::istream & input, size_t incremOfEl)
       if (enlargedLine == nullptr)
       {
         delete[] line;
-        line = new char[1]{};
+        line = new char[1] {};
         return line;
       }
       limitOfMem += incremOfEl;
