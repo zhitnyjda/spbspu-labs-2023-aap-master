@@ -10,8 +10,10 @@ char* increaseNewScope(const char* string, size_t newSize, size_t& newScope)
   return newString;
 }
 
-char* inputString(std::istream& input, size_t& size, size_t& scope)
+char* inputString(std::istream& input)
 {
+  size_t scope = 10;
+  size_t size = 0;
   char* string = new char[scope];
   string[0] = '\0';
   std::cin >> std::noskipws;
