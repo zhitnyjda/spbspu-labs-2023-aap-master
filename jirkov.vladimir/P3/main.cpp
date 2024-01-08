@@ -12,6 +12,5 @@ int main(){
   }
   int Result = checkDuplicatesChars(string);
   std::cout << Result << '\n';
-  delete[] string;
   return 0;
 }
