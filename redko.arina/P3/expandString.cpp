@@ -1,9 +1,9 @@
 #include "expandString.hpp"
-#include <new>
 
-char * redko::expandString(char * src, int len, int add)
+char * redko::expandString(char * src, int len)
 {
-  char * expandedStr = new (std::nothrow) char[len + add];
+  int add = 10;
+  char * expandedStr = new char[len + add];
   if (!expandedStr)
   {
     return nullptr;

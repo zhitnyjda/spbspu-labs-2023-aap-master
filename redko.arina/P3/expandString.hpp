@@ -3,7 +3,7 @@
 
 namespace redko
 {
-  char * expandString(char * src, int len, int add);
+  char * expandString(char * src, int len);
 }
 
 #endif

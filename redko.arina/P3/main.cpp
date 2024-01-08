@@ -4,9 +4,8 @@
 
 int main()
 {
-  const int add = 10;
   int lenght = 0;
-  char * str = redko::getString(lenght, add);
+  char * str = redko::getString(std::cin, lenght);
   if (!str)
   {
     std::cerr << "Error: can't allocate memory for input string\n";

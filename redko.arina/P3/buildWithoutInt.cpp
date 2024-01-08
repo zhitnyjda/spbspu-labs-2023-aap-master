@@ -1,11 +1,10 @@
 #include "buildWithoutInt.hpp"
 #include "expandString.hpp"
 #include <cctype>
-#include <new>
 
 char * redko::buildWithoutInt(char * src, int add)
 {
-  char * dest = new (std::nothrow) char[add];
+  char * dest = new char[add];
   if (!dest)
   {
     return nullptr;
@@ -21,7 +20,7 @@ char * redko::buildWithoutInt(char * src, int add)
     i++;
     if (j % add == 0)
     {
-      dest = redko::expandString(dest, j, add);
+      dest = redko::expandString(dest, j);
       if (!dest)
       {
         return nullptr;
