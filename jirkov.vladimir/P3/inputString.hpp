@@ -2,7 +2,5 @@
 #define INPUTSTRING_HPP
 #include <iostream>
 #include <cstddef>
-
-char* inputString(std::istream& input);
-char* resizeString(char* string, size_t currentSize, size_t newSize);
+char* inputString(size_t& size, size_t& scope);
 #endif

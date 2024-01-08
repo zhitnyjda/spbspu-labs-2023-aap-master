@@ -3,14 +3,18 @@
 #include "inputString.hpp"
 #include "checkDuplicatesChars.hpp"
 
-int main(){
-  char* string = inputString(std::cin);
+int main()
+{
+  size_t scope = 10;
+  size_t size = 0;
+  char* string = inputString(size, scope);
   if (string == nullptr)
   {
     std::cerr << "String reading error\n";
     return 1;
   }
-  int Result = checkDuplicatesChars(string);
+  size_t Result = checkDuplicatesChars(string);
   std::cout << Result << '\n';
+  delete[] string;
   return 0;
 }
