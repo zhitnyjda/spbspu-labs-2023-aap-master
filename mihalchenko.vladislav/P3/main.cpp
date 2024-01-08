@@ -38,6 +38,7 @@ int main()
 
   if (s1.getCounterCurrent() == 0)
   {
+    std::cerr << "Wrong input\n";
     return 2;
   }
 
@@ -66,6 +67,7 @@ int main()
 
   if (s2.getCounterCurrent() == 0)
   {
+    std::cerr << "Wrong input\n";
     return 2;
   }
 
