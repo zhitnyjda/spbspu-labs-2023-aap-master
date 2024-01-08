@@ -112,7 +112,7 @@ char *mihalchenko::arrUniq(char *mas, size_t size)
     }
   }
   char *resultArr = nullptr;
-  resultArr = new char[size+1];
+  resultArr = new char[size + 1];
   for (size_t i = 0; i < size; i++)
   {
     resultArr[i] = mas[i];
