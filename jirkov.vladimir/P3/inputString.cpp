@@ -1,32 +1,43 @@
+#include "inputString.hpp"
 #include <iostream>
 #include <cstring>
-#include <cstddef>
-#include "inputString.hpp"
-char* inputString(size_t& size, size_t& scope)
+
+char* increaseScope(const char* string, size_t newSize, size_t& newScope)
+{
+  newScope = newSize * 2;
+  char* newString = new char[newScope];
+  std::memset(newString, 0, newScope);
+  std::memcpy(newString, string, newSize + 1);
+  return newString;
+}
+
+char* inputString(std::istream& input, const size_t& size, size_t& scope)
 {
   char* string = new char[scope];
-  size = 0;
   string[0] = '\0';
-  std::cin >> std::noskipws;
+  input >> std::noskipws;
+  size_t newSize = size;
   do
   {
-    if (size == scope)
+    if (newSize == scope)
     {
-      size_t newScope = scope * 2;
-      char* newString = new char[newScope];
-      for (size_t i = 0; i < scope; i++)
+      char* newString = increaseScope(string, size, scope);
+      if (newString == nullptr)
       {
-        newString[i] = string[i];
+        std::cout << "Dynamic memory error\n";
+        delete[] string;
+        return nullptr;
       }
       delete[] string;
       string = newString;
-      scope = newScope;
+      newString = nullptr;
     }
-    std::cin >> string[size];
-  } while (std::cin && string[size++] != '\n');
+    input.get(string[newSize]);
+  }
+  while (input && string[newSize++] != '\n');
   if (string[0] == '\0' || string[0] == '\n')
   {
-    std::cerr << "Input error\n";
+    std::cout << "Input error\n";
     delete[] string;
     return nullptr;
   }
