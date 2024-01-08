@@ -79,7 +79,7 @@ int main()
   {
     (sizeDin1 > sizeDin2) ? (minLength = sizeDin2) : (minLength = sizeDin1);
     resultStr = new char[minLength];
-    resultStr = findIdenticalChars(s1.getDinstr(), s2.getDinstr(), sizeDin1, sizeDin2, resultStr);
+    minLength = findIdenticalChars(s1.getDinstr(), s2.getDinstr(), sizeDin1, sizeDin2, resultStr);
   }
   catch (const std::exception &e)
   {
@@ -87,15 +87,52 @@ int main()
     return 1;
   }
 
+  char *newTwoInOne = new char[minLength];
   for (size_t i = 0; i < minLength; i++)
   {
-    std::cout << resultStr[i];
+    newTwoInOne[i] = resultStr[i];
   }
-  std::cout << std::endl;
+
+  resultStr = arrUniq(resultStr, minLength);
+
+  size_t counter = 0;
+
+  while ((resultStr[counter] != '\0') && (counter < minLength))
+  {
+    counter++;
+  }
+
+  char *itogUniq = new char[counter];
+  size_t counterItog = 0;
+
+  for (size_t i = 0; i < minLength; i++)
+  {
+    for (size_t j = 0; j < counter; j++)
+    {
+      if (newTwoInOne[i] == resultStr[j])
+      {
+        itogUniq[counterItog++] = newTwoInOne[i];
+        resultStr[j] = '\0';
+      }
+    }
+  }
+
+  for (size_t i = 0; i < counterItog; i++)
+  {
+    std::cout << itogUniq[i];
+  }
 
   if (resultStr != nullptr)
   {
     delete[] resultStr;
+  }
+  if (newTwoInOne != nullptr)
+  {
+    delete[] newTwoInOne;
+  }
+  if (itogUniq != nullptr)
+  {
+    delete[] itogUniq;
   }
   return 0;
 }

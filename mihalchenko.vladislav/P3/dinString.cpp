@@ -60,7 +60,7 @@ char *mihalchenko::DinString::getDinstr()
   return dinstr_;
 }
 
-char *mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, size_t size2, char *resStr)
+size_t mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, size_t size2, char *resStr)
 {
   size_t countLen = 0;
 
@@ -85,5 +85,40 @@ char *mihalchenko::findIdenticalChars(char *str1, char *str2, size_t size1, size
       }
     }
   }
-  return resStr;
+  return countLen;
+}
+
+char *mihalchenko::arrUniq(char *mas, size_t size)
+{
+  for (size_t i = 0; i < size - 1; i++)
+  {
+    for (size_t j = i + 1; j < size; j++)
+    {
+      if (i != j)
+      {
+        if (mas[i] == mas[j])
+        {
+          while ((mas[j] == mas[size - 1]) && (j < size - 1))
+          {
+            size--;
+          }
+          std::swap(mas[size - 1], mas[j]);
+          if ((i != size - 1) || (j != size - 1))
+          {
+            size--;
+          }
+        }
+      }
+    }
+  }
+  char *resultArr = nullptr;
+  resultArr = new char[size+1];
+  for (size_t i = 0; i < size; i++)
+  {
+    resultArr[i] = mas[i];
+  }
+  resultArr[size] = '\0';
+  delete[] mas;
+  mas = resultArr;
+  return mas;
 }

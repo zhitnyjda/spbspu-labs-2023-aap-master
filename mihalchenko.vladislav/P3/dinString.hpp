@@ -23,8 +23,8 @@ namespace mihalchenko
     size_t addArr_ = 0;
   };
 
-  char *findIdenticalChars(char *str1, char *str2, size_t size1, size_t size2, char *resultStr);
+  size_t findIdenticalChars(char *str1, char *str2, size_t size1, size_t size2, char *resultStr);
 
-  // size_t arrUniq(char *mas, size_t size);
+  char *arrUniq(char *mas, size_t size);
 }
 #endif
