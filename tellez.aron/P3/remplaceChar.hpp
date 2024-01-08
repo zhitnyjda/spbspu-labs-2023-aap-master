@@ -1,6 +1,5 @@
-#ifndef FUNCTIONS_HPP
-#define FUNCTIONS_HPP
+#ifndef REMPLACECHAR_HPP
+#define REMPLACECHAR_HPP
 #include <cstddef>
 char* remplaceChar(const char* str, size_t size, char replaceFrom, char replaceTo);
-size_t hasRepeatedChars(const char* str, size_t size);
 #endif

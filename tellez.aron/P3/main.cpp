@@ -2,8 +2,9 @@
 #include <cstring>
 #include <cctype>
 #include <limits>
+#include "remplaceChar.hpp"
+#include "hasRepeatedChars.hpp"
 #include "readDynamicString.hpp"
-#include "functions.hpp"
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
   char replaceFrom = '\0', replaceTo = '\0';
   std::cout << "Enter the first character to replace: ";
   std::cin >> replaceFrom;
-  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  std::cin.ignore(std::numeric_limits< std::streamsize >::max(), '\n');
   std::cout << "Enter the second character for replacement: ";
   std::cin >> replaceTo;
   char* replacedResult = remplaceChar(cstring, size, replaceFrom, replaceTo);
