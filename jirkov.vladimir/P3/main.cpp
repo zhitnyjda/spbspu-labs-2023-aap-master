@@ -5,8 +5,6 @@
 
 int main()
 {
-  size_t scope = 10;
-  size_t size = 0;
   char* string = inputString(std::cin);
   if (string == nullptr)
   {
