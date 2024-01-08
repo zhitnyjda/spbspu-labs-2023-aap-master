@@ -38,7 +38,7 @@ int main()
 
   if (s1.getCounterCurrent() == 0)
   {
-    return 0;
+    return 2;
   }
 
   std::cin >> std::noskipws;
@@ -66,7 +66,7 @@ int main()
 
   if (s2.getCounterCurrent() == 0)
   {
-    return 0;
+    return 2;
   }
 
   char *resultStr = nullptr;
