@@ -12,7 +12,7 @@ char* addarr(std::istream& in, char* arr, size_t& size_arr, bool& endin)
   in >> std::noskipws;
   while ((in >> newArr[count]) && count < (size_arr * 2) - 1)
   {
-    if (newArr[count++] == '\0')
+    if (newArr[count++] == '\0' || newArr[count++] == '\n')
     {
       endin = 0;
       break;
