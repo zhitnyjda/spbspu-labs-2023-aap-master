@@ -17,7 +17,7 @@ int main()
     delete[] str;
     return 1;
   }
-  std::cout << "[HAS-SAM]: " << arr::comparison(str, lenStr, "abc") << '\n';
+  std::cout << "[HAS-SAM]: " << comparison(str, lenStr, "abc") << '\n';
   str = delVow(str, lenStr);
   std::cout << "[RMV-VOW]: ";
   for (size_t i = 0; i < lenStr; i++)

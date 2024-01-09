@@ -15,5 +15,6 @@ char* delVow(const char* str, const size_t lenStr)
       }
     }
   }
+  delete[] str;
   return newStr;
 }

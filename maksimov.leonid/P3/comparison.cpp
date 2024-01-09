@@ -1,8 +1,8 @@
 #include "comparison.hpp"
 
-int arr::comparison(const char* str, const size_t lenStr, const char* etalonStr)
+size_t comparison(const char* str, const size_t lenStr, const char* etalonStr)
 {
-  int count = 0;
+  size_t count = 0;
   for (size_t i = 0; i < lenStr; i++)
   {
     for (size_t j = 0; j < size_t(sizeof(etalonStr) - 1); j++)
