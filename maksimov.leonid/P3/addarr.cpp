@@ -1,6 +1,6 @@
 #include "addarr.hpp"
 
-char* addarr(std::istream& in, char* arr, size_t& size_arr, bool& endin)
+char* addarr(std::istream& in, char* arr, size_t& size_arr)
 {
   char* newArr = new char[(size_arr * 2) + 1]{};
   for (size_t i = 0; i < size_arr; i++)
@@ -12,11 +12,16 @@ char* addarr(std::istream& in, char* arr, size_t& size_arr, bool& endin)
   in >> std::noskipws;
   while ((in >> newArr[count]) && count < (size_arr * 2) - 1)
   {
-    if (newArr[count++] == '\0' || newArr[count++] == '\n')
+    if (newArr[count++] == '\n')
     {
-      endin = 0;
       break;
     }
+  }
+  if (temp == 0)
+  {
+    delete[] arr;
+    delete[] newArr;
+    throw std::exception();
   }
   in >> std::skipws;
   newArr[count] = temp;

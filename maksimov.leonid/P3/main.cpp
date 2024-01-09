@@ -1,35 +1,28 @@
 #include <iostream>
 #include "comparison.hpp"
 #include "delvow.hpp"
-#include "addarr.hpp"
-#include "delzero.hpp"
+#include "newarr.hpp"
 
 int main()
 {
-  size_t sizeStr = 10;
-  char* str = new char[10]{};
-  bool endin = 1;
-  while (std::cin.peek() != '\n')
+  char* str = 0;
+  try
   {
-    try
-    {
-      str = addarr(std::cin, str, sizeStr, endin);
-      str = delzero(str, sizeStr);
-    }
-    catch (const std::exception& ex)
-    {
-      std::cerr << "Could not read an element of the string\n";
-      return 1;
-    }
+    str = newarr(std::cin);
   }
-  for (size_t i = 0; i < sizeStr; i++)
+  catch (const std::exception& ex)
+  {
+    std::cerr << "Could not read an element of the string\n";
+    return 1;
+  }
+  for (size_t i = 0; i < strlen(str) + 1; i++)
   {
     std::cout << str[i] << '\t' << int(str[i]) << '\t' << i << '\n';
   }
-  std::cout << "[HAS-SAM]: " << arr::comparison(str, sizeStr, "abc") << '\n';
-  arr::delVow(str, sizeStr);
+  std::cout << "[HAS-SAM]: " << arr::comparison(str, strlen(str), "abc") << '\n';
+  arr::delVow(str, strlen(str));
   std::cout << "[RMV-VOW]: ";
-  for (size_t i = 0; i < sizeStr; i++)
+  for (size_t i = 0; i < strlen(str); i++)
   {
     std::cout << str[i];
   }
