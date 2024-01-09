@@ -10,15 +10,14 @@ char* addarr(std::istream& in, char* arr, size_t& size_arr)
   size_t count = size_arr;
   char temp = 0;
   in >> std::noskipws;
-  while ((in >> temp) && count < (size_arr * 2) - 1)
+  while ((in >> newArr[count]) && count < (size_arr * 2) - 1)
   {
-    if (temp == '\n')
+    if (newArr[count++] == '\n')
     {
       break;
     }
-    newArr[count++] = temp;
   }
-  if (temp == 0 && size_arr == 10)
+  if (count == 10)
   {
     delete[] arr;
     delete[] newArr;
