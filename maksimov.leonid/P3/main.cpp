@@ -20,7 +20,7 @@ int main()
   {
     std::cout << str[i] << '\t' << int(str[i]) << '\t' << i << '\n';
   }
-  std::cout << "[HAS-SAM]: " << arr::comparison(str, strlen(str), "abc") << '\n';
+  std::cout << "[HAS-SAM]: " << arr::comparison(str, lenStr, "abc") << '\n';
   arr::delVow(str, lenStr);
   std::cout << "[RMV-VOW]: ";
   for (size_t i = 0; i < lenStr; i++)
