@@ -9,7 +9,7 @@ int main()
   size_t sizeStr = 10;
   char* str = new char[10]{};
   bool endin = 1;
-  while (endin)
+  while (std::cin.peek() != '\n')
   {
     try
     {
