@@ -2,6 +2,6 @@
 #define DELZERO_HPP
 #include <cstddef>
 
-void delzero(char*&, size_t&);
+char* delzero(char*, size_t&);
 
 #endif

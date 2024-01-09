@@ -1,6 +1,7 @@
 #include "delzero.hpp"
+#include <iostream>
 
-void delzero(char*& arr, size_t& sizeArr)
+char* delzero(char* arr, size_t& sizeArr)
 {
   size_t count = 0;
   for (size_t i = 0; i < sizeArr; i++)
@@ -23,4 +24,5 @@ void delzero(char*& arr, size_t& sizeArr)
   delete[] arr;
   arr = newArr;
   sizeArr = (sizeArr - count) + 1;
+  return newArr;
 }

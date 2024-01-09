@@ -3,6 +3,6 @@
 #include <iostream>
 #include <cstddef>
 
-void addarr(std::istream&, char*&, size_t&, bool&);
+char* addarr(std::istream&, char*, size_t&);
 
 #endif

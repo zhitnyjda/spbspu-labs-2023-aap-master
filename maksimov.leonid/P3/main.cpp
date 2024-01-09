@@ -6,15 +6,14 @@
 
 int main()
 {
-  std::cin >> std::noskipws;
-  size_t sizeStr = 1;
-  char* str = new char[1]{};
-  bool endin = 1;
-  while (endin)
+  size_t sizeStr = 10;
+  char* str = new char[10]{};
+  while (str[sizeStr - 2] != '\n')
   {
     try
     {
-      addarr(std::cin, str, sizeStr, endin);
+      str = addarr(std::cin, str, sizeStr);
+      str = delzero(str, sizeStr);
     }
     catch (const std::exception& ex)
     {
@@ -22,11 +21,17 @@ int main()
       return 1;
     }
   }
-  delzero(str, sizeStr);
+  for (size_t i = 0; i < sizeStr; i++)
+  {
+    std::cout << str[i] << '\t' << int(str[i]) << '\t' << i << '\n';
+  }
   std::cout << "[HAS-SAM]: " << arr::comparison(str, sizeStr, "abc") << '\n';
   arr::delVow(str, sizeStr);
   std::cout << "[RMV-VOW]: ";
-  std::cin >> std::skipws;
+  for (size_t i = 0; i < sizeStr; i++)
+  {
+    std::cout << str[i];
+  }
   delete[] str;
   return 0;
 }
