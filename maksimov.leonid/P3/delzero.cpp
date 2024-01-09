@@ -24,22 +24,5 @@ char* delzero(char* arr, size_t& sizeArr)
   delete[] arr;
   arr = newArr;
   sizeArr = (sizeArr - count) + 1;
-  for (size_t i = 0; i < sizeArr; i++)
-  {
-    if (newArr[i] == '\0')
-    {
-      counter++;
-    }
-    else
-    {
-      break;
-    }
-  }
-  if (counter == sizeArr)
-  {
-    delete[] arr;
-    delete[] newArr;
-    throw std::exception();
-  }
   return newArr;
 }
