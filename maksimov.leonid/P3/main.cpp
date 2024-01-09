@@ -14,6 +14,7 @@ int main()
   catch (const std::exception& ex)
   {
     std::cerr << "Could not read an element of the string\n";
+    delete[] str;
     return 1;
   }
   for (size_t i = 0; i < lenStr + 1; i++)
