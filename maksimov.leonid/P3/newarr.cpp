@@ -11,15 +11,16 @@ char* newarr(std::istream& in, size_t& sizeStr)
   while (in >> temp && temp != '\n')
   {
     dataIndex++;
-    if (dataIndex < lenStr)
+    if (dataIndex < lenStr - 1)
     {
       str[dataIndex] = temp;
     }
     else
     {
+      str[dataIndex] = temp;
       lenStr *= 2;
       char* newStr = new char[lenStr]{};
-      for (size_t i = 0; i < lenStr; i++)
+      for (size_t i = 0; i < lenStr / 2; i++)
       {
         newStr[i] = str[i];
       }

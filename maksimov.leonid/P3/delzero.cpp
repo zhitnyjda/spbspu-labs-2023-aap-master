@@ -6,7 +6,7 @@ char* delzero(char* arr, size_t& sizeArr)
   size_t count = 0;
   for (size_t i = 0; i < sizeArr; i++)
   {
-    if (arr[i] == '\0')
+    if (int(arr[i]) <= 0)
     {
       count++;
     }
@@ -15,7 +15,7 @@ char* delzero(char* arr, size_t& sizeArr)
   size_t counter = 0;
   for (size_t i = 0; i < sizeArr; i++)
   {
-    if (arr[i] != '\0')
+    if (int(arr[i]) > 0)
     {
       newArr[counter++] = arr[i];
     }
