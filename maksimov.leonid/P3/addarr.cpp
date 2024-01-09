@@ -17,7 +17,6 @@ char* addarr(std::istream& in, char* arr, size_t& size_arr)
       break;
     }
   }
-  size_t counter = 0;
   in >> std::skipws;
   newArr[count] = temp;
   delete[] arr;
