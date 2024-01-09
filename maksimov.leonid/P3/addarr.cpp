@@ -17,7 +17,19 @@ char* addarr(std::istream& in, char* arr, size_t& size_arr)
       break;
     }
   }
-  if (count == 10)
+  size_t counter = 0;
+  for (size_t i = 0; i < size_arr; i++)
+  {
+    if (newArr[i] == '\0')
+    {
+      counter++;
+    }
+    else
+    {
+      break;
+    }
+  }
+  if (counter == size_arr)
   {
     delete[] arr;
     delete[] newArr;
