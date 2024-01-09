@@ -19,7 +19,7 @@ void addarr(std::istream& in, char*& arr, size_t& size_arr, bool& endin)
     }
     newArr[count++] = temp;
   }
-  if (temp == 0)
+  if (temp == 0 && size_arr == 1)
   {
     delete[] arr;
     delete[] newArr;
