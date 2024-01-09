@@ -18,7 +18,11 @@ char* addarr(std::istream& in, char* arr, size_t& size_arr)
     }
     newArr[count++] = temp;
   }
+<<<<<<< HEAD
   if (temp == 0 && size_arr == 10)
+=======
+  if (temp == 0 && size_arr == 1)
+>>>>>>> 407d51f2acdf323b710de4cf29570bfec3e27225
   {
     delete[] arr;
     delete[] newArr;
