@@ -8,11 +8,12 @@ int main()
 {
   size_t sizeStr = 10;
   char* str = new char[10]{};
-  while (str[sizeStr - 2] != '\n')
+  bool endin = 1;
+  while (endin)
   {
     try
     {
-      str = addarr(std::cin, str, sizeStr);
+      str = addarr(std::cin, str, sizeStr, endin);
       str = delzero(str, sizeStr);
     }
     catch (const std::exception& ex)

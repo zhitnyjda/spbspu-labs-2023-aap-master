@@ -1,6 +1,6 @@
 #include "addarr.hpp"
 
-char* addarr(std::istream& in, char* arr, size_t& size_arr)
+char* addarr(std::istream& in, char* arr, size_t& size_arr, bool& endin)
 {
   char* newArr = new char[(size_arr * 2) + 1]{};
   for (size_t i = 0; i < size_arr; i++)
@@ -14,6 +14,7 @@ char* addarr(std::istream& in, char* arr, size_t& size_arr)
   {
     if (newArr[count++] == '\n')
     {
+      endin = 0;
       break;
     }
   }
