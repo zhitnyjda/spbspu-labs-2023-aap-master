@@ -2,9 +2,6 @@
 #define DELVOW_HPP
 #include <cstddef>
 
-namespace arr
-{
-  void delVow(char*&, size_t lenStr);
-}
+char* delVow(const char*, const size_t lenStr);
 
 #endif

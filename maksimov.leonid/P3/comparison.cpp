@@ -1,6 +1,6 @@
 #include "comparison.hpp"
 
-int arr::comparison(char* str, size_t lenStr, const char* etalonStr)
+int arr::comparison(const char* str, const size_t lenStr, const char* etalonStr)
 {
   int count = 0;
   for (size_t i = 0; i < lenStr; i++)

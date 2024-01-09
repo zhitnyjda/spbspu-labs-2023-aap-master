@@ -10,8 +10,7 @@ char* newarr(std::istream& in, size_t& sizeStr)
   in >> std::noskipws;
   while (in >> temp && temp != '\n')
   {
-    dataIndex++;
-    if (dataIndex < lenStr - 1)
+    if (++dataIndex < lenStr - 1)
     {
       str[dataIndex] = temp;
     }

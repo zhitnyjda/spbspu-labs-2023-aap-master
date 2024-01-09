@@ -18,7 +18,7 @@ int main()
     return 1;
   }
   std::cout << "[HAS-SAM]: " << arr::comparison(str, lenStr, "abc") << '\n';
-  arr::delVow(str, lenStr);
+  str = delVow(str, lenStr);
   std::cout << "[RMV-VOW]: ";
   for (size_t i = 0; i < lenStr; i++)
   {

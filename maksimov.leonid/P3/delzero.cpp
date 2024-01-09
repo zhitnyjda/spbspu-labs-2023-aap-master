@@ -1,5 +1,4 @@
 #include "delzero.hpp"
-#include <iostream>
 
 char* delzero(char* arr, size_t& sizeArr)
 {
