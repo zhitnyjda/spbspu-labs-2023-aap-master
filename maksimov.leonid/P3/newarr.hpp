@@ -3,6 +3,6 @@
 #include <iostream>
 #include <cstddef>
 
-char* newarr(std::istream&);
+char* newarr(std::istream&, size_t&);
 
 #endif

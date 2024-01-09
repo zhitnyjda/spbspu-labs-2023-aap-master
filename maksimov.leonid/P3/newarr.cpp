@@ -1,7 +1,7 @@
 #include "newarr.hpp"
 #include "delzero.hpp"
 
-char* newarr(std::istream& in)
+char* newarr(std::istream& in, size_t& sizeStr)
 {
   size_t lenStr = 10;
   char* str = new char[lenStr]{};
@@ -34,5 +34,6 @@ char* newarr(std::istream& in)
   }
   in >> std::skipws;
   str = delzero(str, lenStr);
+  sizeStr = lenStr;
   return str;
 }
